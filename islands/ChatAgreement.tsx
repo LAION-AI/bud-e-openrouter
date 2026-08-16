@@ -10,13 +10,13 @@ export default function ChatAgreement({ lang }: ChatAgreementProps) {
   const [agreed, setAgreed] = useState(false);
 
   const handleAgree = () => {
-    localStorage.setItem("school-bud-e-agreement", "true");
+    localStorage.setItem("bud-e-agreement", "true");
     globalThis.location.reload();
   };
 
-//   title: "Welcome to School Bud-E!",
+//   title: "Welcome to Bud-E!",
 //   content:
-//     "Please read and accept the following terms and conditions to continue using School Bud-E.",
+//     "Please read and accept the following terms and conditions to continue using Bud-E.",
 //   accept: "Accept",
 //   terms: "Terms and Conditions",
 //   temsAndConditionsContent: "Placeholder Terms and Conditions",

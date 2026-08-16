@@ -1,7 +1,7 @@
 services:
-  school-bud-e-frontend:
+  bud-e-frontend:
     image: denoland/deno:latest
-    container_name: school-bud-e-frontend
+    container_name: bud-e-frontend
     build:
       context: .
       dockerfile: Dockerfile
@@ -10,8 +10,8 @@ services:
     env_file:
       - .env
     volumes:
-      - ./app:/school-bud-e-frontend
-    command: sh -c "apt-get update && apt-get install -y git && git config --global --add safe.directory /school-bud-e-frontend && cd /school-bud-e-frontend && (git rev-parse --git-dir || git init) && if [ -d '.git' ]; then git remote add origin https://github.com/LAION-AI/school-bud-e-frontend.git || true && git fetch origin && git checkout -B main origin/main; else git clone -b main https://github.com/LAION-AI/school-bud-e-frontend.git .; fi && deno task build && deno task preview"
+      - ./app:/bud-e-frontend
+    command: sh -c "apt-get update && apt-get install -y git && git config --global --add safe.directory /bud-e-frontend && cd /bud-e-frontend && (git rev-parse --git-dir || git init) && if [ -d '.git' ]; then git remote add origin https://github.com/LAION-AI/bud-e-frontend.git || true && git fetch origin && git checkout -B main origin/main; else git clone -b main https://github.com/LAION-AI/bud-e-frontend.git .; fi && deno task build && deno task preview"
     networks:
       - app-network
     restart: unless-stopped

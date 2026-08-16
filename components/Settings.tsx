@@ -1,3 +1,4 @@
+// components/Settings.tsx
 import { useState } from "preact/hooks";
 import { settingsContent } from "../internalization/content.ts";
 
@@ -28,9 +29,21 @@ export default function Settings({
   onClose: () => void;
   lang?: string;
 }) {
+  // --- Default system prompt resolution (pre-fill the textbox) ---
+  const DEFAULT_SYSTEM_PROMPT =
+    (settingsContent?.[lang]?.systemPromptDefault as string | undefined) ??
+    (settingsContent?.en?.systemPromptDefault as string | undefined) ??
+    "";
+
+  // Initialize state; if nothing saved yet, show the default in the box.
   const [newSettings, setNewSettings] = useState({
     ...settings,
+    systemPrompt:
+      (settings?.systemPrompt && settings.systemPrompt.trim().length > 0
+        ? settings.systemPrompt
+        : DEFAULT_SYSTEM_PROMPT),
   });
+
   const [showAdvanced, setShowAdvanced] = useState(false);
 
   const providerConfigs = {
@@ -97,7 +110,10 @@ export default function Settings({
       config: {
         tts: {
           url: "https://api.fish.audio/v1/tts",
-          model: lang === "de" ? "61561f50f41046e0b267aa4cb30e4957" : "6f45f4694ff54d6980337a68902e20d7",
+          model:
+            lang === "de"
+              ? "61561f50f41046e0b267aa4cb30e4957"
+              : "6f45f4694ff54d6980337a68902e20d7",
         },
       },
     },
@@ -114,41 +130,42 @@ export default function Settings({
         },
       },
     },
-  };
+  } as const;
 
   function updateSettings(key: string, value: string) {
-    const updatedSettings = { ...newSettings };
+    const updatedSettings: typeof newSettings = { ...newSettings };
 
     if (key !== "universalApiKey") {
       if (key.endsWith("Key") && value !== "") {
-        const serviceType = key.slice(0, -3);
+        const serviceType = key.slice(0, -3); // 'api' | 'tts' | 'stt' | 'vlm'
         const urlKey = `${serviceType}Url` as keyof typeof settings;
         const modelKey = `${serviceType}Model` as keyof typeof settings;
 
         // Find matching provider based on key characteristics
-        const provider = Object.values(providerConfigs).find((provider) => {
-          const { keyCharacteristics } = provider;
+        const provider = Object.values(providerConfigs).find((p) => {
+          const kc = p.keyCharacteristics as
+            | { startsWith: string }
+            | { length: number };
           return (
-            ("startsWith" in keyCharacteristics &&
-              value.startsWith(keyCharacteristics.startsWith)) ||
-            ("length" in keyCharacteristics &&
-              keyCharacteristics.length === value.length)
+            ("startsWith" in kc && value.startsWith(kc.startsWith)) ||
+            ("length" in kc && kc.length === value.length)
           );
         });
 
-        if (provider?.config[serviceType as keyof typeof provider.config]) {
-          const serviceConfig = provider
-            .config[serviceType as keyof typeof provider.config] as {
-              url: string;
-              model: string;
-            };
-          updatedSettings[urlKey] = serviceConfig.url;
-          updatedSettings[modelKey] = serviceConfig.model;
+        const svc =
+          provider?.config[serviceType as keyof typeof provider.config] as
+            | { url: string; model: string }
+            | undefined;
+
+        if (svc) {
+          // Auto-fill URL and model based on provider
+          (updatedSettings as any)[urlKey] = svc.url;
+          (updatedSettings as any)[modelKey] = svc.model;
         }
       }
     }
 
-    updatedSettings[key as keyof typeof settings] = value;
+    (updatedSettings as any)[key as keyof typeof settings] = value;
     setNewSettings(updatedSettings);
   }
 
@@ -156,7 +173,10 @@ export default function Settings({
     <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
       <div class="bg-white p-6 rounded-lg shadow-xl max-w-md w-full m-4 overflow-y-scroll max-h-[90dvh]">
         <div class="flex justify-between items-center mb-4">
-          <h2 class="text-xl font-bold">⚙️ {settingsContent[lang].title}</h2>
+          {/* Note: the gear emoji caused mojibake previously; keep this plain text. */}
+          <h2 class="text-xl font-bold">
+            {settingsContent[lang].title}
+          </h2>
           <button
             onClick={onClose}
             class="px-4 py-2 text-gray-600 hover:text-gray-800"
@@ -167,8 +187,9 @@ export default function Settings({
 
         {/* Basic Settings */}
         <div class="mb-4">
+          {/* Remove emoji to avoid ?? rendering */}
           <label class="block text-sm font-medium text-gray-700 mb-2">
-            🌐 {settingsContent[lang].universalApiKeyLabel}
+            {settingsContent[lang].universalApiKeyLabel}
           </label>
           <input
             type="password"
@@ -180,6 +201,25 @@ export default function Settings({
               )}
             class="w-full p-2 border rounded focus:ring-2 focus:ring-blue-500 bg-yellow-50"
             placeholder={settingsContent[lang].universalApiKeyPlaceholder}
+          />
+        </div>
+
+        {/* System Prompt (persists locally) */}
+        <div class="mb-4">
+          {/* Plain label (no emoji), so no "??" */}
+          <label class="block text-sm font-medium text-gray-700 mb-2">
+            {settingsContent[lang].systemPromptLabel}
+          </label>
+          <textarea
+            value={newSettings.systemPrompt}
+            onChange={(e) =>
+              updateSettings(
+                "systemPrompt",
+                (e.target as HTMLTextAreaElement).value,
+              )
+            }
+            class="w-full p-2 border rounded focus:ring-2 focus:ring-blue-500 min-h-[8rem]"
+            placeholder="Optional: override the default system prompt for all chats in this browser"
           />
         </div>
 
@@ -199,7 +239,7 @@ export default function Settings({
             {/* Chat API Settings */}
             <div class="mb-4">
               <h3 class="font-medium mb-2">
-                💬 {settingsContent[lang].chatApiTitle}
+                {settingsContent[lang].chatApiTitle}
               </h3>
               <div class="space-y-4">
                 <div>
@@ -257,7 +297,7 @@ export default function Settings({
             {/* TTS Settings */}
             <div class="mb-4">
               <h3 class="font-medium mb-2">
-                🗣️ {settingsContent[lang].ttsTitle}
+                {settingsContent[lang].ttsTitle}
               </h3>
               <div class="space-y-4">
                 <input
@@ -299,7 +339,7 @@ export default function Settings({
             {/* STT Settings */}
             <div class="mb-4">
               <h3 class="font-medium mb-2">
-                👂 {settingsContent[lang].sttTitle}
+                {settingsContent[lang].sttTitle}
               </h3>
               <div class="space-y-4">
                 <input
@@ -341,7 +381,7 @@ export default function Settings({
             {/* VLM Settings */}
             <div class="mb-4">
               <h3 class="font-medium mb-2">
-                👀 {settingsContent[lang].vlmTitle}
+                {settingsContent[lang].vlmTitle}
               </h3>
               <div class="space-y-4">
                 <input
@@ -386,8 +426,9 @@ export default function Settings({
                       (e.target as HTMLInputElement).value,
                     )}
                   class="w-full p-2 border rounded focus:ring-2 focus:ring-blue-500"
-                  placeholder={settingsContent[lang]
-                    .vlmCorrectionModelPlaceholder}
+                  placeholder={
+                    settingsContent[lang].vlmCorrectionModelPlaceholder
+                  }
                 />
               </div>
             </div>

@@ -1,3 +1,4 @@
+// islands/ChatIsland.tsx
 // ###############
 // ### IMPORTS ###
 // ###############
@@ -21,6 +22,14 @@ import { useEffect, useRef, useState } from "preact/hooks";
 // Internalization
 import { chatIslandContent } from "../internalization/content.ts";
 
+// Generated/uploaded images are offloaded to IndexedDB so that base64 payloads
+// don't blow the localStorage quota.
+import {
+  IDB_PLACEHOLDER,
+  rehydrateImages,
+  stripImagesForStorage,
+} from "../utils/imageStore.ts";
+
 // // Import necessary types from Preact
 // import { JSX } from 'preact';
 import Settings from "../components/Settings.tsx";
@@ -31,6 +40,9 @@ import Settings from "../components/Settings.tsx";
 
 class RetriableError extends Error {}
 class FatalError extends Error {}
+
+// No frontend default for image generation on purpose: when no model is named
+// explicitly, the request omits the field and the API uses its own default.
 
 interface Message {
   role: string;
@@ -69,6 +81,25 @@ interface AudioItem {
   played: boolean;
 }
 
+// Simple non-streaming JSON-stripper (used in cleanForTTS & elsewhere if needed)
+const stripJsonLikeBlocks = (text: string): string => {
+  let result = "";
+  let depth = 0;
+  for (let i = 0; i < text.length; i++) {
+    const ch = text[i];
+    if (ch === "{") {
+      depth++;
+      continue;
+    }
+    if (ch === "}") {
+      if (depth > 0) depth--;
+      continue;
+    }
+    if (depth === 0) result += ch;
+  }
+  return result;
+};
+
 // Define the AudioFileDict type if not already defined
 type AudioFileDict = Record<number, Record<number, AudioItem>>;
 
@@ -104,16 +135,16 @@ export default function ChatIsland({ lang }: { lang: string }) {
   // dictionary containing audio files for each groupIndex for the current chat
   const [audioFileDict, setAudioFileDict] = useState<AudioFileDict>({});
 
-
   const playSessionRef = useRef(0);
 
   // used for STT in VoiceRecordButton
   const [resetTranscript, setResetTranscript] = useState(0);
 
-
   // General settings
   const [readAlways, setReadAlways] = useState(false);
   const [autoScroll, setAutoScroll] = useState(true);
+  const [skipCurlyBraces, setSkipCurlyBraces] = useState(false); // NEW: skip { ... } blocks for TTS
+
   // The concrete “Image” type depends on your uploader; keep as any[] to avoid collisions with DOM Image
   const [images, setImages] = useState([] as any[]);
   const [pdfs, setPdfs] = useState([] as PdfFile[]);
@@ -133,7 +164,9 @@ export default function ChatIsland({ lang }: { lang: string }) {
 
   // handy ref for async closures
   const messagesRef = useRef<Message[]>(messages);
-  useEffect(() => { messagesRef.current = messages; }, [messages]);
+  useEffect(() => {
+    messagesRef.current = messages;
+  }, [messages]);
 
   const [showSettings, setShowSettings] = useState(false);
 
@@ -160,12 +193,23 @@ export default function ChatIsland({ lang }: { lang: string }) {
   });
 
   // NEW: pending manual speak groups (autostart when first chunk arrives)
-  const [pendingManualSpeak, setPendingManualSpeak] = useState<Set<number>>(new Set());
+  const [pendingManualSpeak, setPendingManualSpeak] = useState<Set<number>>(
+    new Set(),
+  );
 
   // ---------- TTS concurrency pool ----------
-  const TTS_POOL_LIMIT = 6;
+  const TTS_POOL_LIMIT = 2;
+  // Hard ceiling for a single /api/tts request. Without it a hanging upstream
+  // would occupy a pool slot forever and starve every following chunk.
+  const TTS_REQUEST_TIMEOUT_MS = 90_000;
   const ttsActiveRef = useRef(0);
   const ttsQueueRef = useRef<(() => Promise<void>)[]>([]);
+  // Bumped whenever the pool runs dry. Nothing pending + nothing active means
+  // any still-missing audio index will never arrive, which lets the playback
+  // effect safely skip over it instead of waiting forever.
+  const [ttsIdleTick, setTtsIdleTick] = useState(0);
+  const ttsPoolIdle = () =>
+    ttsActiveRef.current === 0 && ttsQueueRef.current.length === 0;
   const pumpTtsQueue = () => {
     while (ttsActiveRef.current < TTS_POOL_LIMIT && ttsQueueRef.current.length) {
       const job = ttsQueueRef.current.shift()!;
@@ -175,6 +219,7 @@ export default function ChatIsland({ lang }: { lang: string }) {
         .finally(() => {
           ttsActiveRef.current--;
           pumpTtsQueue();
+          if (ttsPoolIdle()) setTtsIdleTick((n) => n + 1);
         });
     }
   };
@@ -184,10 +229,10 @@ export default function ChatIsland({ lang }: { lang: string }) {
   };
 
   // ---------- Persistence helper ----------
-  const safePersist = (msgs: Message[], suffix: string) => {
+  const writeChatToStorage = (msgs: Message[], suffix: string) => {
     try {
-      localStorage.setItem("bude-chat-" + suffix, JSON.stringify(msgs));
       const key = "bude-chat-" + suffix;
+      localStorage.setItem(key, JSON.stringify(msgs));
       if (!localStorageKeys.includes(key)) {
         setLocalStorageKeys((prev) => [...new Set([...prev, key])]);
       }
@@ -199,14 +244,86 @@ export default function ChatIsland({ lang }: { lang: string }) {
       }
     }
   };
-  const persistThrottleRef = useRef<{ timer?: number; pending?: { msgs: Message[]; suffix: string } }>({});
+
+  /** True if any message still carries an inline base64 image payload. */
+  const hasInlineImages = (msgs: Message[]) =>
+    msgs.some((m) =>
+      Array.isArray(m.content) &&
+      (m.content as any[]).some((p) =>
+        p?.type === "image_url" && p?.id &&
+        typeof p?.image_url?.url === "string" &&
+        p.image_url.url.startsWith("data:")
+      )
+    );
+
+  const safePersist = (msgs: Message[], suffix: string) => {
+    if (!hasInlineImages(msgs)) {
+      writeChatToStorage(msgs, suffix);
+      return;
+    }
+    // Base64 images go to IndexedDB; localStorage only keeps idb:// placeholders.
+    stripImagesForStorage(msgs, suffix)
+      .then((stripped) => writeChatToStorage(stripped, suffix))
+      .catch((e) => {
+        console.warn("Failed to offload images to IndexedDB:", e);
+        writeChatToStorage(msgs, suffix);
+      });
+  };
+
+  /** Reads a chat from localStorage (images may still be idb:// placeholders). */
+  const loadChatMessages = (suffix: string): Message[] => {
+    let parsed: Message[] | null = null;
+    try {
+      const raw = localStorage.getItem("bude-chat-" + suffix);
+      parsed = raw ? JSON.parse(raw) : null;
+    } catch (e) {
+      console.warn("Failed to read chat from localStorage:", e);
+    }
+    return parsed || [
+      {
+        role: "assistant",
+        content: [chatIslandContent[lang]["welcomeMessage"]],
+      },
+    ];
+  };
+
+  // Guards against out-of-order rehydration when chats are switched quickly.
+  const hydrationTokenRef = useRef(0);
+
+  /** Shows messages immediately, then swaps in images loaded from IndexedDB. */
+  const applyChatMessages = (msgs: Message[], suffix: string) => {
+    const token = ++hydrationTokenRef.current;
+    setMessages(msgs);
+
+    const needsHydration = msgs.some((m) =>
+      Array.isArray(m.content) &&
+      (m.content as any[]).some((p) =>
+        p?.type === "image_url" &&
+        typeof p?.image_url?.url === "string" &&
+        p.image_url.url.startsWith(IDB_PLACEHOLDER)
+      )
+    );
+    if (!needsHydration) return;
+
+    rehydrateImages(msgs, suffix)
+      .then((restored) => {
+        if (hydrationTokenRef.current === token) setMessages(restored);
+      })
+      .catch((e) => console.warn("Failed to rehydrate images:", e));
+  };
+  const persistThrottleRef = useRef<{
+    timer?: number;
+    pending?: { msgs: Message[]; suffix: string };
+  }>({});
   const safePersistThrottled = (msgs: Message[], suffix: string) => {
     persistThrottleRef.current.pending = { msgs, suffix };
     if (persistThrottleRef.current.timer) return;
     persistThrottleRef.current.timer = window.setTimeout(() => {
       const p = persistThrottleRef.current.pending;
       if (p) safePersist(p.msgs, p.suffix);
-      if (persistThrottleRef.current.timer) clearTimeout(persistThrottleRef.current.timer);
+      if (persistThrottleRef.current.timer) {
+        clearTimeout(persistThrottleRef.current.timer);
+      }
       persistThrottleRef.current.timer = undefined;
       persistThrottleRef.current.pending = undefined;
     }, 250);
@@ -214,7 +331,9 @@ export default function ChatIsland({ lang }: { lang: string }) {
   const flushPersistThrottle = () => {
     const p = persistThrottleRef.current.pending;
     if (p) safePersist(p.msgs, p.suffix);
-    if (persistThrottleRef.current.timer) clearTimeout(persistThrottleRef.current.timer);
+    if (persistThrottleRef.current.timer) {
+      clearTimeout(persistThrottleRef.current.timer);
+    }
     persistThrottleRef.current.timer = undefined;
     persistThrottleRef.current.pending = undefined;
   };
@@ -268,7 +387,10 @@ export default function ChatIsland({ lang }: { lang: string }) {
     localStorage.setItem("bud-e-vlm-url", newSettings.vlmUrl);
     localStorage.setItem("bud-e-vlm-key", newSettings.vlmKey);
     localStorage.setItem("bud-e-vlm-model", newSettings.vlmModel);
-    localStorage.setItem("bud-e-vlm-correction-model", newSettings.vlmCorrectionModel);
+    localStorage.setItem(
+      "bud-e-vlm-correction-model",
+      newSettings.vlmCorrectionModel,
+    );
     setShowSettings(false);
   };
 
@@ -284,10 +406,8 @@ export default function ChatIsland({ lang }: { lang: string }) {
     lsKeys = lsKeys.length > 0 ? lsKeys : ["bude-chat-0"];
     lsKeys.sort((a, b) => Number(a.slice(10)) - Number(b.slice(10)));
     const currSuffix = lsKeys.length > 0 ? String(lsKeys[0].slice(10)) : "0";
-    let lsMsgs = JSON.parse(String(localStorage.getItem("bude-chat-" + currSuffix)));
-    lsMsgs = lsMsgs || [{ role: "assistant", content: [chatIslandContent[lang]["welcomeMessage"]] }];
     setLocalStorageKeys(lsKeys);
-    setMessages(lsMsgs);
+    applyChatMessages(loadChatMessages(currSuffix), currSuffix);
     setCurrentChatSuffix(currSuffix);
   }, []);
 
@@ -297,18 +417,33 @@ export default function ChatIsland({ lang }: { lang: string }) {
       if ("content" in messages[messages.length - 1]) {
         let lastMessageFromBuddy: string;
         const lastMessageContent = messages[messages.length - 1]["content"];
+        // Multimodal content (e.g. generated images) must stay an object array –
+        // joining it would turn the images into "[object Object]".
+        const isMultimodal = Array.isArray(lastMessageContent) &&
+          lastMessageContent.some((p: any) => p !== null && typeof p === "object");
+
         if (typeof lastMessageContent === "string") {
           lastMessageFromBuddy = lastMessageContent;
+        } else if (isMultimodal) {
+          lastMessageFromBuddy = (lastMessageContent as any[])
+            .filter((p: any) => p?.type === "text")
+            .map((p: any) => p.text ?? "")
+            .join("");
         } else {
           lastMessageFromBuddy = (lastMessageContent as string[]).join("");
         }
 
         if (lastMessageFromBuddy !== "" && messages.length > 1) {
-          messages[messages.length - 1]["content"] = lastMessageFromBuddy;
+          if (!isMultimodal) {
+            messages[messages.length - 1]["content"] = lastMessageFromBuddy;
+          }
           safePersist(messages, currentChatSuffix);
 
           if (!localStorageKeys.includes("bude-chat-" + currentChatSuffix)) {
-            setLocalStorageKeys([...localStorageKeys, "bude-chat-" + currentChatSuffix]);
+            setLocalStorageKeys([
+              ...localStorageKeys,
+              "bude-chat-" + currentChatSuffix,
+            ]);
           }
         }
         if (lastMessageFromBuddy !== "") {
@@ -334,22 +469,25 @@ export default function ChatIsland({ lang }: { lang: string }) {
     }
     if (!firstLoad) {
       safePersist(messages, currentChatSuffix);
-      setLocalStorageKeys(Object.keys(localStorage).filter((key) => key.startsWith("bude-chat-")));
+      setLocalStorageKeys(
+        Object.keys(localStorage).filter((key) =>
+          key.startsWith("bude-chat-")
+        ),
+      );
     }
     if (firstLoad) setFirstLoad(false);
   }, [messages, autoScroll]);
 
   // 4) Switch chat
   useEffect(() => {
-    const lsMsgs = JSON.parse(String(localStorage.getItem("bude-chat-" + currentChatSuffix))) || [
-      { role: "assistant", content: [chatIslandContent[lang]["welcomeMessage"]] },
-    ];
-    if (lsMsgs.length === 1) {
+    const lsMsgs = loadChatMessages(currentChatSuffix);
+    if (lsMsgs.length === 1 && Array.isArray(lsMsgs[0].content)) {
       if (lsMsgs[0].content[0] !== chatIslandContent[lang]["welcomeMessage"]) {
-        lsMsgs[0].content[0] = chatIslandContent[lang]["welcomeMessage"];
+        (lsMsgs[0].content as any[])[0] =
+          chatIslandContent[lang]["welcomeMessage"];
       }
     }
-    setMessages(lsMsgs);
+    applyChatMessages(lsMsgs, currentChatSuffix);
     stopAndResetAudio();
     setStopList([]);
     resetComposerHeight();
@@ -363,30 +501,46 @@ export default function ChatIsland({ lang }: { lang: string }) {
       if (nextUnplayedIndex === null) return;
 
       const isLatestGroup =
-        Math.max(...Object.keys(audioFileDict).map(Number)) <= Number(groupIndex);
+        Math.max(...Object.keys(audioFileDict).map(Number)) <=
+        Number(groupIndex);
 
       if (
         isLatestGroup &&
-        canPlayAudio(Number(groupIndex), nextUnplayedIndex, groupAudios, stopList)
+        canPlayAudio(
+          Number(groupIndex),
+          nextUnplayedIndex,
+          groupAudios,
+          stopList,
+          ttsPoolIdle(),
+        )
       ) {
-        playAudio(groupAudios[nextUnplayedIndex].audio, Number(groupIndex), nextUnplayedIndex);
+        playAudio(
+          groupAudios[nextUnplayedIndex].audio,
+          Number(groupIndex),
+          nextUnplayedIndex,
+        );
       }
 
       if (stopList.includes(Number(groupIndex))) {
         (Object.values(groupAudios) as AudioItem[]).forEach((item) => {
-          if (!(item as AudioItem).audio.paused) {
+          if (!item.audio.paused) {
             (item as AudioItem).audio.pause();
             (item as AudioItem).audio.currentTime = 0;
           }
         });
       }
     });
-  }, [audioFileDict, readAlways, stopList]);
+  }, [audioFileDict, readAlways, stopList, ttsIdleTick]);
 
   // 6) Flush throttled persist on unload/hidden
   useEffect(() => {
-    const flush = () => { flushPersistThrottle(); safePersist(messages, currentChatSuffix); };
-    const vis = () => { if (document.visibilityState === "hidden") flush(); };
+    const flush = () => {
+      flushPersistThrottle();
+      safePersist(messages, currentChatSuffix);
+    };
+    const vis = () => {
+      if (document.visibilityState === "hidden") flush();
+    };
     window.addEventListener("beforeunload", flush);
     document.addEventListener("visibilitychange", vis);
     return () => {
@@ -396,11 +550,23 @@ export default function ChatIsland({ lang }: { lang: string }) {
   }, [messages, currentChatSuffix]);
 
   // ---------- Audio helpers ----------
-  const findNextUnplayedAudio = (groupAudios: Record<number, AudioItem>): number | null => {
+  const findNextUnplayedAudio = (
+    groupAudios: Record<number, AudioItem>,
+  ): number | null => {
     const [nextUnplayed] = Object.entries(groupAudios)
       .sort(([a], [b]) => Number(a) - Number(b))
       .find(([_, item]) => !item.played) || [];
     return nextUnplayed !== undefined ? Number(nextUnplayed) : null;
+  };
+
+  /**
+   * A clip is "done" when it finished playing – or when it is a dead slot that
+   * will never play (failed TTS request, empty after filters, unplayable blob).
+   */
+  const isClipDone = (item: AudioItem): boolean => {
+    const el = item.audio as HTMLAudioElement & { __skipped?: boolean };
+    if (el.__skipped) return true;
+    return item.played && el.ended === true;
   };
 
   const canPlayAudio = (
@@ -408,38 +574,123 @@ export default function ChatIsland({ lang }: { lang: string }) {
     audioIndex: number,
     groupAudios: Record<number, AudioItem>,
     stopList_: number[],
+    // True when no TTS request is pending or in flight. Missing indices can
+    // then never show up anymore, so gaps may be skipped instead of blocking.
+    allowSkipGaps = false,
   ): boolean => {
     if (stopList_.includes(Number(groupIndex))) return false;
 
     // Never start a new clip if any clip in this group is currently playing.
     const anyPlaying = Object.values(groupAudios).some(
-      (it) => !it.audio.paused && !it.audio.ended
+      (it) => !it.audio.paused && !it.audio.ended,
     );
     if (anyPlaying) return false;
 
     // First clip: only start when nothing else is playing (handled above).
     if (audioIndex === 0) return true;
 
-    // For subsequent clips, require the immediate predecessor to have actually ENDED.
     const prev = groupAudios[audioIndex - 1];
-    return !!prev && prev.played && prev.audio.ended === true;
+    if (prev) {
+      // Normal case: the immediate predecessor must have actually ENDED.
+      // A dead clip (failed request, filtered-out text, unplayable audio)
+      // counts as done – waiting for it would stall the rest of the group.
+      return isClipDone(prev);
+    }
+
+    // The predecessor slot does not exist. While TTS work is still pending it
+    // may just be in flight – waiting keeps the clips in order. Once the pool
+    // is idle the gap is permanent (failed or filtered-out chunk), so we skip
+    // it as long as every clip that DOES exist before us is finished.
+    if (!allowSkipGaps) return false;
+    return Object.entries(groupAudios).every(([k, it]) =>
+      Number(k) >= audioIndex || isClipDone(it)
+    );
   };
 
+  /**
+   * Placeholder entry for a chunk that produced no audio (request failed, or
+   * nothing was left after the TTS text filters). It occupies the index so the
+   * sequential playback chain does not stall on the missing predecessor.
+   */
+  const makeSkippedAudioItem = (text: string): AudioItem => {
+    const stub = {
+      __text: text,
+      __session: playSessionRef.current,
+      __skipped: true,
+      paused: true,
+      ended: true,
+      currentTime: 0,
+      src: "",
+      play: () => Promise.resolve(),
+      pause: () => {},
+      addEventListener: () => {},
+      removeEventListener: () => {},
+      onended: null,
+    };
+    return {
+      audio: stub as unknown as AudioItem["audio"],
+      played: true,
+    };
+  };
 
-  const playAudio = async (audio: HTMLAudioElement, groupIndex: number, audioIndex: number) => {
+  const markChunkSkipped = (
+    groupIndex: number,
+    idx: number,
+    text: string,
+    reason: string,
+  ) => {
+    console.warn(`[TTS] chunk ${groupIndex}/${idx} skipped (${reason})`);
+    setAudioFileDict((prev) => {
+      const next = { ...prev };
+      const group = { ...(next[groupIndex] || {}) };
+      if (group[idx]) return prev; // real audio already arrived – keep it
+      group[idx] = makeSkippedAudioItem(text);
+      next[groupIndex] = group;
+      return next;
+    });
+  };
+
+  // play() rejections per clip. Without a cap the playback effect would retry
+  // the same unplayable clip forever and never reach the following ones.
+  const playFailuresRef = useRef<Record<string, number>>({});
+  const MAX_PLAY_ATTEMPTS = 3;
+
+  const markItemPlayed = (groupIndex: number, audioIndex: number) => {
+    setAudioFileDict((prev) => {
+      const next = { ...prev };
+      const group = { ...(next[groupIndex] || {}) };
+      const item = { ...(group[audioIndex] || {}) } as AudioItem;
+      item.played = true;
+      group[audioIndex] = item;
+      next[groupIndex] = group;
+      return next;
+    });
+  };
+
+  const playAudio = async (
+    audio: HTMLAudioElement,
+    groupIndex: number,
+    audioIndex: number,
+  ) => {
+    const key = `${groupIndex}:${audioIndex}`;
     try {
       await audio.play();
-      setAudioFileDict((prev) => {
-        const next = { ...prev };
-        const group = { ...(next[groupIndex] || {}) };
-        const item = { ...(group[audioIndex] || {}) } as AudioItem;
-        item.played = true;
-        group[audioIndex] = item;
-        next[groupIndex] = group;
-        return next;
-      });
+      delete playFailuresRef.current[key];
+      markItemPlayed(groupIndex, audioIndex);
     } catch (err) {
-      console.warn("Audio play() rejected:", err);
+      const attempts = (playFailuresRef.current[key] ?? 0) + 1;
+      playFailuresRef.current[key] = attempts;
+      console.warn(
+        `Audio play() rejected (${attempts}/${MAX_PLAY_ATTEMPTS}):`,
+        err,
+      );
+      if (attempts >= MAX_PLAY_ATTEMPTS) {
+        // Give up on this clip and let the chain continue with the next one.
+        try {
+          (audio as HTMLAudioElement & { __skipped?: boolean }).__skipped = true;
+        } catch { /* stub objects may be frozen */ }
+        markItemPlayed(groupIndex, audioIndex);
+      }
     }
   };
 
@@ -452,9 +703,9 @@ export default function ChatIsland({ lang }: { lang: string }) {
     const m = left.match(/([\p{L}\p{N}]+)\s*$/u);
     if (!m) return false;
     const token = m[1];
-    if (/^[A-Za-zÄÖÜäöüß]$/.test(token)) return false;     // A. / B.
-    if (/^\d+([.)])?$/.test(token)) return false;          // 1. / 2)
-    return /[\p{L}]{2,}/u.test(token);                     // needs ≥2 letters somewhere
+    if (/^[A-Za-zÄÖÜäöüß]$/.test(token)) return false; // A. / B.
+    if (/^\d+([.)])?$/.test(token)) return false; // 1. / 2)
+    return /[\p{L}]{2,}/u.test(token); // needs ≥2 letters somewhere
   };
 
   const findChunkEnd = (text: string, start: number, minWords: number) => {
@@ -466,7 +717,9 @@ export default function ChatIsland({ lang }: { lang: string }) {
       const ch = text[i];
       const wordsSoFar = countWords(text.slice(start, i + 1));
       if (wordsSoFar >= minWords) {
-        if (i + 2 < text.length && text.slice(i, i + 3) === "...") return i + 3;
+        if (i + 2 < text.length && text.slice(i, i + 3) === "...") {
+          return i + 3;
+        }
         if (/[!?]/.test(ch)) return i + 1;
         if (ch === "." && isValidDot(text, i)) return i + 1;
       }
@@ -526,13 +779,30 @@ export default function ChatIsland({ lang }: { lang: string }) {
     const first = (nextIdx !== null ? group[nextIdx]?.audio : group[0]?.audio);
     if (!first) return;
 
-    first.play().catch((err) => console.warn("Audio play() rejected on start:", err));
+    first.play().catch((err) =>
+      console.warn("Audio play() rejected on start:", err)
+    );
   };
 
   // REPLACE the whole function:
+  /**
+   * Nearest real (non-skipped) audio element before `idx`. Walks over
+   * placeholders and gaps so a failed chunk cannot break the manual chain.
+   */
+  const findPrevRealAudio = (
+    group: Record<number, AudioItem>,
+    idx: number,
+  ): HTMLAudioElement | undefined => {
+    for (let i = idx - 1; i >= 0; i--) {
+      const el = group[i]?.audio as (HTMLAudioElement & { __skipped?: boolean }) | undefined;
+      if (el && !el.__skipped) return el;
+    }
+    return undefined;
+  };
+
   const wireNeighborChaining = (groupIndex: number, idx: number) => {
     const group = audioFileDict[groupIndex] || {};
-    const prevEl = group[idx - 1]?.audio;
+    const prevEl = findPrevRealAudio(group, idx);
     const currEl = group[idx]?.audio;
     if (!currEl) return;
 
@@ -543,7 +813,9 @@ export default function ChatIsland({ lang }: { lang: string }) {
     currEl.addEventListener(
       "ended",
       () => {
-        try { if (src && src.startsWith("blob:")) URL.revokeObjectURL(src); } catch {}
+        try {
+          if (src && src.startsWith("blob:")) URL.revokeObjectURL(src);
+        } catch {}
       },
       { once: true },
     );
@@ -581,9 +853,39 @@ export default function ChatIsland({ lang }: { lang: string }) {
       .trim();
 
   type AutoTrigger =
-    | { kind: "wikipedia"; q: string; n?: number; collection?: string; autoSummarize?: boolean }
+    | {
+      kind: "wikipedia";
+      q: string;
+      n?: number;
+      collection?: string;
+      autoSummarize?: boolean;
+    }
     | { kind: "papers"; q: string; n?: number; autoSummarize?: boolean }
-    | { kind: "bildungsplan"; q: string; n?: number; autoSummarize?: boolean };
+    | { kind: "bildungsplan"; q: string; n?: number; autoSummarize?: boolean }
+    | {
+      kind: "imagegen";
+      prompt: string;
+      model?: string;
+      n?: number;
+      size?: string;
+      aspectRatio?: string;
+      inputImages?: string[];
+    }
+    | {
+      kind: "imageedit";
+      prompt: string;
+      model?: string;
+      n?: number; // Number of output images
+      inputImages?: string[]; // Explicit base64 image data
+      useLastImage?: boolean; // Use the last image in the conversation
+      imageId?: string; // Reference a specific image by unique ID
+      imageIds?: string[]; // Reference multiple images by ID
+    };
+
+  const isImageTrigger = (
+    t: AutoTrigger,
+  ): t is Extract<AutoTrigger, { kind: "imagegen" | "imageedit" }> =>
+    t.kind === "imagegen" || t.kind === "imageedit";
 
   // Legacy hashtag parsing – kept for USER requests only (no !! support)
   const findHashtagTriggersInUserText = (raw: string): AutoTrigger[] => {
@@ -594,6 +896,9 @@ export default function ChatIsland({ lang }: { lang: string }) {
     const rxPapers = /#\s*papers\s*:\s*([^:\n]+?)(?:\s*:\s*(\d+))?(?=$|\s)/i;
     const rxBP =
       /#\s*bildungsplan\s*:\s*([^:\n]+?)(?:\s*:\s*(\d+))?(?=$|\s)/i;
+    // #imagegen:model:prompt or #imagegen:prompt (model is optional and
+    // recognised because model names never contain spaces)
+    const rxImageGen = /#\s*imagegen\s*:\s*(?:([a-zA-Z0-9_.-]+)\s*:\s*)?(.+?)(?=$|\n|#)/i;
 
     const triggers: AutoTrigger[] = [];
 
@@ -601,12 +906,22 @@ export default function ChatIsland({ lang }: { lang: string }) {
     if (mW) {
       const langSuffix = (mW[1] || "").toLowerCase();
       let collection =
-        lang === "en" ? "English-ConcatX-Abstract" : "German-ConcatX-Abstract";
+        lang === "en"
+          ? "English-ConcatX-Abstract"
+          : "German-ConcatX-Abstract";
       if (langSuffix === "de") collection = "German-ConcatX-Abstract";
       if (langSuffix === "en") collection = "English-ConcatX-Abstract";
       const q = (mW[2] || "").trim();
       const n = mW[3] ? parseInt(mW[3], 10) : undefined;
-      if (q) triggers.push({ kind: "wikipedia", q, n, collection, autoSummarize: false });
+      if (q) {
+        triggers.push({
+          kind: "wikipedia",
+          q,
+          n,
+          collection,
+          autoSummarize: false,
+        });
+      }
     }
 
     const mP = t.match(rxPapers);
@@ -620,7 +935,27 @@ export default function ChatIsland({ lang }: { lang: string }) {
     if (mB) {
       const q = (mB[1] || "").trim();
       const n = mB[2] ? parseInt(mB[2], 10) : undefined;
-      if (q) triggers.push({ kind: "bildungsplan", q, n, autoSummarize: false });
+      if (q) {
+        triggers.push({ kind: "bildungsplan", q, n, autoSummarize: false });
+      }
+    }
+
+    // Image generation: #imagegen:prompt  or  #imagegen:model:prompt
+    const mImg = t.match(rxImageGen);
+    if (mImg) {
+      const modelOrPrompt = (mImg[1] || "").trim();
+      const promptAfterModel = (mImg[2] || "").trim();
+
+      let model: string | undefined;
+      let prompt: string;
+      if (modelOrPrompt && promptAfterModel) {
+        model = modelOrPrompt;
+        prompt = promptAfterModel;
+      } else {
+        prompt = promptAfterModel || modelOrPrompt;
+        model = undefined;
+      }
+      if (prompt) triggers.push({ kind: "imagegen", prompt, model });
     }
 
     // DEBUG
@@ -634,20 +969,37 @@ export default function ChatIsland({ lang }: { lang: string }) {
   // Findet nur TOP-LEVEL JSON-Objekte, deren Klammern *balanciert* sind.
   const extractCompletedJsonSearchBlocks = (s: string): string[] => {
     const blocks: string[] = [];
-    let depth = 0, start = -1;
-    let inString = false, quote: string | null = null, escape = false;
+    let depth = 0,
+      start = -1;
+    let inString = false,
+      quote: string | null = null,
+      escape = false;
 
     for (let i = 0; i < s.length; i++) {
       const ch = s[i];
 
       if (inString) {
-        if (escape) { escape = false; continue; }
-        if (ch === "\\") { escape = true; continue; }
-        if (ch === quote) { inString = false; quote = null; continue; }
+        if (escape) {
+          escape = false;
+          continue;
+        }
+        if (ch === "\\") {
+          escape = true;
+          continue;
+        }
+        if (ch === quote) {
+          inString = false;
+          quote = null;
+          continue;
+        }
         continue;
       }
 
-      if (ch === '"' || ch === "'") { inString = true; quote = ch; continue; }
+      if (ch === '"' || ch === "'") {
+        inString = true;
+        quote = ch;
+        continue;
+      }
       if (ch === "{") {
         if (depth === 0) start = i;
         depth++;
@@ -669,13 +1021,39 @@ export default function ChatIsland({ lang }: { lang: string }) {
 
   const isValidSearchJson = (obj: any): boolean => {
     if (!obj || typeof obj !== "object" || Array.isArray(obj)) return false;
-    const allowed = new Set(["wikipedia", "wikipedia_de", "wikipedia_en", "papers", "bildungsplan"]);
+    const allowed = new Set([
+      "wikipedia",
+      "wikipedia_de",
+      "wikipedia_en",
+      "papers",
+      "bildungsplan",
+      "imagegen",
+      "imageedit",
+    ]);
     const keys = Object.keys(obj);
     if (keys.length !== 1) return false;
-    const key = keys[0];
+    const key = keys[0].toLowerCase();
     if (!allowed.has(key)) return false;
 
-    const v = obj[key];
+    const v = obj[keys[0]];
+
+    // imagegen / imageedit use "prompt" instead of "q"
+    if (key === "imagegen" || key === "imageedit") {
+      if (typeof v === "string") return v.trim().length > 0;
+      if (v && typeof v === "object") {
+        const prompt = (v.prompt ?? v.p ?? "").toString().trim();
+        const hasInputImages = Array.isArray(v.input_images) &&
+          v.input_images.length > 0;
+        const useLastImage = v.use_last_image === true ||
+          v.useLastImage === true;
+        const hasIdRef = !!(v.image_id ?? v.imageId) ||
+          (Array.isArray(v.image_ids ?? v.imageIds) &&
+            (v.image_ids ?? v.imageIds).length > 0);
+        return prompt.length > 0 || hasInputImages || useLastImage || hasIdRef;
+      }
+      return false;
+    }
+
     if (typeof v === "string") return v.trim().length > 0;
 
     if (v && typeof v === "object") {
@@ -700,13 +1078,21 @@ export default function ChatIsland({ lang }: { lang: string }) {
 
     for (const b of blocks) {
       let obj: any = null;
-      try { obj = JSON.parse(b); } catch { obj = null; }
+      try {
+        obj = JSON.parse(b);
+      } catch {
+        obj = null;
+      }
       if (!obj) {
         const normalized = b
           .replace(/([{,\s])'([^']+?)'\s*:/g, '$1"$2":')
           .replace(/:\s*'([^']*?)'/g, ':"$1"')
           .replace(/,(\s*[}\]])/g, "$1");
-        try { obj = JSON.parse(normalized); } catch { obj = null; }
+        try {
+          obj = JSON.parse(normalized);
+        } catch {
+          obj = null;
+        }
       }
       if (!obj || !isValidSearchJson(obj)) continue;
       all.push(...jsonObjToTriggers(obj));
@@ -720,11 +1106,20 @@ export default function ChatIsland({ lang }: { lang: string }) {
 
   // Lenient JSON parse (unused externally but kept)
   const tryParseJsonLenient = (raw: string): any | null => {
-    try { return JSON.parse(raw); } catch {}
+    try {
+      return JSON.parse(raw);
+    } catch {}
     let s = raw.trim();
-    s = s.replace(/([{,\s])'([^']+?)'\s*:/g, '$1"$2":').replace(/:\s*'([^']*?)'/g, ':"$1"');
+    s = s.replace(/([{,\s])'([^']+?)'\s*:/g, '$1"$2":').replace(
+      /:\s*'([^']*?)'/g,
+      ':"$1"',
+    );
     s = s.replace(/,(\s*[}\]])/g, "$1");
-    try { return JSON.parse(s); } catch { return null; }
+    try {
+      return JSON.parse(s);
+    } catch {
+      return null;
+    }
   };
 
   const jsonObjToTriggers = (obj: any): AutoTrigger[] => {
@@ -751,17 +1146,147 @@ export default function ChatIsland({ lang }: { lang: string }) {
     for (const key of keys) {
       const k = key.toLowerCase();
       const val = obj[key];
-      if (["wikipedia", "wikipedia_de", "wikipedia_en", "papers", "bildungsplan"].includes(k)) {
+
+      // ----- Image generation -----
+      if (k === "imagegen") {
+        let prompt = "";
+        let model: string | undefined;
+        let n: number | undefined;
+        let size: string | undefined;
+        let aspectRatio: string | undefined;
+        let inputImages: string[] | undefined;
+
+        if (typeof val === "string") {
+          prompt = val.trim();
+        } else if (val && typeof val === "object") {
+          prompt = (val.prompt ?? val.p ?? "").toString().trim();
+          model = val.model ? String(val.model).trim() : undefined;
+          const nVal = val.n ?? val.count;
+          n = nVal ? Number(nVal) : undefined;
+          if (n !== undefined && (!Number.isFinite(n) || n <= 0)) n = undefined;
+          size = val.size ? String(val.size).trim() : undefined;
+          const ar = val.aspectRatio ?? val.aspect_ratio ?? val.ratio;
+          aspectRatio = ar ? String(ar).trim() : undefined;
+          const imgs = val.input_images ?? val.inputImages ??
+            val.reference_images;
+          if (Array.isArray(imgs)) {
+            inputImages = imgs.filter((img: any) =>
+              typeof img === "string" && img.length > 0
+            );
+          }
+        }
+
+        if (prompt) {
+          triggers.push({
+            kind: "imagegen",
+            prompt,
+            model,
+            n,
+            size,
+            aspectRatio,
+            inputImages,
+          });
+        }
+        continue;
+      }
+
+      // ----- Image editing (reference images → character consistency) -----
+      if (k === "imageedit") {
+        let prompt = "";
+        let model: string | undefined;
+        let n: number | undefined;
+        let inputImages: string[] | undefined;
+        let useLastImage = false;
+        let imageId: string | undefined;
+        let imageIds: string[] | undefined;
+
+        if (typeof val === "string") {
+          prompt = val.trim();
+          useLastImage = true; // plain string → edit the last image
+        } else if (val && typeof val === "object") {
+          prompt = (val.prompt ?? val.p ?? "").toString().trim();
+          model = val.model ? String(val.model).trim() : undefined;
+
+          const nVal = val.n ?? val.count;
+          n = nVal ? Number(nVal) : undefined;
+          if (n !== undefined && (!Number.isFinite(n) || n <= 0)) n = undefined;
+
+          const imgs = val.input_images ?? val.inputImages ??
+            val.reference_images;
+          if (Array.isArray(imgs)) {
+            inputImages = imgs.filter((img: any) =>
+              typeof img === "string" && img.length > 0
+            );
+          }
+
+          if (val.image_id || val.imageId) {
+            imageId = String(val.image_id ?? val.imageId).trim();
+          }
+          const idList = val.image_ids ?? val.imageIds;
+          if (Array.isArray(idList)) {
+            imageIds = idList.filter((id: any) =>
+              typeof id === "string" && id.length > 0
+            );
+          }
+
+          const explicitUseLast = val.use_last_image ?? val.useLastImage;
+          if (explicitUseLast === true) {
+            useLastImage = true;
+          } else if (explicitUseLast === false) {
+            useLastImage = false;
+          } else {
+            // Auto-detect: no explicit image source → fall back to last image
+            const hasExplicitImages = (inputImages && inputImages.length > 0) ||
+              imageId || (imageIds && imageIds.length > 0);
+            if (!hasExplicitImages && prompt) useLastImage = true;
+          }
+        }
+
+        if (
+          prompt || (inputImages && inputImages.length > 0) || useLastImage ||
+          imageId || (imageIds && imageIds.length > 0)
+        ) {
+          triggers.push({
+            kind: "imageedit",
+            prompt,
+            model,
+            n,
+            inputImages,
+            useLastImage,
+            imageId,
+            imageIds,
+          });
+        }
+        continue;
+      }
+
+      if (
+        [
+          "wikipedia",
+          "wikipedia_de",
+          "wikipedia_en",
+          "papers",
+          "bildungsplan",
+        ].includes(k)
+      ) {
         const q = normQ(val);
         const n = normN(val);
         if (!q) continue;
 
         if (k === "wikipedia" || k === "wikipedia_de" || k === "wikipedia_en") {
           let collection =
-            lang === "en" ? "English-ConcatX-Abstract" : "German-ConcatX-Abstract";
+            lang === "en"
+              ? "English-ConcatX-Abstract"
+              : "German-ConcatX-Abstract";
           if (k.endsWith("_de")) collection = "German-ConcatX-Abstract";
           if (k.endsWith("_en")) collection = "English-ConcatX-Abstract";
-          triggers.push({ kind: "wikipedia", q, n, collection, autoSummarize: true });
+          triggers.push({
+            kind: "wikipedia",
+            q,
+            n,
+            collection,
+            autoSummarize: true,
+          });
         } else if (k === "papers") {
           triggers.push({ kind: "papers", q, n, autoSummarize: true });
         } else if (k === "bildungsplan") {
@@ -774,13 +1299,12 @@ export default function ChatIsland({ lang }: { lang: string }) {
 
   // Build a summarization prompt (with i18n + safe encoding + local overrides)
   const buildAutoSummaryPrompt = (trigs: AutoTrigger[]) => {
-    const topics = trigs.map(t => `${t.kind}: "${t.q}"`).join(", ");
+    const topics = trigs.map((t) =>
+      `${t.kind}: "${isImageTrigger(t) ? t.prompt : t.q}"`
+    ).join(", ");
 
     // 1) Optional per-language localStorage override (no UI needed):
     //    Put "{topics}" where you want the joined topics.
-    //    Example (in DevTools console):
-    //    localStorage.setItem('bud-e-summary-template-de', 'Bitte fasse ({topics}) ...');
-    //    localStorage.setItem('bud-e-summary-template-en', 'Please summarize ({topics}) ...');
     const overrideKey =
       lang === "de" ? "bud-e-summary-template-de" : "bud-e-summary-template-en";
     const override = (typeof localStorage !== "undefined")
@@ -793,7 +1317,7 @@ export default function ChatIsland({ lang }: { lang: string }) {
     // 2) Defaults (ASCII-safe via \u escapes to avoid mojibake on non-UTF-8 builds)
     if (lang === "de") {
       return (
-  `Bitte fasse die oben angezeigten Suchergebnisse (${topics}) pr\u00E4gnant zusammen:
+        `Bitte fasse die oben angezeigten Suchergebnisse (${topics}) pr\u00E4gnant zusammen:
   - Nenne die Kernaussagen in klaren Stichpunkten.
   - Hebe ggf. Relevanz f\u00FCr Unterricht/Kontext hervor.
   - F\u00FCge am Ende 3\u20135 kurze Bulletpoints mit Quellen/URLs und falls vorhanden auch Setienangaben aus den gezeigten Ergebnissen an.
@@ -803,7 +1327,7 @@ export default function ChatIsland({ lang }: { lang: string }) {
 
     // English default
     return (
-  `Please summarize the search results shown above (${topics}) concisely:
+      `Please summarize the search results shown above (${topics}) concisely:
   - Provide key takeaways in clear bullet points.
   - Highlight relevance to the user's context if applicable.
   - Add 3\u20135 short bullets with sources/URLs and if available also page numbers from the shown results. Be absolutely factual-
@@ -815,8 +1339,13 @@ export default function ChatIsland({ lang }: { lang: string }) {
     const group = audioFileDict[gi];
     if (!group) return;
     Object.values(group).forEach(({ audio }) => {
-      try { audio.pause(); audio.currentTime = 0; } catch {}
-      try { if (audio.src?.startsWith("blob:")) URL.revokeObjectURL(audio.src); } catch {}
+      try {
+        audio.pause();
+        audio.currentTime = 0;
+      } catch {}
+      try {
+        if (audio.src?.startsWith("blob:")) URL.revokeObjectURL(audio.src);
+      } catch {}
       audio.onended = null;
       audio.src = "";
     });
@@ -831,7 +1360,6 @@ export default function ChatIsland({ lang }: { lang: string }) {
   const handleRefreshAction = (groupIndex: number) => {
     if (!(groupIndex >= 0 && groupIndex < messages.length)) return;
 
-    
     // Cancel any running stream
     abortRef.current?.abort();
     abortRef.current = null;
@@ -847,7 +1375,6 @@ export default function ChatIsland({ lang }: { lang: string }) {
     }
 
     const prev = messages.slice(0, sliceStart) as Message[];
-
 
     // NEW: isolate this run and nuke stale audio ONLY for the upcoming assistant group
     const upcomingAssistantGroup = prev.length;
@@ -936,9 +1463,9 @@ export default function ChatIsland({ lang }: { lang: string }) {
     const lastMessage = messages[groupIndex];
     const currentText = Array.isArray(lastMessage?.content)
       ? lastMessage.content
-          .filter((c: any) => c?.type === "text")
-          .map((c: any) => c?.text ?? "")
-          .join("")
+        .filter((c: any) => c?.type === "text")
+        .map((c: any) => c?.text ?? "")
+        .join("")
       : (lastMessage?.content ?? "");
 
     const text = String(currentText || "").trim();
@@ -956,8 +1483,9 @@ export default function ChatIsland({ lang }: { lang: string }) {
       return;
     }
 
-    const indexThatIsPlaying = Object.entries(audioFileDict[groupIndex])
-      .findIndex(([_, item]) => !item.audio.paused);
+    const indexThatIsPlaying = Object.entries(audioFileDict[groupIndex]).findIndex(
+      ([_, item]) => !item.audio.paused,
+    );
 
     if (indexThatIsPlaying !== -1) {
       (Object.values(audioFileDict) as Record<number, AudioItem>[]).forEach(
@@ -1010,15 +1538,79 @@ export default function ChatIsland({ lang }: { lang: string }) {
     setImages(images_);
   };
 
-  // ======= TTS CLEANING =======
+  // ======= TTS CLEANING & CURLY-BRACE STRIPPER =======
+
+  /**
+   * Remove everything inside *balanced* { ... } blocks, including nested ones.
+   * Example:
+   *   "Hello { \"a\": {\"b\": 1} } world" -> "Hello  world"
+   */
+  const stripCurlyBraceBlocks = (s: string): string => {
+    let out = "";
+    let depth = 0;
+    let inString = false;
+    let quote: string | null = null;
+    let escape = false;
+
+    for (let i = 0; i < s.length; i++) {
+      const ch = s[i];
+
+      if (inString) {
+        if (escape) {
+          escape = false;
+          continue;
+        }
+        if (ch === "\\") {
+          escape = true;
+          continue;
+        }
+        if (ch === quote) {
+          inString = false;
+          quote = null;
+          continue;
+        }
+        if (depth === 0) out += ch; // string outside { } should still be kept
+        continue;
+      }
+
+      if (ch === '"' || ch === "'") {
+        if (depth === 0) out += ch;
+        inString = true;
+        quote = ch;
+        continue;
+      }
+
+      if (ch === "{") {
+        depth++;
+        // do not include "{" nor content while depth > 0
+        continue;
+      }
+      if (ch === "}") {
+        if (depth > 0) {
+          depth--;
+          continue;
+        }
+        // stray } outside a block
+        out += ch;
+        continue;
+      }
+
+      if (depth === 0) out += ch;
+      // else inside { ... } -> skip
+    }
+
+    return out;
+  };
+
   const cleanForTTS = (s: string) =>
-    s
+    stripJsonLikeBlocks(String(s))
       .replace(/\*/g, "")
       .replace(
         /[\u{1F1E6}-\u{1F1FF}\u{1F300}-\u{1F5FF}\u{1F600}-\u{1F64F}\u{1F680}-\u{1F6FF}\u{1F700}-\u{1F77F}\u{1F780}-\u{1F7FF}\u{1F800}-\u{1F8FF}\u{1F900}-\u{1F9FF}\u{1FA00}-\u{1FAFF}\u2600-\u26FF\u2700-\u27BF\uFE0F\u200D]/gu,
-        ""
+        "",
       )
-      .replace(/\s{2,}/g, " ");
+      .replace(/\s{2,}/g, " ")
+      .trim();
 
   // ======= THINK TAG STREAM FILTER =======
   type ThinkState = { inThink: boolean; carry: string };
@@ -1089,6 +1681,43 @@ export default function ChatIsland({ lang }: { lang: string }) {
     return { consume, flush };
   };
 
+  // ======= STREAMING JSON SUPPRESSOR FOR TTS =======
+  type JsonTtsFilterState = { depth: number };
+  const makeJsonTtsFilter = () => {
+    const state: JsonTtsFilterState = { depth: 0 };
+
+    /**
+     * Streaming filter:
+     * - as soon as we see '{', we start "muting" until the matching '}' (depth back to 0)
+     * - everything inside the braces is *never* emitted to TTS
+     * - braces themselves are also not emitted
+     * - depth is kept across chunks
+     */
+    const consume = (chunk: string): string => {
+      let out = "";
+      for (let i = 0; i < chunk.length; i++) {
+        const ch = chunk[i];
+        if (ch === "{") {
+          state.depth++;
+          continue;
+        }
+        if (ch === "}") {
+          if (state.depth > 0) {
+            state.depth--;
+            continue;
+          }
+          // stray closing brace outside a block → keep
+          out += ch;
+          continue;
+        }
+        if (state.depth === 0) out += ch;
+      }
+      return out;
+    };
+
+    return { consume };
+  };
+
   // ---- API helpers ----
   const fetchBildungsplan = async (query_: string, top_n: number) => {
     try {
@@ -1111,7 +1740,11 @@ export default function ChatIsland({ lang }: { lang: string }) {
       });
 
       if (!response.ok) {
-        console.error("bildungsplan API HTTP", response.status, await response.text().catch(() => ""));
+        console.error(
+          "bildungsplan API HTTP",
+          response.status,
+          await response.text().catch(() => ""),
+        );
         return { results: [] as { text: string; score: number }[] };
       }
 
@@ -1124,7 +1757,9 @@ export default function ChatIsland({ lang }: { lang: string }) {
       return data ?? { results: [] };
     } catch (error) {
       console.error("Error in bildungsplan API:", error);
-      await serverLog("api.fetch.bildungsplan.error", { error: String(error) });
+      await serverLog("api.fetch.bildungsplan.error", {
+        error: String(error),
+      });
       return { results: [] };
     }
   };
@@ -1151,13 +1786,19 @@ export default function ChatIsland({ lang }: { lang: string }) {
       });
 
       if (!response.ok) {
-        console.error("wikipedia API HTTP", response.status, await response.text().catch(() => ""));
+        console.error(
+          "wikipedia API HTTP",
+          response.status,
+          await response.text().catch(() => ""),
+        );
         return [] as WikipediaResult[];
       }
 
       const data = (await response.json()) as WikipediaResult[] | null;
 
-      await serverLog("api.fetch.wikipedia.parsed", { count: data?.length ?? 0 });
+      await serverLog("api.fetch.wikipedia.parsed", {
+        count: data?.length ?? 0,
+      });
 
       return data ?? [];
     } catch (error) {
@@ -1188,8 +1829,14 @@ export default function ChatIsland({ lang }: { lang: string }) {
       });
 
       if (!response.ok) {
-        console.error("papers API HTTP", response.status, await response.text().catch(() => ""));
-        return { payload: { items: [] as PapersItem[] } } as PapersResponse;
+        console.error(
+          "papers API HTTP",
+          response.status,
+          await response.text().catch(() => ""),
+        );
+        return {
+          payload: { items: [] as PapersItem[] },
+        } as PapersResponse;
       }
 
       const data = (await response.json()) as PapersResponse | null;
@@ -1202,8 +1849,314 @@ export default function ChatIsland({ lang }: { lang: string }) {
     } catch (error) {
       console.error("Error in papers API:", error);
       await serverLog("api.fetch.papers.error", { error: String(error) });
-      return { payload: { items: [] } } as PapersResponse;
+      return {
+        payload: { items: [] },
+      } as PapersResponse;
     }
+  };
+
+  // ---------- Image generation / editing ----------
+
+  interface ImageGenResult {
+    images: string[];
+    model?: string;
+    error?: string;
+  }
+
+  /** Calls /api/imagegen. `inputImages` turns the call into an edit request. */
+  const fetchImageGen = async (
+    prompt: string,
+    options?: {
+      model?: string;
+      n?: number;
+      size?: string;
+      aspectRatio?: string;
+      inputImages?: string[];
+    },
+  ): Promise<ImageGenResult> => {
+    // No model unless one was explicitly requested – the server/API then falls
+    // back to whatever model it has configured as its default.
+    const model = (options?.model ?? "").trim();
+    try {
+      await serverLog("api.fetch.imagegen.req", {
+        prompt,
+        model: model || "(api default)",
+        n: options?.n,
+        size: options?.size,
+        aspectRatio: options?.aspectRatio,
+        inputImageCount: options?.inputImages?.length ?? 0,
+      });
+
+      const requestBody: Record<string, any> = {
+        prompt,
+        n: options?.n || 1,
+        size: options?.size || "1024x1024",
+        aspectRatio: options?.aspectRatio || "1:1",
+        universalApiKey: settings.universalApiKey,
+      };
+      if (model) requestBody.model = model;
+      if (options?.inputImages && options.inputImages.length > 0) {
+        requestBody.input_images = options.inputImages;
+      }
+
+      const response = await fetch("/api/imagegen", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(requestBody),
+      });
+
+      await serverLog("api.fetch.imagegen.rsp", {
+        ok: response.ok,
+        status: response.status,
+      });
+
+      if (!response.ok) {
+        const errorText = await response.text().catch(() => "Unknown error");
+        console.error("imagegen API HTTP", response.status, errorText);
+        return { images: [], error: `HTTP ${response.status}: ${errorText}` };
+      }
+
+      const data = (await response.json()) as ImageGenResult | null;
+      await serverLog("api.fetch.imagegen.parsed", {
+        count: data?.images?.length ?? 0,
+        model: data?.model,
+      });
+      return data ?? { images: [], error: "Empty response" };
+    } catch (error) {
+      console.error("Error in imagegen API:", error);
+      await serverLog("api.fetch.imagegen.error", { error: String(error) });
+      return { images: [], error: String(error) };
+    }
+  };
+
+  /** Highest numeric suffix used by image IDs of a given prefix. */
+  const findHighestImageIdForPrefix = (
+    msgs: Message[],
+    prefix: "gen" | "upl" | "img",
+  ): number => {
+    let maxId = 0;
+    const pattern = new RegExp(`^${prefix}_(\\d+)$`);
+    for (const msg of msgs) {
+      if (!Array.isArray(msg.content)) continue;
+      for (const part of msg.content as any[]) {
+        if (part?.type === "image_url" && part?.id) {
+          const match = String(part.id).match(pattern);
+          if (match) {
+            const num = parseInt(match[1], 10);
+            if (num > maxId) maxId = num;
+          }
+        }
+      }
+    }
+    return maxId;
+  };
+
+  const nextGeneratedImageBaseId = (msgs: Message[]): number =>
+    Math.max(
+      findHighestImageIdForPrefix(msgs, "gen"),
+      findHighestImageIdForPrefix(msgs, "upl"),
+      findHighestImageIdForPrefix(msgs, "img"),
+    );
+
+  /** Looks up an image data URL by its ID (gen_/upl_/img_) in the history. */
+  const findImageByIdInMessages = (
+    msgs: Message[],
+    targetId: string,
+  ): string | null => {
+    for (const msg of msgs) {
+      if (!Array.isArray(msg.content)) continue;
+      for (const part of msg.content as any[]) {
+        if (
+          part?.type === "image_url" && part?.id === targetId &&
+          part?.image_url?.url
+        ) {
+          return part.image_url.url;
+        }
+      }
+    }
+    return null;
+  };
+
+  /** Returns the last `count` images of the conversation, oldest first. */
+  const findLastImagesInMessages = (
+    msgs: Message[],
+    count: number = 1,
+  ): string[] => {
+    const found: string[] = [];
+    for (let i = msgs.length - 1; i >= 0 && found.length < count; i--) {
+      const msg = msgs[i];
+      if (!Array.isArray(msg.content)) continue;
+      const parts = msg.content as any[];
+      for (let j = parts.length - 1; j >= 0 && found.length < count; j--) {
+        const part = parts[j];
+        if (part?.type === "image_url" && part?.image_url?.url) {
+          found.unshift(part.image_url.url);
+        }
+      }
+    }
+    return found;
+  };
+
+  const formatImageGenResults = (
+    result: ImageGenResult,
+    prompt: string,
+  ): { text: string; images: string[] } => {
+    const c = chatIslandContent[lang];
+    if (result.error) {
+      return {
+        text: `**${c.imageGenError ?? "Image generation error"}**: ${result.error}`,
+        images: [],
+      };
+    }
+    if (!result.images || result.images.length === 0) {
+      return {
+        text: `**${c.imageGenNoImages ?? "No images were generated"}**`,
+        images: [],
+      };
+    }
+    // The model line is only shown when the API reported which model it used.
+    const modelLine = result.model
+      ? `\n**${c.imageGenModel ?? "Model"}**: ${result.model}`
+      : "";
+    const text = `**${c.imageGenGenerated ?? "Generated image"}** (${
+      result.images.length
+    })\n**${c.imageGenPrompt ?? "Prompt"}**: ${prompt}${modelLine}`;
+    return { text, images: result.images };
+  };
+
+  /**
+   * Executes an imagegen/imageedit trigger and appends the resulting message.
+   * Returns the new message array plus whether images were produced.
+   */
+  const runImageTrigger = async (
+    trig: Extract<AutoTrigger, { kind: "imagegen" | "imageedit" }>,
+    accumulated: Message[],
+  ): Promise<{ accumulated: Message[]; success: boolean }> => {
+    let inputImages: string[] = [...(trig.inputImages ?? [])];
+
+    if (trig.kind === "imageedit") {
+      await serverLog("imageedit.call", {
+        prompt: trig.prompt,
+        model: trig.model,
+        n: trig.n,
+        hasInputImages: inputImages.length > 0,
+        useLastImage: trig.useLastImage,
+        imageId: trig.imageId,
+        imageIds: trig.imageIds,
+      });
+
+      // Priority 1: single explicit ID
+      if (trig.imageId && inputImages.length === 0) {
+        const found = findImageByIdInMessages(accumulated, trig.imageId);
+        if (found) {
+          inputImages = [found];
+          await serverLog("imageedit.foundById", { imageId: trig.imageId });
+        }
+      }
+
+      // Priority 2: multiple explicit IDs
+      if (trig.imageIds?.length && inputImages.length === 0) {
+        for (const id of trig.imageIds) {
+          const found = findImageByIdInMessages(accumulated, id);
+          if (found) inputImages.push(found);
+        }
+        await serverLog("imageedit.foundByIds", {
+          requestedIds: trig.imageIds,
+          foundCount: inputImages.length,
+        });
+      }
+
+      // Priority 3: last image in the conversation
+      if (trig.useLastImage && inputImages.length === 0) {
+        inputImages = findLastImagesInMessages(accumulated, 1);
+        await serverLog("imageedit.usingLastImage", {
+          found: inputImages.length > 0,
+        });
+      }
+
+      if (inputImages.length === 0) {
+        const noImageMsg = lang === "de"
+          ? `Kein Bild zum Bearbeiten gefunden.${
+            trig.imageId ? ` Bild-ID "${trig.imageId}" existiert nicht.` : ""
+          } Bitte lade ein Bild hoch oder generiere zuerst eines.`
+          : `No image found to edit.${
+            trig.imageId
+              ? ` Image ID "${trig.imageId}" does not exist.`
+              : ""
+          } Please upload an image or generate one first.`;
+        const next = [
+          ...accumulated,
+          { role: "assistant", content: noImageMsg },
+        ];
+        setMessages(next);
+        safePersist(next, currentChatSuffix);
+        return { accumulated: next, success: false };
+      }
+    } else {
+      await serverLog("imagegen.call", {
+        prompt: trig.prompt,
+        model: trig.model,
+        n: trig.n,
+        size: trig.size,
+        aspectRatio: trig.aspectRatio,
+        hasInputImages: inputImages.length > 0,
+      });
+    }
+
+    const res = await fetchImageGen(
+      trig.prompt || (trig.kind === "imageedit" ? "Edit this image" : ""),
+      {
+        model: trig.model,
+        n: trig.n,
+        size: trig.kind === "imagegen" ? trig.size : undefined,
+        aspectRatio: trig.kind === "imagegen" ? trig.aspectRatio : undefined,
+        inputImages: inputImages.length > 0 ? inputImages : undefined,
+      },
+    );
+
+    const formatted = formatImageGenResults(
+      res,
+      trig.prompt || (trig.kind === "imageedit" ? "Image edit" : ""),
+    );
+
+    await serverLog(`${trig.kind}.result`, {
+      imageCount: res.images?.length ?? 0,
+      hasError: !!res.error,
+    });
+
+    const fallbackMsg = trig.kind === "imageedit"
+      ? (lang === "de"
+        ? "Entschuldigung, die Bildbearbeitung ist fehlgeschlagen."
+        : "Sorry, the image editing failed.")
+      : (lang === "de"
+        ? "Entschuldigung, die Bildgenerierung ist fehlgeschlagen."
+        : "Sorry, the image generation failed.");
+
+    let messageContent: string | any[];
+    if (formatted.images.length > 0) {
+      const contentParts: any[] = [{ type: "text", text: formatted.text }];
+      const baseId = nextGeneratedImageBaseId(accumulated);
+      for (let i = 0; i < formatted.images.length; i++) {
+        contentParts.push({
+          type: "image_url",
+          image_url: { url: formatted.images[i] },
+          id: `gen_${String(baseId + 1 + i).padStart(5, "0")}`,
+          source: "generated",
+          timestamp: Date.now(),
+        });
+      }
+      messageContent = contentParts;
+    } else {
+      messageContent = formatted.text || fallbackMsg;
+    }
+
+    const next = [
+      ...accumulated,
+      { role: "assistant", content: messageContent },
+    ];
+    setMessages(next);
+    safePersist(next, currentChatSuffix);
+    return { accumulated: next, success: formatted.images.length > 0 };
   };
 
   // ---------- PRIMARY: startStream ----------
@@ -1211,7 +2164,10 @@ export default function ChatIsland({ lang }: { lang: string }) {
     // If we're editing a previous user message
     if (currentEditIndex !== undefined && currentEditIndex !== -1) {
       const updated = [...messages];
-      updated[currentEditIndex] = { ...updated[currentEditIndex], content: query };
+      updated[currentEditIndex] = {
+        ...updated[currentEditIndex],
+        content: query,
+      };
       setMessages(updated);
       safePersist(updated, currentChatSuffix);
       setQuery("");
@@ -1251,7 +2207,23 @@ export default function ChatIsland({ lang }: { lang: string }) {
       return m;
     });
 
-    const contentPayload: any[] = [{ type: "text", text: userText }];
+    // Tell the LLM which image IDs are attached so it can reference them later
+    // (e.g. {"imageedit": {"image_id": "upl_00001", ...}} for consistency).
+    const imageHints = images
+      .map((img: any) =>
+        img?.id
+          ? `[Attached image: ${img.id}${
+            img.filename ? ` (${img.filename})` : ""
+          }]`
+          : ""
+      )
+      .filter((h: string) => h !== "")
+      .join("\n");
+
+    const contentPayload: any[] = [{
+      type: "text",
+      text: imageHints ? `${userText}\n\n${imageHints}` : userText,
+    }];
     if (images.length > 0) for (const img of images) contentPayload.push(img);
     if (pdfs.length > 0) for (const pdf of pdfs) contentPayload.push(pdf);
 
@@ -1288,19 +2260,51 @@ export default function ChatIsland({ lang }: { lang: string }) {
       const successTrigs: AutoTrigger[] = [];
       for (const trig of jsonUserTriggers) {
         if (trig.kind === "wikipedia") {
-          serverLog("wikipedia.call", { q: trig.q, n: trig.n ?? 5, collection: trig.collection });
+          serverLog("wikipedia.call", {
+            q: trig.q,
+            n: trig.n ?? 5,
+            collection: trig.collection,
+          });
           const n = trig.n ?? 5;
           const collection =
             trig.collection ??
-            (lang === "en" ? "English-ConcatX-Abstract" : "German-ConcatX-Abstract");
+            (lang === "en"
+              ? "English-ConcatX-Abstract"
+              : "German-ConcatX-Abstract");
           const res = await fetchWikipedia(trig.q, collection, n);
           const out = (res || []).map((r: WikipediaResult, i: number) =>
-            `**${chatIslandContent[lang].result} ${i + 1} ${chatIslandContent[lang].of} ${(res || []).length}**\n**${chatIslandContent[lang].wikipediaTitle}**: ${r.Title}\n**${chatIslandContent[lang].wikipediaURL}**: ${r.URL}\n**${chatIslandContent[lang].wikipediaContent}**: ${r.content}\n**${chatIslandContent[lang].wikipediaScore}**: ${r.score}`
+            `**${chatIslandContent[lang].result} ${i + 1} ${
+              chatIslandContent[lang].of
+            } ${(res || []).length}**\n**${
+              chatIslandContent[lang].wikipediaTitle
+            }**: ${r.Title}\n**${
+              chatIslandContent[lang].wikipediaURL
+            }**: ${r.URL}\n**${
+              chatIslandContent[lang].wikipediaContent
+            }**: ${r.content}\n**${
+              chatIslandContent[lang].wikipediaScore
+            }**: ${r.score}`,
           ).join("\n\n");
-          serverLog("wikipedia.result", { length: out.length, empty: !out.trim() });
-          if (out.trim()) { anyResults = true; successTrigs.push(trig); }
-          accumulated = [...accumulated, { role: "assistant", content: out.trim() || (lang === "de" ? "Entschuldigung, die Suche hat keine Ergebnisse geliefert oder ist fehlgeschlagen." : "Sorry, the search returned no results or failed.") }];
-          setMessages(accumulated); safePersist(accumulated, currentChatSuffix);
+          serverLog("wikipedia.result", {
+            length: out.length,
+            empty: !out.trim(),
+          });
+          if (out.trim()) {
+            anyResults = true;
+            successTrigs.push(trig);
+          }
+          accumulated = [
+            ...accumulated,
+            {
+              role: "assistant",
+              content: out.trim() ||
+                (lang === "de"
+                  ? "Entschuldigung, die Suche hat keine Ergebnisse geliefert oder ist fehlgeschlagen."
+                  : "Sorry, the search returned no results or failed."),
+            },
+          ];
+          setMessages(accumulated);
+          safePersist(accumulated, currentChatSuffix);
         } else if (trig.kind === "papers") {
           serverLog("papers.call", { q: trig.q, n: trig.n ?? 5 });
           const limit = trig.n ?? 5;
@@ -1314,28 +2318,76 @@ export default function ChatIsland({ lang }: { lang: string }) {
             const S = chatIslandContent[lang].papersSubjects ?? "Subjects";
             const AB = chatIslandContent[lang].papersAbstract ?? "Abstract";
             const doiLabel = "DOI";
-            return `**${chatIslandContent[lang].result} ${i + 1} ${chatIslandContent[lang].of} ${items.length}**\n**${T}**: ${it.title}\n**${A}**: ${authors}\n**${S}**: ${subjs}\n**${doiLabel}**: ${it.doi}\n**${AB}**: ${it.abstract}`;
+            return `**${chatIslandContent[lang].result} ${i + 1} ${
+              chatIslandContent[lang].of
+            } ${items.length}**\n**${T}**: ${it.title}\n**${A}**: ${
+              authors
+            }\n**${S}**: ${subjs}\n**${doiLabel}**: ${it.doi}\n**${AB}**: ${
+              it.abstract
+            }`;
           }).join("\n\n");
-          serverLog("papers.result", { length: out.length, empty: !out.trim() });
-          if (out.trim()) { anyResults = true; successTrigs.push(trig); }
-          accumulated = [...accumulated, { role: "assistant", content: out.trim() || (lang === "de" ? "Entschuldigung, die Suche hat keine Ergebnisse geliefert oder ist fehlgeschlagen." : "Sorry, the search returned no results or failed.") }];
-          setMessages(accumulated); safePersist(accumulated, currentChatSuffix);
+          serverLog("papers.result", {
+            length: out.length,
+            empty: !out.trim(),
+          });
+          if (out.trim()) {
+            anyResults = true;
+            successTrigs.push(trig);
+          }
+          accumulated = [
+            ...accumulated,
+            {
+              role: "assistant",
+              content: out.trim() ||
+                (lang === "de"
+                  ? "Entschuldigung, die Suche hat keine Ergebnisse geliefert oder ist fehlgeschlagen."
+                  : "Sorry, the search returned no results or failed."),
+            },
+          ];
+          setMessages(accumulated);
+          safePersist(accumulated, currentChatSuffix);
         } else if (trig.kind === "bildungsplan") {
           serverLog("bildungsplan.call", { q: trig.q, n: trig.n ?? 5 });
           const top_n = trig.n ?? 5;
           const res = await fetchBildungsplan(trig.q, top_n);
           const results = res?.results || [];
           const out = results.map((r, i) =>
-            `**${chatIslandContent[lang].result} ${i + 1} ${chatIslandContent[lang].of} ${results.length}**\n${r.text}\n\n**Score**: ${r.score}`
+            `**${chatIslandContent[lang].result} ${i + 1} ${
+              chatIslandContent[lang].of
+            } ${results.length}**\n${r.text}\n\n**Score**: ${r.score}`,
           ).join("\n\n");
-          serverLog("bildungsplan.result", { length: out.length, empty: !out.trim() });
-          if (out.trim()) { anyResults = true; successTrigs.push(trig); }
-          accumulated = [...accumulated, { role: "assistant", content: out.trim() || (lang === "de" ? "Entschuldigung, die Suche hat keine Ergebnisse geliefert oder ist fehlgeschlagen." : "Sorry, the search returned no results or failed.") }];
-          setMessages(accumulated); safePersist(accumulated, currentChatSuffix);
+          serverLog("bildungsplan.result", {
+            length: out.length,
+            empty: !out.trim(),
+          });
+          if (out.trim()) {
+            anyResults = true;
+            successTrigs.push(trig);
+          }
+          accumulated = [
+            ...accumulated,
+            {
+              role: "assistant",
+              content: out.trim() ||
+                (lang === "de"
+                  ? "Entschuldigung, die Suche hat keine Ergebnisse geliefert oder ist fehlgeschlagen."
+                  : "Sorry, the search returned no results or failed."),
+            },
+          ];
+          setMessages(accumulated);
+          safePersist(accumulated, currentChatSuffix);
+        } else if (isImageTrigger(trig)) {
+          // Image generation/editing needs no auto-summary, so the trigger is
+          // deliberately not pushed to successTrigs.
+          const out = await runImageTrigger(trig, accumulated);
+          accumulated = out.accumulated;
         }
       }
       setIsStreamComplete(true);
-      serverLog("triggers.summary.maybe", { anyResults, successCount: successTrigs.length });
+      serverLog("triggers.summary.maybe", {
+        anyResults,
+        successCount: successTrigs.length,
+      });
       if (anyResults && successTrigs.length) {
         const summaryPrompt = buildAutoSummaryPrompt(successTrigs);
         startStream(summaryPrompt, accumulated);
@@ -1351,17 +2403,45 @@ export default function ChatIsland({ lang }: { lang: string }) {
       let accumulated: Message[] = [...newMessagesArr];
       for (const trig of hashUserTriggers) {
         if (trig.kind === "wikipedia") {
-          serverLog("wikipedia.call", { q: trig.q, n: trig.n ?? 5, collection: trig.collection });
+          serverLog("wikipedia.call", {
+            q: trig.q,
+            n: trig.n ?? 5,
+            collection: trig.collection,
+          });
           const n = trig.n ?? 5;
           const collection =
             trig.collection ??
-            (lang === "en" ? "English-ConcatX-Abstract" : "German-ConcatX-Abstract");
+            (lang === "en"
+              ? "English-ConcatX-Abstract"
+              : "German-ConcatX-Abstract");
           const res = await fetchWikipedia(trig.q, collection, n);
           const out = (res || []).map((r: WikipediaResult, i: number) =>
-            `**${chatIslandContent[lang].result} ${i + 1} ${chatIslandContent[lang].of} ${(res || []).length}**\n**${chatIslandContent[lang].wikipediaTitle}**: ${r.Title}\n**${chatIslandContent[lang].wikipediaURL}**: ${r.URL}\n**${chatIslandContent[lang].wikipediaContent}**: ${r.content}\n**${chatIslandContent[lang].wikipediaScore}**: ${r.score}`
+            `**${chatIslandContent[lang].result} ${i + 1} ${
+              chatIslandContent[lang].of
+            } ${(res || []).length}**\n**${
+              chatIslandContent[lang].wikipediaTitle
+            }**: ${r.Title}\n**${
+              chatIslandContent[lang].wikipediaURL
+            }**: ${r.URL}\n**${
+              chatIslandContent[lang].wikipediaContent
+            }**: ${r.content}\n**${
+              chatIslandContent[lang].wikipediaScore
+            }**: ${r.score}`,
           ).join("\n\n");
-          serverLog("wikipedia.result", { length: out.length, empty: !out.trim() });
-          accumulated = [...accumulated, { role: "assistant", content: out.trim() || (lang === "de" ? "Entschuldigung, die Suche hat keine Ergebnisse geliefert oder ist fehlgeschlagen." : "Sorry, the search returned no results or failed.") }];
+          serverLog("wikipedia.result", {
+            length: out.length,
+            empty: !out.trim(),
+          });
+          accumulated = [
+            ...accumulated,
+            {
+              role: "assistant",
+              content: out.trim() ||
+                (lang === "de"
+                  ? "Entschuldigung, die Suche hat keine Ergebnisse geliefert oder ist fehlgeschlagen."
+                  : "Sorry, the search returned no results or failed."),
+            },
+          ];
         } else if (trig.kind === "papers") {
           serverLog("papers.call", { q: trig.q, n: trig.n ?? 5 });
           const limit = trig.n ?? 5;
@@ -1375,23 +2455,59 @@ export default function ChatIsland({ lang }: { lang: string }) {
             const S = chatIslandContent[lang].papersSubjects ?? "Subjects";
             const AB = chatIslandContent[lang].papersAbstract ?? "Abstract";
             const doiLabel = "DOI";
-            return `**${chatIslandContent[lang].result} ${i + 1} ${chatIslandContent[lang].of} ${items.length}**\n**${T}**: ${it.title}\n**${A}**: ${authors}\n**${S}**: ${subjs}\n**${doiLabel}**: ${it.doi}\n**${AB}**: ${it.abstract}`;
+            return `**${chatIslandContent[lang].result} ${i + 1} ${
+              chatIslandContent[lang].of
+            } ${items.length}**\n**${T}**: ${it.title}\n**${A}**: ${
+              authors
+            }\n**${S}**: ${subjs}\n**${doiLabel}**: ${it.doi}\n**${AB}**: ${
+              it.abstract
+            }`;
           }).join("\n\n");
-          serverLog("papers.result", { length: out.length, empty: !out.trim() });
-          accumulated = [...accumulated, { role: "assistant", content: out.trim() || (lang === "de" ? "Entschuldigung, die Suche hat keine Ergebnisse geliefert oder ist fehlgeschlagen." : "Sorry, the search returned no results or failed.") }];
+          serverLog("papers.result", {
+            length: out.length,
+            empty: !out.trim(),
+          });
+          accumulated = [
+            ...accumulated,
+            {
+              role: "assistant",
+              content: out.trim() ||
+                (lang === "de"
+                  ? "Entschuldigung, die Suche hat keine Ergebnisse geliefert oder ist fehlgeschlagen."
+                  : "Sorry, the search returned no results or failed."),
+            },
+          ];
         } else if (trig.kind === "bildungsplan") {
           serverLog("bildungsplan.call", { q: trig.q, n: trig.n ?? 5 });
           const top_n = trig.n ?? 5;
           const res = await fetchBildungsplan(trig.q, top_n);
           const results = res?.results || [];
           const out = results.map((r, i) =>
-            `**${chatIslandContent[lang].result} ${i + 1} ${chatIslandContent[lang].of} ${results.length}**\n${r.text}\n\n**Score**: ${r.score}`
+            `**${chatIslandContent[lang].result} ${i + 1} ${
+              chatIslandContent[lang].of
+            } ${results.length}**\n${r.text}\n\n**Score**: ${r.score}`,
           ).join("\n\n");
-          serverLog("bildungsplan.result", { length: out.length, empty: !out.trim() });
-          accumulated = [...accumulated, { role: "assistant", content: out.trim() || (lang === "de" ? "Entschuldigung, die Suche hat keine Ergebnisse geliefert oder ist fehlgeschlagen." : "Sorry, the search returned no results or failed.") }];
+          serverLog("bildungsplan.result", {
+            length: out.length,
+            empty: !out.trim(),
+          });
+          accumulated = [
+            ...accumulated,
+            {
+              role: "assistant",
+              content: out.trim() ||
+                (lang === "de"
+                  ? "Entschuldigung, die Suche hat keine Ergebnisse geliefert oder ist fehlgeschlagen."
+                  : "Sorry, the search returned no results or failed."),
+            },
+          ];
+        } else if (isImageTrigger(trig)) {
+          const out = await runImageTrigger(trig, accumulated);
+          accumulated = out.accumulated;
         }
       }
-      setMessages(accumulated); safePersist(accumulated, currentChatSuffix);
+      setMessages(accumulated);
+      safePersist(accumulated, currentChatSuffix);
       setIsStreamComplete(true);
       return;
     }
@@ -1410,6 +2526,7 @@ export default function ChatIsland({ lang }: { lang: string }) {
     let pendingInstreamTriggers: AutoTrigger[] = [];
 
     const filterThink = makeThinkFilter();
+    const jsonTtsFilter = makeJsonTtsFilter();
 
     const ensureDraft = () => {
       if (assistantDraftIndex !== -1) return;
@@ -1436,8 +2553,8 @@ export default function ChatIsland({ lang }: { lang: string }) {
           typeof last.content === "string"
             ? last.content
             : Array.isArray(last.content)
-              ? (last.content as string[]).join("")
-              : "";
+            ? (last.content as string[]).join("")
+            : "";
         const updated = { ...last, content: prevText + txt };
         const next = [...prev];
         next[idx] = updated;
@@ -1446,12 +2563,38 @@ export default function ChatIsland({ lang }: { lang: string }) {
       });
     };
 
-    const keyOf = (t: AutoTrigger) =>
-      `${t.kind}|${t.q}|${t.kind === "wikipedia" ? (t as any).collection ?? "" : ""}|${t.n ?? ""}`;
+    const keyOf = (t: AutoTrigger) => {
+      if (t.kind === "imagegen") {
+        return `imagegen|${t.prompt}|${t.model ?? ""}|${t.n ?? ""}`;
+      }
+      if (t.kind === "imageedit") {
+        const imgHash = t.inputImages?.length
+          ? String(t.inputImages.length)
+          : "";
+        return `imageedit|${t.prompt}|${t.model ?? ""}|${imgHash}|${
+          t.imageId ?? ""
+        }|${(t.imageIds ?? []).join(",")}|${t.useLastImage ?? ""}`;
+      }
+      return `${t.kind}|${t.q}|${
+        t.kind === "wikipedia" ? (t as any).collection ?? "" : ""
+      }|${t.n ?? ""}`;
+    };
 
     // Triggers ausführen und (nur bei Erfolg) später zusammenfassen
-    const handleTriggers = async (trigs: AutoTrigger[]): Promise<{ anyResults: boolean; accumulated: Message[]; successTrigs: AutoTrigger[] }> => {
-      if (!trigs.length) return { anyResults: false, accumulated: messagesRef.current, successTrigs: [] };
+    const handleTriggers = async (
+      trigs: AutoTrigger[],
+    ): Promise<{
+      anyResults: boolean;
+      accumulated: Message[];
+      successTrigs: AutoTrigger[];
+    }> => {
+      if (!trigs.length) {
+        return {
+          anyResults: false,
+          accumulated: messagesRef.current,
+          successTrigs: [],
+        };
+      }
 
       // Dedupe
       const fresh: AutoTrigger[] = [];
@@ -1462,9 +2605,18 @@ export default function ChatIsland({ lang }: { lang: string }) {
           fresh.push(t);
         }
       }
-      if (!fresh.length) return { anyResults: false, accumulated: messagesRef.current, successTrigs: [] };
+      if (!fresh.length) {
+        return {
+          anyResults: false,
+          accumulated: messagesRef.current,
+          successTrigs: [],
+        };
+      }
 
-      await serverLog("triggers.begin", { requested: trigs, deduped: fresh });
+      await serverLog("triggers.begin", {
+        requested: trigs,
+        deduped: fresh,
+      });
 
       let accumulated: Message[] = messagesRef.current;
       let anyResults = false;
@@ -1472,19 +2624,51 @@ export default function ChatIsland({ lang }: { lang: string }) {
 
       for (const trig of fresh) {
         if (trig.kind === "wikipedia") {
-          await serverLog("wikipedia.call", { q: trig.q, n: trig.n ?? 5, collection: trig.collection });
+          await serverLog("wikipedia.call", {
+            q: trig.q,
+            n: trig.n ?? 5,
+            collection: trig.collection,
+          });
           const n = trig.n ?? 5;
           const collection =
             trig.collection ??
-            (lang === "en" ? "English-ConcatX-Abstract" : "German-ConcatX-Abstract");
+            (lang === "en"
+              ? "English-ConcatX-Abstract"
+              : "German-ConcatX-Abstract");
           const res = await fetchWikipedia(trig.q, collection, n);
           const out = (res || []).map((r: WikipediaResult, i: number) =>
-            `**${chatIslandContent[lang].result} ${i + 1} ${chatIslandContent[lang].of} ${(res || []).length}**\n**${chatIslandContent[lang].wikipediaTitle}**: ${r.Title}\n**${chatIslandContent[lang].wikipediaURL}**: ${r.URL}\n**${chatIslandContent[lang].wikipediaContent}**: ${r.content}\n**${chatIslandContent[lang].wikipediaScore}**: ${r.score}`
+            `**${chatIslandContent[lang].result} ${i + 1} ${
+              chatIslandContent[lang].of
+            } ${(res || []).length}**\n**${
+              chatIslandContent[lang].wikipediaTitle
+            }**: ${r.Title}\n**${
+              chatIslandContent[lang].wikipediaURL
+            }**: ${r.URL}\n**${
+              chatIslandContent[lang].wikipediaContent
+            }**: ${r.content}\n**${
+              chatIslandContent[lang].wikipediaScore
+            }**: ${r.score}`,
           ).join("\n\n");
-          await serverLog("wikipedia.result", { length: out.length, empty: !out.trim() });
-          if (out.trim()) { anyResults = true; successTrigs.push(trig); }
-          accumulated = [...accumulated, { role: "assistant", content: out.trim() || (lang === "de" ? "Entschuldigung, die Suche hat keine Ergebnisse geliefert oder ist fehlgeschlagen." : "Sorry, the search returned no results or failed.") }];
-          setMessages(accumulated); safePersist(accumulated, currentChatSuffix);
+          await serverLog("wikipedia.result", {
+            length: out.length,
+            empty: !out.trim(),
+          });
+          if (out.trim()) {
+            anyResults = true;
+            successTrigs.push(trig);
+          }
+          accumulated = [
+            ...accumulated,
+            {
+              role: "assistant",
+              content: out.trim() ||
+                (lang === "de"
+                  ? "Entschuldigung, die Suche hat keine Ergebnisse geliefert oder ist fehlgeschlagen."
+                  : "Sorry, the search returned no results or failed."),
+            },
+          ];
+          setMessages(accumulated);
+          safePersist(accumulated, currentChatSuffix);
         } else if (trig.kind === "papers") {
           await serverLog("papers.call", { q: trig.q, n: trig.n ?? 5 });
           const limit = trig.n ?? 5;
@@ -1498,24 +2682,71 @@ export default function ChatIsland({ lang }: { lang: string }) {
             const S = chatIslandContent[lang].papersSubjects ?? "Subjects";
             const AB = chatIslandContent[lang].papersAbstract ?? "Abstract";
             const doiLabel = "DOI";
-            return `**${chatIslandContent[lang].result} ${i + 1} ${chatIslandContent[lang].of} ${items.length}**\n**${T}**: ${it.title}\n**${A}**: ${authors}\n**${S}**: ${subjs}\n**${doiLabel}**: ${it.doi}\n**${AB}**: ${it.abstract}`;
+            return `**${chatIslandContent[lang].result} ${i + 1} ${
+              chatIslandContent[lang].of
+            } ${items.length}**\n**${T}**: ${it.title}\n**${A}**: ${
+              authors
+            }\n**${S}**: ${subjs}\n**${doiLabel}**: ${it.doi}\n**${AB}**: ${
+              it.abstract
+            }`;
           }).join("\n\n");
-          await serverLog("papers.result", { length: out.length, empty: !out.trim() });
-          if (out.trim()) { anyResults = true; successTrigs.push(trig); }
-          accumulated = [...accumulated, { role: "assistant", content: out.trim() || (lang === "de" ? "Entschuldigung, die Suche hat keine Ergebnisse geliefert oder ist fehlgeschlagen." : "Sorry, the search returned no results or failed.") }];
-          setMessages(accumulated); safePersist(accumulated, currentChatSuffix);
+          await serverLog("papers.result", {
+            length: out.length,
+            empty: !out.trim(),
+          });
+          if (out.trim()) {
+            anyResults = true;
+            successTrigs.push(trig);
+          }
+          accumulated = [
+            ...accumulated,
+            {
+              role: "assistant",
+              content: out.trim() ||
+                (lang === "de"
+                  ? "Entschuldigung, die Suche hat keine Ergebnisse geliefert oder ist fehlgeschlagen."
+                  : "Sorry, the search returned no results or failed."),
+            },
+          ];
+          setMessages(accumulated);
+          safePersist(accumulated, currentChatSuffix);
         } else if (trig.kind === "bildungsplan") {
-          await serverLog("bildungsplan.call", { q: trig.q, n: trig.n ?? 5 });
+          await serverLog("bildungsplan.call", {
+            q: trig.q,
+            n: trig.n ?? 5,
+          });
           const top_n = trig.n ?? 5;
           const res = await fetchBildungsplan(trig.q, top_n);
           const results = res?.results || [];
           const out = results.map((r, i) =>
-            `**${chatIslandContent[lang].result} ${i + 1} ${chatIslandContent[lang].of} ${results.length}**\n${r.text}\n\n**Score**: ${r.score}`
+            `**${chatIslandContent[lang].result} ${i + 1} ${
+              chatIslandContent[lang].of
+            } ${results.length}**\n${r.text}\n\n**Score**: ${r.score}`,
           ).join("\n\n");
-          await serverLog("bildungsplan.result", { length: out.length, empty: !out.trim() });
-          if (out.trim()) { anyResults = true; successTrigs.push(trig); }
-          accumulated = [...accumulated, { role: "assistant", content: out.trim() || (lang === "de" ? "Entschuldigung, die Suche hat keine Ergebnisse geliefert oder ist fehlgeschlagen." : "Sorry, the search returned no results or failed.") }];
-          setMessages(accumulated); safePersist(accumulated, currentChatSuffix);
+          await serverLog("bildungsplan.result", {
+            length: out.length,
+            empty: !out.trim(),
+          });
+          if (out.trim()) {
+            anyResults = true;
+            successTrigs.push(trig);
+          }
+          accumulated = [
+            ...accumulated,
+            {
+              role: "assistant",
+              content: out.trim() ||
+                (lang === "de"
+                  ? "Entschuldigung, die Suche hat keine Ergebnisse geliefert oder ist fehlgeschlagen."
+                  : "Sorry, the search returned no results or failed."),
+            },
+          ];
+          setMessages(accumulated);
+          safePersist(accumulated, currentChatSuffix);
+        } else if (isImageTrigger(trig)) {
+          // Images are shown directly; no auto-summary run afterwards.
+          const out = await runImageTrigger(trig, accumulated);
+          accumulated = out.accumulated;
         }
       }
 
@@ -1525,9 +2756,14 @@ export default function ChatIsland({ lang }: { lang: string }) {
     // Zusammenfassung nach Triggern (nur bei Erfolg)
     const runTriggersAndMaybeSummarize = async (trigs: AutoTrigger[]) => {
       await serverLog("triggers.summary.maybe", { requested: trigs.length });
-      const { anyResults, accumulated, successTrigs } = await handleTriggers(trigs);
+      const { anyResults, accumulated, successTrigs } = await handleTriggers(
+        trigs,
+      );
       setIsStreamComplete(true);
-      await serverLog("triggers.summary.result", { anyResults, successCount: successTrigs.length });
+      await serverLog("triggers.summary.result", {
+        anyResults,
+        successCount: successTrigs.length,
+      });
       if (anyResults && successTrigs.length) {
         const summaryPrompt = buildAutoSummaryPrompt(successTrigs);
         startStream(summaryPrompt, accumulated);
@@ -1544,8 +2780,11 @@ export default function ChatIsland({ lang }: { lang: string }) {
       const flushed = filterThink.flush();
       if (flushed) {
         appendToAssistant(flushed);
-        ongoingStream.push(flushed);
         assistantAccum += flushed;
+        const ttsTail = jsonTtsFilter.consume(flushed);
+        if (ttsTail) {
+          ongoingStream.push(ttsTail);
+        }
       }
 
       flushPersistThrottle();
@@ -1553,16 +2792,18 @@ export default function ChatIsland({ lang }: { lang: string }) {
       if (!gotAnyText) {
         setMessages((prev) => {
           if (!prev.length) return prev;
-          const last = prev[assistantDraftIndex === -1 ? prev.length - 1 : assistantDraftIndex];
+          const idx =
+            assistantDraftIndex === -1 ? prev.length - 1 : assistantDraftIndex;
+          const last = prev[idx];
           const txt =
             typeof last?.content === "string"
               ? last.content
               : Array.isArray(last?.content)
-                ? (last.content as string[]).join("")
-                : "";
+              ? (last.content as string[]).join("")
+              : "";
           if (last?.role === "assistant" && (!txt || txt.trim() === "")) {
             const next = [...prev];
-            next.splice(assistantDraftIndex === -1 ? prev.length - 1 : assistantDraftIndex, 1);
+            next.splice(idx, 1);
             safePersist(next, currentChatSuffix);
             return next;
           }
@@ -1571,16 +2812,25 @@ export default function ChatIsland({ lang }: { lang: string }) {
       } else {
         const remaining = ongoingStream.join("").trim();
         if (remaining) {
-          const groupIndex = assistantDraftIndex === -1 ? messagesRef.current.length - 1 : assistantDraftIndex;
+          const groupIndex =
+            assistantDraftIndex === -1
+              ? messagesRef.current.length - 1
+              : assistantDraftIndex;
           getTTS(remaining, groupIndex, `stream${currentAudioIndex}`);
         }
       }
 
       // Nach regulärem Stream-Ende: Trigger (falls vorhanden) ausführen und ggf. zusammenfassen
       const finalTriggers = findJsonTriggersInText(assistantAccum);
-      await serverLog("stream.finalize", { gotAnyText, assistantAccumLen: assistantAccum.length, triggersFound: finalTriggers.length });
+      await serverLog("stream.finalize", {
+        gotAnyText,
+        assistantAccumLen: assistantAccum.length,
+        triggersFound: finalTriggers.length,
+      });
       if (finalTriggers.length) {
-        await serverLog("json.poststream.detect", { triggers: finalTriggers });
+        await serverLog("json.poststream.detect", {
+          triggers: finalTriggers,
+        });
         await runTriggersAndMaybeSummarize(finalTriggers);
       }
 
@@ -1614,13 +2864,18 @@ export default function ChatIsland({ lang }: { lang: string }) {
       signal: abortRef.current?.signal,
 
       async onopen(response: Response) {
-        await serverLog("sse.open", { ok: response.ok, status: response.status });
+        await serverLog("sse.open", {
+          ok: response.ok,
+          status: response.status,
+        });
         if (response.ok) return;
         if (response.status !== 200) {
           const errorText = await response.text().catch(() => "");
           ensureDraft();
           appendToAssistant(
-            `\n\n**BACKEND ERROR**\nStatuscode: ${response.status}\nMessage: ${errorText || response.statusText}`,
+            `\n\n**BACKEND ERROR**\nStatuscode: ${response.status}\nMessage: ${
+              errorText || response.statusText
+            }`,
           );
           throw new FatalError(errorText || response.statusText);
         }
@@ -1638,7 +2893,9 @@ export default function ChatIsland({ lang }: { lang: string }) {
           })();
           ensureDraft();
           appendToAssistant(
-            `\n\n**BACKEND ERROR**\nStatuscode: ${err?.status ?? ""}\nMessage: ${err?.message ?? ""}`,
+            `\n\n**BACKEND ERROR**\nStatuscode: ${
+              err?.status ?? ""
+            }\nMessage: ${err?.message ?? ""}`,
           );
           return;
         }
@@ -1671,28 +2928,38 @@ export default function ChatIsland({ lang }: { lang: string }) {
         gotAnyText = true;
         ensureDraft();
 
+        // full text (inkl. JSON) für Trigger-Erkennung
         assistantAccum += chunk;
 
-        // TTS buffer
-        ongoingStream.push(chunk);
-        const combined = ongoingStream.join("");
-        const re = /(?<!\d)[.!?]/g;
-        let lastIdx = -1, m: RegExpExecArray | null;
-        while ((m = re.exec(combined)) !== null) lastIdx = m.index;
-        if (lastIdx !== -1) {
-          const split = lastIdx + 1;
-          const toSpeak = combined.slice(0, split).trim();
-          const remaining = combined.slice(split);
-          if (toSpeak) {
-            const groupIndex = assistantDraftIndex === -1 ? newMessagesArr.length : assistantDraftIndex;
-            getTTS(toSpeak, groupIndex, `stream${currentAudioIndex}`);
-            currentAudioIndex++;
+        // Nur JSON-bereinigten Text in den TTS-Puffer schieben
+        const ttsChunk = jsonTtsFilter.consume(chunk);
+
+        if (ttsChunk) {
+          // TTS buffer (nur Text außerhalb von { ... })
+          ongoingStream.push(ttsChunk);
+          const combined = ongoingStream.join("");
+          const re = /(?<!\d)[.!?]/g;
+          let lastIdx = -1,
+            m: RegExpExecArray | null;
+          while ((m = re.exec(combined)) !== null) lastIdx = m.index;
+          if (lastIdx !== -1) {
+            const split = lastIdx + 1;
+            const toSpeak = combined.slice(0, split).trim();
+            const remaining = combined.slice(split);
+            if (toSpeak) {
+              const groupIndex =
+                assistantDraftIndex === -1
+                  ? newMessagesArr.length
+                  : assistantDraftIndex;
+              getTTS(toSpeak, groupIndex, `stream${currentAudioIndex}`);
+              currentAudioIndex++;
+            }
+            ongoingStream.length = 0;
+            if (remaining.trim()) ongoingStream.push(remaining);
           }
-          ongoingStream.length = 0;
-          if (remaining.trim()) ongoingStream.push(remaining);
         }
 
-        // Append to chat
+        // Append to chat (volle Antwort inkl. JSON)
         appendToAssistant(chunk);
 
         // -------- HARTER In-Stream-Stop bei vollständigem JSON-Trigger ----------
@@ -1751,16 +3018,18 @@ export default function ChatIsland({ lang }: { lang: string }) {
     // Only return early if readAlways is false AND this is a *pure streaming* request (not manual)
     if (!readAlways && /^stream\d+$/.test(sourceFunction)) return;
 
-    const ttsText = cleanForTTS(text);
-
+    // Special case: static welcome audio
     if (text === chatIslandContent[lang]["welcomeMessage"]) {
       const audioFile = text === chatIslandContent["de"]["welcomeMessage"]
         ? "./intro.mp3"
         : "./intro-en.mp3";
 
-      const audio = new Audio(audioUrl) as HTMLAudioElement & { __text?: string; __session?: number };
+      const audio = new Audio(audioFile) as HTMLAudioElement & {
+        __text?: string;
+        __session?: number;
+      };
       audio.__text = text;
-      audio.__session = playSessionRef.current;   // NEW
+      audio.__session = playSessionRef.current;
 
       const sourceFunctionIndex = indexFromSourceFunction(sourceFunction);
 
@@ -1772,7 +3041,7 @@ export default function ChatIsland({ lang }: { lang: string }) {
         return next;
       });
 
-      // pause other groups
+      // pause other groups for intro as well
       const newStopList = stopList.slice();
       for (let i = 0; i < groupIndex; i++) {
         const g = audioFileDict[i];
@@ -1791,8 +3060,27 @@ export default function ChatIsland({ lang }: { lang: string }) {
       return;
     }
 
+    // Optionally strip JSON / { ... }-blocks before cleaning for TTS
+    const baseText = skipCurlyBraces ? stripCurlyBraceBlocks(text) : text;
+    const ttsText = cleanForTTS(baseText);
+
+    const slotIdx = indexFromSourceFunction(sourceFunction);
+
+    // Nothing left to speak (e.g. the chunk was only JSON, markup or emoji).
+    // The index is already spoken for, so it gets a placeholder instead of a
+    // silent return – otherwise every later chunk would wait for it forever.
+    if (!ttsText.trim()) {
+      markChunkSkipped(groupIndex, slotIdx, text, "empty after TTS filters");
+      return;
+    }
+
     // Queue the TTS fetch
     scheduleTTSJob(async () => {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(
+        () => controller.abort(),
+        TTS_REQUEST_TIMEOUT_MS,
+      );
       try {
         const response = await fetch("/api/tts", {
           method: "POST",
@@ -1806,21 +3094,30 @@ export default function ChatIsland({ lang }: { lang: string }) {
             ttsModel: settings.ttsModel,
             universalApiKey: settings.universalApiKey,
           }),
+          signal: controller.signal,
         });
 
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
 
-        const contentType = response.headers.get("Content-Type") || "audio/mpeg";
+        const contentType =
+          response.headers.get("Content-Type") || "audio/mpeg";
         const audioData = await response.arrayBuffer();
+        if (audioData.byteLength === 0) {
+          throw new Error("TTS returned an empty audio body");
+        }
         const audioBlob = new Blob([audioData], { type: contentType });
         const audioUrl = URL.createObjectURL(audioBlob);
-        const audio = new Audio(audioUrl) as HTMLAudioElement & { __text?: string };
+        const audio = new Audio(audioUrl) as HTMLAudioElement & {
+          __text?: string;
+          __session?: number;
+        };
         audio.__text = text;
+        (audio as any).__session = playSessionRef.current;
 
         // ensure group slot
-        const idx = indexFromSourceFunction(sourceFunction);
+        const idx = slotIdx;
         setAudioFileDict((prev) => {
           const next = { ...prev };
           const group = { ...(next[groupIndex] || {}) };
@@ -1829,7 +3126,7 @@ export default function ChatIsland({ lang }: { lang: string }) {
           return next;
         });
 
-        // dynamic chaining
+        // dynamic chaining for manual playback
         wireNeighborChaining(groupIndex, idx);
 
         audio.addEventListener("ended", () => {
@@ -1843,8 +3140,30 @@ export default function ChatIsland({ lang }: { lang: string }) {
             return next;
           });
         });
+
+        // Autostart for manual speak when first chunk is ready
+        if (!readAlways && pendingManualSpeak.has(groupIndex) && idx === 0) {
+          startOrderedPlaybackForGroup(groupIndex);
+          setPendingManualSpeak((prev) => {
+            const cp = new Set(prev);
+            cp.delete(groupIndex);
+            return cp;
+          });
+        }
       } catch (error) {
         console.error("Error fetching TTS:", error);
+        // Reserve the index with a placeholder so the following chunks keep
+        // playing instead of waiting on a clip that will never exist.
+        markChunkSkipped(
+          groupIndex,
+          slotIdx,
+          text,
+          error instanceof Error && error.name === "AbortError"
+            ? "request timed out"
+            : String(error),
+        );
+      } finally {
+        clearTimeout(timeoutId);
       }
     });
   };
@@ -1877,8 +3196,12 @@ export default function ChatIsland({ lang }: { lang: string }) {
         Object.values(group || {}).forEach((item: any) => {
           const a: HTMLAudioElement | undefined = item?.audio;
           if (!a) return;
-          try { a.pause(); } catch {}
-          try { a.currentTime = 0; } catch {}
+          try {
+            a.pause();
+          } catch {}
+          try {
+            a.currentTime = 0;
+          } catch {}
           try {
             const src = a.src;
             if (src && src.startsWith("blob:")) URL.revokeObjectURL(src);
@@ -1890,8 +3213,7 @@ export default function ChatIsland({ lang }: { lang: string }) {
     } catch {}
     setAudioFileDict({});
     setStopList([]);
-    // only if this exists in your component:
-    // setPendingManualSpeak(new Set());
+    setPendingManualSpeak(new Set());
   };
 
   // ---------- Chat management ----------
@@ -1902,7 +3224,10 @@ export default function ChatIsland({ lang }: { lang: string }) {
     const newChatSuffix = String(Number(maxValueInChatSuffix) + 1);
 
     const welcome = [
-      { role: "assistant", content: [chatIslandContent[lang]["welcomeMessage"]] },
+      {
+        role: "assistant",
+        content: [chatIslandContent[lang]["welcomeMessage"]],
+      },
     ] as Message[];
 
     setMessages(welcome);
@@ -1920,15 +3245,14 @@ export default function ChatIsland({ lang }: { lang: string }) {
         .sort((a, b) => Number(a.slice(10)) - Number(b.slice(10)))[0]
         .slice(10);
 
-      setMessages(
-        JSON.parse(
-          String(localStorage.getItem("bude-chat-" + nextChatSuffix)),
-        ),
-      );
+      applyChatMessages(loadChatMessages(nextChatSuffix), nextChatSuffix);
       setCurrentChatSuffix(nextChatSuffix);
     } else {
       const welcome = [
-        { role: "assistant", content: [chatIslandContent[lang]["welcomeMessage"]] },
+        {
+          role: "assistant",
+          content: [chatIslandContent[lang]["welcomeMessage"]],
+        },
       ] as Message[];
       setMessages(welcome);
       safePersist(welcome, "0");
@@ -1939,7 +3263,10 @@ export default function ChatIsland({ lang }: { lang: string }) {
   const deleteAllChats = () => {
     localStorage.clear();
     const welcome = [
-      { role: "assistant", content: [chatIslandContent[lang]["welcomeMessage"]] },
+      {
+        role: "assistant",
+        content: [chatIslandContent[lang]["welcomeMessage"]],
+      },
     ] as Message[];
     setMessages(welcome);
     setLocalStorageKeys([]);
@@ -1983,7 +3310,9 @@ export default function ChatIsland({ lang }: { lang: string }) {
         }
 
         const newChatSuffix = chats
-          ? Object.keys(chats).sort((a, b) => Number(a.slice(10)) - Number(b.slice(10)))[0].slice(10)
+          ? Object.keys(chats).sort((a, b) =>
+              Number(a.slice(10)) - Number(b.slice(10))
+            )[0].slice(10)
           : "0";
         setLocalStorageKeys(
           Object.keys(localStorage).filter((key) =>
@@ -1992,7 +3321,7 @@ export default function ChatIsland({ lang }: { lang: string }) {
         );
         setCurrentChatSuffix(newChatSuffix);
         const nextMsgs = chats["bude-chat-" + newChatSuffix] as Message[];
-        setMessages(nextMsgs);
+        applyChatMessages(nextMsgs, newChatSuffix);
         safePersist(nextMsgs, newChatSuffix);
       } catch (error) {
         console.error("Error parsing JSON file:", error);
@@ -2009,7 +3338,7 @@ export default function ChatIsland({ lang }: { lang: string }) {
   // ---------- RENDER ----------
   return (
     <div class="w-full">
-      <div class="flex items-center mb-4 flex-wrap">
+       <div class="flex items-center justify-center mb-4 flex-wrap w-full">
         {/* Add settings button next to existing chat buttons */}
         <button
           class="rounded-full bg-slate-200 px-4 py-2 mx-2 mb-2"
@@ -2101,7 +3430,7 @@ export default function ChatIsland({ lang }: { lang: string }) {
               width="24px"
               fill="#000000"
             >
-              <path d="M480-320 280-520l56-58 104 104v-326h80v326l104-104 56 58-200 200ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z" />
+              <path d="M480-320 280-520l56-58 104 104v-326h80v326l104-104 56 58-160 160-160-160ZM240-160q-33 0-56.5-23.5T160-240v-640q0-33 23.5-56.5T240-880h320l240 240v480q0 33-23.5 56.5T720-160H240Zm280-520v-200H240v640h480v-440H520ZM240-800v-200 200-640-640Z" />
             </svg>
           </button>
         )}
@@ -2143,11 +3472,15 @@ export default function ChatIsland({ lang }: { lang: string }) {
         }}
         readAlways={readAlways}
         autoScroll={autoScroll}
+        skipCurlyBraces={skipCurlyBraces} // NEW
         audioFileDict={audioFileDict}
         currentEditIndex={currentEditIndex!}
         onSpeakAtGroupIndexAction={handleOnSpeakAtGroupIndexAction}
         onToggleReadAlwaysAction={() => toggleReadAlways(!readAlways)}
         onToggleAutoScrollAction={() => toggleAutoScroll(!autoScroll)}
+        onToggleSkipCurlyBracesAction={() =>
+          setSkipCurlyBraces((v) => !v)
+        } // NEW
         onRefreshAction={handleRefreshAction}
         onEditAction={handleEditAction}
         onUploadActionToMessages={handleUploadActionToMessages}
@@ -2181,7 +3514,12 @@ export default function ChatIsland({ lang }: { lang: string }) {
               class="h-52 w-full py-4 pl-4 pr-16 border border-gray-300 rounded-lg focus:outline-none cursor-text focus:border-orange-200 focus:ring-1 focus:ring-orange-300 shadow-sm resize-none placeholder-gray-400 text-base font-medium"
             />
 
-            <ImageUploadButton onImagesUploaded={handleImagesUploaded} />
+            <ImageUploadButton
+              onImagesUploaded={handleImagesUploaded}
+              /* Pending composer images count too, otherwise a second upload
+                 before sending would reuse the same upl_ IDs. */
+              messages={[...messages, { role: "user", content: images }]}
+            />
 
             <PdfUploadButton onPdfsUploaded={handlePdfsUploaded} />
 

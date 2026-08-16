@@ -1,13 +1,18 @@
-
-import { useEffect } from "preact/hooks";
+import { useEffect, useState } from "preact/hooks";
 import { chatTemplateContent } from "../internalization/content.ts";
-
 
 /* ---------- helpers ---------- */
 function downloadAudioFiles(
   items: { [key: string]: { audio: HTMLAudioElement } },
 ) {
   const ts = new Date().toISOString().slice(0, 19).replace(/[-:]/g, "-");
+
+  // Placeholder slots for chunks that produced no audio carry no src.
+  const real = Object.fromEntries(
+    Object.entries(items ?? {}).filter(([, i]) => !!i?.audio?.src),
+  );
+  if (Object.keys(real).length === 0) return;
+  items = real;
 
   if (Object.keys(items).length === 1) {
     const single = Object.values(items)[0].audio;
@@ -39,16 +44,143 @@ function convertDoiToUrl(doi: string): string {
   return clean === "null" ? "#" : `https://doi.org/${clean}`;
 }
 
-// **Bold** + Links + DOI minimal robust
+/* ---------- code blocks (``` fences) with one-click copy ---------- */
+function CodeBlock(
+  { code, language, streaming }: {
+    code: string;
+    language?: string;
+    streaming?: boolean;
+  },
+) {
+  const [copied, setCopied] = useState(false);
+
+  const copy = () => {
+    const done = () => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1500);
+    };
+    if (navigator?.clipboard?.writeText) {
+      navigator.clipboard.writeText(code).then(done).catch((e) =>
+        console.warn("Clipboard write failed:", e)
+      );
+      return;
+    }
+    // Fallback for browsers/contexts without the async clipboard API
+    const ta = document.createElement("textarea");
+    ta.value = code;
+    ta.style.position = "fixed";
+    ta.style.opacity = "0";
+    document.body.appendChild(ta);
+    ta.select();
+    try {
+      document.execCommand("copy");
+      done();
+    } catch (e) {
+      console.warn("Clipboard fallback failed:", e);
+    }
+    document.body.removeChild(ta);
+  };
+
+  return (
+    <div class="my-2 rounded-lg overflow-hidden border border-gray-700 bg-gray-900 text-left">
+      <div class="flex items-center justify-between px-3 py-1 bg-gray-800 text-gray-300 text-xs font-mono">
+        <span>{language || "code"}{streaming ? " …" : ""}</span>
+        <button
+          type="button"
+          onClick={copy}
+          class="px-2 py-0.5 rounded border border-gray-600 hover:bg-gray-700 transition-colors"
+          title="Copy code to clipboard"
+        >
+          {copied ? "Copied!" : "Copy"}
+        </button>
+      </div>
+      <pre class="overflow-x-auto p-3 text-sm leading-relaxed text-gray-100 whitespace-pre"><code>{code}</code></pre>
+    </div>
+  );
+}
+
+/**
+ * Splits text into ``` fenced code blocks and regular text.
+ * An unterminated fence (while the answer is still streaming) is rendered
+ * as a code block too, so the layout does not jump once it closes.
+ */
+function renderRichText(text: string) {
+  if (typeof text !== "string") return null;
+  if (!text.includes("```")) return renderTextWithLinksAndBold(text);
+
+  const nodes: any[] = [];
+  const re = /```([A-Za-z0-9_+#.-]*)[ \t]*\r?\n?([\s\S]*?)```/g;
+  let last = 0;
+  let key = 0;
+  let m: RegExpExecArray | null;
+
+  while ((m = re.exec(text)) !== null) {
+    const before = text.slice(last, m.index);
+    if (before) {
+      nodes.push(
+        <span key={`t${key++}`}>{renderTextWithLinksAndBold(before)}</span>,
+      );
+    }
+    nodes.push(
+      <CodeBlock
+        key={`c${key++}`}
+        language={m[1]}
+        code={m[2].replace(/\r?\n$/, "")}
+      />,
+    );
+    last = re.lastIndex;
+  }
+
+  const rest = text.slice(last);
+  const openIdx = rest.indexOf("```");
+  if (openIdx !== -1) {
+    const before = rest.slice(0, openIdx);
+    if (before) {
+      nodes.push(
+        <span key={`t${key++}`}>{renderTextWithLinksAndBold(before)}</span>,
+      );
+    }
+    const tail = rest.slice(openIdx + 3);
+    const nl = tail.indexOf("\n");
+    nodes.push(
+      <CodeBlock
+        key={`c${key++}`}
+        language={(nl === -1 ? tail : tail.slice(0, nl)).trim()}
+        code={nl === -1 ? "" : tail.slice(nl + 1)}
+        streaming
+      />,
+    );
+  } else if (rest) {
+    nodes.push(
+      <span key={`t${key++}`}>{renderTextWithLinksAndBold(rest)}</span>,
+    );
+  }
+
+  return nodes;
+}
+
+// **Bold** + `inline code` + Links + DOI minimal robust
 function renderTextWithLinksAndBold(text: string) {
   const re =
-    /(https?:\/\/[^\s]+|www\.[^\s]+|DOI:\s*(?:null|[\d.]+\/[^\s]+)|\*\*.*?\*\*)/g;
+    /(`[^`\n]+`|https?:\/\/[^\s]+|www\.[^\s]+|DOI:\s*(?:null|[\d.]+\/[^\s]+)|\*\*.*?\*\*)/g;
 
   const parts = text.split(re).filter((p) => p !== "");
   return parts.map((part, i) => {
     // bold
     if (part.startsWith("**") && part.endsWith("**")) {
       return <strong key={i}>{part.slice(2, -2)}</strong>;
+    }
+
+    // inline code
+    if (part.length > 2 && part.startsWith("`") && part.endsWith("`")) {
+      return (
+        <code
+          key={i}
+          class="px-1 py-0.5 rounded bg-gray-200 text-gray-800 font-mono text-[0.9em]"
+        >
+          {part.slice(1, -1)}
+        </code>
+      );
     }
 
     // DOI
@@ -214,11 +346,13 @@ export default function ChatTemplate(props: {
   onCancelAction: () => void;
   readAlways: boolean;
   autoScroll: boolean;
+  skipCurlyBraces: boolean;
   currentEditIndex: number;
   audioFileDict: AnyAudio;
 
   onToggleAutoScrollAction: () => void;
   onToggleReadAlwaysAction: () => void;
+  onToggleSkipCurlyBracesAction: () => void;
 
   onSpeakAtGroupIndexAction: (groupIndex: number) => void;
   onRefreshAction: (groupIndex: number) => void;
@@ -238,10 +372,12 @@ export default function ChatTemplate(props: {
     onCancelAction,
     readAlways,
     autoScroll,
+    skipCurlyBraces,
     audioFileDict,
     currentEditIndex,
     onToggleAutoScrollAction,
     onToggleReadAlwaysAction,
+    onToggleSkipCurlyBracesAction,
     onImageChange,
     onPdfChange,
     onSpeakAtGroupIndexAction,
@@ -261,16 +397,78 @@ export default function ChatTemplate(props: {
 
   const renderContentPart = (content: any, idx: number) => {
     if (content?.type === "text") {
-      return <span key={idx}>{renderTextWithLinksAndBold(content.text)}</span>;
+      return <div key={idx}>{renderRichText(content.text)}</div>;
     }
     if (content?.type === "image_url") {
+      const imageId = content.id || null;
+
+      // Determine source from content.source, or infer from ID prefix
+      let imageSource = content.source;
+      if (!imageSource && imageId) {
+        if (imageId.startsWith("gen_") || imageId.startsWith("img_")) {
+          imageSource = "generated";
+        } else if (imageId.startsWith("upl_")) {
+          imageSource = "uploaded";
+        }
+      }
+      if (!imageSource) {
+        imageSource = content.image_url?.url?.startsWith("data:image")
+          ? "generated"
+          : "uploaded";
+      }
+
+      const displayLabel = imageSource === "generated"
+        ? "Generated"
+        : "Uploaded";
+      const badgeColor = imageSource === "generated"
+        ? "bg-purple-500/70"
+        : "bg-blue-500/70";
+
       return (
-        <img
-          key={idx}
-          src={content.image_url.url}
-          alt="User uploaded image"
-          class="max-w-[300px] w-full h-auto rounded-lg shadow-sm"
-        />
+        <div key={idx} class="relative inline-block">
+          <img
+            src={content.image_url.url}
+            alt={`${displayLabel} image${imageId ? ` (${imageId})` : ""}`}
+            class="max-w-[400px] w-full h-auto rounded-lg shadow-md cursor-pointer hover:shadow-lg transition-shadow"
+            onClick={() => {
+              // Open image in a new tab for full view
+              const win = globalThis.open();
+              if (win) {
+                win.document.write(
+                  `<img src="${content.image_url.url}" style="max-width:100%;height:auto;" />`,
+                );
+                win.document.title = imageId || `${displayLabel} Image`;
+              }
+            }}
+          />
+
+          {/* Image ID badge – click to copy the ID for imageedit references */}
+          {imageId && (
+            <div
+              class="absolute bottom-2 left-2 bg-black/60 text-white text-xs px-2 py-1 rounded font-mono cursor-pointer hover:bg-black/80"
+              title={`Image ID: ${imageId} (click to copy)`}
+              onClick={(e) => {
+                e.stopPropagation();
+                navigator.clipboard?.writeText(imageId);
+                const el = e.currentTarget as HTMLElement;
+                const original = el.textContent;
+                el.textContent = "Copied!";
+                setTimeout(() => {
+                  el.textContent = original;
+                }, 1000);
+              }}
+            >
+              {imageId}
+            </div>
+          )}
+
+          {/* Source indicator */}
+          <div
+            class={`absolute top-2 right-2 text-xs px-2 py-0.5 rounded ${badgeColor} text-white`}
+          >
+            {displayLabel}
+          </div>
+        </div>
       );
     }
     if (content?.type === "pdf") {
@@ -304,23 +502,23 @@ export default function ChatTemplate(props: {
       );
     }
     if (typeof content === "string") {
-      return <span key={idx}>{renderTextWithLinksAndBold(content)}</span>;
+      return <div key={idx}>{renderRichText(content)}</div>;
     }
     return null;
   };
 
   useEffect(() => {}, []);
 
-  return (
-    <div class="relative">
-      {/* Fixed toolbar: on desktop absolute top-right; on mobile stacked above chat */}
-      <div
-        class="
-          z-20 w-full flex flex-wrap items-center gap-2 justify-center mb-2
-          md:w-auto md:absolute md:-top-12 md:right-0 md:justify-end md:mb-0
-        "
-      >
+  // Language-aware defaults for the {}-button
+  const defaultSkipOn =
+    lang === "de" ? "In {} stehenden Text überspringen" : "Skip contents in {}";
+  const defaultSkipOff =
+    lang === "de" ? "Text in {} mit vorlesen" : "Read contents in {}";
 
+  return (
+    <div class="relative w-full">
+      {/* CENTERED toolbar row: sits directly above the chat history */}
+      <div class="w-full flex flex-wrap items-center justify-center gap-2 mb-2">
         {!isComplete && (
           <button
             type="button"
@@ -344,8 +542,34 @@ export default function ChatTemplate(props: {
           title={chatTemplateContent[lang]?.readOutText ?? "Vorlesen"}
         >
           {readAlways
-            ? (chatTemplateContent[lang]?.silent ?? "Stumm")
-            : (chatTemplateContent[lang]?.readOutText ?? "Vorlesen")}
+            ? (chatTemplateContent[lang]?.silent ?? (
+              lang === "de" ? "Stumm" : "Silent"
+            ))
+            : (chatTemplateContent[lang]?.readOutText ?? (
+              lang === "de" ? "Vorlesen" : "Read out text"
+            ))}
+        </button>
+
+        {/* Skip JSON / { ... } blocks button */}
+        <button
+          type="button"
+          onClick={onToggleSkipCurlyBracesAction}
+          class={`px-3 py-1 rounded text-sm border transition
+            ${
+              skipCurlyBraces
+                ? "bg-purple-600 text-white border-purple-600"
+                : "bg-white text-gray-700 border-gray-300 hover:bg-gray-50"
+            }`}
+          title={
+            chatTemplateContent[lang]?.skipJsonTooltip ??
+            (lang === "de"
+              ? "Text in geschweiften Klammern { ... } beim Vorlesen überspringen."
+              : "Skip JSON / text inside { ... } when reading aloud.")
+          }
+        >
+          {skipCurlyBraces
+            ? (chatTemplateContent[lang]?.skipJsonOn ?? defaultSkipOn)
+            : (chatTemplateContent[lang]?.skipJsonOff ?? defaultSkipOff)}
         </button>
 
         <button
@@ -360,25 +584,26 @@ export default function ChatTemplate(props: {
           title={
             autoScroll
               ? (chatTemplateContent[lang]?.autoScrollOn ??
-                "Automatisch scrollen: AN")
+                (lang === "de" ? "Automatisch scrollen: AN" : "Auto-scroll: ON"))
               : (chatTemplateContent[lang]?.autoScrollOff ??
-                "Automatisch scrollen: AUS")
+                (lang === "de" ? "Automatisch scrollen: AUS" : "Auto-scroll: OFF"))
           }
         >
           {autoScroll
             ? (chatTemplateContent[lang]?.autoScrollOn ??
-              "Automatisch scrollen")
-            : (chatTemplateContent[lang]?.autoScrollOff ?? "Manuell scrollen")}
+              (lang === "de" ? "Automatisch scrollen" : "Auto-scroll"))
+            : (chatTemplateContent[lang]?.autoScrollOff ??
+              (lang === "de" ? "Manuell scrollen" : "Manual scroll"))}
         </button>
       </div>
 
+      {/* Chat history window */}
       <div
         class={
           messages?.length === 0
             ? `bg-transparent`
             : `chat-history w-full flex flex-col space-y-4 p-4 mx-auto rounded-lg shadow bg-white/75 max-h-[55vh] sm:max-h-[60vh] overflow-y-auto`
         }
-
       >
         {messages?.map((item: AnyMsg, groupIndex: number) => {
           const isUser = item.role === "user";
@@ -393,13 +618,11 @@ export default function ChatTemplate(props: {
                 isUser ? "items-end" : "items-start"
               }`}
             >
-              {/* Per-message toolbar:
-                 - Mobile: relativ & unter der Bubble, gestapelt
-                 - ≥ md: wie zuvor absolut links/rechts über der Bubble */}
+              {/* Per-message toolbar */}
               <div
                 class={`
                   z-20 flex flex-wrap gap-2 justify-end mb-1
-                  md:absolute md:-top-3 ${isUser ? "md:right-1" : "md:left-1"}
+                  ${isUser ? "md:self-end" : "md:self-start"}
                 `}
               >
                 <MessageToolbar
@@ -428,7 +651,7 @@ export default function ChatTemplate(props: {
                 }`}
               >
                 {typeof item.content === "string"
-                  ? <span>{renderTextWithLinksAndBold(item.content)}</span>
+                  ? <div>{renderRichText(item.content)}</div>
                   : (
                     <div class="flex flex-col gap-2">
                       {(item.content as any[]).map((content, idx) =>

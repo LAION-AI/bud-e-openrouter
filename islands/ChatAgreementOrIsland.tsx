@@ -9,7 +9,7 @@ interface ChatAgreementOrIslandProps {
 export default function ChatAgreementOrIsland(
   { lang }: ChatAgreementOrIslandProps,
 ) {
-  const hasAgreed = localStorage.getItem("school-bud-e-agreement") === "true";
+  const hasAgreed = localStorage.getItem("bud-e-agreement") === "true";
   return (
     <>
       {hasAgreed
