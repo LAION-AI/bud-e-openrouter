@@ -51,19 +51,22 @@ function storageKey(chatSuffix: string, imageId: string): string {
 
 /**
  * Stores an image in IndexedDB, namespaced by chat suffix.
+ * Returns false when the image could not be stored - the caller must then keep
+ * the inline data, or the picture would be lost.
  */
-export async function saveImage(chatSuffix: string, imageId: string, dataUrl: string): Promise<void> {
+export async function saveImage(chatSuffix: string, imageId: string, dataUrl: string): Promise<boolean> {
   try {
     const db = await openDB();
     const key = storageKey(chatSuffix, imageId);
-    return new Promise((resolve, reject) => {
+    return await new Promise((resolve, reject) => {
       const tx = db.transaction(STORE_NAME, "readwrite");
       tx.objectStore(STORE_NAME).put(dataUrl, key);
-      tx.oncomplete = () => resolve();
+      tx.oncomplete = () => resolve(true);
       tx.onerror = () => reject(tx.error);
     });
   } catch (e) {
     console.warn("[imageStore] Failed to save image:", chatSuffix, imageId, e);
+    return false;
   }
 }
 
@@ -115,7 +118,37 @@ export async function deleteImage(chatSuffix: string, imageId: string): Promise<
  */
 // deno-lint-ignore no-explicit-any
 export async function stripImagesForStorage(messages: any[], chatSuffix: string): Promise<any[]> {
+  // Written in two passes: first store everything, then replace only those
+  // images that actually made it into IndexedDB.
+  const saved = new Map<string, boolean>();
   const savePromises: Promise<void>[] = [];
+
+  const collect = (part: Record<string, unknown>) => {
+    const imageId = part.id as string;
+    // deno-lint-ignore no-explicit-any
+    const dataUrl = (part as any).image_url.url as string;
+    if (saved.has(imageId)) return;
+    saved.set(imageId, false);
+    savePromises.push(
+      saveImage(chatSuffix, imageId, dataUrl).then((ok) => {
+        saved.set(imageId, ok);
+      }),
+    );
+  };
+
+  for (const msg of messages) {
+    if (!Array.isArray(msg.content)) continue;
+    for (const part of msg.content) {
+      if (
+        part?.type === "image_url" && part?.id &&
+        typeof part?.image_url?.url === "string" &&
+        part.image_url.url.startsWith("data:")
+      ) {
+        collect(part);
+      }
+    }
+  }
+  await Promise.all(savePromises);
 
   const stripped = messages.map((msg) => {
     if (!Array.isArray(msg.content)) return msg;
@@ -132,13 +165,9 @@ export async function stripImagesForStorage(messages: any[], chatSuffix: string)
         (part as any).image_url.url.startsWith("data:")
       ) {
         const imageId = part.id as string;
-        // deno-lint-ignore no-explicit-any
-        const dataUrl = (part as any).image_url.url as string;
+        // Only swap in the placeholder if the image really is in IndexedDB.
+        if (!saved.get(imageId)) return part;
 
-        // Save to IndexedDB namespaced by chat
-        savePromises.push(saveImage(chatSuffix, imageId, dataUrl));
-
-        // Replace with placeholder including chat suffix
         return {
           ...part,
           image_url: { url: `${IDB_PLACEHOLDER}${chatSuffix}:${imageId}` },
@@ -150,8 +179,6 @@ export async function stripImagesForStorage(messages: any[], chatSuffix: string)
     return { ...msg, content: newContent };
   });
 
-  // Wait for all image saves to complete
-  await Promise.all(savePromises);
   return stripped;
 }
 

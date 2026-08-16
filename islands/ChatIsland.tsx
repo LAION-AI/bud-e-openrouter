@@ -20,7 +20,7 @@ import {
 import { useEffect, useRef, useState } from "preact/hooks";
 
 // Internalization
-import { chatIslandContent } from "../internalization/content.ts";
+import { chatIslandContent, mailSyncContent } from "../internalization/content.ts";
 
 // Generated/uploaded images are offloaded to IndexedDB so that base64 payloads
 // don't blow the localStorage quota.
@@ -29,6 +29,30 @@ import {
   rehydrateImages,
   stripImagesForStorage,
 } from "../utils/imageStore.ts";
+
+// Optional sync of the whole local state through an IMAP mailbox the user owns.
+import MailSyncModal from "../components/MailSyncModal.tsx";
+import {
+  applySnapshot,
+  AUTO_LABEL,
+  clearDirty,
+  collectSnapshot,
+  DEFAULT_MAIL_ACCOUNT,
+  getLastSync,
+  guessDeviceName,
+  isDirty,
+  isMailSyncConfigured,
+  KEEP_AUTO_SNAPSHOTS,
+  loadMailAccount,
+  type MailAccount,
+  mailsyncDelete,
+  mailsyncDownload,
+  mailsyncList,
+  mailsyncUpload,
+  markDirty,
+  saveMailAccount,
+  setLastSync,
+} from "../utils/mailsyncClient.ts";
 
 // // Import necessary types from Preact
 // import { JSX } from 'preact';
@@ -169,6 +193,13 @@ export default function ChatIsland({ lang }: { lang: string }) {
   }, [messages]);
 
   const [showSettings, setShowSettings] = useState(false);
+
+  // ---------- Mailbox sync ----------
+  const [mailAccount, setMailAccount] = useState<MailAccount>(
+    DEFAULT_MAIL_ACCOUNT,
+  );
+  const [showMailSync, setShowMailSync] = useState(false);
+  const [mailSyncStatus, setMailSyncStatus] = useState("");
 
   // Abort controller for streaming cancel
   const abortRef = useRef<AbortController | null>(null);
@@ -393,6 +424,178 @@ export default function ChatIsland({ lang }: { lang: string }) {
     );
     setShowSettings(false);
   };
+
+  // ---------- Mailbox sync ----------
+  const ms = (key: string) =>
+    (mailSyncContent[lang]?.[key] ?? mailSyncContent.en[key] ?? key) as string;
+
+  // Load the mail account once, same as the other settings.
+  useEffect(() => {
+    const account = loadMailAccount();
+    if (!account.deviceName) account.deviceName = guessDeviceName();
+    setMailAccount(account);
+  }, []);
+
+  const handleSaveMailAccount = (account: MailAccount) => {
+    setMailAccount(account);
+    saveMailAccount(account);
+  };
+
+  /** Rebuilds the chat list after a snapshot was written into localStorage. */
+  const handleSnapshotRestored = (firstSuffix: string) => {
+    const keys = Object.keys(localStorage).filter((key) =>
+      key.startsWith("bude-chat-")
+    );
+    setLocalStorageKeys(keys);
+    // Stay on the current chat if the snapshot still contains it.
+    const suffix = keys.includes("bude-chat-" + currentChatSuffix)
+      ? currentChatSuffix
+      : firstSuffix;
+    setCurrentChatSuffix(suffix);
+    applyChatMessages(loadChatMessages(suffix), suffix);
+    stopAndResetAudio();
+    clearDirty();
+  };
+
+  const flashStatus = (text: string, durationMs = 5000) => {
+    setMailSyncStatus(text);
+    if (durationMs > 0) {
+      window.setTimeout(() => setMailSyncStatus(""), durationMs);
+    }
+  };
+
+  // --- automatic download of a newer snapshot, once per page load ---
+  const autoDownloadDoneRef = useRef(false);
+  useEffect(() => {
+    if (autoDownloadDoneRef.current) return;
+    if (!mailAccount.autoDownload || !isMailSyncConfigured(mailAccount)) return;
+    autoDownloadDoneRef.current = true;
+
+    (async () => {
+      try {
+        setMailSyncStatus(ms("autoChecking"));
+        const list = await mailsyncList(mailAccount);
+        const newest = list.find((s) => s.complete);
+        const last = getLastSync();
+        if (!newest || (last && newest.created <= last)) {
+          setMailSyncStatus("");
+          return;
+        }
+        // Never silently overwrite work that has not been backed up yet.
+        if (isDirty()) {
+          const question = ms("autoDownloadPrompt")
+            .replace("{when}", new Date(newest.created).toLocaleString())
+            .replace("{device}", newest.device || "?");
+          if (!confirm(question)) {
+            setMailSyncStatus("");
+            return;
+          }
+        }
+        const json = await mailsyncDownload(mailAccount, newest.uids);
+        const result = await applySnapshot(json, { restorePrefs: true });
+        setLastSync(newest.created);
+        handleSnapshotRestored(result.firstSuffix);
+        flashStatus(`${ms("autoRestored")} (${result.chats})`);
+      } catch (e) {
+        flashStatus(
+          `${ms("syncError")}: ${e instanceof Error ? e.message : String(e)}`,
+          8000,
+        );
+      }
+    })();
+  }, [mailAccount]);
+
+  // --- automatic upload after changes ---
+  const AUTO_UPLOAD_DEBOUNCE_MS = 60_000;
+  const AUTO_UPLOAD_MIN_INTERVAL_MS = 10 * 60_000;
+  const lastAutoUploadRef = useRef(0);
+  const autoUploadRunningRef = useRef(false);
+
+  const runAutoUpload = async () => {
+    if (autoUploadRunningRef.current || !isDirty()) return;
+    autoUploadRunningRef.current = true;
+    try {
+      setMailSyncStatus(ms("autoUploading"));
+      const json = await collectSnapshot(mailAccount.deviceName);
+      const result = await mailsyncUpload(mailAccount, json, AUTO_LABEL);
+      lastAutoUploadRef.current = Date.now();
+      setLastSync(result.created);
+      clearDirty();
+      await pruneAutoSnapshots();
+      flashStatus(ms("autoUploaded"));
+    } catch (e) {
+      flashStatus(
+        `${ms("syncError")}: ${e instanceof Error ? e.message : String(e)}`,
+        8000,
+      );
+    } finally {
+      autoUploadRunningRef.current = false;
+    }
+  };
+
+  /** Keeps the mailbox from filling up with background backups. */
+  const pruneAutoSnapshots = async () => {
+    try {
+      const list = await mailsyncList(mailAccount);
+      const stale = list
+        .filter((s) => s.label === AUTO_LABEL)
+        .slice(KEEP_AUTO_SNAPSHOTS);
+      if (stale.length === 0) return;
+      await mailsyncDelete(mailAccount, stale.flatMap((s) => s.uids));
+    } catch (e) {
+      console.warn("[mailsync] pruning old auto snapshots failed:", e);
+    }
+  };
+
+  /**
+   * Cheap change signal. Serialising the messages would mean stringifying
+   * multi-megabyte base64 images on every streamed token; lengths and image
+   * ids are enough to notice an edit.
+   */
+  const fingerprint = (msgs: Message[]): string =>
+    msgs
+      .map((m) =>
+        Array.isArray(m.content)
+          // deno-lint-ignore no-explicit-any
+          ? (m.content as any[])
+            .map((c) =>
+              typeof c === "string"
+                ? c.length
+                : c?.type === "image_url"
+                ? c.id ?? "img"
+                : String(c?.text ?? "").length
+            )
+            .join(",")
+          : String(m.content).length
+      )
+      .join("|");
+
+  // Switching chats replaces `messages` without anything having changed, so
+  // remember what we last saw per chat and only treat real edits as dirty.
+  const lastSeenRef = useRef<{ suffix: string; print: string }>({
+    suffix: "",
+    print: "",
+  });
+
+  useEffect(() => {
+    if (firstLoad) return;
+    if (!mailAccount.autoUpload || !isMailSyncConfigured(mailAccount)) return;
+
+    const print = fingerprint(messages);
+    const previous = lastSeenRef.current;
+    lastSeenRef.current = { suffix: currentChatSuffix, print };
+    if (previous.suffix !== currentChatSuffix || previous.print === print) return;
+    markDirty();
+
+    // Restarts on every change, so the upload only happens once the user has
+    // been quiet for a while - and never more often than the minimum interval.
+    const sinceLast = Date.now() - lastAutoUploadRef.current;
+    const wait = lastAutoUploadRef.current === 0
+      ? AUTO_UPLOAD_DEBOUNCE_MS
+      : Math.max(AUTO_UPLOAD_DEBOUNCE_MS, AUTO_UPLOAD_MIN_INTERVAL_MS - sinceLast);
+    const timer = window.setTimeout(() => void runAutoUpload(), wait);
+    return () => clearTimeout(timer);
+  }, [messages, currentChatSuffix, mailAccount]);
 
   // #################
   // ### useEffect ###
@@ -3354,6 +3557,23 @@ export default function ChatIsland({ lang }: { lang: string }) {
           </svg>
         </button>
 
+        {isMailSyncConfigured(mailAccount) && (
+          <button
+            class="rounded-full bg-slate-200 px-4 py-2 mx-2 mb-2"
+            title={mailSyncContent[lang]?.title ?? "Snapshots"}
+            onClick={() => setShowMailSync(true)}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="24"
+              viewBox="0 -960 960 960"
+              width="24"
+            >
+              <path d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v480q0 33-23.5 56.5T800-160H160Zm320-280 320-200v-80L480-520 160-720v80l320 200Z" />
+            </svg>
+          </button>
+        )}
+
         {[...localStorageKeys]
           .sort((a, b) => Number(a.slice(10)) - Number(b.slice(10)))
           .map((key) => {
@@ -3459,6 +3679,12 @@ export default function ChatIsland({ lang }: { lang: string }) {
         </button>
       </div>
 
+      {mailSyncStatus && (
+        <div class="text-center text-xs text-gray-500 mb-2 break-words">
+          {mailSyncStatus}
+        </div>
+      )}
+
       <ChatTemplate
         lang={lang}
         parentImages={images}
@@ -3491,9 +3717,25 @@ export default function ChatIsland({ lang }: { lang: string }) {
       {showSettings && (
         <Settings
           settings={settings}
+          mailAccount={mailAccount}
           onSave={handleSaveSettings}
+          onSaveMailAccount={handleSaveMailAccount}
+          onOpenMailSync={(account) => {
+            handleSaveMailAccount(account);
+            setShowSettings(false);
+            setShowMailSync(true);
+          }}
           onClose={() => setShowSettings(false)}
           lang={lang}
+        />
+      )}
+
+      {showMailSync && (
+        <MailSyncModal
+          account={mailAccount}
+          lang={lang}
+          onClose={() => setShowMailSync(false)}
+          onRestored={handleSnapshotRestored}
         />
       )}
 

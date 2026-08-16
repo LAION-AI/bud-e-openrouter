@@ -1,10 +1,39 @@
 // components/Settings.tsx
 import { useState } from "preact/hooks";
 import { settingsContent } from "../internalization/content.ts";
+import {
+  guessDeviceName,
+  isMailSyncConfigured,
+  type MailAccount,
+  mailsyncTest,
+} from "../utils/mailsyncClient.ts";
+
+/** The three transport modes we expose, mapped onto the two boolean flags. */
+type Security = "tls" | "starttls" | "none";
+
+function securityOf(tls: boolean, starttls: boolean): Security {
+  if (tls) return "tls";
+  if (starttls) return "starttls";
+  return "none";
+}
+
+function applySecurity(
+  mode: Security,
+  ports: { tls: number; starttls: number; plain: number },
+) {
+  if (mode === "tls") return { tls: true, starttls: false, port: ports.tls };
+  if (mode === "starttls") {
+    return { tls: false, starttls: true, port: ports.starttls };
+  }
+  return { tls: false, starttls: false, port: ports.plain };
+}
 
 export default function Settings({
   settings,
+  mailAccount,
   onSave,
+  onSaveMailAccount,
+  onOpenMailSync,
   onClose,
   lang = "en",
 }: {
@@ -25,7 +54,10 @@ export default function Settings({
     vlmModel: string;
     vlmCorrectionModel: string;
   };
+  mailAccount: MailAccount;
   onSave: (newSettings: typeof settings) => void;
+  onSaveMailAccount: (account: MailAccount) => void;
+  onOpenMailSync: (account: MailAccount) => void;
   onClose: () => void;
   lang?: string;
 }) {
@@ -45,6 +77,37 @@ export default function Settings({
   });
 
   const [showAdvanced, setShowAdvanced] = useState(false);
+
+  // --- Mailbox sync ---
+  const [mail, setMail] = useState<MailAccount>({
+    ...mailAccount,
+    deviceName: mailAccount.deviceName || guessDeviceName(),
+  });
+  const [showMailSync, setShowMailSync] = useState(false);
+  const [mailTest, setMailTest] = useState<
+    { state: "idle" | "busy" | "ok" | "error"; message: string }
+  >({ state: "idle", message: "" });
+
+  const updateMail = (patch: Partial<MailAccount>) =>
+    setMail((prev) => ({ ...prev, ...patch }));
+
+  const testMailConnection = async () => {
+    setMailTest({ state: "busy", message: "" });
+    try {
+      const result = await mailsyncTest(mail);
+      setMailTest({
+        state: "ok",
+        message: `${settingsContent[lang].connectionOk} (${
+          result.snapshotMails ?? 0
+        })`,
+      });
+    } catch (e) {
+      setMailTest({
+        state: "error",
+        message: e instanceof Error ? e.message : String(e),
+      });
+    }
+  };
 
   const providerConfigs = {
     googleai: {
@@ -221,6 +284,336 @@ export default function Settings({
             class="w-full p-2 border rounded focus:ring-2 focus:ring-blue-500 min-h-[8rem]"
             placeholder="Optional: override the default system prompt for all chats in this browser"
           />
+        </div>
+
+        {/* Mailbox sync (own section, collapsed by default) */}
+        <div class="mb-4 border rounded">
+          <button
+            onClick={() => setShowMailSync(!showMailSync)}
+            class="w-full text-left px-3 py-2 font-medium flex justify-between items-center"
+          >
+            <span>{settingsContent[lang].mailSyncTitle}</span>
+            <span class="text-gray-400">{showMailSync ? "-" : "+"}</span>
+          </button>
+
+          {showMailSync && (
+            <div class="px-3 pb-3 space-y-3">
+              <p class="text-xs text-gray-500">
+                {settingsContent[lang].mailSyncHint}
+              </p>
+
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">
+                  {settingsContent[lang].imapHostLabel}
+                </label>
+                <input
+                  type="text"
+                  value={mail.imapHost}
+                  onInput={(e) =>
+                    updateMail({
+                      imapHost: (e.target as HTMLInputElement).value.trim(),
+                    })}
+                  class="w-full p-2 border rounded focus:ring-2 focus:ring-blue-500"
+                  placeholder={settingsContent[lang].imapHostPlaceholder}
+                />
+              </div>
+
+              <div class="flex gap-2">
+                <div class="flex-1">
+                  <label class="block text-sm font-medium text-gray-700 mb-1">
+                    {settingsContent[lang].imapSecurityLabel}
+                  </label>
+                  <select
+                    value={securityOf(mail.imapTls, mail.imapStartTls)}
+                    onChange={(e) => {
+                      const mode = (e.target as HTMLSelectElement)
+                        .value as Security;
+                      const next = applySecurity(mode, {
+                        tls: 993,
+                        starttls: 143,
+                        plain: 143,
+                      });
+                      updateMail({
+                        imapTls: next.tls,
+                        imapStartTls: next.starttls,
+                        imapPort: next.port,
+                      });
+                    }}
+                    class="w-full p-2 border rounded bg-white"
+                  >
+                    <option value="tls">
+                      {settingsContent[lang].imapSecurityTls}
+                    </option>
+                    <option value="starttls">
+                      {settingsContent[lang].imapSecurityStartTls}
+                    </option>
+                    <option value="none">
+                      {settingsContent[lang].imapSecurityNone}
+                    </option>
+                  </select>
+                </div>
+                <div class="w-24">
+                  <label class="block text-sm font-medium text-gray-700 mb-1">
+                    {settingsContent[lang].imapPortLabel}
+                  </label>
+                  <input
+                    type="number"
+                    value={mail.imapPort}
+                    onInput={(e) =>
+                      updateMail({
+                        imapPort: Number((e.target as HTMLInputElement).value) ||
+                          0,
+                      })}
+                    class="w-full p-2 border rounded"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">
+                  {settingsContent[lang].imapUserLabel}
+                </label>
+                <input
+                  type="text"
+                  value={mail.imapUser}
+                  onInput={(e) =>
+                    updateMail({
+                      imapUser: (e.target as HTMLInputElement).value.trim(),
+                    })}
+                  class="w-full p-2 border rounded focus:ring-2 focus:ring-blue-500"
+                  placeholder={settingsContent[lang].imapUserPlaceholder}
+                />
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">
+                  {settingsContent[lang].imapPassLabel}
+                </label>
+                <input
+                  type="password"
+                  value={mail.imapPass}
+                  onInput={(e) =>
+                    updateMail({ imapPass: (e.target as HTMLInputElement).value })}
+                  class="w-full p-2 border rounded focus:ring-2 focus:ring-blue-500 bg-yellow-50"
+                  placeholder={settingsContent[lang].imapPassPlaceholder}
+                />
+              </div>
+
+              <div class="flex gap-2">
+                <div class="flex-1">
+                  <label class="block text-sm font-medium text-gray-700 mb-1">
+                    {settingsContent[lang].folderLabel}
+                  </label>
+                  <input
+                    type="text"
+                    value={mail.folder}
+                    onInput={(e) =>
+                      updateMail({
+                        folder: (e.target as HTMLInputElement).value.trim(),
+                      })}
+                    class="w-full p-2 border rounded"
+                    placeholder={settingsContent[lang].folderPlaceholder}
+                  />
+                </div>
+                <div class="flex-1">
+                  <label class="block text-sm font-medium text-gray-700 mb-1">
+                    {settingsContent[lang].deviceNameLabel}
+                  </label>
+                  <input
+                    type="text"
+                    value={mail.deviceName}
+                    onInput={(e) =>
+                      updateMail({
+                        deviceName: (e.target as HTMLInputElement).value,
+                      })}
+                    class="w-full p-2 border rounded"
+                    placeholder={settingsContent[lang].deviceNamePlaceholder}
+                  />
+                </div>
+              </div>
+
+              <label class="flex items-start gap-2 text-sm">
+                <input
+                  type="checkbox"
+                  class="mt-1"
+                  checked={mail.autoUpload}
+                  onChange={(e) =>
+                    updateMail({
+                      autoUpload: (e.target as HTMLInputElement).checked,
+                    })}
+                />
+                <span>{settingsContent[lang].autoUploadLabel}</span>
+              </label>
+              <label class="flex items-start gap-2 text-sm">
+                <input
+                  type="checkbox"
+                  class="mt-1"
+                  checked={mail.autoDownload}
+                  onChange={(e) =>
+                    updateMail({
+                      autoDownload: (e.target as HTMLInputElement).checked,
+                    })}
+                />
+                <span>{settingsContent[lang].autoDownloadLabel}</span>
+              </label>
+
+              {/* Optional SMTP path */}
+              <label class="flex items-start gap-2 text-sm">
+                <input
+                  type="checkbox"
+                  class="mt-1"
+                  checked={mail.useSmtp}
+                  onChange={(e) =>
+                    updateMail({
+                      useSmtp: (e.target as HTMLInputElement).checked,
+                    })}
+                />
+                <span>{settingsContent[lang].useSmtpLabel}</span>
+              </label>
+
+              {mail.useSmtp && (
+                <div class="space-y-3 pl-6 border-l-2 border-slate-200">
+                  <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">
+                      {settingsContent[lang].smtpHostLabel}
+                    </label>
+                    <input
+                      type="text"
+                      value={mail.smtpHost}
+                      onInput={(e) =>
+                        updateMail({
+                          smtpHost: (e.target as HTMLInputElement).value.trim(),
+                        })}
+                      class="w-full p-2 border rounded"
+                    />
+                  </div>
+                  <div class="flex gap-2">
+                    <div class="flex-1">
+                      <label class="block text-sm font-medium text-gray-700 mb-1">
+                        {settingsContent[lang].smtpSecurityLabel}
+                      </label>
+                      <select
+                        value={securityOf(mail.smtpTls, mail.smtpStartTls)}
+                        onChange={(e) => {
+                          const mode = (e.target as HTMLSelectElement)
+                            .value as Security;
+                          const next = applySecurity(mode, {
+                            tls: 465,
+                            starttls: 587,
+                            plain: 25,
+                          });
+                          updateMail({
+                            smtpTls: next.tls,
+                            smtpStartTls: next.starttls,
+                            smtpPort: next.port,
+                          });
+                        }}
+                        class="w-full p-2 border rounded bg-white"
+                      >
+                        <option value="tls">TLS (465)</option>
+                        <option value="starttls">STARTTLS (587)</option>
+                        <option value="none">
+                          {settingsContent[lang].imapSecurityNone}
+                        </option>
+                      </select>
+                    </div>
+                    <div class="w-24">
+                      <label class="block text-sm font-medium text-gray-700 mb-1">
+                        {settingsContent[lang].smtpPortLabel}
+                      </label>
+                      <input
+                        type="number"
+                        value={mail.smtpPort}
+                        onInput={(e) =>
+                          updateMail({
+                            smtpPort:
+                              Number((e.target as HTMLInputElement).value) || 0,
+                          })}
+                        class="w-full p-2 border rounded"
+                      />
+                    </div>
+                  </div>
+                  <input
+                    type="text"
+                    value={mail.smtpUser}
+                    onInput={(e) =>
+                      updateMail({
+                        smtpUser: (e.target as HTMLInputElement).value.trim(),
+                      })}
+                    class="w-full p-2 border rounded"
+                    placeholder={settingsContent[lang].smtpUserLabel}
+                  />
+                  <input
+                    type="password"
+                    value={mail.smtpPass}
+                    onInput={(e) =>
+                      updateMail({
+                        smtpPass: (e.target as HTMLInputElement).value,
+                      })}
+                    class="w-full p-2 border rounded bg-yellow-50"
+                    placeholder={settingsContent[lang].smtpPassLabel}
+                  />
+                  <input
+                    type="text"
+                    value={mail.fromAddress}
+                    onInput={(e) =>
+                      updateMail({
+                        fromAddress: (e.target as HTMLInputElement).value.trim(),
+                      })}
+                    class="w-full p-2 border rounded"
+                    placeholder={settingsContent[lang].fromAddressLabel}
+                  />
+                  <input
+                    type="text"
+                    value={mail.toAddress}
+                    onInput={(e) =>
+                      updateMail({
+                        toAddress: (e.target as HTMLInputElement).value.trim(),
+                      })}
+                    class="w-full p-2 border rounded"
+                    placeholder={settingsContent[lang].toAddressLabel}
+                  />
+                </div>
+              )}
+
+              <div class="flex flex-wrap gap-2 pt-1">
+                <button
+                  onClick={testMailConnection}
+                  disabled={!isMailSyncConfigured(mail) ||
+                    mailTest.state === "busy"}
+                  class="px-3 py-2 bg-slate-200 rounded hover:bg-slate-300 disabled:opacity-50 text-sm"
+                >
+                  {mailTest.state === "busy"
+                    ? settingsContent[lang].testing
+                    : settingsContent[lang].testConnection}
+                </button>
+                <button
+                  onClick={() => {
+                    onSaveMailAccount(mail);
+                    onOpenMailSync(mail);
+                  }}
+                  disabled={!isMailSyncConfigured(mail)}
+                  class="px-3 py-2 bg-green-200 rounded hover:bg-green-300 disabled:opacity-50 text-sm font-medium"
+                >
+                  {settingsContent[lang].openMailSync}
+                </button>
+              </div>
+
+              {!isMailSyncConfigured(mail) && (
+                <p class="text-xs text-gray-500">
+                  {settingsContent[lang].mailSyncNotConfigured}
+                </p>
+              )}
+              {mailTest.state === "ok" && (
+                <p class="text-xs text-green-700">{mailTest.message}</p>
+              )}
+              {mailTest.state === "error" && (
+                <p class="text-xs text-red-700 break-words">
+                  {mailTest.message}
+                </p>
+              )}
+            </div>
+          )}
         </div>
 
         {/* Advanced Settings Toggle Button */}
@@ -443,7 +836,10 @@ export default function Settings({
             {settingsContent[lang].cancel}
           </button>
           <button
-            onClick={() => onSave(newSettings)}
+            onClick={() => {
+              onSaveMailAccount(mail);
+              onSave(newSettings);
+            }}
             class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
           >
             {settingsContent[lang].save}
