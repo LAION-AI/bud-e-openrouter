@@ -6,31 +6,44 @@
 import { useEffect, useState } from "preact/hooks";
 import { mailSyncContent } from "../internalization/content.ts";
 import {
+  applyKeyEntry,
   applySnapshot,
   collectSnapshot,
   formatBytes,
   formatCreated,
+  type KeyEntry,
+  keyEntryServices,
+  type KeySettings,
+  keyringLoad,
+  keyringRemove,
+  keyringSave,
   type MailAccount,
   mailsyncDelete,
   mailsyncDownload,
   mailsyncList,
   mailsyncUpload,
+  maskKey,
   setLastSync,
   type SnapshotSummary,
 } from "../utils/mailsyncClient.ts";
 
-type Busy = "" | "list" | "upload" | "download" | "delete";
+type Busy = "" | "list" | "upload" | "download" | "delete" | "keys";
 
 export default function MailSyncModal({
   account,
   lang = "en",
+  settings,
   onClose,
   onRestored,
+  onKeysApplied,
 }: {
   account: MailAccount;
   lang?: string;
+  /** Current credentials of this browser, for storing them in the mailbox. */
+  settings: Partial<KeySettings>;
   onClose: () => void;
   onRestored: (firstSuffix: string) => void;
+  onKeysApplied: () => void;
 }) {
   const t = (key: string) =>
     (mailSyncContent[lang]?.[key] ?? mailSyncContent.en[key] ?? key) as string;
@@ -43,6 +56,10 @@ export default function MailSyncModal({
   const [label, setLabel] = useState("");
   const [replaceAll, setReplaceAll] = useState(false);
   const [restorePrefs, setRestorePrefs] = useState(true);
+
+  const [tab, setTab] = useState<"snapshots" | "keys">("snapshots");
+  const [keyring, setKeyring] = useState<KeyEntry[]>([]);
+  const [keyLabel, setKeyLabel] = useState("");
 
   const refresh = async () => {
     setBusy("list");
@@ -57,9 +74,69 @@ export default function MailSyncModal({
     }
   };
 
+  const refreshKeys = async () => {
+    setBusy("keys");
+    setError("");
+    try {
+      setKeyring(await keyringLoad(account));
+    } catch (e) {
+      setError(e instanceof Error ? e.message : String(e));
+    } finally {
+      setBusy("");
+    }
+  };
+
   useEffect(() => {
     refresh();
   }, []);
+
+  useEffect(() => {
+    if (tab === "keys" && keyring.length === 0) refreshKeys();
+  }, [tab]);
+
+  const saveKeys = async () => {
+    setBusy("keys");
+    setError("");
+    setNotice("");
+    try {
+      const result = await keyringSave(
+        account,
+        settings,
+        keyLabel.trim() || account.deviceName || "Standard",
+      );
+      setNotice(result.replaced ? t("keysReplaced") : t("keysSaved"));
+      setKeyLabel("");
+      setKeyring(await keyringLoad(account));
+    } catch (e) {
+      setError(e instanceof Error ? e.message : String(e));
+    } finally {
+      setBusy("");
+    }
+  };
+
+  const useKeys = (entry: KeyEntry) => {
+    if (!confirm(t("keysConfirmApply").replace("{label}", entry.label))) return;
+    const applied = applyKeyEntry(entry);
+    setNotice(`${t("keysApplied")} (${applied})`);
+    setError("");
+    onKeysApplied();
+  };
+
+  const removeKeys = async (entry: KeyEntry) => {
+    if (!confirm(t("keysConfirmRemove").replace("{label}", entry.label))) return;
+    setBusy("keys");
+    setError("");
+    setNotice("");
+    try {
+      await keyringRemove(account, entry.id);
+      setNotice(t("keysRemoved"));
+      setKeyring(await keyringLoad(account));
+    } catch (e) {
+      setError(e instanceof Error ? e.message : String(e));
+    } finally {
+      setBusy("");
+    }
+  };
 
   const backupNow = async () => {
     setBusy("upload");
@@ -160,6 +237,115 @@ export default function MailSyncModal({
           </button>
         </div>
 
+        {/* Tabs */}
+        <div class="flex border-b">
+          {(["snapshots", "keys"] as const).map((name) => (
+            <button
+              key={name}
+              onClick={() => {
+                setTab(name);
+                setError("");
+                setNotice("");
+              }}
+              class={`px-5 py-3 text-sm font-medium border-b-2 ${
+                tab === name
+                  ? "border-blue-500 text-blue-600"
+                  : "border-transparent text-gray-500 hover:text-gray-700"
+              }`}
+            >
+              {name === "snapshots" ? t("tabSnapshots") : t("tabKeys")}
+            </button>
+          ))}
+        </div>
+
+        {tab === "keys" && (
+          <>
+            <div class="p-5 border-b bg-gray-50">
+              <p class="text-xs text-gray-600 mb-3">{t("keysIntro")}</p>
+              <div class="flex flex-wrap gap-2 items-center">
+                <input
+                  type="text"
+                  value={keyLabel}
+                  disabled={working}
+                  onInput={(e) =>
+                    setKeyLabel((e.target as HTMLInputElement).value)}
+                  placeholder={t("keysSaveLabel")}
+                  class="flex-1 min-w-[12rem] p-2 border rounded focus:ring-2 focus:ring-blue-500"
+                />
+                <button
+                  onClick={saveKeys}
+                  disabled={working}
+                  class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 disabled:opacity-50"
+                >
+                  {busy === "keys" ? t("keysSaving") : t("keysSave")}
+                </button>
+                <button
+                  onClick={refreshKeys}
+                  disabled={working}
+                  class="px-4 py-2 bg-slate-200 rounded hover:bg-slate-300 disabled:opacity-50"
+                >
+                  {t("refresh")}
+                </button>
+              </div>
+            </div>
+
+            {error && (
+              <div class="mx-5 mt-4 p-3 bg-red-50 border border-red-200 text-red-700 rounded text-sm break-words">
+                {error}
+              </div>
+            )}
+            {notice && !error && (
+              <div class="mx-5 mt-4 p-3 bg-green-50 border border-green-200 text-green-700 rounded text-sm">
+                {notice}
+              </div>
+            )}
+
+            <div class="flex-1 overflow-y-auto p-5">
+              {keyring.length === 0 && !working && (
+                <p class="text-gray-500 text-sm">{t("keysNone")}</p>
+              )}
+              <ul class="space-y-2">
+                {keyring.map((entry) => (
+                  <li
+                    key={entry.id}
+                    class="border rounded p-3 flex flex-wrap gap-3 items-center"
+                  >
+                    <div class="flex-1 min-w-[14rem]">
+                      <div class="font-medium">{entry.label}</div>
+                      <div class="text-xs text-gray-500 break-all">
+                        {keyEntryServices(entry).join(", ") || "-"}
+                        {" - "}
+                        {maskKey(entry.universalApiKey || entry.apiKey)}
+                        {entry.created
+                          ? ` - ${t("keysCreated")} ${
+                            formatCreated(entry.created)
+                          }`
+                          : ""}
+                      </div>
+                    </div>
+                    <button
+                      onClick={() => useKeys(entry)}
+                      disabled={working}
+                      class="px-3 py-1.5 bg-green-200 rounded hover:bg-green-300 disabled:opacity-50 text-sm font-medium"
+                    >
+                      {t("keysApply")}
+                    </button>
+                    <button
+                      onClick={() => removeKeys(entry)}
+                      disabled={working}
+                      class="px-3 py-1.5 bg-red-200 rounded hover:bg-red-300 disabled:opacity-50 text-sm"
+                    >
+                      {busy === "keys" ? t("keysRemoving") : t("keysRemove")}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </>
+        )}
+
+        {tab === "snapshots" && (
+        <>
         {/* Backup row */}
         <div class="p-5 border-b bg-gray-50">
           <div class="flex flex-wrap gap-2 items-center">
@@ -285,6 +471,8 @@ export default function MailSyncModal({
             </button>
           </div>
         </div>
+        </>
+        )}
       </div>
     </div>
   );

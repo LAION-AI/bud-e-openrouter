@@ -1,0 +1,348 @@
+================================================================================
+PYTHON-NOTEBOOK IM BROWSER - MACHBARKEITSANALYSE
+Colab-aehnliche Zellen, Dateiexplorer, Projektspeicherung im Postfach
+Stand: 18.08.2026
+================================================================================
+
+ANTWORT VORWEG
+--------------
+Ja, das geht - und zwar vollstaendig im Browser, ohne dass auf dem Server
+Schuelercode ausgefuehrt wird. Die Technik dafuer heisst Pyodide: CPython, nach
+WebAssembly uebersetzt. Auch das Nachinstallieren von Bibliotheken zur Laufzeit
+funktioniert, mit einer wichtigen Einschraenkung, die weiter unten steht.
+
+Die drei Wuensche haben sehr unterschiedliche Groessenordnungen:
+
+  Notebook mit Zellen und Ausfuehrung    machbar, mittlerer Aufwand
+  Projekte im Postfach sichern           klein, baut auf dem vorhandenen Sync auf
+  Dateiexplorer als Overlay              klein bis mittel
+
+Der Knackpunkt ist nicht Python, sondern zwei Browser-Details: eine blockierende
+input()-Funktion und ein funktionierender Abbrechen-Knopf. Beide brauchen
+dasselbe Werkzeug (SharedArrayBuffer), und das hat eine Nebenwirkung auf die
+gesamte Seite. Dazu Abschnitt 4.
+
+
+================================================================================
+1. WARUM PYODIDE UND NICHT ETWAS ANDERES
+================================================================================
+
+Kandidaten, die ich verworfen habe:
+
+  Server-seitige Ausfuehrung
+    Genau das macht die Flutter-App heute ("Python server-first"). Fuer eine
+    Schulklasse heisst das: beliebiger Schuelercode laeuft auf deinem Server.
+    Das braucht Container, Ressourcenlimits, Zeitlimits, Netzwerkabschottung -
+    und einen Vorfall gibt es trotzdem irgendwann. Fuer den Lernzweck ist der
+    Aufwand unverhaeltnismaessig.
+
+  Skulpt / Brython
+    Reine JavaScript-Reimplementierungen von Python. Klein und schnell geladen,
+    aber kein echtes CPython: numpy, pandas, matplotlib laufen nicht. Fuer
+    "erste Schleife schreiben" reicht es, fuer alles darueber nicht mehr.
+
+  Pyodide                                                        -- Empfehlung
+    Echtes CPython in WebAssembly. Derselbe Interpreter, dieselbe Semantik,
+    dieselben Fehlermeldungen, die die Schueler spaeter auch lokal sehen.
+    numpy, pandas, matplotlib, scipy, sympy, Pillow, scikit-learn sind als
+    vorgebaute Pakete dabei.
+
+Wesentlich fuer den Schuleinsatz: Pyodide laeuft in der WASM-Sandbox des
+Browsers. Der Code kommt nicht an das echte Dateisystem, nicht an andere
+Tabs, nicht an den Server. Ein Schueler kann seinen eigenen Tab zum Absturz
+bringen, mehr nicht.
+
+
+================================================================================
+2. WAS DAS KOSTET (LADEZEIT UND GROESSE)
+================================================================================
+
+Groessenordnungen - bitte vor der Umsetzung an der dann aktuellen Version
+nachmessen, die Zahlen wandern von Release zu Release:
+
+  Pyodide-Kern (Interpreter + Stdlib)   ca. 10-15 MB, komprimiert uebertragen
+  numpy                                  ca. 3-8 MB zusaetzlich
+  pandas                                 ca. 5-10 MB zusaetzlich
+  matplotlib                             ca. 5-10 MB zusaetzlich
+
+Erster Start also ein paar Sekunden, danach liegt alles im HTTP-Cache des
+Browsers und der Start ist praktisch sofort. Entscheidend:
+
+  - Pakete werden NUR geladen, wenn sie importiert werden. Wer nur Schleifen
+    und Listen uebt, laedt nie numpy.
+  - Pyodide erst laden, wenn das Notebook-Overlay zum ersten Mal geoeffnet
+    wird. Wer nie darauf klickt, zahlt nichts.
+  - Selbst hosten, nicht vom CDN. Fuer eine Schule mit 30 Rechnern im selben
+    Netz ist der lokale Server um Groessenordnungen schneller, und es
+    funktioniert auch ohne Internet. Die vollstaendige Distribution ist
+    einige hundert MB; man kann auf Kern plus die tatsaechlich gewuenschten
+    Pakete reduzieren.
+
+
+================================================================================
+3. BIBLIOTHEKEN NACHINSTALLIEREN - JA, MIT EINER EINSCHRAENKUNG
+================================================================================
+
+Das ist dein "das faende ich total super". Es geht, aber es zerfaellt in zwei
+Faelle, und der Unterschied ist wichtig genug, um ihn den Schuelern zu erklaeren.
+
+FALL A: REINE PYTHON-PAKETE - funktioniert zur Laufzeit
+    import micropip
+    await micropip.install("requests-toolbelt")
+    await micropip.install("rich")
+
+  micropip holt das Wheel direkt von PyPI und installiert es in die Sitzung.
+  Alles, was reines Python ist, laesst sich so nachziehen. Das duerfte die
+  Mehrheit dessen abdecken, was im Unterricht spontan gebraucht wird.
+
+FALL B: PAKETE MIT C-ANTEILEN - nur was vorgebaut ist
+  numpy, pandas, scipy, Pillow, lxml und Verwandte enthalten kompilierten
+  C-Code. Der muss fuer Emscripten uebersetzt worden sein. Pyodide liefert eine
+  ganze Reihe fertig mit:
+
+    await pyodide.loadPackage(["numpy", "pandas", "matplotlib"])
+
+  Was nicht in dieser Liste steht, laesst sich zur Laufzeit NICHT
+  nachinstallieren. Man muesste das Wheel selbst gegen Emscripten bauen und
+  mit ausliefern. Fuer den Schulbetrieb heisst das praktisch: die
+  mitgelieferte Liste ist die Liste.
+
+  Bekanntermassen NICHT verfuegbar, weil sie am Betriebssystem haengen:
+  requests (nutzt Sockets), alles mit GUI (tkinter, pygame), Multiprocessing,
+  Datenbanktreiber, alles was echte Dateien oder Netzwerk-Sockets braucht.
+
+  Fuer HTTP gibt es Ersatz: pyodide.http.pyfetch, asynchron und den
+  CORS-Regeln des Browsers unterworfen.
+
+VORSCHLAG FUER DIE OBERFLAECHE
+  Eine Zeile ueber dem Notebook mit den verfuegbaren Paketen und einem Feld
+  "Paket nachinstallieren". Schlaegt es fehl, eine ehrliche Meldung: "Dieses
+  Paket enthaelt C-Code und ist in dieser Umgebung nicht verfuegbar" - statt
+  eines rohen Tracebacks, mit dem ein Fuenftklaessler nichts anfangen kann.
+
+
+================================================================================
+4. DER EIGENTLICHE KNACKPUNKT: input() UND DER ABBRECHEN-KNOPF
+================================================================================
+
+Beides haengt an derselben Frage - wo laeuft der Interpreter?
+
+VARIANTE 1: IM HAUPT-THREAD
+  input() laesst sich auf window.prompt() legen, das blockiert synchron und
+  funktioniert sofort.
+  Aber: while True: pass friert den kompletten Tab ein. Kein Abbrechen-Knopf,
+  kein Scrollen, nichts - nur noch Tab schliessen. In einer Klasse mit
+  Anfaengern passiert das am ersten Tag.
+
+VARIANTE 2: IM WEB WORKER (empfohlen)
+  Die Oberflaeche bleibt bedienbar, egal was der Code tut. Notfalls
+  worker.terminate() und ein frischer Interpreter.
+  Aber: im Worker gibt es kein prompt(). Fuer ein blockierendes input()
+  braucht man SharedArrayBuffer und Atomics.wait: der Worker legt sich
+  schlafen, der Haupt-Thread sammelt die Eingabe ein und weckt ihn.
+  Derselbe Mechanismus liefert den sauberen Abbruch ueber Pyodides
+  Interrupt-Buffer - dann bekommt der Schueler ein normales
+  KeyboardInterrupt statt eines abgewuergten Interpreters.
+
+DER PREIS VON SharedArrayBuffer
+  Der Browser gibt SharedArrayBuffer nur bei Cross-Origin-Isolation frei. Die
+  Seite muss zwei Header senden:
+
+    Cross-Origin-Opener-Policy: same-origin
+    Cross-Origin-Embedder-Policy: require-corp
+
+  Nebenwirkung: alles, was von fremden Servern geladen wird, muss dann
+  ausdruecklich zustimmen (CORP/CORS), sonst wird es blockiert. Fuer BUD-E
+  konkret geprueft:
+
+    Bilder            liegen als data:-URLs vor            unproblematisch
+    fetch-event-source wird von Fresh mitgebuendelt        unproblematisch
+    Google Fonts      falls verwendet, muessten sie lokal liegen
+    Fremde iframes    wuerden brechen
+
+  Ich halte das fuer machbar, aber es ist eine Aenderung an der ganzen Seite,
+  nicht nur am Notebook. Deshalb der Vorschlag:
+
+    Die Header nur auf einer eigenen Route setzen, z.B. /notebook, und das
+    Overlay dort in einem iframe laufen lassen. Dann bleibt der Rest der
+    Anwendung unberuehrt, und wenn am Notebook etwas schiefgeht, faellt nicht
+    der Chat mit um.
+
+  Und ein Rueckfallweg, falls Isolation nicht verfuegbar ist: Ausfuehrung
+  laeuft trotzdem im Worker, input() wird vorab abgefragt (das Notebook
+  erkennt input()-Aufrufe im Zellcode und fragt die Werte vor dem Start ab),
+  Abbrechen bedeutet dann Worker neu starten. Weniger elegant, aber es
+  funktioniert ueberall.
+
+
+================================================================================
+5. WIE DAS NOTEBOOK AUFGEBAUT WAERE
+================================================================================
+
+DATENMODELL
+  Ein Projekt ist eine JSON-Datei, bewusst nah am ipynb-Format, damit man
+  spaeter in echtes Jupyter exportieren kann:
+
+    {
+      "budeNotebook": 1,
+      "name": "Schleifen ueben",
+      "created": "2026-08-18T10:00:00Z",
+      "packages": ["numpy"],
+      "cells": [
+        { "id": "c1", "type": "code",     "source": "x = 21\nprint(x*2)",
+          "outputs": [ {"type":"stdout","text":"42\n"} ] },
+        { "id": "c2", "type": "markdown", "source": "## Erklaerung" }
+      ]
+    }
+
+ZUSTAND ZWISCHEN ZELLEN
+  Ein Interpreter pro Notebook, nicht pro Zelle. Zelle 2 sieht, was Zelle 1
+  definiert hat - genau wie in Colab. Dazu ein "Neu starten"-Knopf, denn der
+  haeufigste Anfaengerfehler ist ein Zustand von vor drei Aenderungen.
+  Sichtbar machen: eine Zaehlung [1], [2], [3] neben jeder Zelle wie in
+  Jupyter, damit die Ausfuehrungsreihenfolge nachvollziehbar ist.
+
+AUSGABEN UNTER DER ZELLE
+  - stdout und stderr werden umgeleitet und unter der Zelle angezeigt,
+    stderr rot
+  - Tracebacks so wie sie sind, aber mit der Zeilennummer der Zelle statt
+    "<exec>", sonst sucht der Schueler an der falschen Stelle
+  - der Wert des letzten Ausdrucks wird angezeigt, auch ohne print()
+  - matplotlib: Figur in den virtuellen Dateisystem-Puffer schreiben, als
+    PNG auslesen und unter der Zelle einbetten. Dieselbe Bilddarstellung, die
+    der Chat schon hat.
+
+BEDIENUNG
+  Overlay ueber 90% des Fensters, Escape schliesst.
+  Strg+Enter fuehrt die Zelle aus, Shift+Enter fuehrt aus und springt weiter.
+  Pro Zelle: Abspielen, Loeschen, Verschieben. Darunter "+ Code" / "+ Text".
+  Oben: alles ausfuehren, Interpreter neu starten, Projekt speichern/laden.
+
+  Fuer den Editor wuerde ich mit einem schlichten textarea mit Zeilennummern
+  und Tab-Behandlung anfangen. CodeMirror bringt Syntaxhervorhebung und
+  Autoeinrueckung, kostet aber wieder Ladezeit und eine Abhaengigkeit. Das
+  laesst sich spaeter nachruesten, ohne das Datenmodell anzufassen.
+
+
+================================================================================
+6. PROJEKTE IM POSTFACH SICHERN
+================================================================================
+
+Das ist der kleinste Teil, weil die Maschinerie schon steht. Der vorhandene
+Mail-Sync komprimiert, teilt auf mehrere Mails auf und setzt wieder zusammen -
+das ist unabhaengig davon, was drinsteht.
+
+Notwendig waeren:
+
+  1. Ein zweiter Betreff-Marker neben [BUD-E Memory], etwa
+     [BUD-E Notebook] 18.08.2026 14:23 UTC | Schleifen ueben | id=...
+     Dann liegen Chats und Notebooks im selben Postfach, lassen sich aber
+     getrennt auflisten. Die vorhandene Suche filtert schon ueber den Betreff.
+
+  2. Notebooks in den Snapshot aufnehmen, damit sie beim normalen Sichern
+     mitwandern - ein zusaetzliches Feld "notebooks" neben "chats".
+
+  3. Im Notebook-Overlay zwei Knoepfe, die auf dieselben Funktionen gehen, die
+     das Snapshot-Fenster schon benutzt.
+
+Aufwand: gering. Das meiste ist Wiederverwendung.
+
+
+================================================================================
+7. DATEIEXPLORER ALS OVERLAY
+================================================================================
+
+Was drin sein soll, nach deiner Beschreibung:
+
+  - alle Bilder aus allen Chats, nicht nur dem aktuellen
+  - Dateien hochladen und herunterladen
+  - Hochgeladenes wandert automatisch in die Postfach-Sicherung
+
+Die Bilder liegen bereits in IndexedDB unter Schluesseln der Form
+"chatSuffix:imageId". Man braucht eine Funktion, die den Store durchlaeuft und
+alles auflistet - die gibt es noch nicht, sie ist aber klein. Dann eine
+Kachelansicht mit Herkunft (welcher Chat), Datum und ID.
+
+Fuer beliebige Dateien kaeme ein zweiter IndexedDB-Store dazu, mit Name,
+MIME-Typ, Groesse, Zeitstempel und den Bytes. Beim Sichern wandert er als
+weiteres Feld in den Snapshot.
+
+WICHTIG - GROESSENGRENZE
+  Du sagst "ein paar Megabyte", das ist genau die richtige Groessenordnung.
+  Die Kette ist: Datei -> base64 (+33%) -> gzip -> Aufteilung auf Mails.
+  Bei Bildern und bereits komprimierten Formaten bringt gzip fast nichts, die
+  base64-Aufblaehung bleibt also stehen.
+
+  Vorschlag: pro Datei bei etwa 10 MB abriegeln und dem Nutzer die Summe
+  anzeigen ("Sicherung: 34 MB, 4 Mails"). Wer 200 MB Video hochlaedt, soll
+  das vorher wissen und nicht erst, wenn der Mailserver ablehnt.
+
+Aufwand: klein bis mittel. Das Fundament (IndexedDB, Snapshot-Format,
+Aufteilung auf Mails) ist vorhanden.
+
+
+================================================================================
+8. RISIKEN UND OFFENE PUNKTE
+================================================================================
+
+  Cross-Origin-Isolation trifft die ganze Seite
+    Entschaerft durch die eigene /notebook-Route mit iframe. Muss aber
+    tatsaechlich gegen die bestehende Anwendung geprueft werden.
+
+  Speicherverbrauch
+    Pyodide plus numpy plus pandas belegt schnell einige hundert MB im Tab.
+    Auf alten Schulrechnern oder Tablets kann das eng werden. Sollte auf der
+    schwaechsten Zielhardware gemessen werden, bevor man es ausrollt.
+
+  Erststart ohne Cache
+    Ueber ein langsames Schulnetz koennen 30 Rechner gleichzeitig 15 MB ziehen.
+    Selbst hosten loest das weitgehend.
+
+  Endlosschleifen mit Speicherfrass
+    Der Abbruch-Knopf hilft bei Rechenschleifen. Wer in einer Schleife eine
+    Liste vollschreibt, bringt den Worker vorher an die Speichergrenze. Der
+    Worker stirbt dann - unschoen, aber eingegrenzt.
+
+  Was ich NICHT geprueft habe
+    Die genauen Groessen und Paketlisten der aktuellen Pyodide-Version, und ob
+    unsere Content-Security-Policy WebAssembly bereits erlaubt (dafuer ist in
+    der Regel 'wasm-unsafe-eval' noetig). Beides gehoert in einen kurzen
+    Vorabtest, bevor man mit dem Bauen anfaengt.
+
+
+================================================================================
+9. VORGEHENSVORSCHLAG
+================================================================================
+
+  Schritt 0 - Vorabtest, klein
+    Eine einzelne Seite, die Pyodide laedt und print("hallo") ausfuehrt.
+    Damit klaeren sich Ladezeit, CSP und Speicherbedarf in einer halben
+    Stunde statt nach drei Tagen Arbeit.
+
+  Schritt 1 - Notebook, Grundfunktion
+    Overlay, Zellen anlegen/loeschen/verschieben, Ausfuehrung im Worker,
+    stdout/stderr/Traceback unter der Zelle, gemeinsamer Zustand,
+    Neustart-Knopf. Noch ohne input(), ohne Abbrechen.
+
+  Schritt 2 - Speichern
+    Notebook-JSON in localStorage, Sicherung ins Postfach ueber den
+    vorhandenen Mail-Sync, Laden aus dem Postfach.
+
+  Schritt 3 - input() und Abbrechen
+    Cross-Origin-Isolation auf der Notebook-Route, SharedArrayBuffer,
+    Interrupt-Buffer. Mit dem Rueckfallweg aus Abschnitt 4 fuer Browser
+    ohne Isolation.
+
+  Schritt 4 - Pakete
+    loadPackage fuer die vorgebauten, micropip fuer reine Python-Pakete,
+    verstaendliche Fehlermeldungen, Anzeige der verfuegbaren Pakete.
+
+  Schritt 5 - Dateiexplorer
+    Bilder aus allen Chats auflisten, Datei-Store, Hoch- und Herunterladen,
+    Einbindung in die Sicherung.
+
+  Schritt 6 - Feinschliff
+    matplotlib-Einbettung, CodeMirror, Export als .ipynb, Tastenkuerzel.
+
+Die Schritte 1 und 3 sind die substantiellen. Alles andere baut entweder auf
+Vorhandenem auf oder ist Oberflaeche.

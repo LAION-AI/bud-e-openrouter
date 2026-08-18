@@ -12,7 +12,25 @@
  *              the mailbox is still understandable in any mail client.
  */
 
-export const SUBJECT_MARKER = "[BUD-E Memory]";
+/**
+ * The mailbox can hold two kinds of item, told apart by the subject marker:
+ * full state snapshots and the API key ring. Both use the identical transport
+ * (gzip, chunking, X-BudE-* headers) and simply live in the same folder.
+ */
+export const SUBJECT_MARKERS = {
+  memory: "[BUD-E Memory]",
+  keys: "[BUD-E Keys]",
+} as const;
+
+export type SnapshotKind = keyof typeof SUBJECT_MARKERS;
+
+/** Default marker, kept as its own export for readability at call sites. */
+export const SUBJECT_MARKER = SUBJECT_MARKERS.memory;
+
+export function markerFor(kind: SnapshotKind): string {
+  return SUBJECT_MARKERS[kind] ?? SUBJECT_MARKERS.memory;
+}
+
 export const SNAPSHOT_VERSION = 1;
 
 /** Header names, lower-cased the way IMAP hands them back to us. */
@@ -78,13 +96,14 @@ export function buildSubject(
   id: string,
   part: number,
   parts: number,
+  kind: SnapshotKind = "memory",
 ): string {
   const stamp = created.replace("T", " ").replace(/\.\d+Z$/, "Z").replace(
     "Z",
     " UTC",
   );
   const partSuffix = parts > 1 ? ` | ${part}/${parts}` : "";
-  return `${SUBJECT_MARKER} ${stamp} | ${label} | id=${id}${partSuffix}`;
+  return `${markerFor(kind)} ${stamp} | ${label} | id=${id}${partSuffix}`;
 }
 
 /** Splits gzipped bytes into chunks of at most `chunkSize`. */

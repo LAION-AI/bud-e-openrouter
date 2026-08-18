@@ -379,6 +379,32 @@ export default function ChatIsland({ lang }: { lang: string }) {
   };
   const handleComposerChange = (val: string) => setQuery(val);
 
+  /**
+   * Re-reads the credentials from localStorage. Used on mount and after a key
+   * set was pulled out of the mailbox, so the running app picks it up without
+   * a page reload.
+   */
+  const reloadSettingsFromStorage = () => {
+    setSettings({
+      universalApiKey: localStorage.getItem("bud-e-universal-api-key") || "",
+      apiUrl: localStorage.getItem("bud-e-api-url") || "",
+      apiKey: localStorage.getItem("bud-e-api-key") || "",
+      apiModel: localStorage.getItem("bud-e-model") || "",
+      ttsUrl: localStorage.getItem("bud-e-tts-url") || "",
+      ttsKey: localStorage.getItem("bud-e-tts-key") || "",
+      ttsModel: localStorage.getItem("bud-e-tts-model") || "",
+      sttUrl: localStorage.getItem("bud-e-stt-url") || "",
+      sttKey: localStorage.getItem("bud-e-stt-key") || "",
+      sttModel: localStorage.getItem("bud-e-stt-model") || "",
+      systemPrompt: localStorage.getItem("bud-e-system-prompt") || "",
+      vlmUrl: localStorage.getItem("bud-e-vlm-url") || "",
+      vlmKey: localStorage.getItem("bud-e-vlm-key") || "",
+      vlmModel: localStorage.getItem("bud-e-vlm-model") || "",
+      vlmCorrectionModel: localStorage.getItem("bud-e-vlm-correction-model") ||
+        "",
+    });
+  };
+
   // Load settings on mount
   useEffect(() => {
     const savedSettings = {
@@ -3734,8 +3760,10 @@ export default function ChatIsland({ lang }: { lang: string }) {
         <MailSyncModal
           account={mailAccount}
           lang={lang}
+          settings={settings}
           onClose={() => setShowMailSync(false)}
           onRestored={handleSnapshotRestored}
+          onKeysApplied={reloadSettingsFromStorage}
         />
       )}
 

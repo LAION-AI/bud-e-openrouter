@@ -251,6 +251,155 @@ export async function applySnapshot(
 
 // --------------------------------------------------------------- api calls
 
+// ------------------------------------------------------------- key ring
+
+/**
+ * One saved set of credentials. URL and model travel with the key because a
+ * key on its own is useless - it always belongs to a particular endpoint.
+ */
+export interface KeyEntry {
+  id: string;
+  label: string;
+  created: string;
+  universalApiKey: string;
+  apiUrl: string;
+  apiKey: string;
+  apiModel: string;
+  ttsUrl: string;
+  ttsKey: string;
+  ttsModel: string;
+  sttUrl: string;
+  sttKey: string;
+  sttModel: string;
+  vlmUrl: string;
+  vlmKey: string;
+  vlmModel: string;
+  vlmCorrectionModel: string;
+}
+
+/** The settings fields a key entry carries. */
+export const KEY_FIELDS = [
+  "universalApiKey",
+  "apiUrl",
+  "apiKey",
+  "apiModel",
+  "ttsUrl",
+  "ttsKey",
+  "ttsModel",
+  "sttUrl",
+  "sttKey",
+  "sttModel",
+  "vlmUrl",
+  "vlmKey",
+  "vlmModel",
+  "vlmCorrectionModel",
+] as const;
+
+export type KeySettings = Record<(typeof KEY_FIELDS)[number], string>;
+
+/** Builds an entry from the settings currently active in this browser. */
+export function keyEntryFromSettings(
+  settings: Partial<KeySettings>,
+  label: string,
+): KeyEntry {
+  const entry = {
+    id: crypto.randomUUID().replace(/-/g, "").slice(0, 12),
+    label: label.trim() || "Unbenannt",
+    created: new Date().toISOString(),
+  } as KeyEntry;
+  for (const field of KEY_FIELDS) {
+    (entry as unknown as Record<string, string>)[field] = settings[field] ?? "";
+  }
+  return entry;
+}
+
+/** True when the entry carries no usable credential at all. */
+export function keyEntryIsEmpty(entry: KeyEntry): boolean {
+  return !entry.universalApiKey && !entry.apiKey && !entry.ttsKey &&
+    !entry.sttKey && !entry.vlmKey;
+}
+
+/** Shows a key without revealing it: "sbe-abc...xyz9" */
+export function maskKey(value: string): string {
+  if (!value) return "-";
+  if (value.length <= 12) return value.slice(0, 3) + "...";
+  return `${value.slice(0, 6)}...${value.slice(-4)}`;
+}
+
+/** Which services an entry actually configures, for the picker list. */
+export function keyEntryServices(entry: KeyEntry): string[] {
+  const out: string[] = [];
+  if (entry.universalApiKey) out.push("Universal");
+  if (entry.apiKey) out.push("LLM");
+  if (entry.ttsKey) out.push("TTS");
+  if (entry.sttKey) out.push("STT");
+  if (entry.vlmKey) out.push("VLM");
+  return out;
+}
+
+/**
+ * Merges an entry into a ring: same label replaces, everything else is kept.
+ * That way "back up my keys" from a second device adds to the ring instead of
+ * wiping what the first device stored.
+ */
+export function mergeIntoKeyring(
+  ring: KeyEntry[],
+  entry: KeyEntry,
+): KeyEntry[] {
+  const rest = ring.filter((e) =>
+    e.label.trim().toLowerCase() !== entry.label.trim().toLowerCase()
+  );
+  return [entry, ...rest];
+}
+
+export function parseKeyring(json: string): KeyEntry[] {
+  const data = JSON.parse(json);
+  if (!data || !Array.isArray(data.keys)) {
+    throw new Error("This mail does not contain a BUD-E key ring.");
+  }
+  return data.keys.filter((k: unknown) =>
+    !!k && typeof k === "object" && typeof (k as KeyEntry).label === "string"
+  );
+}
+
+export function serialiseKeyring(keys: KeyEntry[]): string {
+  return JSON.stringify({
+    budeKeyring: 1,
+    updated: new Date().toISOString(),
+    keys,
+  });
+}
+
+/** Writes one entry into this browser's settings. */
+export function applyKeyEntry(entry: KeyEntry): number {
+  const storageKeys: Record<string, string> = {
+    universalApiKey: "bud-e-universal-api-key",
+    apiUrl: "bud-e-api-url",
+    apiKey: "bud-e-api-key",
+    apiModel: "bud-e-model",
+    ttsUrl: "bud-e-tts-url",
+    ttsKey: "bud-e-tts-key",
+    ttsModel: "bud-e-tts-model",
+    sttUrl: "bud-e-stt-url",
+    sttKey: "bud-e-stt-key",
+    sttModel: "bud-e-stt-model",
+    vlmUrl: "bud-e-vlm-url",
+    vlmKey: "bud-e-vlm-key",
+    vlmModel: "bud-e-vlm-model",
+    vlmCorrectionModel: "bud-e-vlm-correction-model",
+  };
+  let applied = 0;
+  for (const field of KEY_FIELDS) {
+    const value = (entry as unknown as Record<string, string>)[field];
+    if (typeof value !== "string") continue;
+    localStorage.setItem(storageKeys[field], value);
+    if (value) applied++;
+  }
+  return applied;
+}
+
+// --------------------------------------------------------------- api calls
+
 async function postJson(payload: unknown): Promise<Response> {
   return await fetch("/api/mailsync", {
     method: "POST",
@@ -275,9 +424,14 @@ export async function mailsyncTest(account: MailAccount) {
 
 export async function mailsyncList(
   account: MailAccount,
+  kind: "memory" | "keys" = "memory",
 ): Promise<SnapshotSummary[]> {
   const data = await unwrap(
-    await postJson({ action: "list", account: accountForRequest(account) }),
+    await postJson({
+      action: "list",
+      account: accountForRequest(account),
+      kind,
+    }),
   );
   return data.snapshots ?? [];
 }
@@ -317,6 +471,7 @@ export async function mailsyncUpload(
   account: MailAccount,
   snapshotJson: string,
   label: string,
+  kind: "memory" | "keys" = "memory",
 ) {
   const form = new FormData();
   form.append(
@@ -325,6 +480,7 @@ export async function mailsyncUpload(
       account: accountForRequest(account),
       label,
       device: account.deviceName,
+      kind,
     }),
   );
   form.append(
@@ -335,6 +491,104 @@ export async function mailsyncUpload(
 
   const res = await fetch("/api/mailsync", { method: "POST", body: form });
   return await unwrap(res);
+}
+
+// ------------------------------------------------------- key ring transport
+
+/** Newest key-ring mail in the folder, or null when there is none. */
+export async function keyringNewest(
+  account: MailAccount,
+): Promise<SnapshotSummary | null> {
+  const list = await mailsyncList(account, "keys");
+  return list.find((s) => s.complete) ?? null;
+}
+
+/** Loads the ring from a specific mail (or the newest one). */
+export async function keyringLoad(
+  account: MailAccount,
+  uids?: number[],
+): Promise<KeyEntry[]> {
+  let ids = uids;
+  if (!ids) {
+    const newest = await keyringNewest(account);
+    if (!newest) return [];
+    ids = newest.uids;
+  }
+  return parseKeyring(await mailsyncDownload(account, ids));
+}
+
+/**
+ * Stores the current settings in the mailbox under `label`.
+ *
+ * Reads the existing ring first and merges, so backing up from a second
+ * device adds to the collection rather than replacing it. The old mails are
+ * removed afterwards - only the newest ring is ever needed, and leaving the
+ * previous copies around would leave the old keys readable in the mailbox.
+ */
+export async function keyringSave(
+  account: MailAccount,
+  settings: Partial<KeySettings>,
+  label: string,
+): Promise<{ entries: number; replaced: boolean }> {
+  const entry = keyEntryFromSettings(settings, label);
+  if (keyEntryIsEmpty(entry)) {
+    throw new Error("There is no API key configured in this browser yet.");
+  }
+
+  let existing: SnapshotSummary[] = [];
+  let ring: KeyEntry[] = [];
+  try {
+    existing = await mailsyncList(account, "keys");
+    const newest = existing.find((s) => s.complete);
+    if (newest) ring = parseKeyring(await mailsyncDownload(account, newest.uids));
+  } catch {
+    // An unreadable old ring must not block storing a new one.
+    ring = [];
+  }
+
+  const replaced = ring.some((e) =>
+    e.label.trim().toLowerCase() === entry.label.trim().toLowerCase()
+  );
+  const merged = mergeIntoKeyring(ring, entry);
+
+  await mailsyncUpload(
+    account,
+    serialiseKeyring(merged),
+    `Keys (${merged.length})`,
+    "keys",
+  );
+
+  const stale = existing.flatMap((s) => s.uids);
+  if (stale.length) {
+    await mailsyncDelete(account, stale).catch(() => {
+      // The new ring is stored; a leftover old mail is not worth failing over.
+    });
+  }
+  return { entries: merged.length, replaced };
+}
+
+/** Removes one entry from the ring and writes it back. */
+export async function keyringRemove(
+  account: MailAccount,
+  entryId: string,
+): Promise<number> {
+  const existing = await mailsyncList(account, "keys");
+  const newest = existing.find((s) => s.complete);
+  if (!newest) return 0;
+
+  const ring = parseKeyring(await mailsyncDownload(account, newest.uids));
+  const remaining = ring.filter((e) => e.id !== entryId);
+
+  if (remaining.length > 0) {
+    await mailsyncUpload(
+      account,
+      serialiseKeyring(remaining),
+      `Keys (${remaining.length})`,
+      "keys",
+    );
+  }
+  await mailsyncDelete(account, existing.flatMap((s) => s.uids));
+  return remaining.length;
 }
 
 // ----------------------------------------------------------------- display

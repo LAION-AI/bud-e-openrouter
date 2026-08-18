@@ -10,6 +10,7 @@
  *              forgets them again. Nothing is persisted here.
  *
  *              Actions: test | list | upload | download | delete
+ *              Kinds:   memory (chats and media) | keys (the API key ring)
  */
 
 import { Handlers } from "$fresh/server.ts";
@@ -29,8 +30,9 @@ import {
   gzip,
   H,
   LIST_HEADER_FIELDS,
+  markerFor,
   SNAPSHOT_VERSION,
-  SUBJECT_MARKER,
+  type SnapshotKind,
 } from "../../utils/mailsync/protocol.ts";
 
 // ---------------------------------------------------------------- settings
@@ -216,7 +218,14 @@ async function withImap<T>(
   }
 }
 
-const SEARCH_CRITERIA = `HEADER SUBJECT "${SUBJECT_MARKER}"`;
+function searchCriteria(kind: SnapshotKind): string {
+  return `HEADER SUBJECT "${markerFor(kind)}"`;
+}
+
+/** Only these two are accepted from the request. */
+function readKind(raw: unknown): SnapshotKind {
+  return raw === "keys" ? "keys" : "memory";
+}
 
 // ----------------------------------------------------------------- actions
 
@@ -224,8 +233,13 @@ async function actionTest(account: Account) {
   const info = await withImap(account, async (client) => {
     await client.ensureFolder(account.folder);
     await client.select(account.folder);
-    const uids = await client.searchUids(SEARCH_CRITERIA);
-    return { capabilities: client.capabilities, snapshotMails: uids.length };
+    const uids = await client.searchUids(searchCriteria("memory"));
+    const keyUids = await client.searchUids(searchCriteria("keys"));
+    return {
+      capabilities: client.capabilities,
+      snapshotMails: uids.length,
+      keyMails: keyUids.length,
+    };
   });
 
   let smtp: string | null = null;
@@ -241,11 +255,11 @@ async function actionTest(account: Account) {
   return { ok: true, folder: account.folder, ...info, smtp };
 }
 
-async function actionList(account: Account) {
+async function actionList(account: Account, kind: SnapshotKind) {
   const snapshots = await withImap(account, async (client) => {
     await client.ensureFolder(account.folder);
     await client.select(account.folder);
-    const uids = await client.searchUids(SEARCH_CRITERIA);
+    const uids = await client.searchUids(searchCriteria(kind));
     if (uids.length === 0) return [];
     const headers = await client.fetchHeaders(uids, LIST_HEADER_FIELDS);
     return groupSnapshots(headers, decodeHeaderValue);
@@ -258,6 +272,7 @@ async function actionUpload(
   snapshotJson: Uint8Array,
   label: string,
   device: string,
+  kind: SnapshotKind,
 ) {
   if (snapshotJson.length === 0) {
     throw new BadRequest("snapshot is empty");
@@ -283,7 +298,7 @@ async function actionUpload(
   const messages = chunks.map((chunk, i) => {
     const part = i + 1;
     const humanText = [
-      "BUD-E snapshot",
+      kind === "keys" ? "BUD-E API key ring" : "BUD-E snapshot",
       `Created: ${createdIso}`,
       `Label:   ${safeLabel}`,
       safeDevice ? `Device:  ${safeDevice}` : "",
@@ -293,17 +308,28 @@ async function actionUpload(
         mb(snapshotJson.length)
       } MB raw`,
       "",
-      "The attachment is one chunk of a gzipped JSON export of all chats,",
-      "images and media stored in this browser. Do not edit it by hand;",
-      "BUD-E reassembles the parts when restoring.",
+      kind === "keys"
+        ? "The attachment holds the API keys stored from a BUD-E browser."
+        : "The attachment is one chunk of a gzipped JSON export of all chats,",
+      kind === "keys"
+        ? "Anyone who can read this mailbox can read those keys."
+        : "images and media stored in this browser. Do not edit it by hand;",
+      kind === "keys" ? "" : "BUD-E reassembles the parts when restoring.",
     ].filter(Boolean).join("\n");
 
     return buildSnapshotMessage(
       {
         from,
         to,
-        subject: buildSubject(createdIso, safeLabel, id, part, chunks.length),
-        subjectPrefix: SUBJECT_MARKER,
+        subject: buildSubject(
+          createdIso,
+          safeLabel,
+          id,
+          part,
+          chunks.length,
+          kind,
+        ),
+        subjectPrefix: markerFor(kind),
         date: created,
         messageId: `${id}.${part}@bud-e`,
         extra: {
@@ -320,7 +346,7 @@ async function actionUpload(
         },
       },
       humanText,
-      `bude-snapshot-${id}-${part}of${chunks.length}.json.gz`,
+      `bude-${kind}-${id}-${part}of${chunks.length}.json.gz`,
       chunk,
     ).bytes;
   });
@@ -349,6 +375,7 @@ async function actionUpload(
     compressedBytes: packed.length,
     rawBytes: snapshotJson.length,
     transport: account.useSmtp ? "smtp" : "imap-append",
+    kind,
   };
 }
 
@@ -397,7 +424,13 @@ export const handler: Handlers = {
         }
         const bytes = new Uint8Array(await file.arrayBuffer());
         return json(
-          await actionUpload(account, bytes, meta.label ?? "", meta.device ?? ""),
+          await actionUpload(
+            account,
+            bytes,
+            meta.label ?? "",
+            meta.device ?? "",
+            readKind(meta.kind),
+          ),
         );
       }
 
@@ -405,12 +438,13 @@ export const handler: Handlers = {
       const action = String(body.action ?? "");
       const account = readAccount(body.account);
       const uids = normaliseUids(body.uids);
+      const kind = readKind(body.kind);
 
       switch (action) {
         case "test":
           return json(await actionTest(account));
         case "list":
-          return json(await actionList(account));
+          return json(await actionList(account, kind));
         case "delete":
           return json(await actionDelete(account, uids));
         case "download": {
