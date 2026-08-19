@@ -14,29 +14,24 @@ function downloadAudioFiles(
   if (Object.keys(real).length === 0) return;
   items = real;
 
-  if (Object.keys(items).length === 1) {
-    const single = Object.values(items)[0].audio;
-    fetch(single.src).then((r) => r.blob()).then((blob) => {
-      const url = URL.createObjectURL(blob);
+  // The chunks must be joined in the order they are spoken. Numeric keys
+  // usually enumerate in order, but sorting says so explicitly rather than
+  // relying on it.
+  const ordered = Object.keys(items)
+    .map(Number)
+    .sort((a, b) => a - b)
+    .map((idx) => items[String(idx)].audio.src);
+
+  Promise.all(ordered.map((src) => fetch(src).then((r) => r.blob())))
+    .then((blobs) => {
+      const url = URL.createObjectURL(new Blob(blobs, { type: "audio/mpeg" }));
       const a = document.createElement("a");
       a.href = url;
       a.download = `audio-${ts}.mp3`;
       a.click();
       URL.revokeObjectURL(url);
-    });
-    return;
-  }
-
-  Promise.all(
-    Object.values(items).map((i) => fetch(i.audio.src).then((r) => r.blob())),
-  ).then((blobs) => {
-    const url = URL.createObjectURL(new Blob(blobs, { type: "audio/mp3" }));
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `audio-${ts}.mp3`;
-    a.click();
-    URL.revokeObjectURL(url);
-  });
+    })
+    .catch((err) => console.warn("Could not assemble the audio:", err));
 }
 
 function convertDoiToUrl(doi: string): string {

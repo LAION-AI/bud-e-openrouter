@@ -20,7 +20,11 @@ import {
 import { useEffect, useRef, useState } from "preact/hooks";
 
 // Internalization
-import { chatIslandContent, mailSyncContent } from "../internalization/content.ts";
+import {
+  chatIslandContent,
+  mailSyncContent,
+  notebookContent,
+} from "../internalization/content.ts";
 
 // Generated/uploaded images are offloaded to IndexedDB so that base64 payloads
 // don't blow the localStorage quota.
@@ -32,6 +36,7 @@ import {
 
 // Optional sync of the whole local state through an IMAP mailbox the user owns.
 import MailSyncModal from "../components/MailSyncModal.tsx";
+import NotebookModal from "../components/NotebookModal.tsx";
 import {
   applySnapshot,
   AUTO_LABEL,
@@ -158,6 +163,7 @@ export default function ChatIsland({ lang }: { lang: string }) {
 
   // dictionary containing audio files for each groupIndex for the current chat
   const [audioFileDict, setAudioFileDict] = useState<AudioFileDict>({});
+  const audioFileDictRef = useRef<AudioFileDict>({});
 
   const playSessionRef = useRef(0);
 
@@ -192,6 +198,18 @@ export default function ChatIsland({ lang }: { lang: string }) {
     messagesRef.current = messages;
   }, [messages]);
 
+  /**
+   * The TTS code runs long after the render that created it: a fetch takes a
+   * second or more, and by then its closure holds the state of a render that
+   * is several updates old. Reading these values through refs instead is what
+   * keeps manual playback working - the speaker button sets a flag and the
+   * arriving chunk has to see it.
+   */
+  const stopListRef = useRef<number[]>(stopList);
+  useEffect(() => {
+    stopListRef.current = stopList;
+  }, [stopList]);
+
   const [showSettings, setShowSettings] = useState(false);
 
   // ---------- Mailbox sync ----------
@@ -199,6 +217,7 @@ export default function ChatIsland({ lang }: { lang: string }) {
     DEFAULT_MAIL_ACCOUNT,
   );
   const [showMailSync, setShowMailSync] = useState(false);
+  const [showNotebook, setShowNotebook] = useState(false);
   const [mailSyncStatus, setMailSyncStatus] = useState("");
 
   // Abort controller for streaming cancel
@@ -227,6 +246,36 @@ export default function ChatIsland({ lang }: { lang: string }) {
   const [pendingManualSpeak, setPendingManualSpeak] = useState<Set<number>>(
     new Set(),
   );
+  /**
+   * Groups the user asked to hear by pressing the speaker. Read through a ref
+   * because the flag is set immediately before the TTS requests go out, while
+   * the check happens when the first clip comes back - far too late for the
+   * state captured in that closure.
+   */
+  const pendingManualSpeakRef = useRef<Set<number>>(new Set());
+  const markManualSpeak = (groupIndex: number) => {
+    pendingManualSpeakRef.current = new Set(pendingManualSpeakRef.current).add(
+      groupIndex,
+    );
+    setPendingManualSpeak(new Set(pendingManualSpeakRef.current));
+  };
+  const clearManualSpeak = (groupIndex: number) => {
+    const next = new Set(pendingManualSpeakRef.current);
+    next.delete(groupIndex);
+    pendingManualSpeakRef.current = next;
+    setPendingManualSpeak(new Set(next));
+  };
+
+  /** Same reasoning for the read-aloud toggle. */
+  const readAlwaysRef = useRef(readAlways);
+  useEffect(() => {
+    readAlwaysRef.current = readAlways;
+  }, [readAlways]);
+
+  /** And for the audio itself, so handlers never work on a stale snapshot. */
+  useEffect(() => {
+    audioFileDictRef.current = audioFileDict;
+  }, [audioFileDict]);
 
   // ---------- TTS concurrency pool ----------
   const TTS_POOL_LIMIT = 2;
@@ -986,8 +1035,8 @@ export default function ChatIsland({ lang }: { lang: string }) {
   // ordered playback starter
   const startOrderedPlaybackForGroup = (groupIndex: number) => {
     // Pause all other groups and mark them as stopped to avoid overlaps
-    const newStopList = stopList.slice();
-    Object.entries(audioFileDict).forEach(([gStr, group]) => {
+    const newStopList = stopListRef.current.slice();
+    Object.entries(audioFileDictRef.current).forEach(([gStr, group]) => {
       const gi = Number(gStr);
       if (gi !== groupIndex) {
         Object.values(group).forEach((item) => {
@@ -1002,7 +1051,7 @@ export default function ChatIsland({ lang }: { lang: string }) {
     setStopList(newStopList);
 
     // Play first (or next-unplayed) and attach chaining
-    const group = audioFileDict[groupIndex];
+    const group = audioFileDictRef.current[groupIndex];
     if (!group) return;
     const nextIdx = findNextUnplayedAudio(group);
     const first = (nextIdx !== null ? group[nextIdx]?.audio : group[0]?.audio);
@@ -1049,9 +1098,9 @@ export default function ChatIsland({ lang }: { lang: string }) {
       { once: true },
     );
 
-    // If readAlways is ON, the useEffect orchestrates sequential playback.
-    // Only install event-chaining for MANUAL speak (readAlways === false).
-    if (readAlways) return;
+    // With read-aloud on, the effect below orchestrates playback. Manual
+    // playback has no such driver and is chained clip by clip instead.
+    if (readAlwaysRef.current) return;
 
     // Chain only if both prev and current belong to THIS session
     if (prevEl && (prevEl as any).__session === (currEl as any).__session) {
@@ -1065,7 +1114,7 @@ export default function ChatIsland({ lang }: { lang: string }) {
       prevEl.addEventListener("ended", playNextOnce, { once: true });
 
       // Manual fast-path: if prev already finished when current arrives
-      if ((prevEl as any).ended && !stopList.includes(groupIndex)) {
+      if ((prevEl as any).ended && !stopListRef.current.includes(groupIndex)) {
         currEl.play().catch((err) =>
           console.warn("Audio play() rejected (prev already ended):", err),
         );
@@ -1666,19 +1715,18 @@ export default function ChatIsland({ lang }: { lang: string }) {
     const chunks = splitIntoSmartChunks(fullText);
     if (chunks.length === 0) return;
 
-    // clear old audios for this group (fresh regeneration)
+    // Drop the old audio for this group - both in state and in the ref the
+    // async handlers read from.
+    audioFileDictRef.current = { ...audioFileDictRef.current, [groupIndex]: {} };
     setAudioFileDict((prev) => {
       const next = { ...prev };
       next[groupIndex] = {};
       return next;
     });
 
-    // mark that we should autostart when first chunk arrives
-    setPendingManualSpeak((prev) => {
-      const cp = new Set(prev);
-      cp.add(groupIndex);
-      return cp;
-    });
+    // Remember that this group was asked for, so the first arriving chunk
+    // starts playing by itself.
+    markManualSpeak(groupIndex);
 
     // fire *all* chunks concurrently (queued in TTS pool)
     chunks.forEach((chunk, i) => {
@@ -1686,65 +1734,134 @@ export default function ChatIsland({ lang }: { lang: string }) {
     });
   };
 
+  /**
+   * The speaker button next to a message.
+   *
+   * Three cases, in this order:
+   *   1. this group is playing  -> stop it
+   *   2. the clips are already here and still match the text -> replay them
+   *      in order, without asking the TTS service again
+   *   3. otherwise -> synthesise the text in chunks and start as soon as the
+   *      first one arrives
+   *
+   * Works regardless of the read-aloud toggle: pressing the speaker is an
+   * explicit request and overrides it.
+   */
   const handleOnSpeakAtGroupIndexAction = (groupIndex: number) => {
     if (groupIndex < 0 || groupIndex >= messages.length) return;
 
-    const lastMessage = messages[groupIndex];
-    const currentText = Array.isArray(lastMessage?.content)
-      ? lastMessage.content
-        .filter((c: any) => c?.type === "text")
-        .map((c: any) => c?.text ?? "")
+    const message = messages[groupIndex];
+    const currentText = Array.isArray(message?.content)
+      ? message.content
+        .filter((c: any) => c?.type === "text" || typeof c === "string")
+        .map((c: any) => (typeof c === "string" ? c : c?.text ?? ""))
         .join("")
-      : (lastMessage?.content ?? "");
+      : (message?.content ?? "");
 
     const text = String(currentText || "").trim();
     if (!text) return;
 
-    if (!audioFileDict[groupIndex]) {
-      speakMessageInSmartChunks(groupIndex, text);
+    const group = audioFileDictRef.current[groupIndex];
+    const clips = group ? Object.values(group) : [];
+
+    // 1) Playing right now -> this press means stop.
+    if (clips.some((item) => !item.audio.paused)) {
+      stopAllAudio();
+      if (!stopListRef.current.includes(groupIndex)) {
+        setStopList([...stopListRef.current, groupIndex]);
+      }
       return;
     }
 
-    const firstItem = audioFileDict[groupIndex][0];
-    const prevText = firstItem?.audio?.__text ?? "";
-    if (text !== String(prevText).trim()) {
-      speakMessageInSmartChunks(groupIndex, text);
+    // Everything below is a start, so this group must not count as stopped.
+    setStopList(stopListRef.current.filter((g) => g !== groupIndex));
+    stopAllAudio();
+
+    // 2) Reuse what is already in the browser, but only if it still belongs
+    //    to this text - an edited or regenerated message needs fresh audio.
+    const cachedText = String(group?.[0]?.audio?.__text ?? "").trim();
+    const usable = clips.length > 0 &&
+      clips.some((item) => !!item.audio.src) &&
+      cachedText === text;
+
+    if (usable) {
+      replayGroupFromStart(groupIndex);
       return;
     }
 
-    const indexThatIsPlaying = Object.entries(audioFileDict[groupIndex]).findIndex(
-      ([_, item]) => !item.audio.paused,
+    // 3) Nothing usable cached - synthesise it.
+    speakMessageInSmartChunks(groupIndex, text);
+  };
+
+  /** Pauses and rewinds every clip in every group. */
+  const stopAllAudio = () => {
+    Object.values(audioFileDictRef.current).forEach((group) => {
+      Object.values(group).forEach((item) => {
+        if (!item.audio.paused) item.audio.pause();
+        try {
+          item.audio.currentTime = 0;
+        } catch {
+          // A clip that never loaded rejects the seek; nothing to rewind.
+        }
+      });
+    });
+  };
+
+  /**
+   * Plays a group that is already in memory from the beginning: rewinds every
+   * clip, re-chains them so one starts the next, and begins with the first.
+   */
+  const replayGroupFromStart = (groupIndex: number) => {
+    const group = audioFileDictRef.current[groupIndex];
+    if (!group) return;
+
+    const order = Object.keys(group)
+      .map(Number)
+      .sort((a, b) => a - b)
+      .filter((idx) => !!group[idx]?.audio?.src);
+    if (order.length === 0) return;
+
+    const session = ++playSessionRef.current;
+
+    // Rewind and re-arm. The clips were played before, so their one-shot
+    // "ended" handlers are spent and have to be attached again.
+    order.forEach((idx, position) => {
+      const el = group[idx].audio as HTMLAudioElement & { __chain?: () => void };
+      try {
+        el.currentTime = 0;
+      } catch {
+        // not loaded yet - it will start at zero anyway
+      }
+      if (el.__chain) el.removeEventListener("ended", el.__chain);
+
+      const nextIdx = order[position + 1];
+      if (nextIdx === undefined) {
+        el.__chain = undefined;
+        return;
+      }
+      const chain = () => {
+        if (session !== playSessionRef.current) return;
+        if (stopListRef.current.includes(groupIndex)) return;
+        group[nextIdx].audio.play().catch((err) =>
+          console.warn("Audio play() rejected in replay chain:", err)
+        );
+      };
+      el.__chain = chain;
+      el.addEventListener("ended", chain, { once: true });
+    });
+
+    // Mark them unplayed so the read-aloud effect does not skip ahead.
+    setAudioFileDict((prev) => {
+      const next = { ...prev };
+      const copy = { ...(next[groupIndex] ?? {}) };
+      for (const idx of order) copy[idx] = { ...copy[idx], played: false };
+      next[groupIndex] = copy;
+      return next;
+    });
+
+    group[order[0]].audio.play().catch((err) =>
+      console.warn("Audio play() rejected on replay:", err)
     );
-
-    if (indexThatIsPlaying !== -1) {
-      (Object.values(audioFileDict) as Record<number, AudioItem>[]).forEach(
-        (group) => {
-          (Object.values(group) as AudioItem[]).forEach((item) => {
-            if (!item.audio.paused) {
-              item.audio.pause();
-              item.audio.currentTime = 0;
-            }
-          });
-        },
-      );
-
-      setStopList([...stopList, groupIndex]);
-      setAudioFileDict({ ...audioFileDict });
-    } else {
-      setStopList(stopList.filter((item) => item !== groupIndex));
-      (Object.values(audioFileDict) as Record<number, AudioItem>[]).forEach(
-        (group) => {
-          (Object.values(group) as AudioItem[]).forEach((item) => {
-            if (!item.audio.paused) {
-              item.audio.pause();
-              item.audio.currentTime = 0;
-            }
-          });
-        },
-      );
-
-      startOrderedPlaybackForGroup(groupIndex);
-    }
   };
 
   const handleUploadActionToMessages = (uploadedMessages: Message[]) => {
@@ -3244,8 +3361,10 @@ export default function ChatIsland({ lang }: { lang: string }) {
     groupIndex: number,
     sourceFunction: string,
   ) => {
-    // Only return early if readAlways is false AND this is a *pure streaming* request (not manual)
-    if (!readAlways && /^stream\d+$/.test(sourceFunction)) return;
+    // Chunks produced while streaming are only wanted when read-aloud is on.
+    // A manual request (manual_stream*) always goes through, so the speaker
+    // button works even with read-aloud switched off.
+    if (!readAlwaysRef.current && /^stream\d+$/.test(sourceFunction)) return;
 
     // Special case: static welcome audio
     if (text === chatIslandContent[lang]["welcomeMessage"]) {
@@ -3370,14 +3489,16 @@ export default function ChatIsland({ lang }: { lang: string }) {
           });
         });
 
-        // Autostart for manual speak when first chunk is ready
-        if (!readAlways && pendingManualSpeak.has(groupIndex) && idx === 0) {
+        // Autostart for manual speak once the first chunk is ready. Both the
+        // flag and the toggle come from refs - the state captured in this
+        // closure predates the button press that started the request.
+        if (
+          !readAlwaysRef.current &&
+          pendingManualSpeakRef.current.has(groupIndex) &&
+          idx === 0
+        ) {
           startOrderedPlaybackForGroup(groupIndex);
-          setPendingManualSpeak((prev) => {
-            const cp = new Set(prev);
-            cp.delete(groupIndex);
-            return cp;
-          });
+          clearManualSpeak(groupIndex);
         }
       } catch (error) {
         console.error("Error fetching TTS:", error);
@@ -3600,6 +3721,21 @@ export default function ChatIsland({ lang }: { lang: string }) {
           </button>
         )}
 
+        <button
+          class="rounded-full bg-slate-200 px-4 py-2 mx-2 mb-2"
+          title={notebookContent[lang]?.title ?? "Python notebook"}
+          onClick={() => setShowNotebook(true)}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="24"
+            viewBox="0 -960 960 960"
+            width="24"
+          >
+            <path d="M320-240 80-480l240-240 57 57-184 183 183 183-56 57Zm320 0-57-57 184-183-184-183 57-57 240 240-240 240Z" />
+          </svg>
+        </button>
+
         {[...localStorageKeys]
           .sort((a, b) => Number(a.slice(10)) - Number(b.slice(10)))
           .map((key) => {
@@ -3754,6 +3890,10 @@ export default function ChatIsland({ lang }: { lang: string }) {
           onClose={() => setShowSettings(false)}
           lang={lang}
         />
+      )}
+
+      {showNotebook && (
+        <NotebookModal lang={lang} onClose={() => setShowNotebook(false)} />
       )}
 
       {showMailSync && (

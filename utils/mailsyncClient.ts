@@ -8,6 +8,7 @@
  */
 
 import { rehydrateImages, stripImagesForStorage } from "./imageStore.ts";
+import { collectNotebooks, restoreNotebooks } from "./notebookStore.ts";
 
 export const MAIL_SETTINGS_KEY = "bud-e-mail-sync";
 export const LAST_SYNC_KEY = "bud-e-mail-sync-last";
@@ -192,12 +193,14 @@ export async function collectSnapshot(deviceName: string): Promise<string> {
     device: deviceName,
     chats,
     prefs,
+    notebooks: collectNotebooks(),
   });
 }
 
 export interface ApplyResult {
   chats: number;
   prefs: number;
+  notebooks: number;
   firstSuffix: string;
 }
 
@@ -246,7 +249,14 @@ export async function applySnapshot(
     }
   }
 
-  return { chats: count, prefs: prefCount, firstSuffix };
+  const notebookCount = restoreNotebooks(data.notebooks);
+
+  return {
+    chats: count,
+    prefs: prefCount,
+    notebooks: notebookCount,
+    firstSuffix,
+  };
 }
 
 // --------------------------------------------------------------- api calls
