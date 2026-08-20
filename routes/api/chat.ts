@@ -12,6 +12,63 @@ const API_IMAGE_MODEL = Deno.env.get("VLM_MODEL") || "";
 const API_IMAGE_CORRECTION_MODEL = Deno.env.get("VLM_CORRECTION_MODEL") || "";
 const MIDDLEWARE_BASE_URL = Deno.env.get("MIDDLEWARE_URL") || "";
 
+/**
+ * Which permission-gated tools are active, plus the handful of facts that make
+ * the instructions concrete. Everything here is data from an untrusted client,
+ * so the values are clamped and stripped of line breaks before they go
+ * anywhere near the system prompt.
+ */
+interface ToolFlags {
+  notebook: boolean;
+  mail: boolean;
+  notebookName: string;
+  notebookCells: number;
+  mailFolders: string[];
+}
+
+// deno-lint-ignore no-explicit-any
+function readToolFlags(raw: any): ToolFlags {
+  const text = (v: unknown, max: number) =>
+    typeof v === "string" ? v.replace(/[\r\n]+/g, " ").trim().slice(0, max) : "";
+  return {
+    notebook: raw?.notebook === true,
+    mail: raw?.mail === true,
+    notebookName: text(raw?.notebookName, 80),
+    notebookCells: Math.max(0, Math.min(999, Number(raw?.notebookCells) || 0)),
+    mailFolders: Array.isArray(raw?.mailFolders)
+      ? raw.mailFolders.map((f: unknown) => text(f, 60)).filter(Boolean).slice(0, 20)
+      : [],
+  };
+}
+
+/** Builds the tool part of the system prompt from our own wording. */
+function buildToolSection(flags: ToolFlags, lang: string): string {
+  const parts: string[] = [];
+  const de = lang === "de";
+
+  if (flags.notebook) {
+    parts.push(chatContent[lang]?.notebookToolPrompt ?? "");
+    if (flags.notebookName) {
+      parts.push(
+        de
+          ? `Gerade geöffnet: Notebook "${flags.notebookName}" mit ${flags.notebookCells} Zellen.`
+          : `Currently open: notebook "${flags.notebookName}" with ${flags.notebookCells} cells.`,
+      );
+    }
+  }
+  if (flags.mail) {
+    parts.push(chatContent[lang]?.mailToolPrompt ?? "");
+    if (flags.mailFolders.length) {
+      parts.push(
+        de
+          ? `Freigegebene Ordner: ${flags.mailFolders.join(", ")}.`
+          : `Permitted folders: ${flags.mailFolders.join(", ")}.`,
+      );
+    }
+  }
+  return parts.filter(Boolean).join("\n\n");
+}
+
 interface Message {
   role: string;
   // deno-lint-ignore no-explicit-any
@@ -184,7 +241,7 @@ async function getModelResponseStream(
   llmApiKey: string,
   llmApiModel: string,
   systemPrompt: string,
-  toolPrompt: string,
+  toolFlags: ToolFlags,
   vlmApiUrl: string,
   vlmApiKey: string,
   vlmApiModel: string,
@@ -237,12 +294,12 @@ async function getModelResponseStream(
     const toolPrefix = chatContent[lang]?.toolUsagePrompt ?? "";
     useThisSystemPrompt = toolPrefix + systemPrompt;
   }
-  // Notebook and mailbox instructions are sent by the client, and only while
-  // the user has granted the matching permission - so an assistant that cannot
-  // act is never told how to.
-  if (toolPrompt && toolPrompt.trim()) {
-    useThisSystemPrompt += "\n\n" + toolPrompt.trim();
-  }
+  // Tool instructions are composed here, from our own text. The client only
+  // says which permissions are on and passes a few facts; anything it sends is
+  // treated as data, never as prompt - otherwise a crafted request could
+  // append arbitrary instructions to the system prompt.
+  const toolSection = buildToolSection(toolFlags, lang);
+  if (toolSection) useThisSystemPrompt += "\n\n" + toolSection;
   messages.unshift({ role: "system", content: useThisSystemPrompt });
 
   // 4b) Sanitize multimodal content before forwarding upstream.
@@ -675,7 +732,7 @@ export const handler: Handlers = {
       payload.universalApiKey,
       payload.llmApiUrl, payload.llmApiKey, payload.llmApiModel,
       payload.systemPrompt,
-      typeof payload.toolPrompt === "string" ? payload.toolPrompt : "",
+      readToolFlags(payload.toolFlags),
       payload.vlmApiUrl, payload.vlmApiKey, payload.vlmApiModel, payload.vlmCorrectionModel,
       wantsStream,
       new URL(req.url).origin,
@@ -732,7 +789,7 @@ export const handler: Handlers = {
       payload.universalApiKey,
       payload.llmApiUrl, payload.llmApiKey, payload.llmApiModel,
       payload.systemPrompt,
-      typeof payload.toolPrompt === "string" ? payload.toolPrompt : "",
+      readToolFlags(payload.toolFlags),
       payload.vlmApiUrl, payload.vlmApiKey, payload.vlmApiModel, payload.vlmCorrectionModel,
       wantsStream,
       new URL(req.url).origin,

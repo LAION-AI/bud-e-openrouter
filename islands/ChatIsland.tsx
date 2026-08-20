@@ -21,7 +21,6 @@ import { useEffect, useRef, useState } from "preact/hooks";
 
 // Internalization
 import {
-  chatContent,
   chatIslandContent,
   mailSyncContent,
   notebookContent,
@@ -2434,33 +2433,22 @@ export default function ChatIsland({ lang }: { lang: string }) {
    * Returns the new message array plus whether images were produced.
    */
   /**
-   * The extra system-prompt section describing the tools that are currently
-   * permitted, plus a one-line note about what is open right now so the model
-   * knows there is something to look at.
+   * What the server needs to compose the tool instructions: which permissions
+   * are on, and a couple of facts about what is open.
+   *
+   * Deliberately no prose - the wording lives on the server, so nothing the
+   * browser sends can end up as an instruction in the system prompt.
    */
-  const buildToolPrompt = (): string => {
-    const parts: string[] = [];
-    if (notebookToolsAllowed) {
-      parts.push(chatContent[lang]?.notebookToolPrompt ?? "");
-      const nb = activeNotebookRef.current;
-      if (nb) {
-        parts.push(
-          lang === "de"
-            ? `Gerade geöffnet: Notebook "${nb.name}" mit ${nb.cells.length} Zellen.`
-            : `Currently open: notebook "${nb.name}" with ${nb.cells.length} cells.`,
-        );
-      }
-    }
-    if (mailToolsAllowed && isMailSyncConfigured(mailAccount)) {
-      parts.push(chatContent[lang]?.mailToolPrompt ?? "");
-      const folders = loadMailLimits().folders.join(", ");
-      parts.push(
-        lang === "de"
-          ? `Freigegebene Ordner: ${folders}.`
-          : `Permitted folders: ${folders}.`,
-      );
-    }
-    return parts.filter(Boolean).join("\n\n");
+  const buildToolFlags = () => {
+    const nb = activeNotebookRef.current;
+    const mailOn = mailToolsAllowed && isMailSyncConfigured(mailAccount);
+    return {
+      notebook: notebookToolsAllowed,
+      mail: mailOn,
+      notebookName: notebookToolsAllowed && nb ? nb.name : "",
+      notebookCells: notebookToolsAllowed && nb ? nb.cells.length : 0,
+      mailFolders: mailOn ? loadMailLimits().folders : [],
+    };
   };
 
   /**
@@ -3409,9 +3397,9 @@ ${result.snapshot}`
         vlmApiModel: settings.vlmModel,
         vlmCorrectionModel: settings.vlmCorrectionModel,
         systemPrompt: settings.systemPrompt,
-        // Tool documentation only travels when the permission is actually on -
-        // an assistant that cannot act should not be told how to.
-        toolPrompt: buildToolPrompt(),
+        // Only the flags travel; the instructions themselves are assembled
+        // on the server.
+        toolFlags: buildToolFlags(),
       }),
       signal: abortRef.current?.signal,
 

@@ -144,6 +144,623 @@ export function findPath(
 
 // ------------------------------------------------------------- the content
 
+const whatIsAComputer: LearningPath = {
+  key: "what-is-a-computer",
+  title: { de: "Was ist ein Computer?", en: "What is a computer?" },
+  summary: {
+    de:
+      "Von Zahnrädern über glühende Röhren und geknackte Geheimcodes bis zu dem Gerät in deiner Hosentasche - die Geschichte einer Maschine, die alles verändert hat.",
+    en:
+      "From cogwheels through glowing tubes and broken secret codes to the device in your pocket - the story of a machine that changed everything.",
+  },
+  icon: "🖥️",
+  accent: "indigo",
+  minutes: 15,
+  screens: [
+    {
+      key: "before-electricity",
+      title: {
+        de: "Als Computer noch Menschen waren",
+        en: "When computers were people",
+      },
+      blocks: [
+        {
+          kind: "lead",
+          text: {
+            de:
+              "Wie viele Computer waren heute schon in deiner Nähe? Zähl ruhig mit: Handy, Kopfhörer, Smartwatch, der Bus, in dem du saßt, die Ampel an der Kreuzung, die Waschmaschine zu Hause, die Kasse im Supermarkt. Wahrscheinlich waren es dutzende - und die meisten davon sehen kein bisschen nach Computer aus.",
+            en:
+              "How many computers have been near you today? Count along: phone, headphones, smartwatch, the bus you sat in, the traffic light at the crossing, the washing machine at home, the till in the supermarket. Probably dozens - and most of them do not look remotely like a computer.",
+          },
+        },
+        {
+          kind: "paragraph",
+          text: {
+            de:
+              'Um zu verstehen, was diese Geräte gemeinsam haben, gehen wir weit zurück. Zu einer Zeit, in der "Computer" noch eine Berufsbezeichnung war.',
+            en:
+              'To understand what these devices have in common, we go a long way back. To a time when "computer" was still a job title.',
+          },
+        },
+        {
+          kind: "callout",
+          tone: "fact",
+          icon: "👩‍💼",
+          title: {
+            de: "Computer war ein Beruf",
+            en: "Computer used to be a job",
+          },
+          text: {
+            de:
+              'Bis in die 1940er Jahre hinein war ein "computer" ein Mensch, der beruflich rechnete - meist Frauen, oft in großen Rechensälen, die stundenlang Tabellen für Astronomie, Artillerie oder Versicherungen ausrechneten. Als die Maschinen kamen, übernahmen sie erst den Beruf und dann den Namen.',
+            en:
+              'Right into the 1940s a "computer" was a person who calculated for a living - mostly women, often in large calculating rooms, working out tables for astronomy, artillery or insurance for hours on end. When the machines arrived, they first took over the job and then the name.',
+          },
+        },
+        {
+          kind: "heading",
+          text: {
+            de: "Die ersten Rechenmaschinen aus Zahnrädern",
+            en: "The first calculating machines made of cogwheels",
+          },
+        },
+        {
+          kind: "paragraph",
+          text: {
+            de:
+              "Lange bevor jemand an Strom dachte, versuchten Erfinder, das Rechnen an Zahnräder auszulagern. Die Idee dahinter ist bis heute dieselbe wie in deinem Handy: Ein Vorgang, der im Kopf mühsam und fehleranfällig ist, wird in viele winzige, immer gleiche Schritte zerlegt - und die kann eine Maschine übernehmen.",
+            en:
+              "Long before anyone thought of electricity, inventors tried to hand calculation over to cogwheels. The idea behind it is still the same as in your phone: a task that is tiring and error prone in your head gets broken down into many tiny, always identical steps - and a machine can take those over.",
+          },
+        },
+        {
+          kind: "timeline",
+          entries: [
+            {
+              year: "1623",
+              title: {
+                de: "Schickards Rechenuhr",
+                en: "Schickard's calculating clock",
+              },
+              text: {
+                de:
+                  "Der Tübinger Gelehrte Wilhelm Schickard baut eine Maschine, die addieren und subtrahieren kann. Sie verbrennt bei einem Brand, bevor sie richtig benutzt wird - die Baupläne überleben in Briefen an den Astronomen Johannes Kepler.",
+                en:
+                  "The Tübingen scholar Wilhelm Schickard builds a machine that can add and subtract. It burns in a fire before it is properly used - the plans survive in letters to the astronomer Johannes Kepler.",
+              },
+            },
+            {
+              year: "1642",
+              title: {
+                de: "Pascals Rechenmaschine",
+                en: "Pascal's calculator",
+              },
+              text: {
+                de:
+                  "Der neunzehnjährige Blaise Pascal baut für seinen Vater, einen Steuerbeamten, die Pascaline. Sie addiert und subtrahiert über ineinandergreifende Zifferräder - der erste mechanische Rechner, der tatsächlich in kleiner Stückzahl gebaut und verkauft wurde.",
+                en:
+                  "Nineteen year old Blaise Pascal builds the Pascaline for his father, a tax official. It adds and subtracts through interlocking number wheels - the first mechanical calculator that was actually built and sold in small numbers.",
+              },
+            },
+            {
+              year: "1673",
+              title: {
+                de: "Leibniz und die Staffelwalze",
+                en: "Leibniz and the stepped drum",
+              },
+              text: {
+                de:
+                  "Gottfried Wilhelm Leibniz stellt eine Maschine vor, die zusätzlich multiplizieren und dividieren kann. Von ihm stammt auch die Beschreibung des Dualsystems - jener Rechnerei mit Einsen und Nullen, die dreihundert Jahre später jeden Chip antreiben wird.",
+                en:
+                  "Gottfried Wilhelm Leibniz presents a machine that can also multiply and divide. He also described the binary system - that arithmetic of ones and zeros which would drive every chip three hundred years later.",
+              },
+            },
+            {
+              year: "1837",
+              title: {
+                de: "Babbages Analytical Engine",
+                en: "Babbage's Analytical Engine",
+              },
+              text: {
+                de:
+                  "Charles Babbage entwirft eine Maschine, die nicht nur eine Rechenart beherrscht, sondern Anweisungen von Lochkarten liest - also programmierbar ist. Gebaut wird sie zu seinen Lebzeiten nie: Sie war zu groß, zu teuer und für die Feinmechanik der Zeit zu anspruchsvoll.",
+                en:
+                  "Charles Babbage designs a machine that does not just master one kind of arithmetic but reads instructions from punched cards - in other words, it is programmable. It was never built in his lifetime: too large, too expensive and too demanding for the precision engineering of the day.",
+              },
+            },
+            {
+              year: "1843",
+              title: {
+                de: "Ada Lovelace schreibt das erste Programm",
+                en: "Ada Lovelace writes the first program",
+              },
+              text: {
+                de:
+                  "Die Mathematikerin Ada Lovelace übersetzt einen Aufsatz über Babbages Maschine und ergänzt ihn um eigene Anmerkungen, die länger sind als der Text selbst. Darin steht ein vollständiges Verfahren, das die Maschine hätte ausführen können - und der Gedanke, dass so eine Maschine eines Tages nicht nur Zahlen, sondern auch Musik und Sprache verarbeiten könnte.",
+                en:
+                  "The mathematician Ada Lovelace translates an article about Babbage's machine and adds notes of her own that are longer than the text itself. They contain a complete procedure the machine could have executed - and the thought that such a machine might one day handle not only numbers but music and language too.",
+              },
+            },
+          ],
+        },
+        {
+          kind: "paragraph",
+          text: {
+            de:
+              "Damit war die Idee da: eine Maschine, die Schritt für Schritt Anweisungen abarbeitet. Was noch fehlte, war Tempo. Zahnräder sind langsam, und sie nutzen sich ab. Es brauchte etwas, das schalten kann, ohne sich zu bewegen. Und es brauchte, so unangenehm das ist, einen Krieg.",
+            en:
+              "So the idea existed: a machine that works through instructions step by step. What was missing was speed. Cogwheels are slow and they wear out. Something was needed that could switch without moving. And, uncomfortable as it is, it took a war.",
+          },
+        },
+      ],
+    },
+    {
+      key: "war-and-tubes",
+      title: {
+        de: "Glühende Röhren und geknackte Codes",
+        en: "Glowing tubes and broken codes",
+      },
+      blocks: [
+        {
+          kind: "lead",
+          text: {
+            de:
+              "Der Zweite Weltkrieg war die Zeit, in der aus einer Idee Maschinen wurden - weil plötzlich Regierungen bereit waren, Unsummen für Geräte auszugeben, die Zahlen schneller verarbeiten als Menschen.",
+            en:
+              "The Second World War was the time when an idea turned into machines - because governments were suddenly willing to spend fortunes on devices that process numbers faster than people can.",
+          },
+        },
+        {
+          kind: "heading",
+          text: {
+            de: "Die Maschine, die schneller schaltet als jedes Zahnrad",
+            en: "The machine that switches faster than any cogwheel",
+          },
+        },
+        {
+          kind: "paragraph",
+          text: {
+            de:
+              "Zuerst kamen Relais: kleine Elektromagnete, die einen Kontakt zusammenziehen. Konrad Zuse baute damit 1941 in Berlin die Z3, den ersten programmgesteuerten, voll funktionsfähigen Digitalrechner. Relais klappern aber, und sie sind für Maschinenverhältnisse träge.",
+            en:
+              "First came relays: small electromagnets that pull a contact together. In Berlin in 1941 Konrad Zuse used them to build the Z3, the first program controlled, fully working digital computer. But relays clatter, and by machine standards they are slow.",
+          },
+        },
+        {
+          kind: "paragraph",
+          text: {
+            de:
+              "Die Vakuumröhre löste das Problem. In ihr fliegen Elektronen durch ein Vakuum, gesteuert von einem winzigen Signal - ein Schalter ohne bewegliche Teile, tausendfach schneller als ein Relais. Dafür ist sie so groß wie eine Glühbirne, wird heiß und brennt gelegentlich durch. Ein Rechner mit tausenden Röhren war ein Vollzeitjob für ein ganzes Wartungsteam.",
+            en:
+              "The vacuum tube solved that. Inside it electrons fly through a vacuum, steered by a tiny signal - a switch with no moving parts, a thousand times faster than a relay. In exchange it is the size of a light bulb, runs hot and occasionally burns out. A computer with thousands of tubes was a full time job for an entire maintenance team.",
+          },
+        },
+        {
+          kind: "heading",
+          text: {
+            de: "Enigma: Funksprüche, die niemand lesen konnte",
+            en: "Enigma: radio messages nobody could read",
+          },
+        },
+        {
+          kind: "paragraph",
+          text: {
+            de:
+              "Die deutsche Wehrmacht verschlüsselte ihren Funkverkehr mit der Enigma, einer Maschine, die aussah wie eine Schreibmaschine mit Zusatzteilen. Drückte man einen Buchstaben, liefen mehrere Walzen weiter, und heraus kam ein anderer Buchstabe - beim nächsten Tastendruck ein völlig anderer, obwohl man dieselbe Taste drückte. Die Zahl der möglichen Einstellungen war astronomisch groß. Ohne die richtige Tageseinstellung war ein abgefangener Funkspruch reiner Buchstabensalat.",
+            en:
+              "The German armed forces encrypted their radio traffic with the Enigma, a machine that looked like a typewriter with extra parts. Press a letter and several rotors advanced, and out came a different letter - and on the next keypress a completely different one, even for the same key. The number of possible settings was astronomically large. Without the correct setting for the day, an intercepted message was pure alphabet soup.",
+          },
+        },
+        {
+          kind: "paragraph",
+          text: {
+            de:
+              "Das Entscheidende daran: Über Funk wurden Konvois geleitet, U-Boote dirigiert und Angriffe koordiniert. Wer mitlesen konnte, wusste vorher, wo der Gegner sein würde.",
+            en:
+              "The crucial part: radio directed convoys, steered submarines and coordinated attacks. Whoever could read along knew in advance where the enemy would be.",
+          },
+        },
+        {
+          kind: "heading",
+          text: {
+            de: "Bletchley Park: das bestgehütete Geheimnis Großbritanniens",
+            en: "Bletchley Park: Britain's best kept secret",
+          },
+        },
+        {
+          kind: "paragraph",
+          text: {
+            de:
+              'In einem Landhaus nördlich von London arbeitete eine der ungewöhnlichsten Belegschaften der Geschichte: Mathematikerinnen und Mathematiker, Schachmeister, Kreuzworträtselprofis, Sprachtalente. Den ersten Durchbruch hatten polnische Kryptoanalytiker um Marian Rejewski schon vor dem Krieg erzielt und ihr Wissen 1939 an Briten und Franzosen weitergegeben. In Bletchley Park entwickelten Alan Turing und Gordon Welchman daraus die "Bombe": eine elektromechanische Maschine, die mögliche Enigma-Einstellungen in rasendem Tempo durchprobierte und die falschen ausschloss.',
+            en:
+              'In a country house north of London worked one of the most unusual workforces in history: mathematicians, chess champions, crossword experts, gifted linguists. The first breakthrough had been achieved before the war by Polish cryptanalysts around Marian Rejewski, who passed their knowledge to Britain and France in 1939. At Bletchley Park, Alan Turing and Gordon Welchman turned it into the "Bombe": an electromechanical machine that raced through possible Enigma settings and ruled out the wrong ones.',
+          },
+        },
+        {
+          kind: "paragraph",
+          text: {
+            de:
+              "Für eine noch schwierigere deutsche Verschlüsselung, die Lorenz-Maschine, baute der Ingenieur Tommy Flowers ab 1943 den Colossus - einen Rechner aus rund 1.600 bis 2.400 Vakuumröhren. Colossus gilt als der erste programmierbare elektronische Digitalrechner der Welt. Nach dem Krieg wurden die meisten Geräte zerstört und die Arbeit blieb jahrzehntelang geheim; viele Beteiligte durften bis in die 1970er Jahre niemandem erzählen, was sie getan hatten.",
+            en:
+              "For an even harder German cipher, the Lorenz machine, the engineer Tommy Flowers built Colossus from 1943 - a computer made of roughly 1,600 to 2,400 vacuum tubes. Colossus is regarded as the world's first programmable electronic digital computer. After the war most machines were destroyed and the work stayed secret for decades; many of those involved were not allowed to tell anyone what they had done until the 1970s.",
+          },
+        },
+        {
+          kind: "callout",
+          tone: "note",
+          icon: "⚖️",
+          title: {
+            de: "Wie sehr hat das den Krieg verkürzt?",
+            en: "How much did this shorten the war?",
+          },
+          text: {
+            de:
+              "Der offizielle britische Geheimdiensthistoriker Harry Hinsley schätzte, dass die Entschlüsselungsarbeit den Krieg in Europa um etwa zwei bis vier Jahre verkürzt hat. Das ist eine Schätzung und keine Messung - niemand kann eine Geschichte nachspielen, die nicht stattgefunden hat. Aber selbst vorsichtige Historikerinnen und Historiker sind sich einig, dass die Arbeit in Bletchley Park unzählige Menschenleben gerettet hat.",
+            en:
+              "The official British intelligence historian Harry Hinsley estimated that the codebreaking work shortened the war in Europe by roughly two to four years. That is an estimate, not a measurement - nobody can replay a history that never happened. But even cautious historians agree that the work at Bletchley Park saved countless lives.",
+          },
+        },
+        {
+          kind: "paragraph",
+          text: {
+            de:
+              "Auf dem Höhepunkt arbeiteten rund 9.000 Menschen in Bletchley Park, etwa drei Viertel davon Frauen. Wer das nächste Mal hört, Informatik sei schon immer Männersache gewesen, darf gern widersprechen.",
+            en:
+              "At its peak around 9,000 people worked at Bletchley Park, roughly three quarters of them women. Next time somebody claims computing has always been a men's field, feel free to disagree.",
+          },
+        },
+        {
+          kind: "heading",
+          text: {
+            de: "ENIAC: 27 Tonnen Rechenmaschine",
+            en: "ENIAC: 27 tons of calculating machine",
+          },
+        },
+        {
+          kind: "paragraph",
+          text: {
+            de:
+              "In den USA entstand parallel der ENIAC, 1945 fertiggestellt an der University of Pennsylvania. Er war ursprünglich für Artillerie-Berechnungen gedacht, wurde aber schon bald für Fragen der Atomforschung eingesetzt. Programmiert wurde er nicht mit Tastatur, sondern durch Umstecken von Kabeln und Umlegen von Schaltern - eine Arbeit, die ein Team von sechs Mathematikerinnen leistete, deren Namen lange vergessen waren.",
+            en:
+              "In the USA the ENIAC was built in parallel, completed in 1945 at the University of Pennsylvania. It was originally meant for artillery calculations but was soon used for questions in nuclear research. It was not programmed with a keyboard but by replugging cables and flipping switches - work done by a team of six women mathematicians whose names were forgotten for a long time.",
+          },
+        },
+        {
+          kind: "stats",
+          entries: [
+            {
+              value: "~17.500",
+              label: { de: "Vakuumröhren", en: "vacuum tubes" },
+              hint: {
+                de: "regelmäßig brannte eine durch",
+                en: "one burned out regularly",
+              },
+            },
+            {
+              value: "~27 t",
+              label: { de: "Gewicht", en: "weight" },
+              hint: {
+                de: "so viel wie vier Elefanten",
+                en: "about four elephants",
+              },
+            },
+            {
+              value: "~150 kW",
+              label: { de: "Stromverbrauch", en: "power draw" },
+              hint: {
+                de: "wie ein ganzes Wohnhaus",
+                en: "like an entire apartment block",
+              },
+            },
+          ],
+        },
+        {
+          kind: "paragraph",
+          text: {
+            de:
+              "Diese Maschine, so groß wie ein Klassenzimmer, war schwächer als der billigste Taschenrechner, den du heute an der Supermarktkasse bekommst. Wie aus dem Klassenzimmer eine Hosentasche wurde, steht auf der nächsten Seite.",
+            en:
+              "This machine, the size of a classroom, was weaker than the cheapest pocket calculator you can pick up at a supermarket checkout today. How the classroom became a trouser pocket is on the next screen.",
+          },
+        },
+      ],
+    },
+    {
+      key: "transistor-and-mainframes",
+      title: {
+        de: "Der Transistor und die große Schrumpfkur",
+        en: "The transistor and the great shrinking",
+      },
+      blocks: [
+        {
+          kind: "lead",
+          text: {
+            de:
+              "Am 23. Dezember 1947 führten John Bardeen und Walter Brattain in den Bell Labs in New Jersey ihren Vorgesetzten ein unscheinbares Gebilde aus Germanium, Goldfolie und einem Plastikkeil vor. Es war der erste Transistor - und der Anfang von so ziemlich allem.",
+            en:
+              "On 23 December 1947 John Bardeen and Walter Brattain demonstrated an unremarkable arrangement of germanium, gold foil and a plastic wedge to their superiors at Bell Labs in New Jersey. It was the first transistor - and the beginning of pretty much everything.",
+          },
+        },
+        {
+          kind: "callout",
+          tone: "tip",
+          icon: "🔀",
+          title: {
+            de: "Was ein Transistor eigentlich ist",
+            en: "What a transistor actually is",
+          },
+          text: {
+            de:
+              "Ein Transistor ist im Kern ein sehr einfacher Schalter. Er hat drei Anschlüsse: An zweien soll Strom fließen, der dritte entscheidet, ob er das darf. Ein kleines Signal am Steueranschluss schaltet einen größeren Stromfluss an oder aus. Kein Klappern, kein Glühen, kein Verschleiß - und man kann ihn schrumpfen. Genau daraus baut man alles: Rechenwerke, Speicher, Grafikchips, KI-Beschleuniger.",
+            en:
+              "At heart a transistor is a very simple switch. It has three terminals: current is meant to flow between two of them, and the third decides whether it may. A small signal at the control terminal switches a larger current on or off. No clatter, no glow, no wear - and it can be made smaller. Everything is built from this: arithmetic units, memory, graphics chips, AI accelerators.",
+          },
+        },
+        {
+          kind: "paragraph",
+          text: {
+            de:
+              "William Shockley entwickelte die Idee kurz darauf zum robusteren Flächentransistor weiter, der sich in Serie fertigen ließ. 1956 erhielten die drei gemeinsam den Nobelpreis für Physik. Die eigentliche Revolution kam aber erst mit dem nächsten Schritt: Ende der 1950er Jahre gelang es Jack Kilby und, unabhängig davon, Robert Noyce, mehrere Transistoren samt Verdrahtung auf ein einziges Stück Halbleiter zu setzen - der integrierte Schaltkreis, der Chip.",
+            en:
+              "William Shockley soon developed the idea into the sturdier junction transistor that could be mass produced. In 1956 the three shared the Nobel Prize in Physics. The real revolution came with the next step though: in the late 1950s Jack Kilby and, independently, Robert Noyce managed to put several transistors and their wiring onto a single piece of semiconductor - the integrated circuit, the chip.",
+          },
+        },
+        {
+          kind: "paragraph",
+          text: {
+            de:
+              "Ab da ließ sich Rechenleistung nicht mehr nur bauen, sondern drucken. Und Gedrucktes lässt sich verkleinern.",
+            en:
+              "From then on computing power was no longer just built, it was printed. And printed things can be made smaller.",
+          },
+        },
+        {
+          kind: "heading",
+          text: {
+            de: "Großrechner: die Maschinen im Keller",
+            en: "Mainframes: the machines in the basement",
+          },
+        },
+        {
+          kind: "paragraph",
+          text: {
+            de:
+              "In den 1950er und 1960er Jahren waren Computer riesige, teure Anlagen in klimatisierten Räumen, die sich nur Regierungen, Universitäten, Banken und Großkonzerne leisten konnten. Man kaufte keinen Computer, man mietete Rechenzeit. Wer etwas rechnen wollte, gab einen Stapel Lochkarten ab und holte am nächsten Tag den Ausdruck.",
+            en:
+              "In the 1950s and 1960s computers were huge, expensive installations in air conditioned rooms, affordable only to governments, universities, banks and large corporations. You did not buy a computer, you rented computing time. If you wanted something calculated you handed in a stack of punched cards and collected the printout the next day.",
+          },
+        },
+        {
+          kind: "paragraph",
+          text: {
+            de:
+              "Im Kalten Krieg wurden diese Großrechner zu strategischen Werkzeugen: für Luftraumüberwachung, für Wettervorhersagen, für Verschlüsselung und deren Gegenteil, für die Berechnung von Raketenbahnen. Und für die Raumfahrt: Der Bordcomputer der Apollo-Mondlandefähre wog etwa 32 Kilogramm und hatte weniger Speicher, als heute in einem einzigen Foto steckt - aber er brachte Menschen zum Mond und zurück.",
+            en:
+              "During the Cold War these mainframes became strategic tools: for air defence, weather forecasting, encryption and its opposite, and for calculating missile trajectories. And for spaceflight: the guidance computer of the Apollo lunar module weighed about 32 kilograms and had less memory than a single photo takes up today - yet it took humans to the Moon and back.",
+          },
+        },
+        {
+          kind: "callout",
+          tone: "fact",
+          icon: "🧊",
+          title: {
+            de: "Der Satz, den man gern zitiert",
+            en: "The quote everyone likes to repeat",
+          },
+          text: {
+            de:
+              "In den 1940er Jahren sollen führende Köpfe geglaubt haben, weltweit brauche man nur eine Handvoll Computer. Ob dieser Satz je genau so gefallen ist, ist historisch umstritten - er ist aber ein hübsches Denkmal dafür, wie schwer es ist, exponentielles Wachstum vorherzusehen. Genau darum geht es im vierten Lernpfad.",
+            en:
+              "In the 1940s leading figures are said to have believed the world would only need a handful of computers. Whether that sentence was ever really said is historically disputed - but it is a neat monument to how hard exponential growth is to foresee. Which is exactly what the fourth path is about.",
+          },
+        },
+      ],
+    },
+    {
+      key: "computers-come-home",
+      title: {
+        de: "Der Computer zieht zu Hause ein",
+        en: "The computer moves in at home",
+      },
+      blocks: [
+        {
+          kind: "lead",
+          text: {
+            de:
+              "In den 1970er Jahren passierte etwas, mit dem kaum jemand gerechnet hatte: Computer wurden billig genug, dass Privatleute sie kaufen konnten. Nicht Firmen. Nicht Universitäten. Menschen.",
+            en:
+              "In the 1970s something happened that almost nobody had expected: computers became cheap enough for private people to buy. Not companies. Not universities. People.",
+          },
+        },
+        {
+          kind: "heading",
+          text: {
+            de: "Erst im Büro: die Tabelle, die alles verkaufte",
+            en: "First in the office: the spreadsheet that sold everything",
+          },
+        },
+        {
+          kind: "paragraph",
+          text: {
+            de:
+              "In Firmen setzte sich der Computer zuerst dort durch, wo stumpfe Rechenarbeit anfiel: Buchhaltung, Lohnabrechnung, Lagerverwaltung. Den größten Schub gab 1979 ein Programm namens VisiCalc - die erste Tabellenkalkulation. Plötzlich konnte man eine Zahl ändern und alle anderen rechneten sich von selbst neu aus. Buchhalter kauften sich einen Apple II, nur um dieses eine Programm zu benutzen. So etwas nennt man seither eine Killer-App.",
+            en:
+              "In companies the computer first took hold where dull arithmetic piled up: bookkeeping, payroll, stock control. The biggest push came in 1979 from a program called VisiCalc - the first spreadsheet. Suddenly you could change one number and all the others recalculated themselves. Accountants bought an Apple II purely to use that one program. Ever since, that is what people call a killer app.",
+          },
+        },
+        {
+          kind: "heading",
+          text: {
+            de: "Dann im Kinderzimmer: Pong, Pac-Man und der C64",
+            en: "Then in the bedroom: Pong, Pac-Man and the C64",
+          },
+        },
+        {
+          kind: "paragraph",
+          text: {
+            de:
+              "Parallel dazu entdeckte die Welt, dass Computer Spaß machen. 1972 stellte Atari den Spielautomaten Pong auf: zwei weiße Striche, ein weißes Quadrat, Tischtennis. Die Legende sagt, der erste Automat sei ausgefallen, weil die Münzbox überquoll. 1978 kam Space Invaders, 1980 Pac-Man von Namco - und Videospiele waren endgültig ein Massenphänomen.",
+            en:
+              "At the same time the world discovered that computers are fun. In 1972 Atari installed the Pong arcade cabinet: two white bars, one white square, table tennis. Legend has it the first machine broke down because the coin box overflowed. Space Invaders followed in 1978, Pac-Man from Namco in 1980 - and video games were a mass phenomenon for good.",
+          },
+        },
+        {
+          kind: "timeline",
+          entries: [
+            {
+              year: "1975",
+              title: {
+                de: "Altair 8800 - der Bausatz",
+                en: "Altair 8800 - the kit",
+              },
+              text: {
+                de:
+                  "Ein Gerät ohne Bildschirm und ohne Tastatur, bedient über Kippschalter und Leuchtdioden. Man musste es selbst zusammenlöten. Und trotzdem wollten es tausende Bastler haben - für zwei junge Programmierer namens Paul Allen und Bill Gates war es der Anlass, eine Firma zu gründen.",
+                en:
+                  "A device without a screen or keyboard, operated through toggle switches and LEDs. You had to solder it together yourself. And still thousands of hobbyists wanted one - for two young programmers called Paul Allen and Bill Gates it was the reason to found a company.",
+              },
+            },
+            {
+              year: "1977",
+              title: {
+                de: "Apple II, Commodore PET und TRS-80",
+                en: "Apple II, Commodore PET and TRS-80",
+              },
+              text: {
+                de:
+                  "Drei fertige Computer im selben Jahr, die man auspacken, anschließen und benutzen konnte. Der Apple II hatte Farbe und wurde zum Liebling von Schulen und Buchhaltungen.",
+                en:
+                  "Three ready made computers in the same year that you could unpack, plug in and use. The Apple II had colour and became the darling of schools and accounting offices.",
+              },
+            },
+            {
+              year: "1981",
+              title: {
+                de: "Der IBM PC",
+                en: "The IBM PC",
+              },
+              text: {
+                de:
+                  "IBM, der Konzern der Großrechner, baut einen Kleincomputer - aus zugekauften Standardteilen. Andere Hersteller bauen ihn nach, und aus dem Gerät wird ein Standard, dessen Urenkel heute in jedem Büro steht.",
+                en:
+                  "IBM, the mainframe corporation, builds a small computer - out of bought in standard parts. Other manufacturers copy it, and the device becomes a standard whose great grandchildren sit in every office today.",
+              },
+            },
+            {
+              year: "1982",
+              title: {
+                de: "Commodore 64 - der Heimcomputer schlechthin",
+                en: "Commodore 64 - the home computer",
+              },
+              text: {
+                de:
+                  "Bezahlbar, farbig, mit gutem Sound und tausenden Spielen. Der C64 gilt als das meistverkaufte Computermodell aller Zeiten. Für eine ganze Generation war er das Gerät, an dem sie das Programmieren gelernt hat - oft, weil man ein Spiel abtippen musste, das in einer Zeitschrift abgedruckt war.",
+                en:
+                  "Affordable, colourful, with good sound and thousands of games. The C64 is regarded as the best selling single computer model of all time. For a whole generation it was the machine on which they learned to program - often because you had to type in a game printed in a magazine.",
+              },
+            },
+          ],
+        },
+        {
+          kind: "heading",
+          text: {
+            de: "Und heute?",
+            en: "And today?",
+          },
+        },
+        {
+          kind: "paragraph",
+          text: {
+            de:
+              "Heute ist der Computer nicht mehr ein Gerät, sondern ein Bauteil. Er steckt in deinem Handy, im Auto, im Fahrkartenautomaten, im Herzschrittmacher, im Roboterstaubsauger, im Fußballstadion und in der Ampel. Er hilft, Wettervorhersagen zu rechnen, Medikamente zu entwerfen, Erdbeben zu erkennen, Filme zu erschaffen. Und er steckt in den Rechenzentren, in denen die KI-Modelle laufen, mit denen du dich unterhältst - so wie gerade eben mit diesem Lernpfad.",
+            en:
+              "Today the computer is no longer a device but a component. It sits in your phone, in the car, in the ticket machine, in the pacemaker, in the robot vacuum, in the football stadium and in the traffic light. It helps forecast weather, design medicines, detect earthquakes, create films. And it sits in the data centres where the AI models run that you talk to - just as you did a moment ago with this learning path.",
+          },
+        },
+        {
+          kind: "paragraph",
+          text: {
+            de:
+              "Von Pascals Zahnrädern bis zu dem Gerät in deiner Hosentasche sind nicht einmal 400 Jahre vergangen. Und wenn du weiterliest, siehst du: Das Tempo hat sich nicht verlangsamt, im Gegenteil. Es ist eine ziemlich gute Zeit, neugierig zu sein.",
+            en:
+              "Not even 400 years have passed between Pascal's cogwheels and the device in your pocket. And if you read on, you will see: the pace has not slowed down, quite the opposite. It is a rather good time to be curious.",
+          },
+        },
+        {
+          kind: "sources",
+          items: [
+            {
+              label: {
+                de:
+                  "Computer History Museum: Zeitleiste der Computergeschichte",
+                en: "Computer History Museum: timeline of computer history",
+              },
+              url: "https://www.computerhistory.org/timeline/",
+            },
+            {
+              label: {
+                de: "Bletchley Park: Geschichte, Enigma und die Bombe",
+                en: "Bletchley Park: history, Enigma and the Bombe",
+              },
+              url: "https://bletchleypark.org.uk/our-story/",
+            },
+            {
+              label: {
+                de: "The National Museum of Computing: Colossus",
+                en: "The National Museum of Computing: Colossus",
+              },
+              url: "https://www.tnmoc.org/colossus",
+            },
+            {
+              label: {
+                de: "Wikipedia: ENIAC",
+                en: "Wikipedia: ENIAC",
+              },
+              url: "https://en.wikipedia.org/wiki/ENIAC",
+            },
+            {
+              label: {
+                de: "Nobelpreis für Physik 1956: Shockley, Bardeen, Brattain",
+                en: "Nobel Prize in Physics 1956: Shockley, Bardeen, Brattain",
+              },
+              url: "https://www.nobelprize.org/prizes/physics/1956/summary/",
+            },
+            {
+              label: {
+                de: "Computer History Museum: Der erste Transistor",
+                en: "Computer History Museum: the first transistor",
+              },
+              url:
+                "https://www.computerhistory.org/siliconengine/the-first-transistor/",
+            },
+            {
+              label: {
+                de: "Wikipedia: Ada Lovelace und ihre Anmerkungen von 1843",
+                en: "Wikipedia: Ada Lovelace and her 1843 notes",
+              },
+              url: "https://en.wikipedia.org/wiki/Ada_Lovelace",
+            },
+            {
+              label: {
+                de: "Wikipedia: Commodore 64",
+                en: "Wikipedia: Commodore 64",
+              },
+              url: "https://en.wikipedia.org/wiki/Commodore_64",
+            },
+            {
+              label: {
+                de: "Wikipedia: Pong (Atari, 1972)",
+                en: "Wikipedia: Pong (Atari, 1972)",
+              },
+              url: "https://en.wikipedia.org/wiki/Pong",
+            },
+          ],
+        },
+      ],
+    },
+  ],
+};
+
 const bitsAndBytes: LearningPath = {
   key: "bits-and-bytes",
   title: { de: "Von Bits und Bytes", en: "Of bits and bytes" },
@@ -302,9 +919,9 @@ const bitsAndBytes: LearningPath = {
           },
           text: {
             de:
-              "Es ist ziemlich unpraktisch, \"an aus aus an an aus an aus\" aufzuschreiben. Also schreiben wir für \"an\" eine 1 und für \"aus\" eine 0: 10011010. Deshalb heißt es, Computer sprächen Einsen und Nullen. In Wirklichkeit sprechen sie die Sprache von Strom an und Strom aus - die Einsen und Nullen sind nur unsere Schreibweise dafür, damit wir Menschen mitkommen.",
+              'Es ist ziemlich unpraktisch, "an aus aus an an aus an aus" aufzuschreiben. Also schreiben wir für "an" eine 1 und für "aus" eine 0: 10011010. Deshalb heißt es, Computer sprächen Einsen und Nullen. In Wirklichkeit sprechen sie die Sprache von Strom an und Strom aus - die Einsen und Nullen sind nur unsere Schreibweise dafür, damit wir Menschen mitkommen.',
             en:
-              "Writing down \"on off off on on off on off\" is pretty awkward. So we write 1 for \"on\" and 0 for \"off\": 10011010. That is why people say computers speak ones and zeros. In reality they speak the language of power on and power off - the ones and zeros are just our notation, so that we humans can follow along.",
+              'Writing down "on off off on on off on off" is pretty awkward. So we write 1 for "on" and 0 for "off": 10011010. That is why people say computers speak ones and zeros. In reality they speak the language of power on and power off - the ones and zeros are just our notation, so that we humans can follow along.',
           },
         },
         {
@@ -685,9 +1302,9 @@ const bitsAndBytes: LearningPath = {
           },
           text: {
             de:
-              "Festplatten- und Handyhersteller rechnen beim Aufdruck mit 1000 statt 1024. Eine Platte mit \"500 GB\" hat also 500 Milliarden Byte - dein Betriebssystem teilt aber durch 1024 und zeigt darum nur rund 465 GB an. Es fehlt nichts, es wird nur anders gezählt. Wer es ganz genau nimmt, sagt zu den 1024er-Stufen Kibibyte, Mebibyte und Gibibyte (KiB, MiB, GiB).",
+              'Festplatten- und Handyhersteller rechnen beim Aufdruck mit 1000 statt 1024. Eine Platte mit "500 GB" hat also 500 Milliarden Byte - dein Betriebssystem teilt aber durch 1024 und zeigt darum nur rund 465 GB an. Es fehlt nichts, es wird nur anders gezählt. Wer es ganz genau nimmt, sagt zu den 1024er-Stufen Kibibyte, Mebibyte und Gibibyte (KiB, MiB, GiB).',
             en:
-              "Disk and phone makers count in 1000s rather than 1024s on the label. A disk marked \"500 GB\" therefore holds 500 billion bytes - but your operating system divides by 1024 and shows only about 465 GB. Nothing is missing, it is just counted differently. Sticklers call the 1024 steps kibibyte, mebibyte and gibibyte (KiB, MiB, GiB).",
+              'Disk and phone makers count in 1000s rather than 1024s on the label. A disk marked "500 GB" therefore holds 500 billion bytes - but your operating system divides by 1024 and shows only about 465 GB. Nothing is missing, it is just counted differently. Sticklers call the 1024 steps kibibyte, mebibyte and gibibyte (KiB, MiB, GiB).',
           },
         },
       ],
@@ -851,6 +1468,1015 @@ const bitsAndBytes: LearningPath = {
               url: "https://help.netflix.com/de/node/87",
             },
           ],
+        },
+      ],
+    },
+  ],
+};
+
+const pixelsAndResolution: LearningPath = {
+  key: "pixels-and-resolution",
+  title: { de: "Pixel und Auflösung", en: "Pixels and resolution" },
+  summary: {
+    de:
+      "Warum YouTube bei schlechtem Empfang plötzlich matschig aussieht, warum Minecraft so klotzig ist und was 4K eigentlich bedeutet.",
+    en:
+      "Why YouTube suddenly looks mushy on a bad connection, why Minecraft is so blocky, and what 4K actually means.",
+  },
+  icon: "🟦",
+  accent: "sky",
+  minutes: 12,
+  screens: [
+    {
+      key: "what-is-a-pixel",
+      title: { de: "Ein Bild aus Kästchen", en: "A picture made of squares" },
+      blocks: [
+        {
+          kind: "lead",
+          text: {
+            de:
+              "Geh mit der Nase ganz nah an deinen Bildschirm. Näher. Irgendwann verschwindet das Bild und übrig bleiben winzige leuchtende Kästchen in Rot, Grün und Blau. Genau daraus besteht alles, was du je auf einem Bildschirm gesehen hast.",
+            en:
+              "Put your nose right up against your screen. Closer. At some point the picture disappears and all that is left are tiny glowing squares in red, green and blue. Everything you have ever seen on a screen is made of exactly that.",
+          },
+        },
+        {
+          kind: "paragraph",
+          text: {
+            de:
+              'Ein solches Kästchen heißt Pixel - das Wort ist eine Abkürzung für "picture element", also Bildelement. Ein Pixel kann genau eine Farbe zeigen, mehr nicht. Ein Bild entsteht erst dadurch, dass sehr viele Pixel nebeneinander liegen und dein Auge sie aus normaler Entfernung nicht mehr einzeln auseinanderhalten kann.',
+            en:
+              'One such square is called a pixel - the word is short for "picture element". A pixel can show exactly one colour, nothing more. A picture only comes about because a great many pixels lie side by side and, at normal distance, your eye can no longer tell them apart.',
+          },
+        },
+        {
+          kind: "callout",
+          tone: "tip",
+          icon: "📐",
+          title: { de: "Auflösung", en: "Resolution" },
+          text: {
+            de:
+              "Die Auflösung sagt, wie viele Pixel ein Bild hat: Breite mal Höhe. Ein Full-HD-Bild ist 1920 Pixel breit und 1080 Pixel hoch. 1920 × 1080 macht 2.073.600 Pixel - über zwei Millionen kleine Farbkästchen, und zwar 30- oder 60-mal in jeder Sekunde neu gesetzt, während du ein Video anschaust.",
+            en:
+              "The resolution says how many pixels a picture has: width times height. A Full HD picture is 1920 pixels wide and 1080 pixels tall. 1920 × 1080 makes 2,073,600 pixels - over two million little colour squares, redrawn 30 or 60 times every second while you watch a video.",
+          },
+        },
+        {
+          kind: "paragraph",
+          text: {
+            de:
+              "Wo du Pixel richtig gut sehen kannst, ohne dir die Nase platt zu drücken: in Minecraft. Die Standardtexturen des Spiels sind 16 × 16 Pixel groß - das sind 256 Pixel für eine ganze Grasblockseite. Ein einziges Bild in 4K hat mehr als 8 Millionen Pixel, also über 32.000 solcher Minecraft-Texturen. Die Klötzchenoptik ist keine technische Not, sondern eine Entscheidung: Sie ist wiedererkennbar, sie ist schnell zu zeichnen, und jeder kann eigene Texturen malen.",
+            en:
+              "Somewhere you can see pixels really well without flattening your nose: Minecraft. The game's default textures are 16 × 16 pixels - that is 256 pixels for a whole side of a grass block. A single 4K image has more than 8 million pixels, so over 32,000 such Minecraft textures. The blocky look is not a technical necessity but a decision: it is recognisable, it is quick to draw, and anyone can paint their own textures.",
+          },
+        },
+        {
+          kind: "callout",
+          tone: "fact",
+          icon: "🔤",
+          title: {
+            de: 'Das "p" bedeutet nicht Pixel',
+            en: 'The "p" does not mean pixel',
+          },
+          text: {
+            de:
+              'Bei 1080p steht die Zahl nur für die Höhe in Pixeln, und das p für "progressive" - das heißt, jedes Bild wird komplett übertragen und nicht in zwei Hälften wie beim alten Fernsehen. Die Breite ergibt sich aus dem Seitenverhältnis: bei 16:9 sind das 1920.',
+            en:
+              'In 1080p the number is only the height in pixels, and the p stands for "progressive" - meaning every frame is transmitted completely rather than in two halves as on old television. The width follows from the aspect ratio: at 16:9 that is 1920.',
+          },
+        },
+      ],
+    },
+    {
+      key: "colour-depth",
+      title: {
+        de: "Von Schwarz-Weiß zu 16,7 Millionen Farben",
+        en: "From black and white to 16.7 million colours",
+      },
+      blocks: [
+        {
+          kind: "lead",
+          text: {
+            de:
+              "Ein Pixel muss seine Farbe irgendwo speichern - und zwar in Bits. Wie viele Bits pro Pixel zur Verfügung stehen, nennt man Farbtiefe. Und weil du aus dem Lernpfad über Bits und Bytes schon weißt, dass jedes zusätzliche Bit die Anzahl der Werte verdoppelt, kannst du die ganze Geschichte der Bildschirmfarben jetzt selbst nachrechnen.",
+            en:
+              "A pixel has to store its colour somewhere - in bits. How many bits are available per pixel is called colour depth. And since you already know from the bits and bytes path that every extra bit doubles the number of values, you can now work out the entire history of screen colour yourself.",
+          },
+        },
+        {
+          kind: "table",
+          highlightFirst: true,
+          caption: {
+            de:
+              "Jede Zeile hat mehr Bits pro Pixel - und damit doppelt so viele Farben pro zusätzlichem Bit.",
+            en:
+              "Each row has more bits per pixel - and so twice as many colours per extra bit.",
+          },
+          head: [
+            { de: "Farbtiefe", en: "Colour depth" },
+            { de: "Farben", en: "Colours" },
+            { de: "Typisch für", en: "Typical of" },
+          ],
+          rows: [
+            [
+              { de: "1 Bit", en: "1 bit" },
+              { de: "2", en: "2" },
+              {
+                de: "Schwarz oder Weiß - Apple Macintosh, 1984",
+                en: "black or white - Apple Macintosh, 1984",
+              },
+            ],
+            [
+              { de: "4 Bit", en: "4 bits" },
+              { de: "16", en: "16" },
+              {
+                de: "frühe PC-Grafikkarten (CGA, EGA)",
+                en: "early PC graphics cards (CGA, EGA)",
+              },
+            ],
+            [
+              { de: "8 Bit", en: "8 bits" },
+              { de: "256", en: "256" },
+              {
+                de: "VGA ab 1987 - die Zeit der Pixelkunst",
+                en: "VGA from 1987 - the age of pixel art",
+              },
+            ],
+            [
+              { de: "16 Bit", en: "16 bits" },
+              { de: "65.536", en: "65,536" },
+              {
+                de: '"High Color", 1990er Jahre',
+                en: '"high colour", 1990s',
+              },
+            ],
+            [
+              { de: "24 Bit", en: "24 bits" },
+              { de: "16.777.216", en: "16,777,216" },
+              {
+                de: '"True Color" - Standard bis heute',
+                en: '"true colour" - the standard to this day',
+              },
+            ],
+            [
+              { de: "30 Bit", en: "30 bits" },
+              { de: "1.073.741.824", en: "1,073,741,824" },
+              {
+                de: "HDR mit 10 Bit je Grundfarbe",
+                en: "HDR with 10 bits per primary colour",
+              },
+            ],
+          ],
+        },
+        {
+          kind: "paragraph",
+          text: {
+            de:
+              'Die berühmten 16,7 Millionen Farben kommen so zustande: Jedes Pixel mischt seine Farbe aus Rot, Grün und Blau. Bekommt jede dieser drei Grundfarben ein ganzes Byte, also 256 Helligkeitsstufen, dann sind es 256 × 256 × 256 = 16.777.216 mögliche Mischungen. Das ist mehr, als das menschliche Auge unterscheiden kann - deshalb heißt es "True Color", echte Farbe.',
+            en:
+              'The famous 16.7 million colours come about like this: every pixel mixes its colour from red, green and blue. Give each of these three primaries a whole byte, that is 256 brightness levels, and you get 256 × 256 × 256 = 16,777,216 possible mixtures. That is more than the human eye can tell apart - hence the name "true colour".',
+          },
+        },
+        {
+          kind: "callout",
+          tone: "fact",
+          icon: "🟢",
+          title: {
+            de: "Grün bekommt ein Bit geschenkt",
+            en: "Green gets a bonus bit",
+          },
+          text: {
+            de:
+              "Bei der 16-Bit-Farbtiefe geht die Rechnung nicht glatt auf: 16 Bit lassen sich nicht in drei gleiche Teile teilen. Also bekommen Rot und Blau je 5 Bit und Grün 6 Bit. Der Grund ist dein Auge: Es unterscheidet Grüntöne feiner als Rot- oder Blautöne. Die Technik richtet sich nach der Biologie.",
+            en:
+              "With 16 bit colour the maths does not divide evenly: 16 bits cannot be split into three equal parts. So red and blue get 5 bits each and green gets 6. The reason is your eye: it distinguishes shades of green more finely than shades of red or blue. The technology follows the biology.",
+          },
+        },
+        {
+          kind: "paragraph",
+          text: {
+            de:
+              "Und HDR? Dort bekommt jede Grundfarbe 10 statt 8 Bit, also 1024 Stufen statt 256. Das ergibt gut eine Milliarde Farben. Wichtiger als die schiere Zahl ist aber, dass HDR-Bildschirme hellere Lichter und dunklere Schatten gleichzeitig darstellen können - eine Sonne, die wirklich blendet, und daneben Schatten, in denen man noch etwas erkennt.",
+            en:
+              "And HDR? There each primary gets 10 bits instead of 8, so 1024 levels instead of 256. That gives a good billion colours. More important than the sheer number, though, is that HDR screens can show brighter highlights and darker shadows at the same time - a sun that really dazzles, and next to it shadows in which you can still make things out.",
+          },
+        },
+      ],
+    },
+    {
+      key: "144p-to-4k",
+      title: {
+        de: "Von 144p bis 4K - und was das für dein Datenvolumen heißt",
+        en: "From 144p to 4K - and what it does to your data",
+      },
+      blocks: [
+        {
+          kind: "paragraph",
+          text: {
+            de:
+              "Du kennst die Situation: Das Video läuft, der Zug fährt in einen Tunnel, und plötzlich sieht dein Lieblings-Video aus wie ein Aquarell im Regen. YouTube hat gerade die Auflösung heruntergeschaltet, damit das Video überhaupt weiterläuft. Ein niedrig aufgelöstes Bild hat weniger Pixel, also weniger Daten, also kommt es auch durch eine schlechte Verbindung.",
+            en:
+              "You know the situation: the video is playing, the train enters a tunnel, and suddenly your favourite clip looks like a watercolour in the rain. YouTube has just dropped the resolution so the video keeps playing at all. A low resolution picture has fewer pixels, so less data, so it gets through a bad connection.",
+          },
+        },
+        {
+          kind: "table",
+          highlightFirst: true,
+          caption: {
+            de:
+              "Die Pixelzahlen sind ausgerechnet: Breite mal Höhe. Der Sprung von Full HD zu 4K vervierfacht die Pixel, weil sich Breite und Höhe beide verdoppeln.",
+            en:
+              "The pixel counts are simply width times height. The jump from Full HD to 4K quadruples the pixels, because width and height both double.",
+          },
+          head: [
+            { de: "Name", en: "Name" },
+            { de: "Auflösung", en: "Resolution" },
+            { de: "Pixel insgesamt", en: "Total pixels" },
+          ],
+          rows: [
+            [
+              { de: "144p", en: "144p" },
+              { de: "256 × 144", en: "256 × 144" },
+              { de: "36.864", en: "36,864" },
+            ],
+            [
+              { de: "360p", en: "360p" },
+              { de: "640 × 360", en: "640 × 360" },
+              { de: "230.400", en: "230,400" },
+            ],
+            [
+              { de: "480p (SD)", en: "480p (SD)" },
+              { de: "854 × 480", en: "854 × 480" },
+              { de: "409.920", en: "409,920" },
+            ],
+            [
+              { de: "720p (HD)", en: "720p (HD)" },
+              { de: "1280 × 720", en: "1280 × 720" },
+              { de: "921.600", en: "921,600" },
+            ],
+            [
+              { de: "1080p (Full HD)", en: "1080p (Full HD)" },
+              { de: "1920 × 1080", en: "1920 × 1080" },
+              { de: "2.073.600", en: "2,073,600" },
+            ],
+            [
+              { de: "1440p (QHD)", en: "1440p (QHD)" },
+              { de: "2560 × 1440", en: "2560 × 1440" },
+              { de: "3.686.400", en: "3,686,400" },
+            ],
+            [
+              { de: "2160p (4K UHD)", en: "2160p (4K UHD)" },
+              { de: "3840 × 2160", en: "3840 × 2160" },
+              { de: "8.294.400", en: "8,294,400" },
+            ],
+            [
+              { de: "4320p (8K UHD)", en: "4320p (8K UHD)" },
+              { de: "7680 × 4320", en: "7680 × 4320" },
+              { de: "33.177.600", en: "33,177,600" },
+            ],
+          ],
+        },
+        {
+          kind: "callout",
+          tone: "note",
+          icon: "🧮",
+          title: {
+            de: "Ein Vergleich, der hängen bleibt",
+            en: "A comparison that sticks",
+          },
+          text: {
+            de:
+              "Ein 144p-Bild hat knapp 37.000 Pixel. Ein 4K-Bild hat über 8,29 Millionen. Das ist mehr als das 225-fache. Kein Wunder, dass das eine nach Matsch aussieht und das andere nach Fensterscheibe.",
+            en:
+              "A 144p frame has just under 37,000 pixels. A 4K frame has over 8.29 million. That is more than 225 times as many. No wonder one looks like mush and the other like a window pane.",
+          },
+        },
+        {
+          kind: "paragraph",
+          text: {
+            de:
+              "Mehr Pixel bedeuten mehr Daten, und das merkst du an deinem Datenvolumen. Netflix gibt für die höchste Qualitätsstufe an: rund 1 Gigabyte pro Stunde in SD, etwa 3 Gigabyte pro Stunde in HD und etwa 7 Gigabyte pro Stunde in Ultra HD. Wer also eine Serienstaffel unterwegs in 4K schaut, ist sein Monatsvolumen schneller los, als die Folge zu Ende ist.",
+            en:
+              "More pixels mean more data, and you notice that in your data allowance. Netflix states for its highest quality setting: around 1 gigabyte per hour in SD, about 3 gigabytes per hour in HD and about 7 gigabytes per hour in Ultra HD. So watching a season on the move in 4K burns through a monthly allowance faster than the episode ends.",
+          },
+        },
+        {
+          kind: "paragraph",
+          text: {
+            de:
+              "Deshalb empfiehlt YouTube auch je nach Auflösung ganz unterschiedliche Datenraten beim Hochladen: 1 Megabit pro Sekunde reichen für 360p, für 1080p sind es 8 Megabit, für 4K 35 bis 45 Megabit und für 8K bis zu 160 Megabit pro Sekunde. Zwischen dem kleinsten und dem größten Format liegt ungefähr der Faktor 100.",
+            en:
+              "That is also why YouTube recommends wildly different upload data rates depending on resolution: 1 megabit per second is enough for 360p, 1080p wants 8 megabits, 4K needs 35 to 45 megabits and 8K up to 160 megabits per second. Between the smallest and the largest format lies roughly a factor of 100.",
+          },
+        },
+        {
+          kind: "callout",
+          tone: "tip",
+          icon: "👀",
+          title: {
+            de: "Wann lohnt sich 4K überhaupt?",
+            en: "When is 4K worth it at all?",
+          },
+          text: {
+            de:
+              "Das hängt davon ab, wie groß der Bildschirm ist und wie weit du weg sitzt. Auf einem Handydisplay aus einem halben Meter Entfernung siehst du zwischen Full HD und 4K kaum einen Unterschied - dein Auge kann die einzelnen Pixel längst nicht mehr trennen. Auf einem großen Fernseher aus zwei Metern schon eher. Die Technik ist also nicht immer besser, nur weil die Zahl größer ist.",
+            en:
+              "It depends on how big the screen is and how far away you sit. On a phone display at half a metre you can barely tell Full HD from 4K - your eye stopped resolving individual pixels long ago. On a large TV at two metres you might. So the technology is not automatically better just because the number is bigger.",
+          },
+        },
+      ],
+    },
+    {
+      key: "retro-pixels",
+      title: {
+        de: "Warum Super Mario so klotzig aussieht",
+        en: "Why Super Mario looks so blocky",
+      },
+      blocks: [
+        {
+          kind: "lead",
+          text: {
+            de:
+              "Wenn du ein altes Super-Mario-Spiel neben ein heutiges Spiel stellst, sieht Mario aus, als wäre er aus Legosteinen gebaut. Das lag nicht an fehlendem Talent der Entwickler, sondern an der Hardware - und wenn du weißt, wie eng die war, wirst du diese Spiele mit anderen Augen sehen.",
+            en:
+              "Put an old Super Mario game next to a modern one and Mario looks as if he were built from Lego bricks. That was not for lack of talent among the developers but down to the hardware - and once you know how tight it was, you will look at those games differently.",
+          },
+        },
+        {
+          kind: "stats",
+          entries: [
+            {
+              value: "256 × 240",
+              label: { de: "Auflösung des NES", en: "NES resolution" },
+              hint: {
+                de: "rund 61.000 Pixel - weniger als zwei 144p-Bilder",
+                en: "about 61,000 pixels - fewer than two 144p frames",
+              },
+            },
+            {
+              value: "25",
+              label: {
+                de: "Farben gleichzeitig auf dem Bildschirm",
+                en: "colours on screen at once",
+              },
+              hint: {
+                de: "aus einer Hardwarepalette von etwa 54",
+                en: "from a hardware palette of about 54",
+              },
+            },
+            {
+              value: "160 × 144",
+              label: { de: "Game Boy, 1989", en: "Game Boy, 1989" },
+              hint: {
+                de: "23.040 Pixel in vier Graustufen",
+                en: "23,040 pixels in four shades of grey",
+              },
+            },
+          ],
+        },
+        {
+          kind: "paragraph",
+          text: {
+            de:
+              "Ein Bild auf dem NES hatte also ungefähr so viele Pixel wie ein Achtel eines heutigen Handyfotos - und nur 25 Farben gleichzeitig. Wenn Marios Mütze, sein Hemd und die Wolken am Himmel dieselbe Farbe haben, ist das kein Zufall: Es war schlicht keine andere übrig. Übrigens sind Marios berühmte Latzhose und die Mütze auch deshalb so markant, weil man mit wenigen Pixeln und wenigen Farben eine Figur bauen musste, die man sofort erkennt.",
+            en:
+              "So a frame on the NES had roughly as many pixels as an eighth of a modern phone photo - and only 25 colours at once. When Mario's cap, his shirt and the clouds in the sky share a colour, that is no coincidence: there simply was no other one left. Incidentally, Mario's famous dungarees and cap are so distinctive partly because a character had to be instantly recognisable using few pixels and few colours.",
+          },
+        },
+        {
+          kind: "paragraph",
+          text: {
+            de:
+              "Heute ist die Grenze nicht mehr die Anzahl der Pixel, sondern was man mit ihnen anstellt: Licht, Spiegelungen, Schatten, Wasser, Haare. Und trotzdem gibt es einen ganzen Zweig von Spielen, die absichtlich pixelig aussehen - weil dieser Stil eine eigene Schönheit hat, so wie ein Mosaik oder ein Kreuzstichbild. Minecraft ist das bekannteste Beispiel: das meistverkaufte Videospiel der Welt, gebaut aus Texturen von 16 × 16 Pixeln.",
+            en:
+              "Today the limit is no longer the number of pixels but what you do with them: light, reflections, shadows, water, hair. And yet there is a whole branch of games that look pixelated on purpose - because the style has a beauty of its own, like a mosaic or a cross stitch picture. Minecraft is the best known example: the best selling video game in the world, built from 16 × 16 pixel textures.",
+          },
+        },
+        {
+          kind: "callout",
+          tone: "tip",
+          icon: "🎨",
+          title: {
+            de: "Zum Selbstausprobieren",
+            en: "Something to try yourself",
+          },
+          text: {
+            de:
+              "Zeichne auf kariertem Papier ein Herz, ein Smiley oder deinen Anfangsbuchstaben in ein Raster von 8 × 8 Kästchen - jedes Kästchen darf nur ganz ausgemalt oder ganz leer sein. Du wirst merken: Genau so haben Menschen in den 1980er Jahren Spielfiguren gebaut. 8 × 8 sind 64 Pixel, und mit 1 Bit pro Pixel passt dein Bild in 8 Byte.",
+            en:
+              "On squared paper, draw a heart, a smiley or your initial into a grid of 8 × 8 squares - each square may only be fully filled or fully empty. You will notice: this is exactly how people built game characters in the 1980s. 8 × 8 is 64 pixels, and at 1 bit per pixel your picture fits into 8 bytes.",
+          },
+        },
+        {
+          kind: "paragraph",
+          text: {
+            de:
+              "Am Ende ist ein Bildschirm nur ein sehr großes kariertes Blatt, auf dem sehr schnell sehr viele Kästchen ausgemalt werden. Wenn du das einmal so siehst, verlierst du ein bisschen Zauber - und gewinnst dafür das gute Gefühl, zu verstehen, was da eigentlich passiert.",
+            en:
+              "In the end a screen is just a very large piece of squared paper on which very many squares get filled in very quickly. Once you see it that way you lose a little magic - and in exchange you gain the good feeling of understanding what is actually going on.",
+          },
+        },
+        {
+          kind: "sources",
+          items: [
+            {
+              label: {
+                de: "YouTube-Hilfe: empfohlene Datenraten je Auflösung",
+                en: "YouTube help: recommended bitrates per resolution",
+              },
+              url: "https://support.google.com/youtube/answer/1722171",
+            },
+            {
+              label: {
+                de: "YouTube-Hilfe: unterstützte Video-Auflösungen",
+                en: "YouTube help: supported video resolutions",
+              },
+              url: "https://support.google.com/youtube/answer/6375112",
+            },
+            {
+              label: {
+                de: "Netflix-Hilfe: Datenverbrauch je Qualitätsstufe",
+                en: "Netflix help: data usage per quality setting",
+              },
+              url: "https://help.netflix.com/de/node/87",
+            },
+            {
+              label: {
+                de: "Wikipedia: Farbtiefe (1 Bit bis 30 Bit)",
+                en: "Wikipedia: colour depth (1 bit to 30 bits)",
+              },
+              url: "https://en.wikipedia.org/wiki/Color_depth",
+            },
+            {
+              label: {
+                de: "Wikipedia: Video Graphics Array (VGA, 1987)",
+                en: "Wikipedia: Video Graphics Array (VGA, 1987)",
+              },
+              url: "https://en.wikipedia.org/wiki/Video_Graphics_Array",
+            },
+            {
+              label: {
+                de: "NESdev-Wiki: Farbpalette des NES",
+                en: "NESdev wiki: the NES colour palette",
+              },
+              url: "https://www.nesdev.org/wiki/PPU_palettes",
+            },
+            {
+              label: {
+                de: "Wikipedia: Game Boy - 160 × 144 Pixel, vier Graustufen",
+                en: "Wikipedia: Game Boy - 160 × 144 pixels, four shades",
+              },
+              url: "https://en.wikipedia.org/wiki/Game_Boy",
+            },
+            {
+              label: {
+                de: "Minecraft-Wiki: Standardtexturen mit 16 × 16 Pixeln",
+                en: "Minecraft wiki: default textures at 16 × 16 pixels",
+              },
+              url: "https://minecraft.wiki/w/Texture_pack",
+            },
+            {
+              label: {
+                de: "Apple History: Macintosh 128K mit 512 × 342 Pixeln",
+                en: "Apple History: Macintosh 128K with 512 × 342 pixels",
+              },
+              url: "https://apple-history.com/128k",
+            },
+          ],
+        },
+      ],
+    },
+  ],
+};
+
+const exponentialGrowth: LearningPath = {
+  key: "exponential-growth",
+  title: { de: "Exponentielles Wachstum", en: "Exponential growth" },
+  summary: {
+    de:
+      "Warum Computer nicht ein bisschen schneller werden, sondern immer wieder doppelt so schnell - und was das mit Taschenrechnern, Mondlandungen und KI zu tun hat.",
+    en:
+      "Why computers do not get a bit faster but keep getting twice as fast - and what that has to do with pocket calculators, Moon landings and AI.",
+  },
+  icon: "🚀",
+  accent: "rose",
+  minutes: 18,
+  screens: [
+    {
+      key: "moore",
+      title: {
+        de: "Gordon Moore und die Verdopplung",
+        en: "Gordon Moore and the doubling",
+      },
+      blocks: [
+        {
+          kind: "lead",
+          text: {
+            de:
+              "Nimm ein Blatt Papier und falte es in der Mitte. Dann noch einmal. Und noch einmal. Wenn du es 42-mal falten könntest - was leider physikalisch nicht geht - wäre der Stapel hoch genug, um den Mond zu erreichen. Aus einem Blatt Papier. Willkommen beim exponentiellen Wachstum.",
+            en:
+              "Take a sheet of paper and fold it in half. Then again. And again. If you could fold it 42 times - which sadly is physically impossible - the stack would be tall enough to reach the Moon. From one sheet of paper. Welcome to exponential growth.",
+          },
+        },
+        {
+          kind: "paragraph",
+          text: {
+            de:
+              "Unser Kopf ist schlecht darin, so etwas vorherzusehen. Wir denken in Schritten: gestern 10, heute 11, morgen 12. Exponentielles Wachstum denkt in Verdopplungen: 1, 2, 4, 8, 16, 32 - und plötzlich, nach ein paar unspektakulären Runden, explodiert die Zahl. Genau das ist der Grund, warum dein Handy leistungsfähiger ist als der teuerste Supercomputer, den es zu deiner Geburt gab.",
+            en:
+              "Our minds are bad at foreseeing this. We think in steps: 10 yesterday, 11 today, 12 tomorrow. Exponential growth thinks in doublings: 1, 2, 4, 8, 16, 32 - and suddenly, after a few unspectacular rounds, the number explodes. That is exactly why your phone is more capable than the most expensive supercomputer that existed when you were born.",
+          },
+        },
+        {
+          kind: "heading",
+          text: {
+            de: "Ein Aufsatz von 1965, der alles veränderte",
+            en: "A 1965 article that changed everything",
+          },
+        },
+        {
+          kind: "paragraph",
+          text: {
+            de:
+              'Gordon Moore war Forschungsleiter bei einer Halbleiterfirma namens Fairchild und schrieb am 19. April 1965 in der Fachzeitschrift Electronics einen Aufsatz mit dem sperrigen Titel "Cramming more components onto integrated circuits" - also etwa "Mehr Bauteile auf integrierte Schaltkreise quetschen". Darin hielt er etwas fest, das er in seinen Daten sah: Die Anzahl der Bauteile, die man kostengünstig auf einen Chip packen kann, hatte sich bis dahin ungefähr jedes Jahr verdoppelt.',
+            en:
+              'Gordon Moore was head of research at a semiconductor company called Fairchild, and on 19 April 1965 he wrote an article in the trade journal Electronics with the cumbersome title "Cramming more components onto integrated circuits". In it he recorded something he saw in his data: the number of components you could economically fit onto a chip had so far roughly doubled every year.',
+          },
+        },
+        {
+          kind: "paragraph",
+          text: {
+            de:
+              'Dann wagte er eine Hochrechnung, die damals kühn wirkte: Wenn das so weitergeht, sitzen 1975 rund 65.000 Bauteile auf einem Chip. Diese Beobachtung wurde später als "Mooresches Gesetz" bekannt - obwohl sie kein Gesetz ist, sondern eine Beobachtung, die sich erstaunlich lange gehalten hat.',
+            en:
+              'Then he ventured an extrapolation that looked bold at the time: if this continues, around 65,000 components will sit on a chip by 1975. This observation later became known as "Moore\'s law" - although it is not a law but an observation that held up for a remarkably long time.',
+          },
+        },
+        {
+          kind: "callout",
+          tone: "warn",
+          icon: "🔍",
+          title: {
+            de: "Drei Zahlen, die oft durcheinandergeraten",
+            en: "Three numbers people mix up",
+          },
+          text: {
+            de:
+              '1965 sprach Moore von einer Verdopplung pro Jahr. 1975 korrigierte er sich auf dem Fachkongress IEDM auf etwa alle zwei Jahre. Die berühmten "18 Monate" stammen gar nicht von ihm, sondern werden dem Intel-Manager David House zugeschrieben - und sie meinen nicht die Anzahl der Transistoren, sondern die Rechenleistung, weil Transistoren nicht nur mehr, sondern auch schneller wurden. Wer die drei Zahlen auseinanderhalten kann, weiß mehr als die meisten Erwachsenen.',
+            en:
+              'In 1965 Moore spoke of a doubling per year. In 1975, at the IEDM conference, he corrected himself to roughly every two years. The famous "18 months" did not come from him at all but is attributed to Intel manager David House - and it refers not to the number of transistors but to performance, because transistors did not only get more numerous but also faster. Anyone who can keep those three apart knows more than most adults.',
+          },
+        },
+        {
+          kind: "paragraph",
+          text: {
+            de:
+              "Und es funktionierte. Nicht ein paar Jahre, sondern Jahrzehnte. 1971 saßen rund 2.300 Transistoren auf einem Mikroprozessor. 2021 waren es bei Spitzenchips über 58 Milliarden. Über diesen ganzen Zeitraum entspricht das einer Verdopplung ungefähr alle zwei Jahre - über fünfzig Jahre lang.",
+            en:
+              "And it worked. Not for a few years but for decades. In 1971 around 2,300 transistors sat on a microprocessor. By 2021 top chips had more than 58 billion. Across that whole period this corresponds to a doubling roughly every two years - for over fifty years.",
+          },
+        },
+        {
+          kind: "quote",
+          text: {
+            de:
+              "Dass so etwas 50 Jahre lang funktioniert hat, ist wirklich erstaunlich.",
+            en:
+              "The fact that something has gone on for 50 years is truly amazing.",
+          },
+          source: {
+            de:
+              "Gordon Moore beim Festakt zum 50. Jahrestag seines Aufsatzes, San Francisco, Mai 2015",
+            en:
+              "Gordon Moore at the 50th anniversary event for his article, San Francisco, May 2015",
+          },
+        },
+        {
+          kind: "heading",
+          text: {
+            de: "Ist das Mooresche Gesetz tot?",
+            en: "Is Moore's law dead?",
+          },
+        },
+        {
+          kind: "paragraph",
+          text: {
+            de:
+              "Irgendwann stieß das Schrumpfen an physikalische Grenzen. Ein Transistor ist heute so klein, dass man seine Bauteile in Atomen zählen kann - viel weiter geht es nicht. Etwa ab 2005 hörte außerdem eine bequeme Nebenwirkung auf: Bis dahin brauchten kleinere Transistoren auch automatisch weniger Strom. Seither wird jeder Fortschritt mit Wärme bezahlt.",
+            en:
+              "At some point shrinking hit physical limits. A transistor today is so small that you can count its parts in atoms - it does not go much further. From around 2005 a convenient side effect also stopped: until then, smaller transistors automatically needed less power. Since then every advance is paid for in heat.",
+          },
+        },
+        {
+          kind: "paragraph",
+          text: {
+            de:
+              'Seither streiten sich die Fachleute öffentlich. NVIDIA-Chef Jensen Huang erklärte 2022 in einer Pressekonferenz kurz und knapp: "Moore\'s Law is dead." Intel-Chef Pat Gelsinger antwortete 2024 ebenso knapp: "Anders als Jensen dich glauben machen will, ist das Mooresche Gesetz quicklebendig." Der Chiphersteller TSMC titelte schon 2019 einen Blogbeitrag mit "Moore\'s Law is not Dead". Bemerkenswert dabei: Jeder von ihnen verkauft etwas, das von seiner Antwort profitiert.',
+            en:
+              'Ever since, the experts have argued in public. NVIDIA boss Jensen Huang declared bluntly at a 2022 press conference: "Moore\'s Law is dead." Intel boss Pat Gelsinger replied just as bluntly in 2024: "Unlike what Jensen might have you believe, Moore\'s Law is alive and well." Chip maker TSMC headlined a blog post "Moore\'s Law is not Dead" back in 2019. Worth noticing: each of them sells something that benefits from their answer.',
+          },
+        },
+        {
+          kind: "callout",
+          tone: "note",
+          icon: "🧩",
+          title: {
+            de: "Die ehrliche Zwischenbilanz",
+            en: "The honest interim verdict",
+          },
+          text: {
+            de:
+              "Die Zahl der Transistoren steigt weiter - aber nicht mehr, weil sie einfach kleiner werden, sondern weil Ingenieurinnen und Ingenieure Chips stapeln, aus mehreren Kacheln zusammensetzen und die Stromversorgung auf die Rückseite verlegen. Was wirklich gestorben ist, ist nicht das Wachstum, sondern seine Bequemlichkeit.",
+            en:
+              "Transistor counts keep rising - but no longer simply because transistors get smaller; rather because engineers stack chips, assemble them from several tiles and move the power supply to the back side. What really died is not the growth but its convenience.",
+          },
+        },
+      ],
+    },
+    {
+      key: "kurzweil",
+      title: {
+        de: "Ray Kurzweil: erst der Mensch, dann die Kurve",
+        en: "Ray Kurzweil: first the person, then the curve",
+      },
+      blocks: [
+        {
+          kind: "lead",
+          text: {
+            de:
+              "Bevor wir über seine berühmte Kurve reden, lohnt sich ein Blick auf den Menschen dahinter - denn Ray Kurzweil ist einer der ungewöhnlichsten Erfinder der letzten Jahrzehnte.",
+            en:
+              "Before we talk about his famous curve, the person behind it is worth a look - because Ray Kurzweil is one of the most unusual inventors of recent decades.",
+          },
+        },
+        {
+          kind: "timeline",
+          entries: [
+            {
+              year: "1970er",
+              title: {
+                de: "Der erste Flachbettscanner",
+                en: "The first flat-bed scanner",
+              },
+              text: {
+                de:
+                  "Kurzweil gilt als Haupterfinder des ersten CCD-Flachbettscanners - jenes Geräts, auf das man ein Blatt Papier legt und einen Deckel zuklappt. Er brauchte ihn als Baustein für eine viel größere Idee.",
+                en:
+                  "Kurzweil is credited as the principal inventor of the first CCD flat-bed scanner - the device you lay a sheet of paper on and close a lid over. He needed it as a building block for a much larger idea.",
+              },
+            },
+            {
+              year: "1976",
+              title: {
+                de: "Eine Maschine, die Blinden vorliest",
+                en: "A machine that reads aloud to blind people",
+              },
+              text: {
+                de:
+                  "Die Kurzweil Reading Machine verband drei Erfindungen: einen Scanner, eine Texterkennung, die beliebige Schriftarten lesen konnte, und eine Sprachsynthese. Man legte ein Buch auf - und die Maschine las es vor. Sieben blinde Ingenieure des amerikanischen Blindenverbands arbeiteten daran mit. Der Musiker Stevie Wonder sah das Gerät im Fernsehen und kaufte das erste Exemplar aus der Serienfertigung.",
+                en:
+                  "The Kurzweil Reading Machine combined three inventions: a scanner, text recognition that could read arbitrary typefaces, and speech synthesis. You put a book on it - and the machine read it out. Seven blind engineers from the American federation of the blind worked on it. The musician Stevie Wonder saw the device on television and bought the first unit off the production line.",
+              },
+            },
+            {
+              year: "1984",
+              title: {
+                de: "Ein Synthesizer, der wie ein Konzertflügel klingt",
+                en: "A synthesizer that sounds like a grand piano",
+              },
+              text: {
+                de:
+                  "Aus der Freundschaft mit Stevie Wonder entstand eine Firma für Musikinstrumente. Der Kurzweil K250 konnte die Klänge echter Instrumente so überzeugend nachbilden, dass Profimusiker sie im Blindtest kaum vom Original unterschieden.",
+                en:
+                  "The friendship with Stevie Wonder led to a musical instrument company. The Kurzweil K250 could reproduce the sounds of real instruments so convincingly that professional musicians could barely tell them from the original in blind tests.",
+              },
+            },
+            {
+              year: "1999 / 2002",
+              title: {
+                de: "Auszeichnungen",
+                en: "Awards",
+              },
+              text: {
+                de:
+                  "Kurzweil erhielt die National Medal of Technology des Jahres 1999, überreicht im März 2000 im Weißen Haus, und wurde 2002 in die National Inventors Hall of Fame aufgenommen. Dazu kommen mehr als zwanzig Ehrendoktorwürden.",
+                en:
+                  "Kurzweil received the 1999 National Medal of Technology, presented at the White House in March 2000, and was inducted into the National Inventors Hall of Fame in 2002. On top of that come more than twenty honorary doctorates.",
+              },
+            },
+          ],
+        },
+        {
+          kind: "heading",
+          text: {
+            de: "Seine Beobachtung: die Kurve ist älter als der Transistor",
+            en: "His observation: the curve is older than the transistor",
+          },
+        },
+        {
+          kind: "paragraph",
+          text: {
+            de:
+              "Kurzweil interessierte sich nicht nur für Transistoren, sondern für eine größere Frage: Wie viel Rechenleistung bekommt man eigentlich für einen Dollar? Und er stellte fest, dass diese Kurve nach oben zeigt, seit es überhaupt Rechenmaschinen gibt - lange bevor jemand den Transistor erfand.",
+            en:
+              "Kurzweil was interested not only in transistors but in a bigger question: how much computing power do you actually get for one dollar? And he found that this curve has pointed upwards for as long as calculating machines have existed - long before anyone invented the transistor.",
+          },
+        },
+        {
+          kind: "paragraph",
+          text: {
+            de:
+              'In seinem Aufsatz "The Law of Accelerating Returns" von 2001 - auf Deutsch: das Gesetz der beschleunigten Erträge - beschreibt er fünf Generationen von Rechentechnik, die sich nahtlos ablösen: elektromechanische Zählmaschinen wie bei der US-Volkszählung 1890, Relaisrechner wie die Maschinen der Codeknacker, Vakuumröhren, Transistoren und schließlich integrierte Schaltkreise. Jedes Mal, wenn eine Technik an ihre Grenze kam, übernahm die nächste - und die Kurve machte einfach weiter.',
+            en:
+              'In his 2001 essay "The Law of Accelerating Returns" he describes five generations of computing technology that hand over seamlessly: electromechanical tabulators as used in the 1890 US census, relay computers like the codebreakers\' machines, vacuum tubes, transistors and finally integrated circuits. Every time one technology reached its limit, the next took over - and the curve simply carried on.',
+          },
+        },
+        {
+          kind: "callout",
+          tone: "note",
+          icon: "📈",
+          title: {
+            de: "Wie schnell verdoppelt sich das?",
+            en: "How fast does it double?",
+          },
+          text: {
+            de:
+              'Kurzweil nennt bewusst keine einzelne Zahl. In seinem Aufsatz schreibt er, die Rechenleistung pro Geldeinheit habe sich zwischen 1910 und 1950 etwa alle drei Jahre verdoppelt, zwischen 1950 und 1966 etwa alle zwei Jahre - und zum Zeitpunkt seines Textes ungefähr jedes Jahr. Sein eigentlicher Punkt ist also: Nicht nur die Leistung wächst exponentiell, sondern auch das Tempo des Wachstums. Die oft zitierten "18 Monate" stammen nicht von ihm.',
+            en:
+              'Kurzweil deliberately gives no single number. In his essay he writes that computing power per unit of money doubled roughly every three years between 1910 and 1950, roughly every two years between 1950 and 1966 - and about every year at the time of writing. So his real point is: not only does performance grow exponentially, so does the speed of that growth. The frequently quoted "18 months" is not his figure.',
+          },
+        },
+        {
+          kind: "paragraph",
+          text: {
+            de:
+              "Wichtig ist: Das ist kein Naturgesetz wie die Schwerkraft. Niemand kann daraus ableiten, dass es weitergehen muss. Es ist eine Beobachtung über einen erstaunlich langen Zeitraum - und Beobachtungen können enden.",
+            en:
+              "Important: this is not a law of nature like gravity. Nobody can conclude from it that things must continue. It is an observation over a remarkably long period - and observations can end.",
+          },
+        },
+        {
+          kind: "heading",
+          text: {
+            de: "Wie gut waren seine Vorhersagen wirklich?",
+            en: "How good were his predictions really?",
+          },
+        },
+        {
+          kind: "paragraph",
+          text: {
+            de:
+              "Kurzweil hat aus seiner Kurve Vorhersagen abgeleitet, und einige davon klangen in den 1990er Jahren nach Science-Fiction. Er sagte voraus, dass ein Computer den amtierenden Schachweltmeister bis zum Ende der 1990er Jahre schlagen würde - 1997 gewann Deep Blue gegen Garri Kasparow. Und er schrieb 1999, dass Menschen um 2009 herum drahtlos ins Internet gehen würden, über tragbare Computer. Wer heute mit Kopfhörern und Handy unterwegs ist, lebt in dieser Vorhersage.",
+            en:
+              "Kurzweil derived predictions from his curve, and some of them sounded like science fiction in the 1990s. He predicted a computer would beat the reigning world chess champion by the end of the 1990s - in 1997 Deep Blue beat Garry Kasparov. And in 1999 he wrote that around 2009 people would go online wirelessly, through wearable computers. Anyone out and about with headphones and a phone today is living inside that prediction.",
+          },
+        },
+        {
+          kind: "callout",
+          tone: "warn",
+          icon: "🚗",
+          title: {
+            de: "Und jetzt der ehrliche Teil",
+            en: "And now the honest part",
+          },
+          text: {
+            de:
+              "Selbstfahrende Autos gehören ausdrücklich nicht zu seinen Treffern: In seiner eigenen Bilanz von 2010 bewertete Kurzweil seine Vorhersage dazu als falsch. Außerdem hat der frühere Chefredakteur der Zeitschrift Scientific American, John Rennie, 2010 in der IEEE Spectrum kritisiert, viele Vorhersagen Kurzweils seien so dehnbar formuliert, dass man kaum entscheiden könne, ob sie eingetroffen sind. Das gehört zur Geschichte dazu - eine gute Kurve macht noch keine sichere Zukunft.",
+            en:
+              "Self driving cars are expressly not among his hits: in his own 2010 assessment Kurzweil rated that prediction as wrong. Moreover, in 2010 the former editor in chief of Scientific American, John Rennie, criticised in IEEE Spectrum that many of Kurzweil's predictions are worded so elastically that it is hard to decide whether they came true. That belongs to the story - a good curve does not make a certain future.",
+          },
+        },
+      ],
+    },
+    {
+      key: "the-calculation",
+      title: {
+        de: "Die Rechnung: wie viele Erden voller Menschen?",
+        en: "The calculation: how many Earths full of people?",
+      },
+      blocks: [
+        {
+          kind: "lead",
+          text: {
+            de:
+              "Jetzt wird es konkret - und keine Sorge, wir bleiben bei Zahlen, die man sich vorstellen kann. Wir nehmen drei Grafikkarten, die viele von euch aus Gaming-Videos kennen, und rechnen aus, was ihre Leistung eigentlich bedeutet.",
+            en:
+              "Now it gets concrete - and do not worry, we stay with numbers you can picture. We take three graphics cards many of you know from gaming videos, and work out what their performance actually means.",
+          },
+        },
+        {
+          kind: "callout",
+          tone: "tip",
+          icon: "🧮",
+          title: {
+            de: "Was ist ein FLOP?",
+            en: "What is a FLOP?",
+          },
+          text: {
+            de:
+              'FLOPS steht für "floating point operations per second", also Rechenoperationen mit Kommazahlen pro Sekunde. Eine solche Operation ist ungefähr das, was passiert, wenn du 3,7 mal 2,4 in einen Taschenrechner tippst und auf Gleich drückst. Ein einziges Mal. Merk dir dieses Bild - gleich brauchen wir es.',
+            en:
+              'FLOPS stands for "floating point operations per second", calculations with decimal numbers per second. One such operation is roughly what happens when you type 3.7 times 2.4 into a pocket calculator and press equals. Once. Remember that picture - we will need it in a moment.',
+          },
+        },
+        {
+          kind: "table",
+          highlightFirst: true,
+          caption: {
+            de:
+              "Alle Angaben sind Herstellerangaben aus den offiziellen Architektur-Whitepapers von NVIDIA. Die Rechenleistung ist die Spitzenleistung der Shader-Einheiten bei einfacher Genauigkeit (FP32) - die fairste Vergleichszahl zwischen den drei Karten.",
+            en:
+              "All figures come from NVIDIA's official architecture whitepapers. The compute figure is the peak shader throughput at single precision (FP32) - the fairest comparison between the three cards.",
+          },
+          head: [
+            { de: "Grafikkarte", en: "Graphics card" },
+            { de: "Marktstart", en: "Launch" },
+            { de: "Preis (UVP)", en: "Price (MSRP)" },
+            { de: "Rechenleistung", en: "Compute" },
+            { de: "Transistoren", en: "Transistors" },
+          ],
+          rows: [
+            [
+              { de: "RTX 3090", en: "RTX 3090" },
+              { de: "24.09.2020", en: "24 Sep 2020" },
+              { de: "1.499 $", en: "$1,499" },
+              { de: "35,6 Billionen/s", en: "35.6 trillion/s" },
+              { de: "28,3 Mrd.", en: "28.3 bn" },
+            ],
+            [
+              { de: "RTX 4090", en: "RTX 4090" },
+              { de: "12.10.2022", en: "12 Oct 2022" },
+              { de: "1.599 $", en: "$1,599" },
+              { de: "82,6 Billionen/s", en: "82.6 trillion/s" },
+              { de: "76,3 Mrd.", en: "76.3 bn" },
+            ],
+            [
+              { de: "RTX 5090", en: "RTX 5090" },
+              { de: "30.01.2025", en: "30 Jan 2025" },
+              { de: "1.999 $", en: "$1,999" },
+              { de: "104,8 Billionen/s", en: "104.8 trillion/s" },
+              { de: "92,2 Mrd.", en: "92.2 bn" },
+            ],
+          ],
+        },
+        {
+          kind: "heading",
+          text: {
+            de: "Der Taschenrechner-Vergleich",
+            en: "The pocket calculator comparison",
+          },
+        },
+        {
+          kind: "paragraph",
+          text: {
+            de:
+              "Stell dir vor, jeder Mensch auf der Erde bekommt einen Taschenrechner - alle rund 8,3 Milliarden von uns, vom Baby bis zur Urgroßmutter. Und jeder schafft eine vollständige Rechnung pro Sekunde: Zahl eintippen, mal, zweite Zahl, gleich. Das ist unrealistisch schnell, aber nehmen wir es an. Dann schafft die gesamte Menschheit 8,3 Milliarden Rechnungen pro Sekunde.",
+            en:
+              "Imagine every person on Earth gets a pocket calculator - all roughly 8.3 billion of us, from babies to great grandmothers. And each manages one complete calculation per second: type a number, times, second number, equals. That is unrealistically fast, but let us assume it. Then all of humanity manages 8.3 billion calculations per second.",
+          },
+        },
+        {
+          kind: "paragraph",
+          text: {
+            de:
+              "Eine einzelne RTX 5090 schafft 104,8 Billionen Rechnungen pro Sekunde. Teilt man das eine durch das andere, kommt heraus: Man bräuchte etwa 12.600 komplette Erden voller tippender Menschen, um mit einer einzigen Grafikkarte mitzuhalten. Einer Grafikkarte, die man in einen normalen Computer schrauben kann.",
+            en:
+              "A single RTX 5090 manages 104.8 trillion calculations per second. Divide one by the other and you get: you would need about 12,600 complete Earths full of typing people to keep up with a single graphics card. A graphics card you can screw into an ordinary computer.",
+          },
+        },
+        {
+          kind: "stats",
+          entries: [
+            {
+              value: "≈ 4.300",
+              label: { de: "Erden für eine 3090", en: "Earths for a 3090" },
+              hint: {
+                de: "35,6 Billionen geteilt durch 8,3 Milliarden",
+                en: "35.6 trillion divided by 8.3 billion",
+              },
+            },
+            {
+              value: "≈ 9.950",
+              label: { de: "Erden für eine 4090", en: "Earths for a 4090" },
+              hint: {
+                de: "zwei Jahre später - mehr als doppelt so viel",
+                en: "two years later - more than twice as many",
+              },
+            },
+            {
+              value: "≈ 12.600",
+              label: { de: "Erden für eine 5090", en: "Earths for a 5090" },
+              hint: {
+                de: "und das für rund 2.000 Dollar",
+                en: "and that for about 2,000 dollars",
+              },
+            },
+          ],
+        },
+        {
+          kind: "callout",
+          tone: "fact",
+          icon: "⏳",
+          title: {
+            de: "Dieselbe Zahl, andersherum erzählt",
+            en: "The same number, told the other way round",
+          },
+          text: {
+            de:
+              "Man kann es auch so sagen: Für das, was eine RTX 5090 in einer einzigen Sekunde ausrechnet, bräuchte die gesamte Menschheit mit Taschenrechnern rund dreieinhalb Stunden. Ohne Pause, ohne Tippfehler, alle 8,3 Milliarden gleichzeitig.",
+            en:
+              "You can also put it this way: for what an RTX 5090 works out in a single second, all of humanity with pocket calculators would need about three and a half hours. Without a break, without typos, all 8.3 billion at once.",
+          },
+        },
+        {
+          kind: "heading",
+          text: {
+            de: "Passt das zu Kurzweils Kurve?",
+            en: "Does that fit Kurzweil's curve?",
+          },
+        },
+        {
+          kind: "paragraph",
+          text: {
+            de:
+              'Kurzweils Aussage war ja nicht "Karten werden schneller", sondern: Man bekommt für einen Dollar immer mehr Rechenleistung. Rechnen wir das nach - und zwar ehrlich, auch wenn das Ergebnis nicht ganz so glatt ist, wie man es gern hätte.',
+            en:
+              'Kurzweil\'s claim was not "cards get faster" but: you get more and more computing power for one dollar. Let us check that - honestly, even if the result is not quite as neat as one might wish.',
+          },
+        },
+        {
+          kind: "table",
+          highlightFirst: true,
+          caption: {
+            de:
+              "Rechenleistung geteilt durch Preis. Die Preise sind nicht inflationsbereinigt - rechnet man die Teuerung heraus, fällt das Ergebnis für die neueren Karten etwas günstiger aus.",
+            en:
+              "Compute divided by price. Prices are not adjusted for inflation - correcting for it makes the newer cards look somewhat better.",
+          },
+          head: [
+            { de: "Karte", en: "Card" },
+            {
+              de: "Rechnungen pro Sekunde je Dollar",
+              en: "Calculations per second per dollar",
+            },
+            { de: "Zuwachs", en: "Increase" },
+          ],
+          rows: [
+            [
+              { de: "RTX 3090", en: "RTX 3090" },
+              { de: "rund 24 Milliarden", en: "about 24 billion" },
+              { de: "-", en: "-" },
+            ],
+            [
+              { de: "RTX 4090", en: "RTX 4090" },
+              { de: "rund 52 Milliarden", en: "about 52 billion" },
+              {
+                de: "gut verdoppelt in gut zwei Jahren",
+                en: "a good doubling in a good two years",
+              },
+            ],
+            [
+              { de: "RTX 5090", en: "RTX 5090" },
+              { de: "rund 52 Milliarden", en: "about 52 billion" },
+              {
+                de: "praktisch unverändert",
+                en: "practically unchanged",
+              },
+            ],
+          ],
+        },
+        {
+          kind: "paragraph",
+          text: {
+            de:
+              "Das ist ein spannendes Ergebnis: Von der 3090 zur 4090 hat sich die Leistung pro Dollar mehr als verdoppelt - fast genau im Takt, den Kurzweil beschreibt. Von der 4090 zur 5090 dagegen kaum. Der Grund ist der, den du auf dem ersten Bildschirm gelesen hast: Beide Karten werden im gleichen Fertigungsverfahren gebaut. Die 5090 ist nicht feiner, sondern schlicht größer und stromhungriger.",
+            en:
+              "That is an interesting result: from the 3090 to the 4090 performance per dollar more than doubled - almost exactly at the pace Kurzweil describes. From the 4090 to the 5090, however, barely at all. The reason is the one you read on the first screen: both cards are built on the same manufacturing process. The 5090 is not finer, just bigger and more power hungry.",
+          },
+        },
+        {
+          kind: "callout",
+          tone: "warn",
+          icon: "⚠️",
+          title: {
+            de: "Vorsicht bei den Werbezahlen",
+            en: "Careful with the marketing numbers",
+          },
+          text: {
+            de:
+              'NVIDIA wirbt für die 5090 mit "3352 AI TOPS" - eine viel größere Zahl. Sie stimmt auch, misst aber etwas anderes: Rechnungen mit stark vereinfachten Zahlen, die für KI reichen, aber nicht für Physik oder Wissenschaft. Bei jeder Kartengeneration wurde die Genauigkeit weiter reduziert, also darf man diese Zahlen nicht direkt vergleichen. Wer Kurven vergleicht, muss immer prüfen, ob wirklich dasselbe gemessen wird.',
+            en:
+              'NVIDIA advertises the 5090 with "3352 AI TOPS" - a much bigger number. It is accurate, but it measures something else: calculations with heavily simplified numbers that are good enough for AI but not for physics or science. With each card generation the precision was reduced further, so these figures must not be compared directly. Whenever you compare curves, always check whether the same thing is being measured.',
+          },
+        },
+        {
+          kind: "paragraph",
+          text: {
+            de:
+              "Die Kurve wird also nicht mehr allein dadurch gehalten, dass Transistoren schrumpfen. Sie wird gehalten, weil Chips größer werden, weil sie auf KI zugeschnitten werden - und weil gerade unfassbar viel Geld in genau diese Technik fließt. Wie viel genau, siehst du auf der letzten Seite.",
+            en:
+              "So the curve is no longer sustained by shrinking transistors alone. It is sustained because chips get bigger, because they are tailored to AI - and because an astonishing amount of money is flowing into precisely this technology right now. Exactly how much is on the final screen.",
+          },
         },
       ],
     },
