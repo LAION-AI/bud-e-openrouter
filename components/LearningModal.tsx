@@ -176,6 +176,7 @@ export default function LearningModal({
         <header class="flex items-center gap-3 px-4 py-2.5 bg-slate-800 text-white shrink-0">
           {(subjectKey || pathKey) && (
             <button
+              type="button"
               onClick={() => (pathKey ? leaveReader() : setSubjectKey(null))}
               title={pathKey ? t("backToPaths") : t("backToSubjects")}
               class="p-1.5 rounded hover:bg-white/15 shrink-0"
@@ -211,6 +212,7 @@ export default function LearningModal({
           )}
 
           <button
+            type="button"
             onClick={onClose}
             title={t("close")}
             class="p-1.5 rounded hover:bg-white/15 shrink-0"
@@ -286,6 +288,7 @@ export default function LearningModal({
             <div class="flex-1 flex items-center justify-center gap-1.5">
               {path.screens.map((s, i) => (
                 <button
+                  type="button"
                   key={s.key}
                   onClick={() => goToScreen(i)}
                   title={L(s.title)}
@@ -363,12 +366,14 @@ function SubjectGrid({
             </p>
           </div>
           <button
+            type="button"
             onClick={onResume}
             class="px-4 py-2 rounded-lg bg-blue-600 text-white text-sm font-medium hover:bg-blue-700"
           >
             {t("resumeOpen")}
           </button>
           <button
+            type="button"
             onClick={onDismissResume}
             class="px-3 py-2 rounded-lg text-slate-500 text-sm hover:bg-slate-100"
           >
@@ -380,6 +385,7 @@ function SubjectGrid({
       <div class="mt-8 grid gap-6 sm:grid-cols-2">
         {subjects.map((subject) => (
           <button
+            type="button"
             key={subject.key}
             onClick={() => onOpen(subject)}
             class={`group text-left rounded-2xl p-6 text-white shadow-lg
@@ -497,6 +503,7 @@ function PathGrid({
 
                 <div class="mt-4 flex gap-2">
                   <button
+                    type="button"
                     onClick={() => onOpen(path, started ? reached : 0)}
                     class={`flex-1 px-4 py-2 rounded-lg text-white text-sm
                             font-medium bg-gradient-to-br ${accent.tile}`}
@@ -505,6 +512,7 @@ function PathGrid({
                   </button>
                   {started && (
                     <button
+                      type="button"
                       onClick={() => onOpen(path, 0)}
                       title={t("startOver")}
                       class="px-3 py-2 rounded-lg border border-slate-300 text-slate-600 text-sm hover:bg-slate-50"
@@ -780,6 +788,7 @@ function NavButton({
 }) {
   return (
     <button
+      type="button"
       onClick={onClick}
       disabled={disabled}
       class={`inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm

@@ -48,21 +48,34 @@ function buildToolSection(flags: ToolFlags, lang: string): string {
 
   if (flags.notebook) {
     parts.push(chatContent[lang]?.notebookToolPrompt ?? "");
-    if (flags.notebookName) {
+    // Only the count, never the name. A notebook name is free text the user
+    // types, and anything user-written that lands in the system prompt is an
+    // invitation to talk the assistant out of its instructions. The model can
+    // learn the name from a "read" call, where it arrives as data.
+    if (flags.notebookCells > 0) {
       parts.push(
         de
-          ? `Gerade geöffnet: Notebook "${flags.notebookName}" mit ${flags.notebookCells} Zellen.`
-          : `Currently open: notebook "${flags.notebookName}" with ${flags.notebookCells} cells.`,
+          ? `Gerade ist ein Notebook mit ${flags.notebookCells} Zellen geöffnet.`
+          : `A notebook with ${flags.notebookCells} cells is currently open.`,
       );
     }
   }
   if (flags.mail) {
     parts.push(chatContent[lang]?.mailToolPrompt ?? "");
-    if (flags.mailFolders.length) {
+    // Folder names have to be exact for the tool to work, so they cannot be
+    // dropped - but a folder is a label, not a sentence. Restricting the
+    // characters is not enough on its own ("Ignore your rules." is all
+    // letters), so the word count is capped as well.
+    const folders = flags.mailFolders.filter((f) =>
+      f.length <= 40 &&
+      /^[\p{L}\p{N} ._\/-]+$/u.test(f) &&
+      f.trim().split(/\s+/).length <= 3
+    );
+    if (folders.length) {
       parts.push(
         de
-          ? `Freigegebene Ordner: ${flags.mailFolders.join(", ")}.`
-          : `Permitted folders: ${flags.mailFolders.join(", ")}.`,
+          ? `Freigegebene Ordner: ${folders.join(", ")}.`
+          : `Permitted folders: ${folders.join(", ")}.`,
       );
     }
   }

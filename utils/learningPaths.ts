@@ -256,7 +256,7 @@ const whatIsAComputer: LearningPath = {
               },
             },
             {
-              year: "1837",
+              year: "1834",
               title: {
                 de: "Babbages Analytical Engine",
                 en: "Babbage's Analytical Engine",
@@ -276,9 +276,9 @@ const whatIsAComputer: LearningPath = {
               },
               text: {
                 de:
-                  "Die Mathematikerin Ada Lovelace übersetzt einen Aufsatz über Babbages Maschine und ergänzt ihn um eigene Anmerkungen, die länger sind als der Text selbst. Darin steht ein vollständiges Verfahren, das die Maschine hätte ausführen können - und der Gedanke, dass so eine Maschine eines Tages nicht nur Zahlen, sondern auch Musik und Sprache verarbeiten könnte.",
+                  "Die Mathematikerin Ada Lovelace übersetzt einen Aufsatz über Babbages Maschine und ergänzt ihn um eigene Anmerkungen, die dreimal so lang sind wie der Text selbst. In der letzten steht die erste veröffentlichte Schritt-für-Schritt-Anleitung für so eine Maschine - weshalb sie oft die erste Programmiererin genannt wird. Fachleute streiten bis heute, wie viel davon von ihr und wie viel von Babbage stammt. Unbestritten ist der größere Gedanke: Sie erkannte als Erste, dass eine solche Maschine nicht nur Zahlen verarbeiten könnte, sondern beliebige Symbole - sogar Musik.",
                 en:
-                  "The mathematician Ada Lovelace translates an article about Babbage's machine and adds notes of her own that are longer than the text itself. They contain a complete procedure the machine could have executed - and the thought that such a machine might one day handle not only numbers but music and language too.",
+                  "The mathematician Ada Lovelace translates an article about Babbage's machine and adds notes of her own that are three times as long as the text itself. The last of them contains the first published step by step procedure for such a machine - which is why she is often called the first programmer. Experts still argue over how much of it came from her and how much from Babbage. The larger idea is undisputed: she was the first to see that such a machine could process not only numbers but arbitrary symbols - even music.",
               },
             },
           ],
@@ -321,9 +321,9 @@ const whatIsAComputer: LearningPath = {
           kind: "paragraph",
           text: {
             de:
-              "Zuerst kamen Relais: kleine Elektromagnete, die einen Kontakt zusammenziehen. Konrad Zuse baute damit 1941 in Berlin die Z3, den ersten programmgesteuerten, voll funktionsfähigen Digitalrechner. Relais klappern aber, und sie sind für Maschinenverhältnisse träge.",
+              "Zuerst kamen Relais: kleine Elektromagnete, die einen Kontakt zusammenziehen. Konrad Zuse baute daraus 1941 in Berlin die Z3 - eine der ersten funktionsfähigen, frei programmierbaren und vollautomatischen Rechenmaschinen der Welt, zusammengesetzt aus etwa 2.000 bis 2.400 Relais. 1943 wurde sie bei einem Luftangriff zerstört. Relais klappern aber, und sie sind für Maschinenverhältnisse träge.",
             en:
-              "First came relays: small electromagnets that pull a contact together. In Berlin in 1941 Konrad Zuse used them to build the Z3, the first program controlled, fully working digital computer. But relays clatter, and by machine standards they are slow.",
+              "First came relays: small electromagnets that pull a contact together. In Berlin in 1941 Konrad Zuse used them to build the Z3 - one of the world's first working, freely programmable, fully automatic calculating machines, assembled from about 2,000 to 2,400 relays. It was destroyed in an air raid in 1943. But relays clatter, and by machine standards they are slow.",
           },
         },
         {
@@ -371,18 +371,33 @@ const whatIsAComputer: LearningPath = {
           kind: "paragraph",
           text: {
             de:
-              'In einem Landhaus nördlich von London arbeitete eine der ungewöhnlichsten Belegschaften der Geschichte: Mathematikerinnen und Mathematiker, Schachmeister, Kreuzworträtselprofis, Sprachtalente. Den ersten Durchbruch hatten polnische Kryptoanalytiker um Marian Rejewski schon vor dem Krieg erzielt und ihr Wissen 1939 an Briten und Franzosen weitergegeben. In Bletchley Park entwickelten Alan Turing und Gordon Welchman daraus die "Bombe": eine elektromechanische Maschine, die mögliche Enigma-Einstellungen in rasendem Tempo durchprobierte und die falschen ausschloss.',
+              'In einem Landhaus nördlich von London arbeitete eine der ungewöhnlichsten Belegschaften der Geschichte: Mathematikerinnen und Mathematiker, Schachmeister, Kreuzworträtselprofis, Sprachtalente. Den ersten Durchbruch hatten schon vor dem Krieg drei polnische Mathematiker erzielt: Marian Rejewski, Henryk Zygalski und Jerzy Różycki. Im Juli 1939 gaben sie ihr Wissen bei einem geheimen Treffen im Wald von Pyry bei Warschau an britische und französische Kollegen weiter. In Bletchley Park entwickelten Alan Turing und Gordon Welchman daraus die "Bombe": eine elektromechanische Maschine, die mögliche Enigma-Einstellungen in rasendem Tempo durchprobierte und die falschen ausschloss. Die erste lief ab März 1940. Die Erkenntnisse, die aus all diesen entschlüsselten Funksprüchen gewonnen wurden, liefen unter dem Decknamen "Ultra".',
             en:
-              'In a country house north of London worked one of the most unusual workforces in history: mathematicians, chess champions, crossword experts, gifted linguists. The first breakthrough had been achieved before the war by Polish cryptanalysts around Marian Rejewski, who passed their knowledge to Britain and France in 1939. At Bletchley Park, Alan Turing and Gordon Welchman turned it into the "Bombe": an electromechanical machine that raced through possible Enigma settings and ruled out the wrong ones.',
+              'In a country house north of London worked one of the most unusual workforces in history: mathematicians, chess champions, crossword experts, gifted linguists. The first breakthrough had been achieved before the war by three Polish mathematicians: Marian Rejewski, Henryk Zygalski and Jerzy Różycki. In July 1939, at a secret meeting in the Pyry forest near Warsaw, they passed their knowledge to British and French colleagues. At Bletchley Park, Alan Turing and Gordon Welchman turned it into the "Bombe": an electromechanical machine that raced through possible Enigma settings and ruled out the wrong ones. The first one started work in March 1940. The intelligence gained from all these decrypted messages went under the codename "Ultra".',
           },
         },
         {
           kind: "paragraph",
           text: {
             de:
-              "Für eine noch schwierigere deutsche Verschlüsselung, die Lorenz-Maschine, baute der Ingenieur Tommy Flowers ab 1943 den Colossus - einen Rechner aus rund 1.600 bis 2.400 Vakuumröhren. Colossus gilt als der erste programmierbare elektronische Digitalrechner der Welt. Nach dem Krieg wurden die meisten Geräte zerstört und die Arbeit blieb jahrzehntelang geheim; viele Beteiligte durften bis in die 1970er Jahre niemandem erzählen, was sie getan hatten.",
+              "Für eine noch schwierigere deutsche Verschlüsselung, die Lorenz-Maschine, baute der Ingenieur Tommy Flowers den Colossus. Das erste Gerät lief ab Februar 1944 in Bletchley Park und enthielt rund 1.600 Vakuumröhren; die verbesserte Fassung ab Juni 1944 sogar etwa 2.400 bis 2.500. Colossus gilt als der erste programmierbare elektronische Digitalrechner der Welt. Nach dem Krieg wurden die meisten Geräte zerstört und die Arbeit blieb jahrzehntelang geheim; viele Beteiligte durften bis in die 1970er Jahre niemandem erzählen, was sie getan hatten.",
             en:
-              "For an even harder German cipher, the Lorenz machine, the engineer Tommy Flowers built Colossus from 1943 - a computer made of roughly 1,600 to 2,400 vacuum tubes. Colossus is regarded as the world's first programmable electronic digital computer. After the war most machines were destroyed and the work stayed secret for decades; many of those involved were not allowed to tell anyone what they had done until the 1970s.",
+              "For an even harder German cipher, the Lorenz machine, the engineer Tommy Flowers built Colossus. The first one ran from February 1944 at Bletchley Park and held around 1,600 vacuum tubes; the improved version from June 1944 held some 2,400 to 2,500. Colossus is regarded as the world's first programmable electronic digital computer. After the war most machines were destroyed and the work stayed secret for decades; many of those involved were not allowed to tell anyone what they had done until the 1970s.",
+          },
+        },
+        {
+          kind: "callout",
+          tone: "warn",
+          icon: "🔁",
+          title: {
+            de: "Die Verwechslung, die fast alle machen",
+            en: "The mix-up almost everyone makes",
+          },
+          text: {
+            de:
+              "Colossus hat die Enigma nicht geknackt. Gegen die Enigma lief die Bombe von Turing und Welchman; Colossus arbeitete gegen die Lorenz-Maschine, mit der die deutsche Führung ihre wichtigsten Nachrichten verschlüsselte. Die Enigma hatte drei bis vier Walzen, die Lorenz-Maschine zwölf. Wer diese beiden Maschinen auseinanderhält, hat in jeder Diskussion über Bletchley Park einen Punkt gut.",
+            en:
+              "Colossus did not crack Enigma. Against Enigma ran the Bombe by Turing and Welchman; Colossus worked against the Lorenz machine, with which the German high command encrypted its most important messages. Enigma had three or four rotors, the Lorenz machine had twelve. Anyone who can keep the two apart scores a point in any discussion about Bletchley Park.",
           },
         },
         {
@@ -395,9 +410,9 @@ const whatIsAComputer: LearningPath = {
           },
           text: {
             de:
-              "Der offizielle britische Geheimdiensthistoriker Harry Hinsley schätzte, dass die Entschlüsselungsarbeit den Krieg in Europa um etwa zwei bis vier Jahre verkürzt hat. Das ist eine Schätzung und keine Messung - niemand kann eine Geschichte nachspielen, die nicht stattgefunden hat. Aber selbst vorsichtige Historikerinnen und Historiker sind sich einig, dass die Arbeit in Bletchley Park unzählige Menschenleben gerettet hat.",
+              'Sir Harry Hinsley, der offizielle Historiker des britischen Geheimdienstes im Zweiten Weltkrieg, sagte 1993 in einem Vortrag in Cambridge, die Entschlüsselungsarbeit habe den Krieg "um nicht weniger als zwei Jahre und wahrscheinlich um vier Jahre" verkürzt. Er betonte im selben Vortrag ausdrücklich, dass das kontrafaktische Geschichte sei - "ein ziemlich kühnes Unternehmen aus Hypothese und Spekulation". Die Alliierten hätten seiner Ansicht nach auch ohne Ultra gewonnen, aber erst nach einem "langen und viel brutaleren, zerstörerischeren Krieg".',
             en:
-              "The official British intelligence historian Harry Hinsley estimated that the codebreaking work shortened the war in Europe by roughly two to four years. That is an estimate, not a measurement - nobody can replay a history that never happened. But even cautious historians agree that the work at Bletchley Park saved countless lives.",
+              'Sir Harry Hinsley, the official historian of British intelligence in the Second World War, said in a 1993 Cambridge lecture that the codebreaking work shortened the war "by not less than two years and probably by four years". In the same lecture he stressed explicitly that this is counter-factual history - "a pretty bold enterprise in hypothesis and speculation". In his view the Allies would have won without Ultra too, but only after "a long and much more brutal and destructive war".',
           },
         },
         {
@@ -500,9 +515,9 @@ const whatIsAComputer: LearningPath = {
           kind: "paragraph",
           text: {
             de:
-              "William Shockley entwickelte die Idee kurz darauf zum robusteren Flächentransistor weiter, der sich in Serie fertigen ließ. 1956 erhielten die drei gemeinsam den Nobelpreis für Physik. Die eigentliche Revolution kam aber erst mit dem nächsten Schritt: Ende der 1950er Jahre gelang es Jack Kilby und, unabhängig davon, Robert Noyce, mehrere Transistoren samt Verdrahtung auf ein einziges Stück Halbleiter zu setzen - der integrierte Schaltkreis, der Chip.",
+              "William Shockley, der Leiter der Gruppe, entwickelte die Idee weiter zum robusteren Flächentransistor, der sich in Serie fertigen ließ: gedacht im Januar 1948, gebaut 1950, vorgestellt 1951. 1956 erhielten die drei gemeinsam den Nobelpreis für Physik. Die eigentliche Revolution kam aber erst mit dem nächsten Schritt: Ende der 1950er Jahre gelang es Jack Kilby und, unabhängig davon, Robert Noyce, mehrere Transistoren samt Verdrahtung auf ein einziges Stück Halbleiter zu setzen - der integrierte Schaltkreis, der Chip.",
             en:
-              "William Shockley soon developed the idea into the sturdier junction transistor that could be mass produced. In 1956 the three shared the Nobel Prize in Physics. The real revolution came with the next step though: in the late 1950s Jack Kilby and, independently, Robert Noyce managed to put several transistors and their wiring onto a single piece of semiconductor - the integrated circuit, the chip.",
+              "William Shockley, who led the group, developed the idea into the sturdier junction transistor that could be mass produced: conceived in January 1948, built in 1950, presented in 1951. In 1956 the three shared the Nobel Prize in Physics. The real revolution came with the next step though: in the late 1950s Jack Kilby and, independently, Robert Noyce managed to put several transistors and their wiring onto a single piece of semiconductor - the integrated circuit, the chip.",
           },
         },
         {
@@ -599,9 +614,9 @@ const whatIsAComputer: LearningPath = {
           kind: "paragraph",
           text: {
             de:
-              "Parallel dazu entdeckte die Welt, dass Computer Spaß machen. 1972 stellte Atari den Spielautomaten Pong auf: zwei weiße Striche, ein weißes Quadrat, Tischtennis. Die Legende sagt, der erste Automat sei ausgefallen, weil die Münzbox überquoll. 1978 kam Space Invaders, 1980 Pac-Man von Namco - und Videospiele waren endgültig ein Massenphänomen.",
+              "Parallel dazu entdeckte die Welt, dass Computer Spaß machen. Im selben Jahr 1972 kamen gleich zwei Dinge auf den Markt: die Magnavox Odyssey, die erste Spielkonsole für den Fernseher zu Hause, entworfen von Ralph Baer - und der Spielautomat Pong von Atari, den Nolan Bushnell in Auftrag gab und der Ingenieur Allan Alcorn baute. Pong bestand aus zwei weißen Strichen, einem weißen Quadrat und Tischtennis. Die Legende sagt, der erste Automat sei ausgefallen, weil die Münzbox überquoll. 1975 kam Pong als Gerät für zu Hause in den Handel und wurde zum Weihnachtsgeschenk der Saison. 1978 folgte Space Invaders von Taito, 1980 Pac-Man von Namco - und Videospiele waren endgültig ein Massenphänomen.",
             en:
-              "At the same time the world discovered that computers are fun. In 1972 Atari installed the Pong arcade cabinet: two white bars, one white square, table tennis. Legend has it the first machine broke down because the coin box overflowed. Space Invaders followed in 1978, Pac-Man from Namco in 1980 - and video games were a mass phenomenon for good.",
+              "At the same time the world discovered that computers are fun. In that same year, 1972, two things arrived: the Magnavox Odyssey, the first games console for the television at home, designed by Ralph Baer - and Atari's Pong arcade cabinet, commissioned by Nolan Bushnell and built by engineer Allan Alcorn. Pong consisted of two white bars, one white square and table tennis. Legend has it the first machine broke down because the coin box overflowed. In 1975 Pong went on sale as a home device and became the Christmas present of the season. Space Invaders by Taito followed in 1978, Pac-Man by Namco in 1980 - and video games were a mass phenomenon for good.",
           },
         },
         {
@@ -654,9 +669,9 @@ const whatIsAComputer: LearningPath = {
               },
               text: {
                 de:
-                  "Bezahlbar, farbig, mit gutem Sound und tausenden Spielen. Der C64 gilt als das meistverkaufte Computermodell aller Zeiten. Für eine ganze Generation war er das Gerät, an dem sie das Programmieren gelernt hat - oft, weil man ein Spiel abtippen musste, das in einer Zeitschrift abgedruckt war.",
+                  "Bezahlbar, farbig, mit gutem Sound und tausenden Spielen. Der C64 gilt als das meistverkaufte Computermodell aller Zeiten; das Guinness-Buch der Rekorde führt heute rund 12,5 Millionen verkaufte Geräte zwischen 1982 und 1994. Für eine ganze Generation war er das Gerät, an dem sie das Programmieren gelernt hat - oft, weil man ein Spiel Zeile für Zeile abtippen musste, das in einer Zeitschrift abgedruckt war.",
                 en:
-                  "Affordable, colourful, with good sound and thousands of games. The C64 is regarded as the best selling single computer model of all time. For a whole generation it was the machine on which they learned to program - often because you had to type in a game printed in a magazine.",
+                  "Affordable, colourful, with good sound and thousands of games. The C64 is regarded as the best selling single computer model of all time; Guinness World Records today lists around 12.5 million units sold between 1982 and 1994. For a whole generation it was the machine on which they learned to program - often because you had to type in a game line by line from a magazine.",
               },
             },
           ],
@@ -667,6 +682,50 @@ const whatIsAComputer: LearningPath = {
             de: "Und heute?",
             en: "And today?",
           },
+        },
+        {
+          kind: "paragraph",
+          text: {
+            de:
+              "Die spannendste Entwicklung ist, dass der Computer aufgehört hat, wie ein Computer auszusehen. Suchst du in deiner Wohnung nach Rechnern, findest du zum Beispiel:",
+            en:
+              "The most interesting development is that the computer stopped looking like a computer. Go hunting for processors in your home and you will find, for example:",
+          },
+        },
+        {
+          kind: "list",
+          items: [
+            {
+              de:
+                "im Handy: mehrere Prozessoren gleichzeitig - einen für Programme, einen für Grafik, einen eigenen nur für KI-Aufgaben",
+              en:
+                "in your phone: several processors at once - one for programs, one for graphics, and a separate one just for AI tasks",
+            },
+            {
+              de:
+                "in der Waschmaschine: ein kleiner Chip, der Wassermenge, Temperatur und Schleuderdrehzahl steuert",
+              en:
+                "in the washing machine: a small chip controlling water level, temperature and spin speed",
+            },
+            {
+              de:
+                "in kabellosen Kopfhörern: ein Rechner, der Umgebungsgeräusche misst und in Echtzeit den Gegenschall erzeugt",
+              en:
+                "in wireless headphones: a computer that measures ambient noise and generates the counter sound in real time",
+            },
+            {
+              de:
+                "im Auto: je nach Modell mehr als hundert kleine Steuergeräte, vom Airbag bis zum Scheibenwischer",
+              en:
+                "in a car: depending on the model, more than a hundred little control units, from the airbag to the windscreen wiper",
+            },
+            {
+              de:
+                "auf der Bankkarte: ein winziger Chip, der Geheimnisse berechnen kann, ohne sie preiszugeben",
+              en:
+                "on your bank card: a tiny chip that can compute secrets without revealing them",
+            },
+          ],
         },
         {
           kind: "paragraph",
@@ -706,17 +765,48 @@ const whatIsAComputer: LearningPath = {
             },
             {
               label: {
-                de: "The National Museum of Computing: Colossus",
-                en: "The National Museum of Computing: Colossus",
+                de:
+                  "The National Museum of Computing: Colossus und die Lorenz-Maschine",
+                en:
+                  "The National Museum of Computing: Colossus and the Lorenz machine",
               },
               url: "https://www.tnmoc.org/colossus",
             },
             {
               label: {
-                de: "Wikipedia: ENIAC",
-                en: "Wikipedia: ENIAC",
+                de:
+                  "The National Museum of Computing: die Turing-Welchman-Bombe",
+                en:
+                  "The National Museum of Computing: the Turing-Welchman Bombe",
               },
-              url: "https://en.wikipedia.org/wiki/ENIAC",
+              url: "https://www.tnmoc.org/bombe",
+            },
+            {
+              label: {
+                de: "GCHQ: das Treffen im Wald von Pyry, Juli 1939",
+                en: "GCHQ: the Pyry forest meeting, July 1939",
+              },
+              url:
+                "https://www.gchq.gov.uk/information/the-pyry-forest-meeting",
+            },
+            {
+              label: {
+                de:
+                  'Harry Hinsley, "The Influence of ULTRA in the Second World War", Vortrag in Cambridge 1993',
+                en:
+                  'Harry Hinsley, "The Influence of ULTRA in the Second World War", Cambridge lecture 1993',
+              },
+              url: "https://www.cix.co.uk/~klockstone/hinsley.htm",
+            },
+            {
+              label: {
+                de:
+                  "University of Pennsylvania: ENIAC (17.468 Röhren, rund 27 Tonnen, etwa 150 kW)",
+                en:
+                  "University of Pennsylvania: ENIAC (17,468 tubes, about 27 tons, some 150 kW)",
+              },
+              url:
+                "https://www.engineering.upenn.edu/about/history-heritage/eniac/",
             },
             {
               label: {
@@ -735,24 +825,28 @@ const whatIsAComputer: LearningPath = {
             },
             {
               label: {
-                de: "Wikipedia: Ada Lovelace und ihre Anmerkungen von 1843",
-                en: "Wikipedia: Ada Lovelace and her 1843 notes",
+                de:
+                  "Computer History Museum: Ada Lovelace und ihre Anmerkungen von 1843",
+                en: "Computer History Museum: Ada Lovelace and her 1843 notes",
               },
-              url: "https://en.wikipedia.org/wiki/Ada_Lovelace",
+              url: "https://www.computerhistory.org/babbage/adalovelace/",
             },
             {
               label: {
-                de: "Wikipedia: Commodore 64",
-                en: "Wikipedia: Commodore 64",
+                de:
+                  "Guinness World Records: meistverkaufter Heimcomputer (Commodore 64)",
+                en:
+                  "Guinness World Records: best selling desktop computer (C64)",
               },
-              url: "https://en.wikipedia.org/wiki/Commodore_64",
+              url:
+                "https://www.guinnessworldrecords.com/world-records/72695-most-computer-sales",
             },
             {
               label: {
-                de: "Wikipedia: Pong (Atari, 1972)",
-                en: "Wikipedia: Pong (Atari, 1972)",
+                de: "The Strong National Museum of Play: Pong (Atari, 1972)",
+                en: "The Strong National Museum of Play: Pong (Atari, 1972)",
               },
-              url: "https://en.wikipedia.org/wiki/Pong",
+              url: "https://www.museumofplay.org/games/pong/",
             },
           ],
         },
@@ -832,9 +926,9 @@ const bitsAndBytes: LearningPath = {
               },
               text: {
                 de:
-                  "Ein Elektromagnet zieht ein Metallplättchen an und schließt damit einen zweiten Stromkreis. Konrad Zuses Z3 von 1941 arbeitete mit rund 2.000 solcher Relais. Der Rechner klapperte beim Rechnen hörbar - und schaffte etwa eine Addition pro halbe Sekunde.",
+                  "Ein Elektromagnet zieht ein Metallplättchen an und schließt damit einen zweiten Stromkreis. Konrad Zuses Z3 von 1941 arbeitete mit etwa 2.000 bis 2.400 solcher Relais. Der Rechner klapperte beim Rechnen hörbar - und brauchte für eine einzige Addition nicht ganz eine Sekunde.",
                 en:
-                  "An electromagnet pulls a small metal plate and closes a second circuit. Konrad Zuse's Z3 from 1941 used around 2,000 such relays. The machine audibly clattered while it worked - and managed roughly one addition every half second.",
+                  "An electromagnet pulls a small metal plate and closes a second circuit. Konrad Zuse's Z3 from 1941 used about 2,000 to 2,400 such relays. The machine audibly clattered while it worked - and needed just under a second for a single addition.",
               },
             },
             {
@@ -1448,10 +1542,10 @@ const bitsAndBytes: LearningPath = {
             },
             {
               label: {
-                de: "Wikipedia: Zuse Z3 - Relaisrechner von 1941",
-                en: "Wikipedia: Zuse Z3 - the 1941 relay computer",
+                de: "Konrad-Zuse-Internet-Archiv: die Z3 von 1941",
+                en: "Konrad Zuse Internet Archive: the Z3 of 1941",
               },
-              url: "https://de.wikipedia.org/wiki/Zuse_Z3",
+              url: "https://zuse.zib.de/z3",
             },
             {
               label: {
@@ -2374,6 +2468,15 @@ const exponentialGrowth: LearningPath = {
           ],
         },
         {
+          kind: "caption",
+          text: {
+            de:
+              "Gerechnet mit einer Weltbevölkerung von rund 8,3 Milliarden Menschen (Schätzung der Vereinten Nationen für Mitte 2026) und den Spitzenwerten aus den NVIDIA-Whitepapers. Nachrechnen ausdrücklich erwünscht: Rechenleistung geteilt durch Weltbevölkerung.",
+            en:
+              "Calculated with a world population of about 8.3 billion (United Nations estimate for mid 2026) and the peak figures from the NVIDIA whitepapers. Checking the maths is expressly encouraged: compute divided by world population.",
+          },
+        },
+        {
           kind: "callout",
           tone: "fact",
           icon: "⏳",
@@ -2480,6 +2583,427 @@ const exponentialGrowth: LearningPath = {
         },
       ],
     },
+    {
+      key: "ai-investment",
+      title: {
+        de: "Das größte Bauprojekt der Menschheitsgeschichte",
+        en: "The biggest building project in human history",
+      },
+      blocks: [
+        {
+          kind: "lead",
+          text: {
+            de:
+              "Während du diesen Text liest, werden weltweit Hallen gebaut, in denen nichts steht außer Rechnern. Sie brauchen Strom wie Kleinstädte und Kühlung wie Eisstadien. Und es sind sehr, sehr viele.",
+            en:
+              "As you read this, halls are being built around the world that contain nothing but computers. They need power like small towns and cooling like ice rinks. And there are very, very many of them.",
+          },
+        },
+        {
+          kind: "paragraph",
+          text: {
+            de:
+              "Das Marktforschungsunternehmen Dell'Oro zählt die Investitionen in Rechenzentren weltweit. 2024 waren es rund 455 Milliarden Dollar. 2025 wuchs diese Summe um 57 Prozent. Und für 2026 erwartet Dell'Oro, dass die Marke von einer Billion Dollar überschritten wird - also von tausend Milliarden. In einem einzigen Jahr.",
+            en:
+              "The market research firm Dell'Oro tracks investment in data centres worldwide. In 2024 it came to around 455 billion dollars. In 2025 that sum grew by 57 percent. And for 2026 Dell'Oro expects the one trillion dollar mark to be passed - a thousand billion. In a single year.",
+          },
+        },
+        {
+          kind: "callout",
+          tone: "warn",
+          icon: "📏",
+          title: {
+            de: "Warum die Zahlen so weit auseinandergehen",
+            en: "Why the numbers differ so much",
+          },
+          text: {
+            de:
+              "Wenn du zu diesem Thema recherchierst, wirst du völlig unterschiedliche Zahlen finden - und alle können stimmen. Es kommt darauf an, was mitgezählt wird: nur die KI-Chips und Server (das Marktforschungsunternehmen IDC kommt so auf 318 Milliarden Dollar für 2025), oder auch Gebäude, Stromversorgung und Kühlung, oder sogar Handys und Notebooks mit KI-Funktionen. Wer Zahlen vergleicht, muss immer zuerst fragen: Was genau wurde da gezählt?",
+            en:
+              "If you research this topic you will find wildly different numbers - and all of them can be correct. It depends on what is counted: only the AI chips and servers (on that basis the research firm IDC arrives at 318 billion dollars for 2025), or buildings, power supply and cooling as well, or even phones and laptops with AI features. Whenever you compare figures, always ask first: what exactly was counted here?",
+          },
+        },
+        {
+          kind: "paragraph",
+          text: {
+            de:
+              "Allein die vier großen amerikanischen Technologiekonzerne - Alphabet (Google), Amazon, Microsoft und Meta - gaben 2025 zusammen etwa 410 Milliarden Dollar für Anlagen und Ausrüstung aus. Für 2026 haben sie zusammen rund 700 Milliarden angekündigt. Zum Vergleich: Das ist mehr, als die meisten Länder der Welt in einem Jahr an Steuern einnehmen.",
+            en:
+              "The four big American technology companies alone - Alphabet (Google), Amazon, Microsoft and Meta - together spent about 410 billion dollars on property and equipment in 2025. For 2026 they have jointly announced around 700 billion. For comparison: that is more than most countries in the world collect in taxes in a year.",
+          },
+        },
+        {
+          kind: "heading",
+          text: {
+            de: "Zwei Vergleiche, die das Ausmaß greifbar machen",
+            en: "Two comparisons that make the scale tangible",
+          },
+        },
+        {
+          kind: "paragraph",
+          text: {
+            de:
+              "Um solche Summen einzuordnen, hilft es, sie neben die größten Projekte der Geschichte zu stellen - Projekte, für die ganze Nationen alles gaben, was sie hatten.",
+            en:
+              "To make sense of such sums it helps to place them next to the largest projects in history - projects for which entire nations gave everything they had.",
+          },
+        },
+        {
+          kind: "timeline",
+          entries: [
+            {
+              year: "1942-1946",
+              title: {
+                de: "Das Manhattan-Projekt",
+                en: "The Manhattan Project",
+              },
+              text: {
+                de:
+                  "Das geheime Programm der USA zum Bau der ersten Atombombe. Auf dem Höhepunkt arbeiteten rund 130.000 Menschen daran, insgesamt durchliefen es über eine halbe Million. Die berühmte Forschungsstadt lag in Los Alamos im US-Bundesstaat New Mexico; das meiste Geld floss aber in riesige Fabriken in Oak Ridge (Tennessee) und Hanford (Washington). Kosten damals: knapp 2 Milliarden Dollar - je nach Umrechnungsmethode heute etwa 30 bis 35 Milliarden.",
+                en:
+                  "The secret United States programme to build the first atomic bomb. At its peak around 130,000 people worked on it; more than half a million passed through it in total. The famous research town was Los Alamos in the US state of New Mexico; most of the money, however, went into vast factories at Oak Ridge (Tennessee) and Hanford (Washington). Cost at the time: just under 2 billion dollars - roughly 30 to 35 billion today, depending on the conversion method.",
+              },
+            },
+            {
+              year: "1961-1972",
+              title: {
+                de: "Das Apollo-Programm",
+                en: "The Apollo programme",
+              },
+              text: {
+                de:
+                  "Menschen auf den Mond zu bringen und lebend zurück. Über 400.000 Menschen arbeiteten daran, in Behörden, Universitäten und tausenden Zulieferbetrieben. Kosten damals: rund 25,8 Milliarden Dollar - nach der Umrechnung der Planetary Society etwa 309 Milliarden Dollar in heutigem Geld, verteilt über dreizehn Jahre.",
+                en:
+                  "Putting humans on the Moon and bringing them back alive. Over 400,000 people worked on it, in agencies, universities and thousands of supplier firms. Cost at the time: around 25.8 billion dollars - by the Planetary Society's conversion about 309 billion dollars in today's money, spread over thirteen years.",
+              },
+            },
+          ],
+        },
+        {
+          kind: "paragraph",
+          text: {
+            de:
+              "Und jetzt der Vergleich: Was 2026 weltweit in einem einzigen Jahr in Rechenzentren gesteckt wird, entspricht ungefähr drei Apollo-Programmen - oder fast dreißig Manhattan-Projekten. Nur dass Apollo dreizehn Jahre dauerte und das Manhattan-Projekt vier.",
+            en:
+              "And now the comparison: what goes into data centres worldwide in the single year 2026 corresponds to roughly three Apollo programmes - or nearly thirty Manhattan Projects. Except that Apollo took thirteen years and the Manhattan Project four.",
+          },
+        },
+        {
+          kind: "callout",
+          tone: "note",
+          icon: "⚖️",
+          title: {
+            de: "Fair bleiben beim Vergleichen",
+            en: "Staying fair when comparing",
+          },
+          text: {
+            de:
+              "Zwei Einschränkungen gehören dazu. Erstens: Apollo und Manhattan waren staatliche Projekte mit einem einzigen Ziel, die heutigen Summen sind Investitionen vieler Firmen mit vielen Zielen. Zweitens: Wie viel eine alte Summe heute wert ist, hängt stark von der Umrechnungsmethode ab - rechnet man Apollo mit den normalen Verbraucherpreisen um statt mit einem Luftfahrt-Index, landet man eher bei 190 Milliarden. Der Größenunterschied bleibt trotzdem beeindruckend.",
+            en:
+              "Two caveats belong here. First: Apollo and Manhattan were state projects with a single goal, while today's sums are investments by many companies with many goals. Second: what an old sum is worth today depends heavily on the conversion method - convert Apollo using ordinary consumer prices instead of an aerospace index and you end up nearer 190 billion. The difference in scale is still striking.",
+          },
+        },
+        {
+          kind: "heading",
+          text: {
+            de: "Wofür das alles - außer für Chatbots?",
+            en: "And all this for what - besides chatbots?",
+          },
+        },
+        {
+          kind: "paragraph",
+          text: {
+            de:
+              "Der sichtbarste Teil dieser Entwicklung sind Programme, mit denen man sich unterhalten kann, oder solche, die Bilder und Videos erzeugen. Spannender ist, was in der Wissenschaft passiert.",
+            en:
+              "The most visible part of this development are programs you can hold a conversation with, or ones that generate images and videos. What is happening in science is more exciting.",
+          },
+        },
+        {
+          kind: "paragraph",
+          text: {
+            de:
+              "Proteine sind die Werkzeuge des Lebens, und ihre Funktion hängt davon ab, wie sie sich zusammenfalten. Diese Faltung vorherzusagen galt fünfzig Jahre lang als eines der größten ungelösten Probleme der Biologie - für ein einziges Protein brauchten Forschende oft Jahre im Labor. Das Programm AlphaFold von Google DeepMind kann diese Struktur vorhersagen. In einer frei zugänglichen Datenbank stehen inzwischen über 200 Millionen vorhergesagte Proteinstrukturen, die von Millionen Forschenden in über 190 Ländern genutzt werden. 2024 gab es dafür den Nobelpreis für Chemie: eine Hälfte an David Baker, die andere gemeinsam an Demis Hassabis und John Jumper.",
+            en:
+              "Proteins are the tools of life, and their function depends on how they fold up. Predicting that folding was regarded for fifty years as one of the great unsolved problems of biology - for a single protein researchers often needed years in the lab. Google DeepMind's AlphaFold program can predict this structure. A freely accessible database now holds more than 200 million predicted protein structures, used by millions of researchers in over 190 countries. In 2024 this earned the Nobel Prize in Chemistry: one half to David Baker, the other jointly to Demis Hassabis and John Jumper.",
+          },
+        },
+        {
+          kind: "paragraph",
+          text: {
+            de:
+              "Auch in der Mathematik geht etwas voran. Bei der Internationalen Mathematik-Olympiade 2024 löste ein System von DeepMind vier von sechs Aufgaben und erreichte damit Silbermedaillen-Niveau - allerdings brauchte es für manche Aufgaben bis zu drei Tage, während Menschen zweimal viereinhalb Stunden haben. Ein Jahr später schaffte ein Modell namens Gemini Deep Think 35 von 42 Punkten innerhalb der regulären Zeit; die Olympiade selbst bestätigte, dass das Goldmedaillen-Niveau entspricht.",
+            en:
+              "Mathematics is moving too. At the International Mathematical Olympiad in 2024, a DeepMind system solved four of six problems, reaching silver medal level - though it needed up to three days for some problems, while humans get two sessions of four and a half hours. A year later a model called Gemini Deep Think managed 35 out of 42 points within the regular time limit; the Olympiad itself confirmed that this corresponds to gold medal standard.",
+          },
+        },
+        {
+          kind: "callout",
+          tone: "warn",
+          icon: "🔬",
+          title: {
+            de: "Genau hinschauen lohnt sich",
+            en: "Looking closely pays off",
+          },
+          text: {
+            de:
+              "Diese Spitzenergebnisse stammen von besonders aufwendigen Spezialsystemen. Als unabhängige Fachleute normale, öffentlich verfügbare KI-Modelle dieselben Olympiade-Aufgaben rechnen ließen, kam das beste davon auf 13 von 42 Punkten - nicht einmal Bronze. Beides ist wahr, und beides gehört in dieselbe Geschichte.",
+            en:
+              "These headline results come from particularly elaborate specialist systems. When independent experts gave ordinary, publicly available AI models the same olympiad problems, the best of them scored 13 out of 42 - not even bronze. Both are true, and both belong in the same story.",
+          },
+        },
+        {
+          kind: "paragraph",
+          text: {
+            de:
+              "In der Medizin gibt es die vielleicht handfestesten Ergebnisse. In einer großen schwedischen Studie mit rund 104.000 Frauen wurde die Brustkrebs-Früherkennung einmal mit und einmal ohne KI-Unterstützung durchgeführt. Mit KI wurden mehr Krebserkrankungen gefunden - 80,5 statt 73,8 Prozent - ohne dass es mehr Fehlalarme gab. Das ist kein Versprechen für die Zukunft, das ist gemessen, an echten Menschen, und 2026 in der Fachzeitschrift The Lancet veröffentlicht.",
+            en:
+              "Medicine offers perhaps the most solid results. In a large Swedish study with around 104,000 women, breast cancer screening was carried out once with and once without AI support. With AI more cancers were found - 80.5 instead of 73.8 percent - without any increase in false alarms. That is not a promise about the future, it was measured, on real people, and published in 2026 in the journal The Lancet.",
+          },
+        },
+        {
+          kind: "heading",
+          text: {
+            de: "Und was heißt das jetzt für dich?",
+            en: "So what does this mean for you?",
+          },
+        },
+        {
+          kind: "paragraph",
+          text: {
+            de:
+              "Ob das Geld, das gerade in diese Technik fließt, sich lohnt, weiß heute niemand sicher. Rechenzentren brauchen sehr viel Strom und Wasser, es gibt berechtigte Kritik daran, und einige Fachleute halten die Investitionen für eine Blase. Andere halten sie für den Beginn einer neuen industriellen Revolution. Beide Lager bestehen aus klugen Menschen, und beide könnten teilweise recht haben.",
+            en:
+              "Whether the money now flowing into this technology will pay off, nobody knows for certain today. Data centres need a great deal of power and water, there is legitimate criticism of that, and some experts consider the investment a bubble. Others consider it the start of a new industrial revolution. Both camps consist of clever people, and both may be partly right.",
+          },
+        },
+        {
+          kind: "paragraph",
+          text: {
+            de:
+              "Sicher ist etwas anderes: Die Kurve, die Gordon Moore 1965 in seinen Daten sah und die Ray Kurzweil Jahrzehnte weiter zurückverfolgte, zeigt weiter nach oben - inzwischen getrieben von größeren Chips, neuen Bauweisen und sehr viel Geld. Und die Werkzeuge, die daraus entstehen, landen nicht nur in Rechenzentren, sondern in Laboren, Kliniken, Klassenzimmern und auf deinem Handy.",
+            en:
+              "Something else is certain: the curve that Gordon Moore saw in his data in 1965, and that Ray Kurzweil traced decades further back, still points upwards - now driven by bigger chips, new construction methods and a great deal of money. And the tools that come out of it end up not only in data centres but in laboratories, clinics, classrooms and on your phone.",
+          },
+        },
+        {
+          kind: "callout",
+          tone: "tip",
+          icon: "🌱",
+          title: {
+            de: "Der eigentliche Punkt",
+            en: "The actual point",
+          },
+          text: {
+            de:
+              "Du lernst diese Dinge in einem Moment, in dem sich viel bewegt und noch längst nicht entschieden ist, wohin es geht. Wer versteht, wie ein Transistor schaltet, was ein Byte ist und warum eine Verdopplung so mächtig wird, kann bei diesen Fragen mitreden - und mitentscheiden. Genau dafür lohnt sich Neugier.",
+            en:
+              "You are learning these things at a moment when a great deal is in motion and it is far from settled where it leads. Anyone who understands how a transistor switches, what a byte is and why doubling becomes so powerful can join these conversations - and help decide them. That is exactly what curiosity is good for.",
+          },
+        },
+        {
+          kind: "sources",
+          items: [
+            {
+              label: {
+                de:
+                  'Gordon Moore, "Cramming more components onto integrated circuits" (1965), Computer History Museum',
+                en:
+                  'Gordon Moore, "Cramming more components onto integrated circuits" (1965), Computer History Museum',
+              },
+              url:
+                "https://www.computerhistory.org/collections/catalog/102770822",
+            },
+            {
+              label: {
+                de:
+                  'Gordon Moore, "Progress in Digital Integrated Electronics" (IEDM 1975)',
+                en:
+                  'Gordon Moore, "Progress in Digital Integrated Electronics" (IEDM 1975)',
+              },
+              url:
+                "https://www.eng.auburn.edu/~agrawvd/COURSE/E7770_Spr07/READ/Gordon_Moore_1975_Speech.pdf",
+            },
+            {
+              label: {
+                de:
+                  "Our World in Data: Transistoren pro Mikroprozessor seit 1971",
+                en:
+                  "Our World in Data: transistors per microprocessor since 1971",
+              },
+              url:
+                "https://ourworldindata.org/grapher/transistors-per-microprocessor",
+            },
+            {
+              label: {
+                de: "Our World in Data: Das Mooresche Gesetz erklärt",
+                en: "Our World in Data: Moore's law explained",
+              },
+              url: "https://ourworldindata.org/moores-law",
+            },
+            {
+              label: {
+                de: 'Ray Kurzweil, "The Law of Accelerating Returns" (2001)',
+                en: 'Ray Kurzweil, "The Law of Accelerating Returns" (2001)',
+              },
+              url:
+                "https://www.writingsbyraykurzweil.com/the-law-of-accelerating-returns",
+            },
+            {
+              label: {
+                de: "National Inventors Hall of Fame: Ray Kurzweil",
+                en: "National Inventors Hall of Fame: Ray Kurzweil",
+              },
+              url: "https://www.invent.org/inductees/raymond-kurzweil",
+            },
+            {
+              label: {
+                de:
+                  'John Rennie, "Ray Kurzweil\'s Slippery Futurism", IEEE Spectrum (2010)',
+                en:
+                  'John Rennie, "Ray Kurzweil\'s Slippery Futurism", IEEE Spectrum (2010)',
+              },
+              url: "https://spectrum.ieee.org/ray-kurzweils-slippery-futurism",
+            },
+            {
+              label: {
+                de:
+                  "NVIDIA: Ampere-GA102-Whitepaper (RTX 3090: 35,6 TFLOPS, 28,3 Mrd. Transistoren)",
+                en:
+                  "NVIDIA: Ampere GA102 whitepaper (RTX 3090: 35.6 TFLOPS, 28.3bn transistors)",
+              },
+              url:
+                "https://www.nvidia.com/content/PDF/nvidia-ampere-ga-102-gpu-architecture-whitepaper-v2.pdf",
+            },
+            {
+              label: {
+                de: "NVIDIA: Ada-Lovelace-Whitepaper (RTX 4090: 82,6 TFLOPS)",
+                en: "NVIDIA: Ada Lovelace whitepaper (RTX 4090: 82.6 TFLOPS)",
+              },
+              url:
+                "https://images.nvidia.com/aem-dam/Solutions/geforce/ada/nvidia-ada-gpu-architecture.pdf",
+            },
+            {
+              label: {
+                de: "NVIDIA: RTX-Blackwell-Whitepaper (RTX 5090: 104,8 TFLOPS)",
+                en: "NVIDIA: RTX Blackwell whitepaper (RTX 5090: 104.8 TFLOPS)",
+              },
+              url:
+                "https://images.nvidia.com/aem-dam/Solutions/geforce/blackwell/nvidia-rtx-blackwell-gpu-architecture.pdf",
+            },
+            {
+              label: {
+                de:
+                  "NVIDIA-Pressemitteilung zum Marktstart der RTX 5090 (1.999 $, 30.01.2025)",
+                en:
+                  "NVIDIA press release on the RTX 5090 launch ($1,999, 30 Jan 2025)",
+              },
+              url:
+                "https://nvidianews.nvidia.com/news/nvidia-blackwell-geforce-rtx-50-series-opens-new-world-of-ai-computer-graphics",
+            },
+            {
+              label: {
+                de:
+                  "Dell'Oro Group: Investitionen in Rechenzentren 2025 und Ausblick 2026",
+                en:
+                  "Dell'Oro Group: data centre capex 2025 and outlook for 2026",
+              },
+              url:
+                "https://www.delloro.com/news/data-center-capex-surges-57-percent-in-2025-as-ai-deployments-accelerate/",
+            },
+            {
+              label: {
+                de:
+                  "IDC: Ausgaben für KI-Infrastruktur (318 Mrd. $ im Jahr 2025)",
+                en: "IDC: AI infrastructure spending ($318bn in 2025)",
+              },
+              url:
+                "https://www.idc.com/resource-center/blog/ai-infrastructure-spending-caps-historic-year-at-90-billion-in-q4-2025-2029-spending-to-eclipse-1-trillion/",
+            },
+            {
+              label: {
+                de: "Brookings Institution: die Kosten des Manhattan-Projekts",
+                en: "Brookings Institution: the costs of the Manhattan Project",
+              },
+              url:
+                "https://www.brookings.edu/the-costs-of-the-manhattan-project/",
+            },
+            {
+              label: {
+                de: "US-Energieministerium: Hintergrund zum Manhattan-Projekt",
+                en: "US Department of Energy: Manhattan Project background",
+              },
+              url:
+                "https://www.energy.gov/lm/manhattan-project-background-information-and-preservation-work",
+            },
+            {
+              label: {
+                de:
+                  "The Planetary Society: Was das Apollo-Programm gekostet hat",
+                en: "The Planetary Society: how much Apollo cost",
+              },
+              url: "https://www.planetary.org/space-policy/cost-of-apollo",
+            },
+            {
+              label: {
+                de: "Nobelpreis für Chemie 2024 (Baker, Hassabis, Jumper)",
+                en: "Nobel Prize in Chemistry 2024 (Baker, Hassabis, Jumper)",
+              },
+              url: "https://www.nobelprize.org/prizes/chemistry/2024/summary/",
+            },
+            {
+              label: {
+                de:
+                  "Google DeepMind: AlphaFold-Datenbank mit über 200 Millionen Strukturen",
+                en:
+                  "Google DeepMind: AlphaFold database with over 200 million structures",
+              },
+              url:
+                "https://deepmind.google/blog/putting-the-power-of-alphafold-into-the-worlds-hands/",
+            },
+            {
+              label: {
+                de:
+                  "Google DeepMind: Silbermedaillen-Niveau bei der Mathematik-Olympiade 2024",
+                en:
+                  "Google DeepMind: silver medal level at the 2024 Mathematical Olympiad",
+              },
+              url:
+                "https://deepmind.google/blog/ai-solves-imo-problems-at-silver-medal-level/",
+            },
+            {
+              label: {
+                de:
+                  "Google DeepMind: Goldmedaillen-Niveau bei der Mathematik-Olympiade 2025",
+                en:
+                  "Google DeepMind: gold medal standard at the 2025 Mathematical Olympiad",
+              },
+              url:
+                "https://deepmind.google/blog/advanced-version-of-gemini-with-deep-think-officially-achieves-gold-medal-standard-at-the-international-mathematical-olympiad/",
+            },
+            {
+              label: {
+                de:
+                  "MathArena: unabhängiger Test öffentlicher Modelle an denselben Aufgaben",
+                en:
+                  "MathArena: independent test of public models on the same problems",
+              },
+              url: "https://matharena.ai/imo/",
+            },
+            {
+              label: {
+                de:
+                  "The Lancet (2026): MASAI-Studie zur KI-gestützten Brustkrebs-Früherkennung",
+                en:
+                  "The Lancet (2026): MASAI trial on AI supported breast cancer screening",
+              },
+              url:
+                "https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(25)02464-X/abstract",
+            },
+          ],
+        },
+      ],
+    },
   ],
 };
 
@@ -2498,6 +3022,11 @@ export const subjects: Subject[] = [
     },
     icon: "💻",
     accent: "indigo",
-    paths: [bitsAndBytes],
+    paths: [
+      whatIsAComputer,
+      bitsAndBytes,
+      pixelsAndResolution,
+      exponentialGrowth,
+    ],
   },
 ];
