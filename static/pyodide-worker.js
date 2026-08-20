@@ -229,7 +229,9 @@ let inputSeq = 0;
 self.onmessage = async (event) => {
   const msg = event.data;
   try {
-    if (msg.type === "init") return await init(msg.indexURL);
+    if (msg.type === "init") {
+      return await init(msg.indexURL, msg.packageBaseUrl);
+    }
     if (msg.type === "run") return await run(msg.id, msg.code);
     if (msg.type === "input-response") {
       const resolve = pendingInputs.get(msg.inputId);
@@ -250,12 +252,16 @@ self.onmessage = async (event) => {
   }
 };
 
-async function init(indexURL) {
+async function init(indexURL, packageBaseUrl) {
   self.postMessage({ type: "status", text: "loading" });
   importScripts(indexURL + "pyodide.js");
 
   pyodide = await loadPyodide({
     indexURL,
+    // The core may be served from this installation while the packages stay
+    // on the CDN - mirroring all 358 of them would be over 300 MB for
+    // something most lessons never touch.
+    ...(packageBaseUrl ? { packageBaseUrl } : {}),
     stdout: (text) => self.postMessage({ type: "stdout", id: currentId, text: text + "\n" }),
     stderr: (text) => self.postMessage({ type: "stderr", id: currentId, text: text + "\n" }),
   });

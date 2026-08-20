@@ -21,6 +21,11 @@ import {
 } from "../utils/notebookStore.ts";
 import { EXAMPLES, notebookFromExample } from "../utils/notebookExamples.ts";
 import {
+  packageBaseUrl,
+  preloadState,
+  resolvePyodideBase,
+} from "../utils/pyodidePreload.ts";
+import {
   DEFAULT_LIMITS,
   isAssistantAllowed,
   loadLimits,
@@ -28,9 +33,6 @@ import {
   saveLimits,
   setAssistantAllowed,
 } from "../utils/notebookTools.ts";
-
-/** Pinned so a CDN release cannot change the behaviour underfoot. */
-const PYODIDE_INDEX_URL = "https://cdn.jsdelivr.net/pyodide/v0.29.0/full/";
 
 /** Remembers that the 10 MB download notice has been seen. */
 const NOTICE_KEY = "bude-notebook-notice-seen";
@@ -139,17 +141,22 @@ export default function NotebookModal({
     }));
   };
 
-  const startKernel = (): Promise<Worker> => {
+  const startKernel = async (): Promise<Worker> => {
     if (workerRef.current && kernel !== "off") {
-      return Promise.resolve(workerRef.current);
+      return workerRef.current;
     }
     setKernel("loading");
-    setStatus(t("kernelLoading"));
+    // If the background prefetch already finished, the files come out of the
+    // cache and the wait is short - say so, rather than warning about 10 MB
+    // that are no longer being downloaded.
+    const warmed = preloadState().done >= 5;
+    setStatus(warmed ? t("kernelStarting") : t("kernelLoading"));
 
+    const indexURL = await resolvePyodideBase();
     const worker = new Worker("/pyodide-worker.js");
     workerRef.current = worker;
 
-    return new Promise((resolve, reject) => {
+    return await new Promise<Worker>((resolve, reject) => {
       worker.onmessage = (event) => {
         const msg = event.data;
         switch (msg.type) {
@@ -204,7 +211,11 @@ export default function NotebookModal({
         setKernel("off");
         reject(new Error(event.message ?? "worker failed"));
       };
-      worker.postMessage({ type: "init", indexURL: PYODIDE_INDEX_URL });
+      worker.postMessage({
+        type: "init",
+        indexURL,
+        packageBaseUrl: packageBaseUrl(),
+      });
     });
   };
 

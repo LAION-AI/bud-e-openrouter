@@ -38,6 +38,7 @@ import {
 import MailSyncModal from "../components/MailSyncModal.tsx";
 import NotebookModal from "../components/NotebookModal.tsx";
 import LearningModal from "../components/LearningModal.tsx";
+import { schedulePyodidePreload } from "../utils/pyodidePreload.ts";
 import { learningContent } from "../internalization/learning-content.ts";
 
 // Tools the assistant may use once the user grants the matching permission.
@@ -532,6 +533,13 @@ export default function ChatIsland({ lang }: { lang: string }) {
   // ---------- Mailbox sync ----------
   const ms = (key: string) =>
     (mailSyncContent[lang]?.[key] ?? mailSyncContent.en[key] ?? key) as string;
+
+  // Fetch the Python runtime into the browser cache while the user is busy
+  // with something else. Opening the notebook then costs a second instead of
+  // a 12 MB download; on a slow link that was minutes.
+  useEffect(() => {
+    schedulePyodidePreload();
+  }, []);
 
   // Load the mail account once, same as the other settings.
   useEffect(() => {
