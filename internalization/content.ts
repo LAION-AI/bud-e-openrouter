@@ -590,7 +590,7 @@ export const notebookContent: InternalizationContent = {
     waitingForInput: "waiting for your input",
     outputLabel: "Output",
     firstRunNotice:
-      "Python is being fetched in the background (about 12 MB) so the first run does not have to wait for it. Only this once.",
+      "Python starts up in the background while you work, so this window is usually ready the moment you open it.",
     gotIt: "Got it",
     kernelBusy: "busy",
     addBelow: "Add cell below",
@@ -601,7 +601,7 @@ export const notebookContent: InternalizationContent = {
     runCell: "Run cell (Ctrl+Enter)",
     stop: "Stop",
     restart: "Restart",
-    restartHint: "Throws away all variables and starts the interpreter fresh.",
+    restartHint: "Throws away all variables and starts the interpreter fresh. Otherwise it keeps running, even when this window is closed.",
     clearOutputs: "Clear outputs",
     myNotebooks: "Notebooks",
     newNotebook: "New notebook",
@@ -629,7 +629,7 @@ export const notebookContent: InternalizationContent = {
     inputSend: "Send",
     inputCancel: "Cancel",
     kernelOff: "Interpreter not started",
-    kernelLoading: "Loading Python (about 12 MB, only the first time)...",
+    kernelLoading: "Starting Python...",
     kernelStarting: "Starting Python...",
     kernelReady: "Ready",
     kernelStopped: "Interpreter stopped",
@@ -645,9 +645,9 @@ export const notebookContent: InternalizationContent = {
     helpRunTitle: "Running a cell",
     helpRun:
       "Click into a cell and press Ctrl+Enter, or use the small triangle. Whatever the program prints appears right below the cell. The cells share their variables, so what you define at the top is still known further down.",
-    helpFirstRunTitle: "The first run takes a moment",
+    helpFirstRunTitle: "Python is already running",
     helpFirstRun:
-      "Python itself has to be downloaded first, about 12 MB. BUD-E fetches it quietly in the background while you are doing something else, so by the time you open this window it is usually already there. Larger tools like numpy or matplotlib are only fetched when a program actually imports them.",
+      "The interpreter starts in the background shortly after the page loads, so this window is usually ready straight away. It also keeps running when you close the window - your variables are still there when you come back. Larger tools like numpy or matplotlib are only fetched when a program actually imports them.",
     helpNotebooksTitle: "Several notebooks",
     helpNotebooks:
       "Under \"Notebooks\" you create as many as you want and switch between them; the name is editable at the top. Right beside it are ready-made examples, from the first print to a small game - each opens as your own copy.",
@@ -681,7 +681,7 @@ export const notebookContent: InternalizationContent = {
     waitingForInput: "wartet auf deine Eingabe",
     outputLabel: "Ausgabe",
     firstRunNotice:
-      "Python wird im Hintergrund geladen (etwa 12 MB), damit der erste Lauf nicht darauf warten muss. Nur dieses eine Mal.",
+      "Python startet im Hintergrund, während du arbeitest - dieses Fenster ist deshalb meist sofort bereit.",
     gotIt: "Verstanden",
     kernelBusy: "beschäftigt",
     addBelow: "Zelle darunter einfügen",
@@ -692,7 +692,7 @@ export const notebookContent: InternalizationContent = {
     runCell: "Zelle ausführen (Strg+Enter)",
     stop: "Stopp",
     restart: "Neu starten",
-    restartHint: "Wirft alle Variablen weg und startet den Interpreter frisch.",
+    restartHint: "Wirft alle Variablen weg und startet den Interpreter frisch. Sonst läuft er weiter, auch wenn du dieses Fenster schließt.",
     clearOutputs: "Ausgaben leeren",
     myNotebooks: "Notebooks",
     newNotebook: "Neues Notebook",
@@ -720,7 +720,7 @@ export const notebookContent: InternalizationContent = {
     inputSend: "Senden",
     inputCancel: "Abbrechen",
     kernelOff: "Interpreter nicht gestartet",
-    kernelLoading: "Lade Python (etwa 12 MB, nur beim ersten Mal)...",
+    kernelLoading: "Starte Python...",
     kernelStarting: "Starte Python...",
     kernelReady: "Bereit",
     kernelStopped: "Interpreter gestoppt",
@@ -736,9 +736,9 @@ export const notebookContent: InternalizationContent = {
     helpRunTitle: "Eine Zelle ausführen",
     helpRun:
       "Klick in eine Zelle und drücke Strg+Enter, oder nimm das kleine Dreieck. Was das Programm ausgibt, erscheint direkt unter der Zelle. Die Zellen teilen sich ihre Variablen - was du oben festlegst, ist weiter unten noch bekannt.",
-    helpFirstRunTitle: "Der erste Start dauert kurz",
+    helpFirstRunTitle: "Python läuft schon",
     helpFirstRun:
-      "Python selbst muss erst geladen werden, etwa 12 MB. BUD-E holt es still im Hintergrund, während du etwas anderes machst - wenn du dieses Fenster öffnest, ist es meist schon da. Größere Werkzeuge wie numpy oder matplotlib kommen erst dazu, wenn ein Programm sie wirklich benutzt.",
+      "Der Interpreter startet kurz nach dem Laden der Seite im Hintergrund - dieses Fenster ist deshalb meist sofort bereit. Er läuft auch weiter, wenn du das Fenster schließt: deine Variablen sind beim Wiederkommen noch da. Größere Werkzeuge wie numpy oder matplotlib kommen erst dazu, wenn ein Programm sie wirklich benutzt.",
     helpNotebooksTitle: "Mehrere Notebooks",
     helpNotebooks:
       "Unter \"Notebooks\" legst du beliebig viele an und wechselst zwischen ihnen; den Namen änderst du oben im Feld. Direkt daneben stehen fertige Beispiele, vom ersten print bis zum kleinen Spiel - jedes öffnet sich als deine eigene Kopie.",

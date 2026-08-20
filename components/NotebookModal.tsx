@@ -20,11 +20,7 @@ import {
   toIpynb,
 } from "../utils/notebookStore.ts";
 import { EXAMPLES, notebookFromExample } from "../utils/notebookExamples.ts";
-import {
-  packageBaseUrl,
-  preloadState,
-  resolvePyodideBase,
-} from "../utils/pyodidePreload.ts";
+import { type KernelStatus, pythonKernel } from "../utils/pythonKernel.ts";
 import {
   DEFAULT_LIMITS,
   isAssistantAllowed,
@@ -36,8 +32,6 @@ import {
 
 /** Remembers that the 10 MB download notice has been seen. */
 const NOTICE_KEY = "bude-notebook-notice-seen";
-
-type KernelState = "off" | "loading" | "ready" | "running";
 
 interface PendingInput {
   cellId: string;
@@ -66,7 +60,7 @@ export default function NotebookModal({
     return existing[0] ?? newNotebook();
   });
   const [notebooks, setNotebooks] = useState<Notebook[]>(() => listNotebooks());
-  const [kernel, setKernel] = useState<KernelState>("off");
+  const [kernel, setKernel] = useState<KernelStatus>(pythonKernel.status);
   const [status, setStatus] = useState("");
   const [runningCell, setRunningCell] = useState<string | null>(null);
   const [canInterrupt, setCanInterrupt] = useState(false);
@@ -78,9 +72,7 @@ export default function NotebookModal({
   const [sidebarOpen, setSidebarOpen] = useState(() =>
     listNotebooks().length <= 1
   );
-  const [showHelp, setShowHelp] = useState(() =>
-    listNotebooks().length === 0
-  );
+  const [showHelp, setShowHelp] = useState(() => listNotebooks().length === 0);
   const [assistantAllowed, setAllowed] = useState(() => isAssistantAllowed());
   const [limits, setLimits] = useState<NotebookLimits>(() => loadLimits());
   const [showLimits, setShowLimits] = useState(false);
@@ -93,9 +85,7 @@ export default function NotebookModal({
     }
   });
 
-  const workerRef = useRef<Worker | null>(null);
   const counterRef = useRef(0);
-  const pendingRef = useRef<{ id: string; resolve: () => void } | null>(null);
   const notebookRef = useRef(notebook);
 
   useEffect(() => {
@@ -119,8 +109,6 @@ export default function NotebookModal({
     else if (fresh[0]) setNotebook(fresh[0]);
   }, [revision]);
 
-  useEffect(() => () => workerRef.current?.terminate(), []);
-
   const dismissNotice = () => {
     setShowNotice(false);
     try {
@@ -141,105 +129,72 @@ export default function NotebookModal({
     }));
   };
 
-  const startKernel = async (): Promise<Worker> => {
-    if (workerRef.current && kernel !== "off") {
-      return workerRef.current;
-    }
-    setKernel("loading");
-    // If the background prefetch already finished, the files come out of the
-    // cache and the wait is short - say so, rather than warning about 10 MB
-    // that are no longer being downloaded.
-    const warmed = preloadState().done >= 5;
-    setStatus(warmed ? t("kernelStarting") : t("kernelLoading"));
-
-    const indexURL = await resolvePyodideBase();
-    const worker = new Worker("/pyodide-worker.js");
-    workerRef.current = worker;
-
-    return await new Promise<Worker>((resolve, reject) => {
-      worker.onmessage = (event) => {
-        const msg = event.data;
-        switch (msg.type) {
-          case "status":
-            setStatus(translateStatus(msg.text, t));
-            break;
-          case "ready":
-            setKernel("ready");
-            setCanInterrupt(!!msg.canInterrupt);
-            setStatus(`${t("kernelReady")} - Python ${msg.version}`);
-            dismissNotice();
-            resolve(worker);
-            break;
-          case "stdout":
-          case "stderr":
-          case "result":
-          case "error":
-            appendOutput(msg.id, { type: msg.type, text: msg.text });
-            break;
-          case "image":
-            appendOutput(msg.id, { type: "image", data: msg.data });
-            break;
-          case "input":
-            setPendingInput({
-              cellId: msg.id,
-              inputId: msg.inputId,
-              prompt: msg.prompt,
-            });
-            break;
-          case "input-cancel":
-            setPendingInput((p) => (p?.inputId === msg.inputId ? null : p));
-            break;
-          case "done": {
-            const pending = pendingRef.current;
-            if (pending && pending.id === msg.id) {
-              pendingRef.current = null;
-              pending.resolve();
-            }
-            setRunningCell(null);
-            setKernel("ready");
-            break;
-          }
-          case "fatal":
-            setStatus(`${t("kernelError")}: ${msg.text}`);
-            setKernel("off");
-            reject(new Error(msg.text));
-            break;
+  /**
+   * The interpreter belongs to the page, not to this window - closing the
+   * notebook must not throw away the variables a pupil just built up. So this
+   * only listens; it never creates or terminates the worker.
+   */
+  useEffect(() => {
+    const unsubscribe = pythonKernel.subscribe({
+      status: (state, detail) => {
+        setKernel(state);
+        setCanInterrupt(pythonKernel.canInterrupt);
+        if (state === "ready") {
+          setRunningCell(null);
+          setStatus(
+            pythonKernel.version
+              ? `${t("kernelReady")} - Python ${pythonKernel.version}`
+              : t("kernelReady"),
+          );
+          dismissNotice();
+        } else if (state === "off") {
+          setStatus(
+            detail ? `${t("kernelError")}: ${detail}` : t("kernelStopped"),
+          );
+        } else {
+          setStatus(translateStatus(detail, t));
         }
-      };
-      worker.onerror = (event) => {
-        setStatus(`${t("kernelError")}: ${event.message ?? "worker failed"}`);
-        setKernel("off");
-        reject(new Error(event.message ?? "worker failed"));
-      };
-      worker.postMessage({
-        type: "init",
-        indexURL,
-        packageBaseUrl: packageBaseUrl(),
-      });
+      },
+      output: (cellId, out) => appendOutput(cellId, out as CellOutput),
+      input: (cellId, inputId, prompt) =>
+        setPendingInput({ cellId, inputId, prompt }),
+      inputCancel: (inputId) =>
+        setPendingInput((p) => (p?.inputId === inputId ? null : p)),
+      done: () => setRunningCell(null),
     });
-  };
+
+    // Pick up whatever the kernel is already doing - it may well have booted
+    // in the background long before this window was opened.
+    setKernel(pythonKernel.status);
+    setCanInterrupt(pythonKernel.canInterrupt);
+    if (pythonKernel.status === "ready") {
+      setStatus(
+        pythonKernel.version
+          ? `${t("kernelReady")} - Python ${pythonKernel.version}`
+          : t("kernelReady"),
+      );
+    }
+    // Opening the window is a strong hint that Python will be wanted.
+    pythonKernel.start().catch(() => {});
+
+    return unsubscribe;
+  }, []);
 
   const answerInput = (value: string | null) => {
     const pending = pendingInput;
     if (!pending) return;
     setPendingInput(null);
-    workerRef.current?.postMessage({
-      type: "input-response",
-      inputId: pending.inputId,
-      value: value ?? "",
-      cancelled: value === null,
-    });
+    pythonKernel.answerInput(pending.inputId, value);
   };
 
   const restartKernel = () => {
-    workerRef.current?.terminate();
-    workerRef.current = null;
-    pendingRef.current = null;
-    setKernel("off");
+    pythonKernel.restart();
     setRunningCell(null);
     setPendingInput(null);
     setStatus(t("kernelStopped"));
     counterRef.current = 0;
+    // Boot straight away so the next cell does not have to wait for it.
+    pythonKernel.start().catch(() => {});
   };
 
   const stopExecution = () => {
@@ -249,22 +204,17 @@ export default function NotebookModal({
       answerInput(null);
       return;
     }
-    if (canInterrupt && workerRef.current) {
-      workerRef.current.postMessage({ type: "interrupt" });
+    if (canInterrupt) {
+      pythonKernel.interrupt();
       return;
     }
+    // Without a way to interrupt politely, the only way out is a fresh
+    // interpreter - which costs the variables, hence the last resort.
     restartKernel();
   };
 
   const runCell = async (cell: NotebookCell) => {
     if (cell.type !== "code" || !cell.source.trim()) return;
-
-    let worker: Worker;
-    try {
-      worker = await startKernel();
-    } catch {
-      return;
-    }
 
     const count = ++counterRef.current;
     setNotebook((nb) => ({
@@ -274,12 +224,13 @@ export default function NotebookModal({
       ),
     }));
     setRunningCell(cell.id);
-    setKernel("running");
 
-    await new Promise<void>((resolve) => {
-      pendingRef.current = { id: cell.id, resolve };
-      worker.postMessage({ type: "run", id: cell.id, code: cell.source });
-    });
+    try {
+      await pythonKernel.run(cell.id, cell.source);
+    } catch {
+      // The status listener has already put the error on screen.
+      setRunningCell(null);
+    }
   };
 
   const runAll = async () => {
@@ -417,7 +368,7 @@ export default function NotebookModal({
     return () => globalThis.removeEventListener("keydown", onKey);
   }, [onClose, pendingInput]);
 
-  const busy = kernel === "loading" || kernel === "running";
+  const busy = kernel === "booting" || kernel === "running";
   const codeCells = notebook.cells.filter((c) => c.type === "code").length;
 
   return (
@@ -438,7 +389,9 @@ export default function NotebookModal({
               <span class="text-2xl leading-none">🐍</span>
               <h2 class="font-semibold truncate">{t("title")}</h2>
             </div>
-            <p class="text-xs text-slate-300 hidden md:block">{t("subtitle")}</p>
+            <p class="text-xs text-slate-300 hidden md:block">
+              {t("subtitle")}
+            </p>
           </div>
 
           <div class="flex-1" />
@@ -596,7 +549,12 @@ export default function NotebookModal({
 
           <main class="flex-1 overflow-y-auto bg-slate-100 min-w-0">
             <div class="max-w-4xl mx-auto px-4 py-4 space-y-3">
-              {showHelp && <HelpPanel t={t} onClose={() => setShowHelp(false)} />}
+              {showHelp && (
+                <HelpPanel
+                  t={t}
+                  onClose={() => setShowHelp(false)}
+                />
+              )}
 
               {showNotice && !showHelp && kernel === "off" && (
                 <div class="flex items-start gap-3 bg-amber-50 border border-amber-200 rounded-lg px-4 py-3 text-sm">
@@ -709,7 +667,7 @@ function LimitField({
 
 function KernelBadge(
   { kernel, status, t }: {
-    kernel: KernelState;
+    kernel: KernelStatus;
     status: string;
     t: (k: string) => string;
   },
@@ -718,7 +676,7 @@ function KernelBadge(
     ? "bg-green-400"
     : kernel === "running"
     ? "bg-amber-400 animate-pulse"
-    : kernel === "loading"
+    : kernel === "booting"
     ? "bg-blue-400 animate-pulse"
     : "bg-slate-500";
 
@@ -812,7 +770,8 @@ function Sidebar({
                 {notebooks.map((nb) => (
                   <li key={nb.id} class="group flex items-center gap-1">
                     <button
-                      onClick={() => onOpen(nb)}
+                      onClick={() =>
+                        onOpen(nb)}
                       class={`flex-1 min-w-0 text-left px-2 py-1.5 rounded-md text-sm ${
                         nb.id === currentId
                           ? "bg-blue-50 text-blue-900 font-semibold"
@@ -825,7 +784,8 @@ function Sidebar({
                       </span>
                     </button>
                     <button
-                      onClick={() => onRemove(nb.id)}
+                      onClick={() =>
+                        onRemove(nb.id)}
                       title={t("delete")}
                       class="opacity-0 group-hover:opacity-100 px-1.5 py-1
                              text-red-600 hover:bg-red-50 rounded text-xs shrink-0"
@@ -1033,11 +993,18 @@ function CellView({
         <span class="hidden md:inline text-slate-400 mr-1 font-mono">
           {isCode ? t("runShortcut") : ""}
         </span>
-        <IconButton onClick={onToggleType} title={isCode ? t("toText") : t("toCode")}>
+        <IconButton
+          onClick={onToggleType}
+          title={isCode ? t("toText") : t("toCode")}
+        >
           {isCode ? "📝" : "🐍"}
         </IconButton>
-        <IconButton onClick={() => onMove(-1)} title={t("moveUp")}>↑</IconButton>
-        <IconButton onClick={() => onMove(1)} title={t("moveDown")}>↓</IconButton>
+        <IconButton onClick={() => onMove(-1)} title={t("moveUp")}>
+          ↑
+        </IconButton>
+        <IconButton onClick={() => onMove(1)} title={t("moveDown")}>
+          ↓
+        </IconButton>
         <IconButton onClick={onDuplicate} title={t("duplicate")}>⧉</IconButton>
         <IconButton onClick={() => onAddAfter("code")} title={t("addBelow")}>
           +
@@ -1238,8 +1205,20 @@ const SpinnerIcon = () => (
     fill="none"
     class="animate-spin"
   >
-    <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="3" opacity="0.25" />
-    <path d="M21 12a9 9 0 0 0-9-9" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
+    <circle
+      cx="12"
+      cy="12"
+      r="9"
+      stroke="currentColor"
+      stroke-width="3"
+      opacity="0.25"
+    />
+    <path
+      d="M21 12a9 9 0 0 0-9-9"
+      stroke="currentColor"
+      stroke-width="3"
+      stroke-linecap="round"
+    />
   </svg>
 );
 
