@@ -8,12 +8,16 @@
 import type { ComponentChildren } from "preact";
 import { useEffect, useRef, useState } from "preact/hooks";
 import { learningContent } from "../internalization/learning-content.ts";
+import { printWorksheet } from "../utils/worksheet.ts";
 import {
   type Accent,
   type Block,
+  clozeParts,
+  type Exercise,
   findPath,
   type LearningPath,
   loadProgress,
+  type Localized,
   pick,
   type Progress,
   saveProgress,
@@ -97,6 +101,11 @@ export default function LearningModal({
   const subject = subjects.find((s) => s.key === subjectKey) ?? null;
   const path = subject?.paths.find((p) => p.key === pathKey) ?? null;
   const screen: Screen | null = path?.screens[screenIndex] ?? null;
+  /** The exercises live on a screen of their own, right after the content. */
+  const hasExercises = (path?.exercises?.length ?? 0) > 0;
+  const totalScreens = path ? path.screens.length + (hasExercises ? 1 : 0) : 0;
+  const onExerciseScreen = !!path && hasExercises &&
+    screenIndex === path.screens.length;
 
   // The resume banner only makes sense while the pupil is still on an
   // overview - once they are reading, they are already where they left off.
@@ -127,9 +136,25 @@ export default function LearningModal({
     });
   };
 
+  /**
+   * Opens the worksheet for printing. The browser's own dialog offers
+   * "Save as PDF", which is what a teacher actually wants here.
+   */
+  const printSheet = (target: LearningPath) => {
+    const ok = printWorksheet(target, lang, {
+      worksheet: t("worksheet"),
+      name: t("sheetName"),
+      date: t("sheetDate"),
+      tasksTitle: t("tasksTitle"),
+      sourcesTitle: t("sheetSources"),
+      footer: t("sheetFooter"),
+    }, subject ? L(subject.title) : "");
+    if (!ok) alert(t("popupBlocked"));
+  };
+
   const goToScreen = (index: number) => {
     if (!path) return;
-    const clamped = Math.max(0, Math.min(index, path.screens.length - 1));
+    const clamped = Math.max(0, Math.min(index, totalScreens - 1));
     setScreenIndex(clamped);
     scrollRef.current?.scrollTo({ top: 0 });
     // Only ever move the bookmark forward; re-reading must not lose progress.
@@ -207,8 +232,19 @@ export default function LearningModal({
             <span class="hidden sm:inline text-xs px-2.5 py-1 rounded-full bg-white/10">
               {t("pageOf")
                 .replace("{current}", String(screenIndex + 1))
-                .replace("{total}", String(path.screens.length))}
+                .replace("{total}", String(totalScreens))}
             </span>
+          )}
+
+          {path && (
+            <button
+              type="button"
+              onClick={() => printSheet(path)}
+              title={t("printHint")}
+              class="p-1.5 rounded hover:bg-white/15 shrink-0"
+            >
+              <PrintIcon />
+            </button>
           )}
 
           <button
@@ -273,6 +309,17 @@ export default function LearningModal({
           {path && screen && (
             <ScreenView key={screen.key} t={t} L={L} screen={screen} />
           )}
+
+          {onExerciseScreen && (
+            <ExerciseView
+              t={t}
+              L={L}
+              lang={lang}
+              path={path}
+              accent={ACCENTS[path.accent]}
+              onPrint={() => printSheet(path)}
+            />
+          )}
         </main>
 
         {/* ------------------------------------------------------- footer */}
@@ -286,22 +333,28 @@ export default function LearningModal({
             </NavButton>
 
             <div class="flex-1 flex items-center justify-center gap-1.5">
-              {path.screens.map((s, i) => (
-                <button
-                  type="button"
-                  key={s.key}
-                  onClick={() => goToScreen(i)}
-                  title={L(s.title)}
-                  class={`h-2.5 rounded-full transition-all ${
-                    i === screenIndex
-                      ? `w-7 ${ACCENTS[path.accent].bar}`
-                      : "w-2.5 bg-slate-300 hover:bg-slate-400"
-                  }`}
-                />
-              ))}
+              {Array.from({ length: totalScreens }, (_, i) => {
+                const isTasks = hasExercises && i === path.screens.length;
+                const label = isTasks
+                  ? t("tasksTitle")
+                  : L(path.screens[i].title);
+                return (
+                  <button
+                    type="button"
+                    key={isTasks ? "tasks" : path.screens[i].key}
+                    onClick={() => goToScreen(i)}
+                    title={label}
+                    class={`h-2.5 rounded-full transition-all ${
+                      i === screenIndex
+                        ? `w-7 ${ACCENTS[path.accent].bar}`
+                        : "w-2.5 bg-slate-300 hover:bg-slate-400"
+                    }`}
+                  />
+                );
+              })}
             </div>
 
-            {screenIndex < path.screens.length - 1
+            {screenIndex < totalScreens - 1
               ? (
                 <NavButton
                   primary
@@ -531,6 +584,154 @@ function PathGrid({
 }
 
 // ------------------------------------------------------------ screen level
+
+/**
+ * The closing screen: three exercises, in rising difficulty.
+ *
+ * The gaps are ordinary input fields - what a pupil types is deliberately not
+ * saved anywhere. These are for thinking with, not for marking, and a stored
+ * half-answer would only invite the next person on a shared school computer to
+ * read it.
+ */
+function ExerciseView({
+  t,
+  L,
+  lang,
+  path,
+  accent,
+  onPrint,
+}: {
+  t: (key: string) => string;
+  L: (value: Localized) => string;
+  lang: string;
+  path: LearningPath;
+  accent: { chip: string; soft: string; text: string; bar: string };
+  onPrint: () => void;
+}) {
+  const exercises = path.exercises ?? [];
+
+  return (
+    <div class="max-w-3xl mx-auto px-5 py-6">
+      <div class="flex items-start justify-between gap-4 mb-1">
+        <h2 class="text-2xl font-bold text-slate-900">{t("tasksTitle")}</h2>
+        <button
+          type="button"
+          onClick={onPrint}
+          title={t("printHint")}
+          class="shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg
+                 border border-slate-300 bg-white text-sm font-medium
+                 hover:border-slate-400 shadow-sm"
+        >
+          <PrintIcon /> {t("printSheet")}
+        </button>
+      </div>
+      <p class="text-slate-600 mb-5">{t("tasksIntro")}</p>
+
+      <div class="space-y-5">
+        {exercises.map((exercise, i) => (
+          <ExerciseCard
+            key={i}
+            t={t}
+            L={L}
+            lang={lang}
+            exercise={exercise}
+            accent={accent}
+          />
+        ))}
+      </div>
+
+      <p class="text-xs text-slate-500 mt-6">{t("tasksNoAnswers")}</p>
+    </div>
+  );
+}
+
+function ExerciseCard({
+  t,
+  L,
+  lang,
+  exercise,
+  accent,
+}: {
+  t: (key: string) => string;
+  L: (value: Localized) => string;
+  lang: string;
+  exercise: Exercise;
+  accent: { chip: string; soft: string; text: string };
+}) {
+  const badge = exercise.kind === "cloze"
+    ? t("levelRecall")
+    : exercise.kind === "compare"
+    ? t("levelCompare")
+    : t("levelThink");
+
+  return (
+    <section class="rounded-xl border border-slate-200 bg-white shadow-sm overflow-hidden">
+      <div class="px-4 py-3 border-b border-slate-100 flex items-start gap-3">
+        <div class="flex-1">
+          <h3 class="font-semibold text-slate-900">{L(exercise.title)}</h3>
+          <p class="text-sm text-slate-500 italic">{L(exercise.intro)}</p>
+        </div>
+        <span
+          class={`shrink-0 text-xs px-2 py-0.5 rounded-full font-medium ${accent.chip}`}
+        >
+          {badge}
+        </span>
+      </div>
+
+      <div class="px-4 py-4">
+        {exercise.kind === "cloze"
+          ? <ClozeText text={pick(exercise.text, lang)} />
+          : (
+            <>
+              <p class="text-slate-800 leading-relaxed">{L(exercise.text)}</p>
+              <textarea
+                rows={exercise.kind === "reflect" ? 6 : 5}
+                placeholder={t("answerHere")}
+                class="mt-3 w-full p-3 border border-slate-300 rounded-lg text-sm
+                       leading-relaxed resize-y focus:ring-2 focus:ring-blue-400
+                       focus:border-blue-400 outline-none"
+              />
+            </>
+          )}
+
+        {exercise.hint && (
+          <p class={`mt-3 text-sm rounded-lg border px-3 py-2 ${accent.soft}`}>
+            <span class="font-medium">{t("hintLabel")}</span> {L(exercise.hint)}
+          </p>
+        )}
+      </div>
+    </section>
+  );
+}
+
+/** Renders the cloze text with a writable field wherever a gap was marked. */
+function ClozeText({ text }: { text: string }) {
+  const parts = clozeParts(text);
+  return (
+    <p class="text-slate-800 leading-loose">
+      {parts.map((part, i) => (
+        <span key={i}>
+          {part}
+          {i < parts.length - 1 && (
+            <input
+              type="text"
+              size={12}
+              class="mx-1 px-2 py-0.5 border-b-2 border-slate-400 bg-slate-50
+                     rounded-t text-slate-900 focus:border-blue-500
+                     focus:bg-blue-50 outline-none"
+            />
+          )}
+        </span>
+      ))}
+    </p>
+  );
+}
+
+const PrintIcon = () => (
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M7 3h10v4H7V3Zm-3 6h16a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1h-2v4H6v-4H4a1 1 0 0 1-1-1v-6a1 1 0 0 1 1-1Zm4 8v3h8v-3H8Zm9-4.5a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z" />
+  </svg>
+);
 
 function ScreenView({
   t,

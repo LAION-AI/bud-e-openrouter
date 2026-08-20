@@ -6,6 +6,26 @@
 
 export const learningContent: InternalizationContent = {
   en: {
+    tasksTitle: "Check yourself",
+    tasksIntro:
+      "Three exercises: one to recall, one to think through, one with no right answer at all. Nothing you type here is saved - these are for thinking with.",
+    tasksNoAnswers:
+      "There is no answer key on purpose. Everything you need for the first two is in this path, and the third one is yours alone.",
+    levelRecall: "Recall",
+    levelCompare: "Think it through",
+    levelThink: "Your turn",
+    hintLabel: "Nudge:",
+    answerHere: "Write your answer here...",
+    printSheet: "Worksheet",
+    printHint:
+      'Opens a printable version of this path with the exercises. Choose "Save as PDF" in the print dialogue to keep it as a file.',
+    worksheet: "Worksheet",
+    sheetName: "Name:",
+    sheetDate: "Date:",
+    sheetSources: "Sources",
+    sheetFooter: "Computing basics - free to copy for teaching",
+    popupBlocked:
+      "The browser blocked the new window. Allow pop-ups for this page, then try again.",
     title: "Learning paths",
     subtitle: "Understand computers - one screen at a time",
     close: "Close",
@@ -49,6 +69,27 @@ export const learningContent: InternalizationContent = {
     numbers: "The numbers",
   },
   de: {
+    tasksTitle: "Überprüfe dich selbst",
+    tasksIntro:
+      "Drei Aufgaben: eine zum Erinnern, eine zum Durchdenken und eine, auf die es keine richtige Antwort gibt. Was du hier eintippst, wird nirgends gespeichert - es ist zum Denken da.",
+    tasksNoAnswers:
+      "Lösungen gibt es absichtlich keine. Alles für die ersten beiden Aufgaben steht in diesem Lernpfad, und die dritte gehört ganz dir.",
+    levelRecall: "Erinnern",
+    levelCompare: "Durchdenken",
+    levelThink: "Deine Meinung",
+    hintLabel: "Denkanstoß:",
+    answerHere: "Schreib deine Antwort hier hin...",
+    printSheet: "Arbeitsblatt",
+    printHint:
+      'Öffnet eine druckbare Fassung dieses Lernpfads samt Aufgaben. Im Druckfenster "Als PDF speichern" wählen, dann hast du es als Datei.',
+    worksheet: "Arbeitsblatt",
+    sheetName: "Name:",
+    sheetDate: "Datum:",
+    sheetSources: "Quellen",
+    sheetFooter:
+      "Informatische Grundbildung - für den Unterricht frei kopierbar",
+    popupBlocked:
+      "Der Browser hat das neue Fenster blockiert. Erlaube Pop-ups für diese Seite und versuch es noch einmal.",
     title: "Lernpfade",
     subtitle: "Computer verstehen - ein Bildschirm nach dem anderen",
     close: "Schließen",

@@ -68,6 +68,42 @@ export interface Screen {
   blocks: Block[];
 }
 
+// ------------------------------------------------------------- exercises
+
+/**
+ * Three exercises close every path, in rising difficulty:
+ *
+ *   cloze    - reproduce: a summary of the path with the nouns taken out
+ *   compare  - relate two facts to each other, which reading alone will not
+ *              answer
+ *   reflect  - open question with no single right answer, meant to connect
+ *              the topic to the world the pupil lives in
+ *
+ * No solutions are stored anywhere. Looking them up in the path is the point;
+ * an answer key would only invite skipping straight to it.
+ */
+export type ExerciseKind = "cloze" | "compare" | "reflect";
+
+export interface Exercise {
+  kind: ExerciseKind;
+  title: Localized;
+  /** One line saying what to do. */
+  intro: Localized;
+  /**
+   * For "cloze" the text carries the gaps, written as three underscores
+   * (___). Each language has its own text, because a German sentence puts
+   * its nouns elsewhere than an English one.
+   */
+  text: Localized;
+  /** Optional nudge for the harder two - never the answer. */
+  hint?: Localized;
+}
+
+/** Splits a cloze text into the parts around its gaps. */
+export function clozeParts(text: string): string[] {
+  return text.split("___");
+}
+
 /** Accent keys map to fixed Tailwind classes in the modal - see ACCENTS. */
 export type Accent = "indigo" | "emerald" | "amber" | "rose" | "sky";
 
@@ -79,6 +115,8 @@ export interface LearningPath {
   accent: Accent;
   minutes: number;
   screens: Screen[];
+  /** Shown on a closing screen and printed on the worksheet. */
+  exercises?: Exercise[];
 }
 
 export interface Subject {
@@ -853,6 +891,70 @@ const whatIsAComputer: LearningPath = {
       ],
     },
   ],
+  exercises: [
+    {
+      kind: "cloze",
+      title: {
+        de: "1. Lückentext: die Geschichte in acht Sätzen",
+        en: "1. Fill in the blanks: the story in eight sentences",
+      },
+      intro: {
+        de:
+          "Setze die fehlenden Wörter ein. Alle Antworten stehen irgendwo in diesem Lernpfad - blättere ruhig zurück.",
+        en:
+          "Fill in the missing words. Every answer is somewhere in this path - feel free to page back.",
+      },
+      text: {
+        de:
+          'Bis in die 1940er Jahre war ein "Computer" gar keine Maschine, sondern ein ___, der beruflich rechnete. Die ersten Rechenmaschinen arbeiteten mit ___, die man von Hand drehte - eine Idee, die schon Pascal und Leibniz verfolgten. Schnell wurde das Rechnen erst, als man die Mechanik durch Elektrik ersetzte: zuerst durch ___, die hörbar klickten, dann durch ___, in denen Elektronen ohne bewegliche Teile flogen. 1947 kam in den Bell Labs der ___ dazu, im Kern nichts anderes als ein sehr einfacher ___. Im Zweiten Weltkrieg verschlüsselte die deutsche Wehrmacht ihren Funkverkehr mit der ___, und in Bletchley Park arbeiteten rund 9.000 Menschen daran, genau das zu knacken. In den USA entstand 1945 der ___, eine Maschine so groß wie ein Klassenzimmer. Ab den 1970er Jahren wurden Computer billig genug für Privatleute - der meistverkaufte Heimcomputer wurde der ___.',
+        en:
+          'Well into the 1940s a "computer" was not a machine at all but a ___ who calculated for a living. The first calculating machines worked with ___ turned by hand - an idea already pursued by Pascal and Leibniz. Calculating only became fast once the mechanics were replaced by electrics: first by ___ that clicked audibly, then by ___ in which electrons flew with no moving parts at all. In 1947 the Bell Labs added the ___, at heart nothing more than a very simple ___. During the Second World War the German forces encrypted their radio traffic with the ___, and some 9,000 people at Bletchley Park worked on breaking exactly that. In the United States the ___ was finished in 1945, a machine the size of a classroom. From the 1970s computers became cheap enough for private households - the best selling home computer of all was the ___.',
+      },
+    },
+    {
+      kind: "compare",
+      title: {
+        de: "2. Vergleiche: drei Schalter, dieselbe Aufgabe",
+        en: "2. Compare: three switches, the same job",
+      },
+      intro: {
+        de:
+          "Diese Frage steht nicht wörtlich im Text. Du musst zwei Dinge miteinander in Beziehung setzen.",
+        en:
+          "This question is not answered word for word in the text. You have to relate two things to each other.",
+      },
+      text: {
+        de:
+          "Relais, Vakuumröhre und Transistor tun im Grunde alle dasselbe: Sie schalten Strom an und aus. Trotzdem war jeder Wechsel ein gewaltiger Sprung. Erkläre an mindestens zwei Eigenschaften - zum Beispiel Größe, Geschwindigkeit, Hitze oder Zuverlässigkeit -, warum der ENIAC mit seinen 17.500 Röhren 27 Tonnen wog und 150 Kilowatt verbrauchte, ein heutiges Handy aber mit Milliarden Schaltern in die Hosentasche passt.",
+        en:
+          "Relays, vacuum tubes and transistors all do fundamentally the same thing: they switch current on and off. Each change was still an enormous leap. Using at least two properties - size, speed, heat or reliability, say - explain why ENIAC with its 17,500 tubes weighed 27 tonnes and drew 150 kilowatts, while a phone today fits billions of switches into your pocket.",
+      },
+      hint: {
+        de:
+          "Denke daran, was passiert, wenn eine einzelne Röhre durchbrennt - und wie oft das bei 17.500 Stück vorkommt.",
+        en:
+          "Think about what happens when a single tube burns out - and how often that happens when there are 17,500 of them.",
+      },
+    },
+    {
+      kind: "reflect",
+      title: {
+        de: "3. Zum Nachdenken: der Computer, den man nicht sieht",
+        en: "3. Something to think about: the computer you never see",
+      },
+      intro: {
+        de:
+          "Auf diese Frage gibt es keine richtige Antwort. Schreib auf, was du denkst.",
+        en: "There is no right answer to this one. Write down what you think.",
+      },
+      text: {
+        de:
+          "Der Computer hat aufgehört, wie ein Computer auszusehen. Er steckt in der Ampel, im Herzschrittmacher, im Auto und in deinen Kopfhörern. Geh in Gedanken durch deinen gestrigen Tag und suche drei Computer, die du gar nicht als solche wahrgenommen hast. Und dann: Was verändert sich für uns, wenn wir dauernd von Rechnern umgeben sind, die wir nicht mehr als Rechner erkennen - im Guten wie im Bedenklichen?",
+        en:
+          "Computers have stopped looking like computers. There is one in the traffic light, in a pacemaker, in the car and in your headphones. Walk through yesterday in your head and find three computers you never noticed as such. And then: what changes for us when we are surrounded by machines we no longer recognise as machines - for better and for worse?",
+      },
+    },
+  ],
 };
 
 const bitsAndBytes: LearningPath = {
@@ -1569,6 +1671,69 @@ const bitsAndBytes: LearningPath = {
       ],
     },
   ],
+  exercises: [
+    {
+      kind: "cloze",
+      title: {
+        de: "1. Lückentext: von der Hand zum Gigabyte",
+        en: "1. Fill in the blanks: from your hand to the gigabyte",
+      },
+      intro: {
+        de:
+          "Setze die fehlenden Wörter ein. Alles davon hast du gerade gelesen oder an der Hand abgezählt.",
+        en:
+          "Fill in the missing words. You have just read or counted all of them on your hand.",
+      },
+      text: {
+        de:
+          'Tief im Inneren kennt ein Computer nur zwei Zustände: Strom ___ und Strom ___. Geschaltet werden sie von winzigen Schaltern, die früher ___ hießen, dann Vakuumröhren und heute ___. Weil sich "an aus aus an" schlecht aufschreiben lässt, notieren wir für an eine ___ und für aus eine ___. Ein einzelner solcher Wert heißt ___. Mit jedem weiteren davon ___ sich die Anzahl der möglichen Werte: ein Finger 2, zwei Finger 4, drei Finger ___. Acht Bits nebeneinander ergeben 256 Werte und heißen zusammen ein ___. 1024 davon sind ein ___, und 1024 davon wiederum ein Megabyte.',
+        en:
+          'Deep down a computer knows only two states: current ___ and current ___. They are switched by tiny switches once called ___, later vacuum tubes and today ___. Because "on off off on" is awkward to write down, we note a ___ for on and a ___ for off. A single such value is called a ___. With every further one the number of possible values ___: one finger 2, two fingers 4, three fingers ___. Eight bits side by side give 256 values and together are called a ___. 1024 of those make a ___, and 1024 of those in turn a megabyte.',
+      },
+    },
+    {
+      kind: "compare",
+      title: {
+        de: "2. Vergleiche: warum 8 Bit nicht 16 Werte sind",
+        en: "2. Compare: why 8 bits are not 16 values",
+      },
+      intro: {
+        de:
+          "Hier musst du das Handexperiment mit der Byte-Tabelle zusammenbringen.",
+        en:
+          "Here you need to bring the hand experiment together with the byte table.",
+      },
+      text: {
+        de:
+          'Ein Bit kann 2 Werte darstellen. Man könnte denken, acht Bits stellen dann 8 mal 2, also 16 Werte dar - tatsächlich sind es 256. Erkläre mit deinen eigenen Worten, woher der Unterschied kommt. Nimm dazu deine Hand zu Hilfe: Beschreibe, was genau passiert, wenn du zu drei ausgestreckten Fingern einen vierten dazunimmst, und warum daraus nicht "zwei Werte mehr", sondern "doppelt so viele Werte" wird.',
+        en:
+          'One bit can represent 2 values. You might think eight bits therefore represent 8 times 2, so 16 values - in fact it is 256. Explain in your own words where the difference comes from. Use your hand: describe exactly what happens when you add a fourth finger to three outstretched ones, and why that gives you "twice as many values" rather than "two more values".',
+      },
+      hint: {
+        de:
+          "Zähl einmal auf, was der neue Finger mit den Möglichkeiten macht, die es vorher schon gab.",
+        en:
+          "Count out what the new finger does to the possibilities that already existed before it.",
+      },
+    },
+    {
+      kind: "reflect",
+      title: {
+        de: "3. Zum Nachdenken: alles nur an und aus",
+        en: "3. Something to think about: nothing but on and off",
+      },
+      intro: {
+        de: "Keine richtige Antwort - nur deine.",
+        en: "No right answer here - only yours.",
+      },
+      text: {
+        de:
+          "Dein Lieblingslied, das Foto von jemandem, den du magst, und eine Nachricht, über die du dich gefreut hast: In deinem Handy sind das alles nur sehr lange Folgen von An und Aus. Findest du diesen Gedanken eher ernüchternd oder eher erstaunlich? Und meinst du, es geht dabei etwas verloren - oder ist die Bedeutung ohnehin etwas, das erst in deinem Kopf entsteht?",
+        en:
+          "Your favourite song, a photo of someone you like, a message that made your day: inside your phone all of these are nothing but very long sequences of on and off. Do you find that thought sobering or astonishing? And do you think something is lost along the way - or does the meaning only ever come into being in your head anyway?",
+      },
+    },
+  ],
 };
 
 const pixelsAndResolution: LearningPath = {
@@ -2042,6 +2207,68 @@ const pixelsAndResolution: LearningPath = {
           ],
         },
       ],
+    },
+  ],
+  exercises: [
+    {
+      kind: "cloze",
+      title: {
+        de: "1. Lückentext: vom Kästchen zum 4K-Bild",
+        en: "1. Fill in the blanks: from a little square to a 4K picture",
+      },
+      intro: {
+        de: "Setze die fehlenden Wörter ein.",
+        en: "Fill in the missing words.",
+      },
+      text: {
+        de:
+          'Ein einzelnes Bildkästchen auf dem Bildschirm heißt ___ - kurz für "picture element". Wie viele davon ein Bild hat, sagt die ___: Sie wird angegeben als Breite mal ___. Ein Full-HD-Bild misst 1920 mal ___ Pixel. Welche Farbe ein Pixel zeigen kann, hängt davon ab, wie viele ___ dafür zur Verfügung stehen; das nennt man ___. Bekommt jede der drei Grundfarben Rot, ___ und Blau ein ganzes Byte, ergibt das die berühmten 16,7 Millionen Farben. Bei schlechter Verbindung schaltet YouTube auf ___ herunter, die schlechteste Stufe. Mehr Pixel bedeuten immer auch mehr ___, und das merkst du an deinem Datenvolumen.',
+        en:
+          'A single little square on the screen is called a ___ - short for "picture element". How many of them a picture has is given by its ___: written as width times ___. A full HD picture measures 1920 by ___ pixels. Which colour a pixel can show depends on how many ___ are available for it; this is called ___. If each of the three primary colours red, ___ and blue gets a whole byte, that gives the famous 16.7 million colours. On a poor connection YouTube drops down to ___, the worst step there is. More pixels always mean more ___ as well, and you notice that in your data allowance.',
+      },
+    },
+    {
+      kind: "compare",
+      title: {
+        de: "2. Vergleiche: dasselbe Problem, vierzig Jahre auseinander",
+        en: "2. Compare: the same problem, forty years apart",
+      },
+      intro: {
+        de:
+          "Setze zwei Grenzen zueinander in Beziehung, die auf den ersten Blick nichts miteinander zu tun haben.",
+        en:
+          "Relate two limits to each other that look unconnected at first glance.",
+      },
+      text: {
+        de:
+          "Mario sah auf dem NES klotzig aus, weil die Konsole nur 256 mal 240 Pixel und 25 Farben gleichzeitig darstellen konnte. Heute ist die Auflösung praktisch kein Problem mehr - dafür schaltet dein Handy im Zug auf 144p herunter. Beschreibe, was die beiden Situationen gemeinsam haben und wodurch sie sich unterscheiden. Welche Grenze war es damals, welche ist es heute? Und warum kommt am Ende in beiden Fällen ein gröberes Bild heraus?",
+        en:
+          "Mario looked blocky on the NES because the console could only show 256 by 240 pixels and 25 colours at once. Today resolution is barely a problem - and yet your phone drops to 144p on the train. Describe what the two situations have in common and where they differ. Which limit was it back then, which is it today? And why does a coarser picture come out at the end in both cases?",
+      },
+      hint: {
+        de:
+          "Beide Male fehlt etwas, aber nicht dasselbe. Überlege, wo die Daten jeweils herkommen müssen.",
+        en:
+          "Something is missing in both cases, but not the same thing. Think about where the data has to come from each time.",
+      },
+    },
+    {
+      kind: "reflect",
+      title: {
+        de: "3. Zum Nachdenken: warum wählt jemand freiwillig Klötzchen?",
+        en:
+          "3. Something to think about: why would anyone choose blocks on purpose?",
+      },
+      intro: {
+        de: "Diese Frage hat viele mögliche Antworten.",
+        en: "This question has many possible answers.",
+      },
+      text: {
+        de:
+          "Minecraft könnte längst fotorealistisch aussehen - es sieht trotzdem aus wie aus Klötzchen gebaut, und Millionen Menschen lieben es genau dafür. Auch viele neue Spiele werden absichtlich pixelig gestaltet. Woran liegt das? Und was sagt das darüber aus, was ein Bild eigentlich schön oder gut macht - fällt dir das auch außerhalb von Spielen ein, in Musik, Kleidung oder Fotos?",
+        en:
+          "Minecraft could have looked photorealistic long ago - it still looks as though it were built from blocks, and millions of people love it for exactly that. Plenty of new games are made deliberately pixelated too. Why is that? And what does it say about what actually makes an image beautiful or good - can you think of the same thing outside games, in music, clothes or photographs?",
+      },
     },
   ],
 };
@@ -3006,6 +3233,70 @@ const exponentialGrowth: LearningPath = {
           ],
         },
       ],
+    },
+  ],
+  exercises: [
+    {
+      kind: "cloze",
+      title: {
+        de: "1. Lückentext: zwei Kurven und sehr viel Geld",
+        en: "1. Fill in the blanks: two curves and a great deal of money",
+      },
+      intro: {
+        de:
+          "Setze die fehlenden Wörter ein. Bei den Zahlen darfst du zurückblättern.",
+        en: "Fill in the missing words. You may page back for the numbers.",
+      },
+      text: {
+        de:
+          "Im Jahr 1965 beobachtete Gordon ___, dass sich die Zahl der ___ auf einem Chip regelmäßig verdoppelt; daraus wurde das Mooresche ___. 1975 korrigierte er den Takt auf etwa ___ Jahre. Ray ___ schaute auf eine andere Größe: darauf, wie viel Rechenleistung man für einen ___ bekommt. Seine Beobachtung nannte er das Gesetz der beschleunigten ___ - und sie begann schon vor der Erfindung des Transistors. Rechenleistung misst man in ___, also Rechenoperationen mit Kommazahlen pro Sekunde. Um die Leistung einer einzigen RTX 5090 zu erreichen, bräuchte man rund 12.600 ___ voller tippender Menschen. Was heute jährlich weltweit in ___ investiert wird, entspricht ungefähr drei ___-Programmen.",
+        en:
+          "In 1965 Gordon ___ observed that the number of ___ on a chip doubles at regular intervals; this became known as Moore's ___. In 1975 he corrected the pace to about ___ years. Ray ___ looked at a different quantity: how much computing power you get for one ___. He called his observation the law of accelerating ___ - and it began before the transistor was even invented. Computing power is measured in ___, that is floating point operations per second. To match a single RTX 5090 you would need around 12,600 ___ full of people typing. What is invested worldwide in ___ each year today amounts to roughly three ___ programmes.",
+      },
+    },
+    {
+      kind: "compare",
+      title: {
+        de: "2. Vergleiche: gilt die Kurve noch?",
+        en: "2. Compare: does the curve still hold?",
+      },
+      intro: {
+        de:
+          "Hier musst du zwei Zahlenpaare gegeneinanderhalten und daraus etwas schließen.",
+        en:
+          "Here you have to hold two pairs of numbers against each other and draw a conclusion.",
+      },
+      text: {
+        de:
+          "Von der RTX 3090 zur 4090 hat sich die Rechenleistung pro Dollar mehr als verdoppelt. Von der 4090 zur 5090 hat sie sich kaum verändert. Gleichzeitig steigt die Zahl der Transistoren pro Chip weiter. Was folgt daraus für Kurzweils Behauptung, man bekomme für einen Dollar immer mehr Rechenleistung? Begründe, ob du eine einzelne Generation für einen ausreichenden Beleg hältst - und was du bräuchtest, um die Frage wirklich zu beantworten.",
+        en:
+          "From the RTX 3090 to the 4090, computing power per dollar more than doubled. From the 4090 to the 5090 it barely moved. At the same time the number of transistors per chip keeps rising. What follows from this for Kurzweil's claim that a dollar buys ever more computing power? Argue whether you consider a single generation sufficient evidence - and what you would need in order to answer the question properly.",
+      },
+      hint: {
+        de:
+          "Eine Beobachtung über Jahrzehnte und eine Messung zwischen zwei Produkten sind nicht dasselbe.",
+        en:
+          "An observation spanning decades and a measurement between two products are not the same thing.",
+      },
+    },
+    {
+      kind: "reflect",
+      title: {
+        de: "3. Zum Nachdenken: drei Apollo-Programme pro Jahr",
+        en: "3. Something to think about: three Apollo programmes a year",
+      },
+      intro: {
+        de:
+          "Eine Frage ohne richtige Antwort - aber mit vielen guten Begründungen.",
+        en:
+          "A question with no right answer - but plenty of good reasons on every side.",
+      },
+      text: {
+        de:
+          "Für Rechenzentren wird gerade in einem einzigen Jahr ungefähr so viel Geld ausgegeben wie für drei Mondlandeprogramme. Dafür gibt es beeindruckende Ergebnisse - etwa bei der Vorhersage von Proteinstrukturen oder in der Brustkrebs-Früherkennung -, aber auch hohen Strom- und Wasserverbrauch. Wenn du entscheiden dürftest: Wofür würdest du dieses Geld einsetzen, und woran würdest du in zehn Jahren messen, ob es sich gelohnt hat? Nenne mindestens einen Grund, der gegen deine eigene Meinung spricht.",
+        en:
+          "In a single year, roughly as much money now goes into data centres as into three moon landing programmes. There are impressive results to show for it - predicting protein structures, or spotting breast cancer earlier - but also a great deal of electricity and water consumed. If the decision were yours: what would you spend this money on, and what would you measure in ten years to decide whether it was worth it? Name at least one reason that argues against your own view.",
+      },
     },
   ],
 };
