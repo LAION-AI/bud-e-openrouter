@@ -33,7 +33,7 @@ export const EXAMPLES: ExampleSpec[] = [
         type: "markdown",
         source: `# 1 - Hallo Welt
 
-Dein erstes Python-Programm. Klick in die Zelle darunter und druecke
+Dein erstes Python-Programm. Klick in die Zelle darunter und drücke
 Strg+Enter (oder das Dreieck links oben in der Zelle).`,
       },
       {
@@ -45,26 +45,26 @@ print("Hallo Welt")`,
         type: "markdown",
         source: `## Zahlen oder Text?
 
-Anfuehrungszeichen machen aus etwas **Text**. Ohne Anfuehrungszeichen ist es
+Anführungszeichen machen aus etwas **Text**. Ohne Anführungszeichen ist es
 eine **Zahl**, mit der Python rechnen kann. Der Unterschied ist wichtig - hier
 siehst du ihn:`,
       },
       {
         type: "code",
-        source: `# Ohne Anfuehrungszeichen rechnet Python: 3 + 7 sind 10.
+        source: `# Ohne Anführungszeichen rechnet Python: 3 + 7 sind 10.
 print(3 + 7)
 
-# Mit Anfuehrungszeichen sind es zwei Texte. Das Plus haengt sie aneinander.
+# Mit Anführungszeichen sind es zwei Texte. Das Plus hängt sie aneinander.
 print("3" + "7")`,
       },
       {
         type: "markdown",
         source: `Oben kommt \`10\` heraus, unten \`37\`. Python hat im zweiten Fall nicht
-gerechnet, sondern die beiden Zeichen aneinandergehaengt.`,
+gerechnet, sondern die beiden Zeichen aneinandergehängt.`,
       },
       {
         type: "code",
-        source: `# Auch bei Woertern haengt das Plus einfach aneinander.
+        source: `# Auch bei Wörtern hängt das Plus einfach aneinander.
 print("Hallo" + " " + "Welt")
 
 # Ein Komma in print setzt automatisch ein Leerzeichen dazwischen.
@@ -74,8 +74,8 @@ print("Hallo", "Welt")`,
         type: "markdown",
         source: `## Variablen
 
-Eine Variable ist ein Name fuer einen Wert. Du vergibst ihn mit \`=\` und
-kannst den Wert danach ueberall ueber seinen Namen benutzen.`,
+Eine Variable ist ein Name für einen Wert. Du vergibst ihn mit \`=\` und
+kannst den Wert danach überall über seinen Namen benutzen.`,
       },
       {
         type: "code",
@@ -109,9 +109,9 @@ summe * 2`,
       },
       {
         type: "markdown",
-        source: `**Selbst probieren:** aendere oben die 5 in eine 10 und fuehre die Zellen
+        source: `**Selbst probieren:** ändere oben die 5 in eine 10 und führe die Zellen
 noch einmal aus. Was passiert mit der Summe? (Tipp: die Zelle mit der Summe
-musst du danach auch noch einmal ausfuehren.)`,
+musst du danach auch noch einmal ausführen.)`,
       },
     ],
   },
@@ -119,7 +119,7 @@ musst du danach auch noch einmal ausfuehren.)`,
   // ------------------------------------------------------------------ 2
   {
     key: "chat",
-    name: { de: "2 - Ein kleines Gespraech", en: "2 - A small conversation" },
+    name: { de: "2 - Ein kleines Gespräch", en: "2 - A small conversation" },
     about: {
       de: "Eingaben mit input abfragen und mit if/elif/else unterschiedlich darauf antworten.",
       en: "Reading answers with input and reacting to them with if/elif/else.",
@@ -127,28 +127,28 @@ musst du danach auch noch einmal ausfuehren.)`,
     cells: [
       {
         type: "markdown",
-        source: `# 2 - Ein kleines Gespraech
+        source: `# 2 - Ein kleines Gespräch
 
 Bis jetzt hat das Programm nur geredet. Jetzt darf es fragen.
 
-\`input()\` haelt an und wartet, bis du unter der Zelle etwas eintippst und
-Enter druueckst. Was du eingibst, kommt als Text zurueck.`,
+\`input()\` hält an und wartet, bis du unter der Zelle etwas eintippst und
+Enter drückst. Was du eingibst, kommt als Text zurück.`,
       },
       {
         type: "code",
-        source: `name = input("Wie heisst du? ")
+        source: `name = input("Wie heißt du? ")
 print("Hallo " + name + "!")`,
       },
       {
         type: "markdown",
         source: `## Auf die Antwort reagieren
 
-\`if\` heisst "wenn". Damit reagiert das Programm unterschiedlich, je nachdem
+\`if\` heißt "wenn". Damit reagiert das Programm unterschiedlich, je nachdem
 was du eingibst.
 
 Wichtig sind die zwei Dinge am Zeilenende und -anfang:
-der **Doppelpunkt** hinter der Bedingung und die **Einrueckung** darunter.
-Die eingerueckten Zeilen gehoeren zum \`if\`.`,
+der **Doppelpunkt** hinter der Bedingung und die **Einrückung** darunter.
+Die eingerückten Zeilen gehören zum \`if\`.`,
       },
       {
         type: "code",
@@ -163,16 +163,16 @@ else:
       },
       {
         type: "markdown",
-        source: `\`==\` fragt "ist gleich?" - ein einzelnes \`=\` wuerde stattdessen zuweisen.
-\`elif\` heisst "sonst wenn" und wird nur geprueft, wenn das \`if\` davor nicht
-gepasst hat. \`else\` faengt alles Uebrige auf.
+        source: `\`==\` fragt "ist gleich?" - ein einzelnes \`=\` würde stattdessen zuweisen.
+\`elif\` heißt "sonst wenn" und wird nur geprüft, wenn das \`if\` davor nicht
+gepasst hat. \`else\` fängt alles Uebrige auf.
 
 ## Alles zusammen`,
       },
       {
         type: "code",
-        source: `name = input("Wie heisst du? ")
-print("Hallo " + name + ", schoen dich kennenzulernen.")
+        source: `name = input("Wie heißt du? ")
+print("Hallo " + name + ", schön dich kennenzulernen.")
 
 stimmung = input("Wie geht es dir heute? ")
 
@@ -191,10 +191,10 @@ print("In 10 Jahren bist du", alter_zahl + 10)`,
       },
       {
         type: "markdown",
-        source: `**Achtung:** \`input()\` gibt *immer* Text zurueck, auch wenn du eine Zahl
-eintippst. \`"12" + 10\` waere ein Fehler - deshalb steht dort \`int(alter)\`.
+        source: `**Achtung:** \`input()\` gibt *immer* Text zurück, auch wenn du eine Zahl
+eintippst. \`"12" + 10\` wäre ein Fehler - deshalb steht dort \`int(alter)\`.
 
-**Selbst probieren:** Frag zusaetzlich nach der Lieblingsfarbe und antworte
+**Selbst probieren:** Frag zusätzlich nach der Lieblingsfarbe und antworte
 bei "blau" etwas anderes als bei allen anderen Farben.`,
       },
     ],
@@ -205,7 +205,7 @@ bei "blau" etwas anderes als bei allen anderen Farben.`,
     key: "loops",
     name: { de: "3 - Schleifen", en: "3 - Loops" },
     about: {
-      de: "Etwas mehrfach tun: mit for zaehlen, ueber Buchstaben laufen und mit while wiederholen.",
+      de: "Etwas mehrfach tun: mit for zählen, über Buchstaben laufen und mit while wiederholen.",
       en: "Doing things repeatedly: counting with for, walking over letters, repeating with while.",
     },
     cells: [
@@ -213,22 +213,22 @@ bei "blau" etwas anderes als bei allen anderen Farben.`,
         type: "markdown",
         source: `# 3 - Schleifen
 
-Statt zehnmal \`print\` zu schreiben, laesst du Python zaehlen.`,
+Statt zehnmal \`print\` zu schreiben, lässt du Python zählen.`,
       },
       {
         type: "code",
-        source: `# range(5) liefert 0, 1, 2, 3, 4 - fuenf Zahlen, beginnend bei null.
+        source: `# range(5) liefert 0, 1, 2, 3, 4 - fünf Zahlen, beginnend bei null.
 for i in range(5):
     print(i)`,
       },
       {
         type: "markdown",
-        source: `Python faengt bei **0** an zu zaehlen. \`range(5)\` hoert deshalb bei 4 auf -
-es sind trotzdem fuenf Zahlen. Wenn du bei 1 anfangen willst, sagst du es dazu:`,
+        source: `Python fängt bei **0** an zu zählen. \`range(5)\` hört deshalb bei 4 auf -
+es sind trotzdem fünf Zahlen. Wenn du bei 1 anfangen willst, sagst du es dazu:`,
       },
       {
         type: "code",
-        source: `# range(1, 11) laeuft von 1 bis 10. Die zweite Zahl ist nicht mehr dabei.
+        source: `# range(1, 11) läuft von 1 bis 10. Die zweite Zahl ist nicht mehr dabei.
 for zahl in range(1, 11):
     print(zahl, "mal 3 ist", zahl * 3)`,
       },
@@ -236,7 +236,7 @@ for zahl in range(1, 11):
         type: "markdown",
         source: `## Ueber Buchstaben laufen
 
-Eine Schleife kann auch durch ein Wort gehen - Buchstabe fuer Buchstabe.`,
+Eine Schleife kann auch durch ein Wort gehen - Buchstabe für Buchstabe.`,
       },
       {
         type: "code",
@@ -259,9 +259,9 @@ for tier in tiere:
         type: "markdown",
         source: `## while - solange etwas gilt
 
-\`for\` laeuft eine feste Anzahl durch. \`while\` wiederholt, **solange** eine
-Bedingung stimmt. Du musst selbst dafuer sorgen, dass sie irgendwann nicht
-mehr stimmt - sonst hoert die Schleife nie auf.`,
+\`for\` läuft eine feste Anzahl durch. \`while\` wiederholt, **solange** eine
+Bedingung stimmt. Du musst selbst dafür sorgen, dass sie irgendwann nicht
+mehr stimmt - sonst hört die Schleife nie auf.`,
       },
       {
         type: "code",
@@ -269,17 +269,17 @@ mehr stimmt - sonst hoert die Schleife nie auf.`,
 
 while countdown > 0:
     print(countdown)
-    countdown = countdown - 1   # ohne diese Zeile laeuft es ewig!
+    countdown = countdown - 1   # ohne diese Zeile läuft es ewig!
 
 print("Start!")`,
       },
       {
         type: "markdown",
-        source: `**Falls doch mal etwas ewig laeuft:** oben im Fenster ist ein Knopf
+        source: `**Falls doch mal etwas ewig läuft:** oben im Fenster ist ein Knopf
 "Stopp". Der bricht die Zelle ab, ohne dass du die Seite neu laden musst.
 
 **Selbst probieren:** lass die erste Schleife die Quadratzahlen ausgeben
-(\`zahl * zahl\`) und zaehle im Countdown von 10 herunter.`,
+(\`zahl * zahl\`) und zähle im Countdown von 10 herunter.`,
       },
     ],
   },
@@ -300,13 +300,13 @@ print("Start!")`,
 Jetzt kommt alles zusammen: eine Zufallszahl, eine Schleife und Vergleiche.
 
 \`random\` ist ein Modul - eine Sammlung fertiger Funktionen, die zu Python
-gehoert. Mit \`import\` holst du sie dazu.`,
+gehört. Mit \`import\` holst du sie dazu.`,
       },
       {
         type: "code",
         source: `import random
 
-# Wuerfelt eine ganze Zahl von 1 bis 20 - beide Grenzen sind dabei.
+# Würfelt eine ganze Zahl von 1 bis 20 - beide Grenzen sind dabei.
 zahl = random.randint(1, 20)
 print("Ich habe mir eine Zahl gedacht. Aber ich verrate sie nicht.")`,
       },
@@ -314,7 +314,7 @@ print("Ich habe mir eine Zahl gedacht. Aber ich verrate sie nicht.")`,
         type: "markdown",
         source: `## Das Spiel
 
-\`while True:\` laeuft erst einmal endlos. \`break\` steigt aus, sobald geraten
+\`while True:\` läuft erst einmal endlos. \`break\` steigt aus, sobald geraten
 wurde - das ist hier die Abbruchbedingung.`,
       },
       {
@@ -334,7 +334,7 @@ while True:
     if tipp < zahl:
         print("Zu klein.")
     elif tipp > zahl:
-        print("Zu gross.")
+        print("Zu groß.")
     else:
         print("Richtig! Du hast", versuche, "Versuche gebraucht.")
         break                # geschafft - raus aus der Schleife`,
@@ -363,15 +363,15 @@ for versuch in range(1, maximal + 1):
     elif tipp < zahl:
         print("Zu klein.")
     else:
-        print("Zu gross.")
+        print("Zu groß.")
 else:
-    # Dieses else gehoert zur for-Schleife: es laeuft nur,
-    # wenn kein break ausgeloest wurde.
+    # Dieses else gehört zur for-Schleife: es läuft nur,
+    # wenn kein break ausgelöst wurde.
     print("Verloren. Die Zahl war", zahl)`,
       },
       {
         type: "markdown",
-        source: `**Selbst probieren:** aendere den Bereich auf 1 bis 100 und gib mehr
+        source: `**Selbst probieren:** ändere den Bereich auf 1 bis 100 und gib mehr
 Versuche. Wie viele braucht man klugerweise? (Tipp: immer die Mitte raten.)`,
       },
     ],
@@ -382,7 +382,7 @@ Versuche. Wie viele braucht man klugerweise? (Tipp: immer die Mitte raten.)`,
     key: "packages",
     name: { de: "5 - Geheimschrift und Pakete", en: "5 - Secret writing and packages" },
     about: {
-      de: "Die Caesar-Verschluesselung selbst bauen und danach mit !pip install ein Paket dazuholen.",
+      de: "Die Caesar-Verschlüsselung selbst bauen und danach mit !pip install ein Paket dazuholen.",
       en: "Build the Caesar cipher yourself, then add a package with !pip install.",
     },
     cells: [
@@ -390,9 +390,9 @@ Versuche. Wie viele braucht man klugerweise? (Tipp: immer die Mitte raten.)`,
         type: "markdown",
         source: `# 5 - Geheimschrift und Pakete
 
-## Die Caesar-Verschluesselung
+## Die Caesar-Verschlüsselung
 
-Schon Julius Caesar hat seine Nachrichten verschluesselt - mit einem sehr
+Schon Julius Caesar hat seine Nachrichten verschlüsselt - mit einem sehr
 einfachen Trick: **jeder Buchstabe wird im Alphabet um ein paar Stellen
 weitergeschoben.**
 
@@ -402,18 +402,18 @@ Bei einer Verschiebung von 3 wird aus \`A\` ein \`D\`, aus \`B\` ein \`E\`, aus
     Klartext:      H A L L O
     verschoben +3: K D O O R
 
-Zum Entschluesseln schiebt man einfach zurueck.`,
+Zum Entschlüsseln schiebt man einfach zurück.`,
       },
       {
         type: "code",
         source: `alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
-def verschluesseln(text, verschiebung):
+def verschlüsseln(text, verschiebung):
     ergebnis = ""
     for buchstabe in text.upper():
         if buchstabe in alphabet:
             alte_position = alphabet.index(buchstabe)
-            # % 26 sorgt dafuer, dass es hinter Z vorne weitergeht.
+            # % 26 sorgt dafür, dass es hinter Z vorne weitergeht.
             neue_position = (alte_position + verschiebung) % 26
             ergebnis = ergebnis + alphabet[neue_position]
         else:
@@ -421,44 +421,44 @@ def verschluesseln(text, verschiebung):
             ergebnis = ergebnis + buchstabe
     return ergebnis
 
-print(verschluesseln("Hallo Welt", 3))`,
+print(verschlüsseln("Hallo Welt", 3))`,
       },
       {
         type: "markdown",
-        source: `Zum Entschluesseln brauchst du keine zweite Funktion - eine Verschiebung um
+        source: `Zum Entschlüsseln brauchst du keine zweite Funktion - eine Verschiebung um
 \`-3\` ist genau das Gegenteil:`,
       },
       {
         type: "code",
-        source: `geheim = verschluesseln("Treffen um acht", 5)
-print("Verschluesselt:  ", geheim)
-print("Wieder lesbar:   ", verschluesseln(geheim, -5))`,
+        source: `geheim = verschlüsseln("Treffen um acht", 5)
+print("Verschlüsselt:  ", geheim)
+print("Wieder lesbar:   ", verschlüsseln(geheim, -5))`,
       },
       {
         type: "markdown",
         source: `## Geheimschrift knacken
 
-Die Caesar-Verschluesselung ist leicht zu brechen: es gibt nur 25
-Moeglichkeiten. Die probiert man einfach alle durch - eine davon ergibt Sinn.`,
+Die Caesar-Verschlüsselung ist leicht zu brechen: es gibt nur 25
+Möglichkeiten. Die probiert man einfach alle durch - eine davon ergibt Sinn.`,
       },
       {
         type: "code",
         source: `geheim = "LWZXX FZX MFRGZWL"
 
 for verschiebung in range(1, 26):
-    print(verschiebung, ":", verschluesseln(geheim, -verschiebung))`,
+    print(verschiebung, ":", verschlüsseln(geheim, -verschiebung))`,
       },
       {
         type: "markdown",
-        source: `Eine der Zeilen ist lesbar - so einfach ist diese Verschluesselung zu
+        source: `Eine der Zeilen ist lesbar - so einfach ist diese Verschlüsselung zu
 knacken. Deshalb benutzt sie heute niemand mehr ernsthaft.
 
 ---
 
 ## Pakete nachinstallieren
 
-Zu Python gehoeren viele fertige Module wie \`random\`. Noch viel mehr liegt
-im Internet bereit und laesst sich dazuholen. Das geht hier genau wie in
+Zu Python gehören viele fertige Module wie \`random\`. Noch viel mehr liegt
+im Internet bereit und lässt sich dazuholen. Das geht hier genau wie in
 Google Colab - mit einem Ausrufezeichen davor:`,
       },
       {
@@ -482,17 +482,17 @@ cowsay.cow("Ich kann jetzt sprechen!")`,
 import cowsay
 
 nachricht = input("Was soll die Kuh sagen? ")
-cowsay.cow(verschluesseln(nachricht, 3))`,
+cowsay.cow(verschlüsseln(nachricht, 3))`,
       },
       {
         type: "markdown",
         source: `### Was geht und was nicht
 
-Python laeuft hier komplett **in deinem Browser** - es gibt keinen Computer
-im Hintergrund, auf dem etwas ausgefuehrt wird. Deshalb:
+Python läuft hier komplett **in deinem Browser** - es gibt keinen Computer
+im Hintergrund, auf dem etwas ausgeführt wird. Deshalb:
 
-- \`!pip install <paket>\` funktioniert fuer Pakete aus reinem Python.
-- Grosse Pakete wie \`numpy\`, \`pandas\` und \`matplotlib\` sind schon dabei
+- \`!pip install <paket>\` funktioniert für Pakete aus reinem Python.
+- Große Pakete wie \`numpy\`, \`pandas\` und \`matplotlib\` sind schon dabei
   und werden geladen, sobald du sie importierst - ohne pip.
 - Pakete, die auf das Betriebssystem zugreifen (Dateien, Netzwerk, Kamera),
   gibt es hier nicht.

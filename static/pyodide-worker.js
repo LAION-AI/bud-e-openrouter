@@ -300,8 +300,8 @@ async def __bude_pip(packages):
 
 def __bude_no_shell(command):
     raise RuntimeError(
-        "Hier laeuft kein Terminal - nur '!pip install <paket>' wird "
-        "unterstuetzt. Nicht ausfuehrbar: " + command
+        "Hier läuft kein Terminal - nur '!pip install <paket>' wird "
+        "unterstützt. Nicht ausführbar: " + command
     )
 `,
   );
@@ -416,11 +416,11 @@ function explain(error, usesInput) {
   const text = describe(error);
   if (usesInput && /'await' outside (async )?function/.test(text)) {
     return (
-      "input() kann hier nur ausserhalb von Funktionen benutzt werden.\n" +
-      "Frag die Eingabe vor dem Funktionsaufruf ab und uebergib sie als " +
+      "input() kann hier nur außerhalb von Funktionen benutzt werden.\n" +
+      "Frag die Eingabe vor dem Funktionsaufruf ab und übergib sie als " +
       "Parameter:\n\n" +
-      "    name = input(\"Wie heisst du? \")\n" +
-      "    begruesse(name)\n"
+      "    name = input(\"Wie heißt du? \")\n" +
+      "    begrüße(name)\n"
     );
   }
   if (/KeyboardInterrupt: Eingabe abgebrochen/.test(text)) {

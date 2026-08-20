@@ -5,6 +5,7 @@
 // Worker, so a runaway loop costs the pupil their interpreter and nothing
 // else - no code ever reaches the server.
 
+import type { ComponentChildren } from "preact";
 import { useEffect, useRef, useState } from "preact/hooks";
 import { notebookContent } from "../internalization/content.ts";
 import {
@@ -23,8 +24,10 @@ import { EXAMPLES, notebookFromExample } from "../utils/notebookExamples.ts";
 /** Pinned so a CDN release cannot change the behaviour underfoot. */
 const PYODIDE_INDEX_URL = "https://cdn.jsdelivr.net/pyodide/v0.29.0/full/";
 
+/** Remembers that the 10 MB download notice has been seen. */
+const NOTICE_KEY = "bude-notebook-notice-seen";
+
 type KernelState = "off" | "loading" | "ready" | "running";
-type Panel = "" | "notebooks" | "help";
 
 interface PendingInput {
   cellId: string;
@@ -51,14 +54,27 @@ export default function NotebookModal({
   const [status, setStatus] = useState("");
   const [runningCell, setRunningCell] = useState<string | null>(null);
   const [canInterrupt, setCanInterrupt] = useState(false);
-  const [panel, setPanel] = useState<Panel>(() =>
-    listNotebooks().length === 0 ? "help" : ""
-  );
   const [pendingInput, setPendingInput] = useState<PendingInput | null>(null);
+  const [activeCell, setActiveCell] = useState<string | null>(null);
+
+  // The sidebar is the way around the notebook, so it starts open when there
+  // is nothing to show yet and the pupil needs to pick an example.
+  const [sidebarOpen, setSidebarOpen] = useState(() =>
+    listNotebooks().length <= 1
+  );
+  const [showHelp, setShowHelp] = useState(() =>
+    listNotebooks().length === 0
+  );
+  const [showNotice, setShowNotice] = useState(() => {
+    try {
+      return localStorage.getItem(NOTICE_KEY) !== "1";
+    } catch {
+      return true;
+    }
+  });
 
   const workerRef = useRef<Worker | null>(null);
   const counterRef = useRef(0);
-  /** Resolves once the cell currently in flight is finished. */
   const pendingRef = useRef<{ id: string; resolve: () => void } | null>(null);
   const notebookRef = useRef(notebook);
 
@@ -73,6 +89,15 @@ export default function NotebookModal({
   }, [notebook]);
 
   useEffect(() => () => workerRef.current?.terminate(), []);
+
+  const dismissNotice = () => {
+    setShowNotice(false);
+    try {
+      localStorage.setItem(NOTICE_KEY, "1");
+    } catch {
+      // Private mode - the notice simply reappears next time.
+    }
+  };
 
   // --------------------------------------------------------------- kernel
 
@@ -105,7 +130,8 @@ export default function NotebookModal({
           case "ready":
             setKernel("ready");
             setCanInterrupt(!!msg.canInterrupt);
-            setStatus(`${t("kernelReady")} (Python ${msg.version})`);
+            setStatus(`${t("kernelReady")} - Python ${msg.version}`);
+            dismissNotice();
             resolve(worker);
             break;
           case "stdout":
@@ -224,6 +250,15 @@ export default function NotebookModal({
     }
   };
 
+  /** Runs a cell and moves the caret to the next one, like Shift+Enter does. */
+  const runAndAdvance = async (cell: NotebookCell) => {
+    const cells = notebookRef.current.cells;
+    const index = cells.findIndex((c) => c.id === cell.id);
+    await runCell(cell);
+    const next = cells[index + 1];
+    if (next) setActiveCell(next.id);
+  };
+
   // ---------------------------------------------------------------- cells
 
   const updateCell = (id: string, patch: Partial<NotebookCell>) => {
@@ -234,13 +269,25 @@ export default function NotebookModal({
   };
 
   const addCell = (type: "code" | "markdown", afterId?: string) => {
+    const cell = newCell(type);
     setNotebook((nb) => {
-      const cell = newCell(type);
       const index = afterId
         ? nb.cells.findIndex((c) => c.id === afterId) + 1
         : nb.cells.length;
       const cells = [...nb.cells];
       cells.splice(index, 0, cell);
+      return { ...nb, cells };
+    });
+    setActiveCell(cell.id);
+  };
+
+  const duplicateCell = (id: string) => {
+    setNotebook((nb) => {
+      const index = nb.cells.findIndex((c) => c.id === id);
+      if (index < 0) return nb;
+      const copy = newCell(nb.cells[index].type, nb.cells[index].source);
+      const cells = [...nb.cells];
+      cells.splice(index + 1, 0, copy);
       return { ...nb, cells };
     });
   };
@@ -277,7 +324,6 @@ export default function NotebookModal({
 
   const openNotebook = (nb: Notebook) => {
     setNotebook(nb);
-    setPanel("");
     counterRef.current = 0;
   };
 
@@ -286,7 +332,6 @@ export default function NotebookModal({
     saveNotebook(nb);
     setNotebook(nb);
     setNotebooks(listNotebooks());
-    setPanel("");
   };
 
   /** Examples are copied, so the original stays untouched for the next try. */
@@ -297,7 +342,6 @@ export default function NotebookModal({
     saveNotebook(nb);
     setNotebook(nb);
     setNotebooks(listNotebooks());
-    setPanel("");
     counterRef.current = 0;
   };
 
@@ -334,13 +378,42 @@ export default function NotebookModal({
   }, [onClose, pendingInput]);
 
   const busy = kernel === "loading" || kernel === "running";
+  const codeCells = notebook.cells.filter((c) => c.type === "code").length;
 
   return (
-    <div class="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 p-2">
-      <div class="bg-white rounded-lg shadow-xl w-[95vw] h-[92vh] flex flex-col overflow-hidden">
-        {/* Toolbar */}
-        <div class="flex flex-wrap gap-2 items-center px-4 py-3 border-b bg-gray-50">
-          <span class="font-bold text-slate-700 mr-1">{t("title")}</span>
+    <div class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm flex items-center justify-center z-50 p-2 md:p-4">
+      <div class="bg-white rounded-xl shadow-2xl w-[96vw] h-[93vh] flex flex-col overflow-hidden">
+        {/* ---------------------------------------------------- title bar */}
+        <header class="flex items-center gap-3 px-4 py-2.5 bg-slate-800 text-white shrink-0">
+          <button
+            onClick={() => setSidebarOpen((v) => !v)}
+            title={t("myNotebooks")}
+            class="p-1.5 rounded hover:bg-white/15 shrink-0"
+          >
+            <BurgerIcon />
+          </button>
+
+          <div class="min-w-0">
+            <div class="flex items-baseline gap-2">
+              <span class="text-2xl leading-none">🐍</span>
+              <h2 class="font-semibold truncate">{t("title")}</h2>
+            </div>
+            <p class="text-xs text-slate-300 hidden md:block">{t("subtitle")}</p>
+          </div>
+
+          <div class="flex-1" />
+          <KernelBadge kernel={kernel} status={status} t={t} />
+          <button
+            onClick={onClose}
+            title={t("close")}
+            class="p-1.5 rounded hover:bg-white/15 shrink-0"
+          >
+            <CloseIcon />
+          </button>
+        </header>
+
+        {/* ------------------------------------------------------ toolbar */}
+        <div class="flex flex-wrap items-center gap-2 px-4 py-2 border-b bg-slate-50 shrink-0">
           <input
             type="text"
             value={notebook.name}
@@ -350,190 +423,193 @@ export default function NotebookModal({
                 ...nb,
                 name: (e.target as HTMLInputElement).value,
               }))}
-            class="font-medium px-2 py-1 border rounded min-w-[9rem] flex-1 max-w-xs"
+            class="font-medium px-2.5 py-1.5 border border-slate-300 rounded-lg
+                   min-w-[9rem] flex-1 max-w-xs bg-white
+                   focus:ring-2 focus:ring-blue-400 focus:border-blue-400 outline-none"
           />
-          <button
-            onClick={() => setPanel(panel === "notebooks" ? "" : "notebooks")}
-            class={`px-3 py-1.5 rounded text-sm font-medium ${
-              panel === "notebooks"
-                ? "bg-blue-100 text-blue-800"
-                : "bg-slate-200 hover:bg-slate-300"
-            }`}
-          >
-            {t("myNotebooks")} ({notebooks.length})
-          </button>
-          <button
-            onClick={runAll}
-            disabled={busy}
-            class="px-3 py-1.5 bg-blue-500 text-white rounded hover:bg-blue-600 disabled:opacity-50 text-sm"
-          >
-            {t("runAll")}
-          </button>
-          <button
+
+          <ToolButton onClick={runAll} disabled={busy} tone="primary">
+            <PlayIcon /> {t("runAll")}
+          </ToolButton>
+          <ToolButton
             onClick={stopExecution}
             disabled={kernel !== "running" && !pendingInput}
-            class="px-3 py-1.5 bg-red-200 rounded hover:bg-red-300 disabled:opacity-50 text-sm"
+            tone="danger"
           >
-            {t("stop")}
-          </button>
-          <button
-            onClick={restartKernel}
-            title={t("restartHint")}
-            class="px-3 py-1.5 bg-slate-200 rounded hover:bg-slate-300 text-sm"
-          >
-            {t("restart")}
-          </button>
-          <button
-            onClick={clearOutputs}
-            class="px-3 py-1.5 bg-slate-200 rounded hover:bg-slate-300 text-sm"
-          >
-            {t("clearOutputs")}
-          </button>
-          <button
-            onClick={downloadIpynb}
-            title={t("exportHint")}
-            class="px-3 py-1.5 bg-slate-200 rounded hover:bg-slate-300 text-sm"
-          >
-            {t("exportIpynb")}
-          </button>
-          <button
-            onClick={() => setPanel(panel === "help" ? "" : "help")}
-            class={`px-3 py-1.5 rounded text-sm font-bold ${
-              panel === "help"
-                ? "bg-blue-100 text-blue-800"
-                : "bg-slate-200 hover:bg-slate-300"
-            }`}
-          >
-            ?
-          </button>
+            <StopIcon /> {t("stop")}
+          </ToolButton>
+          <ToolButton onClick={restartKernel} title={t("restartHint")}>
+            <RestartIcon /> {t("restart")}
+          </ToolButton>
+          <ToolButton onClick={clearOutputs}>{t("clearOutputs")}</ToolButton>
+          <ToolButton onClick={downloadIpynb} title={t("exportHint")}>
+            <DownloadIcon /> {t("exportIpynb")}
+          </ToolButton>
+
           <div class="flex-1" />
-          <span
-            class={`text-xs px-2 py-1 rounded ${statusClass(kernel)}`}
-            title={status}
+          <ToolButton
+            onClick={() => setShowHelp((v) => !v)}
+            tone={showHelp ? "active" : "plain"}
           >
-            {status || t("kernelOff")}
-          </span>
-          <button
-            onClick={onClose}
-            class="px-3 py-1.5 text-gray-600 hover:text-gray-900"
-          >
-            {t("close")}
-          </button>
+            ? {t("helpTitle")}
+          </ToolButton>
         </div>
 
-        {panel === "help" && <HelpPanel t={t} onClose={() => setPanel("")} />}
-
-        {panel === "notebooks" && (
-          <NotebooksPanel
-            t={t}
-            lang={lang}
-            notebooks={notebooks}
-            currentId={notebook.id}
-            onOpen={openNotebook}
-            onCreate={createNotebook}
-            onOpenExample={openExample}
-            onRemove={removeNotebook}
-          />
-        )}
-
-        {/* Cells */}
-        <div class="flex-1 overflow-y-auto px-4 py-4 space-y-3 bg-slate-50">
-          {notebook.cells.map((cell, index) => (
-            <CellView
-              key={cell.id}
-              cell={cell}
-              index={index}
+        {/* --------------------------------------------- body: side + cells */}
+        <div class="flex-1 flex min-h-0">
+          {sidebarOpen && (
+            <Sidebar
               t={t}
-              busy={busy}
-              running={runningCell === cell.id}
-              pendingInput={pendingInput?.cellId === cell.id
-                ? pendingInput
-                : null}
-              onAnswerInput={answerInput}
-              onChange={(source) => updateCell(cell.id, { source })}
-              onRun={() => runCell(cell)}
-              onDelete={() => removeCell(cell.id)}
-              onMove={(d) => moveCell(cell.id, d)}
-              onToggleType={() =>
-                updateCell(cell.id, {
-                  type: cell.type === "code" ? "markdown" : "code",
-                  outputs: [],
-                })}
-              onAddAfter={(type) => addCell(type, cell.id)}
+              lang={lang}
+              notebooks={notebooks}
+              currentId={notebook.id}
+              onOpen={openNotebook}
+              onCreate={createNotebook}
+              onOpenExample={openExample}
+              onRemove={removeNotebook}
             />
-          ))}
+          )}
 
-          <div class="flex gap-2 pt-2">
-            <button
-              onClick={() => addCell("code")}
-              class="px-3 py-1.5 bg-white border rounded hover:bg-slate-100 text-sm"
-            >
-              + {t("codeCell")}
-            </button>
-            <button
-              onClick={() => addCell("markdown")}
-              class="px-3 py-1.5 bg-white border rounded hover:bg-slate-100 text-sm"
-            >
-              + {t("textCell")}
-            </button>
-          </div>
+          <main class="flex-1 overflow-y-auto bg-slate-100 min-w-0">
+            <div class="max-w-4xl mx-auto px-4 py-4 space-y-3">
+              {showHelp && <HelpPanel t={t} onClose={() => setShowHelp(false)} />}
 
-          <p class="text-xs text-gray-500 pt-2">{t("hint")}</p>
+              {showNotice && !showHelp && kernel === "off" && (
+                <div class="flex items-start gap-3 bg-amber-50 border border-amber-200 rounded-lg px-4 py-3 text-sm">
+                  <span class="text-lg leading-none">⏱️</span>
+                  <p class="flex-1 text-amber-900">{t("firstRunNotice")}</p>
+                  <button
+                    onClick={dismissNotice}
+                    class="text-amber-800 hover:underline text-xs shrink-0"
+                  >
+                    {t("gotIt")}
+                  </button>
+                </div>
+              )}
+
+              {codeCells === 0 && notebook.cells.length <= 1 &&
+                !notebook.cells[0]?.source.trim() && (
+                <div class="text-center py-6 text-slate-500">
+                  <p class="font-medium text-slate-700">{t("emptyTitle")}</p>
+                  <p class="text-sm">{t("emptyBody")}</p>
+                </div>
+              )}
+
+              {notebook.cells.map((cell) => (
+                <CellView
+                  key={cell.id}
+                  cell={cell}
+                  t={t}
+                  busy={busy}
+                  running={runningCell === cell.id}
+                  active={activeCell === cell.id}
+                  pendingInput={pendingInput?.cellId === cell.id
+                    ? pendingInput
+                    : null}
+                  onFocus={() => setActiveCell(cell.id)}
+                  onAnswerInput={answerInput}
+                  onChange={(source) => updateCell(cell.id, { source })}
+                  onRun={() => runCell(cell)}
+                  onRunAndAdvance={() => runAndAdvance(cell)}
+                  onDelete={() => removeCell(cell.id)}
+                  onDuplicate={() => duplicateCell(cell.id)}
+                  onMove={(d) => moveCell(cell.id, d)}
+                  onToggleType={() =>
+                    updateCell(cell.id, {
+                      type: cell.type === "code" ? "markdown" : "code",
+                      outputs: [],
+                    })}
+                  onAddAfter={(type) => addCell(type, cell.id)}
+                />
+              ))}
+
+              <div class="flex gap-2 justify-center pt-1 pb-6">
+                <button
+                  onClick={() => addCell("code")}
+                  class="px-4 py-2 bg-white border border-slate-300 rounded-lg
+                         hover:border-blue-400 hover:text-blue-700 text-sm font-medium shadow-sm"
+                >
+                  + {t("cellCode")}
+                </button>
+                <button
+                  onClick={() => addCell("markdown")}
+                  class="px-4 py-2 bg-white border border-slate-300 rounded-lg
+                         hover:border-amber-400 hover:text-amber-700 text-sm font-medium shadow-sm"
+                >
+                  + {t("cellText")}
+                </button>
+              </div>
+            </div>
+          </main>
         </div>
       </div>
     </div>
   );
 }
 
-// ------------------------------------------------------------------ panels
+// ------------------------------------------------------------------ pieces
 
-function HelpPanel(
-  { t, onClose }: { t: (k: string) => string; onClose: () => void },
+function KernelBadge(
+  { kernel, status, t }: {
+    kernel: KernelState;
+    status: string;
+    t: (k: string) => string;
+  },
 ) {
+  const dot = kernel === "ready"
+    ? "bg-green-400"
+    : kernel === "running"
+    ? "bg-amber-400 animate-pulse"
+    : kernel === "loading"
+    ? "bg-blue-400 animate-pulse"
+    : "bg-slate-500";
+
   return (
-    <div class="px-5 py-4 border-b bg-blue-50 text-sm max-h-[45vh] overflow-y-auto">
-      <div class="flex justify-between items-start gap-4">
-        <h3 class="font-bold text-blue-900 mb-2">{t("helpTitle")}</h3>
-        <button
-          onClick={onClose}
-          class="text-blue-700 hover:text-blue-900 text-xs"
-        >
-          {t("hide")}
-        </button>
-      </div>
-      <p class="mb-3 text-slate-700">{t("helpIntro")}</p>
-
-      <div class="grid gap-3 md:grid-cols-2">
-        <div>
-          <h4 class="font-semibold text-slate-800 mb-1">{t("helpRunTitle")}</h4>
-          <p class="text-slate-700">{t("helpRun")}</p>
-        </div>
-        <div>
-          <h4 class="font-semibold text-slate-800 mb-1">
-            {t("helpFirstRunTitle")}
-          </h4>
-          <p class="text-slate-700">{t("helpFirstRun")}</p>
-        </div>
-        <div>
-          <h4 class="font-semibold text-slate-800 mb-1">
-            {t("helpNotebooksTitle")}
-          </h4>
-          <p class="text-slate-700">{t("helpNotebooks")}</p>
-        </div>
-        <div>
-          <h4 class="font-semibold text-slate-800 mb-1">
-            {t("helpPackagesTitle")}
-          </h4>
-          <p class="text-slate-700">{t("helpPackages")}</p>
-        </div>
-      </div>
-
-      <p class="mt-3 text-xs text-slate-600">{t("helpPrivacy")}</p>
+    <div
+      class="flex items-center gap-2 px-2.5 py-1 rounded-full bg-white/10 text-xs max-w-[18rem]"
+      title={status || t("kernelOff")}
+    >
+      <span class={`w-2 h-2 rounded-full shrink-0 ${dot}`} />
+      <span class="truncate">{status || t("kernelOff")}</span>
     </div>
   );
 }
 
-function NotebooksPanel({
+function ToolButton({
+  children,
+  onClick,
+  disabled,
+  title,
+  tone = "plain",
+}: {
+  children: ComponentChildren;
+  onClick: () => void;
+  disabled?: boolean;
+  title?: string;
+  tone?: "plain" | "primary" | "danger" | "active";
+}) {
+  const styles = {
+    plain: "bg-white border-slate-300 text-slate-700 hover:border-slate-400",
+    primary: "bg-blue-600 border-blue-600 text-white hover:bg-blue-700",
+    danger: "bg-white border-red-300 text-red-700 hover:bg-red-50",
+    active: "bg-blue-100 border-blue-300 text-blue-800",
+  }[tone];
+
+  return (
+    <button
+      onClick={onClick}
+      disabled={disabled}
+      title={title}
+      class={`inline-flex items-center gap-1.5 px-3 py-1.5 border rounded-lg
+              text-sm font-medium shadow-sm disabled:opacity-40
+              disabled:cursor-not-allowed ${styles}`}
+    >
+      {children}
+    </button>
+  );
+}
+
+function Sidebar({
   t,
   lang,
   notebooks,
@@ -553,69 +629,121 @@ function NotebooksPanel({
   onRemove: (id: string) => void;
 }) {
   return (
-    <div class="px-5 py-4 border-b bg-white max-h-[45vh] overflow-y-auto">
-      <div class="grid gap-6 md:grid-cols-2">
-        <div>
-          <div class="flex items-center justify-between mb-2">
-            <h3 class="font-semibold text-slate-800">{t("myNotebooks")}</h3>
+    <aside class="w-64 md:w-72 shrink-0 border-r bg-white overflow-y-auto">
+      <div class="p-3 space-y-5">
+        <section>
+          <div class="flex items-center justify-between mb-1.5">
+            <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-500">
+              {t("myNotebooks")}
+            </h3>
             <button
               onClick={onCreate}
-              class="px-3 py-1 bg-green-200 rounded hover:bg-green-300 text-sm font-medium"
+              title={t("newNotebook")}
+              class="px-2 py-0.5 rounded-md bg-green-100 text-green-800
+                     hover:bg-green-200 text-sm font-bold leading-none"
             >
-              + {t("newNotebook")}
+              +
             </button>
           </div>
-          <p class="text-xs text-gray-500 mb-2">{t("notebooksHint")}</p>
+          <p class="text-xs text-slate-500 mb-2">{t("notebooksHint")}</p>
 
-          {notebooks.length === 0 && (
-            <p class="text-sm text-gray-500">{t("noNotebooks")}</p>
-          )}
-          <ul class="space-y-1">
-            {notebooks.map((nb) => (
-              <li key={nb.id} class="flex items-center gap-2 text-sm">
-                <button
-                  onClick={() => onOpen(nb)}
-                  class={`flex-1 text-left px-2 py-1 rounded hover:bg-slate-100 ${
-                    nb.id === currentId ? "font-semibold bg-slate-100" : ""
-                  }`}
-                >
-                  {nb.name}
-                  <span class="text-gray-400 ml-2 text-xs">
-                    {nb.cells.length} {t("cells")}
-                  </span>
-                </button>
-                <button
-                  onClick={() => onRemove(nb.id)}
-                  class="px-2 py-1 text-red-600 hover:bg-red-50 rounded text-xs"
-                >
-                  {t("delete")}
-                </button>
-              </li>
-            ))}
-          </ul>
-        </div>
+          {notebooks.length === 0
+            ? <p class="text-sm text-slate-400">{t("noNotebooks")}</p>
+            : (
+              <ul class="space-y-0.5">
+                {notebooks.map((nb) => (
+                  <li key={nb.id} class="group flex items-center gap-1">
+                    <button
+                      onClick={() => onOpen(nb)}
+                      class={`flex-1 min-w-0 text-left px-2 py-1.5 rounded-md text-sm ${
+                        nb.id === currentId
+                          ? "bg-blue-50 text-blue-900 font-semibold"
+                          : "hover:bg-slate-100"
+                      }`}
+                    >
+                      <span class="block truncate">{nb.name}</span>
+                      <span class="block text-xs text-slate-400">
+                        {nb.cells.length} {t("cells")}
+                      </span>
+                    </button>
+                    <button
+                      onClick={() => onRemove(nb.id)}
+                      title={t("delete")}
+                      class="opacity-0 group-hover:opacity-100 px-1.5 py-1
+                             text-red-600 hover:bg-red-50 rounded text-xs shrink-0"
+                    >
+                      ✕
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            )}
+        </section>
 
-        <div>
-          <h3 class="font-semibold text-slate-800 mb-2">{t("examples")}</h3>
-          <p class="text-xs text-gray-500 mb-2">{t("examplesHint")}</p>
-          <ul class="space-y-2">
+        <section>
+          <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-500 mb-1.5">
+            {t("examples")}
+          </h3>
+          <p class="text-xs text-slate-500 mb-2">{t("examplesHint")}</p>
+          <ul class="space-y-1.5">
             {EXAMPLES.map((spec) => (
               <li key={spec.key}>
                 <button
                   onClick={() => onOpenExample(spec.key)}
-                  class="w-full text-left px-3 py-2 border rounded hover:bg-blue-50 hover:border-blue-300"
+                  class="w-full text-left px-2.5 py-2 border border-slate-200 rounded-lg
+                         hover:border-blue-400 hover:bg-blue-50/60"
                 >
-                  <div class="font-medium text-sm">
+                  <div class="font-medium text-sm text-slate-800">
                     {spec.name[lang] ?? spec.name.de}
                   </div>
-                  <div class="text-xs text-gray-600">
+                  <div class="text-xs text-slate-500 leading-snug mt-0.5">
                     {spec.about[lang] ?? spec.about.de}
                   </div>
                 </button>
               </li>
             ))}
           </ul>
+        </section>
+      </div>
+    </aside>
+  );
+}
+
+function HelpPanel(
+  { t, onClose }: { t: (k: string) => string; onClose: () => void },
+) {
+  const topics = [
+    ["▶️", "helpRunTitle", "helpRun"],
+    ["⏱️", "helpFirstRunTitle", "helpFirstRun"],
+    ["📓", "helpNotebooksTitle", "helpNotebooks"],
+    ["📦", "helpPackagesTitle", "helpPackages"],
+  ] as const;
+
+  return (
+    <div class="bg-white border border-blue-200 rounded-xl shadow-sm overflow-hidden">
+      <div class="flex justify-between items-center px-4 py-3 bg-blue-50 border-b border-blue-100">
+        <h3 class="font-semibold text-blue-900">{t("helpTitle")}</h3>
+        <button
+          onClick={onClose}
+          class="text-blue-700 hover:text-blue-900 text-xs"
+        >
+          {t("hide")}
+        </button>
+      </div>
+      <div class="px-4 py-3 space-y-3 text-sm">
+        <p class="text-slate-700">{t("helpIntro")}</p>
+        <div class="grid gap-3 md:grid-cols-2">
+          {topics.map(([icon, titleKey, bodyKey]) => (
+            <div key={titleKey} class="flex gap-2.5">
+              <span class="text-lg leading-none shrink-0">{icon}</span>
+              <div>
+                <h4 class="font-semibold text-slate-800">{t(titleKey)}</h4>
+                <p class="text-slate-600 leading-snug">{t(bodyKey)}</p>
+              </div>
+            </div>
+          ))}
         </div>
+        <p class="text-xs text-slate-500 border-t pt-2">{t("helpPrivacy")}</p>
       </div>
     </div>
   );
@@ -625,48 +753,64 @@ function NotebooksPanel({
 
 function CellView({
   cell,
-  index,
   t,
   busy,
   running,
+  active,
   pendingInput,
+  onFocus,
   onAnswerInput,
   onChange,
   onRun,
+  onRunAndAdvance,
   onDelete,
+  onDuplicate,
   onMove,
   onToggleType,
   onAddAfter,
 }: {
   cell: NotebookCell;
-  index: number;
   t: (key: string) => string;
   busy: boolean;
   running: boolean;
+  active: boolean;
   pendingInput: PendingInput | null;
+  onFocus: () => void;
   onAnswerInput: (value: string | null) => void;
   onChange: (source: string) => void;
   onRun: () => void;
+  onRunAndAdvance: () => void;
   onDelete: () => void;
+  onDuplicate: () => void;
   onMove: (direction: -1 | 1) => void;
   onToggleType: () => void;
   onAddAfter: (type: "code" | "markdown") => void;
 }) {
   const areaRef = useRef<HTMLTextAreaElement | null>(null);
+  const isCode = cell.type === "code";
 
   // Grow with the content instead of showing an inner scrollbar.
   const resize = () => {
     const area = areaRef.current;
     if (!area) return;
     area.style.height = "auto";
-    area.style.height = `${Math.max(area.scrollHeight, 44)}px`;
+    area.style.height = `${Math.max(area.scrollHeight, 40)}px`;
   };
   useEffect(resize, [cell.source]);
 
+  useEffect(() => {
+    if (active) areaRef.current?.focus();
+  }, [active]);
+
   const onKeyDown = (e: KeyboardEvent) => {
-    if (e.key === "Enter" && (e.ctrlKey || e.metaKey || e.shiftKey)) {
+    if (e.key === "Enter" && (e.ctrlKey || e.metaKey)) {
       e.preventDefault();
       onRun();
+      return;
+    }
+    if (e.key === "Enter" && e.shiftKey) {
+      e.preventDefault();
+      onRunAndAdvance();
       return;
     }
     // Tab indents instead of leaving the field - this is a code editor.
@@ -681,90 +825,131 @@ function CellView({
     }
   };
 
+  const hasOutput = cell.outputs.length > 0 || !!pendingInput;
+
   return (
-    <div class="bg-white border rounded shadow-sm">
-      <div class="flex items-center gap-2 px-2 py-1 border-b bg-gray-50 text-xs">
-        <span class="font-mono text-gray-400 w-12">
-          {cell.type === "code" ? `[${cell.count ?? " "}]` : "Text"}
+    <div
+      class={`rounded-xl border bg-white shadow-sm overflow-hidden transition
+              ${
+        active
+          ? "border-blue-400 ring-2 ring-blue-100"
+          : "border-slate-200 hover:border-slate-300"
+      }`}
+    >
+      <div class="flex items-center gap-1 px-2 py-1 bg-slate-50 border-b border-slate-100 text-xs">
+        {isCode
+          ? (
+            <button
+              onClick={onRun}
+              disabled={busy}
+              title={`${t("runCell")}`}
+              class="w-7 h-7 flex items-center justify-center rounded-lg
+                     bg-green-100 text-green-800 hover:bg-green-200
+                     disabled:opacity-40 shrink-0"
+            >
+              {running ? <SpinnerIcon /> : <PlayIcon />}
+            </button>
+          )
+          : (
+            <span class="w-7 h-7 flex items-center justify-center shrink-0 text-base">
+              📝
+            </span>
+          )}
+
+        <span
+          class={`font-mono px-1.5 py-0.5 rounded shrink-0 ${
+            isCode ? "text-slate-500" : "text-amber-700 bg-amber-100"
+          }`}
+        >
+          {isCode ? `[${cell.count ?? " "}]` : t("cellText")}
         </span>
-        {cell.type === "code" && (
-          <button
-            onClick={onRun}
-            disabled={busy}
-            title={t("runCell")}
-            class="px-2 py-0.5 rounded bg-green-200 hover:bg-green-300 disabled:opacity-50 font-medium"
-          >
-            {running ? "..." : "▶"}
-          </button>
+
+        {pendingInput && (
+          <span class="px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 font-medium animate-pulse">
+            {t("waitingForInput")}
+          </span>
         )}
-        <button
-          onClick={onToggleType}
-          class="px-2 py-0.5 rounded hover:bg-slate-200"
-        >
-          {cell.type === "code" ? t("toText") : t("toCode")}
-        </button>
-        <button
-          onClick={() => onMove(-1)}
-          class="px-2 py-0.5 rounded hover:bg-slate-200"
-          title={t("moveUp")}
-        >
-          &uarr;
-        </button>
-        <button
-          onClick={() => onMove(1)}
-          class="px-2 py-0.5 rounded hover:bg-slate-200"
-          title={t("moveDown")}
-        >
-          &darr;
-        </button>
+
         <div class="flex-1" />
-        <button
-          onClick={() => onAddAfter("code")}
-          class="px-2 py-0.5 rounded hover:bg-slate-200"
-        >
-          + {t("codeCell")}
-        </button>
-        <button
-          onClick={onDelete}
-          class="px-2 py-0.5 rounded text-red-600 hover:bg-red-50"
-        >
-          {t("delete")}
-        </button>
+
+        <span class="hidden md:inline text-slate-400 mr-1 font-mono">
+          {isCode ? t("runShortcut") : ""}
+        </span>
+        <IconButton onClick={onToggleType} title={isCode ? t("toText") : t("toCode")}>
+          {isCode ? "📝" : "🐍"}
+        </IconButton>
+        <IconButton onClick={() => onMove(-1)} title={t("moveUp")}>↑</IconButton>
+        <IconButton onClick={() => onMove(1)} title={t("moveDown")}>↓</IconButton>
+        <IconButton onClick={onDuplicate} title={t("duplicate")}>⧉</IconButton>
+        <IconButton onClick={() => onAddAfter("code")} title={t("addBelow")}>
+          +
+        </IconButton>
+        <IconButton onClick={onDelete} title={t("delete")} danger>✕</IconButton>
       </div>
 
       <textarea
         ref={areaRef}
         value={cell.source}
         spellcheck={false}
+        onFocus={onFocus}
         onInput={(e) => {
           onChange((e.target as HTMLTextAreaElement).value);
           resize();
         }}
         onKeyDown={onKeyDown}
-        placeholder={cell.type === "code"
-          ? t("codePlaceholder")
-          : t("textPlaceholder")}
-        class={`w-full px-3 py-2 resize-none outline-none ${
-          cell.type === "code"
+        placeholder={isCode ? t("codePlaceholder") : t("textPlaceholder")}
+        class={`w-full px-3 py-2.5 resize-none outline-none leading-relaxed ${
+          isCode
             ? "font-mono text-sm bg-slate-900 text-slate-100 placeholder-slate-500"
-            : "text-sm bg-amber-50"
+            : "text-sm bg-amber-50/70 text-slate-800 placeholder-amber-700/40"
         }`}
-        style={{ minHeight: "44px" }}
+        style={{ minHeight: "40px" }}
       />
 
-      {(cell.outputs.length > 0 || pendingInput) && (
-        <div class="border-t px-3 py-2 space-y-2 bg-white">
-          {cell.outputs.map((out, i) => <OutputView key={i} output={out} />)}
-          {pendingInput && (
-            <InputPrompt
-              prompt={pendingInput.prompt}
-              t={t}
-              onAnswer={onAnswerInput}
-            />
-          )}
+      {hasOutput && (
+        <div class="border-t border-slate-100 bg-white">
+          <div class="px-3 pt-1.5 text-[10px] uppercase tracking-wide text-slate-400">
+            {t("outputLabel")}
+          </div>
+          <div class="px-3 pb-2.5 pt-1 space-y-2">
+            {cell.outputs.map((out, i) => <OutputView key={i} output={out} />)}
+            {pendingInput && (
+              <InputPrompt
+                prompt={pendingInput.prompt}
+                t={t}
+                onAnswer={onAnswerInput}
+              />
+            )}
+          </div>
         </div>
       )}
     </div>
+  );
+}
+
+function IconButton({
+  children,
+  onClick,
+  title,
+  danger,
+}: {
+  children: ComponentChildren;
+  onClick: () => void;
+  title: string;
+  danger?: boolean;
+}) {
+  return (
+    <button
+      onClick={onClick}
+      title={title}
+      class={`w-6 h-6 flex items-center justify-center rounded shrink-0 ${
+        danger
+          ? "text-red-600 hover:bg-red-50"
+          : "text-slate-500 hover:bg-slate-200"
+      }`}
+    >
+      {children}
+    </button>
   );
 }
 
@@ -785,10 +970,9 @@ function InputPrompt({
     ref.current?.focus();
   }, []);
 
-  const submit = () => onAnswer(value);
-
   return (
-    <div class="flex flex-wrap items-center gap-2 bg-amber-50 border border-amber-300 rounded px-2 py-2">
+    <div class="flex flex-wrap items-center gap-2 bg-amber-50 border-2 border-amber-300 rounded-lg px-3 py-2">
+      <span class="text-base leading-none">✏️</span>
       <span class="font-mono text-sm text-amber-900">
         {prompt || t("inputPrompt")}
       </span>
@@ -800,20 +984,21 @@ function InputPrompt({
         onKeyDown={(e) => {
           if (e.key === "Enter") {
             e.preventDefault();
-            submit();
+            onAnswer(value);
           }
         }}
-        class="flex-1 min-w-[8rem] font-mono text-sm px-2 py-1 border rounded focus:ring-2 focus:ring-amber-400 outline-none"
+        class="flex-1 min-w-[8rem] font-mono text-sm px-2.5 py-1.5 border
+               border-amber-300 rounded-md focus:ring-2 focus:ring-amber-400 outline-none"
       />
       <button
-        onClick={submit}
-        class="px-3 py-1 bg-amber-500 text-white rounded hover:bg-amber-600 text-sm font-medium"
+        onClick={() => onAnswer(value)}
+        class="px-3 py-1.5 bg-amber-500 text-white rounded-md hover:bg-amber-600 text-sm font-medium"
       >
         {t("inputSend")}
       </button>
       <button
         onClick={() => onAnswer(null)}
-        class="px-2 py-1 text-amber-800 hover:bg-amber-100 rounded text-xs"
+        class="px-2 py-1.5 text-amber-800 hover:bg-amber-100 rounded-md text-xs"
       >
         {t("inputCancel")}
       </button>
@@ -827,15 +1012,21 @@ function OutputView({ output }: { output: CellOutput }) {
       <img
         src={`data:image/png;base64,${output.data}`}
         alt="plot"
-        class="max-w-full border rounded"
+        class="max-w-full rounded-lg border border-slate-200"
       />
     );
   }
-  const tone = output.type === "stderr" || output.type === "error"
+  if (output.type === "error") {
+    return (
+      <pre class="font-mono text-xs whitespace-pre-wrap break-words text-red-800
+                  bg-red-50 border border-red-200 rounded-lg px-3 py-2">{output.text}</pre>
+    );
+  }
+  const tone = output.type === "stderr"
     ? "text-red-700"
     : output.type === "result"
-    ? "text-blue-800"
-    : "text-gray-800";
+    ? "text-blue-800 font-medium"
+    : "text-slate-800";
   return (
     <pre
       class={`font-mono text-xs whitespace-pre-wrap break-words ${tone}`}
@@ -843,14 +1034,58 @@ function OutputView({ output }: { output: CellOutput }) {
   );
 }
 
-// ----------------------------------------------------------------- helpers
+// ------------------------------------------------------------------ icons
 
-function statusClass(kernel: KernelState): string {
-  if (kernel === "ready") return "bg-green-100 text-green-800";
-  if (kernel === "running") return "bg-amber-100 text-amber-800";
-  if (kernel === "loading") return "bg-blue-100 text-blue-800";
-  return "bg-slate-200 text-slate-600";
-}
+const PlayIcon = () => (
+  <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
+    <path d="M2 1.5v9l8-4.5-8-4.5Z" />
+  </svg>
+);
+
+const StopIcon = () => (
+  <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
+    <rect x="2" y="2" width="8" height="8" rx="1" />
+  </svg>
+);
+
+const RestartIcon = () => (
+  <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M12 5V1L7 6l5 5V7a6 6 0 1 1-6 6H4a8 8 0 1 0 8-8Z" />
+  </svg>
+);
+
+const DownloadIcon = () => (
+  <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M12 16 6 10h4V3h4v7h4l-6 6Zm-8 3h16v2H4v-2Z" />
+  </svg>
+);
+
+const CloseIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+    <path d="m19 6.4-1.4-1.4-5.6 5.6-5.6-5.6L5 6.4l5.6 5.6L5 17.6 6.4 19l5.6-5.6 5.6 5.6 1.4-1.4-5.6-5.6L19 6.4Z" />
+  </svg>
+);
+
+const BurgerIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M3 6h18v2H3V6Zm0 5h18v2H3v-2Zm0 5h18v2H3v-2Z" />
+  </svg>
+);
+
+const SpinnerIcon = () => (
+  <svg
+    width="12"
+    height="12"
+    viewBox="0 0 24 24"
+    fill="none"
+    class="animate-spin"
+  >
+    <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="3" opacity="0.25" />
+    <path d="M21 12a9 9 0 0 0-9-9" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
+  </svg>
+);
+
+// ----------------------------------------------------------------- helpers
 
 /** The worker reports raw states; give them something a pupil can read. */
 function translateStatus(raw: string, t: (key: string) => string): string {
