@@ -37,6 +37,8 @@ import {
 // Optional sync of the whole local state through an IMAP mailbox the user owns.
 import MailSyncModal from "../components/MailSyncModal.tsx";
 import NotebookModal from "../components/NotebookModal.tsx";
+import LearningModal from "../components/LearningModal.tsx";
+import { learningContent } from "../internalization/learning-content.ts";
 
 // Tools the assistant may use once the user grants the matching permission.
 import {
@@ -230,6 +232,7 @@ export default function ChatIsland({ lang }: { lang: string }) {
   );
   const [showMailSync, setShowMailSync] = useState(false);
   const [showNotebook, setShowNotebook] = useState(false);
+  const [showLearning, setShowLearning] = useState(false);
 
   // Permissions are read once per render; both default to off.
   const [notebookToolsAllowed, setNotebookToolsAllowed] = useState(false);
@@ -3917,6 +3920,29 @@ ${result.snapshot}`
 
         <button
           class="rounded-full bg-slate-200 px-4 py-2 mx-2 mb-2"
+          title={learningContent[lang]?.title ?? "Lernpfade"}
+          onClick={() => setShowLearning(true)}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="24"
+            viewBox="0 -960 960 960"
+            width="24"
+          >
+            <circle
+              cx="480"
+              cy="-480"
+              r="360"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="80"
+            />
+            <path d="m300-300 280-140 140-280-280 140-140 280Z" />
+          </svg>
+        </button>
+
+        <button
+          class="rounded-full bg-slate-200 px-4 py-2 mx-2 mb-2"
           title={notebookContent[lang]?.title ?? "Python notebook"}
           onClick={() => setShowNotebook(true)}
         >
@@ -4087,6 +4113,10 @@ ${result.snapshot}`
           }}
           lang={lang}
         />
+      )}
+
+      {showLearning && (
+        <LearningModal lang={lang} onClose={() => setShowLearning(false)} />
       )}
 
       {showNotebook && (

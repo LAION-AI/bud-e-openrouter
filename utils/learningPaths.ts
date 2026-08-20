@@ -1542,10 +1542,13 @@ const bitsAndBytes: LearningPath = {
             },
             {
               label: {
-                de: "Konrad-Zuse-Internet-Archiv: die Z3 von 1941",
-                en: "Konrad Zuse Internet Archive: the Z3 of 1941",
+                de: "Computer History Museum: Konrad Zuse und die Z3",
+                en: "Computer History Museum: Konrad Zuse and the Z3",
               },
-              url: "https://zuse.zib.de/z3",
+              // The Konrad Zuse Internet Archive was the obvious source here,
+              // but zuse.zib.de has been answering 503 for the whole domain.
+              url:
+                "https://www.computerhistory.org/revolution/birth-of-the-computer/4/78",
             },
             {
               label: {

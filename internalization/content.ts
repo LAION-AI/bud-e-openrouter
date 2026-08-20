@@ -264,6 +264,26 @@ export const settingsContent: InternalizationContent = {
     sttTitle: "Speech-to-Text",
     vlmTitle: "Vision & PDF Language Model",
     mailSyncTitle: "Sync via your own mailbox",
+    providerLabel: "Provider",
+    providerHint:
+      "Pick your provider and the servers and ports are filled in. \"Other\" lets you enter everything by hand.",
+    providerApply: "Apply",
+    providerDomainMissing: "Enter your school's address first.",
+    providerApplied: "Settings filled in",
+    mailInfoTitle: "What goes in here?",
+    mailInfoBody:
+      "Mail uses two servers. IMAP is the one that reads: it shows what is in your mailbox. SMTP is the one that sends: it does not know your mailbox at all, it only takes a message and delivers it. That is why every guide lists them separately.",
+    mailInfoImap:
+      "IMAP is enough for almost everything: searching, reading, and saving drafts - a draft is written straight into the drafts folder, without sending anything.",
+    mailInfoSmtp:
+      "SMTP is only needed to actually send. Leave it empty if Bud-E should only read and prepare drafts.",
+    mailInfoPorts:
+      "You choose the encryption, the port follows: IMAP 993 with TLS or 143 with STARTTLS, SMTP 465 with TLS or 587 with STARTTLS. TLS on 993 is right at almost every provider.",
+    mailInfoPassword:
+      "Many providers refuse your normal password and want an app password instead - a separate password just for mail programs. You create it in your provider's account settings.",
+    mailInfoWhere:
+      "If in doubt, your provider's help pages list the values under \"external mail program\" or \"IMAP settings\".",
+    close: "Close",
     mailSkillTitle: "Let Bud-E manage your mail",
     mailSkillHint:
       "Bud-E can then search the mailbox, read single messages out to you, save drafts and hand you attachments - like a secretary. It uses the same mailbox as the sync above. Listings only ever carry sender, date and subject; a message is opened one at a time and only when needed.",
@@ -350,6 +370,26 @@ export const settingsContent: InternalizationContent = {
     sttTitle: "Sprache-zu-Text",
     vlmTitle: "Bild- und PDF-Verarbeitung",
     mailSyncTitle: "Abgleich über dein eigenes Postfach",
+    providerLabel: "Anbieter",
+    providerHint:
+      "Wähle deinen Anbieter, dann werden Server und Ports eingetragen. Mit \"Anderer\" trägst du alles selbst ein.",
+    providerApply: "Übernehmen",
+    providerDomainMissing: "Trag zuerst die Adresse deiner Schule ein.",
+    providerApplied: "Einstellungen eingetragen",
+    mailInfoTitle: "Was gehört hier rein?",
+    mailInfoBody:
+      "E-Mail benutzt zwei Server. IMAP ist der, der liest: er zeigt dir, was in deinem Postfach liegt. SMTP ist der, der verschickt: er kennt dein Postfach gar nicht, er nimmt nur eine Nachricht an und stellt sie zu. Deshalb führt jede Anleitung beide getrennt auf.",
+    mailInfoImap:
+      "Für fast alles reicht IMAP: durchsuchen, lesen und Entwürfe speichern - ein Entwurf wird direkt in den Entwurfsordner geschrieben, ganz ohne Versand.",
+    mailInfoSmtp:
+      "SMTP brauchst du nur zum wirklichen Versenden. Lass es leer, wenn Bud-E nur lesen und Entwürfe vorbereiten soll.",
+    mailInfoPorts:
+      "Du wählst die Verschlüsselung, der Port ergibt sich daraus: IMAP 993 mit TLS oder 143 mit STARTTLS, SMTP 465 mit TLS oder 587 mit STARTTLS. TLS auf 993 stimmt bei fast jedem Anbieter.",
+    mailInfoPassword:
+      "Viele Anbieter lehnen dein normales Passwort ab und wollen ein App-Passwort - ein eigenes Passwort nur für Mailprogramme. Das legst du in den Kontoeinstellungen deines Anbieters an.",
+    mailInfoWhere:
+      "Im Zweifel stehen die Werte auf den Hilfeseiten deines Anbieters unter \"externes Mailprogramm\" oder \"IMAP-Einstellungen\".",
+    close: "Schließen",
     mailSkillTitle: "Bud-E darf deine Mails verwalten",
     mailSkillHint:
       "Bud-E kann dann das Postfach durchsuchen, dir einzelne Nachrichten vorlesen, Entwürfe speichern und dir Anhänge geben - wie ein Sekretär. Er nutzt dasselbe Postfach wie der Abgleich oben. Übersichten enthalten immer nur Absender, Datum und Betreff; eine Nachricht wird einzeln geöffnet und nur dann, wenn sie gebraucht wird.",

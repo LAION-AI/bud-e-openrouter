@@ -8,6 +8,12 @@ import {
   mailsyncTest,
 } from "../utils/mailsyncClient.ts";
 import {
+  applyPreset,
+  findPreset,
+  normaliseDomain,
+  PROVIDER_PRESETS,
+} from "../utils/mailProviders.ts";
+import {
   DEFAULT_MAIL_LIMITS,
   isMailAllowed,
   loadMailLimits,
@@ -92,6 +98,28 @@ export default function Settings({
     deviceName: mailAccount.deviceName || guessDeviceName(),
   });
   const [showMailSync, setShowMailSync] = useState(false);
+  const [showMailInfo, setShowMailInfo] = useState(false);
+  const [providerKey, setProviderKey] = useState("iserv");
+  const [providerDomain, setProviderDomain] = useState("");
+  const [providerNote, setProviderNote] = useState("");
+
+  /** Fills the server fields from the chosen provider. */
+  const applyProvider = () => {
+    const preset = findPreset(providerKey);
+    if (!preset) return;
+    const values = applyPreset(preset, providerDomain);
+    if (!values) {
+      setProviderNote(settingsContent[lang].providerDomainMissing as string);
+      return;
+    }
+    updateMail({
+      ...values,
+      // A preset that brings an outgoing server should make it usable right
+      // away, otherwise the fields sit there greyed out and look broken.
+      useSmtp: mail.useSmtp,
+    });
+    setProviderNote(settingsContent[lang].providerApplied as string);
+  };
 
   // --- Mailbox skill: letting the assistant read and write mail ---
   const [mailSkill, setMailSkill] = useState(() => isMailAllowed());
@@ -251,8 +279,71 @@ export default function Settings({
     setNewSettings(updatedSettings);
   }
 
+  const t = (key: string) => settingsContent[lang][key] as string;
+
   return (
     <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+      {showMailInfo && (
+        <div
+          class="fixed inset-0 bg-black/60 flex items-center justify-center z-[60] p-4"
+          onClick={() => setShowMailInfo(false)}
+        >
+          <div
+            class="bg-white rounded-lg shadow-xl max-w-lg w-full max-h-[85dvh] overflow-y-auto"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div class="flex justify-between items-center px-5 py-3 border-b bg-blue-50">
+              <h3 class="font-bold text-blue-900">{t("mailInfoTitle")}</h3>
+              <button
+                onClick={() => setShowMailInfo(false)}
+                class="text-blue-700 hover:text-blue-900 text-sm"
+              >
+                {t("close")}
+              </button>
+            </div>
+            <div class="px-5 py-4 space-y-3 text-sm text-slate-700">
+              <p>{t("mailInfoBody")}</p>
+              <div class="flex gap-2.5">
+                <span class="text-lg leading-none shrink-0">📥</span>
+                <p>{t("mailInfoImap")}</p>
+              </div>
+              <div class="flex gap-2.5">
+                <span class="text-lg leading-none shrink-0">📤</span>
+                <p>{t("mailInfoSmtp")}</p>
+              </div>
+
+              <table class="w-full text-xs border-collapse">
+                <thead>
+                  <tr class="bg-slate-100">
+                    <th class="border px-2 py-1 text-left"></th>
+                    <th class="border px-2 py-1">TLS</th>
+                    <th class="border px-2 py-1">STARTTLS</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="border px-2 py-1 font-medium">IMAP</td>
+                    <td class="border px-2 py-1 text-center">993</td>
+                    <td class="border px-2 py-1 text-center">143</td>
+                  </tr>
+                  <tr>
+                    <td class="border px-2 py-1 font-medium">SMTP</td>
+                    <td class="border px-2 py-1 text-center">465</td>
+                    <td class="border px-2 py-1 text-center">587</td>
+                  </tr>
+                </tbody>
+              </table>
+              <p class="text-xs text-slate-600">{t("mailInfoPorts")}</p>
+
+              <div class="flex gap-2.5 bg-amber-50 border border-amber-200 rounded p-2.5">
+                <span class="text-lg leading-none shrink-0">🔑</span>
+                <p class="text-xs text-amber-900">{t("mailInfoPassword")}</p>
+              </div>
+              <p class="text-xs text-slate-500">{t("mailInfoWhere")}</p>
+            </div>
+          </div>
+        </div>
+      )}
       <div class="bg-white p-6 rounded-lg shadow-xl max-w-md w-full m-4 overflow-y-scroll max-h-[90dvh]">
         <div class="flex justify-between items-center mb-4">
           {/* Note: the gear emoji caused mojibake previously; keep this plain text. */}
@@ -317,9 +408,84 @@ export default function Settings({
 
           {showMailSync && (
             <div class="px-3 pb-3 space-y-3">
-              <p class="text-xs text-gray-500">
-                {settingsContent[lang].mailSyncHint}
-              </p>
+              <div class="flex items-start gap-2">
+                <p class="text-xs text-gray-500 flex-1">
+                  {settingsContent[lang].mailSyncHint}
+                </p>
+                <button
+                  onClick={() => setShowMailInfo(true)}
+                  title={settingsContent[lang].mailInfoTitle as string}
+                  class="shrink-0 w-6 h-6 rounded-full bg-blue-100 text-blue-700
+                         hover:bg-blue-200 text-sm font-bold leading-none"
+                >
+                  i
+                </button>
+              </div>
+
+              {/* Provider presets: nobody should have to look up port numbers. */}
+              <div class="p-2.5 bg-slate-50 border rounded space-y-2">
+                <label class="block text-sm font-medium text-gray-700">
+                  {settingsContent[lang].providerLabel}
+                </label>
+                <div class="flex flex-wrap gap-2">
+                  <select
+                    value={providerKey}
+                    onChange={(e) => {
+                      setProviderKey((e.target as HTMLSelectElement).value);
+                      setProviderNote("");
+                    }}
+                    class="flex-1 min-w-[10rem] p-2 border rounded bg-white text-sm"
+                  >
+                    {PROVIDER_PRESETS.map((preset) => (
+                      <option key={preset.key} value={preset.key}>
+                        {preset.label}
+                      </option>
+                    ))}
+                  </select>
+                  <button
+                    onClick={applyProvider}
+                    class="px-3 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 text-sm"
+                  >
+                    {settingsContent[lang].providerApply}
+                  </button>
+                </div>
+
+                {findPreset(providerKey)?.needsDomain && (
+                  <div>
+                    <label class="block text-xs text-gray-600 mb-1">
+                      {findPreset(providerKey)!.domainLabel?.[
+                        lang === "de" ? "de" : "en"
+                      ]}
+                    </label>
+                    <input
+                      type="text"
+                      value={providerDomain}
+                      onInput={(e) => {
+                        setProviderDomain((e.target as HTMLInputElement).value);
+                        setProviderNote("");
+                      }}
+                      onBlur={(e) =>
+                        setProviderDomain(
+                          normaliseDomain((e.target as HTMLInputElement).value),
+                        )}
+                      placeholder={findPreset(providerKey)!.domainPlaceholder}
+                      class="w-full p-2 border rounded text-sm"
+                    />
+                  </div>
+                )}
+
+                {findPreset(providerKey)?.note && (
+                  <p class="text-xs text-amber-800 bg-amber-50 border border-amber-200 rounded p-2">
+                    {findPreset(providerKey)!.note![lang === "de" ? "de" : "en"]}
+                  </p>
+                )}
+                {providerNote && (
+                  <p class="text-xs text-green-700">{providerNote}</p>
+                )}
+                <p class="text-xs text-gray-500">
+                  {settingsContent[lang].providerHint}
+                </p>
+              </div>
 
               <div>
                 <label class="block text-sm font-medium text-gray-700 mb-1">
