@@ -21,6 +21,7 @@ import { useEffect, useRef, useState } from "preact/hooks";
 
 // Internalization
 import {
+  chatContent,
   chatIslandContent,
   mailSyncContent,
   notebookContent,
@@ -37,6 +38,18 @@ import {
 // Optional sync of the whole local state through an IMAP mailbox the user owns.
 import MailSyncModal from "../components/MailSyncModal.tsx";
 import NotebookModal from "../components/NotebookModal.tsx";
+
+// Tools the assistant may use once the user grants the matching permission.
+import {
+  applyNotebookAction,
+  isAssistantAllowed as isNotebookAssistantAllowed,
+} from "../utils/notebookTools.ts";
+import { listNotebooks, type Notebook } from "../utils/notebookStore.ts";
+import {
+  isMailAllowed,
+  loadMailLimits,
+  runMailAction,
+} from "../utils/mailAssistant.ts";
 import {
   applySnapshot,
   AUTO_LABEL,
@@ -218,6 +231,19 @@ export default function ChatIsland({ lang }: { lang: string }) {
   );
   const [showMailSync, setShowMailSync] = useState(false);
   const [showNotebook, setShowNotebook] = useState(false);
+
+  // Permissions are read once per render; both default to off.
+  const [notebookToolsAllowed, setNotebookToolsAllowed] = useState(false);
+  const [mailToolsAllowed, setMailToolsAllowed] = useState(false);
+  /** The notebook the assistant edits: whatever the window last had open. */
+  const activeNotebookRef = useRef<Notebook | null>(null);
+  /** Bumped when a tool changed a notebook, so the window redraws. */
+  const [notebookRevision, setNotebookRevision] = useState(0);
+
+  useEffect(() => {
+    setNotebookToolsAllowed(isNotebookAssistantAllowed());
+    setMailToolsAllowed(isMailAllowed());
+  }, []);
   const [mailSyncStatus, setMailSyncStatus] = useState("");
 
   // Abort controller for streaming cancel
@@ -498,6 +524,7 @@ export default function ChatIsland({ lang }: { lang: string }) {
       newSettings.vlmCorrectionModel,
     );
     setShowSettings(false);
+    setMailToolsAllowed(isMailAllowed());
   };
 
   // ---------- Mailbox sync ----------
@@ -1158,7 +1185,10 @@ export default function ChatIsland({ lang }: { lang: string }) {
       useLastImage?: boolean; // Use the last image in the conversation
       imageId?: string; // Reference a specific image by unique ID
       imageIds?: string[]; // Reference multiple images by ID
-    };
+    }
+    // Both only reachable while the matching permission is switched on.
+    | { kind: "notebook"; payload: Record<string, unknown> }
+    | { kind: "mail"; payload: Record<string, unknown> };
 
   const isImageTrigger = (
     t: AutoTrigger,
@@ -1307,6 +1337,8 @@ export default function ChatIsland({ lang }: { lang: string }) {
       "bildungsplan",
       "imagegen",
       "imageedit",
+      "notebook",
+      "mail",
     ]);
     const keys = Object.keys(obj);
     if (keys.length !== 1) return false;
@@ -1314,6 +1346,17 @@ export default function ChatIsland({ lang }: { lang: string }) {
     if (!allowed.has(key)) return false;
 
     const v = obj[keys[0]];
+
+    // The two permission-gated tools carry a free-form object; the modules
+    // that execute them validate the details.
+    if (key === "notebook") {
+      return notebookToolsAllowed && !!v && typeof v === "object" &&
+        typeof (v as any).action === "string";
+    }
+    if (key === "mail") {
+      return mailToolsAllowed && !!v && typeof v === "object" &&
+        typeof (v as any).action === "string";
+    }
 
     // imagegen / imageedit use "prompt" instead of "q"
     if (key === "imagegen" || key === "imageedit") {
@@ -1424,6 +1467,20 @@ export default function ChatIsland({ lang }: { lang: string }) {
     for (const key of keys) {
       const k = key.toLowerCase();
       const val = obj[key];
+
+      // ----- Notebook and mailbox: passed through as given -----
+      if (k === "notebook" && notebookToolsAllowed) {
+        if (val && typeof val === "object") {
+          triggers.push({ kind: "notebook", payload: val });
+        }
+        continue;
+      }
+      if (k === "mail" && mailToolsAllowed) {
+        if (val && typeof val === "object") {
+          triggers.push({ kind: "mail", payload: val });
+        }
+        continue;
+      }
 
       // ----- Image generation -----
       if (k === "imagegen") {
@@ -1577,9 +1634,11 @@ export default function ChatIsland({ lang }: { lang: string }) {
 
   // Build a summarization prompt (with i18n + safe encoding + local overrides)
   const buildAutoSummaryPrompt = (trigs: AutoTrigger[]) => {
-    const topics = trigs.map((t) =>
-      `${t.kind}: "${isImageTrigger(t) ? t.prompt : t.q}"`
-    ).join(", ");
+    const topics = trigs.map((t) => {
+      if (isImageTrigger(t)) return `${t.kind}: "${t.prompt}"`;
+      if (t.kind === "notebook" || t.kind === "mail") return t.kind;
+      return `${t.kind}: "${t.q}"`;
+    }).join(", ");
 
     // 1) Optional per-language localStorage override (no UI needed):
     //    Put "{topics}" where you want the joined topics.
@@ -2374,6 +2433,121 @@ export default function ChatIsland({ lang }: { lang: string }) {
    * Executes an imagegen/imageedit trigger and appends the resulting message.
    * Returns the new message array plus whether images were produced.
    */
+  /**
+   * The extra system-prompt section describing the tools that are currently
+   * permitted, plus a one-line note about what is open right now so the model
+   * knows there is something to look at.
+   */
+  const buildToolPrompt = (): string => {
+    const parts: string[] = [];
+    if (notebookToolsAllowed) {
+      parts.push(chatContent[lang]?.notebookToolPrompt ?? "");
+      const nb = activeNotebookRef.current;
+      if (nb) {
+        parts.push(
+          lang === "de"
+            ? `Gerade geöffnet: Notebook "${nb.name}" mit ${nb.cells.length} Zellen.`
+            : `Currently open: notebook "${nb.name}" with ${nb.cells.length} cells.`,
+        );
+      }
+    }
+    if (mailToolsAllowed && isMailSyncConfigured(mailAccount)) {
+      parts.push(chatContent[lang]?.mailToolPrompt ?? "");
+      const folders = loadMailLimits().folders.join(", ");
+      parts.push(
+        lang === "de"
+          ? `Freigegebene Ordner: ${folders}.`
+          : `Permitted folders: ${folders}.`,
+      );
+    }
+    return parts.filter(Boolean).join("\n\n");
+  };
+
+  /**
+   * Runs a notebook or mailbox request from the assistant.
+   *
+   * Both are gated behind a permission the user sets themselves, and both
+   * answer with plain text that is appended to the conversation - so the
+   * model sees the result of its own action and can react to it.
+   */
+  const runToolTrigger = async (
+    trig: Extract<AutoTrigger, { kind: "notebook" | "mail" }>,
+    accumulated: Message[],
+  ): Promise<{ accumulated: Message[]; success: boolean }> => {
+    const say = (text: string, extra?: Record<string, unknown>[]) => {
+      const content = extra && extra.length
+        ? [{ type: "text", text }, ...extra]
+        : text;
+      const next = [...accumulated, { role: "assistant", content } as Message];
+      setMessages(next);
+      safePersist(next, currentChatSuffix);
+      return next;
+    };
+
+    try {
+      if (trig.kind === "notebook") {
+        if (!notebookToolsAllowed) {
+          return {
+            accumulated: say(chatIslandContent[lang]["toolNotebookDenied"]),
+            success: false,
+          };
+        }
+        await serverLog("tool.notebook", { action: trig.payload.action });
+
+        const current = activeNotebookRef.current ?? listNotebooks()[0] ?? null;
+        const result = applyNotebookAction(trig.payload, current);
+
+        if (result.notebook) {
+          // Keep the open window in step with what was just changed.
+          activeNotebookRef.current = result.notebook;
+          setNotebookRevision((n) => n + 1);
+        }
+        const text = result.snapshot
+          ? `${result.message}
+
+${result.snapshot}`
+          : result.message;
+        return { accumulated: say(text), success: result.ok };
+      }
+
+      // ----- mailbox -----
+      if (!mailToolsAllowed) {
+        return {
+          accumulated: say(chatIslandContent[lang]["toolMailDenied"]),
+          success: false,
+        };
+      }
+      if (!isMailSyncConfigured(mailAccount)) {
+        return {
+          accumulated: say(chatIslandContent[lang]["toolMailNoAccount"]),
+          success: false,
+        };
+      }
+      await serverLog("tool.mail", { action: trig.payload.action });
+
+      const result = await runMailAction(mailAccount, trig.payload);
+      if (result.attachment) {
+        // Hand the file to the UI as a download chip rather than dropping the
+        // bytes into the conversation text.
+        return {
+          accumulated: say(result.text, [{
+            type: "file",
+            name: result.attachment.filename,
+            mimeType: result.attachment.contentType,
+            size: result.attachment.size,
+            dataUrl: result.attachment.dataUrl,
+          }]),
+          success: true,
+        };
+      }
+      return { accumulated: say(result.text), success: true };
+    } catch (error) {
+      const message = error instanceof Error ? error.message : String(error);
+      await serverLog("tool.error", { kind: trig.kind, message });
+      return { accumulated: say(`Fehler: ${message}`), success: false };
+    }
+  };
+
   const runImageTrigger = async (
     trig: Extract<AutoTrigger, { kind: "imagegen" | "imageedit" }>,
     accumulated: Message[],
@@ -2603,6 +2777,9 @@ export default function ChatIsland({ lang }: { lang: string }) {
 
       let accumulated: Message[] = [...newMessagesArr];
       let anyResults = false;
+      // Notebook and mailbox actions answer with text the assistant should
+      // react to, but they must not go through the search summary.
+      let toolFollowUp = false;
       const successTrigs: AutoTrigger[] = [];
       for (const trig of jsonUserTriggers) {
         if (trig.kind === "wikipedia") {
@@ -2727,6 +2904,13 @@ export default function ChatIsland({ lang }: { lang: string }) {
           // deliberately not pushed to successTrigs.
           const out = await runImageTrigger(trig, accumulated);
           accumulated = out.accumulated;
+        } else if (trig.kind === "notebook" || trig.kind === "mail") {
+          // The assistant should see what came back, so these do continue the
+          // conversation - but through their own follow-up, not the search
+          // summary.
+          const out = await runToolTrigger(trig, accumulated);
+          accumulated = out.accumulated;
+          if (out.success) toolFollowUp = true;
         }
       }
       setIsStreamComplete(true);
@@ -2737,6 +2921,11 @@ export default function ChatIsland({ lang }: { lang: string }) {
       if (anyResults && successTrigs.length) {
         const summaryPrompt = buildAutoSummaryPrompt(successTrigs);
         startStream(summaryPrompt, accumulated);
+      } else if (toolFollowUp) {
+        // The tool answered; let the assistant read that answer and carry on -
+        // that is what makes a chain like "search, then read, then summarise"
+        // possible without the user prompting each step.
+        startStream(chatIslandContent[lang]["toolFollowUp"], accumulated);
       }
       return;
     }
@@ -2850,6 +3039,10 @@ export default function ChatIsland({ lang }: { lang: string }) {
         } else if (isImageTrigger(trig)) {
           const out = await runImageTrigger(trig, accumulated);
           accumulated = out.accumulated;
+        } else if (trig.kind === "notebook" || trig.kind === "mail") {
+          // This path has no follow-up round; the result is shown as it is.
+          const out = await runToolTrigger(trig, accumulated);
+          accumulated = out.accumulated;
         }
       }
       setMessages(accumulated);
@@ -2910,6 +3103,9 @@ export default function ChatIsland({ lang }: { lang: string }) {
     };
 
     const keyOf = (t: AutoTrigger) => {
+      if (t.kind === "notebook" || t.kind === "mail") {
+        return `${t.kind}|${JSON.stringify(t.payload)}`;
+      }
       if (t.kind === "imagegen") {
         return `imagegen|${t.prompt}|${t.model ?? ""}|${t.n ?? ""}`;
       }
@@ -2966,6 +3162,9 @@ export default function ChatIsland({ lang }: { lang: string }) {
 
       let accumulated: Message[] = messagesRef.current;
       let anyResults = false;
+      // Notebook and mailbox actions answer with text the assistant should
+      // react to, but they must not go through the search summary.
+      let toolFollowUp = false;
       const successTrigs: AutoTrigger[] = [];
 
       for (const trig of fresh) {
@@ -3093,6 +3292,10 @@ export default function ChatIsland({ lang }: { lang: string }) {
           // Images are shown directly; no auto-summary run afterwards.
           const out = await runImageTrigger(trig, accumulated);
           accumulated = out.accumulated;
+        } else if (trig.kind === "notebook" || trig.kind === "mail") {
+          const out = await runToolTrigger(trig, accumulated);
+          accumulated = out.accumulated;
+          if (out.success) toolFollowUp = true;
         }
       }
 
@@ -3206,6 +3409,9 @@ export default function ChatIsland({ lang }: { lang: string }) {
         vlmApiModel: settings.vlmModel,
         vlmCorrectionModel: settings.vlmCorrectionModel,
         systemPrompt: settings.systemPrompt,
+        // Tool documentation only travels when the permission is actually on -
+        // an assistant that cannot act should not be told how to.
+        toolPrompt: buildToolPrompt(),
       }),
       signal: abortRef.current?.signal,
 
@@ -3887,13 +4093,27 @@ export default function ChatIsland({ lang }: { lang: string }) {
             setShowSettings(false);
             setShowMailSync(true);
           }}
-          onClose={() => setShowSettings(false)}
+          onClose={() => {
+            setShowSettings(false);
+            setMailToolsAllowed(isMailAllowed());
+          }}
           lang={lang}
         />
       )}
 
       {showNotebook && (
-        <NotebookModal lang={lang} onClose={() => setShowNotebook(false)} />
+        <NotebookModal
+          lang={lang}
+          revision={notebookRevision}
+          onNotebookOpen={(nb) => {
+            activeNotebookRef.current = nb;
+          }}
+          onClose={() => {
+            setShowNotebook(false);
+            // The permission may have been toggled while the window was open.
+            setNotebookToolsAllowed(isNotebookAssistantAllowed());
+          }}
+        />
       )}
 
       {showMailSync && (

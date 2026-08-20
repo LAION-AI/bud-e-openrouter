@@ -272,6 +272,54 @@ export class ImapClient {
     this.#selected = folder;
   }
 
+  /**
+   * Lists the mailboxes. The special-use flags tell us which one is Drafts or
+   * Sent without guessing at localised names like "Entwürfe".
+   */
+  async listFolders(): Promise<
+    { name: string; flags: string[]; specialUse: string }[]
+  > {
+    const res = await this.#command('LIST "" "*"');
+    const out: { name: string; flags: string[]; specialUse: string }[] = [];
+    for (const line of res.lines) {
+      // * LIST (\HasNoChildren \Drafts) "/" "INBOX/Drafts"
+      const m = /^\*\s+LIST\s+\(([^)]*)\)\s+(?:"[^"]*"|NIL)\s+(.+)$/i.exec(
+        line.text,
+      );
+      if (!m) continue;
+      const flags = m[1].trim().split(/\s+/).filter(Boolean);
+      let name = m[2].trim();
+      if (name.startsWith('"') && name.endsWith('"')) {
+        name = name.slice(1, -1).replace(/\\(.)/g, "$1");
+      }
+      // Literals were replaced by markers; recover the folder name from them.
+      const lit = /^\x00LIT(\d+)\x00$/.exec(name);
+      if (lit) {
+        name = new TextDecoder().decode(line.literals[Number(lit[1])] ?? new Uint8Array());
+      }
+      const special = flags.find((f) =>
+        /^\\(Drafts|Sent|Trash|Junk|Archive|All|Flagged)$/i.test(f)
+      );
+      out.push({
+        name,
+        flags,
+        specialUse: special ? special.slice(1).toLowerCase() : "",
+      });
+    }
+    return out;
+  }
+
+  /** Number of messages in the selected folder, from the SELECT response. */
+  async messageCount(folder: string): Promise<number> {
+    const res = await this.#mustCommand(`SELECT ${quoted(folder)}`);
+    this.#selected = folder;
+    for (const line of res.lines) {
+      const m = /^\*\s+(\d+)\s+EXISTS/i.exec(line.text);
+      if (m) return Number(m[1]);
+    }
+    return 0;
+  }
+
   /** UID SEARCH; returns matching UIDs. */
   async searchUids(criteria: string): Promise<number[]> {
     const res = await this.#mustCommand(`UID SEARCH ${criteria}`);

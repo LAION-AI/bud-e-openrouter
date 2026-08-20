@@ -9,6 +9,7 @@ import * as $api_bildungsplan from "./routes/api/bildungsplan.ts";
 import * as $api_chat from "./routes/api/chat.ts";
 import * as $api_debug from "./routes/api/debug.ts";
 import * as $api_imagegen from "./routes/api/imagegen.ts";
+import * as $api_mail from "./routes/api/mail.ts";
 import * as $api_mailsync from "./routes/api/mailsync.ts";
 import * as $api_papers from "./routes/api/papers.ts";
 import * as $api_stt from "./routes/api/stt.ts";
@@ -31,6 +32,7 @@ const manifest = {
     "./routes/api/chat.ts": $api_chat,
     "./routes/api/debug.ts": $api_debug,
     "./routes/api/imagegen.ts": $api_imagegen,
+    "./routes/api/mail.ts": $api_mail,
     "./routes/api/mailsync.ts": $api_mailsync,
     "./routes/api/papers.ts": $api_papers,
     "./routes/api/stt.ts": $api_stt,

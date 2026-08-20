@@ -20,6 +20,14 @@ import {
   toIpynb,
 } from "../utils/notebookStore.ts";
 import { EXAMPLES, notebookFromExample } from "../utils/notebookExamples.ts";
+import {
+  DEFAULT_LIMITS,
+  isAssistantAllowed,
+  loadLimits,
+  type NotebookLimits,
+  saveLimits,
+  setAssistantAllowed,
+} from "../utils/notebookTools.ts";
 
 /** Pinned so a CDN release cannot change the behaviour underfoot. */
 const PYODIDE_INDEX_URL = "https://cdn.jsdelivr.net/pyodide/v0.29.0/full/";
@@ -38,9 +46,15 @@ interface PendingInput {
 export default function NotebookModal({
   lang = "en",
   onClose,
+  onNotebookOpen,
+  revision = 0,
 }: {
   lang?: string;
   onClose: () => void;
+  /** Tells the chat which notebook the assistant should act on. */
+  onNotebookOpen?: (notebook: Notebook) => void;
+  /** Bumped by the chat after a tool changed something, so we re-read. */
+  revision?: number;
 }) {
   const t = (key: string) =>
     (notebookContent[lang]?.[key] ?? notebookContent.en[key] ?? key) as string;
@@ -65,6 +79,10 @@ export default function NotebookModal({
   const [showHelp, setShowHelp] = useState(() =>
     listNotebooks().length === 0
   );
+  const [assistantAllowed, setAllowed] = useState(() => isAssistantAllowed());
+  const [limits, setLimits] = useState<NotebookLimits>(() => loadLimits());
+  const [showLimits, setShowLimits] = useState(false);
+
   const [showNotice, setShowNotice] = useState(() => {
     try {
       return localStorage.getItem(NOTICE_KEY) !== "1";
@@ -86,7 +104,18 @@ export default function NotebookModal({
   useEffect(() => {
     saveNotebook(notebook);
     setNotebooks(listNotebooks());
+    onNotebookOpen?.(notebook);
   }, [notebook]);
+
+  // A tool call changed something behind our back - read it back in.
+  useEffect(() => {
+    if (revision === 0) return;
+    const fresh = listNotebooks();
+    setNotebooks(fresh);
+    const mine = fresh.find((n) => n.id === notebook.id);
+    if (mine) setNotebook(mine);
+    else if (fresh[0]) setNotebook(fresh[0]);
+  }, [revision]);
 
   useEffect(() => () => workerRef.current?.terminate(), []);
 
@@ -455,6 +484,90 @@ export default function NotebookModal({
           </ToolButton>
         </div>
 
+        {/* ------------------------------------------- assistant permission */}
+        <div class="px-4 py-2 border-b bg-white shrink-0">
+          <div class="flex flex-wrap items-center gap-x-3 gap-y-1 max-w-4xl mx-auto">
+            <label class="flex items-center gap-2 text-sm cursor-pointer">
+              <input
+                type="checkbox"
+                checked={assistantAllowed}
+                onChange={(e) => {
+                  const on = (e.target as HTMLInputElement).checked;
+                  setAllowed(on);
+                  setAssistantAllowed(on);
+                }}
+                class="w-4 h-4 accent-blue-600"
+              />
+              <span class="text-lg leading-none">🤖</span>
+              <span class="font-medium text-slate-800">
+                {t("allowAssistant")}
+              </span>
+            </label>
+
+            {assistantAllowed && (
+              <button
+                onClick={() => setShowLimits((v) => !v)}
+                class="text-xs text-blue-700 hover:underline"
+              >
+                {t("contextLimits")}
+              </button>
+            )}
+            <p class="basis-full text-xs text-slate-500">
+              {t("allowAssistantHint")}
+            </p>
+          </div>
+
+          {assistantAllowed && showLimits && (
+            <div class="max-w-4xl mx-auto mt-2 p-3 bg-slate-50 border rounded-lg">
+              <div class="flex flex-wrap gap-4">
+                <LimitField
+                  label={t("limitSource")}
+                  value={limits.sourcePerCell}
+                  min={100}
+                  max={20000}
+                  onChange={(v) => {
+                    const next = { ...limits, sourcePerCell: v };
+                    setLimits(next);
+                    saveLimits(next);
+                  }}
+                />
+                <LimitField
+                  label={t("limitOutput")}
+                  value={limits.outputPerCell}
+                  min={0}
+                  max={20000}
+                  onChange={(v) => {
+                    const next = { ...limits, outputPerCell: v };
+                    setLimits(next);
+                    saveLimits(next);
+                  }}
+                />
+                <LimitField
+                  label={t("limitCells")}
+                  value={limits.maxCells}
+                  min={1}
+                  max={200}
+                  onChange={(v) => {
+                    const next = { ...limits, maxCells: v };
+                    setLimits(next);
+                    saveLimits(next);
+                  }}
+                />
+                <button
+                  onClick={() => {
+                    setLimits({ ...DEFAULT_LIMITS });
+                    saveLimits({ ...DEFAULT_LIMITS });
+                  }}
+                  class="self-end px-2 py-1 text-xs text-slate-600 hover:bg-slate-200 rounded"
+                >
+                  {t("restart") === "Neu starten" ? "Standard" : "Default"}
+                </button>
+              </div>
+              <p class="text-xs text-slate-500 mt-2">{t("limitsHint")}</p>
+            </div>
+          )}
+        </div>
+
         {/* --------------------------------------------- body: side + cells */}
         <div class="flex-1 flex min-h-0">
           {sidebarOpen && (
@@ -548,6 +661,40 @@ export default function NotebookModal({
 }
 
 // ------------------------------------------------------------------ pieces
+
+function LimitField({
+  label,
+  value,
+  min,
+  max,
+  onChange,
+}: {
+  label: string;
+  value: number;
+  min: number;
+  max: number;
+  onChange: (value: number) => void;
+}) {
+  return (
+    <label class="text-xs text-slate-600">
+      <span class="block mb-0.5">{label}</span>
+      <input
+        type="number"
+        value={value}
+        min={min}
+        max={max}
+        onInput={(e) => {
+          const n = Number((e.target as HTMLInputElement).value);
+          if (Number.isFinite(n)) {
+            onChange(Math.max(min, Math.min(max, Math.floor(n))));
+          }
+        }}
+        class="w-28 px-2 py-1 border border-slate-300 rounded
+               focus:ring-2 focus:ring-blue-400 outline-none"
+      />
+    </label>
+  );
+}
 
 function KernelBadge(
   { kernel, status, t }: {

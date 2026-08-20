@@ -184,6 +184,7 @@ async function getModelResponseStream(
   llmApiKey: string,
   llmApiModel: string,
   systemPrompt: string,
+  toolPrompt: string,
   vlmApiUrl: string,
   vlmApiKey: string,
   vlmApiModel: string,
@@ -235,6 +236,12 @@ async function getModelResponseStream(
   if (systemPrompt != "") {
     const toolPrefix = chatContent[lang]?.toolUsagePrompt ?? "";
     useThisSystemPrompt = toolPrefix + systemPrompt;
+  }
+  // Notebook and mailbox instructions are sent by the client, and only while
+  // the user has granted the matching permission - so an assistant that cannot
+  // act is never told how to.
+  if (toolPrompt && toolPrompt.trim()) {
+    useThisSystemPrompt += "\n\n" + toolPrompt.trim();
   }
   messages.unshift({ role: "system", content: useThisSystemPrompt });
 
@@ -668,6 +675,7 @@ export const handler: Handlers = {
       payload.universalApiKey,
       payload.llmApiUrl, payload.llmApiKey, payload.llmApiModel,
       payload.systemPrompt,
+      typeof payload.toolPrompt === "string" ? payload.toolPrompt : "",
       payload.vlmApiUrl, payload.vlmApiKey, payload.vlmApiModel, payload.vlmCorrectionModel,
       wantsStream,
       new URL(req.url).origin,
@@ -724,6 +732,7 @@ export const handler: Handlers = {
       payload.universalApiKey,
       payload.llmApiUrl, payload.llmApiKey, payload.llmApiModel,
       payload.systemPrompt,
+      typeof payload.toolPrompt === "string" ? payload.toolPrompt : "",
       payload.vlmApiUrl, payload.vlmApiKey, payload.vlmApiModel, payload.vlmCorrectionModel,
       wantsStream,
       new URL(req.url).origin,

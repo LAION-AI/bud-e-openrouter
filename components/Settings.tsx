@@ -7,6 +7,14 @@ import {
   type MailAccount,
   mailsyncTest,
 } from "../utils/mailsyncClient.ts";
+import {
+  DEFAULT_MAIL_LIMITS,
+  isMailAllowed,
+  loadMailLimits,
+  type MailLimits,
+  saveMailLimits,
+  setMailAllowed,
+} from "../utils/mailAssistant.ts";
 
 /** The three transport modes we expose, mapped onto the two boolean flags. */
 type Security = "tls" | "starttls" | "none";
@@ -84,6 +92,17 @@ export default function Settings({
     deviceName: mailAccount.deviceName || guessDeviceName(),
   });
   const [showMailSync, setShowMailSync] = useState(false);
+
+  // --- Mailbox skill: letting the assistant read and write mail ---
+  const [mailSkill, setMailSkill] = useState(() => isMailAllowed());
+  const [mailLimits, setMailLimits] = useState<MailLimits>(() =>
+    loadMailLimits()
+  );
+  const updateMailLimits = (patch: Partial<MailLimits>) => {
+    const next = { ...mailLimits, ...patch };
+    setMailLimits(next);
+    saveMailLimits(next);
+  };
   const [mailTest, setMailTest] = useState<
     { state: "idle" | "busy" | "ok" | "error"; message: string }
   >({ state: "idle", message: "" });
@@ -616,6 +635,155 @@ export default function Settings({
           )}
         </div>
 
+        {/* Mailbox skill: the assistant reading and writing mail. Its own
+            section, because granting it is a much bigger decision than
+            setting up the sync. */}
+        <div class="mb-4 border rounded">
+          <div class="px-3 py-2">
+            <label class="flex items-start gap-2 cursor-pointer">
+              <input
+                type="checkbox"
+                class="mt-1 w-4 h-4 accent-blue-600"
+                checked={mailSkill}
+                onChange={(e) => {
+                  const on = (e.target as HTMLInputElement).checked;
+                  setMailSkill(on);
+                  setMailAllowed(on);
+                }}
+              />
+              <span>
+                <span class="font-medium flex items-center gap-1.5">
+                  <span class="text-lg leading-none">📬</span>
+                  {settingsContent[lang].mailSkillTitle}
+                </span>
+                <span class="block text-xs text-gray-500 mt-0.5">
+                  {settingsContent[lang].mailSkillHint}
+                </span>
+              </span>
+            </label>
+
+            {mailSkill && (
+              <div class="mt-3 pl-6 space-y-3 border-l-2 border-slate-200">
+                {!isMailSyncConfigured(mail) && (
+                  <p class="text-xs text-amber-700">
+                    {settingsContent[lang].mailSyncNotConfigured}
+                  </p>
+                )}
+
+                <div>
+                  <label class="block text-xs font-medium text-gray-700 mb-1">
+                    {settingsContent[lang].mailFolders}
+                  </label>
+                  <input
+                    type="text"
+                    value={mailLimits.folders.join(", ")}
+                    onInput={(e) =>
+                      updateMailLimits({
+                        folders: (e.target as HTMLInputElement).value
+                          .split(",")
+                          .map((f) => f.trim())
+                          .filter(Boolean),
+                      })}
+                    class="w-full p-2 border rounded text-sm"
+                    placeholder="INBOX, Sent, Drafts"
+                  />
+                </div>
+
+                <div class="flex flex-wrap gap-3">
+                  <label class="text-xs text-gray-700">
+                    <span class="block mb-0.5">
+                      {settingsContent[lang].mailListLimit}
+                    </span>
+                    <input
+                      type="number"
+                      min={1}
+                      max={200}
+                      value={mailLimits.listLimit}
+                      onInput={(e) =>
+                        updateMailLimits({
+                          listLimit: clampNumber(
+                            (e.target as HTMLInputElement).value, 1, 200,
+                            DEFAULT_MAIL_LIMITS.listLimit,
+                          ),
+                        })}
+                      class="w-24 p-1.5 border rounded"
+                    />
+                  </label>
+                  <label class="text-xs text-gray-700">
+                    <span class="block mb-0.5">
+                      {settingsContent[lang].mailBodyChars}
+                    </span>
+                    <input
+                      type="number"
+                      min={200}
+                      max={100000}
+                      value={mailLimits.bodyChars}
+                      onInput={(e) =>
+                        updateMailLimits({
+                          bodyChars: clampNumber(
+                            (e.target as HTMLInputElement).value, 200, 100000,
+                            DEFAULT_MAIL_LIMITS.bodyChars,
+                          ),
+                        })}
+                      class="w-28 p-1.5 border rounded"
+                    />
+                  </label>
+                  <label class="text-xs text-gray-700">
+                    <span class="block mb-0.5">
+                      {settingsContent[lang].mailAttachmentMb}
+                    </span>
+                    <input
+                      type="number"
+                      min={1}
+                      max={100}
+                      value={mailLimits.attachmentMb}
+                      onInput={(e) =>
+                        updateMailLimits({
+                          attachmentMb: clampNumber(
+                            (e.target as HTMLInputElement).value, 1, 100,
+                            DEFAULT_MAIL_LIMITS.attachmentMb,
+                          ),
+                        })}
+                      class="w-24 p-1.5 border rounded"
+                    />
+                  </label>
+                </div>
+
+                <label class="flex items-center gap-2 text-sm">
+                  <input
+                    type="checkbox"
+                    class="w-4 h-4 accent-blue-600"
+                    checked={mailLimits.allowDrafts}
+                    onChange={(e) =>
+                      updateMailLimits({
+                        allowDrafts: (e.target as HTMLInputElement).checked,
+                      })}
+                  />
+                  {settingsContent[lang].mailAllowDrafts}
+                </label>
+
+                <div>
+                  <label class="flex items-center gap-2 text-sm">
+                    <input
+                      type="checkbox"
+                      class="w-4 h-4 accent-red-600"
+                      checked={mailLimits.allowSend}
+                      onChange={(e) =>
+                        updateMailLimits({
+                          allowSend: (e.target as HTMLInputElement).checked,
+                        })}
+                    />
+                    {settingsContent[lang].mailAllowSend}
+                  </label>
+                  <p class="text-xs text-gray-500 ml-6">
+                    {settingsContent[lang].mailAllowSendHint}
+                  </p>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+
         {/* Advanced Settings Toggle Button */}
         <button
           onClick={() => setShowAdvanced(!showAdvanced)}
@@ -848,4 +1016,16 @@ export default function Settings({
       </div>
     </div>
   );
+}
+
+/** Reads a number field, keeping it inside sane bounds. */
+function clampNumber(
+  raw: string,
+  min: number,
+  max: number,
+  fallback: number,
+): number {
+  const n = Number(raw);
+  if (!Number.isFinite(n)) return fallback;
+  return Math.max(min, Math.min(max, Math.floor(n)));
 }
