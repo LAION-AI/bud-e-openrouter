@@ -1339,6 +1339,7 @@ export default function ChatIsland({ lang }: { lang: string }) {
       "imageedit",
       "notebook",
       "mail",
+      "song",
     ]);
     const keys = Object.keys(obj);
     if (keys.length !== 1) return false;
@@ -1356,6 +1357,17 @@ export default function ChatIsland({ lang }: { lang: string }) {
     if (key === "mail") {
       return mailToolsAllowed && !!v && typeof v === "object" &&
         typeof (v as any).action === "string";
+    }
+
+    // A song brief is a single block of prose plus lyrics - long, with line
+    // breaks, and no "q" field, so it needs its own check rather than falling
+    // through to the search branch below.
+    if (key === "song") {
+      if (typeof v === "string") return v.trim().length > 0;
+      if (v && typeof v === "object") {
+        return String((v as any).prompt ?? "").trim().length > 0;
+      }
+      return false;
     }
 
     // imagegen / imageedit use "prompt" instead of "q"
