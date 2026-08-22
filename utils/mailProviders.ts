@@ -19,6 +19,8 @@ export interface ProviderPreset {
   needsDomain?: boolean;
   domainLabel?: { de: string; en: string };
   domainPlaceholder?: string;
+  /** Example login name, shown greyed out in the user field. */
+  userPlaceholder?: string;
   /** "%d" is replaced by the domain the user typed. */
   imapHost: string;
   imapPort: number;
@@ -33,6 +35,25 @@ export interface ProviderPreset {
 }
 
 export const PROVIDER_PRESETS: ProviderPreset[] = [
+  {
+    key: "schuldock",
+    label: "Schuldock (Schule)",
+    imapHost: "imap.mail.schuldock.de",
+    imapPort: 993,
+    imapTls: true,
+    imapStartTls: false,
+    smtpHost: "smtp.mail.schuldock.de",
+    smtpPort: 465,
+    smtpTls: true,
+    smtpStartTls: false,
+    userPlaceholder: "vorname.nachname",
+    note: {
+      de:
+        "Server und Ports stehen schon richtig - du brauchst nur deinen Anmeldenamen in der Form vorname.nachname und dein IServ-Kennwort. Beides ist dasselbe, mit dem du dich auch sonst anmeldest.",
+      en:
+        "Servers and ports are already filled in - you only need your login name in the form firstname.lastname and your IServ password. Both are the same ones you sign in with elsewhere.",
+    },
+  },
   {
     key: "iserv",
     label: "IServ (Schule)",

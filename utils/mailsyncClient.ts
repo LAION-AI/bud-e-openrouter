@@ -46,8 +46,15 @@ export interface MailAccount {
   deviceName: string;
 }
 
+/**
+ * Prefilled with Schuldock, the mail host the classes here use.
+ *
+ * Server names and ports are the part people get wrong, so they are filled in
+ * and only the login name and password are left to type. Anyone on a different
+ * provider picks one from the list in the settings and overwrites all of it.
+ */
 export const DEFAULT_MAIL_ACCOUNT: MailAccount = {
-  imapHost: "",
+  imapHost: "imap.mail.schuldock.de",
   imapPort: 993,
   imapTls: true,
   imapStartTls: false,
@@ -55,11 +62,11 @@ export const DEFAULT_MAIL_ACCOUNT: MailAccount = {
   imapPass: "",
   folder: "INBOX",
 
-  useSmtp: false,
-  smtpHost: "",
-  smtpPort: 587,
-  smtpTls: false,
-  smtpStartTls: true,
+  useSmtp: true,
+  smtpHost: "smtp.mail.schuldock.de",
+  smtpPort: 465,
+  smtpTls: true,
+  smtpStartTls: false,
   smtpUser: "",
   smtpPass: "",
   fromAddress: "",
