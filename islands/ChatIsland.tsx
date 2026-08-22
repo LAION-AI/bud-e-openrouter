@@ -234,6 +234,16 @@ export default function ChatIsland({ lang }: { lang: string }) {
 
   // Ein fertiges Lied startet von selbst, wenn der Browser es zulaesst.
   // Umschaltbar, weil ungefragt losspielende Musik im Unterricht stoert.
+  /**
+   * Transcript between the two correction phases.
+   *
+   * A ref, not state: a class set of transcripts is megabytes, and putting it
+   * in the message list would push it into localStorage where it does not fit.
+   */
+  const gradingRef = useRef<
+    { docs: any[]; pages: any[]; papers: any[] } | null
+  >(null);
+
   const [songAutoplay, setSongAutoplay] = useState(
     () => localStorage.getItem("bud-e-song-autoplay") !== "0",
   );
@@ -1186,6 +1196,7 @@ export default function ChatIsland({ lang }: { lang: string }) {
       imageIds?: string[]; // Reference multiple images by ID
     }
     | { kind: "song"; prompt: string; model?: string }
+    | { kind: "grade"; criteria?: string }
     // Both only reachable while the matching permission is switched on.
     | { kind: "notebook"; payload: Record<string, unknown> }
     | { kind: "mail"; payload: Record<string, unknown> };
@@ -1340,6 +1351,7 @@ export default function ChatIsland({ lang }: { lang: string }) {
       "notebook",
       "mail",
       "song",
+      "grade",
     ]);
     const keys = Object.keys(obj);
     if (keys.length !== 1) return false;
@@ -1357,6 +1369,12 @@ export default function ChatIsland({ lang }: { lang: string }) {
     if (key === "mail") {
       return mailToolsAllowed && !!v && typeof v === "object" &&
         typeof (v as any).action === "string";
+    }
+
+    // Correcting starts with the uploaded pages alone - the marking scheme is
+    // asked for afterwards - so an empty value is legitimate here.
+    if (key === "grade") {
+      return typeof v === "string" || (!!v && typeof v === "object") || v === true;
     }
 
     // A song brief is a single block of prose plus lyrics - long, with line
@@ -1495,6 +1513,14 @@ export default function ChatIsland({ lang }: { lang: string }) {
       }
 
       // ----- Image generation -----
+      if (k === "grade") {
+        const criteria = typeof val === "string"
+          ? val
+          : String((val as any)?.criteria ?? "");
+        triggers.push({ kind: "grade", criteria: criteria.trim() || undefined });
+        continue;
+      }
+
       if (k === "song") {
         // {"song": "brief"} oder {"song": {"prompt": "...", "model": "..."}}
         const prompt = typeof val === "string"
@@ -1663,6 +1689,7 @@ export default function ChatIsland({ lang }: { lang: string }) {
       // A song shows its own player and lyrics, so there is nothing to
       // summarise afterwards - but it still needs a label here.
       if (t.kind === "song") return `${t.kind}: "${t.prompt}"`;
+      if (t.kind === "grade") return "grade";
       if (t.kind === "notebook" || t.kind === "mail") return t.kind;
       return `${t.kind}: "${t.q}"`;
     }).join(", ");
@@ -2477,6 +2504,8 @@ export default function ChatIsland({ lang }: { lang: string }) {
       // Lieder gibt es nur ueber OpenRouter; ohne solchen Schluessel bekommt
       // das Modell die Anleitung gar nicht erst zu sehen.
       music: /^sk-or-v1-[A-Za-z0-9]/.test((settings.universalApiKey ?? "").trim()),
+      grading: /^sk-or-v1-[A-Za-z0-9]/.test((settings.universalApiKey ?? "").trim()),
+      docCount: images.length + pdfs.length,
       notebookName: notebookToolsAllowed && nb ? nb.name : "",
       notebookCells: notebookToolsAllowed && nb ? nb.cells.length : 0,
       mailFolders: mailOn ? loadMailLimits().folders : [],
@@ -2834,6 +2863,208 @@ ${result.snapshot}`
     }
   };
 
+  /**
+   * Runs the correction agent over the uploaded pages.
+   *
+   * Two phases with a question in between. The first reads and sorts the
+   * pages and hands back a transcript; the assistant then asks the teacher how
+   * to mark, and the answer starts the second. State between the two lives in
+   * a ref rather than in the message list, because the transcripts of a whole
+   * class set are far too large to keep in localStorage.
+   */
+  const runGradeTrigger = async (
+    trig: Extract<AutoTrigger, { kind: "grade" }>,
+    accumulated: Message[],
+  ): Promise<{ accumulated: Message[]; success: boolean }> => {
+    const de = lang === "de";
+    const pending = gradingRef.current;
+    const phase = trig.criteria && pending ? "mark" : "transcribe";
+
+    // Phase 1 needs pages; phase 2 needs the transcript from phase 1.
+    const docs: any[] = [];
+    if (phase === "transcribe") {
+      let i = 0;
+      for (const img of images) {
+        const url = img?.image_url?.url;
+        if (typeof url === "string" && url) {
+          docs.push({ index: ++i, name: img.name ?? `bild_${i}.png`, kind: "image", content: url });
+        }
+      }
+      for (const pdf of pdfs) {
+        docs.push({
+          index: ++i,
+          name: pdf.name ?? `datei_${i}.pdf`,
+          kind: "pdf",
+          content: `data:${pdf.mime_type || "application/pdf"};base64,${pdf.data}`,
+        });
+      }
+      if (docs.length === 0) {
+        const msg = de
+          ? "Für die Korrektur brauche ich zuerst die Arbeiten - lade die Fotos oder PDFs hoch."
+          : "To correct anything I need the papers first - upload the photos or PDFs.";
+        const next = [...accumulated, { role: "assistant", content: msg }];
+        setMessages(next);
+        safePersist(next, currentChatSuffix);
+        return { accumulated: next, success: false };
+      }
+    } else if (!pending) {
+      return { accumulated, success: false };
+    }
+
+    const draftIndex = accumulated.length;
+    let current: Message[] = [...accumulated, {
+      role: "assistant",
+      content: [{
+        type: "agent_steps",
+        id: `grade_${Date.now()}`,
+        title: phase === "transcribe"
+          ? (de ? "Arbeiten werden gelesen" : "Reading the papers")
+          : (de ? "Arbeiten werden korrigiert" : "Marking the papers"),
+        steps: [] as { step: string; detail?: string }[],
+        running: true,
+      }],
+    }];
+    setMessages(current);
+
+    const patch = (fields: Record<string, unknown>) => {
+      current = current.map((m, i) => {
+        if (i !== draftIndex || !Array.isArray(m.content)) return m;
+        return {
+          ...m,
+          content: m.content.map((part: any) =>
+            part?.type === "agent_steps" ? { ...part, ...fields } : part
+          ),
+        };
+      });
+      setMessages(current);
+    };
+    const steps: { step: string; detail?: string }[] = [];
+
+    try {
+      const resp = await fetch("/api/grading", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          phase,
+          lang,
+          universalApiKey: settings.universalApiKey,
+          ...(phase === "transcribe" ? { docs } : {
+            docs: pending!.docs,
+            pages: pending!.pages,
+            papers: pending!.papers,
+            criteria: trig.criteria,
+          }),
+        }),
+      });
+      if (!resp.ok || !resp.body) {
+        throw new Error(await resp.text().catch(() => `HTTP ${resp.status}`));
+      }
+
+      const reader = resp.body.getReader();
+      const decoder = new TextDecoder();
+      let buffer = "";
+      let event = "message";
+      let done: any = null;
+      let failure = "";
+
+      while (true) {
+        const chunk = await reader.read();
+        if (chunk.done) break;
+        buffer += decoder.decode(chunk.value, { stream: true });
+        const lines = buffer.split("\n");
+        buffer = lines.pop() ?? "";
+        for (const raw of lines) {
+          const line = raw.trimEnd();
+          if (line.startsWith("event:")) {
+            event = line.slice(6).trim();
+            continue;
+          }
+          if (!line.startsWith("data:")) continue;
+          let data: any;
+          try {
+            data = JSON.parse(line.slice(5).trim());
+          } catch {
+            continue;
+          }
+          if (event === "step") {
+            steps.push(data);
+            patch({ steps: [...steps] });
+          } else if (event === "done") done = data;
+          else if (event === "error") failure = String(data?.message ?? "");
+          event = "message";
+        }
+      }
+      if (!done) throw new Error(failure || "no result");
+
+      patch({ running: false, steps: [...steps] });
+
+      const file = {
+        type: "file_download",
+        id: `dl_${Date.now()}`,
+        name: done.filename,
+        mime: "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        data: done.docx,
+      };
+
+      if (done.phase === "transcribe") {
+        gradingRef.current = { docs, pages: done.pages, papers: done.papers };
+        const names = (done.papers ?? []).map((p: any) =>
+          `${p.student} (${p.pages.length} ${de ? "Seiten" : "pages"})`
+        ).join(", ");
+        current = [...current, {
+          role: "assistant",
+          content: [
+            {
+              type: "text",
+              text: de
+                ? `Ich habe ${done.pages.length} Seiten gelesen und ${done.papers.length} Arbeiten erkannt: ${names}.\n\n` +
+                  "Die Abschrift kannst du herunterladen und gegenlesen. Damit ich korrigieren kann, " +
+                  "sag mir bitte den Erwartungshorizont: Wie viele Rohpunkte gibt es je Aufgabe, was wird " +
+                  "erwartet, soll ich streng oder wohlwollend bewerten, und zählen Rechtschreibung und " +
+                  "Grammatik mit oder werden sie nur kommentiert? Wenn du einen eigenen Notenschlüssel " +
+                  "hast, nenn ihn - sonst nehme ich die übliche Hamburger Tabelle."
+                : `I read ${done.pages.length} pages and found ${done.papers.length} papers: ${names}.\n\n` +
+                  "You can download the transcript and check it. To mark the work, tell me the marking " +
+                  "scheme: how many raw points per task, what is expected, should I be strict or lenient, " +
+                  "and do spelling and grammar count or are they only commented on? If you have your own " +
+                  "grade table, name it - otherwise I use the usual Hamburg one.",
+            },
+            file,
+          ],
+        }];
+      } else {
+        gradingRef.current = null;
+        current = [...current, {
+          role: "assistant",
+          content: [
+            {
+              type: "text",
+              text: de
+                ? "Die Korrekturvorschläge sind fertig. Die Punktzahlen sind ein Vorschlag - bitte prüfe sie, bevor du sie weitergibst."
+                : "The correction proposals are ready. The points are a proposal - please check them before passing them on.",
+            },
+            file,
+          ],
+        }];
+      }
+      setMessages(current);
+      safePersist(current, currentChatSuffix);
+      return { accumulated: current, success: true };
+    } catch (err) {
+      await serverLog("grade.error", { error: String(err) });
+      patch({ running: false, failed: true });
+      const failed = [...current, {
+        role: "assistant",
+        content: de
+          ? `Die Korrektur ist fehlgeschlagen: ${String(err).slice(0, 200)}`
+          : `Correcting failed: ${String(err).slice(0, 200)}`,
+      }];
+      setMessages(failed);
+      safePersist(failed, currentChatSuffix);
+      return { accumulated: failed, success: false };
+    }
+  };
+
   // ---------- PRIMARY: startStream ----------
   const startStream = async (transcript: string, prevMessages?: Message[]) => {
     // If we're editing a previous user message
@@ -3059,6 +3290,9 @@ ${result.snapshot}`
           // deliberately not pushed to successTrigs.
           const out = await runImageTrigger(trig, accumulated);
           accumulated = out.accumulated;
+        } else if (trig.kind === "grade") {
+          const out = await runGradeTrigger(trig, accumulated);
+          accumulated = out.accumulated;
         } else if (trig.kind === "song") {
           const out = await runSongTrigger(trig, accumulated);
           accumulated = out.accumulated;
@@ -3197,6 +3431,9 @@ ${result.snapshot}`
         } else if (isImageTrigger(trig)) {
           const out = await runImageTrigger(trig, accumulated);
           accumulated = out.accumulated;
+        } else if (trig.kind === "grade") {
+          const out = await runGradeTrigger(trig, accumulated);
+          accumulated = out.accumulated;
         } else if (trig.kind === "song") {
           const out = await runSongTrigger(trig, accumulated);
           accumulated = out.accumulated;
@@ -3279,6 +3516,7 @@ ${result.snapshot}`
         }|${(t.imageIds ?? []).join(",")}|${t.useLastImage ?? ""}`;
       }
       if (t.kind === "song") return `song|${t.prompt}|${t.model ?? ""}`;
+      if (t.kind === "grade") return `grade|${t.criteria ?? ""}`;
       return `${t.kind}|${t.q}|${
         t.kind === "wikipedia" ? (t as any).collection ?? "" : ""
       }|${t.n ?? ""}`;
@@ -3453,6 +3691,9 @@ ${result.snapshot}`
         } else if (isImageTrigger(trig)) {
           // Images are shown directly; no auto-summary run afterwards.
           const out = await runImageTrigger(trig, accumulated);
+          accumulated = out.accumulated;
+        } else if (trig.kind === "grade") {
+          const out = await runGradeTrigger(trig, accumulated);
           accumulated = out.accumulated;
         } else if (trig.kind === "song") {
           const out = await runSongTrigger(trig, accumulated);

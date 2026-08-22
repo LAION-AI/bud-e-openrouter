@@ -213,6 +213,106 @@ function renderTextWithLinksAndBold(text: string) {
   });
 }
 
+/**
+ * The agent's steps, collapsed by default.
+ *
+ * Correcting a class set takes a minute or two, and a spinner that long looks
+ * like a hang. This shows what is happening now, and expands into the full
+ * list for anyone who wants to see how the answer came about.
+ */
+function AgentSteps(
+  { title, steps, running, failed, lang }: {
+    title: string;
+    steps: { step: string; detail?: string }[];
+    running?: boolean;
+    failed?: boolean;
+    lang: string;
+  },
+) {
+  const [open, setOpen] = useState(false);
+  const last = steps[steps.length - 1];
+  const t = (k: string) =>
+    (chatTemplateContent[lang]?.[k] ?? chatTemplateContent.en[k]) as string;
+
+  return (
+    <div class="my-2 rounded-lg border border-slate-200 bg-slate-50 text-sm">
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        class="w-full flex items-center gap-2 px-3 py-2 text-left hover:bg-slate-100 rounded-lg"
+      >
+        <span class="shrink-0">
+          {failed
+            ? <span class="text-red-600">✕</span>
+            : running
+            ? <span class="inline-block w-2.5 h-2.5 rounded-full bg-blue-500 animate-pulse" />
+            : <span class="text-green-700">✓</span>}
+        </span>
+        <span class="font-medium text-slate-700 truncate">{title}</span>
+        <span class="text-slate-500 text-xs truncate flex-1">
+          {!open && last ? last.step : ""}
+        </span>
+        <span class="text-slate-400 text-xs shrink-0">
+          {steps.length} {t("agentSteps")} {open ? "▴" : "▾"}
+        </span>
+      </button>
+      {open && (
+        <ol class="px-3 pb-2 space-y-1">
+          {steps.map((s, i) => (
+            <li key={i} class="flex gap-2 text-xs text-slate-600">
+              <span class="text-slate-400 tabular-nums shrink-0">{i + 1}.</span>
+              <span>
+                {s.step}
+                {s.detail && <span class="block text-slate-400">{s.detail}</span>}
+              </span>
+            </li>
+          ))}
+        </ol>
+      )}
+    </div>
+  );
+}
+
+/** A file the assistant produced, offered for download. */
+function FileDownload(
+  { name, mime, data, lang }: {
+    name: string;
+    mime: string;
+    data: string;
+    lang: string;
+  },
+) {
+  const t = (k: string) =>
+    (chatTemplateContent[lang]?.[k] ?? chatTemplateContent.en[k]) as string;
+
+  const save = () => {
+    // Rebuilt into a Blob rather than linked as a data: URL - browsers refuse
+    // to download very large data: URLs, and a class set easily gets there.
+    const bin = atob(data);
+    const bytes = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+    const url = URL.createObjectURL(new Blob([bytes], { type: mime }));
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = name;
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+
+  const kb = Math.max(1, Math.round((data.length * 3 / 4) / 1024));
+  return (
+    <button
+      type="button"
+      onClick={save}
+      class="my-2 flex items-center gap-2 px-3 py-2 rounded-lg border border-blue-200 bg-blue-50 hover:bg-blue-100 text-sm text-blue-900"
+    >
+      <span class="text-lg leading-none">📄</span>
+      <span class="font-medium">{name}</span>
+      <span class="text-blue-700/70 text-xs">{kb} KB · {t("download")}</span>
+    </button>
+  );
+}
+
 /* ---------- message toolbar (Edit/Refresh/Speak/Download) ---------- */
 function MessageToolbar(props: {
   index: number;
@@ -407,6 +507,29 @@ export default function ChatTemplate(props: {
   const renderContentPart = (content: any, idx: number) => {
     if (content?.type === "text") {
       return <div key={idx}>{renderRichText(content.text)}</div>;
+    }
+    if (content?.type === "agent_steps") {
+      return (
+        <AgentSteps
+          key={idx}
+          lang={lang}
+          title={content.title ?? ""}
+          steps={content.steps ?? []}
+          running={content.running === true}
+          failed={content.failed === true}
+        />
+      );
+    }
+    if (content?.type === "file_download") {
+      return (
+        <FileDownload
+          key={idx}
+          lang={lang}
+          name={content.name ?? "datei"}
+          mime={content.mime ?? "application/octet-stream"}
+          data={content.data ?? ""}
+        />
+      );
     }
     if (content?.type === "audio_url") {
       return (

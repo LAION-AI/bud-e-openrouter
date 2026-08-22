@@ -119,6 +119,8 @@ export const chatIslandContent: InternalizationContent = {
 export const chatTemplateContent: InternalizationContent = {
   "en": {
     songTitle: "Song",
+    agentSteps: "steps",
+    download: "Download",
     songGenerating: "Writing the song - the music arrives in about half a minute.",
     songShowLyrics: "Hide lyrics",
     songHideLyrics: "Show lyrics",
@@ -130,6 +132,8 @@ export const chatTemplateContent: InternalizationContent = {
   },
   "de": {
     songTitle: "Lied",
+    agentSteps: "Schritte",
+    download: "Herunterladen",
     songGenerating: "Das Lied entsteht - die Musik kommt in etwa einer halben Minute.",
     songShowLyrics: "Text ausblenden",
     songHideLyrics: "Text anzeigen",

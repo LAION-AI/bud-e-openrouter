@@ -31,6 +31,10 @@ interface ToolFlags {
   mail: boolean;
   /** Song generation is available (OpenRouter key present). */
   music: boolean;
+  /** Correcting is available (OpenRouter key present). */
+  grading: boolean;
+  /** How many pages are attached right now. */
+  docCount: number;
   notebookName: string;
   notebookCells: number;
   mailFolders: string[];
@@ -44,6 +48,8 @@ function readToolFlags(raw: any): ToolFlags {
     notebook: raw?.notebook === true,
     mail: raw?.mail === true,
     music: raw?.music === true,
+    grading: raw?.grading === true,
+    docCount: Math.max(0, Math.min(200, Number(raw?.docCount) || 0)),
     notebookName: text(raw?.notebookName, 80),
     notebookCells: Math.max(0, Math.min(999, Number(raw?.notebookCells) || 0)),
     mailFolders: Array.isArray(raw?.mailFolders)
@@ -132,6 +138,48 @@ them verbatim. If someone asks how to write the lyrics, explain the [Verse],
 [Chorus], [Bridge] markers and that genre and voice are described before them.`;
 }
 
+/**
+ * How to run a correction.
+ *
+ * Only added when pages are actually attached - offering to mark a class test
+ * with nothing uploaded produces a conversation that cannot go anywhere.
+ */
+function buildGradingSection(lang: string, docCount: number): string {
+  const de = lang === "de";
+  return de
+    ? `## Klassenarbeiten korrigieren
+
+Es sind gerade ${docCount} Dateien hochgeladen. Wenn die Lehrkraft um eine
+Korrektur bittet, löse sie mit \`{"grade": ""}\` aus.
+
+Was dann passiert, und was du dazu sagen solltest:
+1. Die Seiten werden abgeschrieben, den Schülerinnen und Schülern zugeordnet
+   und in die richtige Reihenfolge gebracht. Das dauert ein bis zwei Minuten.
+2. Du bekommst die Abschrift zurück und fragst nach dem Erwartungshorizont.
+3. Sobald die Lehrkraft geantwortet hat, löst du \`{"grade": "..."}\` erneut
+   aus - diesmal mit ihrer Antwort als Text darin, wörtlich und vollständig.
+4. Das Ergebnis ist ein Word-Dokument mit einem Korrekturvorschlag je Arbeit.
+
+Sage immer dazu, dass die Punktzahlen ein Vorschlag sind und geprüft werden
+sollten. Erfinde selbst keine Bewertungsmaßstäbe: wenn die Lehrkraft nichts
+gesagt hat, frag nach.`
+    : `## Marking class tests
+
+${docCount} files are currently uploaded. When the teacher asks for marking,
+trigger it with \`{"grade": ""}\`.
+
+What happens then, and what to say about it:
+1. The pages are transcribed, grouped by pupil and put in reading order. This
+   takes a minute or two.
+2. You get the transcript back and ask for the marking scheme.
+3. Once the teacher has answered, trigger \`{"grade": "..."}\` again - this
+   time with their answer inside it, verbatim and complete.
+4. The result is a Word document with one correction proposal per paper.
+
+Always say that the points are a proposal and should be checked. Do not invent
+marking criteria: if the teacher has not given any, ask.`;
+}
+
 /** Builds the tool part of the system prompt from our own wording. */
 function buildToolSection(flags: ToolFlags, lang: string): string {
   const parts: string[] = [];
@@ -141,6 +189,9 @@ function buildToolSection(flags: ToolFlags, lang: string): string {
   // added there - otherwise the assistant would offer something that cannot
   // run and the user would be told "no" after asking.
   if (flags.music) parts.push(buildSongSection(lang));
+  if (flags.grading && flags.docCount > 0) {
+    parts.push(buildGradingSection(lang, flags.docCount));
+  }
 
   if (flags.notebook) {
     parts.push(chatContent[lang]?.notebookToolPrompt ?? "");
