@@ -1,4 +1,11 @@
 import { Handlers } from "$fresh/server.ts";
+import {
+  getCatalog,
+  isOpenRouterKey,
+  orFetch,
+  routeHeader,
+  withAttempts,
+} from "../../utils/openrouter.ts";
 
 /* ========================= ENV CONFIG ========================= */
 const STT_KEY          = (Deno.env.get("STT_KEY")          || "").trim();
@@ -89,6 +96,93 @@ function decodeMiddlewareBaseFromUniversalKey(universalApiKey: string | undefine
   }
 }
 
+/* ==================== OpenRouter transcription ==================== */
+
+/**
+ * Keeps the model transcribing instead of answering.
+ *
+ * Handed an audio clip, a chat model's first instinct is to reply to what was
+ * said. The middleware guards against that with the same kind of instruction,
+ * and it is the reason a plain "transcribe this" prompt is not enough.
+ */
+const TRANSCRIBE_GUARD =
+  "ROLE: You are a strict speech-to-text transcriber.\n" +
+  "TASK: Transcribe the spoken words in the audio verbatim.\n" +
+  "RULES: Do NOT answer questions, do NOT summarise, do NOT translate, do NOT " +
+  "add speaker labels or prefixes such as 'Assistant:'. Keep the original " +
+  "language. Return ONLY the transcript text, nothing else.";
+
+/** Audio formats OpenRouter's input_audio part accepts, by file extension. */
+function audioFormat(file: File): string {
+  const name = (file.name || "").toLowerCase();
+  const type = (file.type || "").toLowerCase();
+  if (name.endsWith(".wav") || type.includes("wav")) return "wav";
+  if (name.endsWith(".mp3") || type.includes("mpeg")) return "mp3";
+  if (name.endsWith(".ogg") || type.includes("ogg")) return "ogg";
+  if (name.endsWith(".flac") || type.includes("flac")) return "flac";
+  if (name.endsWith(".m4a") || type.includes("m4a")) return "m4a";
+  if (name.endsWith(".webm") || type.includes("webm")) return "webm";
+  return "wav";
+}
+
+function toBase64(bytes: Uint8Array): string {
+  // Chunked so a long recording does not blow the argument limit of apply().
+  let bin = "";
+  const CHUNK = 0x8000;
+  for (let i = 0; i < bytes.length; i += CHUNK) {
+    bin += String.fromCharCode(...bytes.subarray(i, i + CHUNK));
+  }
+  return btoa(bin);
+}
+
+/**
+ * Transcribes via OpenRouter.
+ *
+ * OpenRouter has no Whisper-style endpoint for these models - asking
+ * /audio/transcriptions for a Gemini model answers "model does not exist" - so
+ * the audio goes into a chat completion as an `input_audio` part and the
+ * transcript comes back as the assistant's text.
+ */
+async function transcribeWithOpenRouter(
+  audioFile: File,
+  key: string,
+  overrideModel: string,
+  referer: string,
+): Promise<{ text: string; route: string }> {
+  const bytes = new Uint8Array(await audioFile.arrayBuffer());
+  const data = toBase64(bytes);
+  const format = audioFormat(audioFile);
+  const cat = await getCatalog();
+
+  const outcome = await withAttempts(cat, "asr", overrideModel, async (model, policy, level) => {
+    const { resp } = await orFetch(key, "/chat/completions", {
+      model: model.id,
+      temperature: 0,
+      ...(policy ? { provider: policy } : {}),
+      messages: [{
+        role: "user",
+        content: [
+          { type: "text", text: TRANSCRIBE_GUARD },
+          { type: "input_audio", input_audio: { data, format } },
+        ],
+      }],
+    }, { model, level, referer });
+
+    const body = await resp.json().catch(() => null);
+    if (!resp.ok || body?.error) {
+      const msg = body?.error?.message ?? `HTTP ${resp.status}`;
+      throw new Error(`OpenRouter ASR: ${msg}`);
+    }
+    const text = body?.choices?.[0]?.message?.content;
+    if (typeof text !== "string") throw new Error("OpenRouter ASR: no text in response");
+    return text;
+  });
+
+  // Some models still lead with a label despite the guard.
+  const cleaned = outcome.value.trim().replace(/^(assistant|transcript)\s*:\s*/i, "");
+  return { text: cleaned, route: routeHeader(outcome) };
+}
+
 export const handler: Handlers = {
   async POST(req) {
     try {
@@ -105,9 +199,41 @@ export const handler: Handlers = {
       let useThisSttUrl   = ((formData.get("sttUrl")   as string | null) ?? STT_URL).trim();
       let useThisSttKey   = ((formData.get("sttKey")   as string | null) ?? STT_KEY).trim();
       let useThisSttModel = ((formData.get("sttModel") as string | null) ?? STT_MODEL).trim();
+      // Nur für OpenRouter; getrennt gehalten, damit ein alter
+      // Whisper-Modellname nicht als OpenRouter-Modell verstanden wird.
+      const orModel = ((formData.get("orModel") as string | null) ?? "").trim();
 
       if (!audioFile) {
         return new Response("No audio file uploaded", { status: 400 });
+      }
+
+      // An OpenRouter key skips the middleware entirely: we transcribe here.
+      if (isOpenRouterKey(universalApiKey)) {
+        const origin = (() => {
+          try {
+            return new URL(req.url).origin;
+          } catch {
+            return "";
+          }
+        })();
+        try {
+          const { text, route } = await transcribeWithOpenRouter(
+            audioFile,
+            universalApiKey,
+            orModel,
+            origin,
+          );
+          return new Response(text, {
+            status: 200,
+            headers: {
+              "Content-Type": "text/plain; charset=utf-8",
+              "X-OpenRouter-Route": route,
+            },
+          });
+        } catch (err) {
+          console.error("[OR] STT failed:", err);
+          return new Response(`STT failed: ${err}`, { status: 502 });
+        }
       }
 
       // If a universal key is present, it overrides URL+KEY and picks middleware route

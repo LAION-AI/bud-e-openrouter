@@ -10,6 +10,13 @@ import ChatTemplate from "../components/ChatTemplate.tsx";
 import { ChatSubmitButton } from "../components/ChatSubmitButton.tsx";
 import ImageUploadButton from "../components/ImageUploadButton.tsx";
 import VoiceRecordButton from "../components/VoiceRecordButton.tsx";
+import {
+  MIN_TTS_WORDS,
+  MIN_TTS_WORDS_FOLLOWUP,
+  splitIntoSmartChunks,
+  takeSpeechChunk,
+} from "../utils/ttsChunks.ts";
+import { DEFAULT_TTS_PROMPT } from "../utils/openrouter.ts";
 import { PdfUploadButton, PdfFile } from "../components/PdfUploadButton.tsx";
 
 // Necessary for streaming service
@@ -225,6 +232,11 @@ export default function ChatIsland({ lang }: { lang: string }) {
     stopListRef.current = stopList;
   }, [stopList]);
 
+  // Ein fertiges Lied startet von selbst, wenn der Browser es zulaesst.
+  // Umschaltbar, weil ungefragt losspielende Musik im Unterricht stoert.
+  const [songAutoplay, setSongAutoplay] = useState(
+    () => localStorage.getItem("bud-e-song-autoplay") !== "0",
+  );
   const [showSettings, setShowSettings] = useState(false);
 
   // ---------- Mailbox sync ----------
@@ -269,6 +281,16 @@ export default function ChatIsland({ lang }: { lang: string }) {
     vlmModel: localStorage.getItem("bud-e-vlm-model") || "",
     vlmCorrectionModel: localStorage.getItem("bud-e-vlm-correction-model") ||
       "",
+    // Per-task model overrides for OpenRouter. Empty means "use the default
+    // the server picks", which is what almost everyone will want.
+    orLlmModel: localStorage.getItem("bud-e-or-llm-model") || "",
+    orVlmModel: localStorage.getItem("bud-e-or-vlm-model") || "",
+    orAsrModel: localStorage.getItem("bud-e-or-asr-model") || "",
+    orTtsModel: localStorage.getItem("bud-e-or-tts-model") || "",
+    orImageModel: localStorage.getItem("bud-e-or-image-model") || "",
+    // Stimme, Format und Sprechstil in einem Feld - siehe DEFAULT_TTS_PROMPT.
+    ttsPrompt: localStorage.getItem("bud-e-tts-prompt") ?? DEFAULT_TTS_PROMPT,
+    orMusicModel: localStorage.getItem("bud-e-or-music-model") || "",
   });
 
   // NEW: pending manual speak groups (autostart when first chunk arrives)
@@ -307,7 +329,10 @@ export default function ChatIsland({ lang }: { lang: string }) {
   }, [audioFileDict]);
 
   // ---------- TTS concurrency pool ----------
-  const TTS_POOL_LIMIT = 2;
+  // Drei statt zwei: bei den groesseren Folge-Chunks liefert das Modell rund
+  // 1,9-fache Echtzeit, drei gleichzeitige Anfragen halten die Wiedergabe
+  // damit sicher versorgt, auch wenn eine einmal haengt.
+  const TTS_POOL_LIMIT = 3;
   // Hard ceiling for a single /api/tts request. Without it a hanging upstream
   // would occupy a pool slot forever and starve every following chunk.
   const TTS_REQUEST_TIMEOUT_MS = 90_000;
@@ -480,6 +505,13 @@ export default function ChatIsland({ lang }: { lang: string }) {
       vlmModel: localStorage.getItem("bud-e-vlm-model") || "",
       vlmCorrectionModel: localStorage.getItem("bud-e-vlm-correction-model") ||
         "",
+      orLlmModel: localStorage.getItem("bud-e-or-llm-model") || "",
+      orVlmModel: localStorage.getItem("bud-e-or-vlm-model") || "",
+      orAsrModel: localStorage.getItem("bud-e-or-asr-model") || "",
+      orTtsModel: localStorage.getItem("bud-e-or-tts-model") || "",
+      orImageModel: localStorage.getItem("bud-e-or-image-model") || "",
+      ttsPrompt: localStorage.getItem("bud-e-tts-prompt") ?? DEFAULT_TTS_PROMPT,
+      orMusicModel: localStorage.getItem("bud-e-or-music-model") || "",
     });
   };
 
@@ -502,6 +534,13 @@ export default function ChatIsland({ lang }: { lang: string }) {
       vlmModel: localStorage.getItem("bud-e-vlm-model") || "",
       vlmCorrectionModel: localStorage.getItem("bud-e-vlm-correction-model") ||
         "",
+      orLlmModel: localStorage.getItem("bud-e-or-llm-model") || "",
+      orVlmModel: localStorage.getItem("bud-e-or-vlm-model") || "",
+      orAsrModel: localStorage.getItem("bud-e-or-asr-model") || "",
+      orTtsModel: localStorage.getItem("bud-e-or-tts-model") || "",
+      orImageModel: localStorage.getItem("bud-e-or-image-model") || "",
+      ttsPrompt: localStorage.getItem("bud-e-tts-prompt") ?? DEFAULT_TTS_PROMPT,
+      orMusicModel: localStorage.getItem("bud-e-or-music-model") || "",
     };
     setSettings(savedSettings);
   }, []);
@@ -526,6 +565,13 @@ export default function ChatIsland({ lang }: { lang: string }) {
       "bud-e-vlm-correction-model",
       newSettings.vlmCorrectionModel,
     );
+    localStorage.setItem("bud-e-or-llm-model", newSettings.orLlmModel ?? "");
+    localStorage.setItem("bud-e-or-vlm-model", newSettings.orVlmModel ?? "");
+    localStorage.setItem("bud-e-or-asr-model", newSettings.orAsrModel ?? "");
+    localStorage.setItem("bud-e-or-tts-model", newSettings.orTtsModel ?? "");
+    localStorage.setItem("bud-e-or-image-model", newSettings.orImageModel ?? "");
+    localStorage.setItem("bud-e-tts-prompt", newSettings.ttsPrompt ?? "");
+    localStorage.setItem("bud-e-or-music-model", newSettings.orMusicModel ?? "");
     setShowSettings(false);
     setMailToolsAllowed(isMailAllowed());
   };
@@ -1010,64 +1056,7 @@ export default function ChatIsland({ lang }: { lang: string }) {
   };
 
   // ---------- Smart Chunking ----------
-  const countWords = (s: string) => (s.trim().match(/[^\s]+/g) ?? []).length;
-
-  // "." is only valid as sentence end if left token isn't a number or single-letter enum
-  const isValidDot = (text: string, dotIdx: number) => {
-    const left = text.slice(0, dotIdx).trimEnd();
-    const m = left.match(/([\p{L}\p{N}]+)\s*$/u);
-    if (!m) return false;
-    const token = m[1];
-    if (/^[A-Za-zÄÖÜäöüß]$/.test(token)) return false; // A. / B.
-    if (/^\d+([.)])?$/.test(token)) return false; // 1. / 2)
-    return /[\p{L}]{2,}/u.test(token); // needs ≥2 letters somewhere
-  };
-
-  const findChunkEnd = (text: string, start: number, minWords: number) => {
-    const tail = text.slice(start);
-    if (countWords(tail) <= minWords) return text.length;
-
-    let i = start;
-    while (i < text.length) {
-      const ch = text[i];
-      const wordsSoFar = countWords(text.slice(start, i + 1));
-      if (wordsSoFar >= minWords) {
-        if (i + 2 < text.length && text.slice(i, i + 3) === "...") {
-          return i + 3;
-        }
-        if (/[!?]/.test(ch)) return i + 1;
-        if (ch === "." && isValidDot(text, i)) return i + 1;
-      }
-      i++;
-    }
-
-    // fallback: first whitespace after minWords
-    i = start;
-    while (i < text.length && countWords(text.slice(start, i)) < minWords) i++;
-    while (i < text.length && !/\s/.test(text[i])) i++;
-    return Math.min(text.length, Math.max(i, start + 1));
-  };
-
-  const splitIntoSmartChunks = (text: string) => {
-    const t = text.trim();
-    if (!t) return [] as string[];
-
-    const end1 = findChunkEnd(t, 0, 10);
-    const end2 = findChunkEnd(t, end1, 20);
-    const end3 = findChunkEnd(t, end2, 40);
-
-    const seg1 = t.slice(0, end1).trim();
-    const seg2 = t.slice(end1, end2).trim();
-    const seg3 = t.slice(end2, end3).trim();
-    const seg4 = t.slice(end3).trim();
-
-    const parts: string[] = [];
-    if (seg1) parts.push(seg1);
-    if (seg2) parts.push(seg2);
-    if (seg3) parts.push(seg3);
-    if (seg4) parts.push(seg4);
-    return parts;
-  };
+  // Lives in utils/ttsChunks.ts so the rules can be tested on their own.
 
   // ordered playback starter
   const startOrderedPlaybackForGroup = (groupIndex: number) => {
@@ -1196,6 +1185,7 @@ export default function ChatIsland({ lang }: { lang: string }) {
       imageId?: string; // Reference a specific image by unique ID
       imageIds?: string[]; // Reference multiple images by ID
     }
+    | { kind: "song"; prompt: string; model?: string }
     // Both only reachable while the matching permission is switched on.
     | { kind: "notebook"; payload: Record<string, unknown> }
     | { kind: "mail"; payload: Record<string, unknown> };
@@ -1493,6 +1483,18 @@ export default function ChatIsland({ lang }: { lang: string }) {
       }
 
       // ----- Image generation -----
+      if (k === "song") {
+        // {"song": "brief"} oder {"song": {"prompt": "...", "model": "..."}}
+        const prompt = typeof val === "string"
+          ? val
+          : String((val as any)?.prompt ?? "");
+        const model = typeof val === "object" && val
+          ? String((val as any).model ?? "") || undefined
+          : undefined;
+        if (prompt.trim()) triggers.push({ kind: "song", prompt: prompt.trim(), model });
+        continue;
+      }
+
       if (k === "imagegen") {
         let prompt = "";
         let model: string | undefined;
@@ -1646,6 +1648,9 @@ export default function ChatIsland({ lang }: { lang: string }) {
   const buildAutoSummaryPrompt = (trigs: AutoTrigger[]) => {
     const topics = trigs.map((t) => {
       if (isImageTrigger(t)) return `${t.kind}: "${t.prompt}"`;
+      // A song shows its own player and lyrics, so there is nothing to
+      // summarise afterwards - but it still needs a label here.
+      if (t.kind === "song") return `${t.kind}: "${t.prompt}"`;
       if (t.kind === "notebook" || t.kind === "mail") return t.kind;
       return `${t.kind}: "${t.q}"`;
     }).join(", ");
@@ -2308,6 +2313,7 @@ export default function ChatIsland({ lang }: { lang: string }) {
         size: options?.size || "1024x1024",
         aspectRatio: options?.aspectRatio || "1:1",
         universalApiKey: settings.universalApiKey,
+        orModel: settings.orImageModel,
       };
       if (model) requestBody.model = model;
       if (options?.inputImages && options.inputImages.length > 0) {
@@ -2456,6 +2462,9 @@ export default function ChatIsland({ lang }: { lang: string }) {
     return {
       notebook: notebookToolsAllowed,
       mail: mailOn,
+      // Lieder gibt es nur ueber OpenRouter; ohne solchen Schluessel bekommt
+      // das Modell die Anleitung gar nicht erst zu sehen.
+      music: /^sk-or-v1-[A-Za-z0-9]/.test((settings.universalApiKey ?? "").trim()),
       notebookName: notebookToolsAllowed && nb ? nb.name : "",
       notebookCells: notebookToolsAllowed && nb ? nb.cells.length : 0,
       mailFolders: mailOn ? loadMailLimits().folders : [],
@@ -2676,6 +2685,141 @@ ${result.snapshot}`
     setMessages(next);
     safePersist(next, currentChatSuffix);
     return { accumulated: next, success: formatted.images.length > 0 };
+  };
+
+  /**
+   * Generates a song with Lyria and puts a player in the chat.
+   *
+   * Lyria hands back the lyrics about twenty seconds before the audio, so the
+   * message is written twice: once with the words and a spinner, and again
+   * when the MP3 arrives. That is as close to streaming as this model gets -
+   * the audio itself comes in a single piece, not progressively.
+   */
+  const runSongTrigger = async (
+    trig: Extract<AutoTrigger, { kind: "song" }>,
+    accumulated: Message[],
+  ): Promise<{ accumulated: Message[]; success: boolean }> => {
+    await serverLog("song.call", { prompt: trig.prompt.slice(0, 120), model: trig.model });
+
+    const songId = `song_${String(Date.now()).slice(-8)}`;
+    const draftIndex = accumulated.length;
+    let current: Message[] = [
+      ...accumulated,
+      {
+        role: "assistant",
+        content: [
+          { type: "text", text: "" },
+          {
+            type: "audio_url",
+            audio_url: { url: "" },
+            id: songId,
+            source: "song",
+            pending: true,
+            prompt: trig.prompt,
+            timestamp: Date.now(),
+          },
+        ],
+      },
+    ];
+    setMessages(current);
+
+    /** Replaces the placeholder part in place. */
+    const patch = (fields: Record<string, unknown>) => {
+      const next = current.map((m, i) => {
+        if (i !== draftIndex || !Array.isArray(m.content)) return m;
+        return {
+          ...m,
+          content: m.content.map((part: any) =>
+            part?.id === songId ? { ...part, ...fields } : part
+          ),
+        };
+      });
+      current = next;
+      setMessages(next);
+      return next;
+    };
+
+    try {
+      const resp = await fetch("/api/music", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          prompt: trig.prompt,
+          orModel: trig.model ?? settings.orMusicModel ?? "",
+          universalApiKey: settings.universalApiKey,
+        }),
+      });
+      if (!resp.ok || !resp.body) {
+        const detail = await resp.text().catch(() => "");
+        throw new Error(detail || `HTTP ${resp.status}`);
+      }
+
+      const reader = resp.body.getReader();
+      const decoder = new TextDecoder();
+      let buffer = "";
+      let event = "message";
+      let ok = false;
+      let failure = "";
+
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        buffer += decoder.decode(value, { stream: true });
+        const lines = buffer.split("\n");
+        buffer = lines.pop() ?? "";
+
+        for (const raw of lines) {
+          const line = raw.trimEnd();
+          if (line.startsWith("event:")) {
+            event = line.slice(6).trim();
+            continue;
+          }
+          if (!line.startsWith("data:")) continue;
+          let data: any;
+          try {
+            data = JSON.parse(line.slice(5).trim());
+          } catch {
+            continue;
+          }
+
+          if (event === "lyrics") {
+            patch({ lyrics: data.lyrics });
+          } else if (event === "audio") {
+            patch({
+              audio_url: { url: `data:${data.mime ?? "audio/mpeg"};base64,${data.audio}` },
+              lyrics: data.lyrics ?? undefined,
+              pending: false,
+              model: data.model,
+            });
+            ok = true;
+          } else if (event === "error") {
+            failure = String(data?.message ?? "");
+          }
+          event = "message";
+        }
+      }
+
+      if (!ok) throw new Error(failure || "no audio");
+      const finished = current;
+      safePersist(finished, currentChatSuffix);
+      return { accumulated: finished, success: true };
+    } catch (err) {
+      await serverLog("song.error", { error: String(err) });
+      // Drop the placeholder and say what happened instead of leaving a
+      // spinner that never stops.
+      const failed = [
+        ...accumulated,
+        {
+          role: "assistant",
+          content: lang === "de"
+            ? "Das Lied konnte nicht erzeugt werden."
+            : "The song could not be generated.",
+        },
+      ];
+      setMessages(failed);
+      safePersist(failed, currentChatSuffix);
+      return { accumulated: failed, success: false };
+    }
   };
 
   // ---------- PRIMARY: startStream ----------
@@ -2903,6 +3047,9 @@ ${result.snapshot}`
           // deliberately not pushed to successTrigs.
           const out = await runImageTrigger(trig, accumulated);
           accumulated = out.accumulated;
+        } else if (trig.kind === "song") {
+          const out = await runSongTrigger(trig, accumulated);
+          accumulated = out.accumulated;
         } else if (trig.kind === "notebook" || trig.kind === "mail") {
           // The assistant should see what came back, so these do continue the
           // conversation - but through their own follow-up, not the search
@@ -3038,6 +3185,9 @@ ${result.snapshot}`
         } else if (isImageTrigger(trig)) {
           const out = await runImageTrigger(trig, accumulated);
           accumulated = out.accumulated;
+        } else if (trig.kind === "song") {
+          const out = await runSongTrigger(trig, accumulated);
+          accumulated = out.accumulated;
         } else if (trig.kind === "notebook" || trig.kind === "mail") {
           // This path has no follow-up round; the result is shown as it is.
           const out = await runToolTrigger(trig, accumulated);
@@ -3116,6 +3266,7 @@ ${result.snapshot}`
           t.imageId ?? ""
         }|${(t.imageIds ?? []).join(",")}|${t.useLastImage ?? ""}`;
       }
+      if (t.kind === "song") return `song|${t.prompt}|${t.model ?? ""}`;
       return `${t.kind}|${t.q}|${
         t.kind === "wikipedia" ? (t as any).collection ?? "" : ""
       }|${t.n ?? ""}`;
@@ -3291,6 +3442,9 @@ ${result.snapshot}`
           // Images are shown directly; no auto-summary run afterwards.
           const out = await runImageTrigger(trig, accumulated);
           accumulated = out.accumulated;
+        } else if (trig.kind === "song") {
+          const out = await runSongTrigger(trig, accumulated);
+          accumulated = out.accumulated;
         } else if (trig.kind === "notebook" || trig.kind === "mail") {
           const out = await runToolTrigger(trig, accumulated);
           accumulated = out.accumulated;
@@ -3358,6 +3512,10 @@ ${result.snapshot}`
           return prev;
         });
       } else {
+        // Whatever is left when the stream ends. This is the one place a chunk
+        // may fall below MIN_TTS_WORDS: there is no next sentence to merge it
+        // into, and the chunks before it are already synthesised. Dropping it
+        // would swallow the end of the answer, so a short tail is spoken.
         const remaining = ongoingStream.join("").trim();
         if (remaining) {
           const groupIndex =
@@ -3407,6 +3565,9 @@ ${result.snapshot}`
         vlmApiKey: settings.vlmKey,
         vlmApiModel: settings.vlmModel,
         vlmCorrectionModel: settings.vlmCorrectionModel,
+        // Overrides that only apply when the key is an OpenRouter key.
+        orLlmModel: settings.orLlmModel,
+        orVlmModel: settings.orVlmModel,
         systemPrompt: settings.systemPrompt,
         // Only the flags travel; the instructions themselves are assembled
         // on the server.
@@ -3488,25 +3649,26 @@ ${result.snapshot}`
         if (ttsChunk) {
           // TTS buffer (nur Text außerhalb von { ... })
           ongoingStream.push(ttsChunk);
-          const combined = ongoingStream.join("");
-          const re = /(?<!\d)[.!?]/g;
-          let lastIdx = -1,
-            m: RegExpExecArray | null;
-          while ((m = re.exec(combined)) !== null) lastIdx = m.index;
-          if (lastIdx !== -1) {
-            const split = lastIdx + 1;
-            const toSpeak = combined.slice(0, split).trim();
-            const remaining = combined.slice(split);
-            if (toSpeak) {
-              const groupIndex =
-                assistantDraftIndex === -1
-                  ? newMessagesArr.length
-                  : assistantDraftIndex;
-              getTTS(toSpeak, groupIndex, `stream${currentAudioIndex}`);
-              currentAudioIndex++;
-            }
+          // Keep pulling: one arriving delta can complete more than one chunk.
+          // A sentence shorter than MIN_TTS_WORDS stays in the buffer and is
+          // spoken together with the next one, instead of becoming a clipped
+          // one-word clip of its own.
+          for (;;) {
+            const combined = ongoingStream.join("");
+            // Erster Chunk klein (schneller Sprechbeginn), danach groesser -
+            // eine Anfrage kostet rund 1,3 s Fixaufwand, siehe ttsChunks.ts.
+            const next = takeSpeechChunk(
+              combined,
+              currentAudioIndex === 0 ? MIN_TTS_WORDS : MIN_TTS_WORDS_FOLLOWUP,
+            );
+            if (!next) break;
+            const groupIndex = assistantDraftIndex === -1
+              ? newMessagesArr.length
+              : assistantDraftIndex;
+            getTTS(next.speak, groupIndex, `stream${currentAudioIndex}`);
+            currentAudioIndex++;
             ongoingStream.length = 0;
-            if (remaining.trim()) ongoingStream.push(remaining);
+            if (next.rest.trim()) ongoingStream.push(next.rest);
           }
         }
 
@@ -3645,6 +3807,8 @@ ${result.snapshot}`
             ttsKey: settings.ttsKey,
             ttsUrl: settings.ttsUrl,
             ttsModel: settings.ttsModel,
+            orModel: settings.orTtsModel,
+            ttsPrompt: settings.ttsPrompt,
             universalApiKey: settings.universalApiKey,
           }),
           signal: controller.signal,
@@ -4077,6 +4241,7 @@ ${result.snapshot}`
 
       <ChatTemplate
         lang={lang}
+        songAutoplay={songAutoplay}
         parentImages={images}
         parentPdfs={pdfs}
         messages={messages}
@@ -4107,6 +4272,11 @@ ${result.snapshot}`
       {showSettings && (
         <Settings
           settings={settings}
+          songAutoplay={songAutoplay}
+          onSongAutoplayChange={(v: boolean) => {
+            setSongAutoplay(v);
+            localStorage.setItem("bud-e-song-autoplay", v ? "1" : "0");
+          }}
           mailAccount={mailAccount}
           onSave={handleSaveSettings}
           onSaveMailAccount={handleSaveMailAccount}
@@ -4184,6 +4354,7 @@ ${result.snapshot}`
               sttUrl={settings.sttUrl}
               sttKey={settings.sttKey}
               sttModel={settings.sttModel}
+              orModel={settings.orAsrModel}
               universalApiKey={settings.universalApiKey}
               onFinishRecording={(finalTranscript) => {
                 startStream(finalTranscript);

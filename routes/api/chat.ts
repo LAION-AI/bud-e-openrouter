@@ -2,6 +2,14 @@
 import { Handlers } from "$fresh/server.ts";
 import { ServerSentEventStream } from "https://deno.land/std@0.210.0/http/server_sent_event_stream.ts";
 import { chatContent } from "../../internalization/content.ts";
+import {
+  attemptsFor,
+  getCatalog,
+  isOpenRouterKey,
+  orFetch,
+  policyFor,
+  type Role,
+} from "../../utils/openrouter.ts";
 
 const API_URL = Deno.env.get("LLM_URL") || "";
 const API_KEY = Deno.env.get("LLM_KEY") || "";
@@ -21,6 +29,8 @@ const MIDDLEWARE_BASE_URL = Deno.env.get("MIDDLEWARE_URL") || "";
 interface ToolFlags {
   notebook: boolean;
   mail: boolean;
+  /** Song generation is available (OpenRouter key present). */
+  music: boolean;
   notebookName: string;
   notebookCells: number;
   mailFolders: string[];
@@ -33,6 +43,7 @@ function readToolFlags(raw: any): ToolFlags {
   return {
     notebook: raw?.notebook === true,
     mail: raw?.mail === true,
+    music: raw?.music === true,
     notebookName: text(raw?.notebookName, 80),
     notebookCells: Math.max(0, Math.min(999, Number(raw?.notebookCells) || 0)),
     mailFolders: Array.isArray(raw?.mailFolders)
@@ -41,10 +52,95 @@ function readToolFlags(raw: any): ToolFlags {
   };
 }
 
+/**
+ * How to write a song brief for Lyria 3 Pro.
+ *
+ * Appended to the system prompt so the assistant can offer songs and, more
+ * importantly, write a brief that actually works. The shape follows Google's
+ * own prompting guide: genre, mood, instrumentation, tempo, voice, then the
+ * lyrics. Section markers are plain [Verse 1] / [Chorus] tags in the lyrics -
+ * Lyria returns its own timed sheet afterwards, we do not have to ask for it.
+ */
+function buildSongSection(lang: string): string {
+  const de = lang === "de";
+  return de
+    ? `## Lieder erzeugen (Lyria 3 Pro)
+
+Du kannst ganze Lieder mit Gesang erzeugen. Löse das mit einem JSON-Objekt aus:
+\`{"song": "der vollständige Auftrag"}\`
+
+**Frage vorher immer nach**, ob das Lied erzeugt werden soll - es dauert etwa
+eine halbe Minute und kostet Geld. Wenn jemand nur "mach mir ein Lied über
+Goldfische" sagt, schreibst du selbst einen fertigen Auftrag samt Text und
+fragst dann, ob du ihn so umsetzen sollst.
+
+**Aufbau eines guten Auftrags** (in dieser Reihenfolge, als Fließtext):
+Genre und Stil, Stimmung, Instrumente, Tempo, Stimme (Geschlecht, Lage,
+Klangfarbe, Sprache) - danach der Liedtext.
+
+Beispiel:
+\`\`\`
+Eine sanfte Akustik-Folk-Ballade, warm und hoffnungsvoll. Nylonsaiten-Gitarre
+und leise Besen auf der Snare. Langsames, wiegendes Tempo. Eine klare weibliche
+Altstimme, die auf Deutsch singt.
+
+[Strophe 1]
+Die Sonne geht am Morgen auf
+und weckt die stille Stadt
+
+[Refrain]
+Ein neuer Tag, ein neues Lied
+singt jeder, der ihn hat
+\`\`\`
+
+**Hinweise**: Nenne Instrumente ausdrücklich, sonst wählt das Modell selbst.
+Für ein Lied ohne Gesang schreibe "Instrumental". Der Nutzer kann eigenen Text
+mitbringen - dann übernimm ihn wörtlich. Fragt jemand, wie man den Text
+schreibt, erkläre die Marken [Strophe], [Refrain], [Bridge] und dass Genre und
+Stimme davor beschrieben werden.`
+    : `## Song generation (Lyria 3 Pro)
+
+You can generate complete songs with vocals. Trigger it with a JSON object:
+\`{"song": "the complete brief"}\`
+
+**Always ask first** whether the song should be generated - it takes about half
+a minute and costs money. If someone just says "make me a song about goldfish",
+write a finished brief including lyrics yourself, then ask whether to run it.
+
+**A good brief** reads as prose, in this order: genre and style, mood,
+instrumentation, tempo, voice (gender, range, texture, language) - then the
+lyrics.
+
+Example:
+\`\`\`
+A gentle acoustic folk ballad, warm and hopeful, with nylon-string guitar and
+soft brushed drums. Slow, swaying tempo. A clear female alto voice singing in
+English.
+
+[Verse 1]
+The morning sun comes up again
+and wakes the quiet town
+
+[Chorus]
+A brand new day, a brand new song
+for everyone around
+\`\`\`
+
+**Notes**: name the instruments, otherwise the model picks its own. For a song
+without vocals write "Instrumental". If the user brings their own lyrics, use
+them verbatim. If someone asks how to write the lyrics, explain the [Verse],
+[Chorus], [Bridge] markers and that genre and voice are described before them.`;
+}
+
 /** Builds the tool part of the system prompt from our own wording. */
 function buildToolSection(flags: ToolFlags, lang: string): string {
   const parts: string[] = [];
   const de = lang === "de";
+
+  // Songs only exist on the OpenRouter path, so the instructions are only
+  // added there - otherwise the assistant would offer something that cannot
+  // run and the user would be told "no" after asking.
+  if (flags.music) parts.push(buildSongSection(lang));
 
   if (flags.notebook) {
     parts.push(chatContent[lang]?.notebookToolPrompt ?? "");
@@ -117,33 +213,6 @@ function extractAssistantText(anyJson: any): string {
     if (txt) return txt;
   }
   return "";
-}
-
-/** Turn plain text into a minimal OpenAI-style SSE stream for our UI */
-function sseFromText(text: string): ReadableStream<Uint8Array> {
-  const enc = new TextEncoder();
-  if (!text || !text.length) {
-    const noContent = `event: no_content\ndata: {}\n\n`;
-    const end = `data: [DONE]\n\n`;
-    return new ReadableStream({
-      start(controller) {
-        controller.enqueue(enc.encode(noContent));
-        controller.enqueue(enc.encode(end));
-        controller.close();
-      },
-    });
-  }
-  const start = `data: ${JSON.stringify({ choices: [{ delta: { role: "assistant" } }] })}\n\n`;
-  const body = `data: ${JSON.stringify({ choices: [{ delta: { content: text } }] })}\n\n`;
-  const end = `data: [DONE]\n\n`;
-  return new ReadableStream({
-    start(controller) {
-      controller.enqueue(enc.encode(start));
-      controller.enqueue(enc.encode(body));
-      controller.enqueue(enc.encode(end));
-      controller.close();
-    },
-  });
 }
 
 // deno-lint-ignore no-explicit-any
@@ -246,6 +315,179 @@ function decodeMiddlewareBaseFromUniversalKey(universalApiKey: string | undefine
   }
 }
 
+/**
+ * Reports an upstream failure as an SSE stream rather than an HTTP error.
+ *
+ * The client is already listening for events at this point; a plain 502 would
+ * simply look like the connection died, with nothing to show the user.
+ */
+function sseError(
+  provider: string,
+  model: string,
+  status: number,
+  message: string,
+): Response {
+  return new Response(
+    new ReadableStream({
+      start(controller) {
+        controller.enqueue({
+          event: "error",
+          data: JSON.stringify({ provider, model, status, message }),
+          id: Date.now(),
+        });
+        controller.enqueue({ data: "[DONE]", event: "message", id: Date.now() });
+        controller.enqueue({ event: "no_content", data: "{}", id: Date.now() });
+        controller.close();
+      },
+    }).pipeThrough(new ServerSentEventStream()),
+    { headers: { "Content-Type": "text/event-stream" } },
+  );
+}
+
+/**
+ * Forwards an already-open upstream response to the client as SSE.
+ *
+ * Only text deltas are passed on; roles, tool objects and keep-alives are
+ * dropped. Split out of the middleware path so OpenRouter, which speaks the
+ * same dialect, reuses it instead of carrying a second copy of this loop.
+ */
+function streamUpstream(
+  upstream: Response,
+  model: string,
+  provider: string,
+  route?: string,
+): Response {
+  const headers: Record<string, string> = { "Content-Type": "text/event-stream" };
+  if (route) headers["X-OpenRouter-Route"] = route;
+
+  return new Response(
+    new ReadableStream({
+      async start(controller) {
+        let closed = false;
+        let sentAny = false;
+        const finish = () => {
+          if (closed) return;
+          if (!sentAny) controller.enqueue({ event: "no_content", data: "{}", id: Date.now() });
+          closed = true;
+          controller.close();
+        };
+
+        try {
+          const ctype = (upstream.headers.get("content-type") || "").toLowerCase();
+          const decoder = new TextDecoder();
+
+          if (ctype.includes("text/event-stream")) {
+            const reader = upstream.body!.getReader();
+            let buffer = "";
+            let currentEvent = "message";
+
+            while (true) {
+              const { done, value } = await reader.read();
+              if (done) break;
+              buffer += decoder.decode(value, { stream: true });
+              const lines = buffer.split("\n");
+              buffer = lines.pop() || "";
+
+              for (const raw of lines) {
+                const line = raw.trimEnd();
+
+                if (line === "data: [DONE]") {
+                  finish();
+                  continue;
+                }
+                if (line.startsWith("event: ")) {
+                  currentEvent = line.slice(7).trim() || "message";
+                  continue;
+                }
+                if (!line.startsWith("data: ")) continue;
+
+                const jsonStr = line.substring(6);
+                if (currentEvent === "error") {
+                  controller.enqueue({ event: "error", data: jsonStr, id: Date.now() });
+                  currentEvent = "message";
+                  continue;
+                }
+
+                try {
+                  const data = JSON.parse(jsonStr);
+                  const delta = data?.choices?.[0]?.delta;
+                  if (typeof delta?.content === "string" && delta.content.length > 0) {
+                    if (delta.content === "<|im_end|>") {
+                      finish();
+                    } else {
+                      sentAny = true;
+                      controller.enqueue({
+                        data: JSON.stringify(delta.content),
+                        id: Date.now(),
+                        event: "message",
+                      });
+                    }
+                  }
+                  if (data?.error) {
+                    controller.enqueue({ event: "error", data: JSON.stringify(data.error), id: Date.now() });
+                  }
+                } catch {
+                  if (jsonStr && jsonStr !== "[DONE]") {
+                    sentAny = true;
+                    controller.enqueue({ data: JSON.stringify(jsonStr), id: Date.now(), event: "message" });
+                  }
+                }
+              }
+            }
+            finish();
+          } else {
+            // Non-SSE answer → emit it as a single message event.
+            //
+            // This used to build raw SSE bytes in a helper and push
+            // them into the controller, but the stream is piped through
+            // ServerSentEventStream, which serialises event *objects*. Feeding
+            // it bytes produced a handful of blank lines and nothing else, so
+            // an upstream that replied with plain JSON to a streaming request
+            // left the user staring at an empty answer.
+            const raw = await upstream.text();
+            let text = "";
+            try {
+              text = extractAssistantText(JSON.parse(raw));
+            } catch {
+              text = raw;
+            }
+            if (text) {
+              sentAny = true;
+              controller.enqueue({
+                data: JSON.stringify(text),
+                id: Date.now(),
+                event: "message",
+              });
+            }
+            controller.enqueue({ data: "[DONE]", event: "message", id: Date.now() });
+            finish();
+          }
+        } catch (e: any) {
+          controller.enqueue({
+            event: "error",
+            data: JSON.stringify({
+              provider,
+              model,
+              status: 502,
+              message: String(e?.message || e || "Network error"),
+            }),
+            id: Date.now(),
+          });
+          controller.enqueue({ data: "[DONE]", event: "message", id: Date.now() });
+          finish();
+        }
+      },
+      cancel(err) {
+        const s = String(err || "").toLowerCase();
+        if (err && !s.includes("resource closed") && !s.includes("aborterror")) {
+          console.warn("SSE canceled:", err);
+        }
+      },
+    }).pipeThrough(new ServerSentEventStream()),
+    { headers },
+  );
+}
+
 async function getModelResponseStream(
   messages: Message[],
   lang: string,
@@ -261,9 +503,18 @@ async function getModelResponseStream(
   vlmCorrectionModel: string,
   wantsStream: boolean | undefined,
   originBase: string | undefined, // request origin for fallback
+  // Nur wirksam bei einem OpenRouter-Schlüssel. Getrennt von llmApiModel,
+  // damit ein für die Middleware gesetzter Modellname nicht plötzlich als
+  // OpenRouter-Modell interpretiert wird.
+  orLlmModel: string = "",
+  orVlmModel: string = "",
 ) {
+  // An OpenRouter key bypasses the middleware: the model, the provider policy
+  // and the URL are all decided further down, in step 7.
+  const useOpenRouter = isOpenRouterKey(universalApiKey);
+
   // If a universal key is provided, override URLs to the middleware using decoded base; fallback to env → origin.
-  if (universalApiKey) {
+  if (universalApiKey && !useOpenRouter) {
     const decoded = decodeMiddlewareBaseFromUniversalKey(universalApiKey);
     const envBase = (MIDDLEWARE_BASE_URL || "").trim();
     const base = decoded || envBase || (originBase || "").trim();
@@ -279,9 +530,14 @@ async function getModelResponseStream(
     }
   }
 
-  // 1) Universal key format check
-  if (universalApiKey !== "" && !universalApiKey.toLowerCase().startsWith("sbe-")) {
-    return new Response("Invalid Universal API Key. It needs to start with 'sbe-'.", { status: 400 });
+  // 1) Universal key format check - "sbe-" for the middleware, "sk-or-v1-" for
+  //    OpenRouter. Anything else is a typo and fails fast rather than being
+  //    forwarded to some upstream as a bearer token.
+  if (universalApiKey !== "" && !useOpenRouter && !universalApiKey.toLowerCase().startsWith("sbe-")) {
+    return new Response(
+      "Invalid Universal API Key. It needs to start with 'sbe-' or 'sk-or-v1-'.",
+      { status: 400 },
+    );
   }
 
   // 2) Strip trailing assistant messages
@@ -571,6 +827,94 @@ async function getModelResponseStream(
     useApiModel = chosenVlmModel;
   }
 
+  /* ------------------------- OpenRouter ------------------------- */
+  if (useOpenRouter) {
+    // A picture in the conversation makes this a VLM request; the two roles
+    // have separate overrides in the settings even though they share defaults.
+    const role: Role = isImageInMessages ? "vlm" : "llm";
+    const override = isImageInMessages ? orVlmModel : orLlmModel;
+
+    let cat;
+    try {
+      cat = await getCatalog();
+    } catch (err) {
+      console.error("[OR] catalog unavailable:", err);
+      return new Response("Could not reach OpenRouter's model list.", { status: 502 });
+    }
+
+    const attempts = attemptsFor(cat, role, override);
+    if (attempts.length === 0) {
+      return new Response(`No OpenRouter model available for ${role}.`, { status: 502 });
+    }
+
+    // Walks the same model/strictness chain the other routes use. The upstream
+    // is only handed on once it answered ok, so a rejected attempt costs a
+    // retry instead of a broken stream.
+    const openUpstream = async (stream: boolean) => {
+      const tried: string[] = [];
+      let lastStatus = 502;
+      let lastText = "";
+      for (const { model, level } of attempts) {
+        const policy = await policyFor(model, level);
+        const { resp } = await orFetch(universalApiKey, "/chat/completions", {
+          model: model.id,
+          stream,
+          messages,
+          ...(policy ? { provider: policy } : {}),
+        }, { model, level, referer: originBase });
+        if (resp.ok) {
+          const route = tried.length
+            ? `${model.id};${level};after=${tried.join("|")}`
+            : `${model.id};${level}`;
+          if (tried.length) console.log(`[OR] ${role} using ${route}`);
+          return { resp, route, model: model.id };
+        }
+        lastStatus = resp.status;
+        lastText = await resp.text().catch(() => "");
+        tried.push(`${model.id}:${level}`);
+        console.error(`[OR] ${role} ${model.id}:${level} -> ${resp.status} ${lastText.slice(0, 200)}`);
+      }
+      return { resp: null, status: lastStatus, text: lastText, tried };
+    };
+
+    if (wantsStream === false) {
+      const r = await openUpstream(false);
+      if (!r.resp) {
+        return new Response(
+          r.text || "OpenRouter request failed",
+          { status: r.status ?? 502, headers: { "Content-Type": "application/json" } },
+        );
+      }
+      const txt = await r.resp.text();
+      return new Response(txt, {
+        status: r.resp.status,
+        headers: {
+          "Content-Type": r.resp.headers.get("content-type") ?? "application/json",
+          "X-OpenRouter-Route": r.route!,
+        },
+      });
+    }
+
+    // Streaming: OpenRouter speaks the same SSE dialect as the middleware, so
+    // the existing forwarding loop below handles it unchanged. Point the shared
+    // variables at OpenRouter and let it run.
+    const r = await openUpstream(true);
+    if (!r.resp || !r.resp.body) {
+      return new Response(
+        JSON.stringify({
+          error: {
+            provider: "openrouter",
+            status: r.status ?? 502,
+            message: r.text || "All OpenRouter attempts failed",
+            tried: r.tried,
+          },
+        }),
+        { status: 502, headers: { "Content-Type": "application/json" } },
+      );
+    }
+    return streamUpstream(r.resp, r.model!, "openrouter", r.route!);
+  }
+
   // Non-stream: pass JSON straight through
   if (wantsStream === false) {
     const resp = await fetch(useApiUrl, {
@@ -585,154 +929,25 @@ async function getModelResponseStream(
     });
   }
 
-  // Stream: request SSE and forward (TEXT-ONLY DELTAS)
-  return new Response(
-    new ReadableStream({
-      async start(controller) {
-        let closed = false;
-        let sentAny = false;
-        const finish = () => {
-          if (closed) return;
-          if (!sentAny) controller.enqueue({ event: "no_content", data: "{}", id: Date.now() });
-          closed = true;
-          controller.close();
-        };
+  // Stream: fetch first, then hand the open response to the shared forwarder -
+  // the same one the OpenRouter branch uses, so both speak one SSE dialect.
+  const upstream = await fetch(useApiUrl, {
+    method: "POST",
+    headers: { "Content-Type": "application/json", Authorization: `Bearer ${useApiKey}` },
+    body: JSON.stringify({ model: useApiModel, stream: true, messages }),
+  });
 
-        try {
-          const upstream = await fetch(useApiUrl, {
-            method: "POST",
-            headers: { "Content-Type": "application/json", Authorization: `Bearer ${useApiKey}` },
-            body: JSON.stringify({ model: useApiModel, stream: true, messages }),
-          });
+  if (!upstream.ok || !upstream.body) {
+    const errText = await upstream.text().catch(() => "");
+    return sseError(
+      "middleware",
+      useApiModel,
+      upstream.status,
+      errText || upstream.statusText || "Upstream error",
+    );
+  }
 
-          if (!upstream.ok || !upstream.body) {
-            const errText = await upstream.text().catch(() => "");
-            controller.enqueue({
-              event: "error",
-              data: JSON.stringify({
-                provider: "middleware",
-                model: useApiModel,
-                status: upstream.status,
-                message: errText || upstream.statusText || "Upstream error",
-              }),
-              id: Date.now(),
-            });
-            controller.enqueue({ data: "[DONE]", event: "message", id: Date.now() });
-            finish();
-            return;
-          }
-
-          const ctype = (upstream.headers.get("content-type") || "").toLowerCase();
-          const isSSE = ctype.includes("text/event-stream");
-          const decoder = new TextDecoder();
-
-          if (isSSE) {
-            const reader = upstream.body.getReader();
-            let buffer = "";
-            let currentEvent = "message";
-
-            readLoop: while (true) {
-              const { done, value } = await reader.read();
-              if (done) break;
-              buffer += decoder.decode(value, { stream: true });
-              const lines = buffer.split("\n");
-              buffer = lines.pop() || "";
-
-              for (const raw of lines) {
-                const line = raw.trimEnd();
-
-                if (line === "data: [DONE]") {
-                  finish();
-                  continue;
-                }
-                if (line.startsWith("event: ")) {
-                  currentEvent = line.slice(7).trim() || "message";
-                  continue;
-                }
-                if (!line.startsWith("data: ")) continue;
-
-                const jsonStr = line.substring(6);
-
-                if (currentEvent === "error") {
-                  controller.enqueue({ event: "error", data: jsonStr, id: Date.now() });
-                  currentEvent = "message";
-                  continue;
-                }
-
-                try {
-                  const data = JSON.parse(jsonStr);
-                  const delta = data?.choices?.[0]?.delta;
-                  // Only forward text deltas; ignore role/tool/etc. objects
-                  if (typeof delta?.content === "string" && delta.content.length > 0) {
-                    if (delta.content === "<|im_end|>") {
-                      finish();
-                    } else {
-                      sentAny = true;
-                      // IMPORTANT: emit a JSON *string* so client JSON.parse(ev.data) => string
-                      controller.enqueue({ data: JSON.stringify(delta.content), id: Date.now(), event: "message" });
-                    }
-                  }
-                  if (data?.error) {
-                    controller.enqueue({ event: "error", data: JSON.stringify(data.error), id: Date.now() });
-                  }
-                } catch {
-                  // Some relays emit non-JSON "data:" lines; forward as text
-                  if (jsonStr && jsonStr !== "[DONE]") {
-                    sentAny = true;
-                    controller.enqueue({ data: JSON.stringify(jsonStr), id: Date.now(), event: "message" });
-                  }
-                }
-              }
-            }
-            finish();
-          } else {
-            // Non-SSE fallback → convert JSON to mini-SSE
-            const raw = await upstream.text();
-            let text = "";
-            try {
-              text = extractAssistantText(JSON.parse(raw));
-            } catch {
-              text = raw;
-            }
-            const stream = sseFromText(text);
-            const reader = stream.getReader();
-            while (true) {
-              const { done, value } = await reader.read();
-              if (done) break;
-              controller.enqueue(value);
-              if (!sentAny) {
-                try {
-                  const s = new TextDecoder().decode(value);
-                  if (s.includes('"content"')) sentAny = true;
-                } catch {}
-              }
-            }
-            finish();
-          }
-        } catch (e: any) {
-          controller.enqueue({
-            event: "error",
-            data: JSON.stringify({
-              provider: "middleware",
-              model: useApiModel,
-              status: 502,
-              message: String(e?.message || e || "Network error"),
-            }),
-            id: Date.now(),
-          });
-          controller.enqueue({ data: "[DONE]", event: "message", id: Date.now() });
-          finish();
-        }
-      },
-      cancel(err) {
-        const s = String(err || "").toLowerCase();
-        if (err && !s.includes("resource closed") && !s.includes("aborterror")) {
-          console.warn("SSE canceled:", err);
-        }
-      },
-    }).pipeThrough(new ServerSentEventStream()),
-    { headers: { "Content-Type": "text/event-stream" } },
-  );
+  return streamUpstream(upstream, useApiModel, "middleware");
 }
 
 export const handler: Handlers = {
@@ -749,6 +964,8 @@ export const handler: Handlers = {
       payload.vlmApiUrl, payload.vlmApiKey, payload.vlmApiModel, payload.vlmCorrectionModel,
       wantsStream,
       new URL(req.url).origin,
+      payload.orLlmModel,
+      payload.orVlmModel,
     );
   },
 
@@ -806,6 +1023,8 @@ export const handler: Handlers = {
       payload.vlmApiUrl, payload.vlmApiKey, payload.vlmApiModel, payload.vlmCorrectionModel,
       wantsStream,
       new URL(req.url).origin,
+      payload.orLlmModel,
+      payload.orVlmModel,
     );
   },
 

@@ -1,6 +1,22 @@
 // routes/api/tts.ts
 import { Handlers } from "$fresh/server.ts";
 import { Buffer } from "npm:buffer";
+import {
+  buildSpeechPrompt,
+  DEFAULT_TTS_PROMPT,
+  getCatalog,
+  isOpenRouterKey,
+  orFetch,
+  parsePcmContentType,
+  parseTtsDirectives,
+  pcmToWav,
+  preferredAudioFormat,
+  routeHeader,
+  styleChannelFor,
+  voiceFor,
+  withAttempts,
+} from "../../utils/openrouter.ts";
+import { countWords } from "../../utils/ttsChunks.ts";
 
 /* ========================= ENV CONFIG ========================= */
 const TTS_KEY   = (Deno.env.get("TTS_KEY")   || "").trim();
@@ -120,6 +136,17 @@ function stripJsonLikeBlocks(text: string): string {
   return result;
 }
 
+/**
+ * Bereitet Text für die Sprachausgabe auf: JSON-Blöcke raus, Fettmarkierung
+ * weg, und "bud-e" wird zu "buddy", weil es sonst buchstabiert klingt.
+ * Gilt für jeden Anbieter gleichermaßen, auch für OpenRouter.
+ */
+function cleanForSpeech(text: string): string {
+  return stripJsonLikeBlocks(String(text))
+    .replace(/\*\*(.*?)\*\*/g, "$1")
+    .replace(/bud-e/gi, "buddy");
+}
+
 /* ========================= RETRY-HELPER ========================= */
 async function withRetries<T>(
   label: string,
@@ -236,10 +263,7 @@ async function textToSpeech(
   ttsKey: string,
   ttsModel: string,
 ): Promise<Buffer | null> {
-  // JSON-Blöcke komplett entfernen + Markup entschärfen
-  text = stripJsonLikeBlocks(String(text))
-    .replace(/\*\*(.*?)\*\*/g, "$1")
-    .replace(/bud-e/gi, "buddy");
+  text = cleanForSpeech(text);
 
   const useThisTtsUrl   = (ttsUrl   || TTS_URL);
   const useThisTtsKey   = (ttsKey   || TTS_KEY);
@@ -347,6 +371,75 @@ async function textToSpeech(
   }
 }
 
+/* ==================== OpenRouter Sprachausgabe ==================== */
+
+/**
+ * Synthetisiert über OpenRouters /audio/speech.
+ *
+ * Die beiden Modelle liefern unterschiedliche Formate: Gemini gibt
+ * ausschließlich rohes PCM heraus und lehnt mp3 ausdrücklich ab, Grok liefert
+ * fertiges MP3. Rohes PCM spielt kein Browser ab, deshalb bekommt es hier
+ * einen WAV-Kopf. Der Content-Type der Antwort sagt dem Client, was er hat.
+ */
+async function speakWithOpenRouter(
+  text: string,
+  key: string,
+  overrideModel: string,
+  prompt: string,
+  referer: string,
+): Promise<{ audio: Uint8Array; contentType: string; route: string }> {
+  const cat = await getCatalog();
+  // "voice=Zephyr;format=mp3;style=..." - one editable field carries all three.
+  const directives = parseTtsDirectives(prompt || DEFAULT_TTS_PROMPT);
+
+  const outcome = await withAttempts(cat, "tts", overrideModel, async (model, policy, level) => {
+    const t0 = Date.now();
+    const { resp } = await orFetch(key, "/audio/speech", {
+      model: model.id,
+      // Der Stil geht je nach Hersteller anders hinein - siehe styleChannelFor().
+      input: styleChannelFor(model.id) === "prompt"
+        ? buildSpeechPrompt(text, directives.style)
+        : text,
+      ...(styleChannelFor(model.id) === "instructions" && directives.style
+        ? { instructions: directives.style }
+        : {}),
+      // Pflichtfeld - ohne Stimme antwortet OpenRouter mit 400.
+      // Stimmennamen gehoeren zu einem Hersteller - siehe voiceFor().
+      voice: voiceFor(model.id, directives.voice),
+      ...(() => {
+        const fmt = preferredAudioFormat(model.id, directives.format);
+        return fmt ? { response_format: fmt } : {};
+      })(),
+      ...(policy ? { provider: policy } : {}),
+    }, { model, level, referer });
+
+    if (!resp.ok) {
+      const body = await resp.text().catch(() => "");
+      throw new Error(`OpenRouter TTS ${resp.status}: ${body.slice(0, 300)}`);
+    }
+    // Logged so the round-trip time per chunk can be read off the server log.
+    console.log(
+      `[TTS] ${model.id} ok in ${Date.now() - t0}ms for ${countWords(text)} words`,
+    );
+
+    const ct = (resp.headers.get("Content-Type") || "").toLowerCase();
+    const raw = new Uint8Array(await resp.arrayBuffer());
+    if (raw.byteLength === 0) throw new Error("OpenRouter TTS: empty audio");
+
+    if (ct.includes("pcm")) {
+      const { rate, channels } = parsePcmContentType(ct);
+      return {
+        audio: pcmToWav(raw, rate, channels),
+        contentType: "audio/wav",
+      };
+    }
+    // Alles andere (mp3, ogg) kann der Browser direkt abspielen.
+    return { audio: raw, contentType: ct || "audio/mpeg" };
+  });
+
+  return { ...outcome.value, route: routeHeader(outcome) };
+}
+
 export const handler: Handlers = {
   async POST(req) {
     // Payload: { text, textPosition?, ttsUrl?, ttsKey?, ttsModel?, universalApiKey? }
@@ -363,11 +456,46 @@ export const handler: Handlers = {
       ttsUrl = "",
       ttsKey = "",
       ttsModel = "",
+      ttsVoice = "",
+      ttsPrompt = "",
+      orModel = "",
       universalApiKey = "",
     } = payload || {};
 
     if (!text || typeof text !== "string") {
       return new Response("No text provided", { status: 400 });
+    }
+
+    // Ein OpenRouter-Schlüssel geht direkt zu OpenRouter, nicht zur Middleware.
+    if (isOpenRouterKey(universalApiKey)) {
+      const spoken = cleanForSpeech(text);
+      if (!spoken.trim()) {
+        return new Response("Nothing to speak", { status: 400 });
+      }
+      const origin = (() => {
+        try { return new URL(req.url).origin; } catch { return ""; }
+      })();
+      try {
+        const { audio, contentType, route } = await speakWithOpenRouter(
+          spoken,
+          universalApiKey,
+          String(orModel || ""),
+          // Ein Feld traegt Stimme, Format und Stil; ttsVoice ist der Altweg.
+          String(ttsPrompt || ttsVoice || ""),
+          origin,
+        );
+        return new Response(audio, {
+          status: 200,
+          headers: {
+            "Content-Type": contentType,
+            "Cache-Control": "no-store",
+            "X-OpenRouter-Route": route,
+          },
+        });
+      } catch (err) {
+        console.error("[OR] TTS failed for textPosition=", textPosition, err);
+        return new Response("Failed to synthesize speech", { status: 502 });
+      }
     }
 
     // Ziel-URL/-Key bestimmen

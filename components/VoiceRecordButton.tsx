@@ -12,6 +12,7 @@ import { IS_BROWSER } from "$fresh/runtime.ts";
  * @param {string} props.sttUrl
  * @param {string} props.sttKey
  * @param {string} props.sttModel
+ * @param {string} props.orModel
  * @param {string} props.universalApiKey
  */
 function VoiceRecordButton({
@@ -21,6 +22,7 @@ function VoiceRecordButton({
   sttUrl,
   sttKey,
   sttModel,
+  orModel,
   universalApiKey,
 }: {
   onFinishRecording: (transcript: string) => void;
@@ -29,6 +31,8 @@ function VoiceRecordButton({
   sttUrl: string;
   sttKey: string;
   sttModel: string;
+  /** OpenRouter-Modell für die Spracherkennung, falls gewählt. */
+  orModel?: string;
   universalApiKey: string;
 }) {
   const [isRecording, setIsRecording] = useState(false);
@@ -109,6 +113,7 @@ function VoiceRecordButton({
     formData.append("sttUrl", sttUrl);
     formData.append("sttKey", sttKey);
     formData.append("sttModel", sttModel);
+    formData.append("orModel", orModel ?? "");
     formData.append("universalApiKey", universalApiKey);
 
     try {

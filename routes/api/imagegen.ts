@@ -6,6 +6,13 @@
  */
 
 import { Handlers } from "$fresh/server.ts";
+import {
+  getCatalog,
+  isOpenRouterKey,
+  orFetch,
+  routeHeader,
+  withAttempts,
+} from "../../utils/openrouter.ts";
 
 const MIDDLEWARE_BASE_URL = Deno.env.get("MIDDLEWARE_URL") || "";
 
@@ -417,6 +424,65 @@ async function generateWithOpenAICompatible(
   }
 }
 
+/* ==================== OpenRouter image generation ==================== */
+
+/**
+ * Generates (or edits) an image through OpenRouter.
+ *
+ * There is no /images/generations endpoint: image models are driven through
+ * chat completions with `modalities: ["image", "text"]`, and the result comes
+ * back on `message.images[]` as a data URL - which is exactly the shape the
+ * rest of this route already produces, so nothing downstream changes.
+ * Reference images ride along as ordinary image_url parts, which is what makes
+ * editing work.
+ */
+async function generateWithOpenRouter(
+  prompt: string,
+  key: string,
+  overrideModel: string,
+  inputImages: string[],
+  referer: string,
+): Promise<{ images: string[]; model: string; route: string }> {
+  const cat = await getCatalog();
+
+  const content: unknown[] = [{ type: "text", text: prompt }];
+  for (const url of inputImages) {
+    content.push({ type: "image_url", image_url: { url } });
+  }
+
+  const outcome = await withAttempts(cat, "image", overrideModel, async (model, policy, level) => {
+    const { resp } = await orFetch(key, "/chat/completions", {
+      model: model.id,
+      modalities: ["image", "text"],
+      ...(policy ? { provider: policy } : {}),
+      messages: [{
+        role: "user",
+        content: content.length === 1 ? prompt : content,
+      }],
+    }, { model, level, referer });
+
+    const body = await resp.json().catch(() => null);
+    if (!resp.ok || body?.error) {
+      const msg = body?.error?.message ?? `HTTP ${resp.status}`;
+      throw new Error(`OpenRouter image: ${msg}`);
+    }
+
+    const images: string[] = [];
+    for (const img of body?.choices?.[0]?.message?.images ?? []) {
+      const url = img?.image_url?.url;
+      if (typeof url === "string" && url) images.push(url);
+    }
+    if (images.length === 0) throw new Error("OpenRouter image: no image returned");
+    return images;
+  });
+
+  return {
+    images: outcome.value,
+    model: outcome.model,
+    route: routeHeader(outcome),
+  };
+}
+
 export const handler: Handlers = {
   async POST(req) {
     try {
@@ -430,6 +496,7 @@ export const handler: Handlers = {
         size = "1024x1024",
         aspectRatio = "1:1",
         universalApiKey = "",
+        orModel = "",
         imagegenApiKey = "",
         imagegenApiUrl = "",
         input_images = [], // Reference images for editing
@@ -449,6 +516,38 @@ export const handler: Handlers = {
 
       let result: { images: string[]; model?: string; error?: string };
       const resolvedModel = model ? resolveModel(model) : "";
+
+      // Priority 0: an OpenRouter key talks to OpenRouter directly.
+      if (isOpenRouterKey(universalApiKey)) {
+        const origin = (() => {
+          try { return new URL(req.url).origin; } catch { return ""; }
+        })();
+        try {
+          const out = await generateWithOpenRouter(
+            prompt,
+            universalApiKey,
+            String(orModel || ""),
+            inputImages,
+            origin,
+          );
+          return new Response(
+            JSON.stringify({ images: out.images, model: out.model }),
+            {
+              status: 200,
+              headers: {
+                "Content-Type": "application/json",
+                "X-OpenRouter-Route": out.route,
+              },
+            },
+          );
+        } catch (err) {
+          console.error("[OR] image generation failed:", err);
+          return new Response(
+            JSON.stringify({ error: `Image generation failed: ${err}` }),
+            { status: 502, headers: { "Content-Type": "application/json" } },
+          );
+        }
+      }
 
       // Priority 1: Universal API key - try middleware first, then direct Google API
       if (universalApiKey) {

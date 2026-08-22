@@ -21,6 +21,19 @@ import {
   saveMailLimits,
   setMailAllowed,
 } from "../utils/mailAssistant.ts";
+import OpenRouterModels, { type OrRole } from "./OpenRouterModels.tsx";
+import { DEFAULT_TTS_PROMPT } from "../utils/openrouter.ts";
+
+/**
+ * Recognises an OpenRouter key in the browser.
+ *
+ * Deliberately a copy of the server-side check rather than an import: the
+ * server module reaches out to OpenRouter and has no business being pulled
+ * into the client bundle for one regular expression.
+ */
+function looksLikeOpenRouterKey(key: string): boolean {
+  return /^sk-or-v1-[A-Za-z0-9]/.test((key ?? "").trim());
+}
 
 /** The three transport modes we expose, mapped onto the two boolean flags. */
 type Security = "tls" | "starttls" | "none";
@@ -44,6 +57,8 @@ function applySecurity(
 
 export default function Settings({
   settings,
+  songAutoplay,
+  onSongAutoplayChange,
   mailAccount,
   onSave,
   onSaveMailAccount,
@@ -67,12 +82,23 @@ export default function Settings({
     vlmKey: string;
     vlmModel: string;
     vlmCorrectionModel: string;
+    /** Per-task overrides, only used when the key is an OpenRouter key. */
+    orLlmModel: string;
+    orVlmModel: string;
+    orAsrModel: string;
+    orTtsModel: string;
+    orImageModel: string;
+    orMusicModel: string;
+    /** Voice, format and speaking style for the read-aloud voice, in one field. */
+    ttsPrompt: string;
   };
   mailAccount: MailAccount;
   onSave: (newSettings: typeof settings) => void;
   onSaveMailAccount: (account: MailAccount) => void;
   onOpenMailSync: (account: MailAccount) => void;
   onClose: () => void;
+  songAutoplay: boolean;
+  onSongAutoplayChange: (value: boolean) => void;
   lang?: string;
 }) {
   // --- Default system prompt resolution (pre-fill the textbox) ---
@@ -99,7 +125,9 @@ export default function Settings({
   });
   const [showMailSync, setShowMailSync] = useState(false);
   const [showMailInfo, setShowMailInfo] = useState(false);
-  const [providerKey, setProviderKey] = useState("iserv");
+  // Schuldock steht oben in der Liste und ist hier vorausgewählt, weil es
+  // die Voreinstellung des Kontos ist.
+  const [providerKey, setProviderKey] = useState("schuldock");
   const [providerDomain, setProviderDomain] = useState("");
   const [providerNote, setProviderNote] = useState("");
 
@@ -377,6 +405,39 @@ export default function Settings({
           />
         </div>
 
+        {/* Only shown for an OpenRouter key - for every other key the whole
+            section would be meaningless. */}
+        {looksLikeOpenRouterKey(newSettings.universalApiKey) && (
+          <OpenRouterModels
+            apiKey={newSettings.universalApiKey}
+            lang={lang}
+            values={{
+              llm: newSettings.orLlmModel ?? "",
+              vlm: newSettings.orVlmModel ?? "",
+              asr: newSettings.orAsrModel ?? "",
+              tts: newSettings.orTtsModel ?? "",
+              image: newSettings.orImageModel ?? "",
+              music: newSettings.orMusicModel ?? "",
+            }}
+            ttsPrompt={newSettings.ttsPrompt ?? DEFAULT_TTS_PROMPT}
+            defaultTtsPrompt={DEFAULT_TTS_PROMPT}
+            onTtsPromptChange={(v: string) => updateSettings("ttsPrompt", v)}
+            songAutoplay={songAutoplay}
+            onSongAutoplayChange={onSongAutoplayChange}
+            onChange={(role: OrRole, id: string) => {
+              const field = {
+                llm: "orLlmModel",
+                vlm: "orVlmModel",
+                asr: "orAsrModel",
+                tts: "orTtsModel",
+                image: "orImageModel",
+                music: "orMusicModel",
+              }[role];
+              updateSettings(field, id);
+            }}
+          />
+        )}
+
         {/* System Prompt (persists locally) */}
         <div class="mb-4">
           {/* Plain label (no emoji), so no "??" */}
@@ -566,7 +627,8 @@ export default function Settings({
                       imapUser: (e.target as HTMLInputElement).value.trim(),
                     })}
                   class="w-full p-2 border rounded focus:ring-2 focus:ring-blue-500"
-                  placeholder={settingsContent[lang].imapUserPlaceholder}
+                  placeholder={findPreset(providerKey)?.userPlaceholder ??
+                    settingsContent[lang].imapUserPlaceholder}
                 />
               </div>
 

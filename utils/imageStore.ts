@@ -117,6 +117,21 @@ export async function deleteImage(chatSuffix: string, imageId: string): Promise<
  * @param chatSuffix - The chat suffix to namespace images under
  */
 // deno-lint-ignore no-explicit-any
+/**
+ * The sub-object carrying the data URL of a media part.
+ *
+ * Generated songs are stored the same way as images - a multi-megabyte MP3
+ * would blow the localStorage quota just as a picture does - so both part
+ * types go through the same strip/rehydrate machinery.
+ */
+// deno-lint-ignore no-explicit-any
+function mediaHolder(part: any): { url?: string } | null {
+  if (!part) return null;
+  if (part.type === "image_url") return part.image_url ?? null;
+  if (part.type === "audio_url") return part.audio_url ?? null;
+  return null;
+}
+
 export async function stripImagesForStorage(messages: any[], chatSuffix: string): Promise<any[]> {
   // Written in two passes: first store everything, then replace only those
   // images that actually made it into IndexedDB.
@@ -125,8 +140,7 @@ export async function stripImagesForStorage(messages: any[], chatSuffix: string)
 
   const collect = (part: Record<string, unknown>) => {
     const imageId = part.id as string;
-    // deno-lint-ignore no-explicit-any
-    const dataUrl = (part as any).image_url.url as string;
+    const dataUrl = mediaHolder(part)!.url as string;
     if (saved.has(imageId)) return;
     saved.set(imageId, false);
     savePromises.push(
@@ -140,9 +154,8 @@ export async function stripImagesForStorage(messages: any[], chatSuffix: string)
     if (!Array.isArray(msg.content)) continue;
     for (const part of msg.content) {
       if (
-        part?.type === "image_url" && part?.id &&
-        typeof part?.image_url?.url === "string" &&
-        part.image_url.url.startsWith("data:")
+        part?.id && typeof mediaHolder(part)?.url === "string" &&
+        mediaHolder(part)!.url!.startsWith("data:")
       ) {
         collect(part);
       }
@@ -155,22 +168,20 @@ export async function stripImagesForStorage(messages: any[], chatSuffix: string)
 
     const newContent = msg.content.map((part: Record<string, unknown>) => {
       if (
-        part?.type === "image_url" &&
         part?.id &&
-        // deno-lint-ignore no-explicit-any
-        (part as any)?.image_url?.url &&
-        // deno-lint-ignore no-explicit-any
-        typeof (part as any).image_url.url === "string" &&
-        // deno-lint-ignore no-explicit-any
-        (part as any).image_url.url.startsWith("data:")
+        typeof mediaHolder(part)?.url === "string" &&
+        mediaHolder(part)!.url!.startsWith("data:")
       ) {
         const imageId = part.id as string;
         // Only swap in the placeholder if the image really is in IndexedDB.
         if (!saved.get(imageId)) return part;
 
+        // Write back under the key the part actually uses, otherwise a
+        // song would silently turn into an image on the way to storage.
+        const key = part.type === "audio_url" ? "audio_url" : "image_url";
         return {
           ...part,
-          image_url: { url: `${IDB_PLACEHOLDER}${chatSuffix}:${imageId}` },
+          [key]: { url: `${IDB_PLACEHOLDER}${chatSuffix}:${imageId}` },
         };
       }
       return part;
@@ -201,14 +212,12 @@ export async function rehydrateImages(messages: any[], chatSuffix: string): Prom
     for (let p = 0; p < msg.content.length; p++) {
       const part = msg.content[p];
       if (
-        part?.type === "image_url" &&
         part?.id &&
-        part?.image_url?.url &&
-        typeof part.image_url.url === "string" &&
-        part.image_url.url.startsWith(IDB_PLACEHOLDER)
+        typeof mediaHolder(part)?.url === "string" &&
+        mediaHolder(part)!.url!.startsWith(IDB_PLACEHOLDER)
       ) {
         // Parse the placeholder: idb://chatSuffix:imageId
-        const ref = part.image_url.url.slice(IDB_PLACEHOLDER.length);
+        const ref = mediaHolder(part)!.url!.slice(IDB_PLACEHOLDER.length);
         const colonIdx = ref.indexOf(":");
         if (colonIdx >= 0) {
           // New format with chat suffix
@@ -249,10 +258,9 @@ export async function rehydrateImages(messages: any[], chatSuffix: string): Prom
 
   for (const { msg, part, data } of results) {
     if (data && Array.isArray(restored[msg].content)) {
-      restored[msg].content[part] = {
-        ...restored[msg].content[part],
-        image_url: { url: data },
-      };
+      const target = restored[msg].content[part];
+      const key = target?.type === "audio_url" ? "audio_url" : "image_url";
+      restored[msg].content[part] = { ...target, [key]: { url: data } };
     }
   }
 

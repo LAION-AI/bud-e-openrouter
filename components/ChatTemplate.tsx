@@ -1,5 +1,7 @@
 import { useEffect, useState } from "preact/hooks";
 import { chatTemplateContent } from "../internalization/content.ts";
+import { joinAudio } from "../utils/audioJoin.ts";
+import SongPlayer from "./SongPlayer.tsx";
 
 /* ---------- helpers ---------- */
 function downloadAudioFiles(
@@ -22,12 +24,21 @@ function downloadAudioFiles(
     .sort((a, b) => a - b)
     .map((idx) => items[String(idx)].audio.src);
 
-  Promise.all(ordered.map((src) => fetch(src).then((r) => r.blob())))
-    .then((blobs) => {
-      const url = URL.createObjectURL(new Blob(blobs, { type: "audio/mpeg" }));
+  Promise.all(
+    ordered.map((src) =>
+      fetch(src).then((r) => r.arrayBuffer()).then((b) => new Uint8Array(b))
+    ),
+  )
+    .then((parts) => {
+      // WAV parts cannot simply be laid end to end - see utils/audioJoin.ts.
+      const joined = joinAudio(parts);
+      if (!joined) return;
+      const url = URL.createObjectURL(
+        new Blob([joined.bytes], { type: joined.mime }),
+      );
       const a = document.createElement("a");
       a.href = url;
-      a.download = `audio-${ts}.mp3`;
+      a.download = `audio-${ts}.${joined.ext}`;
       a.click();
       URL.revokeObjectURL(url);
     })
@@ -357,9 +368,12 @@ export default function ChatTemplate(props: {
   onImageChange: (images: AnyImg[]) => void;
   onPdfChange?: (pdfs: AnyPdf[]) => void;
   onTrashAction: () => void;
+  /** Whether a finished song starts by itself. Off means the user presses play. */
+  songAutoplay?: boolean;
 }) {
   const {
     lang,
+    songAutoplay = false,
     parentImages,
     parentPdfs,
     messages,
@@ -393,6 +407,22 @@ export default function ChatTemplate(props: {
   const renderContentPart = (content: any, idx: number) => {
     if (content?.type === "text") {
       return <div key={idx}>{renderRichText(content.text)}</div>;
+    }
+    if (content?.type === "audio_url") {
+      return (
+        <SongPlayer
+          key={idx}
+          lang={lang}
+          autoplay={songAutoplay}
+          song={{
+            url: content.audio_url?.url ?? "",
+            lyrics: content.lyrics,
+            title: content.title,
+            model: content.model,
+            pending: content.pending === true,
+          }}
+        />
+      );
     }
     if (content?.type === "image_url") {
       const imageId = content.id || null;

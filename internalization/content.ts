@@ -118,12 +118,22 @@ export const chatIslandContent: InternalizationContent = {
 
 export const chatTemplateContent: InternalizationContent = {
   "en": {
+    songTitle: "Song",
+    songGenerating: "Writing the song - the music arrives in about half a minute.",
+    songShowLyrics: "Hide lyrics",
+    songHideLyrics: "Show lyrics",
+    songDownload: "Download as MP3",
     readOutText: "Read out text",
     silent: "Silent",
     autoScrollOn: "Auto scroll",
     autoScrollOff: "Manual scroll",
   },
   "de": {
+    songTitle: "Lied",
+    songGenerating: "Das Lied entsteht - die Musik kommt in etwa einer halben Minute.",
+    songShowLyrics: "Text ausblenden",
+    songHideLyrics: "Text anzeigen",
+    songDownload: "Als MP3 herunterladen",
     readOutText: "Text vorlesen",
     silent: "Stumm",
     autoScrollOn: "Automatisch scrollen",
@@ -284,6 +294,37 @@ export const settingsContent: InternalizationContent = {
     mailInfoWhere:
       "If in doubt, your provider's help pages list the values under \"external mail program\" or \"IMAP settings\".",
     close: "Close",
+    orTitle: "OpenRouter models",
+    orHint:
+      "Your key was recognised as an OpenRouter key, so requests go straight to OpenRouter instead of through the middleware. The models below are preselected; you can pick a different one for each task.",
+    orRefresh: "Refresh list",
+    orUpdated: "List updated",
+    orStale: "Could not refresh - showing the previous list.",
+    orLoading: "Loading models...",
+    orError: "Could not load the model list.",
+    orLegend:
+      "EU = processed inside the EU. ZDR = zero data retention, the provider keeps nothing. Prices are dollars per million tokens.",
+    orGroupRecommended: "Recommended",
+    orGroupEuZdr: "EU + zero retention",
+    orGroupEu: "EU, no retention guarantee",
+    orGroupZdr: "Zero retention, outside the EU",
+    orGroupOther: "No guarantee",
+    orRoleLlm: "Chat (LLM)",
+    orRoleVlm: "Images in chat (VLM)",
+    orRoleAsr: "Speech recognition (ASR)",
+    orRoleTts: "Read aloud (TTS)",
+    orRoleImage: "Image generation",
+    orRoleMusic: "Song generation",
+    orSongAutoplay: "Play songs automatically",
+    orSongAutoplayHint: "Off means the song waits for you to press play. Some browsers block autoplay until you have clicked on the page.",
+    orDefault: "recommended",
+    orAlternative: "alternative",
+    orTtsPromptLabel: "Voice and speaking style",
+    orTtsPromptHint:
+      "Gemini has no style setting: the instruction is written in front of the text, in prose, and the model follows it. Keep the voice=, format= and style= parts - style may be rewritten freely, and works best in English even for German text.",
+    orTtsPromptReset: "Reset",
+    orNoTtsEu:
+      "No text-to-speech model on OpenRouter runs in the EU or offers zero retention - not one. If that matters for your setting, leave reading aloud switched off or use your own voice server.",
     mailSkillTitle: "Let Bud-E manage your mail",
     mailSkillHint:
       "Bud-E can then search the mailbox, read single messages out to you, save drafts and hand you attachments - like a secretary. It uses the same mailbox as the sync above. Listings only ever carry sender, date and subject; a message is opened one at a time and only when needed.",
@@ -390,6 +431,37 @@ export const settingsContent: InternalizationContent = {
     mailInfoWhere:
       "Im Zweifel stehen die Werte auf den Hilfeseiten deines Anbieters unter \"externes Mailprogramm\" oder \"IMAP-Einstellungen\".",
     close: "Schließen",
+    orTitle: "OpenRouter-Modelle",
+    orHint:
+      "Dein Schlüssel wurde als OpenRouter-Schlüssel erkannt. Anfragen gehen deshalb direkt zu OpenRouter statt über die Middleware. Die Modelle unten sind voreingestellt; du kannst für jede Aufgabe ein anderes wählen.",
+    orRefresh: "Liste aktualisieren",
+    orUpdated: "Liste aktualisiert",
+    orStale: "Aktualisierung fehlgeschlagen - angezeigt wird die vorige Liste.",
+    orLoading: "Modelle werden geladen...",
+    orError: "Die Modellliste konnte nicht geladen werden.",
+    orLegend:
+      "EU = wird in der EU verarbeitet. ZDR = Zero Data Retention, der Anbieter speichert nichts. Preise in Dollar je Million Token.",
+    orGroupRecommended: "Empfohlen",
+    orGroupEuZdr: "EU + Zero Retention",
+    orGroupEu: "EU, ohne Speicher-Garantie",
+    orGroupZdr: "Zero Retention, außerhalb der EU",
+    orGroupOther: "Ohne Garantie",
+    orRoleLlm: "Unterhaltung (LLM)",
+    orRoleVlm: "Bilder im Chat (VLM)",
+    orRoleAsr: "Spracherkennung (ASR)",
+    orRoleTts: "Vorlesen (TTS)",
+    orRoleImage: "Bilderzeugung",
+    orRoleMusic: "Lieder erzeugen",
+    orSongAutoplay: "Lieder von selbst abspielen",
+    orSongAutoplayHint: "Aus bedeutet: das Lied wartet, bis du auf Abspielen drückst. Manche Browser blockieren das automatische Abspielen ohnehin, bis du einmal geklickt hast.",
+    orDefault: "empfohlen",
+    orAlternative: "Alternative",
+    orTtsPromptLabel: "Stimme und Sprechweise",
+    orTtsPromptHint:
+      "Gemini kennt keine Stil-Einstellung: die Anweisung wird dem Text als Fließtext vorangestellt, und das Modell hält sich daran. Lass voice=, format= und style= stehen - den Stil kannst du frei umschreiben, auf Englisch wirkt er auch bei deutschem Text am zuverlässigsten.",
+    orTtsPromptReset: "Zurücksetzen",
+    orNoTtsEu:
+      "Kein einziges Sprachausgabe-Modell auf OpenRouter läuft in der EU oder bietet Zero Retention - kein einziges. Wenn das für deinen Einsatz zählt, lass das Vorlesen aus oder nutze einen eigenen Sprachserver.",
     mailSkillTitle: "Bud-E darf deine Mails verwalten",
     mailSkillHint:
       "Bud-E kann dann das Postfach durchsuchen, dir einzelne Nachrichten vorlesen, Entwürfe speichern und dir Anhänge geben - wie ein Sekretär. Er nutzt dasselbe Postfach wie der Abgleich oben. Übersichten enthalten immer nur Absender, Datum und Betreff; eine Nachricht wird einzeln geöffnet und nur dann, wenn sie gebraucht wird.",
