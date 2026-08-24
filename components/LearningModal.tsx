@@ -48,6 +48,20 @@ const ACCENTS: Record<Accent, {
     soft: "bg-emerald-50 border-emerald-200",
     text: "text-emerald-800",
   },
+  violet: {
+    tile: "from-violet-500 to-violet-700 hover:from-violet-400",
+    chip: "bg-violet-100 text-violet-800",
+    bar: "bg-violet-500",
+    soft: "bg-violet-50 border-violet-200",
+    text: "text-violet-800",
+  },
+  teal: {
+    tile: "from-teal-500 to-teal-700 hover:from-teal-400",
+    chip: "bg-teal-100 text-teal-800",
+    bar: "bg-teal-500",
+    soft: "bg-teal-50 border-teal-200",
+    text: "text-teal-800",
+  },
   amber: {
     tile: "from-amber-500 to-amber-700 hover:from-amber-400",
     chip: "bg-amber-100 text-amber-900",
@@ -98,7 +112,36 @@ export default function LearningModal({
 
   const scrollRef = useRef<HTMLElement | null>(null);
 
-  const subject = subjects.find((s) => s.key === subjectKey) ?? null;
+  /**
+   * The catalogue shown: the built-in paths first, replaced by the merged set
+   * once the server has read the learning-paths folder.
+   *
+   * Deliberately not a loading state. The built-in paths are already here, so
+   * showing a spinner for them would be a step backwards; dropped-in files
+   * simply appear a moment later.
+   */
+  const [catalogue, setCatalogue] = useState<Subject[]>(subjects);
+
+  useEffect(() => {
+    let alive = true;
+    fetch("/api/learning-paths")
+      .then((r) => (r.ok ? r.json() : null))
+      .then((data) => {
+        if (!alive || !data?.subjects?.length) return;
+        setCatalogue(data.subjects as Subject[]);
+        // Problems with a hand-written file belong where whoever wrote it will
+        // look - the browser console is closer than the server log.
+        for (const e of data.errors ?? []) {
+          console.warn("[Lernpfad]", e);
+        }
+      })
+      .catch((err) => console.warn("[Lernpfad] Ordner nicht lesbar:", err));
+    return () => {
+      alive = false;
+    };
+  }, []);
+
+  const subject = catalogue.find((s) => s.key === subjectKey) ?? null;
   const path = subject?.paths.find((p) => p.key === pathKey) ?? null;
   const screen: Screen | null = path?.screens[screenIndex] ?? null;
   /** The exercises live on a screen of their own, right after the content. */
@@ -277,6 +320,7 @@ export default function LearningModal({
             <SubjectGrid
               t={t}
               L={L}
+              catalogue={catalogue}
               resume={resumeTarget}
               showResume={showResume}
               resumeScreen={progress.lastPath
@@ -380,6 +424,7 @@ export default function LearningModal({
 function SubjectGrid({
   t,
   L,
+  catalogue,
   resume,
   showResume,
   resumeScreen,
@@ -389,6 +434,8 @@ function SubjectGrid({
 }: {
   t: (key: string) => string;
   L: (value: { de: string; en: string }) => string;
+  /** Built-in paths plus whatever the server read from the folder. */
+  catalogue: Subject[];
   resume: { subject: Subject; path: LearningPath } | null;
   showResume: boolean;
   resumeScreen: number;
@@ -436,7 +483,7 @@ function SubjectGrid({
       )}
 
       <div class="mt-8 grid gap-6 sm:grid-cols-2">
-        {subjects.map((subject) => (
+        {catalogue.map((subject) => (
           <button
             type="button"
             key={subject.key}

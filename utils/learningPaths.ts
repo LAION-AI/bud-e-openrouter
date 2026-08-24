@@ -105,7 +105,14 @@ export function clozeParts(text: string): string[] {
 }
 
 /** Accent keys map to fixed Tailwind classes in the modal - see ACCENTS. */
-export type Accent = "indigo" | "emerald" | "amber" | "rose" | "sky";
+export type Accent =
+  | "indigo"
+  | "emerald"
+  | "amber"
+  | "rose"
+  | "sky"
+  | "violet"
+  | "teal";
 
 export interface LearningPath {
   key: string;
@@ -3301,6 +3308,1004 @@ const exponentialGrowth: LearningPath = {
   ],
 };
 
+// ---------------------------------------------------- pixels and megapixels
+
+const pixelsAndMegapixels: LearningPath = {
+  key: "pixels-and-megapixels",
+  title: {
+    de: "Von Pixeln und Megapixeln",
+    en: "Of pixels and megapixels",
+  },
+  summary: {
+    de:
+      "Warum ein Handyfoto eigentlich 36 Megabyte groß sein müsste - und mit welchem Trick JPEG und PNG daraus drei machen.",
+    en:
+      "Why a phone photo ought to be 36 megabytes - and the trick JPEG and PNG use to turn that into three.",
+  },
+  icon: "📸",
+  accent: "amber",
+  minutes: 14,
+  screens: [
+    {
+      key: "how-many-squares",
+      title: {
+        de: "Wie viele Kästchen sind das eigentlich?",
+        en: "How many little squares is that, actually?",
+      },
+      blocks: [
+        {
+          kind: "lead",
+          text: {
+            de:
+              "Jedes Bild auf jedem Bildschirm besteht aus Kästchen: den Pixeln. Ein einzelnes ist so klein, dass du es kaum siehst - aber sobald jemand \"12 Megapixel\" oder \"4K\" sagt, geht es plötzlich um Millionen davon. Diese Millionen sind der Grund, warum ein Foto Platz braucht, warum ein Video dein Datenvolumen frisst und warum es Dateiformate wie JPEG überhaupt gibt.",
+            en:
+              "Every picture on every screen is made of little squares: pixels. A single one is so small you can barely see it - but the moment someone says \"12 megapixels\" or \"4K\", it is suddenly about millions of them. Those millions are why a photo needs space, why a video eats your data allowance, and why file formats like JPEG exist at all.",
+          },
+        },
+        {
+          kind: "paragraph",
+          text: {
+            de:
+              "Mega heißt Million. Ein Megapixel ist also schlicht eine Million Bildpunkte. Wenn auf einem Handy \"12 MP\" steht, hat ein Foto davon rund zwölf Millionen Pixel - typischerweise 4000 nebeneinander und 3000 untereinander. Rechne nach: 4000 mal 3000 sind 12 Millionen. Mehr steckt hinter der Zahl nicht.",
+            en:
+              "Mega means million. So a megapixel is simply one million picture elements. When a phone says \"12 MP\", a photo from it has around twelve million pixels - typically 4000 across and 3000 down. Do the sum: 4000 times 3000 is 12 million. There is nothing more to the number than that.",
+          },
+        },
+        {
+          kind: "table",
+          highlightFirst: true,
+          caption: {
+            de:
+              "Dieselbe Zahl, zweimal geschrieben: als Breite mal Höhe und als Megapixel.",
+            en:
+              "The same number written twice: as width by height, and as megapixels.",
+          },
+          head: [
+            { de: "Name", en: "Name" },
+            { de: "Breite × Höhe", en: "Width × height" },
+            { de: "Pixel insgesamt", en: "Pixels in total" },
+            { de: "Megapixel", en: "Megapixels" },
+          ],
+          rows: [
+            [
+              { de: "SD (480p)", en: "SD (480p)" },
+              { de: "640 × 480", en: "640 × 480" },
+              { de: "307.200", en: "307,200" },
+              { de: "0,3 MP", en: "0.3 MP" },
+            ],
+            [
+              { de: "HD (720p)", en: "HD (720p)" },
+              { de: "1280 × 720", en: "1280 × 720" },
+              { de: "921.600", en: "921,600" },
+              { de: "0,9 MP", en: "0.9 MP" },
+            ],
+            [
+              { de: "Full HD (1080p)", en: "Full HD (1080p)" },
+              { de: "1920 × 1080", en: "1920 × 1080" },
+              { de: "2.073.600", en: "2,073,600" },
+              { de: "2,1 MP", en: "2.1 MP" },
+            ],
+            [
+              { de: "Ultra HD / 4K", en: "Ultra HD / 4K" },
+              { de: "3840 × 2160", en: "3840 × 2160" },
+              { de: "8.294.400", en: "8,294,400" },
+              { de: "8,3 MP", en: "8.3 MP" },
+            ],
+            [
+              { de: "Handyfoto", en: "phone photo" },
+              { de: "4000 × 3000", en: "4000 × 3000" },
+              { de: "12.000.000", en: "12,000,000" },
+              { de: "12 MP", en: "12 MP" },
+            ],
+          ],
+        },
+        {
+          kind: "callout",
+          tone: "fact",
+          icon: "🤔",
+          title: {
+            de: "Dein Foto hat mehr Pixel als dein Fernseher",
+            en: "Your photo has more pixels than your television",
+          },
+          text: {
+            de:
+              "Ein 12-MP-Foto hat fast anderthalb mal so viele Pixel wie ein 4K-Fernseher darstellen kann, und fast sechsmal so viele wie ein Full-HD-Bildschirm. Wenn du dir das Foto auf dem Handy ansiehst, siehst du also gar nicht alle Pixel - der Bildschirm rechnet es kleiner. Die zusätzlichen Pixel merkst du erst, wenn du hineinzoomst oder das Bild groß ausdruckst.",
+            en:
+              "A 12 MP photo has almost one and a half times as many pixels as a 4K television can show, and nearly six times as many as a full HD screen. So when you look at that photo on your phone, you are not seeing all the pixels - the screen scales it down. You only notice the extra ones when you zoom in or print the picture large.",
+          },
+        },
+        {
+          kind: "paragraph",
+          text: {
+            de:
+              "Deshalb ist \"mehr Megapixel\" auch nicht automatisch \"besseres Foto\". Wie gut ein Bild aussieht, hängt genauso an der Größe des Sensors, an der Linse und am Licht. Eine Kamera mit 108 Megapixeln in schlechtem Licht macht schlechtere Bilder als eine mit 12 Megapixeln bei Sonnenschein. Die Zahl auf der Packung sagt nur, wie fein das Raster ist - nicht, wie gut das Bild wird.",
+            en:
+              "So \"more megapixels\" does not automatically mean \"better photo\". How good a picture looks depends just as much on sensor size, on the lens and on the light. A 108-megapixel camera in poor light produces worse pictures than a 12-megapixel one in sunshine. The number on the box only tells you how fine the grid is - not how good the picture will be.",
+          },
+        },
+      ],
+    },
+    {
+      key: "three-numbers-per-square",
+      title: {
+        de: "Drei Zahlen für jedes einzelne Kästchen",
+        en: "Three numbers for every single square",
+      },
+      blocks: [
+        {
+          kind: "lead",
+          text: {
+            de:
+              "Damit ein Pixel eine Farbe zeigen kann, muss diese Farbe irgendwo stehen. Und weil ein Bildschirm nur drei Sorten Leuchtpunkte hat - rote, grüne und blaue -, wird jede Farbe aus genau diesen drei gemischt. Man nennt das RGB, nach Rot, Grün, Blau.",
+            en:
+              "For a pixel to show a colour, that colour has to be written down somewhere. And because a screen only has three kinds of light dot - red, green and blue - every colour is mixed from exactly those three. This is called RGB, after red, green, blue.",
+          },
+        },
+        {
+          kind: "paragraph",
+          text: {
+            de:
+              "Jede der drei Grundfarben bekommt ein Byte, also einen Wert zwischen 0 und 255. 0 heißt \"diese Lampe ist aus\", 255 heißt \"volle Helligkeit\". Reines Rot ist also (255, 0, 0). Weiß ist (255, 255, 255), weil alle drei voll leuchten. Schwarz ist (0, 0, 0) - alle drei aus. Und ein Grauton in der Mitte ist (128, 128, 128).",
+            en:
+              "Each of the three primary colours gets one byte, a value between 0 and 255. 0 means \"this lamp is off\", 255 means \"full brightness\". Pure red is therefore (255, 0, 0). White is (255, 255, 255), because all three shine fully. Black is (0, 0, 0) - all three off. And a mid grey is (128, 128, 128).",
+          },
+        },
+        {
+          kind: "callout",
+          tone: "tip",
+          icon: "🔦",
+          title: {
+            de: "Warum Rot plus Grün hier Gelb ergibt",
+            en: "Why red plus green makes yellow here",
+          },
+          text: {
+            de:
+              "Im Malkasten wird eine Farbe dunkler, je mehr du mischst - beim Bildschirm heller, weil du Licht dazugibst statt Farbe. Rot und Grün zusammen ergeben deshalb Gelb, nicht Braun. Nimm eine Lupe oder einen Wassertropfen und halte ihn auf eine weiße Fläche deines Bildschirms: Du siehst die drei Lämpchen einzeln nebeneinander liegen.",
+            en:
+              "In a paint box a colour gets darker the more you mix - on a screen it gets brighter, because you are adding light rather than pigment. Red and green together therefore make yellow, not brown. Take a magnifying glass or a drop of water and hold it against a white area of your screen: you will see the three little lamps sitting side by side.",
+          },
+        },
+        {
+          kind: "paragraph",
+          text: {
+            de:
+              "Drei Bytes pro Pixel - das klingt nach wenig. Aber jetzt kommen die Millionen ins Spiel. Rechne es für dein 12-MP-Foto aus: zwölf Millionen Pixel, jedes mit drei Bytes.",
+            en:
+              "Three bytes per pixel - that sounds like nothing. But now the millions come into play. Work it out for your 12 MP photo: twelve million pixels, three bytes each.",
+          },
+        },
+        {
+          kind: "stats",
+          entries: [
+            {
+              value: "36 MB",
+              label: {
+                de: "ein 12-MP-Foto, roh",
+                en: "one 12 MP photo, raw",
+              },
+              hint: {
+                de: "12.000.000 Pixel × 3 Byte",
+                en: "12,000,000 pixels × 3 bytes",
+              },
+            },
+            {
+              value: "25 MB",
+              label: {
+                de: "ein einzelnes 4K-Bild",
+                en: "a single 4K frame",
+              },
+              hint: {
+                de: "8.294.400 Pixel × 3 Byte",
+                en: "8,294,400 pixels × 3 bytes",
+              },
+            },
+            {
+              value: "1,5 GB",
+              label: {
+                de: "eine Sekunde 4K-Video",
+                en: "one second of 4K video",
+              },
+              hint: {
+                de: "60 solcher Bilder pro Sekunde",
+                en: "60 such frames per second",
+              },
+            },
+          ],
+        },
+        {
+          kind: "paragraph",
+          text: {
+            de:
+              "Eine Sekunde. Anderthalb Gigabyte. Bei diesem Tempo wäre ein Kinofilm größer als jede Festplatte, die du besitzt, und Netflix könnte es gar nicht geben. Dass Videos trotzdem laufen und Fotos aufs Handy passen, liegt an einer einzigen Idee - und die ist erstaunlich einfach.",
+            en:
+              "One second. One and a half gigabytes. At that rate a feature film would be bigger than any hard disk you own, and Netflix could not exist. That videos play anyway and photos fit on a phone comes down to a single idea - and it is surprisingly simple.",
+          },
+        },
+      ],
+    },
+    {
+      key: "the-compression-trick",
+      title: {
+        de: "Der Trick: nicht wiederholen, sondern verweisen",
+        en: "The trick: don't repeat, refer back",
+      },
+      blocks: [
+        {
+          kind: "lead",
+          text: {
+            de:
+              "Stell dir zuerst einen ganz einfachen Bildschirm vor: Jedes Pixel kann nur schwarz oder weiß sein, aus oder an. Für ein Pixel brauchst du dann genau ein Bit. Und jetzt sieh dir eine einzelne Zeile eines Bildes an.",
+            en:
+              "Picture the simplest possible screen first: every pixel can only be black or white, off or on. One pixel then needs exactly one bit. Now look at a single row of an image.",
+          },
+        },
+        {
+          kind: "paragraph",
+          text: {
+            de:
+              "Sagen wir, in dieser Zeile steht immer wieder dasselbe Muster: weiß, schwarz, schwarz, schwarz. Dann noch einmal weiß, schwarz, schwarz, schwarz. Und noch einmal. Statt jedes Mal vier Angaben zu speichern, könntest du dem Muster einen Namen geben - nennen wir es M1. Und wo immer das Muster wieder auftaucht, schreibst du nur noch M1.",
+            en:
+              "Say the same pattern keeps appearing in that row: white, black, black, black. Then again white, black, black, black. And again. Instead of storing four entries each time, you could give the pattern a name - let us call it M1. And wherever the pattern turns up again, you just write M1.",
+          },
+        },
+        {
+          kind: "callout",
+          tone: "warn",
+          icon: "🧐",
+          title: {
+            de: "Und jetzt kommt der Haken",
+            en: "And here comes the catch",
+          },
+          text: {
+            de:
+              "Rechne einmal ehrlich nach. Zwanzig weiße Pixel hintereinander kosten in Schwarz-Weiß zwanzig Bit, also zweieinhalb Byte. Wenn dein Kürzel M1 selbst zwei Byte braucht, sparst du ein halbes Byte. Das ist die Mühe kaum wert. Bei Schwarz-Weiß-Bildern lohnt sich der Trick fast nicht - und genau deshalb ist die nächste Rechnung so interessant.",
+            en:
+              "Do the sum honestly. Twenty white pixels in a row cost twenty bits in black and white, that is two and a half bytes. If your shorthand M1 itself needs two bytes, you save half a byte. That is barely worth the trouble. On black and white pictures the trick hardly pays - and that is exactly what makes the next sum interesting.",
+          },
+        },
+        {
+          kind: "paragraph",
+          text: {
+            de:
+              "Jetzt dasselbe in Farbe. Ein echtes Foto hat keine ein Bit, sondern drei Byte pro Pixel. Zwanzig weiße Pixel hintereinander kosten also nicht zwanzig Bit, sondern 20 × 3 = 60 Byte. Und dein Kürzel kostet immer noch nur zwei.",
+            en:
+              "Now the same in colour. A real photo has not one bit but three bytes per pixel. Twenty white pixels in a row therefore cost not twenty bits but 20 × 3 = 60 bytes. And your shorthand still costs only two.",
+          },
+        },
+        {
+          kind: "table",
+          highlightFirst: true,
+          caption: {
+            de:
+              "Derselbe Trick, zweimal gerechnet. Erst in Farbe wird er wirklich stark.",
+            en:
+              "The same trick, worked out twice. Only in colour does it really pay.",
+          },
+          head: [
+            { de: "20 gleiche Pixel", en: "20 identical pixels" },
+            { de: "einzeln gespeichert", en: "stored one by one" },
+            { de: 'als Kürzel "M1"', en: 'as the shorthand "M1"' },
+            { de: "gespart", en: "saved" },
+          ],
+          rows: [
+            [
+              { de: "schwarz-weiß (1 Bit)", en: "black and white (1 bit)" },
+              { de: "2,5 Byte", en: "2.5 bytes" },
+              { de: "2 Byte", en: "2 bytes" },
+              { de: "0,5 Byte - kaum etwas", en: "0.5 bytes - almost nothing" },
+            ],
+            [
+              { de: "in Farbe (3 Byte)", en: "in colour (3 bytes)" },
+              { de: "60 Byte", en: "60 bytes" },
+              { de: "2 Byte", en: "2 bytes" },
+              { de: "58 Byte - also 97 %", en: "58 bytes - that is 97 %" },
+            ],
+          ],
+        },
+        {
+          kind: "paragraph",
+          text: {
+            de:
+              "Und jetzt denk daran, wie ein echtes Foto aussieht. Der Himmel darauf ist über Hunderte von Pixeln fast derselbe Blauton. Eine weiße Wand ist über eine ganze Bildzeile hinweg weiß. Bei einem Full-HD-Bild ist eine einzige einfarbige Zeile 1920 × 3 = 5760 Byte groß. Als Kürzel - Anzahl plus Farbe - sind es fünf. Das ist über tausendmal weniger, und zwar für eine Zeile, die in fast jedem Foto irgendwo vorkommt.",
+            en:
+              "Now think about what a real photo looks like. The sky in it is nearly the same shade of blue across hundreds of pixels. A white wall is white across an entire row of the image. In a full HD picture a single one-coloured row is 1920 × 3 = 5760 bytes. As shorthand - a count plus a colour - it is five. That is over a thousand times less, for a row that turns up somewhere in almost every photo.",
+          },
+        },
+        {
+          kind: "callout",
+          tone: "tip",
+          icon: "💡",
+          title: {
+            de: "Das ist Kompression - mehr steckt nicht dahinter",
+            en: "That is compression - there is nothing more to it",
+          },
+          text: {
+            de:
+              "Alles, was ein Bildformat tut, ist genau das: Wiederholungen suchen und durch kurze Verweise ersetzen. Je gleichförmiger ein Bild, desto mehr lässt sich sparen. Ein Foto von einer weißen Wand wird winzig. Ein Foto von buntem Konfetti bleibt groß, weil sich dort kaum etwas wiederholt.",
+            en:
+              "Everything an image format does is exactly this: look for repetitions and replace them with short references. The more uniform a picture, the more can be saved. A photo of a white wall becomes tiny. A photo of colourful confetti stays large, because hardly anything repeats.",
+          },
+        },
+      ],
+    },
+    {
+      key: "jpeg-and-png",
+      title: {
+        de: "JPEG, PNG und warum dein Screenshot anders ist",
+        en: "JPEG, PNG and why your screenshot is different",
+      },
+      blocks: [
+        {
+          kind: "lead",
+          text: {
+            de:
+              "Genau diesen Trick benutzen die Dateiformate, deren Namen du kennst. Ein Bild als BMP zu speichern heißt: jedes Pixel einzeln hinschreiben, ohne jede Abkürzung. Deshalb ist ein BMP so groß wie die Rechnung von vorhin - 36 Megabyte für ein Handyfoto. Als JPEG sind daraus drei bis vier.",
+            en:
+              "This is exactly the trick used by the file formats whose names you know. Saving a picture as BMP means writing down every pixel individually, with no shorthand at all. That is why a BMP is as big as the sum earlier - 36 megabytes for a phone photo. As a JPEG it becomes three or four.",
+          },
+        },
+        {
+          kind: "paragraph",
+          text: {
+            de:
+              "Zwischen PNG und JPEG liegt aber ein wichtiger Unterschied, und den merkst du im Alltag. PNG merkt sich jedes Pixel genau so, wie es war - es sucht nur nach Wiederholungen. Man nennt das verlustfrei: Du kannst ein PNG hundertmal öffnen und speichern, es bleibt haargenau dasselbe Bild.",
+            en:
+              "But there is an important difference between PNG and JPEG, and you notice it in daily life. PNG remembers every pixel exactly as it was - it only looks for repetitions. This is called lossless: you can open and save a PNG a hundred times and it stays precisely the same picture.",
+          },
+        },
+        {
+          kind: "paragraph",
+          text: {
+            de:
+              "JPEG geht weiter. Es wirft absichtlich Bildinformation weg - solche, die dein Auge ohnehin kaum bemerkt. Feine Farbunterschiede zum Beispiel siehst du viel schlechter als feine Helligkeitsunterschiede, also spart JPEG genau dort. Das nennt man verlustbehaftet. Der Gewinn ist enorm, der Preis ist: Das Original ist weg.",
+            en:
+              "JPEG goes further. It deliberately throws picture information away - the kind your eye barely notices anyway. You see fine differences in colour far less well than fine differences in brightness, so JPEG economises exactly there. This is called lossy. The gain is enormous, the price is: the original is gone.",
+          },
+        },
+        {
+          kind: "callout",
+          tone: "warn",
+          icon: "📉",
+          title: {
+            de: "Warum Bilder in Chatgruppen immer schlechter werden",
+            en: "Why pictures get worse and worse in group chats",
+          },
+          text: {
+            de:
+              "Jedes Mal, wenn ein JPEG neu gespeichert wird, wirft es wieder etwas weg - diesmal aus einem Bild, dem schon etwas fehlt. Ein Meme, das durch zwanzig Handys gegangen ist, sieht deshalb aus wie durch Milchglas: fleckige Farben, verwaschene Kanten, Klötzchen um die Schrift. Das ist kein schlechter Empfang, das ist zwanzigmal JPEG.",
+            en:
+              "Every time a JPEG is saved again, it throws something else away - this time out of a picture that is already missing something. A meme that has been through twenty phones therefore looks like frosted glass: blotchy colours, smeared edges, blocks around the text. That is not a bad connection, that is JPEG twenty times over.",
+          },
+        },
+        {
+          kind: "table",
+          caption: {
+            de: "Welches Format wofür - eine Faustregel, die fast immer stimmt.",
+            en: "Which format for what - a rule of thumb that nearly always holds.",
+          },
+          head: [
+            { de: "Format", en: "Format" },
+            { de: "Verlust?", en: "Lossy?" },
+            { de: "Gut für", en: "Good for" },
+            { de: "Schlecht für", en: "Bad for" },
+          ],
+          rows: [
+            [
+              { de: "BMP", en: "BMP" },
+              { de: "keine Kompression", en: "no compression at all" },
+              { de: "fast nichts mehr", en: "almost nothing any more" },
+              { de: "alles - viel zu groß", en: "everything - far too big" },
+            ],
+            [
+              { de: "PNG", en: "PNG" },
+              { de: "verlustfrei", en: "lossless" },
+              {
+                de: "Screenshots, Logos, Schrift, Bilder mit klaren Kanten",
+                en: "screenshots, logos, text, pictures with sharp edges",
+              },
+              { de: "große Fotos - bleibt dick", en: "large photos - stays fat" },
+            ],
+            [
+              { de: "JPEG", en: "JPEG" },
+              { de: "verlustbehaftet", en: "lossy" },
+              {
+                de: "Fotos mit weichen Übergängen",
+                en: "photos with soft transitions",
+              },
+              {
+                de: "Schrift und Screenshots - wird matschig",
+                en: "text and screenshots - goes mushy",
+              },
+            ],
+          ],
+        },
+        {
+          kind: "paragraph",
+          text: {
+            de:
+              "Deshalb macht dein Handy vom Bildschirm einen Screenshot als PNG und von der Welt ein Foto als JPEG. Ein Screenshot besteht aus großen einfarbigen Flächen und scharfer Schrift - da ist PNG sowohl kleiner als auch schärfer. Ein Foto besteht aus Millionen leicht verschiedener Farbtöne - da hätte PNG kaum etwas zu wiederholen, und JPEG spielt seine Stärke aus.",
+            en:
+              "That is why your phone takes a screenshot of the screen as a PNG and a photo of the world as a JPEG. A screenshot is large flat areas and sharp text - there PNG is both smaller and crisper. A photo is millions of slightly different shades - there PNG would have almost nothing to repeat, and JPEG plays to its strength.",
+          },
+        },
+        {
+          kind: "callout",
+          tone: "fact",
+          icon: "🔬",
+          title: {
+            de: "Probier es aus, es dauert zwei Minuten",
+            en: "Try it out, it takes two minutes",
+          },
+          text: {
+            de:
+              "Mach einen Screenshot und ein Foto. Speichere beide einmal als PNG und einmal als JPEG und sieh dir die vier Dateigrößen an. Beim Screenshot gewinnt PNG, beim Foto JPEG - und zwar deutlich. Zoome dann in die Schrift im JPEG-Screenshot hinein: Du siehst die Klötzchen, die JPEG dort hinterlässt, wo es hätte sparsam sein wollen.",
+            en:
+              "Take a screenshot and a photo. Save both once as PNG and once as JPEG and look at the four file sizes. For the screenshot PNG wins, for the photo JPEG does - by a wide margin. Then zoom into the text in the JPEG screenshot: you will see the blocks JPEG leaves behind where it tried to economise.",
+          },
+        },
+        {
+          kind: "sources",
+          items: [
+            {
+              label: {
+                de: "ITU-T T.81 - die JPEG-Norm von 1992",
+                en: "ITU-T T.81 - the 1992 JPEG standard",
+              },
+              url: "https://www.w3.org/Graphics/JPEG/itu-t81.pdf",
+            },
+            {
+              label: {
+                de: "PNG-Spezifikation (W3C)",
+                en: "PNG specification (W3C)",
+              },
+              url: "https://www.w3.org/TR/png/",
+            },
+            {
+              label: {
+                de: "RFC 1951 - DEFLATE, das Verfahren hinter PNG",
+                en: "RFC 1951 - DEFLATE, the method behind PNG",
+              },
+              url: "https://www.rfc-editor.org/rfc/rfc1951",
+            },
+          ],
+        },
+      ],
+    },
+  ],
+  exercises: [
+    {
+      kind: "cloze",
+      title: {
+        de: "1. Lückentext: von der Million zur Abkürzung",
+        en: "1. Fill in the blanks: from the million to the shorthand",
+      },
+      intro: {
+        de: "Setze die fehlenden Wörter ein.",
+        en: "Fill in the missing words.",
+      },
+      text: {
+        de:
+          "Die Vorsilbe Mega bedeutet ___, ein Megapixel ist also eine Million ___. Ein Handyfoto mit 4000 mal 3000 Bildpunkten hat demnach ___ Megapixel. Damit ein Pixel eine Farbe zeigen kann, wird sie aus den drei Grundfarben Rot, ___ und Blau gemischt; dieses Verfahren heißt ___. Bekommt jede Grundfarbe ein ___, braucht ein einzelnes Pixel drei davon - und ein ganzes Foto deshalb rund 36 ___. Damit es trotzdem auf ein Handy passt, sucht ein Bildformat nach ___ und ersetzt sie durch kurze Verweise; das nennt man ___. Ein ___ speichert dabei jedes Pixel genau so, wie es war, ein ___ wirft absichtlich Bildinformation weg, die das Auge kaum bemerkt.",
+        en:
+          "The prefix mega means ___, so a megapixel is one million ___. A phone photo of 4000 by 3000 picture elements therefore has ___ megapixels. For a pixel to show a colour, it is mixed from the three primary colours red, ___ and blue; this method is called ___. If each primary colour gets one ___, a single pixel needs three of them - and a whole photo therefore around 36 ___. So that it fits on a phone anyway, an image format looks for ___ and replaces them with short references; this is called ___. A ___ stores every pixel exactly as it was, while a ___ deliberately discards picture information the eye barely notices.",
+      },
+    },
+    {
+      kind: "compare",
+      title: {
+        de: "2. Vergleiche: warum derselbe Trick zweimal verschieden wirkt",
+        en: "2. Compare: why the same trick works differently twice",
+      },
+      intro: {
+        de:
+          "Setze zwei Rechnungen zueinander in Beziehung und erkläre den Unterschied.",
+        en: "Relate two calculations to each other and explain the difference.",
+      },
+      text: {
+        de:
+          "Zwanzig gleiche Pixel hintereinander durch ein Kürzel zu ersetzen spart auf einem Schwarz-Weiß-Bildschirm nur ein halbes Byte, in einem Farbbild dagegen 58 Byte - also 97 Prozent. Erkläre, woran dieser Unterschied liegt, obwohl in beiden Fällen genau dieselben zwanzig Pixel und dasselbe Kürzel im Spiel sind. Was folgt daraus für die Frage, bei welchen Bildern sich Kompression am meisten lohnt?",
+        en:
+          "Replacing twenty identical pixels with a shorthand saves only half a byte on a black and white screen, but 58 bytes in a colour picture - that is 97 per cent. Explain where this difference comes from, even though exactly the same twenty pixels and the same shorthand are involved in both cases. What does that imply for the question of which pictures benefit most from compression?",
+      },
+      hint: {
+        de:
+          "Überlege, wie viel Platz ein einzelnes Pixel in beiden Fällen braucht - und was sich dadurch am Verhältnis ändert.",
+        en:
+          "Think about how much space a single pixel needs in each case - and what that changes about the ratio.",
+      },
+    },
+    {
+      kind: "reflect",
+      title: {
+        de: "3. Zum Nachdenken: was beim Weglassen verloren geht",
+        en: "3. Something to think about: what gets lost in the leaving out",
+      },
+      intro: {
+        de:
+          "Auf diese Frage gibt es keine richtige Antwort. Schreib auf, was du denkst.",
+        en: "There is no right answer to this one. Write down what you think.",
+      },
+      text: {
+        de:
+          "JPEG wirft absichtlich weg, was dein Auge kaum bemerkt - und ohne diese Entscheidung gäbe es kein Netflix, kein Instagram und keine Fotos auf deinem Handy. Fast alles, was du digital siehst und hörst, ist eine Näherung: Auch Musikdateien und Videoanrufe lassen weg, was angeblich nicht auffällt. Denk einmal darüber nach, wer eigentlich entscheidet, was \"kaum bemerkbar\" ist, und was es bedeutet, dass deine Erinnerungsfotos in einer Form gespeichert sind, aus der sich das Original nicht mehr zurückholen lässt. Gibt es Bilder, bei denen du das nicht möchtest?",
+        en:
+          "JPEG deliberately discards what your eye barely notices - and without that decision there would be no Netflix, no Instagram and no photos on your phone. Almost everything you see and hear digitally is an approximation: music files and video calls leave out what supposedly does not show either. Think about who actually decides what counts as \"barely noticeable\", and what it means that your memories are stored in a form from which the original cannot be recovered. Are there pictures where you would not want that?",
+      },
+    },
+  ],
+};
+
+// ------------------------------------------------------------------- e-mail
+
+const howEmailWorks: LearningPath = {
+  key: "how-email-works",
+  title: {
+    de: "Wie eine E-Mail funktioniert",
+    en: "How e-mail works",
+  },
+  summary: {
+    de:
+      "Wo deine Nachrichten wirklich liegen, während dein Handy aus ist - und warum das jemandem gehört.",
+    en:
+      "Where your messages really sit while your phone is off - and why that belongs to somebody.",
+  },
+  icon: "✉️",
+  accent: "teal",
+  minutes: 13,
+  screens: [
+    {
+      key: "client-and-server",
+      title: {
+        de: "Dein Handy hat deine Mails gar nicht",
+        en: "Your phone does not actually have your mail",
+      },
+      blocks: [
+        {
+          kind: "lead",
+          text: {
+            de:
+              "Schalte dein Handy aus und wirf es weg. Kauf dir ein neues, melde dich an - und alle deine E-Mails sind wieder da. Das ist kein Zauber, sondern der Hinweis darauf, wo sie die ganze Zeit lagen: nicht bei dir.",
+            en:
+              "Switch your phone off and throw it away. Buy a new one, sign in - and all your e-mails are back. That is not magic, it is the clue to where they were all along: not with you.",
+          },
+        },
+        {
+          kind: "paragraph",
+          text: {
+            de:
+              "Für dieses Kunststück braucht es zwei Computer, die sich Arbeit teilen. Der eine steht in deiner Hand, der andere in einer Halle voller Rechner, irgendwo in Europa oder Amerika. Sie haben Namen, die dir überall in der Informatik wieder begegnen werden: Client und Server.",
+            en:
+              "This trick needs two computers sharing the work. One is in your hand, the other in a hall full of machines somewhere in Europe or America. They have names you will meet again everywhere in computing: client and server.",
+          },
+        },
+        {
+          kind: "steps",
+          items: [
+            {
+              title: { de: "Der Client", en: "The client" },
+              text: {
+                de:
+                  "Das ist das Programm, mit dem du Mails liest und schreibst - die Mail-App auf dem Handy, Outlook auf dem Rechner, oder einfach ein Browser-Tab. Der Client zeigt an und fragt nach. Er besitzt die Mails nicht, er holt sie sich.",
+                en:
+                  "That is the program you read and write mail with - the mail app on your phone, Outlook on the computer, or simply a browser tab. The client displays and asks. It does not own the mail, it fetches it.",
+              },
+            },
+            {
+              title: { de: "Der Server", en: "The server" },
+              text: {
+                de:
+                  "Das ist der Computer, auf dem deine Mails wirklich liegen. Er läuft Tag und Nacht, auch wenn dein Handy aus ist, und nimmt in dieser Zeit neue Nachrichten für dich entgegen. Server heißt Diener - er bedient Anfragen.",
+                en:
+                  "That is the computer where your mail actually sits. It runs day and night, even while your phone is off, and takes in new messages for you meanwhile. Server means servant - it serves requests.",
+              },
+            },
+            {
+              title: { de: "Der Provider", en: "The provider" },
+              text: {
+                de:
+                  "Das ist die Firma, der dieser Server gehört und die ihn betreibt: Google, Tuta, die Schule, ein Verein. Wenn du dir eine Adresse anlegst, bekommst du von ihr Zugangsdaten - Benutzername und Passwort - und einen Platz auf ihrem Server.",
+                en:
+                  "That is the company that owns and runs that server: Google, Tuta, your school, a club. When you create an address, they give you credentials - a user name and a password - and a place on their server.",
+              },
+            },
+          ],
+        },
+        {
+          kind: "callout",
+          tone: "tip",
+          icon: "🔑",
+          title: {
+            de: "Deshalb kannst du dich überall anmelden",
+            en: "That is why you can sign in anywhere",
+          },
+          text: {
+            de:
+              "Weil die Mails auf dem Server liegen und nicht auf dem Gerät, kommst du mit denselben Zugangsdaten von jedem Client aus an dieselben Nachrichten - vom Handy, vom Schulrechner, vom Laptop einer Freundin. Und aus demselben Grund ist dein Passwort so wichtig: Es ist das Einzige, was zwischen deinen Nachrichten und allen anderen steht.",
+            en:
+              "Because the mail sits on the server and not on the device, the same credentials get you to the same messages from any client - your phone, a school computer, a friend's laptop. And for the same reason your password matters so much: it is the only thing standing between your messages and everyone else.",
+          },
+        },
+      ],
+    },
+    {
+      key: "anatomy-of-an-address",
+      title: {
+        de: "Was in einer Adresse und in einer Mail steckt",
+        en: "What is inside an address and inside a message",
+      },
+      blocks: [
+        {
+          kind: "lead",
+          text: {
+            de:
+              "Eine E-Mail-Adresse besteht aus zwei Teilen, getrennt durch das Zeichen @. Links steht, wer du bist, rechts, wo du zu finden bist - das ist wörtlich gemeint, wie bei einer Postadresse aus Name und Ort.",
+            en:
+              "An e-mail address has two parts, separated by @. On the left is who you are, on the right where to find you - and that is meant literally, like a postal address made of a name and a town.",
+          },
+        },
+        {
+          kind: "paragraph",
+          text: {
+            de:
+              "Bei anna.beispiel@tuta.com ist anna.beispiel das Postfach und tuta.com die Domain - der Name des Servers, auf dem dieses Postfach liegt. Das @ zwischen beiden spricht man \"at\" aus, englisch für \"bei\": Anna Beispiel bei tuta.com. Genau so war es gemeint, als Ray Tomlinson 1971 dieses Zeichen aussuchte, weil es in Namen nie vorkam und deshalb nichts durcheinanderbringen konnte.",
+            en:
+              "In anna.example@tuta.com, anna.example is the mailbox and tuta.com is the domain - the name of the server that mailbox lives on. The @ between them is read \"at\": Anna Example at tuta.com. That is exactly what was meant when Ray Tomlinson picked the character in 1971, because it never appeared in names and so could not be confused with anything.",
+          },
+        },
+        {
+          kind: "table",
+          highlightFirst: true,
+          caption: {
+            de: "Die Felder, die du bei jeder Mail ausfüllst - und was sie bedeuten.",
+            en: "The fields you fill in on every message - and what they mean.",
+          },
+          head: [
+            { de: "Feld", en: "Field" },
+            { de: "Was hineingehört", en: "What goes in it" },
+            { de: "Worauf du achten solltest", en: "What to watch out for" },
+          ],
+          rows: [
+            [
+              { de: "An (Empfänger)", en: "To (recipient)" },
+              {
+                de: "die Adresse der Person, an die die Mail geht",
+                en: "the address of the person the message is going to",
+              },
+              {
+                de: "ein Tippfehler und die Mail landet bei jemand anderem oder nirgends",
+                en: "one typo and it goes to someone else, or nowhere",
+              },
+            ],
+            [
+              { de: "Betreff", en: "Subject" },
+              {
+                de: "worum es geht, in einer knappen Zeile",
+                en: "what it is about, in one short line",
+              },
+              {
+                de: "wird zuerst gelesen und entscheidet oft, ob überhaupt geöffnet wird",
+                en: "it is read first and often decides whether it is opened at all",
+              },
+            ],
+            [
+              { de: "Kopie (CC)", en: "Copy (CC)" },
+              {
+                de: "wer mitlesen soll, ohne gemeint zu sein",
+                en: "who should read along without being addressed",
+              },
+              {
+                de: "alle sehen, wer sonst noch im Verteiler steht",
+                en: "everyone can see who else is on the list",
+              },
+            ],
+            [
+              { de: "Blindkopie (BCC)", en: "Blind copy (BCC)" },
+              {
+                de: "wer mitlesen soll, ohne dass die anderen es merken",
+                en: "who should read along without the others noticing",
+              },
+              {
+                de: "schützt fremde Adressen, wenn du an viele auf einmal schreibst",
+                en: "protects other people's addresses when you write to many at once",
+              },
+            ],
+            [
+              { de: "Text", en: "Body" },
+              {
+                de: "die eigentliche Nachricht",
+                en: "the message itself",
+              },
+              {
+                de: "Anrede und Name am Ende kosten nichts und wirken erwachsen",
+                en: "a greeting and your name at the end cost nothing and read as grown up",
+              },
+            ],
+            [
+              { de: "Anhang", en: "Attachment" },
+              {
+                de: "Dateien, die mitgeschickt werden",
+                en: "files sent along with it",
+              },
+              {
+                de: "meist bei 20 bis 25 MB Schluss - größeres kommt nicht an",
+                en: "usually capped at 20 to 25 MB - anything larger will not arrive",
+              },
+            ],
+          ],
+        },
+        {
+          kind: "callout",
+          tone: "fact",
+          icon: "🚚",
+          title: {
+            de: "Hin und zurück auf verschiedenen Wegen",
+            en: "Out and back by different roads",
+          },
+          text: {
+            de:
+              "Zum Verschicken benutzt dein Client ein anderes Verfahren als zum Abholen. Hinaus geht es über SMTP, herein über IMAP - deshalb stehen in den Einstellungen jedes Mailprogramms zwei Server: ein Postausgangs- und ein Posteingangsserver. Es ist wie ein Briefkasten und ein Postfach: zwei Richtungen, zwei Einrichtungen.",
+            en:
+              "Your client uses a different method for sending than for fetching. Out goes over SMTP, in comes over IMAP - which is why the settings of every mail program list two servers: one outgoing and one incoming. It is like a postbox and a pigeonhole: two directions, two arrangements.",
+          },
+        },
+      ],
+    },
+    {
+      key: "the-journey",
+      title: {
+        de: "Die Reise einer Nachricht",
+        en: "The journey of a message",
+      },
+      blocks: [
+        {
+          kind: "lead",
+          text: {
+            de:
+              "Du schreibst an eine Freundin, die bei einem ganz anderen Anbieter ist. Trotzdem kommt die Mail an - in Sekunden. Das liegt daran, dass sich alle Anbieter der Welt auf dieselben Regeln geeinigt haben. Hier ist der Weg, Station für Station.",
+            en:
+              "You write to a friend who is with a completely different provider. The message still arrives - in seconds. That is because every provider in the world has agreed on the same rules. Here is the route, stop by stop.",
+          },
+        },
+        {
+          kind: "steps",
+          items: [
+            {
+              title: { de: "Du drückst auf Senden", en: "You press send" },
+              text: {
+                de:
+                  "Dein Client packt Empfänger, Betreff und Text zusammen und schickt alles an den Postausgangsserver deines Providers. Ab hier hat dein Handy seinen Teil getan - es könnte jetzt ausgehen.",
+                en:
+                  "Your client bundles recipient, subject and body together and sends it all to your provider's outgoing server. From here your phone has done its part - it could switch off now.",
+              },
+            },
+            {
+              title: {
+                de: "Der Server sucht den Empfänger",
+                en: "The server looks up the recipient",
+              },
+              text: {
+                de:
+                  "Er liest den Teil hinter dem @ und fragt im Internet nach, welcher Server für diese Domain zuständig ist. Das ist wie im Telefonbuch nachschlagen, nur in Millisekunden.",
+                en:
+                  "It reads the part after the @ and asks the internet which server is responsible for that domain. It is like looking something up in a phone book, only in milliseconds.",
+              },
+            },
+            {
+              title: {
+                de: "Server spricht mit Server",
+                en: "Server talks to server",
+              },
+              text: {
+                de:
+                  "Dein Server übergibt die Nachricht direkt an den Server des anderen Anbieters. Beide sprechen SMTP - dieselbe Sprache, obwohl sie verschiedenen Firmen gehören und auf verschiedenen Kontinenten stehen können.",
+                en:
+                  "Your server hands the message straight to the other provider's server. Both speak SMTP - the same language, although they belong to different companies and may stand on different continents.",
+              },
+            },
+            {
+              title: {
+                de: "Die Mail wartet",
+                en: "The message waits",
+              },
+              text: {
+                de:
+                  "Sie liegt jetzt im Postfach deiner Freundin auf deren Server - und wartet dort geduldig, Tage oder Wochen, bis sich ein Client meldet.",
+                en:
+                  "It now sits in your friend's mailbox on her server - waiting patiently, for days or weeks, until a client comes asking.",
+              },
+            },
+            {
+              title: {
+                de: "Sie schaltet ihr Handy ein",
+                en: "She switches her phone on",
+              },
+              text: {
+                de:
+                  "Ihr Client meldet sich mit ihren Zugangsdaten beim Server, fragt über IMAP nach neuen Nachrichten und bekommt deine. Jetzt erst leuchtet bei ihr die Eins.",
+                en:
+                  "Her client signs in to the server with her credentials, asks over IMAP for new messages and gets yours. Only now does the little one light up for her.",
+              },
+            },
+          ],
+        },
+        {
+          kind: "callout",
+          tone: "warn",
+          icon: "📬",
+          title: {
+            de: "Eine Postkarte, kein Brief",
+            en: "A postcard, not a letter",
+          },
+          text: {
+            de:
+              "Auf diesem Weg liegt deine Mail auf mindestens zwei fremden Servern, und beide Anbieter können sie im Grundsatz lesen. Die Verbindungen sind heute meist verschlüsselt, die Nachricht auf dem Server aber oft nicht. Wer das nicht möchte, braucht Ende-zu-Ende-Verschlüsselung - dann kann nur die Empfängerin den Text entschlüsseln, nicht einmal der Anbieter.",
+            en:
+              "On this route your message rests on at least two other people's servers, and in principle both providers can read it. The connections are usually encrypted these days, the message on the server often is not. Anyone who does not want that needs end-to-end encryption - then only the recipient can decrypt the text, not even the provider.",
+          },
+        },
+      ],
+    },
+    {
+      key: "your-own-mailbox",
+      title: {
+        de: "Ein eigenes Postfach - und wem es gehört",
+        en: "A mailbox of your own - and whose it is",
+      },
+      blocks: [
+        {
+          kind: "lead",
+          text: {
+            de:
+              "Eine E-Mail-Adresse ist kostenlos zu bekommen. Aber \"kostenlos\" heißt nicht \"ohne Preis\": Wenn du für einen Dienst kein Geld zahlst, verdient er meist an dem, was er über dich weiß. Bei E-Mail ist das besonders heikel, denn im Postfach landet mit der Zeit alles - Bestellungen, Bewerbungen, Arzttermine, Passwort-Rücksetzungen.",
+            en:
+              "An e-mail address is free to get. But \"free\" does not mean \"without a price\": if you pay no money for a service, it usually earns from what it knows about you. With e-mail that matters especially, because over time everything ends up in the mailbox - orders, applications, doctor's appointments, password resets.",
+          },
+        },
+        {
+          kind: "paragraph",
+          text: {
+            de:
+              "Es lohnt sich deshalb, beim Anlegen einer Adresse eine Frage zu stellen, die sonst niemand stellt: In welchem Land steht der Server, und welches Recht gilt dort? In der Europäischen Union gilt die Datenschutz-Grundverordnung, die DSGVO. Sie schreibt unter anderem vor, dass ein Anbieter dir sagen muss, was er über dich speichert, und dass er es auf Verlangen löschen muss.",
+            en:
+              "So it is worth asking a question when creating an address that nobody else asks: which country is the server in, and which law applies there? In the European Union the General Data Protection Regulation applies, the GDPR. Among other things it requires a provider to tell you what it stores about you, and to delete it on request.",
+          },
+        },
+        {
+          kind: "callout",
+          tone: "tip",
+          icon: "🇪🇺",
+          title: {
+            de: "Ein Beispiel, an dem sich der Unterschied zeigt",
+            en: "An example where the difference shows",
+          },
+          text: {
+            de:
+              "Tuta aus Hannover ist ein deutscher Anbieter: Server in Deutschland, DSGVO, kostenloses Postfach, und die Nachrichten sind Ende-zu-Ende verschlüsselt. Proton Mail wird oft im selben Atemzug genannt, sitzt aber in der Schweiz - die gehört nicht zur EU, hat eigene, ebenfalls strenge Gesetze, aber eben nicht die DSGVO. Beides sind gute Anbieter. Der Punkt ist, dass es ein Unterschied ist und dass man ihn wissen kann.",
+            en:
+              "Tuta from Hanover is a German provider: servers in Germany, GDPR, a free mailbox, and messages are end-to-end encrypted. Proton Mail is often mentioned in the same breath, but it is based in Switzerland - which is not in the EU and has its own, also strict, laws, just not the GDPR. Both are good providers. The point is that there is a difference and that you can know it.",
+          },
+        },
+        {
+          kind: "list",
+          items: [
+            {
+              de:
+                "Nimm einen Namen, den du in fünf Jahren noch schreiben magst - er steht unter jeder Bewerbung.",
+              en:
+                "Pick a name you will still want to write in five years - it appears under every application.",
+            },
+            {
+              de:
+                "Nimm ein Passwort, das du nirgendwo sonst benutzt. Aus dem Postfach lassen sich fast alle anderen Konten zurücksetzen.",
+              en:
+                "Use a password you use nowhere else. Almost every other account can be reset from the mailbox.",
+            },
+            {
+              de:
+                "Schalte die Zwei-Faktor-Anmeldung ein, wenn der Anbieter sie hat.",
+              en: "Switch on two-factor sign-in if the provider offers it.",
+            },
+            {
+              de:
+                "Trag eine zweite Adresse oder eine Handynummer für den Notfall ein - sonst ist ein vergessenes Passwort endgültig.",
+              en:
+                "Add a second address or a phone number for emergencies - otherwise a forgotten password is final.",
+            },
+          ],
+        },
+        {
+          kind: "sources",
+          items: [
+            {
+              label: {
+                de: "RFC 5321 - SMTP, das Verfahren zum Verschicken",
+                en: "RFC 5321 - SMTP, the sending protocol",
+              },
+              url: "https://www.rfc-editor.org/rfc/rfc5321",
+            },
+            {
+              label: {
+                de: "RFC 9051 - IMAP, das Verfahren zum Abholen",
+                en: "RFC 9051 - IMAP, the fetching protocol",
+              },
+              url: "https://www.rfc-editor.org/rfc/rfc9051",
+            },
+            {
+              label: {
+                de: "Datenschutz-Grundverordnung, amtlicher Text",
+                en: "General Data Protection Regulation, official text",
+              },
+              url: "https://eur-lex.europa.eu/eli/reg/2016/679/oj",
+            },
+          ],
+        },
+      ],
+    },
+  ],
+  exercises: [
+    {
+      kind: "cloze",
+      title: {
+        de: "1. Lückentext: von deinem Handy zum Server und zurück",
+        en: "1. Fill in the blanks: from your phone to the server and back",
+      },
+      intro: {
+        de: "Setze die fehlenden Wörter ein.",
+        en: "Fill in the missing words.",
+      },
+      text: {
+        de:
+          "Das Programm, mit dem du deine Nachrichten liest und schreibst, heißt ___. Die Nachrichten selbst liegen aber nicht auf deinem Gerät, sondern auf einem ___, der Tag und Nacht läuft. Die Firma, die diesen Rechner betreibt und dir ein Postfach gibt, ist dein ___. Von ihr bekommst du beim Anlegen deine ___, also Benutzername und Passwort. Eine Adresse besteht aus zwei Teilen, getrennt durch das Zeichen ___: links das Postfach, rechts die ___. Zum Verschicken benutzt dein Programm das Verfahren ___, zum Abholen dagegen ___. Die knappe Zeile, die sagt, worum es in einer Nachricht geht, heißt ___. Wer in ___ steht, liest mit, ohne dass die übrigen Empfänger es sehen. In der Europäischen Union regelt die ___, was ein Anbieter mit deinen Daten tun darf.",
+        en:
+          "The program you read and write your messages with is called the ___. The messages themselves do not sit on your device but on a ___ that runs day and night. The company operating that machine and giving you a mailbox is your ___. From them you receive your ___ when you sign up, that is a user name and a password. An address has two parts separated by the character ___: the mailbox on the left, the ___ on the right. To send, your program uses ___, to fetch it uses ___ instead. The short line saying what a message is about is called the ___. Anyone in ___ reads along without the other recipients seeing it. In the European Union the ___ governs what a provider may do with your data.",
+      },
+    },
+    {
+      kind: "compare",
+      title: {
+        de: "2. Leg dir ein eigenes Postfach an und erkläre, was passiert ist",
+        en: "2. Create a mailbox of your own and explain what happened",
+      },
+      intro: {
+        de:
+          "Diese Aufgabe hat einen praktischen Teil und einen zum Nachdenken. Beides gehört zusammen.",
+        en:
+          "This task has a practical part and a thinking part. They belong together.",
+      },
+      text: {
+        de:
+          "Lege dir bei Tuta (tuta.com) ein kostenloses Postfach an - ein deutscher Anbieter, Server in Deutschland, DSGVO, Ende-zu-Ende-Verschlüsselung. Schick dir selbst eine Nachricht mit einem Betreff deiner Wahl. Beschreibe dann in eigenen Worten: Was ist bei dieser Anmeldung eigentlich passiert - wer hat was bekommen, und wo liegt deine Nachricht in dem Moment, in dem du das Handy weglegst? Ordne dabei die drei Begriffe Client, Server und Provider den beteiligten Dingen zu. Und schließlich: Was wäre anders, wenn du dasselbe bei einem Anbieter außerhalb der EU getan hättest?",
+        en:
+          "Create a free mailbox at Tuta (tuta.com) - a German provider, servers in Germany, GDPR, end-to-end encryption. Send yourself a message with a subject of your choosing. Then describe in your own words what actually happened during that sign-up: who received what, and where is your message the moment you put the phone down? Assign the three terms client, server and provider to the things involved. And finally: what would be different had you done the same with a provider outside the EU?",
+      },
+      hint: {
+        de:
+          "Denk daran, dass in dem Moment, in dem du das Handy weglegst, irgendwo ein Rechner weiterläuft, der dir nicht gehört.",
+        en:
+          "Remember that the moment you put the phone down, a machine that is not yours keeps running somewhere.",
+      },
+    },
+    {
+      kind: "reflect",
+      title: {
+        de: "3. Zum Nachdenken: das Postfach, das dich überlebt",
+        en: "3. Something to think about: the mailbox that outlives you",
+      },
+      intro: {
+        de:
+          "Auf diese Frage gibt es keine richtige Antwort. Schreib auf, was du denkst.",
+        en: "There is no right answer to this one. Write down what you think.",
+      },
+      text: {
+        de:
+          "E-Mail ist über fünfzig Jahre alt und funktioniert immer noch nach denselben Regeln - anders als jede Chat-App, die es je gab. Der Grund ist, dass keine einzige Firma sie besitzt: Jeder darf einen Mailserver betreiben, und alle sprechen dieselbe Sprache. Vergleiche das einmal mit den Diensten, über die du täglich schreibst. Was änderte sich für dich, wenn du deine Nachrichten dort genauso mitnehmen könntest wie deine Mails - zu einem anderen Anbieter, ohne dass jemand mitkommen muss? Und warum, glaubst du, ist das dort nicht vorgesehen?",
+        en:
+          "E-mail is over fifty years old and still works by the same rules - unlike any chat app there has ever been. The reason is that no single company owns it: anyone may run a mail server, and they all speak the same language. Compare that with the services you write on every day. What would change for you if you could take your messages with you there the way you can with your mail - to another provider, without anyone having to come along? And why do you think that is not provided for?",
+      },
+    },
+  ],
+};
+
 export const subjects: Subject[] = [
   {
     key: "computing",
@@ -3320,6 +4325,8 @@ export const subjects: Subject[] = [
       whatIsAComputer,
       bitsAndBytes,
       pixelsAndResolution,
+      pixelsAndMegapixels,
+      howEmailWorks,
       exponentialGrowth,
     ],
   },

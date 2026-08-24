@@ -1,0 +1,95 @@
+{
+  "key": "schall-und-hoeren",
+  "title": { "de": "Warum Blitz und Donner nicht zusammen ankommen", "en": "Why lightning and thunder do not arrive together" },
+  "summary": {
+    "de": "Ein Beispiel-Lernpfad, der zugleich zeigt, wie eine Lernpfad-Datei aufgebaut ist.",
+    "en": "An example path that doubles as a demonstration of how a path file is built."
+  },
+  "icon": "⚡",
+  "accent": "violet",
+  "minutes": 6,
+  "screens": [
+    {
+      "key": "die-luecke",
+      "title": { "de": "Die Lücke zwischen Sehen und Hören", "en": "The gap between seeing and hearing" },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Du siehst den Blitz und zählst: einundzwanzig, zweiundzwanzig, dreiundzwanzig - dann kracht es. Diese Lücke ist kein Zufall, sondern eine Messung, die du ohne jedes Gerät machen kannst.",
+            "en": "You see the flash and count: one, two, three - then the crash comes. That gap is not a coincidence but a measurement you can take without any instrument."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Licht ist so schnell, dass es für die paar Kilometer bis zum Gewitter praktisch keine Zeit braucht. Der Schall dagegen legt in einer Sekunde nur etwa 343 Meter zurück - bei 20 Grad Celsius in Luft.",
+            "en": "Light is so fast that the few kilometres to a thunderstorm take it practically no time at all. Sound, in contrast, covers only about 343 metres in a second - in air at 20 degrees Celsius."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "tip",
+          "icon": "🧮",
+          "title": { "de": "Die Faustregel", "en": "The rule of thumb" },
+          "text": {
+            "de": "Sekunden zählen, durch drei teilen - das ist die Entfernung in Kilometern. Drei Sekunden sind also ungefähr ein Kilometer.",
+            "en": "Count the seconds and divide by three - that is the distance in kilometres. Three seconds is therefore roughly one kilometre."
+          }
+        },
+        {
+          "kind": "table",
+          "highlightFirst": true,
+          "caption": { "de": "Schall in verschiedenen Stoffen.", "en": "Sound in different materials." },
+          "head": [
+            { "de": "Stoff", "en": "Material" },
+            { "de": "Geschwindigkeit", "en": "Speed" }
+          ],
+          "rows": [
+            [{ "de": "Luft (20 °C)", "en": "air (20 °C)" }, { "de": "343 m/s", "en": "343 m/s" }],
+            [{ "de": "Wasser", "en": "water" }, { "de": "1480 m/s", "en": "1480 m/s" }],
+            [{ "de": "Stahl", "en": "steel" }, { "de": "5900 m/s", "en": "5900 m/s" }]
+          ]
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": { "de": "NIST: Schallgeschwindigkeit in Luft", "en": "NIST: speed of sound in air" },
+              "url": "https://www.nist.gov/pml"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": { "de": "1. Lückentext", "en": "1. Fill in the blanks" },
+      "intro": { "de": "Setze die fehlenden Wörter ein.", "en": "Fill in the missing words." },
+      "text": {
+        "de": "Schall breitet sich in Luft mit etwa ___ Metern pro Sekunde aus. Zählt man nach dem Blitz die ___ und teilt sie durch ___, erhält man die Entfernung in ___. In Wasser ist Schall deutlich ___ als in Luft.",
+        "en": "Sound travels through air at about ___ metres per second. Counting the ___ after the flash and dividing by ___ gives the distance in ___. In water sound is considerably ___ than in air."
+      }
+    },
+    {
+      "kind": "compare",
+      "title": { "de": "2. Vergleiche", "en": "2. Compare" },
+      "intro": { "de": "Setze zwei Beobachtungen zueinander in Beziehung.", "en": "Relate two observations to each other." },
+      "text": {
+        "de": "In Stahl ist Schall etwa siebzehnmal schneller als in Luft. Erkläre, warum man ein herannahendes Auto früher hört, wenn man das Ohr an die Leitplanke legt, als wenn man einfach in die Luft horcht.",
+        "en": "In steel sound is about seventeen times faster than in air. Explain why you hear an approaching car sooner with your ear against the crash barrier than by simply listening to the air."
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": { "de": "3. Zum Nachdenken", "en": "3. Something to think about" },
+      "intro": { "de": "Auf diese Frage gibt es keine richtige Antwort.", "en": "There is no right answer to this one." },
+      "text": {
+        "de": "Fledermäuse, Wale und U-Boote benutzen Schall, um zu sehen, was ihre Augen nicht erreichen. Überlege, was sich für dich ändern würde, wenn du Entfernungen hören statt sehen müsstest - und wo im Alltag du das längst tust, ohne darüber nachzudenken.",
+        "en": "Bats, whales and submarines use sound to see what their eyes cannot reach. Consider what would change for you if you had to hear distances rather than see them - and where in daily life you already do exactly that without thinking about it."
+      }
+    }
+  ]
+}

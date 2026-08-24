@@ -11,6 +11,7 @@ import * as $api_chat from "./routes/api/chat.ts";
 import * as $api_debug from "./routes/api/debug.ts";
 import * as $api_grading from "./routes/api/grading.ts";
 import * as $api_imagegen from "./routes/api/imagegen.ts";
+import * as $api_learning_paths from "./routes/api/learning-paths.ts";
 import * as $api_mail from "./routes/api/mail.ts";
 import * as $api_mailsync from "./routes/api/mailsync.ts";
 import * as $api_music from "./routes/api/music.ts";
@@ -38,6 +39,7 @@ const manifest = {
     "./routes/api/debug.ts": $api_debug,
     "./routes/api/grading.ts": $api_grading,
     "./routes/api/imagegen.ts": $api_imagegen,
+    "./routes/api/learning-paths.ts": $api_learning_paths,
     "./routes/api/mail.ts": $api_mail,
     "./routes/api/mailsync.ts": $api_mailsync,
     "./routes/api/music.ts": $api_music,
