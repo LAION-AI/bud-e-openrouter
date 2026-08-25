@@ -16,6 +16,7 @@ import {
   newNotebook,
   type Notebook,
   type NotebookCell,
+  pruneUntouchedCopies,
   saveNotebook,
   toIpynb,
 } from "../utils/notebookStore.ts";
@@ -56,6 +57,9 @@ export default function NotebookModal({
     (notebookContent[lang]?.[key] ?? notebookContent.en[key] ?? key) as string;
 
   const [notebook, setNotebook] = useState<Notebook>(() => {
+    // Copies of examples that nobody ever ran are cleared away first, so an
+    // older version's duplicate "1 - Hallo Welt" entries do not stay forever.
+    pruneUntouchedCopies();
     const existing = listNotebooks();
     return existing[0] ?? newNotebook();
   });
@@ -325,10 +329,25 @@ export default function NotebookModal({
     setNotebooks(listNotebooks());
   };
 
-  /** Examples are copied, so the original stays untouched for the next try. */
+  /**
+   * Opens an example - the copy you already have, if there is one.
+   *
+   * Examples are copied so the original stays untouched for the next try. But
+   * a fresh copy on every click meant the list filled up with three notebooks
+   * called "1 - Hallo Welt", and the work from the first one was buried under
+   * the others. So an existing copy is reopened instead, and whatever was
+   * typed into it is still there.
+   */
   const openExample = (key: string) => {
     const spec = EXAMPLES.find((e) => e.key === key);
     if (!spec) return;
+    const mine = listNotebooks().find((n) => n.fromExample === key);
+    if (mine) {
+      setNotebook(mine);
+      setNotebooks(listNotebooks());
+      counterRef.current = 0;
+      return;
+    }
     const nb = notebookFromExample(spec, lang);
     saveNotebook(nb);
     setNotebook(nb);

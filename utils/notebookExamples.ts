@@ -43,6 +43,16 @@ print("Hallo Welt")`,
       },
       {
         type: "markdown",
+        source: `### 🎯 Aufgabe
+
+Schreib den Text um, sodass Python **dich** begrüßt - mit deinem Namen.
+Füg dann zwei weitere \`print\`-Zeilen dazu, sodass drei Zeilen untereinander
+erscheinen: dein Name, deine Lieblingsfarbe, dein Lieblingsessen.
+
+*Die Reihenfolge der Zeilen ist die Reihenfolge der Ausgabe. Immer.*`,
+      },
+      {
+        type: "markdown",
         source: `## Zahlen oder Text?
 
 Anführungszeichen machen aus etwas **Text**. Ohne Anführungszeichen ist es
@@ -59,6 +69,16 @@ print("3" + "7")`,
       },
       {
         type: "markdown",
+        source: `### 🎯 Aufgabe
+
+Rechne aus, wie viele Minuten du in einer normalen Schulwoche im Unterricht
+sitzt: Stunden pro Tag mal 45 mal 5 Schultage. Lass Python rechnen, nicht dich.
+
+Danach der Test: Setz um die Zahlen Anführungszeichen und führ die Zelle noch
+einmal aus. Das Ergebnis ist plötzlich Unsinn - und du weißt jetzt genau, warum.`,
+      },
+      {
+        type: "markdown",
         source: `Oben kommt \`10\` heraus, unten \`37\`. Python hat im zweiten Fall nicht
 gerechnet, sondern die beiden Zeichen aneinandergehängt.`,
       },
@@ -69,6 +89,14 @@ print("Hallo" + " " + "Welt")
 
 # Ein Komma in print setzt automatisch ein Leerzeichen dazwischen.
 print("Hallo", "Welt")`,
+      },
+      {
+        type: "markdown",
+        source: `### 🎯 Aufgabe
+
+Bau deinen vollen Namen aus zwei Teilen zusammen und gib ihn aus - einmal mit
+\`+\` und einmal mit Komma. Einer der beiden Wege setzt das Leerzeichen von
+selbst, beim anderen musst du daran denken. Welcher ist welcher?`,
       },
       {
         type: "markdown",
@@ -83,6 +111,16 @@ kannst den Wert danach überall über seinen Namen benutzen.`,
 print(meine_variable)`,
       },
       {
+        type: "markdown",
+        source: `### 🎯 Aufgabe
+
+Leg eine Variable \`lieblingszahl\` an und gib sie aus. Ändere danach ihren Wert
+in der nächsten Zeile und gib sie noch einmal aus - beides in derselben Zelle.
+
+Was du dabei siehst, ist die wichtigste Eigenschaft einer Variablen: Sie merkt
+sich immer nur das Letzte.`,
+      },
+      {
         type: "code",
         source: `meine_variable1 = 5
 meine_variable2 = 7
@@ -90,6 +128,17 @@ meine_variable2 = 7
 print(meine_variable1 + 2)              # 5 + 2  ->  7
 print(meine_variable2 + 2)              # 7 + 2  ->  9
 print(meine_variable1 + meine_variable2)  # 5 + 7  ->  12`,
+      },
+      {
+        type: "markdown",
+        source: `### 🎯 Aufgabe
+
+Rechne dein Taschengeld für ein Jahr aus. Leg dafür zwei Variablen an -
+\`pro_woche\` und \`wochen_im_jahr\` - und multipliziere sie mit \`*\`.
+
+Und jetzt das Interessante: Wie viel wäre es, wenn du jede Woche 2 Euro davon
+zurücklegst? Wie lange müsstest du sparen für etwas, das du dir wirklich
+wünschst? Schreib die Rechnung hin und lass sie dir ausgeben.`,
       },
       {
         type: "markdown",
@@ -109,9 +158,19 @@ summe * 2`,
       },
       {
         type: "markdown",
-        source: `**Selbst probieren:** ändere oben die 5 in eine 10 und führe die Zellen
-noch einmal aus. Was passiert mit der Summe? (Tipp: die Zelle mit der Summe
-musst du danach auch noch einmal ausführen.)`,
+        source: `### 🎯 Aufgabe zum Schluss
+
+Ändere oben die 5 in eine 10 und führ die Zellen noch einmal aus. Was passiert
+mit der Summe? *(Die Zelle mit der Summe musst du danach auch noch einmal
+ausführen - Python rechnet nicht von selbst nach.)*
+
+Und dann etwas Eigenes: Bau einen kleinen Rechner für dein Leben. Wie viele
+Tage sind es noch bis zu den nächsten Ferien? Wie viele Stunden hast du diese
+Woche geschlafen? Wie viel Wasser trinkst du im Jahr, wenn es zwei Liter am
+Tag sind?
+
+Es ist völlig egal, was du ausrechnest. Wichtig ist der Moment, in dem dir
+auffällt, dass du ihn selbst gebaut hast.`,
       },
     ],
   },
@@ -141,6 +200,16 @@ print("Hallo " + name + "!")`,
       },
       {
         type: "markdown",
+        source: `### 🎯 Aufgabe
+
+Frag zusätzlich nach dem Lieblingsessen und antworte mit einem Satz, in dem
+beides vorkommt - Name und Essen. Zum Beispiel: *"Mia, ich hätte auch gern
+Pizza."*
+
+Zwei \`input\`-Zeilen, zwei Variablen, ein \`print\`. Mehr braucht es nicht.`,
+      },
+      {
+        type: "markdown",
         source: `## Auf die Antwort reagieren
 
 \`if\` heißt "wenn". Damit reagiert das Programm unterschiedlich, je nachdem
@@ -160,6 +229,17 @@ elif stimmung == "schlecht":
     print("Oh, das ist schade.")
 else:
     print("Aha.")`,
+      },
+      {
+        type: "markdown",
+        source: `### 🎯 Aufgabe
+
+Füg einen dritten Fall dazu: Wenn jemand \`müde\` eintippt, soll das Programm
+etwas Aufmunterndes sagen. Du brauchst dafür ein zweites \`elif\`.
+
+Probier danach absichtlich \`Gut\` mit großem G aus. Das Programm erkennt es
+nicht - für Python sind \`gut\` und \`Gut\` zwei verschiedene Texte. Findest du
+heraus, wie man das freundlicher macht? *(Tipp: \`stimmung.lower()\`)*`,
       },
       {
         type: "markdown",
@@ -194,8 +274,18 @@ print("In 10 Jahren bist du", alter_zahl + 10)`,
         source: `**Achtung:** \`input()\` gibt *immer* Text zurück, auch wenn du eine Zahl
 eintippst. \`"12" + 10\` wäre ein Fehler - deshalb steht dort \`int(alter)\`.
 
-**Selbst probieren:** Frag zusätzlich nach der Lieblingsfarbe und antworte
-bei "blau" etwas anderes als bei allen anderen Farben.`,
+### 🎯 Aufgabe zum Schluss
+
+Bau dir einen kleinen Gesprächspartner. Frag nach der Lieblingsfarbe und
+antworte bei "blau" etwas anderes als bei allen anderen Farben.
+
+Und wenn du magst, geh weiter: Frag nach drei Dingen und lass das Programm am
+Ende einen Satz daraus bauen, der alle drei enthält. So entsteht der Eindruck,
+es hätte zugehört - dabei hat es nur drei Texte in drei Kisten gelegt.
+
+Genau so funktionierten die ersten Chatprogramme der Welt. Der berühmteste
+hieß ELIZA, war 1966 fertig und bestand fast nur aus \`if\`-Zeilen. Menschen
+haben ihm trotzdem ihre Sorgen erzählt.`,
       },
     ],
   },
@@ -223,6 +313,16 @@ for i in range(5):
       },
       {
         type: "markdown",
+        source: `### 🎯 Aufgabe
+
+Lass die Schleife von 1 bis 10 zählen statt von 0 bis 4. Danach: rückwärts von
+10 bis 1. Für den Rückwärtsgang gibt es einen dritten Wert -
+\`range(10, 0, -1)\` heißt "von 10 bis 1, in Schritten von minus eins".
+
+Wenn das läuft, hast du einen Countdown gebaut.`,
+      },
+      {
+        type: "markdown",
         source: `Python fängt bei **0** an zu zählen. \`range(5)\` hört deshalb bei 4 auf -
 es sind trotzdem fünf Zahlen. Wenn du bei 1 anfangen willst, sagst du es dazu:`,
       },
@@ -234,7 +334,17 @@ for zahl in range(1, 11):
       },
       {
         type: "markdown",
-        source: `## Ueber Buchstaben laufen
+        source: `### 🎯 Aufgabe
+
+Mach daraus dein eigenes Einmaleins: Frag mit \`input\` nach einer Zahl und gib
+die ganze Reihe dazu aus. Vergiss \`int()\` nicht, sonst rechnet Python mit Text.
+
+Vier Zeilen, und du hast ein Programm, das jede Einmaleins-Reihe kann - auch
+die 17er, die in keinem Heft steht.`,
+      },
+      {
+        type: "markdown",
+        source: `## Über Buchstaben laufen
 
 Eine Schleife kann auch durch ein Wort gehen - Buchstabe für Buchstabe.`,
       },
@@ -248,12 +358,33 @@ for buchstabe in wort:
 print("Das Wort hat", len(wort), "Buchstaben.")`,
       },
       {
+        type: "markdown",
+        source: `### 🎯 Aufgabe
+
+Setz deinen eigenen Namen ein. Wie viele Buchstaben hat er?
+
+Und dann etwas zum Angeben: Lass die Schleife den Namen **rückwärts** ausgeben.
+Es gibt einen sehr kurzen Weg dafür - \`wort[::-1]\` - aber versuch es ruhig
+zuerst mit einer Schleife.`,
+      },
+      {
         type: "code",
         source: `# Genauso geht es durch eine Liste.
 tiere = ["Katze", "Hund", "Pferd"]
 
 for tier in tiere:
     print("Ein " + tier + " hat", len(tier), "Buchstaben.")`,
+      },
+      {
+        type: "markdown",
+        source: `### 🎯 Aufgabe
+
+Ersetz die Tiere durch etwas aus deinem Leben: deine Lieblingslieder, die
+Fächer am Montag, die Namen deiner Freundinnen und Freunde.
+
+Danach die Frage, die eine Schleife in einer Sekunde beantwortet: Welcher
+Eintrag ist der längste? *(Denk an \`len()\` und eine Variable, die sich das
+bisherige Maximum merkt.)*`,
       },
       {
         type: "markdown",
@@ -272,6 +403,17 @@ while countdown > 0:
     countdown = countdown - 1   # ohne diese Zeile läuft es ewig!
 
 print("Start!")`,
+      },
+      {
+        type: "markdown",
+        source: `### 🎯 Aufgabe
+
+Zähl von 10 herunter statt von 5. Bau danach absichtlich einen Fehler ein:
+Lösch die Zeile \`countdown = countdown - 1\` und führ die Zelle aus.
+
+Nichts geht mehr - die Bedingung wird nie falsch. Genau das ist eine
+**Endlosschleife**. Halt sie mit dem Stopp-Knopf oben an. Wer sie einmal
+absichtlich gebaut hat, erkennt sie beim nächsten Mal sofort.`,
       },
       {
         type: "markdown",
@@ -312,6 +454,17 @@ print("Ich habe mir eine Zahl gedacht. Aber ich verrate sie nicht.")`,
       },
       {
         type: "markdown",
+        source: `### 🎯 Aufgabe
+
+Bau einen Würfel: \`random.randint(1, 6)\`. Lass ihn in einer Schleife zehnmal
+würfeln und gib jedes Ergebnis aus.
+
+Fällt dir etwas auf? Zähl mit, wie oft die Sechs kommt. Bei zehn Würfen ist
+alles möglich - probier es mit 1000 Würfen noch einmal. So sieht
+Wahrscheinlichkeit aus, wenn man ihr beim Arbeiten zusieht.`,
+      },
+      {
+        type: "markdown",
         source: `## Das Spiel
 
 \`while True:\` läuft erst einmal endlos. \`break\` steigt aus, sobald geraten
@@ -338,6 +491,16 @@ while True:
     else:
         print("Richtig! Du hast", versuche, "Versuche gebraucht.")
         break                # geschafft - raus aus der Schleife`,
+      },
+      {
+        type: "markdown",
+        source: `### 🎯 Aufgabe
+
+Mach das Spiel netter: Statt nur "zu klein" soll es *heiß* sagen, wenn der Tipp
+höchstens 2 danebenliegt, und *kalt*, wenn er weiter weg ist.
+
+Du brauchst dafür den Abstand zwischen Tipp und Zahl - \`abs(tipp - zahl)\`
+liefert ihn immer positiv. Ein zusätzliches \`if\` genügt.`,
       },
       {
         type: "markdown",
@@ -368,6 +531,17 @@ else:
     # Dieses else gehört zur for-Schleife: es läuft nur,
     # wenn kein break ausgelöst wurde.
     print("Verloren. Die Zahl war", zahl)`,
+      },
+      {
+        type: "markdown",
+        source: `### 🎯 Aufgabe
+
+Stell den Bereich auf 1 bis 100 um. Wie viele Versuche sind fair?
+
+Probier es selbst aus: Rate immer die Mitte des noch möglichen Bereichs. Du
+wirst merken, dass sieben Versuche fast immer reichen - egal, welche Zahl es
+war. Warum das so ist, kannst du sogar ausrechnen: Jeder Tipp halbiert den
+Bereich, und 100 lässt sich siebenmal halbieren.`,
       },
       {
         type: "markdown",
@@ -425,6 +599,16 @@ print(verschlüsseln("Hallo Welt", 3))`,
       },
       {
         type: "markdown",
+        source: `### 🎯 Aufgabe
+
+Verschlüssel eine eigene Nachricht mit einer Verschiebung, die nur du kennst.
+Gib den verschlüsselten Text jemandem in der Klasse - zusammen mit der Zahl.
+Kann die Person ihn wieder lesbar machen?
+
+Und die spannendere Variante: Gib den Text **ohne** die Zahl weiter.`,
+      },
+      {
+        type: "markdown",
         source: `Zum Entschlüsseln brauchst du keine zweite Funktion - eine Verschiebung um
 \`-3\` ist genau das Gegenteil:`,
       },
@@ -433,6 +617,16 @@ print(verschlüsseln("Hallo Welt", 3))`,
         source: `geheim = verschlüsseln("Treffen um acht", 5)
 print("Verschlüsselt:  ", geheim)
 print("Wieder lesbar:   ", verschlüsseln(geheim, -5))`,
+      },
+      {
+        type: "markdown",
+        source: `### 🎯 Aufgabe
+
+Probier die Verschiebung 13 aus - und dann verschlüssel das Ergebnis noch
+einmal mit 13. Was kommt heraus?
+
+Diese Verschiebung hat sogar einen eigenen Namen: **ROT13**. Weil das Alphabet
+26 Buchstaben hat, ist Verschlüsseln und Entschlüsseln hier dasselbe.`,
       },
       {
         type: "markdown",
@@ -447,6 +641,17 @@ Möglichkeiten. Die probiert man einfach alle durch - eine davon ergibt Sinn.`,
 
 for verschiebung in range(1, 26):
     print(verschiebung, ":", verschlüsseln(geheim, -verschiebung))`,
+      },
+      {
+        type: "markdown",
+        source: `### 🎯 Aufgabe
+
+Setz deinen eigenen verschlüsselten Text ein und lass ihn knacken. Der Rechner
+probiert alle 25 Möglichkeiten in weniger als einer Sekunde durch.
+
+Denk kurz darüber nach: Ein Verfahren, das zweitausend Jahre lang als sicher
+galt, fällt hier in einer Zeile Code. Was heißt das für Passwörter, die aus
+einem einzigen Wort bestehen?`,
       },
       {
         type: "markdown",
@@ -468,13 +673,32 @@ Google Colab - mit einem Ausrufezeichen davor:`,
       {
         type: "markdown",
         source: `Beim ersten Mal dauert das ein paar Sekunden, danach ist das Paket in
-dieser Sitzung da.`,
+dieser Sitzung da.
+
+### 🎯 Aufgabe
+
+Was gerade passiert ist, lohnt einen Moment: Dein Browser hat sich Code von
+jemandem geholt, den du nie getroffen hast, und führt ihn jetzt aus. Genau so
+wird heute Software gebaut - kaum jemand schreibt alles selbst.
+
+Such dir auf **pypi.org** ein Paket aus, dessen Name dir gefällt, und
+installier es. Nicht jedes funktioniert hier, denn manche brauchen ein
+richtiges Betriebssystem. Finde eins, das läuft.`,
       },
       {
         type: "code",
         source: `import cowsay
 
 cowsay.cow("Ich kann jetzt sprechen!")`,
+      },
+      {
+        type: "markdown",
+        source: `### 🎯 Aufgabe
+
+Die Kuh ist nicht allein. Probier \`cowsay.trex(...)\`, \`cowsay.dragon(...)\` oder
+\`cowsay.pig(...)\` aus. Mit \`cowsay.char_names\` bekommst du die ganze Liste.
+
+Lass dann eines der Tiere sagen, was du heute gelernt hast.`,
       },
       {
         type: "code",
@@ -486,7 +710,17 @@ cowsay.cow(verschlüsseln(nachricht, 3))`,
       },
       {
         type: "markdown",
-        source: `### Was geht und was nicht
+        source: `### 🎯 Aufgabe
+
+Lass die Kuh etwas Verschlüsseltes sagen und zeig den Bildschirm jemandem, der
+den Schlüssel nicht kennt. Dann verrat die Verschiebung und zeig es noch
+einmal.
+
+Du hast in diesem Notizbuch zwei Dinge gebaut, die es beide wirklich gibt: ein
+Verschlüsselungsverfahren und ein Programm, das es knackt. Beides in je zehn
+Zeilen.
+
+### Was geht und was nicht
 
 Python läuft hier komplett **in deinem Browser** - es gibt keinen Computer
 im Hintergrund, auf dem etwas ausgeführt wird. Deshalb:
@@ -515,6 +749,7 @@ export function notebookFromExample(spec: ExampleSpec, lang: string): Notebook {
     name: spec.name[lang] ?? spec.name.de,
     created: now,
     updated: now,
+    fromExample: spec.key,
     cells: spec.cells.map((c) => {
       const cell = newCell(c.type, c.source);
       return cell;
