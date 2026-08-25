@@ -1,0 +1,362 @@
+{
+  "key": "was-im-netz-passiert",
+  "title": {
+    "de": "Was in so einem Netz passiert",
+    "en": "What happens inside such a network"
+  },
+  "summary": {
+    "de": "Neuron, Schicht, Gewichtung - einmal von Hand durchgerechnet, damit nichts geheimnisvoll bleibt.",
+    "en": "Neuron, layer, weight - worked through by hand once, so that nothing stays mysterious."
+  },
+  "icon": "🕸️",
+  "accent": "violet",
+  "minutes": 15,
+  "screens": [
+    {
+      "key": "ein-neuron",
+      "title": {
+        "de": "Ein Neuron, von Hand gerechnet",
+        "en": "One neuron, worked out by hand"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Ein neuronales Netz klingt nach Gehirn und ist Rechnerei. Ein Neuron ist eine Stelle, die Zahlen entgegennimmt, jede mit einer Gewichtung multipliziert, alles addiert und weitergibt, wenn das Ergebnis groß genug ist. Mehr nicht. Rechnen wir eines durch.",
+            "en": "A neural network sounds like a brain and is arithmetic. A neuron is a place that takes in numbers, multiplies each by a weight, adds everything up and passes it on if the result is big enough. Nothing more. Let us work one through."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Angenommen, ein Neuron soll entscheiden, ob du heute ins Freibad gehst. Drei Eingaben: Temperatur in Grad geteilt durch 30, Regen ja gleich 1, und ob Freunde mitkommen. Sagen wir 24 Grad, kein Regen, Freunde kommen mit: die Eingaben sind 0,8 - 0 - 1.",
+            "en": "Suppose a neuron is to decide whether you go to the open-air pool today. Three inputs: temperature in degrees divided by 30, rain yes equals 1, and whether friends are coming. Say 24 degrees, no rain, friends coming: the inputs are 0.8 - 0 - 1."
+          }
+        },
+        {
+          "kind": "table",
+          "head": [
+            {
+              "de": "Eingabe",
+              "en": "Input"
+            },
+            {
+              "de": "Wert",
+              "en": "Value"
+            },
+            {
+              "de": "Gewichtung",
+              "en": "Weight"
+            },
+            {
+              "de": "Beitrag",
+              "en": "Contribution"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "de": "Wärme",
+                "en": "Warmth"
+              },
+              {
+                "de": "0,8",
+                "en": "0.8"
+              },
+              {
+                "de": "2,0",
+                "en": "2.0"
+              },
+              {
+                "de": "1,6",
+                "en": "1.6"
+              }
+            ],
+            [
+              {
+                "de": "Regen",
+                "en": "Rain"
+              },
+              {
+                "de": "0",
+                "en": "0"
+              },
+              {
+                "de": "-3,0",
+                "en": "-3.0"
+              },
+              {
+                "de": "0",
+                "en": "0"
+              }
+            ],
+            [
+              {
+                "de": "Freunde",
+                "en": "Friends"
+              },
+              {
+                "de": "1",
+                "en": "1"
+              },
+              {
+                "de": "1,5",
+                "en": "1.5"
+              },
+              {
+                "de": "1,5",
+                "en": "1.5"
+              }
+            ],
+            [
+              {
+                "de": "Summe",
+                "en": "Sum"
+              },
+              {
+                "de": "-",
+                "en": "-"
+              },
+              {
+                "de": "-",
+                "en": "-"
+              },
+              {
+                "de": "3,1",
+                "en": "3.1"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Die Schwelle sei 2. Die Summe ist 3,1, also größer - das Neuron feuert, du gehst schwimmen. Und jetzt sieh dir die Gewichtungen an: Regen zählt mit minus drei am stärksten, Wärme mit plus zwei, Freunde mit anderthalb. In diesen drei Zahlen steckt eine ganze Persönlichkeit. Wer Regen mit minus eins gewichtet, geht auch bei Nieselregen.",
+            "en": "Let the threshold be 2. The sum is 3.1, which is greater - the neuron fires, you go swimming. Now look at the weights: rain counts most strongly at minus three, warmth at plus two, friends at one and a half. A whole personality sits in those three numbers. Someone who weights rain at minus one goes even in drizzle."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "fact",
+          "icon": "🔢",
+          "title": {
+            "de": "Die Gewichtungen sind das ganze Wissen",
+            "en": "The weights are the whole knowledge"
+          },
+          "text": {
+            "de": "Alles, was ein Netz „gelernt“ hat, steckt in seinen Gewichtungen - nichts sonst. Ein großes Sprachmodell hat Hunderte Milliarden davon. Es gibt darin keine Sätze, keine Fakten, keine Bilder, nur Zahlen. Das ist der wichtigste und der unheimlichste Satz dieses Pfades zugleich.",
+            "en": "Everything a network has \"learned\" sits in its weights - nothing else. A large language model has hundreds of billions of them. There are no sentences in there, no facts, no pictures, only numbers. That is at once the most important and the eeriest sentence in this path."
+          }
+        }
+      ]
+    },
+    {
+      "key": "schichten",
+      "title": {
+        "de": "Viele davon nebeneinander und hintereinander",
+        "en": "Many of them side by side and one after another"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Ein einzelnes Neuron kann wenig. Viele nebeneinander bilden eine Schicht, mehrere Schichten hintereinander ergeben das Netz - und plötzlich lassen sich damit Dinge unterscheiden, für die niemand eine Regel hätte formulieren können.",
+            "en": "A single neuron can do little. Many side by side make a layer, several layers one after another make the network - and suddenly things can be distinguished for which nobody could have formulated a rule."
+          }
+        },
+        {
+          "kind": "steps",
+          "items": [
+            {
+              "title": {
+                "de": "Vorn kommen Zahlen hinein",
+                "en": "Numbers go in at the front"
+              },
+              "text": {
+                "de": "Ein Bild ist für den Rechner eine lange Liste von Helligkeitswerten - ein Foto mit einem Megapixel sind drei Millionen Zahlen. Nichts weiter. Genau das hast du im Pfad über Pixel schon gesehen.",
+                "en": "To the machine a picture is a long list of brightness values - a one-megapixel photo is three million numbers. Nothing more. You already saw exactly that in the path about pixels."
+              }
+            },
+            {
+              "title": {
+                "de": "Jede Schicht fasst zusammen",
+                "en": "Each layer summarises"
+              },
+              "text": {
+                "de": "Die erste Schicht findet Kanten und Helligkeitssprünge. Die zweite setzt daraus Formen zusammen. Die dritte erkennt Teile - ein Ohr, ein Auge. Die vierte das Ganze. Niemand hat ihr das vorgegeben; diese Aufteilung entsteht beim Training von selbst.",
+                "en": "The first layer finds edges and jumps in brightness. The second assembles shapes from them. The third recognises parts - an ear, an eye. The fourth the whole. Nobody prescribed that; the division arises by itself during training."
+              }
+            },
+            {
+              "title": {
+                "de": "Hinten kommt eine Einschätzung heraus",
+                "en": "An estimate comes out at the back"
+              },
+              "text": {
+                "de": "Und zwar kein Ja oder Nein, sondern eine Wahrscheinlichkeit: „zu 94 Prozent Katze“. Das ist ein wichtiger Unterschied - ein solches System ist sich nie sicher, es ist nur mehr oder weniger zuversichtlich.",
+                "en": "And not a yes or no but a probability: \"94 per cent cat\". That is an important difference - such a system is never certain, only more or less confident."
+              }
+            }
+          ]
+        },
+        {
+          "kind": "callout",
+          "tone": "note",
+          "icon": "🪜",
+          "title": {
+            "de": "Deshalb heißt es Deep Learning",
+            "en": "Which is why it is called deep learning"
+          },
+          "text": {
+            "de": "„Tief“ heißt: viele Schichten hintereinander. Nichts Geheimnisvolles. In den Neunzigern hatte man zwei oder drei, heute manchmal hundert. Möglich wurde das nicht durch eine neue Idee, sondern durch schnellere Rechner und sehr viel mehr Beispiele.",
+            "en": "\"Deep\" means: many layers one after another. Nothing mysterious. In the nineties there were two or three, today sometimes a hundred. What made that possible was not a new idea but faster machines and vastly more examples."
+          }
+        }
+      ]
+    },
+    {
+      "key": "trainieren",
+      "title": {
+        "de": "Wie die Zahlen ihre Werte bekommen",
+        "en": "How the numbers get their values"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Am Anfang sind alle Gewichtungen zufällig. Das Netz rät also - und liegt fast immer falsch. Was dann passiert, ist das ganze Geheimnis des Trainings, und es ist erstaunlich schlicht.",
+            "en": "At the start all the weights are random. So the network guesses - and is almost always wrong. What happens next is the whole secret of training, and it is astonishingly plain."
+          }
+        },
+        {
+          "kind": "steps",
+          "items": [
+            {
+              "title": {
+                "de": "Raten",
+                "en": "Guess"
+              },
+              "text": {
+                "de": "Ein Beispielbild geht hinein, hinten kommt eine Einschätzung heraus. „Zu 12 Prozent Katze“ - obwohl es eindeutig eine ist.",
+                "en": "An example image goes in, an estimate comes out at the back. \"12 per cent cat\" - although it clearly is one."
+              }
+            },
+            {
+              "title": {
+                "de": "Den Fehler messen",
+                "en": "Measure the error"
+              },
+              "text": {
+                "de": "Der Abstand zwischen 12 Prozent und den gewünschten 100 Prozent ist der Fehler. Eine einzige Zahl, die sagt, wie schlecht es gerade läuft.",
+                "en": "The gap between 12 per cent and the desired 100 per cent is the error. A single number saying how badly things are going."
+              }
+            },
+            {
+              "title": {
+                "de": "Alle Gewichtungen ein winziges Stück verschieben",
+                "en": "Nudge every weight a tiny bit"
+              },
+              "text": {
+                "de": "Und zwar in die Richtung, die den Fehler kleiner macht. Winzig - sonst würde das Netz beim nächsten Bild alles wieder umwerfen.",
+                "en": "In the direction that makes the error smaller. Tiny - otherwise the next image would overturn everything again."
+              }
+            },
+            {
+              "title": {
+                "de": "Millionenfach wiederholen",
+                "en": "Repeat millions of times"
+              },
+              "text": {
+                "de": "Das ist Training. Kein Verstehen, kein Nachdenken - millionenfaches Nachjustieren. Bei großen Modellen läuft das wochenlang auf Tausenden Rechnern gleichzeitig.",
+                "en": "That is training. No understanding, no reflection - millions of small adjustments. For large models this runs for weeks on thousands of machines at once."
+              }
+            }
+          ]
+        },
+        {
+          "kind": "callout",
+          "tone": "fact",
+          "icon": "🏷️",
+          "title": {
+            "de": "Mit und ohne Etiketten",
+            "en": "With and without labels"
+          },
+          "text": {
+            "de": "Beim überwachten Lernen steht bei jedem Beispiel dabei, was es ist - „das ist eine Katze“. Das musste jemand hinschreiben, oft sehr viele Menschen für sehr wenig Geld. Beim unüberwachten Lernen fehlen diese Etiketten: Das System sucht selbst nach Gruppen, die sich ähneln, und weiß nicht, wie sie heißen.",
+            "en": "In supervised learning each example comes with what it is - \"this is a cat\". Somebody had to write that down, often very many people for very little money. In unsupervised learning those labels are missing: the system looks for groups that resemble each other and does not know what they are called."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "Teachable Machine - Training zum Anfassen",
+                "en": "Teachable Machine - hands-on training"
+              },
+              "url": "https://teachablemachine.withgoogle.com"
+            },
+            {
+              "label": {
+                "de": "inf-schule.de: Künstliche Intelligenz",
+                "en": "inf-schule.de: artificial intelligence"
+              },
+              "url": "https://www.inf-schule.de/ki"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": {
+        "de": "1. Lückentext: Neuron, Schicht, Gewichtung",
+        "en": "1. Fill in the blanks: neuron, layer, weight"
+      },
+      "intro": {
+        "de": "Setze die fehlenden Wörter ein.",
+        "en": "Fill in the missing words."
+      },
+      "text": {
+        "de": "Die kleinste Einheit eines solchen Systems heißt ___. Sie nimmt Zahlen entgegen, multipliziert jede mit einer ___, addiert alles und gibt weiter, wenn die Summe über der ___ liegt. Viele davon nebeneinander bilden eine Schicht, auch ___ genannt; viele Schichten hintereinander ergeben ein ___. Vorn kommt ein Bild als lange Liste von ___ hinein, hinten kommt keine sichere Antwort, sondern eine ___. Alles, was das System gelernt hat, steckt allein in seinen ___. Am Anfang sind diese ___ und werden beim Training millionenfach ein winziges Stück verschoben. Steht bei jedem Beispiel dabei, was es zeigt, spricht man von ___ Lernen.",
+        "en": "The smallest unit of such a system is called a ___. It takes in numbers, multiplies each by a ___, adds everything up and passes it on if the sum exceeds the ___. Many of them side by side make a layer, also called a ___; many layers one after another make a ___. At the front an image goes in as a long list of ___, at the back comes not a sure answer but a ___. Everything the system has learned sits solely in its ___. At the start these are ___ and during training are nudged a tiny bit millions of times. If each example comes with what it shows, this is called ___ learning."
+      }
+    },
+    {
+      "kind": "compare",
+      "title": {
+        "de": "2. Rechnen und vergleichen: dein eigenes Neuron",
+        "en": "2. Calculate and compare: your own neuron"
+      },
+      "intro": {
+        "de": "Papier genügt, ein Taschenrechner hilft.",
+        "en": "Paper is enough, a calculator helps."
+      },
+      "text": {
+        "de": "Rechne das Freibad-Neuron aus diesem Pfad für drei weitere Tage durch: 30 Grad mit Regen und ohne Freunde, 15 Grad ohne Regen mit Freunden, 24 Grad mit Regen und mit Freunden. Notiere jeweils die Summe und ob das Neuron feuert. Ändere danach die Gewichtung für Regen von minus drei auf minus eins und rechne dieselben drei Tage noch einmal. Beschreibe, welche Entscheidungen sich ändern, und erkläre, was diese eine Zahl über die Person aussagt, deren Verhalten das Neuron abbildet.",
+        "en": "Work through the pool neuron from this path for three more days: 30 degrees with rain and no friends, 15 degrees without rain with friends, 24 degrees with rain and with friends. Note the sum in each case and whether the neuron fires. Then change the weight for rain from minus three to minus one and work through the same three days again. Describe which decisions change, and explain what that one number says about the person whose behaviour the neuron models."
+      },
+      "hint": {
+        "de": "Vergleich die beiden Fassungen nicht nur im Ergebnis, sondern auch darin, welcher Faktor jeweils den Ausschlag gab.",
+        "en": "Compare the two versions not only in outcome but also in which factor tipped the balance each time."
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": {
+        "de": "3. Zum Nachdenken: kann man Zahlen besitzen",
+        "en": "3. Something to think about: can numbers be owned"
+      },
+      "intro": {
+        "de": "Auf diese Frage gibt es keine richtige Antwort.",
+        "en": "There is no right answer to this one."
+      },
+      "text": {
+        "de": "Alles, was ein Modell kann, steckt in einer sehr langen Liste von Zahlen. Diese Liste ist entstanden aus Millionen Beispielen - Texten, Bildern, Musik, die andere Menschen gemacht haben. Sie ist keine Kopie davon und trotzdem ohne sie nicht denkbar. Überlege, wem so eine Liste gehören sollte: dem, der das Training bezahlt hat, denen, deren Werke darin eingeflossen sind, oder allen? Und woran würdest du das festmachen?",
+        "en": "Everything a model can do sits in a very long list of numbers. That list arose from millions of examples - texts, pictures, music that other people made. It is not a copy of them and yet unthinkable without them. Think about whom such a list should belong to: whoever paid for the training, those whose works went into it, or everyone? And what would you base that on?"
+      }
+    }
+  ]
+}

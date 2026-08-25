@@ -1,0 +1,332 @@
+{
+  "key": "wege-nach-draussen",
+  "title": {
+    "de": "Wege nach draußen",
+    "en": "Ways out"
+  },
+  "summary": {
+    "de": "Switch, Router, Gateway - drei Aufgaben, und der Kasten an deiner Wand macht alle drei gleichzeitig.",
+    "en": "Switch, router, gateway - three jobs, and the box on your wall does all three at once."
+  },
+  "icon": "🔀",
+  "accent": "sky",
+  "minutes": 14,
+  "screens": [
+    {
+      "key": "drei-aufgaben",
+      "title": {
+        "de": "Drei Geräte, drei Aufgaben",
+        "en": "Three devices, three jobs"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Damit ein Paket von deinem Handy bis nach Kalifornien kommt, sind unterwegs Geräte nötig, die es weiterreichen. Drei Aufgaben muss dabei jemand übernehmen - und keines dieser Geräte kann die Aufgabe des anderen.",
+            "en": "For a packet to get from your phone to California, devices along the way have to pass it on. Three jobs have to be done - and none of these devices can do another's job."
+          }
+        },
+        {
+          "kind": "steps",
+          "items": [
+            {
+              "title": {
+                "de": "Der Switch verteilt im Haus",
+                "en": "The switch distributes inside the house"
+              },
+              "text": {
+                "de": "Er kennt nur die Geräte, die direkt an ihm hängen, und schickt jedes Paket genau dorthin, wo es hingehört. Von der Welt draußen weiß er nichts - und muss er auch nicht.",
+                "en": "It knows only the devices directly attached to it and sends each packet exactly where it belongs. It knows nothing of the world outside - and does not need to."
+              }
+            },
+            {
+              "title": {
+                "de": "Der Router verbindet zwei Netze",
+                "en": "The router joins two networks"
+              },
+              "text": {
+                "de": "Er steht an der Grenze und entscheidet, wohin ein Paket als Nächstes soll. Er kennt nicht die ganze Strecke bis zum Ziel - nur die Richtung. Das genügt, weil der nächste Router dasselbe tut.",
+                "en": "It sits at the boundary and decides where a packet should go next. It does not know the whole route to the destination - only the direction. That is enough, because the next router does the same."
+              }
+            },
+            {
+              "title": {
+                "de": "Das Gateway ist der Ausgang",
+                "en": "The gateway is the way out"
+              },
+              "text": {
+                "de": "Es ist keine eigene Bauart, sondern eine Rolle: die Adresse, an die alles geht, was nicht ins eigene Subnetz gehört. Zu Hause ist das dein Router. Ohne eingetragenes Gateway endet jede Reise am Wohnzimmertisch.",
+                "en": "It is not a separate kind of device but a role: the address everything goes to that does not belong in your own subnet. At home that is your router. With no gateway entered, every journey ends at the living room table."
+              }
+            }
+          ]
+        },
+        {
+          "kind": "callout",
+          "tone": "fact",
+          "icon": "📮",
+          "title": {
+            "de": "Wie die Post, nur schneller",
+            "en": "Like the postal service, only faster"
+          },
+          "text": {
+            "de": "Kein Postbote kennt den Weg von Hamburg nach Sydney. Er bringt den Brief zum Verteilzentrum, das schickt ihn zum Flughafen, dort weiß jemand, welches Flugzeug nach Australien geht. Jede Station kennt nur den nächsten Schritt. Genau so arbeiten Router - millionenfach pro Sekunde.",
+            "en": "No postman knows the route from Hamburg to Sydney. They take the letter to the sorting centre, which sends it to the airport, where somebody knows which plane goes to Australia. Every station knows only the next step. Routers work in exactly that way - millions of times per second."
+          }
+        }
+      ]
+    },
+    {
+      "key": "der-kasten-an-der-wand",
+      "title": {
+        "de": "Der Kasten an deiner Wand",
+        "en": "The box on your wall"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Zu Hause siehst du keine drei Geräte, sondern eins. Das liegt daran, dass in dem einen Kasten mindestens vier Geräte stecken, die nur zufällig dasselbe Gehäuse teilen.",
+            "en": "At home you do not see three devices but one. That is because at least four devices sit inside that single box, sharing a case only by coincidence."
+          }
+        },
+        {
+          "kind": "table",
+          "head": [
+            {
+              "de": "Steckt darin",
+              "en": "Inside it"
+            },
+            {
+              "de": "Aufgabe",
+              "en": "Job"
+            },
+            {
+              "de": "Woran du es merkst",
+              "en": "How you notice"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "de": "Modem",
+                "en": "Modem"
+              },
+              {
+                "de": "Übersetzt zwischen Kabel des Anbieters und Netzwerk",
+                "en": "Translates between the provider's cable and the network"
+              },
+              {
+                "de": "Die Lampe, die als Erste angeht",
+                "en": "The lamp that lights up first"
+              }
+            ],
+            [
+              {
+                "de": "Router",
+                "en": "Router"
+              },
+              {
+                "de": "Verbindet dein Netz mit dem Internet",
+                "en": "Connects your network to the internet"
+              },
+              {
+                "de": "Ohne ihn nur Geräte untereinander",
+                "en": "Without it, only devices among themselves"
+              }
+            ],
+            [
+              {
+                "de": "Switch",
+                "en": "Switch"
+              },
+              {
+                "de": "Verteilt zwischen den Geräten bei dir",
+                "en": "Distributes among your devices"
+              },
+              {
+                "de": "Die vier Buchsen auf der Rückseite",
+                "en": "The four sockets on the back"
+              }
+            ],
+            [
+              {
+                "de": "WLAN-Sender",
+                "en": "Wi-Fi access point"
+              },
+              {
+                "de": "Dasselbe wie der Switch, nur ohne Kabel",
+                "en": "The same as the switch, only without cables"
+              },
+              {
+                "de": "Der Name, den du am Handy siehst",
+                "en": "The name you see on your phone"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "🔍",
+          "title": {
+            "de": "Sieh dir deinen Router von innen an",
+            "en": "Look inside your own router"
+          },
+          "text": {
+            "de": "Tipp die Adresse deines Routers in den Browser - meist `192.168.0.1` oder `192.168.178.1`. Es erscheint eine Anmeldeseite; das Passwort steht oft auf einem Aufkleber am Gerät. Drinnen siehst du eine Liste aller Geräte im Haushalt mit ihren Adressen. Frag vorher zu Hause, ob du hineinsehen darfst - und ändere nichts.",
+            "en": "Type your router's address into the browser - usually `192.168.0.1` or `192.168.178.1`. A login page appears; the password is often on a sticker on the device. Inside you see a list of every device in the household with its address. Ask at home first whether you may look - and change nothing."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Diese Liste ist der Moment, in dem das Thema konkret wird: Da stehen dein Handy, der Fernseher, die Konsole, vielleicht ein Gerät, das du nicht zuordnen kannst. Alles, was eine Adresse hat, ist Teil deines Netzes - auch der smarte Lautsprecher, an den man nicht denkt.",
+            "en": "That list is where the topic becomes concrete: there is your phone, the TV, the console, perhaps a device you cannot place. Everything with an address is part of your network - including the smart speaker nobody thinks about."
+          }
+        }
+      ]
+    },
+    {
+      "key": "wer-verteilt-die-nummern",
+      "title": {
+        "de": "Wer verteilt eigentlich die Nummern",
+        "en": "Who hands out the numbers"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Du hast noch nie eine IP-Adresse eingetippt, und trotzdem hat jedes deiner Geräte eine. Dahinter steckt ein Dienst, der so unauffällig arbeitet, dass die meisten nicht wissen, dass es ihn gibt: DHCP.",
+            "en": "You have never typed in an IP address, and yet every one of your devices has one. Behind that is a service so unobtrusive that most people do not know it exists: DHCP."
+          }
+        },
+        {
+          "kind": "steps",
+          "items": [
+            {
+              "title": {
+                "de": "Das Gerät ruft in die Runde",
+                "en": "The device calls out"
+              },
+              "text": {
+                "de": "Ein frisch eingeschaltetes Handy fragt ins Netz: „Ist hier jemand, der Adressen vergibt?“ Es hat noch keine eigene, deshalb ruft es an alle gleichzeitig.",
+                "en": "A freshly switched-on phone asks the network: \"Is there anyone here who hands out addresses?\" It has none of its own yet, so it calls to everyone at once."
+              }
+            },
+            {
+              "title": {
+                "de": "Der Router antwortet mit einem Angebot",
+                "en": "The router answers with an offer"
+              },
+              "text": {
+                "de": "Er schlägt eine freie Adresse vor und schickt gleich dazu, was sonst noch nötig ist: Subnetzmaske, Gateway und die Adresse des Namensdienstes.",
+                "en": "It proposes a free address and sends along everything else that is needed: subnet mask, gateway and the address of the name service."
+              }
+            },
+            {
+              "title": {
+                "de": "Geliehen, nicht geschenkt",
+                "en": "Leased, not given"
+              },
+              "text": {
+                "de": "Die Adresse gilt nur eine Weile - oft einen Tag. Danach muss das Gerät sie verlängern. So werden Adressen von Geräten frei, die längst weg sind, und ein Café mit tausend Gästen am Tag kommt mit wenigen Adressen aus.",
+                "en": "The address is valid only for a while - often a day. After that the device has to renew it. That way addresses of devices long gone become free again, and a café with a thousand guests a day manages with few addresses."
+              }
+            }
+          ]
+        },
+        {
+          "kind": "callout",
+          "tone": "warn",
+          "icon": "👯",
+          "title": {
+            "de": "Was passiert, wenn zwei dieselbe Nummer haben",
+            "en": "What happens when two share a number"
+          },
+          "text": {
+            "de": "Dann kommen Antworten mal beim einen, mal beim anderen an, und beide Geräte spinnen abwechselnd. Der Fehler ist berüchtigt, weil er nicht dauerhaft auftritt - und genau deshalb gibt es DHCP: Ein Dienst, der Buch führt, vergibt keine Nummer zweimal. Ein Mensch, der von Hand einträgt, schon.",
+            "en": "Then answers arrive sometimes at one, sometimes at the other, and both devices misbehave in turns. The fault is notorious because it is intermittent - and that is exactly why DHCP exists: a service that keeps a ledger never hands out a number twice. A person entering them by hand does."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Man kann Adressen auch von Hand vergeben, und in Firmen wird das für Drucker und Server gemacht - dort soll die Nummer sich nie ändern. Für alles andere gilt: Was automatisch geht, macht keine Tippfehler.",
+            "en": "Addresses can also be assigned by hand, and in companies that is done for printers and servers - there the number should never change. For everything else the rule is: what happens automatically makes no typing mistakes."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "inf-schule.de: Rechnernetze und Adressvergabe",
+                "en": "inf-schule.de: networks and address assignment"
+              },
+              "url": "https://www.inf-schule.de/rechnernetze"
+            },
+            {
+              "label": {
+                "de": "RFC 2131 - DHCP",
+                "en": "RFC 2131 - DHCP"
+              },
+              "url": "https://www.rfc-editor.org/rfc/rfc2131"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": {
+        "de": "1. Lückentext: verteilen, weiterleiten, hinauslassen",
+        "en": "1. Fill in the blanks: distribute, forward, let out"
+      },
+      "intro": {
+        "de": "Setze die fehlenden Wörter ein.",
+        "en": "Fill in the missing words."
+      },
+      "text": {
+        "de": "Innerhalb eines Netzes verteilt ein ___ die Pakete an die Geräte, die direkt an ihm hängen. Zwei Netze miteinander verbindet dagegen ein ___; er kennt nicht die ganze Strecke, sondern nur die ___. Die Adresse, an die alles geht, was nicht ins eigene Subnetz gehört, heißt ___ - zu Hause ist das dein Router. Damit man Adressen nicht von Hand eintragen muss, gibt es ___. Ein neues Gerät fragt zuerst ins Netz, ob jemand Adressen ___. Die Antwort enthält neben der Adresse auch Subnetzmaske und Gateway. Eine so vergebene Adresse ist nur ___, nicht geschenkt, und muss verlängert werden. Haben zwei Geräte dieselbe Adresse, treten ___ auf, die nur zeitweise auftauchen.",
+        "en": "Within a network a ___ distributes packets to the devices attached directly to it. Two networks, by contrast, are joined by a ___; it does not know the whole route, only the ___. The address everything goes to that does not belong in your own subnet is called the ___ - at home that is your router. So that addresses do not have to be entered by hand there is ___. A new device first asks the network whether anyone ___ addresses. The answer contains, besides the address, the subnet mask and gateway. An address assigned this way is only ___, not given, and has to be renewed. When two devices share the same address, ___ appear that only show up intermittently."
+      }
+    },
+    {
+      "kind": "compare",
+      "title": {
+        "de": "2. Ausprobieren und vergleichen: vier Geräte in einem Kasten",
+        "en": "2. Try it and compare: four devices in one box"
+      },
+      "intro": {
+        "de": "Sieh dir den Router zu Hause oder in der Schule an - nach Rücksprache.",
+        "en": "Take a look at the router at home or at school - after asking."
+      },
+      "text": {
+        "de": "Zähle an einem echten Router, wie viele Buchsen und Antennen er hat, und ordne jeder Beobachtung eine der vier Aufgaben zu: Modem, Router, Switch, WLAN. Melde dich danach - mit Erlaubnis - an seiner Oberfläche an und notiere, wie viele Geräte gerade eine Adresse haben. Erkläre anschließend, welche dieser vier Aufgaben ausfallen müsste, damit du zwar noch mit dem Drucker im Haus reden kannst, aber keine Webseite mehr lädt - und welche ausfallen müsste, damit genau das Umgekehrte passiert.",
+        "en": "On a real router, count how many sockets and aerials it has and assign each observation to one of the four jobs: modem, router, switch, Wi-Fi. Then - with permission - log in to its interface and note how many devices currently hold an address. Afterwards explain which of these four jobs would have to fail for you to still reach the printer in the house but load no web page at all - and which would have to fail for exactly the opposite to happen."
+      },
+      "hint": {
+        "de": "Frag dich bei jeder Aufgabe: Geht es hier um innerhalb des Hauses oder um hinaus?",
+        "en": "For each job ask yourself: is this about inside the house, or about getting out?"
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": {
+        "de": "3. Zum Nachdenken: alles, was eine Nummer hat",
+        "en": "3. Something to think about: everything with a number"
+      },
+      "intro": {
+        "de": "Auf diese Frage gibt es keine richtige Antwort.",
+        "en": "There is no right answer to this one."
+      },
+      "text": {
+        "de": "In der Geräteliste eines heutigen Haushalts stehen oft zwanzig Einträge: Handys, Fernseher, Konsole, Lautsprecher, Uhr, Staubsauger, Glühbirnen. Jedes davon hat eine Adresse, jedes kann Daten senden, und die wenigsten fragen vorher. Überlege, welche Geräte in deinem Zuhause du bewusst ans Netz gehängt hast und welche einfach dabei waren. Was würde dir fehlen, wenn drei davon morgen offline wären - und würdest du es überhaupt merken?",
+        "en": "The device list of a household today often has twenty entries: phones, TV, console, speaker, watch, vacuum cleaner, light bulbs. Each has an address, each can send data, and few of them ask first. Think about which devices in your home you deliberately put on the network and which simply came that way. What would you miss if three of them were offline tomorrow - and would you even notice?"
+      }
+    }
+  ]
+}

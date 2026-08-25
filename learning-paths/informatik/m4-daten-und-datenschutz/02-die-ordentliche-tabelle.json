@@ -1,0 +1,258 @@
+{
+  "key": "die-ordentliche-tabelle",
+  "title": {
+    "de": "Die sehr ordentliche Tabelle",
+    "en": "The very tidy table"
+  },
+  "summary": {
+    "de": "Was eine Datenbank ist, wer alles eine führt - und warum sie zunächst nichts Aufregendes ist.",
+    "en": "What a database is, who keeps one - and why it is not exciting at first."
+  },
+  "icon": "📇",
+  "accent": "rose",
+  "minutes": 13,
+  "screens": [
+    {
+      "key": "zeilen-und-spalten",
+      "title": {
+        "de": "Zeilen, Spalten und ein Versprechen",
+        "en": "Rows, columns and a promise"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Eine Datenbank ist zunächst nichts Aufregendes: eine Tabelle mit festen Spalten. Oben stehen die Überschriften, darunter eine Zeile je Eintrag. Das war es fast schon - und trotzdem liegt darin der ganze Unterschied zu einem Stapel Zettel.",
+            "en": "A database is nothing exciting at first: a table with fixed columns. Headings at the top, one row per entry below. That is nearly all - and yet it holds the whole difference from a pile of notes."
+          }
+        },
+        {
+          "kind": "table",
+          "head": [
+            { "de": "id", "en": "id" },
+            { "de": "ort", "en": "place" },
+            { "de": "geboren", "en": "born" },
+            { "de": "letzter_login", "en": "last_login" },
+            { "de": "videos", "en": "videos" }
+          ],
+          "rows": [
+            [
+              { "de": "1", "en": "1" },
+              { "de": "22765", "en": "22765" },
+              { "de": "2010", "en": "2010" },
+              { "de": "22:14", "en": "22:14" },
+              { "de": "47", "en": "47" }
+            ],
+            [
+              { "de": "2", "en": "2" },
+              { "de": "20355", "en": "20355" },
+              { "de": "2009", "en": "2009" },
+              { "de": "07:02", "en": "07:02" },
+              { "de": "3", "en": "3" }
+            ],
+            [
+              { "de": "3", "en": "3" },
+              { "de": "22765", "en": "22765" },
+              { "de": "2010", "en": "2010" },
+              { "de": "23:51", "en": "23:51" },
+              { "de": "62", "en": "62" }
+            ]
+          ]
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Eine Zeile heißt Datensatz - alles, was zu einem Eintrag gehört. Eine Spalte heißt Feld und enthält überall dieselbe Sorte Angabe. Und ganz vorn steht meist eine Nummer, die jede Zeile eindeutig macht: der Schlüssel. Ohne ihn wüsste man bei zwei gleichen Zeilen nicht, ob es zwei Einträge sind oder einer doppelt.",
+            "en": "A row is called a record - everything belonging to one entry. A column is called a field and holds the same kind of detail throughout. And right at the front there is usually a number making each row unique: the key. Without it, two identical rows would leave you unsure whether they are two entries or one duplicated."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "fact",
+          "icon": "🗄️",
+          "title": {
+            "de": "Warum feste Spalten",
+            "en": "Why fixed columns"
+          },
+          "text": {
+            "de": "Ein Zettelkasten kann alles aufnehmen - genau deshalb kann man ihn nicht verlässlich durchsuchen. Eine Datenbank verlangt, dass man vorher festlegt, welche Angaben es gibt. Diese Einschränkung ist der ganze Trick: Nur was überall in derselben Form dasteht, lässt sich in Sekundenbruchteilen finden und vergleichen.",
+            "en": "A card index can take anything - which is exactly why it cannot be searched reliably. A database demands that you decide in advance which details exist. That restriction is the whole trick: only what appears everywhere in the same form can be found and compared in fractions of a second."
+          }
+        }
+      ]
+    },
+    {
+      "key": "wer-fuehrt-eine",
+      "title": {
+        "de": "Wer alles eine Datenbank über dich führt",
+        "en": "Who all keeps a database about you"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Sehr viel mehr Stellen, als man beim ersten Nachdenken vermutet - und die meisten davon aus völlig nachvollziehbaren Gründen.",
+            "en": "Far more places than you would guess at first - and most of them for entirely understandable reasons."
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "de": "**Deine Schule:** Anwesenheit, Noten, Adressen, Fehlzeiten, Fächerwahl. Ohne das ginge kein Zeugnis und keine Klassenliste.",
+              "en": "**Your school:** attendance, grades, addresses, absences, subject choices. Without it there would be no report card and no class list."
+            },
+            {
+              "de": "**Der Verkehrsbetrieb:** wann du ein- und ausgestiegen bist, wenn du eine elektronische Karte benutzt.",
+              "en": "**The transport company:** when you got on and off, if you use an electronic ticket."
+            },
+            {
+              "de": "**Die Arztpraxis:** Diagnosen, Termine, Medikamente - besonders schützenswert und besonders begehrt.",
+              "en": "**The doctor's surgery:** diagnoses, appointments, medicines - especially worth protecting and especially sought after."
+            },
+            {
+              "de": "**Der Onlineshop:** was du angesehen, in den Warenkorb gelegt und wieder herausgenommen hast.",
+              "en": "**The online shop:** what you looked at, put in the basket and took out again."
+            },
+            {
+              "de": "**Dein Handynetz:** in welcher Funkzelle dein Gerät war, minutengenau, monatelang.",
+              "en": "**Your mobile network:** which cell your device was in, to the minute, for months."
+            }
+          ]
+        },
+        {
+          "kind": "callout",
+          "tone": "note",
+          "icon": "🏫",
+          "title": {
+            "de": "Auch die Schule ist ein gutes Beispiel",
+            "en": "The school is a good example too"
+          },
+          "text": {
+            "de": "Die Daten sind da, und sie müssen da sein. Die interessante Frage ist nicht, ob es sie gibt, sondern wer welche davon zusammen sehen darf. Ein Lehrer die Noten seiner Klasse - selbstverständlich. Die Noten aller Klassen? Die Fehlzeiten zusammen mit den Adressen? Genau darum geht es im nächsten Pfad.",
+            "en": "The data are there, and they have to be. The interesting question is not whether they exist but who may see which of them together. A teacher the grades of their own class - of course. The grades of all classes? Absences together with addresses? That is exactly what the next path is about."
+          }
+        }
+      ]
+    },
+    {
+      "key": "zwei-tabellen-ein-mensch",
+      "title": {
+        "de": "Zwei Tabellen, ein Mensch",
+        "en": "Two tables, one person"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Jede einzelne dieser Datenbanken ist für sich genommen harmlos und nötig. Interessant - und heikel - wird es in dem Moment, in dem zwei davon dieselbe Person meinen und jemand sie nebeneinanderlegt.",
+            "en": "Each of these databases on its own is harmless and necessary. It becomes interesting - and delicate - the moment two of them refer to the same person and somebody lays them side by side."
+          }
+        },
+        {
+          "kind": "steps",
+          "items": [
+            {
+              "title": { "de": "Etwas Gemeinsames finden", "en": "Find something in common" },
+              "text": {
+                "de": "Zwei Tabellen lassen sich verbinden, sobald sie eine Spalte teilen: eine Kundennummer, eine E-Mail-Adresse, eine Gerätenummer. Der gemeinsame Wert ist das Scharnier.",
+                "en": "Two tables can be joined as soon as they share a column: a customer number, an email address, a device identifier. The shared value is the hinge."
+              }
+            },
+            {
+              "title": { "de": "Und plötzlich sieht man mehr", "en": "And suddenly you see more" },
+              "text": {
+                "de": "Die eine Tabelle weiß, wo du wohnst. Die andere, was du gekauft hast. Keine von beiden wusste beides - bis jemand sie über die Kundennummer verbunden hat.",
+                "en": "One table knows where you live. The other, what you bought. Neither knew both - until somebody joined them via the customer number."
+              }
+            },
+            {
+              "title": { "de": "Ohne Namen geht es auch", "en": "It works without names too" },
+              "text": {
+                "de": "Dafür braucht es keinen Namen. Eine Gerätenummer genügt, um dieselbe Person in zwanzig verschiedenen Tabellen wiederzuerkennen - und am Ende steht ein Bild, das genauer ist als jeder Steckbrief.",
+                "en": "No name is needed for this. A device identifier is enough to recognise the same person across twenty different tables - and at the end there is a picture more accurate than any description."
+              }
+            }
+          ]
+        },
+        {
+          "kind": "callout",
+          "tone": "warn",
+          "icon": "🔗",
+          "title": {
+            "de": "„Anonym“ ist ein starkes Wort",
+            "en": "\"Anonymous\" is a strong word"
+          },
+          "text": {
+            "de": "Wenn ein Anbieter sagt, er speichere „nur anonyme Daten“, lohnt eine Rückfrage: Sind die Namen wirklich weg - oder nur durch eine Nummer ersetzt? Das Zweite heißt pseudonym und ist etwas völlig anderes. Eine Nummer, die dich überall wiedererkennt, ist alles andere als anonym.",
+            "en": "When a provider says they store \"only anonymous data\", a follow-up question pays off: are the names really gone - or merely replaced by a number? The second is called pseudonymous and is something quite different. A number that recognises you everywhere is anything but anonymous."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": { "de": "inf-schule.de: Datenbanken", "en": "inf-schule.de: databases" },
+              "url": "https://www.inf-schule.de/datenbanken"
+            },
+            {
+              "label": { "de": "Datenschutz-Grundverordnung, amtlicher Text", "en": "General Data Protection Regulation, official text" },
+              "url": "https://eur-lex.europa.eu/eli/reg/2016/679/oj"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": {
+        "de": "1. Lückentext: Tabelle, Datensatz, Schlüssel",
+        "en": "1. Fill in the blanks: table, record, key"
+      },
+      "intro": {
+        "de": "Setze die fehlenden Wörter ein.",
+        "en": "Fill in the missing words."
+      },
+      "text": {
+        "de": "Eine ___ ist im Kern eine Tabelle mit festen Spalten. Eine Zeile darin heißt ___ und enthält alles, was zu einem Eintrag gehört. Eine Spalte heißt ___ und enthält überall dieselbe Sorte Angabe. Damit sich zwei Zeilen sicher unterscheiden lassen, gibt es vorn einen ___. Die festen Spalten sind eine Einschränkung, und genau sie machen es möglich, verlässlich zu ___. Zwei Tabellen lassen sich ___, sobald sie eine Spalte teilen. Dafür braucht es nicht einmal einen ___ - eine Gerätenummer genügt. Sind Namen nur durch eine Nummer ersetzt, heißt das nicht anonym, sondern ___.",
+        "en": "A ___ is at heart a table with fixed columns. A row in it is called a ___ and holds everything belonging to one entry. A column is called a ___ and holds the same kind of detail throughout. So that two rows can be told apart reliably there is a ___ at the front. The fixed columns are a restriction, and it is exactly they that make it possible to ___ reliably. Two tables can be ___ as soon as they share a column. That does not even need a ___ - a device identifier is enough. If names are merely replaced by a number, that is not called anonymous but ___."
+      }
+    },
+    {
+      "kind": "compare",
+      "title": {
+        "de": "2. Vergleiche: Zettelkasten gegen Tabelle",
+        "en": "2. Compare: card index versus table"
+      },
+      "intro": {
+        "de": "Zwei Arten, dieselbe Sache aufzubewahren.",
+        "en": "Two ways of keeping the same thing."
+      },
+      "text": {
+        "de": "Stell dir vor, eure Klasse sammelt für ein Projekt die Lieblingsbücher aller Mitschüler - einmal auf losen Zetteln, einmal in einer Tabelle mit den Spalten Name, Titel, Autor, Seitenzahl und Jahr. Beschreibe für beide Formen, wie du vorgehen würdest, um herauszufinden, welches Buch am häufigsten genannt wurde und welcher Autor mehrfach vorkommt. Erkläre daran, was die festen Spalten leisten und was sie kosten - und nenne eine Angabe, die im Zettelkasten Platz hätte, in der Tabelle aber nicht.",
+        "en": "Imagine your class collects everyone's favourite books for a project - once on loose slips of paper, once in a table with the columns name, title, author, page count and year. For both forms, describe how you would go about finding out which book was named most often and which author appears more than once. Use that to explain what the fixed columns achieve and what they cost - and name one detail that would fit in the card index but not in the table."
+      },
+      "hint": {
+        "de": "Denk daran, was passiert, wenn jemand seinen Lieblingsautor mal mit und mal ohne Vornamen aufschreibt.",
+        "en": "Think about what happens when somebody writes their favourite author's name once with and once without a first name."
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": {
+        "de": "3. Zum Nachdenken: die Datenbank, die du sehen möchtest",
+        "en": "3. Something to think about: the database you would want to see"
+      },
+      "intro": {
+        "de": "Auf diese Frage gibt es keine richtige Antwort.",
+        "en": "There is no right answer to this one."
+      },
+      "text": {
+        "de": "Über dich existieren Dutzende Tabellen an Orten, die du nie betreten hast. In welche würdest du am liebsten einmal hineinsehen - in die deiner Schule, deines Handynetzes, eines Onlineshops? Überlege, was du dort zu finden erwartest und was dich überraschen würde. Und dann: Warum eigentlich hast du bisher nicht nachgesehen, obwohl du ein Recht darauf hast? Genau davon handelt ein späterer Pfad dieses Moduls.",
+        "en": "Dozens of tables about you exist in places you have never set foot in. Which would you most like to look into - your school's, your mobile network's, an online shop's? Consider what you expect to find there and what would surprise you. And then: why have you not looked so far, although you have a right to? A later path in this module is about exactly that."
+      }
+    }
+  ]
+}

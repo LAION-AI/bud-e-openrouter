@@ -1,0 +1,382 @@
+{
+  "key": "bau-dir-ein-spiel",
+  "title": {
+    "de": "Bau dir ein Spiel",
+    "en": "Build yourself a game"
+  },
+  "summary": {
+    "de": "Vom Einfall zum fertigen Programm - in fünf Schritten, mit einem Beispiel, das bis zum Ende durchgeplant ist.",
+    "en": "From idea to finished program - in five steps, with one example planned through to the end."
+  },
+  "icon": "🎮",
+  "accent": "emerald",
+  "minutes": 15,
+  "screens": [
+    {
+      "key": "fuenf-schritte",
+      "title": {
+        "de": "Nicht anfangen zu bauen, bevor du weißt, was",
+        "en": "Do not start building before you know what"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Du kannst jetzt alles, was man braucht: Variablen, Schleifen, Verzweigungen. Mehr Bausteine kommen nicht. Was jetzt noch fehlt, ist nicht Wissen, sondern ein Vorgehen - denn die meisten Spiele scheitern nicht an einem Baustein, sondern daran, dass niemand vorher wusste, was eigentlich passieren soll.",
+            "en": "You now know everything you need: variables, loops, branches. No more blocks are coming. What is still missing is not knowledge but a procedure - because most games fail not because of a block but because nobody knew in advance what was supposed to happen."
+          }
+        },
+        {
+          "kind": "steps",
+          "items": [
+            {
+              "title": {
+                "de": "Was soll passieren?",
+                "en": "What should happen?"
+              },
+              "text": {
+                "de": "In zwei Sätzen, so wie du es einem Freund erzählen würdest. „Ein Apfel fällt herunter, ich fange ihn mit einem Korb. Verpasse ich drei, ist Schluss.“ Wenn du das nicht in zwei Sätzen sagen kannst, ist die Idee noch nicht fertig.",
+                "en": "In two sentences, the way you would tell a friend. \"An apple falls, I catch it with a basket. Miss three and it is over.\" If you cannot say it in two sentences, the idea is not ready."
+              }
+            },
+            {
+              "title": {
+                "de": "Was muss sich das Programm merken?",
+                "en": "What must the program remember?"
+              },
+              "text": {
+                "de": "Das werden deine Variablen. Beim Apfelspiel: `punkte` und `verpasst`. Mehr nicht - und genau darum geht es: so wenig wie möglich.",
+                "en": "These become your variables. In the apple game: `score` and `missed`. Nothing more - and that is the point: as few as possible."
+              }
+            },
+            {
+              "title": {
+                "de": "Was wiederholt sich?",
+                "en": "What repeats?"
+              },
+              "text": {
+                "de": "Das wird deine Schleife. Der Apfel fällt immer wieder von oben nach unten, solange das Spiel läuft. Also: eine fortlaufende Schleife.",
+                "en": "That becomes your loop. The apple falls from top to bottom over and over while the game runs. So: a forever loop."
+              }
+            },
+            {
+              "title": {
+                "de": "Wo wird entschieden?",
+                "en": "Where is a decision made?"
+              },
+              "text": {
+                "de": "Das werden deine Verzweigungen. Berührt der Apfel den Korb? Berührt er den Boden? Sind schon drei verpasst? Drei Fragen, drei `falls`.",
+                "en": "These become your branches. Does the apple touch the basket? Does it touch the ground? Are three already missed? Three questions, three `if` blocks."
+              }
+            },
+            {
+              "title": {
+                "de": "Bauen, probieren, ändern",
+                "en": "Build, run, change"
+              },
+              "text": {
+                "de": "Und zwar in kleinen Schritten. Erst soll der Apfel überhaupt fallen. Dann der Korb sich bewegen. Dann das Fangen. Nach jedem Schritt einmal die Flagge drücken.",
+                "en": "And in small steps. First just make the apple fall. Then make the basket move. Then the catching. Press the flag once after each step."
+              }
+            }
+          ]
+        },
+        {
+          "kind": "callout",
+          "tone": "tip",
+          "icon": "✏️",
+          "title": {
+            "de": "Schreib es auf Papier",
+            "en": "Write it on paper"
+          },
+          "text": {
+            "de": "Die vier Fragen auf einem Zettel, bevor du Scratch öffnest. Das fühlt sich nach verlorener Zeit an und ist die halbe Stunde, die du dir am Ende sparst. Profis nennen das Entwurf und machen nichts anderes.",
+            "en": "The four questions on a sheet of paper before you open Scratch. It feels like wasted time and is the half hour you save at the end. Professionals call it a design and do exactly the same."
+          }
+        }
+      ]
+    },
+    {
+      "key": "das-apfelspiel",
+      "title": {
+        "de": "Das Apfelspiel, ganz durchgeplant",
+        "en": "The apple game, planned through"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Zwei Figuren, zwei Variablen, drei Verzweigungen. Das ist alles. Und es ist ein echtes Spiel - eines, das man verlieren kann, und deshalb eines, das man spielen mag.",
+            "en": "Two sprites, two variables, three branches. That is all. And it is a real game - one you can lose, and therefore one worth playing."
+          }
+        },
+        {
+          "kind": "table",
+          "head": [
+            {
+              "de": "Figur",
+              "en": "Sprite"
+            },
+            {
+              "de": "Was sie tut",
+              "en": "What it does"
+            },
+            {
+              "de": "Wichtigste Bausteine",
+              "en": "Key blocks"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "de": "Korb (unten)",
+                "en": "Basket (bottom)"
+              },
+              {
+                "de": "Folgt der Maus nach links und rechts",
+                "en": "Follows the mouse left and right"
+              },
+              {
+                "de": "wiederhole fortlaufend · setze x auf Maus-x",
+                "en": "forever · set x to mouse x"
+              }
+            ],
+            [
+              {
+                "de": "Apfel (oben)",
+                "en": "Apple (top)"
+              },
+              {
+                "de": "Fällt, wird gefangen oder verpasst",
+                "en": "Falls, gets caught or missed"
+              },
+              {
+                "de": "ändere y um -5 · falls wird Korb berührt",
+                "en": "change y by -5 · if touching basket"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "steps",
+          "items": [
+            {
+              "title": {
+                "de": "Der Korb hört auf die Maus",
+                "en": "The basket follows the mouse"
+              },
+              "text": {
+                "de": "Beim Korb: „wenn Flagge angeklickt“, dann „wiederhole fortlaufend“, darin „setze x auf Maus-x“. Probier es - der Korb klebt an der Maus. Eine Steuerung in drei Bausteinen.",
+                "en": "On the basket: \"when flag clicked\", then \"forever\", containing \"set x to mouse x\". Try it - the basket sticks to the mouse. A control scheme in three blocks."
+              }
+            },
+            {
+              "title": {
+                "de": "Der Apfel fällt",
+                "en": "The apple falls"
+              },
+              "text": {
+                "de": "Beim Apfel: „gehe zu x: Zufallszahl von -200 bis 200, y: 170“, dann fortlaufend „ändere y um -5“. Jetzt fällt er - und bleibt unten liegen. Das ist richtig so, der Rest kommt gleich.",
+                "en": "On the apple: \"go to x: pick random -200 to 200, y: 170\", then forever \"change y by -5\". Now it falls - and stays at the bottom. That is correct; the rest comes next."
+              }
+            },
+            {
+              "title": {
+                "de": "Fangen",
+                "en": "Catching"
+              },
+              "text": {
+                "de": "In die Schleife: „falls wird Korb berührt, dann ändere punkte um 1 und gehe wieder nach oben“. Das Zurücksetzen nach oben ist der Trick - so brauchst du nur einen einzigen Apfel für das ganze Spiel.",
+                "en": "Inside the loop: \"if touching basket, then change score by 1 and go back to the top\". Resetting to the top is the trick - that way one single apple lasts the whole game."
+              }
+            },
+            {
+              "title": {
+                "de": "Verpassen",
+                "en": "Missing"
+              },
+              "text": {
+                "de": "Ebenfalls in die Schleife: „falls y-Position < -170, dann ändere verpasst um 1 und gehe nach oben“. Und darunter: „falls verpasst = 3, dann sage Vorbei! und stoppe alles“.",
+                "en": "Also inside the loop: \"if y position < -170, then change missed by 1 and go to the top\". And below that: \"if missed = 3, then say Game over! and stop all\"."
+              }
+            },
+            {
+              "title": {
+                "de": "Schneller werden",
+                "en": "Getting faster"
+              },
+              "text": {
+                "de": "Leg eine Variable `tempo` an, setze sie am Anfang auf 5 und benutze „ändere y um tempo mal -1“. Bei jedem Fang „ändere tempo um 0.3“. Ab jetzt wird es mit jedem Punkt schwerer - und genau das macht ein Spiel aus.",
+                "en": "Create a variable `speed`, set it to 5 at the start and use \"change y by speed times -1\". On every catch, \"change speed by 0.3\". From now on it gets harder with every point - and that is precisely what makes a game."
+              }
+            }
+          ]
+        },
+        {
+          "kind": "callout",
+          "tone": "fact",
+          "icon": "🍏",
+          "title": {
+            "de": "Das ist die Bauart fast aller Spiele",
+            "en": "This is how almost all games are built"
+          },
+          "text": {
+            "de": "Eine Schleife, die nie aufhört, und darin lauter Fragen: Berührt etwas etwas? Ist ein Wert zu groß geworden? Hat jemand eine Taste gedrückt? Ob Tetris, ein Rennspiel oder ein riesiges Abenteuer - im Kern läuft genau das, nur mit mehr Fragen pro Durchgang.",
+            "en": "A loop that never ends, and inside it a pile of questions: is something touching something? Has a value grown too large? Has someone pressed a key? Whether Tetris, a racing game or a huge adventure - at heart exactly this is running, just with more questions per pass."
+          }
+        }
+      ]
+    },
+    {
+      "key": "wenn-es-nicht-tut",
+      "title": {
+        "de": "Wenn es nicht tut, was es soll",
+        "en": "When it does not do what it should"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Es wird nicht funktionieren. Nicht beim ersten Mal, nicht beim dritten. Das ist kein Zeichen von Unfähigkeit, sondern der Normalzustand - auch bei Leuten, die davon leben. Der Unterschied liegt nur darin, wie schnell man den Fehler findet.",
+            "en": "It will not work. Not the first time, not the third. That is not a sign of incompetence but the normal state of affairs - even for people who do this for a living. The only difference is how quickly you find the fault."
+          }
+        },
+        {
+          "kind": "steps",
+          "items": [
+            {
+              "title": {
+                "de": "Sichtbar machen, was drinsteht",
+                "en": "Make the values visible"
+              },
+              "text": {
+                "de": "Setz bei jeder Variablen das Häkchen, damit ihr Wert auf der Bühne steht. Meistens siehst du den Fehler sofort: `verpasst` springt auf 5, weil die Verzweigung mehrfach zuschlägt, bevor der Apfel oben ist.",
+                "en": "Tick the box next to every variable so its value shows on the stage. Usually you spot the fault at once: `missed` jumps to 5 because the branch fires several times before the apple is back at the top."
+              }
+            },
+            {
+              "title": {
+                "de": "Reden lassen",
+                "en": "Let it talk"
+              },
+              "text": {
+                "de": "Häng an eine unklare Stelle „sage Hier bin ich für 1 Sekunden“. Kommt die Meldung nicht, weißt du: Das Programm läuft gar nicht bis dorthin. Das ist die halbe Antwort.",
+                "en": "Attach \"say I'm here for 1 second\" at a puzzling spot. If the message never appears you know the program does not even get there. That is half the answer."
+              }
+            },
+            {
+              "title": {
+                "de": "Langsam machen",
+                "en": "Slow it down"
+              },
+              "text": {
+                "de": "Ein „warte 0.1 Sekunden“ in der Schleife, und du kannst zusehen, was passiert, statt es zu erraten.",
+                "en": "A \"wait 0.1 seconds\" in the loop and you can watch what happens instead of guessing."
+              }
+            },
+            {
+              "title": {
+                "de": "Eine Sache ändern",
+                "en": "Change one thing"
+              },
+              "text": {
+                "de": "Und danach sofort probieren. Wer drei Dinge gleichzeitig ändert und es geht wieder, hat nichts gelernt - und beim nächsten Mal steht er wieder da.",
+                "en": "And run it straight away. Whoever changes three things at once and finds it working again has learned nothing - and next time will be right back where they started."
+              }
+            }
+          ]
+        },
+        {
+          "kind": "callout",
+          "tone": "note",
+          "icon": "🗣️",
+          "title": {
+            "de": "Erklär es jemandem, der nichts davon versteht",
+            "en": "Explain it to someone who knows nothing about it"
+          },
+          "text": {
+            "de": "Es gibt einen alten Trick unter Programmierern: Man erklärt sein Problem einer Gummiente auf dem Schreibtisch. Beim Erklären fällt einem der Fehler selbst auf, meistens mitten im Satz. Ein Mitschüler tut es auch - und der antwortet sogar.",
+            "en": "There is an old trick among programmers: you explain your problem to a rubber duck on your desk. While explaining, you spot the mistake yourself, usually mid-sentence. A classmate works just as well - and they even answer."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Und wenn es dann läuft: Zeig es jemandem. Lass ihn spielen, ohne etwas zu erklären. Du wirst in zwei Minuten mehr über dein Spiel lernen als in einer Stunde allein davor - und du wirst sehen, wie jemand etwas benutzt, das es ohne dich nicht gäbe.",
+            "en": "And once it runs: show someone. Let them play without explaining anything. In two minutes you will learn more about your game than in an hour alone in front of it - and you will watch somebody use a thing that would not exist without you."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "Scratch - Ideen und fertige Anleitungen",
+                "en": "Scratch - ideas and ready-made tutorials"
+              },
+              "url": "https://scratch.mit.edu/ideas"
+            },
+            {
+              "label": {
+                "de": "Scratch - Projekte anderer ansehen und hineinschauen",
+                "en": "Scratch - explore other people's projects and look inside"
+              },
+              "url": "https://scratch.mit.edu/explore/projects/games"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": {
+        "de": "1. Lückentext: vom Einfall zum Programm",
+        "en": "1. Fill in the blanks: from idea to program"
+      },
+      "intro": {
+        "de": "Setze die fehlenden Wörter ein.",
+        "en": "Fill in the missing words."
+      },
+      "text": {
+        "de": "Bevor man baut, beschreibt man in zwei Sätzen, was ___ soll. Alles, was sich das Programm merken muss, wird zu einer ___. Alles, was sich ständig wiederholt, wird zu einer ___. Jede Stelle, an der es zwei Möglichkeiten gibt, wird zu einer ___. Beim Apfelspiel merkt sich das Programm die ___ und wie oft man ___ hat. Damit ein einziger Apfel für das ganze Spiel reicht, setzt man ihn nach dem Fangen wieder nach ___. Damit das Spiel schwerer wird, erhöht man mit jedem Punkt das ___. Wenn etwas nicht funktioniert, macht man zuerst die Werte der Variablen auf der Bühne ___ und ändert danach immer nur ___ Sache auf einmal.",
+        "en": "Before building, you describe in two sentences what should ___. Everything the program has to remember becomes a ___. Everything that repeats constantly becomes a ___. Every point with two possibilities becomes a ___. In the apple game the program remembers the ___ and how often you have ___. So that a single apple lasts the whole game, after a catch it is sent back to the ___. To make the game harder, every point increases the ___. When something does not work, you first make the variables' values on the stage ___ and then change only ___ thing at a time."
+      }
+    },
+    {
+      "kind": "compare",
+      "title": {
+        "de": "2. Bauen und erklären: dein eigenes Spiel",
+        "en": "2. Build and explain: your own game"
+      },
+      "intro": {
+        "de": "Diese Aufgabe braucht Scratch und etwa eine halbe Stunde.",
+        "en": "This task needs Scratch and about half an hour."
+      },
+      "text": {
+        "de": "Bau das Apfelspiel nach oder erfinde ein eigenes nach demselben Bauplan - ein Fangspiel, ein Ausweichspiel, ein Quiz. Geh dabei die fünf Schritte der Reihe nach durch und schreib die ersten vier auf Papier, bevor du Scratch öffnest. Zeig das fertige Spiel danach jemandem und lass ihn spielen, ohne etwas zu erklären. Beschreibe zum Schluss, an welchen Stellen deines Programms eine Variable, eine Schleife und eine Verzweigung stecken - und welche der drei du am schwersten hinbekommen hast und warum.",
+        "en": "Rebuild the apple game or invent your own to the same plan - a catching game, a dodging game, a quiz. Work through the five steps in order and write the first four on paper before you open Scratch. Then show the finished game to someone and let them play without explaining anything. Finally, describe where in your program a variable, a loop and a branch sit - and which of the three was hardest to get right, and why."
+      },
+      "hint": {
+        "de": "Fang mit dem Kleinsten an, das man schon sehen kann: eine Figur, die sich bewegt. Alles andere kommt danach.",
+        "en": "Start with the smallest thing you can already see: one sprite that moves. Everything else comes after."
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": {
+        "de": "3. Zum Nachdenken: der Moment, in dem es nicht ging",
+        "en": "3. Something to think about: the moment it did not work"
+      },
+      "intro": {
+        "de": "Auf diese Frage gibt es keine richtige Antwort.",
+        "en": "There is no right answer to this one."
+      },
+      "text": {
+        "de": "Irgendwann hat dein Programm etwas völlig anderes gemacht als gedacht - der Apfel raste durch den Boden, der Punktestand sprang auf fünfzig, die Katze verschwand. In diesem Moment lag es nicht am Computer. Er hat genau das getan, was dastand. Überlege, wie sich das angefühlt hat und was du getan hast, um weiterzukommen. Und dann die größere Frage: In welchen anderen Situationen deines Lebens hilft dieselbe Haltung - erst genau hinsehen, was wirklich passiert, statt zu erklären, was passieren sollte?",
+        "en": "At some point your program did something completely different from what you intended - the apple shot through the floor, the score jumped to fifty, the cat vanished. In that moment it was not the computer's fault. It did exactly what was written. Think about how that felt and what you did to move on. And then the bigger question: in what other situations in your life does the same attitude help - looking closely at what is actually happening instead of explaining what should be happening?"
+      }
+    }
+  ]
+}

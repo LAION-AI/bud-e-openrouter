@@ -1,0 +1,254 @@
+{
+  "key": "dein-recht-auf-auskunft",
+  "title": {
+    "de": "Dein Recht auf Auskunft",
+    "en": "Your right of access"
+  },
+  "summary": {
+    "de": "Vier Sätze per Mail, und binnen eines Monats musst du erfahren, was über dich gespeichert ist.",
+    "en": "Four sentences by email, and within a month you must be told what is stored about you."
+  },
+  "icon": "✉️",
+  "accent": "rose",
+  "minutes": 13,
+  "screens": [
+    {
+      "key": "artikel-fuenfzehn",
+      "title": {
+        "de": "Ein Recht, das wirklich funktioniert",
+        "en": "A right that actually works"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Artikel 15 der Datenschutz-Grundverordnung ist kein theoretisches Recht. Jede Firma, jede Behörde, jede Schule muss dir auf Anfrage mitteilen, welche Daten sie über dich hat. Kostenlos, in der Regel binnen eines Monats, ohne dass du einen Grund nennen musst.",
+            "en": "Article 15 of the General Data Protection Regulation is not a theoretical right. Every company, authority and school must, on request, tell you which data they hold about you. Free of charge, as a rule within a month, and you need give no reason."
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "de": "**Welche Daten** über dich gespeichert sind - nicht nur die Kategorien, sondern die Angaben selbst.",
+              "en": "**Which data** are stored about you - not only the categories but the details themselves."
+            },
+            {
+              "de": "**Woher sie stammen**, wenn du sie nicht selbst angegeben hast. Diese Frage ist oft die aufschlussreichste.",
+              "en": "**Where they come from**, if you did not supply them yourself. This question is often the most revealing."
+            },
+            {
+              "de": "**An wen sie weitergegeben wurden** - Firmen, Behörden, Partner in anderen Ländern.",
+              "en": "**Whom they were passed to** - companies, authorities, partners in other countries."
+            },
+            {
+              "de": "**Wie lange sie gespeichert bleiben** und wonach sich das richtet.",
+              "en": "**How long they will be stored** and what that depends on."
+            },
+            {
+              "de": "**Wozu** sie verarbeitet werden - der Zweck, an den die Verarbeitung gebunden ist.",
+              "en": "**What for** they are processed - the purpose the processing is bound to."
+            }
+          ]
+        },
+        {
+          "kind": "callout",
+          "tone": "fact",
+          "icon": "📬",
+          "title": {
+            "de": "Ein formloser Satz genügt",
+            "en": "An informal sentence is enough"
+          },
+          "text": {
+            "de": "Es braucht kein Formular, keinen Anwalt, keine Begründung. „Hiermit beantrage ich nach Artikel 15 DSGVO Auskunft über alle personenbezogenen Daten, die Sie über mich gespeichert haben, einschließlich ihrer Herkunft und aller Empfänger.“ Vier Zeilen mit Namen und Kontaktdaten - fertig.",
+            "en": "No form, no lawyer, no justification is needed. \"I hereby request, under Article 15 GDPR, access to all personal data you have stored about me, including their origin and all recipients.\" Four lines with your name and contact details - done."
+          }
+        }
+      ]
+    },
+    {
+      "key": "was-zurueckkommt",
+      "title": {
+        "de": "Was dann zurückkommt",
+        "en": "What comes back"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Die Antworten fallen sehr unterschiedlich aus - und genau das ist lehrreich. Manche schicken eine halbe Seite, manche zweihundert.",
+            "en": "The answers vary enormously - and that itself is instructive. Some send half a page, some two hundred."
+          }
+        },
+        {
+          "kind": "table",
+          "head": [
+            { "de": "Sorte Antwort", "en": "Kind of answer" },
+            { "de": "Was das bedeutet", "en": "What it means" },
+            { "de": "Wie du reagierst", "en": "How you respond" }
+          ],
+          "rows": [
+            [
+              { "de": "Eine knappe Tabelle", "en": "A brief table" },
+              { "de": "Wenig gespeichert - oder wenig gezeigt", "en": "Little stored - or little shown" },
+              { "de": "Nachfragen: auch Protokolle?", "en": "Ask again: including logs?" }
+            ],
+            [
+              { "de": "Hundert Seiten Protokoll", "en": "A hundred pages of logs" },
+              { "de": "Ehrlich, und meist erschreckend", "en": "Honest, and usually startling" },
+              { "de": "Nach Herkunft und Empfängern suchen", "en": "Look for origin and recipients" }
+            ],
+            [
+              { "de": "„Wir speichern nichts“", "en": "\"We store nothing\"" },
+              { "de": "Selten wahr, wenn du ein Konto hast", "en": "Rarely true if you have an account" },
+              { "de": "Konkret nachfragen", "en": "Ask specifically" }
+            ],
+            [
+              { "de": "Gar keine Antwort", "en": "No answer at all" },
+              { "de": "Ein Verstoß gegen die Frist", "en": "A breach of the deadline" },
+              { "de": "Beschwerde bei der Aufsicht möglich", "en": "A complaint to the regulator is possible" }
+            ]
+          ]
+        },
+        {
+          "kind": "callout",
+          "tone": "note",
+          "icon": "🏛️",
+          "title": {
+            "de": "Es gibt eine Stelle, die dir hilft",
+            "en": "There is an office that helps you"
+          },
+          "text": {
+            "de": "In jedem Bundesland gibt es eine Datenschutzaufsicht, in Hamburg den Hamburgischen Beauftragten für Datenschutz und Informationsfreiheit. Dort kann sich jeder beschweren, kostenlos, auch als Jugendlicher. Die Stelle geht der Sache nach und kann Bußgelder verhängen. Dass es sie gibt, wissen erstaunlich wenige.",
+            "en": "Every federal state has a data protection authority; in Hamburg it is the Hamburg Commissioner for Data Protection and Freedom of Information. Anyone can complain there, free of charge, including young people. The office investigates and can impose fines. Astonishingly few people know it exists."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Neben der Auskunft gibt es weitere Rechte: Berichtigung, wenn etwas falsch ist. Löschung, wenn der Zweck weggefallen ist. Widerspruch gegen Werbung. Und das Recht, deine Daten mitzunehmen, wenn du zu einem anderen Anbieter wechselst. Alle vier funktionieren nach demselben Muster wie die Auskunft: formlos, kostenlos, ohne Begründung.",
+            "en": "Besides access there are further rights: rectification, if something is wrong. Erasure, if the purpose has fallen away. Objection to advertising. And the right to take your data with you when you switch provider. All four work on the same pattern as access: informal, free, no justification needed."
+          }
+        }
+      ]
+    },
+    {
+      "key": "grenzen",
+      "title": {
+        "de": "Und wo die Grenzen liegen",
+        "en": "And where the limits lie"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Nicht alles muss gelöscht werden, nur weil du es möchtest - und dafür gibt es gute Gründe, die man kennen sollte, bevor man sich ärgert.",
+            "en": "Not everything has to be deleted just because you want it to - and there are good reasons for that, worth knowing before you get annoyed."
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "de": "**Gesetzliche Aufbewahrungspflichten:** Rechnungen muss ein Unternehmen zehn Jahre aufbewahren, auch wenn du kein Kunde mehr bist.",
+              "en": "**Statutory retention:** a company must keep invoices for ten years, even when you are no longer a customer."
+            },
+            {
+              "de": "**Zeugnisse und Schulakten:** Sie dokumentieren etwas, das stattgefunden hat - und sind auch zu deinem Vorteil, wenn du später einen Nachweis brauchst.",
+              "en": "**Certificates and school records:** they document something that happened - and are to your benefit too when you later need proof."
+            },
+            {
+              "de": "**Was andere geschrieben haben:** Ein Beitrag über dich gehört auch zur Meinungsfreiheit desjenigen, der ihn verfasst hat. Hier wird abgewogen, nicht automatisch gelöscht.",
+              "en": "**What others have written:** a post about you also falls under the author's freedom of expression. Here things are weighed up, not automatically deleted."
+            },
+            {
+              "de": "**Was schon kopiert wurde:** Ein Anbieter kann nur löschen, was er hat. Was einmal weitergegeben wurde, muss man einzeln nachverfolgen.",
+              "en": "**What has already been copied:** a provider can only delete what it holds. Anything passed on has to be traced individually."
+            }
+          ]
+        },
+        {
+          "kind": "callout",
+          "tone": "tip",
+          "icon": "🧭",
+          "title": {
+            "de": "Warum du das trotzdem einmal machen solltest",
+            "en": "Why you should still do it once"
+          },
+          "text": {
+            "de": "Nicht, weil eine Firma dich ärgert. Sondern weil sich die Sache anders anfühlt, wenn man die eigene Akte einmal in der Hand hatte. Wer eine Auskunft gestellt hat, redet danach anders über das Thema - konkreter, ruhiger und mit weniger Vermutungen.",
+            "en": "Not because a company annoys you. But because the whole matter feels different once you have held your own file in your hands. Whoever has made an access request talks differently about the subject afterwards - more concretely, more calmly and with fewer assumptions."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": { "de": "DSGVO Artikel 15 - Auskunftsrecht im Wortlaut", "en": "GDPR Article 15 - the right of access, verbatim" },
+              "url": "https://eur-lex.europa.eu/eli/reg/2016/679/oj"
+            },
+            {
+              "label": { "de": "Der Hamburgische Beauftragte für Datenschutz und Informationsfreiheit", "en": "Hamburg Commissioner for Data Protection and Freedom of Information" },
+              "url": "https://datenschutz-hamburg.de"
+            },
+            {
+              "label": { "de": "Verbraucherzentrale: Musterbriefe zum Datenschutz", "en": "German consumer advice centre: template letters on data protection" },
+              "url": "https://www.verbraucherzentrale.de"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": {
+        "de": "1. Lückentext: fragen, berichtigen, löschen",
+        "en": "1. Fill in the blanks: ask, correct, delete"
+      },
+      "intro": {
+        "de": "Setze die fehlenden Wörter ein.",
+        "en": "Fill in the missing words."
+      },
+      "text": {
+        "de": "Nach Artikel 15 der DSGVO hat jeder ein Recht auf ___. Die Anfrage ist ___ und muss in der Regel binnen eines ___ beantwortet werden. Man muss dafür keinen ___ nennen. Mitgeteilt werden müssen die gespeicherten Daten, ihre ___, alle ___, an die sie weitergegeben wurden, sowie die Speicherdauer und der ___. Ist etwas falsch gespeichert, hat man ein Recht auf ___. Ist der Zweck weggefallen, kann man die ___ verlangen. Wer keine Antwort bekommt, kann sich bei der ___ beschweren. Nicht alles muss gelöscht werden: Rechnungen etwa unterliegen einer gesetzlichen ___.",
+        "en": "Under Article 15 of the GDPR everyone has a right of ___. The request is ___ and must as a rule be answered within one ___. You need give no ___ for it. What must be disclosed is the stored data, their ___, all ___ they were passed to, as well as the storage period and the ___. If something is stored wrongly you have a right to ___. If the purpose has fallen away you can demand ___. Whoever gets no answer can complain to the ___. Not everything has to be deleted: invoices, for instance, are subject to a statutory ___."
+      }
+    },
+    {
+      "kind": "compare",
+      "title": {
+        "de": "2. Handeln und vergleichen: die eigene Auskunft",
+        "en": "2. Act and compare: your own access request"
+      },
+      "intro": {
+        "de": "Freiwillig - und du entscheidest allein, ob du das Ergebnis zeigst.",
+        "en": "Voluntary - and you alone decide whether to show the result."
+      },
+      "text": {
+        "de": "Schreib eine Auskunftsanfrage nach Artikel 15 an einen Dienst, den du benutzt. Notiere **vorher**, was du erwartest: Welche Angaben werden sie haben, woher stammen sie, an wen wurden sie weitergegeben? Vergleiche deine Erwartung mit der Antwort, sobald sie da ist. Beschreibe, was dich überrascht hat und was du unterschätzt hattest. Falls keine Antwort kommt: Halte fest, wie lange du gewartet hast, und beschreibe, welchen Schritt du als Nächstes gehen könntest. Zeig dein Ergebnis nur, wenn du möchtest.",
+        "en": "Write an access request under Article 15 to a service you use. Note **beforehand** what you expect: which details will they have, where will they come from, whom were they passed to? Compare your expectation with the answer once it arrives. Describe what surprised you and what you had underestimated. If no answer comes: record how long you waited and describe what step you could take next. Show your result only if you want to."
+      },
+      "hint": {
+        "de": "Die aufschlussreichste Zeile ist meist nicht, was gespeichert ist, sondern woher es stammt.",
+        "en": "The most revealing line is usually not what is stored but where it came from."
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": {
+        "de": "3. Zum Nachdenken: ein Recht, das niemand benutzt",
+        "en": "3. Something to think about: a right nobody uses"
+      },
+      "intro": {
+        "de": "Auf diese Frage gibt es keine richtige Antwort.",
+        "en": "There is no right answer to this one."
+      },
+      "text": {
+        "de": "Millionen Menschen ärgern sich über Datensammelei, und ein winziger Bruchteil davon hat jemals eine Auskunft verlangt - obwohl es vier Sätze kostet. Überlege, woran das liegt: Ist es Aufwand, Scheu, das Gefühl, dass es nichts ändert, oder schlicht Nichtwissen? Und dann: Was wäre nötig, damit ein Recht nicht nur existiert, sondern auch benutzt wird? Wer müsste dafür etwas tun - der Gesetzgeber, die Schule, die Anbieter oder du?",
+        "en": "Millions of people are annoyed by data collection, and a tiny fraction of them have ever made an access request - although it costs four sentences. Think about why: is it effort, reluctance, the feeling that it changes nothing, or simply not knowing? And then: what would it take for a right not merely to exist but to be used? Who would have to do something - lawmakers, schools, providers, or you?"
+      }
+    }
+  ]
+}

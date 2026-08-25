@@ -1,0 +1,349 @@
+{
+  "key": "bau-dir-ein-netz",
+  "title": {
+    "de": "Bau dir ein Netz",
+    "en": "Build yourself a network"
+  },
+  "summary": {
+    "de": "Aufbauen, absichtlich kaputtmachen, verstehen - mit Filius, ohne ein einziges Kabel.",
+    "en": "Build it, break it on purpose, understand it - with Filius, without a single cable."
+  },
+  "icon": "🧪",
+  "accent": "sky",
+  "minutes": 15,
+  "screens": [
+    {
+      "key": "zwei-rechner",
+      "title": {
+        "de": "Zwei Rechner und ein Switch",
+        "en": "Two computers and a switch"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Am schnellsten versteht man ein Netz, wenn man eines baut. In einer Simulation geht das ohne ein einziges Kabel, ohne Geräte und ohne die Sorge, etwas kaputtzumachen - im Gegenteil, das Kaputtmachen ist hier der Lehrplan.",
+            "en": "The fastest way to understand a network is to build one. In a simulation that works without a single cable, without hardware and without any worry about breaking something - on the contrary, breaking things is the curriculum here."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "💻",
+          "title": {
+            "de": "Filius herunterladen",
+            "en": "Download Filius"
+          },
+          "text": {
+            "de": "Filius ist für die Mittelstufe gemacht: deutschsprachig, kostenlos, ohne Anmeldung, und es läuft auf Windows, Mac und Linux. Man zieht Geräte auf eine Fläche, verbindet sie mit der Maus und drückt auf Start. Zu finden ist es an der Universität Siegen - der Link steht unten bei den Quellen.",
+            "en": "Filius is made for lower secondary school: free, no sign-up, and it runs on Windows, Mac and Linux. You drag devices onto a canvas, connect them with the mouse and press start. It comes from the University of Siegen - the link is in the sources below."
+          }
+        },
+        {
+          "kind": "steps",
+          "items": [
+            {
+              "title": {
+                "de": "Zwei Rechner hinstellen",
+                "en": "Place two computers"
+              },
+              "text": {
+                "de": "Zieh zwei Rechner auf die Fläche und einen Switch dazwischen. Verbinde beide mit dem Switch - fertig ist das kleinste sinnvolle Netz der Welt.",
+                "en": "Drag two computers onto the canvas and a switch between them. Connect both to the switch - that is the smallest sensible network in the world."
+              }
+            },
+            {
+              "title": {
+                "de": "Adressen vergeben",
+                "en": "Assign addresses"
+              },
+              "text": {
+                "de": "Gib dem einen `192.168.1.10`, dem anderen `192.168.1.11`, beiden die Maske `255.255.255.0`. Beide sind damit im selben Subnetz - Nachbarn.",
+                "en": "Give one `192.168.1.10`, the other `192.168.1.11`, both the mask `255.255.255.0`. That puts both in the same subnet - neighbours."
+              }
+            },
+            {
+              "title": {
+                "de": "Pingen",
+                "en": "Ping"
+              },
+              "text": {
+                "de": "Starte die Simulation, öffne auf einem Rechner die Eingabezeile und ping den anderen an. Es funktioniert - und du hast dieselben Befehle benutzt wie eben an deinem echten Rechner.",
+                "en": "Start the simulation, open the command line on one computer and ping the other. It works - and you used the same commands as on your real machine just now."
+              }
+            }
+          ]
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Das Besondere an Filius: Du kannst dir die Pakete beim Reisen ansehen. Jedes einzelne wird als kleines Symbol angezeigt, das über die Leitung wandert. Was im echten Netz in Millisekunden vorbei ist, läuft hier in Zeitlupe ab.",
+            "en": "The special thing about Filius: you can watch the packets travel. Each one is shown as a small symbol moving along the line. What is over in milliseconds in a real network runs here in slow motion."
+          }
+        }
+      ]
+    },
+    {
+      "key": "ueber-die-grenze",
+      "title": {
+        "de": "Über die Grenze hinweg",
+        "en": "Across the boundary"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Jetzt kommt der Moment, an dem die Theorie aus den letzten Pfaden sichtbar wird: Zwei Netze, die sich nicht kennen - und was nötig ist, damit sie es doch tun.",
+            "en": "Now comes the moment when the theory from the previous paths becomes visible: two networks that do not know each other - and what it takes for them to do so after all."
+          }
+        },
+        {
+          "kind": "steps",
+          "items": [
+            {
+              "title": {
+                "de": "Ein drittes Gerät, anderes Subnetz",
+                "en": "A third device, different subnet"
+              },
+              "text": {
+                "de": "Stell einen dritten Rechner hin und gib ihm `192.168.2.10`. Ping ihn von den anderen aus an. Es funktioniert nicht - und das ist kein Fehler, sondern richtig: Es fehlt der Weg.",
+                "en": "Place a third computer and give it `192.168.2.10`. Ping it from the others. It does not work - and that is not a fault but correct: the route is missing."
+              }
+            },
+            {
+              "title": {
+                "de": "Einen Router dazwischen",
+                "en": "A router in between"
+              },
+              "text": {
+                "de": "Setz einen Router zwischen die beiden Netze. Er bekommt zwei Adressen, eine in jedem Netz - `192.168.1.1` und `192.168.2.1`. Ein Gerät mit einem Bein in jeder Welt.",
+                "en": "Put a router between the two networks. It gets two addresses, one in each network - `192.168.1.1` and `192.168.2.1`. A device with one foot in each world."
+              }
+            },
+            {
+              "title": {
+                "de": "Das Gateway eintragen",
+                "en": "Enter the gateway"
+              },
+              "text": {
+                "de": "Bei jedem Rechner trägst du als Gateway die Router-Adresse seines eigenen Netzes ein. Erst jetzt weiß er, wohin mit allem, was nicht nebenan liegt.",
+                "en": "On each computer, enter as the gateway the router address of its own network. Only now does it know where to send anything that is not next door."
+              }
+            },
+            {
+              "title": {
+                "de": "Noch einmal pingen",
+                "en": "Ping again"
+              },
+              "text": {
+                "de": "Jetzt geht es. Sieh dir dabei an, wie das Paket zuerst zum Router läuft und von dort weiter - genau die zwei Schritte, die vorher als Theorie dastanden.",
+                "en": "Now it works. Watch how the packet first goes to the router and onward from there - exactly the two steps that were theory before."
+              }
+            }
+          ]
+        },
+        {
+          "kind": "callout",
+          "tone": "fact",
+          "icon": "🌍",
+          "title": {
+            "de": "Das ist das ganze Internet, nur kleiner",
+            "en": "That is the whole internet, just smaller"
+          },
+          "text": {
+            "de": "Zwei Netze, verbunden durch einen Router - mehr ist das Internet nicht, nur eben hunderttausendfach. Dein Paket nach Kalifornien nimmt genau denselben Weg wie eben in deiner Simulation, nur über etwa fünfzehn Router statt über einen.",
+            "en": "Two networks joined by a router - the internet is nothing more than that, just a hundred thousand times over. Your packet to California takes exactly the route it just took in your simulation, only via about fifteen routers instead of one."
+          }
+        }
+      ]
+    },
+    {
+      "key": "absichtlich-kaputt",
+      "title": {
+        "de": "Absichtlich kaputtmachen",
+        "en": "Breaking it on purpose"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Jetzt der lehrreichste Teil. Jeder Fehler erzeugt ein anderes Fehlerbild - und wer die Bilder einmal gesehen hat, erkennt sie später wieder, im echten Leben, an einem echten Rechner.",
+            "en": "Now the most instructive part. Every fault produces a different picture - and whoever has seen the pictures once recognises them later, in real life, on a real machine."
+          }
+        },
+        {
+          "kind": "table",
+          "head": [
+            {
+              "de": "Was du kaputtmachst",
+              "en": "What you break"
+            },
+            {
+              "de": "Was du beobachtest",
+              "en": "What you observe"
+            },
+            {
+              "de": "Was du daraus lernst",
+              "en": "What you learn from it"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "de": "Gateway löschen",
+                "en": "Delete the gateway"
+              },
+              {
+                "de": "Nachbarn gehen, Fremde nicht",
+                "en": "Neighbours work, strangers do not"
+              },
+              {
+                "de": "Der Ausgang fehlt",
+                "en": "The way out is missing"
+              }
+            ],
+            [
+              {
+                "de": "Falsche Subnetzmaske",
+                "en": "Wrong subnet mask"
+              },
+              {
+                "de": "Manche gehen, manche nicht",
+                "en": "Some work, some do not"
+              },
+              {
+                "de": "Die Grenze sitzt falsch",
+                "en": "The boundary is in the wrong place"
+              }
+            ],
+            [
+              {
+                "de": "Zwei gleiche Adressen",
+                "en": "Two identical addresses"
+              },
+              {
+                "de": "Mal geht es, mal nicht",
+                "en": "Sometimes it works, sometimes not"
+              },
+              {
+                "de": "Der schlimmste Fehler: unzuverlässig",
+                "en": "The worst kind: unreliable"
+              }
+            ],
+            [
+              {
+                "de": "Kabel ziehen",
+                "en": "Pull the cable"
+              },
+              {
+                "de": "Gar nichts geht mehr",
+                "en": "Nothing works at all"
+              },
+              {
+                "de": "Der einfachste Fehler zuerst prüfen",
+                "en": "Check the simplest fault first"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "callout",
+          "tone": "tip",
+          "icon": "📝",
+          "title": {
+            "de": "Zu zweit: einer baut den Fehler ein",
+            "en": "In pairs: one plants the fault"
+          },
+          "text": {
+            "de": "Bau zu zweit ein funktionierendes Netz. Dann dreht sich einer weg, der andere baut heimlich genau einen Fehler ein. Der Erste hat drei Befehle Zeit, ihn zu finden. Danach wird getauscht. Es macht Spaß, es dauert zehn Minuten, und danach kann jeder in der Klasse eine Netzwerkstörung eingrenzen.",
+            "en": "In pairs, build a working network. Then one of you looks away while the other secretly plants exactly one fault. The first has three commands to find it. Then swap. It is fun, it takes ten minutes, and afterwards everyone in the class can narrow down a network fault."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Zum Schluss die größere Frage, die hinter allem steckt: Das Internet wurde so gebaut, dass jeder mitmachen kann - Inhalte anbieten, abrufen, diskutieren, ohne jemanden um Erlaubnis zu fragen. Das war eine Entscheidung von Menschen, keine Naturgegebenheit. Es hätte auch anders gebaut werden können, mit einer Stelle in der Mitte, die alles sieht und genehmigt.",
+            "en": "Finally the bigger question behind all of it: the internet was built so that anyone can take part - offering, retrieving, discussing, without asking anybody's permission. That was a decision made by people, not a fact of nature. It could have been built otherwise, with one place in the middle that sees and approves everything."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "Filius - Netzwerke simulieren, kostenlos",
+                "en": "Filius - simulate networks, free"
+              },
+              "url": "https://www.lernsoftware-filius.de"
+            },
+            {
+              "label": {
+                "de": "inf-schule.de: Rechnernetze",
+                "en": "inf-schule.de: computer networks"
+              },
+              "url": "https://www.inf-schule.de/rechnernetze"
+            },
+            {
+              "label": {
+                "de": "Bildungsplan Informatik Sek I, Hamburg",
+                "en": "Hamburg curriculum for computer science, lower secondary"
+              },
+              "url": "https://www.hamburg.de/resource/blob/798514/ad3c2fdfb3a32b9545a271dfceae5772/informatik-data.pdf"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": {
+        "de": "1. Lückentext: bauen und prüfen",
+        "en": "1. Fill in the blanks: building and checking"
+      },
+      "intro": {
+        "de": "Setze die fehlenden Wörter ein.",
+        "en": "Fill in the missing words."
+      },
+      "text": {
+        "de": "Zwei Rechner am selben ___ können sich erreichen, solange ihre Adressen im selben ___ liegen. Ein Gerät in einem anderen Netz erreicht man erst, wenn ein ___ dazwischensteht; er bekommt in jedem Netz eine eigene ___. Damit ein Rechner weiß, wohin mit allem Fremden, muss bei ihm das ___ eingetragen sein. Fehlt es, gehen nur noch die ___. Sitzt die ___ falsch, gehen manche Ziele und andere nicht. Haben zwei Geräte dieselbe Adresse, tritt der Fehler nur ___ auf - deshalb ist er der unangenehmste. Ob ein Weg frei ist, prüft man mit ___. In der Simulation kann man den Paketen dabei sogar ___.",
+        "en": "Two computers on the same ___ can reach each other as long as their addresses lie in the same ___. A device in another network can only be reached once a ___ sits in between; it gets its own ___ in each network. For a computer to know where to send anything foreign, the ___ must be entered on it. Without it, only the ___ still work. If the ___ is in the wrong place, some destinations work and others do not. When two devices share an address, the fault appears only ___ - which is why it is the nastiest. Whether a route is clear is checked with ___. In the simulation you can even ___ the packets while they travel."
+      }
+    },
+    {
+      "kind": "compare",
+      "title": {
+        "de": "2. Bauen und erklären: dein eigenes Netz mit Fehler",
+        "en": "2. Build and explain: your own network with a fault"
+      },
+      "intro": {
+        "de": "Diese Aufgabe braucht Filius und etwa eine halbe Stunde.",
+        "en": "This task needs Filius and about half an hour."
+      },
+      "text": {
+        "de": "Bau in Filius zwei Subnetze mit je zwei Rechnern, verbunden durch einen Router, und weise nach, dass jeder jeden erreichen kann. Baue danach nacheinander zwei verschiedene Fehler ein: einmal ein gelöschtes Gateway, einmal zwei gleiche Adressen. Halte für beide fest, welche Verbindungen noch funktionieren und welche nicht, und beschreibe genau, woran man die beiden Fehler unterscheiden kann, ohne die Einstellungen anzusehen. Erkläre zum Schluss, welcher der beiden Fehler in einem echten Schulnetz schwerer zu finden wäre und warum.",
+        "en": "In Filius, build two subnets with two computers each, joined by a router, and show that everyone can reach everyone. Then plant two different faults one after the other: once a deleted gateway, once two identical addresses. For both, record which connections still work and which do not, and describe exactly how the two faults can be told apart without looking at the settings. Finally explain which of the two would be harder to find in a real school network, and why."
+      },
+      "hint": {
+        "de": "Der eine Fehler ist immer gleich, der andere nicht. Genau darin liegt der Unterschied.",
+        "en": "One fault behaves the same every time, the other does not. That is precisely the difference."
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": {
+        "de": "3. Zum Nachdenken: ein Netz, das niemandem gehört",
+        "en": "3. Something to think about: a network nobody owns"
+      },
+      "intro": {
+        "de": "Auf diese Frage gibt es keine richtige Antwort.",
+        "en": "There is no right answer to this one."
+      },
+      "text": {
+        "de": "Das Internet wurde absichtlich so gebaut, dass niemand in der Mitte sitzt und entscheidet, wer mitreden darf. Deshalb konnten Wikipedia, freie Software und unzählige kleine Seiten entstehen, ohne dass jemand sie genehmigt hätte - und deshalb entstehen dort auch Dinge, die niemand wollte. Überlege, was sich für dich ändern würde, wenn jede Webseite vor der Veröffentlichung genehmigt werden müsste. Wer würde wohl entscheiden, was genehmigt wird - und was wäre der Preis dafür, dass dann weniger Schlimmes im Netz stünde?",
+        "en": "The internet was deliberately built so that nobody sits in the middle deciding who may speak. That is why Wikipedia, free software and countless small sites could come into being without anyone approving them - and why things nobody wanted arise there too. Think about what would change for you if every web page had to be approved before publication. Who would decide what gets approved - and what would be the price of having less that is terrible online?"
+      }
+    }
+  ]
+}

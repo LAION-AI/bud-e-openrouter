@@ -1,0 +1,329 @@
+{
+  "key": "was-computer-koennen",
+  "title": {
+    "de": "Was Computer besser können, und was nicht",
+    "en": "What computers do better, and what they do not"
+  },
+  "summary": {
+    "de": "Wo Automatisierung hilft, wo sie nichts zu suchen hat - und wer die Regeln eigentlich aufgeschrieben hat.",
+    "en": "Where automation helps, where it has no business being - and who actually wrote the rules."
+  },
+  "icon": "⚖️",
+  "accent": "emerald",
+  "minutes": 13,
+  "screens": [
+    {
+      "key": "muehelos",
+      "title": {
+        "de": "Was Maschinen mühelos können",
+        "en": "What machines find effortless"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Zähl bis eine Million. Bei zwei Zahlen pro Sekunde und ohne Pause bist du nach knapp sechs Tagen fertig. Ein Rechner braucht dafür weniger als eine Hundertstelsekunde - und macht dabei keinen einzigen Fehler.",
+            "en": "Count to a million. At two numbers a second without a break you finish in just under six days. A computer needs less than a hundredth of a second - and makes not a single mistake."
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "de": "**Zählen und rechnen.** Milliarden Rechenschritte pro Sekunde, jeder davon exakt.",
+              "en": "**Counting and calculating.** Billions of operations per second, every one of them exact."
+            },
+            {
+              "de": "**Wiederholen.** Der zehnmillionste Durchgang sieht aus wie der erste. Keine Müdigkeit, keine Unlust.",
+              "en": "**Repeating.** The ten-millionth pass looks like the first. No fatigue, no reluctance."
+            },
+            {
+              "de": "**Sich erinnern.** Was einmal gespeichert wurde, ist noch in zwanzig Jahren wortgleich da.",
+              "en": "**Remembering.** What was stored once is still there word for word twenty years later."
+            },
+            {
+              "de": "**Nachschlagen.** In Millionen Einträgen die passenden finden, in Sekundenbruchteilen.",
+              "en": "**Looking things up.** Finding the matching entries among millions, in fractions of a second."
+            },
+            {
+              "de": "**Gleich behandeln.** Dieselbe Regel für alle, ohne Stimmung, ohne Ansehen der Person.",
+              "en": "**Treating alike.** The same rule for everyone, no moods, no favouritism."
+            }
+          ]
+        },
+        {
+          "kind": "callout",
+          "tone": "fact",
+          "icon": "⏱️",
+          "title": {
+            "de": "Deshalb gibt es die Dinge, die es gibt",
+            "en": "This is why the things that exist, exist"
+          },
+          "text": {
+            "de": "Ein Wetterbericht ist eine gewaltige Rechnung, die niemand von Hand schaffen würde. Eine Suchmaschine schlägt in Milliarden Seiten nach. Ein Übersetzer vergleicht Millionen Sätze. Nichts davon ist klug - alles davon ist unfassbar schnell und stur.",
+            "en": "A weather forecast is a vast calculation nobody could do by hand. A search engine looks things up across billions of pages. A translator compares millions of sentences. None of it is clever - all of it is unimaginably fast and stubborn."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Merk dir dabei: Das alles ist genau das, was du in Scratch gebaut hast. Eine Schleife, die zählt. Eine Verzweigung, die prüft. Eine Variable, die sich etwas merkt. Der Unterschied zwischen deinem Apfelspiel und einer Wettervorhersage ist Umfang - nicht Art.",
+            "en": "And bear in mind: all of it is exactly what you built in Scratch. A loop that counts. A branch that checks. A variable that remembers. The difference between your apple game and a weather forecast is one of scale - not of kind."
+          }
+        }
+      ]
+    },
+    {
+      "key": "woran-sie-scheitern",
+      "title": {
+        "de": "Woran sie scheitern",
+        "en": "Where they fail"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Alles, wofür es keine klare Regel gibt. Und das ist überraschend viel - nämlich fast alles, was zwischen Menschen wichtig ist.",
+            "en": "Anything for which there is no clear rule. And that is surprisingly much - namely almost everything that matters between people."
+          }
+        },
+        {
+          "kind": "table",
+          "head": [
+            {
+              "de": "Aufgabe",
+              "en": "Task"
+            },
+            {
+              "de": "Für einen Rechner",
+              "en": "For a computer"
+            },
+            {
+              "de": "Für einen Menschen",
+              "en": "For a person"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "de": "10 000 Zahlen addieren",
+                "en": "Adding 10,000 numbers"
+              },
+              {
+                "de": "mühelos",
+                "en": "effortless"
+              },
+              {
+                "de": "Stunden, mit Fehlern",
+                "en": "hours, with mistakes"
+              }
+            ],
+            [
+              {
+                "de": "Erkennen, ob jemand traurig ist",
+                "en": "Noticing that someone is sad"
+              },
+              {
+                "de": "sehr schwer, oft daneben",
+                "en": "very hard, often wrong"
+              },
+              {
+                "de": "ein Blick genügt",
+                "en": "one look is enough"
+              }
+            ],
+            [
+              {
+                "de": "Einen Witz verstehen",
+                "en": "Understanding a joke"
+              },
+              {
+                "de": "kaum",
+                "en": "barely"
+              },
+              {
+                "de": "meistens sofort",
+                "en": "usually at once"
+              }
+            ],
+            [
+              {
+                "de": "Entscheiden, was gerecht ist",
+                "en": "Deciding what is fair"
+              },
+              {
+                "de": "gar nicht",
+                "en": "not at all"
+              },
+              {
+                "de": "schwierig, aber möglich",
+                "en": "difficult, but possible"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "callout",
+          "tone": "warn",
+          "icon": "🎭",
+          "title": {
+            "de": "Vorsicht bei „die künstliche Intelligenz kann das doch“",
+            "en": "Careful with \"but AI can do that\""
+          },
+          "text": {
+            "de": "Ein Programm kann heute Gesichter unterscheiden und Texte schreiben, die klingen, als hätte sie jemand gemeint. Trotzdem versteht es nichts davon. Es hat in sehr vielen Beispielen Muster gefunden. Wo die Beispiele einseitig waren, ist es einseitig - und es merkt es nicht, weil es gar nichts merkt.",
+            "en": "A program today can tell faces apart and write texts that sound as if someone meant them. Even so it understands none of it. It found patterns in a great many examples. Where the examples were one-sided, so is it - and it does not notice, because it notices nothing at all."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Die ehrliche Trennlinie verläuft nicht zwischen leicht und schwer, sondern zwischen „gibt es eine Regel dafür?“ und „muss man das im Einzelfall abwägen?“. Schach hat Regeln, deshalb sind Rechner darin unschlagbar. Streit schlichten hat keine, deshalb sind sie darin nutzlos.",
+            "en": "The honest dividing line does not run between easy and hard, but between \"is there a rule for it?\" and \"does each case need weighing up?\". Chess has rules, which is why computers are unbeatable at it. Settling an argument has none, which is why they are useless at it."
+          }
+        }
+      ]
+    },
+    {
+      "key": "wer-hat-es-aufgeschrieben",
+      "title": {
+        "de": "Hinter jeder Automatik steht ein Mensch",
+        "en": "Behind every automation there is a person"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Wenn eine App entscheidet, wenn ein Automat ablehnt, wenn eine Bewerbung aussortiert wird - dann klingt es, als hätte „der Computer“ das getan. Hat er nicht. Er hat eine Bedingung geprüft, die jemand vorher aufgeschrieben hat.",
+            "en": "When an app decides, when a machine refuses, when an application is filtered out - it sounds as though \"the computer\" did it. It did not. It checked a condition someone wrote down beforehand."
+          }
+        },
+        {
+          "kind": "steps",
+          "items": [
+            {
+              "title": {
+                "de": "Jemand hat sie formuliert",
+                "en": "Someone formulated it"
+              },
+              "text": {
+                "de": "Eine Person hat entschieden, ab welchem Wert etwas gilt, welche Angaben zählen und welche nicht. Diese Entscheidung ist nicht technisch, sondern inhaltlich - auch wenn sie am Ende als eine Zeile Code dasteht.",
+                "en": "A person decided at which value something applies, which details count and which do not. That decision is not technical but substantive - even if it ends up as a single line of code."
+              }
+            },
+            {
+              "title": {
+                "de": "Sie gilt danach millionenfach",
+                "en": "It then applies a million times"
+              },
+              "text": {
+                "de": "Was ein Mensch einmal aufschreibt, wird ohne Nachfragen auf alle angewendet. Bei einem Sachbearbeiter kann man um eine Ausnahme bitten. Bei einer Bedingung nicht.",
+                "en": "What one person writes down once is applied to everybody without further questions. With a clerk you can ask for an exception. With a condition you cannot."
+              }
+            },
+            {
+              "title": {
+                "de": "Man kann fragen, wer",
+                "en": "You can ask who"
+              },
+              "text": {
+                "de": "Und genau darum lohnt es sich zu wissen, wie Programme funktionieren. Wer versteht, dass da eine Regel steht und kein Urteil, stellt andere Fragen: Wer hat sie gesetzt? Warum so? Wo kann ich widersprechen?",
+                "en": "And that is exactly why it is worth knowing how programs work. Whoever understands that there is a rule there and not a judgement asks different questions: who set it? Why that way? Where can I object?"
+              }
+            }
+          ]
+        },
+        {
+          "kind": "callout",
+          "tone": "tip",
+          "icon": "🔎",
+          "title": {
+            "de": "Eine Frage, die immer weiterhilft",
+            "en": "A question that always helps"
+          },
+          "text": {
+            "de": "„Welche Bedingung war hier wohl erfüllt oder eben nicht?“ Frag das das nächste Mal, wenn dir ein Gerät etwas verweigert oder eine App dir etwas Merkwürdiges anzeigt. Meistens kommst du in zwei Schritten darauf - und aus Ärger wird Neugier.",
+            "en": "\"Which condition was met here, or rather not?\" Ask that the next time a device refuses you something or an app shows you something odd. Usually two steps get you there - and annoyance turns into curiosity."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Du hast in diesem Modul Programme geschrieben. Das sind wenige Bausteine gewesen, und trotzdem gilt: Du weißt jetzt aus eigener Anschauung, woraus die Dinge gemacht sind, die dein Leben mitsteuern. Diesen Vorsprung hat man nicht durch Lesen, sondern nur durch Bauen - und du hast gebaut.",
+            "en": "In this module you have written programs. It was only a few blocks, and still: you now know from your own experience what the things that help steer your life are made of. That head start does not come from reading but only from building - and you have built."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "Scratch - weiterbauen",
+                "en": "Scratch - keep building"
+              },
+              "url": "https://scratch.mit.edu"
+            },
+            {
+              "label": {
+                "de": "Bildungsplan Informatik Sek I, Hamburg",
+                "en": "Hamburg curriculum for computer science, lower secondary"
+              },
+              "url": "https://www.hamburg.de/resource/blob/798514/ad3c2fdfb3a32b9545a271dfceae5772/informatik-data.pdf"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": {
+        "de": "1. Lückentext: die Bilanz des Moduls",
+        "en": "1. Fill in the blanks: what this module adds up to"
+      },
+      "intro": {
+        "de": "Setze die fehlenden Wörter ein.",
+        "en": "Fill in the missing words."
+      },
+      "text": {
+        "de": "Ein Rechner ist schnell, genau und wird nie ___. Deshalb kann er ___ und wiederholen wie kein Mensch. Er scheitert überall dort, wo es keine klare ___ gibt - etwa bei der Frage, was ___ ist. Die Trennlinie verläuft also nicht zwischen leicht und schwer, sondern zwischen Aufgaben mit und ohne feste Regel. Ein Programm entscheidet auch gar nichts: Es prüft eine ___, die vorher ein ___ formuliert hat. Diese gilt danach ohne Nachfragen für ___. Deshalb lohnt die Frage, wer sie gesetzt hat und wo man ___ kann. Was du in Scratch gebaut hast - Variable, ___ und Verzweigung - steckt in derselben Form in jeder großen Software.",
+        "en": "A computer is fast, exact and never gets ___. That is why it can ___ and repeat as no human can. It fails wherever there is no clear ___ - for instance on the question of what is ___. So the dividing line does not run between easy and hard but between tasks with and without a fixed rule. Nor does a program decide anything: it checks a ___ that a ___ formulated beforehand. From then on it applies without question to ___. That is why it is worth asking who set it and where one can ___. What you built in Scratch - variable, ___ and branch - sits in exactly that form inside every large piece of software."
+      }
+    },
+    {
+      "kind": "compare",
+      "title": {
+        "de": "2. Vergleiche: abgeben oder behalten",
+        "en": "2. Compare: hand it over or keep it"
+      },
+      "intro": {
+        "de": "Zwei Beispiele aus deinem eigenen Leben, gegenübergestellt.",
+        "en": "Two examples from your own life, set side by side."
+      },
+      "text": {
+        "de": "Nenne eine Aufgabe aus deinem Alltag, die du sofort an ein Programm abgeben würdest, und eine, bei der du darauf bestehst, dass ein Mensch sie übernimmt. Beschreibe für beide, ob es eine klare Regel gibt, nach der man vorgehen könnte, und was passieren würde, wenn das Programm einen seltenen Sonderfall trifft, an den niemand gedacht hat. Zieh daraus eine eigene Faustregel dafür, wann Automatisierung eine gute Idee ist.",
+        "en": "Name a task from your everyday life that you would hand over to a program at once, and one where you insist a human does it. For both, describe whether there is a clear rule one could follow, and what would happen if the program hit a rare special case nobody thought of. From that, derive your own rule of thumb for when automation is a good idea."
+      },
+      "hint": {
+        "de": "Frag dich bei beiden: Könnte ich jemandem, der mich nicht kennt, die Regel in drei Sätzen aufschreiben?",
+        "en": "For both, ask yourself: could I write the rule down in three sentences for someone who does not know me?"
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": {
+        "de": "3. Zum Nachdenken: bei wem beschwert man sich",
+        "en": "3. Something to think about: whom do you complain to"
+      },
+      "intro": {
+        "de": "Auf diese Frage gibt es keine richtige Antwort.",
+        "en": "There is no right answer to this one."
+      },
+      "text": {
+        "de": "Wenn ein Mensch dir etwas verweigert, kannst du nachfragen, widersprechen, ihn überzeugen. Wenn ein Programm es tut, steht da nur eine Meldung. Dabei hat auch dahinter jemand die Regel geschrieben - er ist nur nicht im Raum. Überlege, was sich dadurch ändert: an deinen Möglichkeiten, an deiner Wut, an deiner Bereitschaft, es überhaupt zu versuchen. Und dann: Wie müsste ein System aussehen, das Entscheidungen automatisch trifft und trotzdem ansprechbar bleibt?",
+        "en": "When a person refuses you something, you can ask, object, persuade them. When a program does it, there is only a message. Yet behind it too somebody wrote the rule - they are simply not in the room. Think about what that changes: in your options, in your anger, in your willingness to try at all. And then: what would a system have to look like that decides automatically and still remains open to being addressed?"
+      }
+    }
+  ]
+}

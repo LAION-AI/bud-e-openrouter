@@ -1,0 +1,301 @@
+{
+  "key": "ueber-menschen-wenig",
+  "title": {
+    "de": "Über Menschen wenig, über Macht viel",
+    "en": "Little about people, much about power"
+  },
+  "summary": {
+    "de": "Datenschutz und Informationsfreiheit sind ein Paar - und wer sie verwechselt, kommt zum falschen Schluss.",
+    "en": "Data protection and freedom of information are a pair - and confusing them leads to the wrong conclusion."
+  },
+  "icon": "🔓",
+  "accent": "rose",
+  "minutes": 14,
+  "screens": [
+    {
+      "key": "zwei-richtungen",
+      "title": {
+        "de": "Zwei Richtungen, ein Ziel",
+        "en": "Two directions, one aim"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Zum Datenschutz gehört ein Gegenstück, das viel seltener genannt wird: die Informationsfreiheit. Beide schützen dieselbe Sache aus zwei Richtungen - und erst zusammen ergeben sie einen Sinn.",
+            "en": "Data protection has a counterpart that is mentioned far less often: freedom of information. Both protect the same thing from two directions - and only together do they make sense."
+          }
+        },
+        {
+          "kind": "table",
+          "head": [
+            {
+              "de": "Blickrichtung",
+              "en": "Direction"
+            },
+            {
+              "de": "Datenschutz",
+              "en": "Data protection"
+            },
+            {
+              "de": "Informationsfreiheit",
+              "en": "Freedom of information"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "de": "schützt",
+                "en": "protects"
+              },
+              {
+                "de": "Angaben über Personen",
+                "en": "details about people"
+              },
+              {
+                "de": "den Zugang zu Angaben über den Staat",
+                "en": "access to details about the state"
+              }
+            ],
+            [
+              {
+                "de": "Grundregel",
+                "en": "Basic rule"
+              },
+              {
+                "de": "verboten, außer erlaubt",
+                "en": "forbidden unless allowed"
+              },
+              {
+                "de": "zugänglich, außer begründet geheim",
+                "en": "accessible unless justifiably secret"
+              }
+            ],
+            [
+              {
+                "de": "Ziel",
+                "en": "Aim"
+              },
+              {
+                "de": "keine Macht über den Einzelnen",
+                "en": "no power over the individual"
+              },
+              {
+                "de": "keine unkontrollierte Macht",
+                "en": "no unchecked power"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Kurz gesagt: Über Menschen soll man wenig wissen dürfen, über Macht viel. Verträge einer Behörde, Gutachten, Genehmigungen - all das ist grundsätzlich einsehbar, und wer etwas geheim halten will, muss begründen warum. Genau umgekehrt wie bei deinen Daten.",
+            "en": "Put briefly: about people one should be allowed to know little, about power much. An authority's contracts, expert reports, permits - all of that is accessible in principle, and whoever wants to keep something secret must justify why. Exactly the reverse of your own data."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "fact",
+          "icon": "🏛️",
+          "title": {
+            "de": "Hamburg geht sogar weiter",
+            "en": "Hamburg goes even further"
+          },
+          "text": {
+            "de": "In Hamburg gilt ein Transparenzgesetz: Die Verwaltung muss viele Unterlagen von sich aus veröffentlichen, nicht erst auf Anfrage. Verträge, Gutachten, Baugenehmigungen stehen in einem öffentlichen Portal. Das war eine der ersten Regelungen dieser Art in Deutschland - und sie kam durch ein Volksbegehren zustande.",
+            "en": "Hamburg has a transparency law: the administration must publish many documents on its own initiative, not only on request. Contracts, expert reports and building permits appear in a public portal. It was one of the first arrangements of its kind in Germany - and it came about through a citizens' initiative."
+          }
+        }
+      ]
+    },
+    {
+      "key": "der-denkfehler",
+      "title": {
+        "de": "Der häufigste Denkfehler",
+        "en": "The most common fallacy"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "„Datenschutz verhindert Transparenz“ - dieser Satz fällt oft, und er verwechselt genau die beiden Richtungen. Tatsächlich ist es umgekehrt.",
+            "en": "\"Data protection prevents transparency\" - that sentence is often heard, and it confuses exactly those two directions. In fact the opposite is true."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Datenschutz verhindert, dass Wissen über Menschen zu Macht über Menschen wird. Informationsfreiheit sorgt dafür, dass Macht überprüfbar bleibt. Beide zielen auf dasselbe: dass niemand über andere verfügen kann, ohne dass jemand nachsehen darf. Sie stehen nicht gegeneinander - sie sind zwei Hälften einer Antwort.",
+            "en": "Data protection prevents knowledge about people from becoming power over people. Freedom of information ensures that power remains checkable. Both aim at the same thing: that nobody can dispose over others without somebody being allowed to look. They are not opposed - they are two halves of one answer."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "warn",
+          "icon": "🎭",
+          "title": {
+            "de": "Wenn Datenschutz als Ausrede benutzt wird",
+            "en": "When data protection is used as an excuse"
+          },
+          "text": {
+            "de": "„Das dürfen wir aus Datenschutzgründen nicht sagen“ ist manchmal richtig und manchmal bequem. Wo es um Zahlen einer Behörde, um Kosten oder um Entscheidungen geht, betrifft es meist gar keine Personen. Wer das auseinanderhalten kann, lässt sich nicht so leicht abwimmeln - und genau dafür ist dieser Pfad da.",
+            "en": "\"We are not allowed to say that for data protection reasons\" is sometimes correct and sometimes convenient. Where an authority's figures, costs or decisions are concerned, usually no individuals are involved at all. Whoever can tell the two apart is not so easily fobbed off - and that is what this path is for."
+          }
+        },
+        {
+          "kind": "quote",
+          "text": {
+            "de": "Datenschutz ist nicht der Schutz von Daten, sondern der Schutz von Personen und von Freiheit als Teil unserer Werteordnung.",
+            "en": "Data protection is not the protection of data but the protection of persons and of freedom as part of our order of values."
+          },
+          "source": {
+            "de": "Bildungsplan Informatik, Sekundarstufe I, Hamburg",
+            "en": "Curriculum for computer science, lower secondary, Hamburg"
+          }
+        }
+      ]
+    },
+    {
+      "key": "nichts-zu-verbergen",
+      "title": {
+        "de": "„Ich habe doch nichts zu verbergen“",
+        "en": "\"But I have nothing to hide\""
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Das ist der häufigste Satz zu diesem Thema, und er verdient es, ernst genommen zu werden statt abgetan. Also nehmen wir ihn ernst und prüfen ihn.",
+            "en": "That is the most common sentence on this subject, and it deserves to be taken seriously rather than dismissed. So let us take it seriously and test it."
+          }
+        },
+        {
+          "kind": "steps",
+          "items": [
+            {
+              "title": {
+                "de": "Die Gegenprobe",
+                "en": "The counter-test"
+              },
+              "text": {
+                "de": "Würdest du einem Fremden dein entsperrtes Handy für zehn Minuten überlassen? Fast niemand sagt ja. Wenn nein - was genau hättest du zu verbergen, und vor wem eigentlich?",
+                "en": "Would you hand a stranger your unlocked phone for ten minutes? Almost nobody says yes. If not - what exactly would you have to hide, and from whom?"
+              }
+            },
+            {
+              "title": {
+                "de": "Es geht selten um Schuld",
+                "en": "It is rarely about guilt"
+              },
+              "text": {
+                "de": "Was man nicht zeigen möchte, ist meistens nichts Verbotenes: eine Nachricht an jemanden, den man mag. Eine Suchanfrage über eine Krankheit. Ein Kontostand. Privatheit ist nicht dasselbe wie Heimlichkeit.",
+                "en": "What you would rather not show is usually nothing illegal: a message to someone you like. A search about an illness. A bank balance. Privacy is not the same as secrecy."
+              }
+            },
+            {
+              "title": {
+                "de": "Und es geht nicht nur um dich",
+                "en": "And it is not only about you"
+              },
+              "text": {
+                "de": "Datenschutz schützt vor allem Menschen, die unbequeme Fragen stellen: Journalistinnen, Anwälte, Ärztinnen, Menschen mit Schulden oder Krankheiten. Wer selbst gerade nichts zu verbergen hat, schützt mit denselben Regeln jemanden, der es hat - heute oder in zehn Jahren.",
+                "en": "Data protection above all protects people who ask awkward questions: journalists, lawyers, doctors, people with debts or illnesses. Whoever currently has nothing to hide protects, with the same rules, someone who does - today or in ten years."
+              }
+            }
+          ]
+        },
+        {
+          "kind": "callout",
+          "tone": "note",
+          "icon": "🤝",
+          "title": {
+            "de": "Ein Recht, das man für andere mit ausübt",
+            "en": "A right you also exercise for others"
+          },
+          "text": {
+            "de": "Es ist wie beim Wahlrecht oder bei der Pressefreiheit: Sie nützen dir vielleicht heute nicht persönlich. Aber sie sind da, wenn du sie brauchst - und das sind sie nur, weil sie auch dann gelten, wenn gerade niemand sie braucht.",
+            "en": "It is like the right to vote or freedom of the press: they may not help you personally today. But they are there when you need them - and they are only there because they apply even when nobody happens to need them."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "Hamburgisches Transparenzportal",
+                "en": "Hamburg transparency portal"
+              },
+              "url": "https://transparenz.hamburg.de"
+            },
+            {
+              "label": {
+                "de": "Der Hamburgische Beauftragte für Datenschutz und Informationsfreiheit",
+                "en": "Hamburg Commissioner for Data Protection and Freedom of Information"
+              },
+              "url": "https://datenschutz-hamburg.de"
+            },
+            {
+              "label": {
+                "de": "Bildungsplan Informatik Sek I, Hamburg",
+                "en": "Hamburg curriculum for computer science, lower secondary"
+              },
+              "url": "https://www.hamburg.de/resource/blob/798514/ad3c2fdfb3a32b9545a271dfceae5772/informatik-data.pdf"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": {
+        "de": "1. Lückentext: die Bilanz des Moduls",
+        "en": "1. Fill in the blanks: what this module adds up to"
+      },
+      "intro": {
+        "de": "Setze die fehlenden Wörter ein.",
+        "en": "Fill in the missing words."
+      },
+      "text": {
+        "de": "Das Gegenstück zum Datenschutz heißt ___. Sie sichert den Zugang zu Angaben über den ___, während der Datenschutz Angaben über ___ schützt. Bei personenbezogenen Daten gilt: verboten, außer ___. Bei staatlichen Unterlagen gilt umgekehrt: zugänglich, außer begründet ___. In Hamburg verpflichtet ein ___ die Verwaltung sogar, vieles von sich aus zu veröffentlichen. Wer beides verwechselt, kommt zu dem Schluss, Datenschutz verhindere ___ - dabei verhindert er, dass Wissen über Menschen zu ___ über Menschen wird. Der Satz „Ich habe nichts zu ___“ übersieht, dass Privatheit nicht dasselbe ist wie ___ - und dass diese Regeln vor allem Menschen schützen, die unbequeme ___ stellen.",
+        "en": "The counterpart to data protection is called ___. It secures access to details about the ___, while data protection protects details about ___. For personal data the rule is: forbidden unless ___. For state documents the reverse holds: accessible unless justifiably ___. In Hamburg a ___ even obliges the administration to publish much of it unprompted. Whoever confuses the two concludes that data protection prevents ___ - whereas it prevents knowledge about people from becoming ___ over people. The sentence \"I have nothing to ___\" overlooks that privacy is not the same as ___ - and that these rules above all protect people who ask awkward ___."
+      }
+    },
+    {
+      "kind": "compare",
+      "title": {
+        "de": "2. Vergleiche: wenn beide in dieselbe Richtung ziehen",
+        "en": "2. Compare: when both pull the same way"
+      },
+      "intro": {
+        "de": "Zwei Fälle, gegenübergestellt.",
+        "en": "Two cases, set side by side."
+      },
+      "text": {
+        "de": "Nenne einen Fall, in dem Datenschutz und Informationsfreiheit in dieselbe Richtung ziehen, und einen, in dem sie sich widersprechen. Für den zweiten Fall: Beschreibe, wer jeweils etwas gewinnt und wer etwas verliert, und begründe, welcher Seite du den Vorrang geben würdest. Sieh dir außerdem das Hamburgische Transparenzportal an, such dir ein veröffentlichtes Dokument aus und beschreibe kurz, welche Angaben darin stehen und welche geschwärzt oder weggelassen wurden - und ob du das jeweils nachvollziehen kannst.",
+        "en": "Name a case where data protection and freedom of information pull in the same direction, and one where they conflict. For the second case: describe who gains and who loses in each, and justify which side you would give priority to. Also look at the Hamburg transparency portal, pick one published document and briefly describe which details it contains and which have been redacted or omitted - and whether you find each of those understandable."
+      },
+      "hint": {
+        "de": "Denk an ein Dokument, in dem sowohl Zahlen einer Behörde als auch Namen von Menschen vorkommen.",
+        "en": "Think of a document containing both an authority's figures and people's names."
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": {
+        "de": "3. Zum Nachdenken: das entsperrte Handy",
+        "en": "3. Something to think about: the unlocked phone"
+      },
+      "intro": {
+        "de": "Auf diese Frage gibt es keine richtige Antwort.",
+        "en": "There is no right answer to this one."
+      },
+      "text": {
+        "de": "Würdest du einem Fremden dein entsperrtes Handy für zehn Minuten überlassen? Wenn nein - was genau hättest du zu verbergen, und vor wem eigentlich? Fast nie geht es um etwas Verbotenes; es geht darum, dass Zusammenhänge verloren gehen, wenn Fremde mitlesen. Überlege außerdem: Wenn Datenschutz vor allem Menschen schützt, die unbequeme Fragen stellen, Kranke, Verschuldete oder Verliebte - was folgt daraus für jemanden, der selbst gerade nichts zu verbergen hat?",
+        "en": "Would you hand a stranger your unlocked phone for ten minutes? If not - what exactly would you have to hide, and from whom? It is almost never about something illegal; it is that context is lost when strangers read along. Consider too: if data protection above all protects people who ask awkward questions, the ill, the indebted or the in love - what follows from that for someone who currently has nothing to hide?"
+      }
+    }
+  ]
+}

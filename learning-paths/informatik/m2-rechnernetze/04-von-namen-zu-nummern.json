@@ -1,0 +1,328 @@
+{
+  "key": "von-namen-zu-nummern",
+  "title": {
+    "de": "Von Namen zu Nummern",
+    "en": "From names to numbers"
+  },
+  "summary": {
+    "de": "Das Telefonbuch des Internets - man bemerkt es erst, wenn es ausfällt, und dann heißt es: Das Internet ist kaputt.",
+    "en": "The internet's phone book - you only notice it when it fails, and then people say the internet is broken."
+  },
+  "icon": "📖",
+  "accent": "sky",
+  "minutes": 14,
+  "screens": [
+    {
+      "key": "das-telefonbuch",
+      "title": {
+        "de": "Du tippst Namen, Rechner kennen Nummern",
+        "en": "You type names, computers know numbers"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Niemand merkt sich `142.250.185.78`. Alle merken sich Namen. Zwischen beidem steht ein Dienst, der so selbstverständlich funktioniert, dass man ihn erst bemerkt, wenn er ausfällt: das DNS, das Domain Name System.",
+            "en": "Nobody remembers `142.250.185.78`. Everybody remembers names. Between the two stands a service so taken for granted that you only notice it when it fails: DNS, the Domain Name System."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Es ist ein Telefonbuch für das Internet. Du fragst nach einem Hostnamen, es antwortet mit einer IP-Adresse. Die Antwort wird eine Weile zwischengespeichert, damit nicht bei jedem Klick neu gefragt werden muss - das ist der Grund, warum die zweite Seite einer Website meist schneller lädt als die erste.",
+            "en": "It is a phone book for the internet. You ask for a hostname, it answers with an IP address. The answer is cached for a while so that it does not have to be asked again on every click - which is why the second page of a website usually loads faster than the first."
+          }
+        },
+        {
+          "kind": "steps",
+          "items": [
+            {
+              "title": {
+                "de": "Du tippst den Namen",
+                "en": "You type the name"
+              },
+              "text": {
+                "de": "`www.beispiel.de` - drei Teile, von hinten nach vorn immer genauer: `de` das Land, `beispiel` der Name darin, `www` ein Rechner davon.",
+                "en": "`www.example.de` - three parts, getting more specific from right to left: `de` the country, `example` the name within it, `www` one machine of it."
+              }
+            },
+            {
+              "title": {
+                "de": "Dein Rechner fragt nach",
+                "en": "Your machine asks"
+              },
+              "text": {
+                "de": "Er wendet sich an einen DNS-Server, dessen Adresse er beim Anmelden im Netz mitbekommen hat - meist den des Routers oder des Anbieters.",
+                "en": "It turns to a DNS server whose address it received when joining the network - usually the router's or the provider's."
+              }
+            },
+            {
+              "title": {
+                "de": "Der fragt notfalls weiter",
+                "en": "That one asks onwards if need be"
+              },
+              "text": {
+                "de": "Kennt er die Antwort nicht, fragt er selbst - erst, wer für `.de` zuständig ist, dann, wer für `beispiel.de` zuständig ist. Vier Fragen, meist unter einer Zehntelsekunde.",
+                "en": "If it does not know the answer, it asks in turn - first who is responsible for `.de`, then who is responsible for `example.de`. Four questions, usually under a tenth of a second."
+              }
+            },
+            {
+              "title": {
+                "de": "Und dann erst die eigentliche Anfrage",
+                "en": "And only then the actual request"
+              },
+              "text": {
+                "de": "Mit der Nummer in der Hand schickt dein Rechner los, was er wirklich wollte. Der Server dort antwortet - einer fragt, einer antwortet, das ist das Client-Server-Prinzip.",
+                "en": "With the number in hand, your machine sends what it actually wanted. The server there answers - one asks, one answers: that is the client-server principle."
+              }
+            }
+          ]
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "🔎",
+          "title": {
+            "de": "Frag das Telefonbuch selbst",
+            "en": "Ask the phone book yourself"
+          },
+          "text": {
+            "de": "Tipp in die Eingabezeile `nslookup wikipedia.de` (Windows) oder `dig wikipedia.de` (Mac, Linux). Du siehst die Nummer, die zurückkommt. Probier dieselbe Abfrage für eine große Seite und für die Seite deiner Schule - und vergleicht in der Klasse eure Antworten. Bei großen Seiten bekommt nicht jeder dieselbe Nummer.",
+            "en": "In the command line type `nslookup wikipedia.de` (Windows) or `dig wikipedia.de` (Mac, Linux). You see the number that comes back. Try the same query for a big site and for your school's site - and compare answers in class. For big sites not everyone gets the same number."
+          }
+        }
+      ]
+    },
+    {
+      "key": "das-internet-ist-kaputt",
+      "title": {
+        "de": "„Das Internet ist kaputt“",
+        "en": "\"The internet is broken\""
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Meistens ist es das nicht. Und mit dem, was du in den letzten beiden Pfaden gelernt hast, kannst du in einer Minute sagen, was wirklich los ist.",
+            "en": "Usually it is not. And with what you learned in the last two paths you can say in a minute what is really going on."
+          }
+        },
+        {
+          "kind": "table",
+          "head": [
+            {
+              "de": "Beobachtung",
+              "en": "Observation"
+            },
+            {
+              "de": "Was funktioniert",
+              "en": "What works"
+            },
+            {
+              "de": "Wo es klemmt",
+              "en": "Where it is stuck"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "de": "Ping geht, Seiten laden nicht",
+                "en": "Ping works, pages do not load"
+              },
+              {
+                "de": "Verbindung bis nach draußen",
+                "en": "Connection right out"
+              },
+              {
+                "de": "Die Namensauflösung - DNS",
+                "en": "Name resolution - DNS"
+              }
+            ],
+            [
+              {
+                "de": "Ping geht nicht, Adresse fehlt",
+                "en": "No ping, no address"
+              },
+              {
+                "de": "Fast nichts",
+                "en": "Almost nothing"
+              },
+              {
+                "de": "DHCP oder das Kabel",
+                "en": "DHCP or the cable"
+              }
+            ],
+            [
+              {
+                "de": "Router antwortet, 8.8.8.8 nicht",
+                "en": "Router answers, 8.8.8.8 does not"
+              },
+              {
+                "de": "Das eigene Netz",
+                "en": "Your own network"
+              },
+              {
+                "de": "Die Leitung des Anbieters",
+                "en": "The provider's line"
+              }
+            ],
+            [
+              {
+                "de": "Eine Seite lädt nicht, andere schon",
+                "en": "One page fails, others work"
+              },
+              {
+                "de": "Alles bei dir",
+                "en": "Everything on your side"
+              },
+              {
+                "de": "Der Server der Seite",
+                "en": "That site's server"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "callout",
+          "tone": "tip",
+          "icon": "🗣️",
+          "title": {
+            "de": "Der Satz, der dich ernst nimmt",
+            "en": "The sentence that gets you taken seriously"
+          },
+          "text": {
+            "de": "„Ping auf 8.8.8.8 antwortet in 20 Millisekunden, aber die Namensauflösung schlägt fehl.“ Wer das am Telefon sagt, wird nicht gefragt, ob er den Stecker gezogen hat. Es ist derselbe Fehler wie „geht nicht“ - nur beschrieben statt beklagt.",
+            "en": "\"Ping to 8.8.8.8 answers in 20 milliseconds, but name resolution fails.\" Say that on the phone and nobody asks whether you have pulled the plug. It is the same fault as \"it does not work\" - only described instead of complained about."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Genau das ist der praktische Gewinn dieses Moduls. Nicht, dass du Netze bauen könntest - sondern dass du eine Störung einordnen kannst statt ihr ausgeliefert zu sein. Diese Fähigkeit hält länger als jedes Gerät in deinem Haushalt.",
+            "en": "That is precisely the practical gain of this module. Not that you could build networks - but that you can place a fault instead of being at its mercy. That ability outlasts every device in your home."
+          }
+        }
+      ]
+    },
+    {
+      "key": "wer-fuehrt-das-buch",
+      "title": {
+        "de": "Wer führt eigentlich das Telefonbuch",
+        "en": "Who actually keeps the phone book"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Wenn jemand entscheidet, welche Nummer zu einem Namen gehört, dann entscheidet er auch, ob man einen Namen überhaupt erreicht. Das macht das DNS zu einer der stillsten Machtfragen des Internets.",
+            "en": "If somebody decides which number belongs to a name, they also decide whether a name can be reached at all. That makes DNS one of the quietest questions of power on the internet."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Meist fragst du den DNS-Server deines Anbieters - der sieht damit jede Adresse, die du aufrufst, auch wenn die Seite selbst verschlüsselt ist. Man kann stattdessen einen anderen eintragen. In manchen Ländern werden bestimmte Namen absichtlich falsch oder gar nicht beantwortet; das ist die technisch einfachste Art, eine Seite zu sperren.",
+            "en": "Usually you ask your provider's DNS server - which therefore sees every address you call up, even when the site itself is encrypted. You can enter a different one instead. In some countries certain names are deliberately answered wrongly or not at all; that is the technically simplest way to block a site."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "fact",
+          "icon": "🔢",
+          "title": {
+            "de": "Die Adressen sind ausgegangen",
+            "en": "The addresses ran out"
+          },
+          "text": {
+            "de": "IPv4 hat rund 4,3 Milliarden Adressen. Das klang 1981 nach unendlich viel und reicht heute nicht mehr für die Geräte auf der Welt. Deshalb gibt es IPv6 mit 128 statt 32 Bit - genug, um jedem Sandkorn der Erde mehrere Adressen zu geben. Du hast wahrscheinlich längst eine, ohne es zu wissen.",
+            "en": "IPv4 has about 4.3 billion addresses. In 1981 that sounded like infinity and today it is not enough for the world's devices. Hence IPv6 with 128 bits instead of 32 - enough to give every grain of sand on Earth several addresses. You probably have one already without knowing it."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Und noch etwas hängt am Namen: Wer eine Domain besitzt, besitzt eine Adresse, unter der Menschen ihn finden. Deshalb kosten kurze Namen viel Geld und deshalb streiten Firmen darum vor Gericht. Ein Name ist im Internet kein Etikett, sondern der Weg selbst.",
+            "en": "And something else hangs on the name: whoever owns a domain owns an address at which people find them. That is why short names cost a great deal and why companies go to court over them. On the internet a name is not a label but the route itself."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "RFC 1034 - Domain Names, Grundlagen",
+                "en": "RFC 1034 - Domain Names, concepts"
+              },
+              "url": "https://www.rfc-editor.org/rfc/rfc1034"
+            },
+            {
+              "label": {
+                "de": "DENIC - die Vergabestelle für .de",
+                "en": "DENIC - the registry for .de"
+              },
+              "url": "https://www.denic.de"
+            },
+            {
+              "label": {
+                "de": "inf-schule.de: Namen im Netz",
+                "en": "inf-schule.de: names in the network"
+              },
+              "url": "https://www.inf-schule.de/rechnernetze"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": {
+        "de": "1. Lückentext: fragen und antworten",
+        "en": "1. Fill in the blanks: asking and answering"
+      },
+      "intro": {
+        "de": "Setze die fehlenden Wörter ein.",
+        "en": "Fill in the missing words."
+      },
+      "text": {
+        "de": "Menschen merken sich Namen, Rechner brauchen Nummern; dazwischen übersetzt das ___. Der Name, den du eintippst, heißt ___. Gelesen wird er von hinten nach vorn: erst das Land, dann der Name darin. Weiß der gefragte Server die Antwort nicht, ___ er selbst weiter. Antworten werden eine Weile ___, damit nicht jedes Mal neu gefragt werden muss. Am Ende schickt dein Rechner die eigentliche Anfrage an die zurückgekommene Nummer; wer dort antwortet, ist ein ___. Dieses Muster - einer fragt, einer antwortet - heißt ___. Antwortet ein Ping, lädt aber keine Seite, liegt es meist an der ___. Weil IPv4 mit 4,3 Milliarden Adressen nicht mehr reicht, gibt es heute ___.",
+        "en": "People remember names, computers need numbers; between them translates ___. The name you type is called the ___. It is read from right to left: first the country, then the name within it. If the server asked does not know the answer, it ___ onwards itself. Answers are ___ for a while so that they need not be asked again every time. Finally your machine sends the actual request to the number that came back; whoever answers there is a ___. This pattern - one asks, one answers - is called the ___. If a ping answers but no page loads, it is usually down to ___. Because IPv4 with 4.3 billion addresses is no longer enough, today there is ___."
+      }
+    },
+    {
+      "kind": "compare",
+      "title": {
+        "de": "2. Ausprobieren und vergleichen: zwei kaputte Rechner",
+        "en": "2. Try it and compare: two broken machines"
+      },
+      "intro": {
+        "de": "Erst nachschlagen, dann urteilen.",
+        "en": "Look it up first, then judge."
+      },
+      "text": {
+        "de": "Ein Rechner antwortet auf `ping 8.8.8.8` innerhalb weniger Millisekunden, kann aber keine einzige Webseite laden. Ein zweiter Rechner lädt Seiten ganz normal, antwortet auf denselben Ping aber gar nicht. Erkläre für beide Fälle, welcher Teil der Kette funktioniert und welcher nicht, und gib jeweils an, welchen Befehl du als Nächstes eingeben würdest, um deine Vermutung zu prüfen. Schlage dazu mit `nslookup` oder `dig` eine Adresse nach und beschreibe, was du siehst. Halte am Ende fest, was der Unterschied zwischen einer Adresse und einem Namen praktisch bedeutet.",
+        "en": "One machine answers `ping 8.8.8.8` within a few milliseconds but cannot load a single web page. A second machine loads pages perfectly normally but does not answer the same ping at all. For both cases, explain which part of the chain works and which does not, and state in each case which command you would type next to test your guess. Look up an address with `nslookup` or `dig` and describe what you see. Finally, note what the difference between an address and a name means in practice."
+      },
+      "hint": {
+        "de": "Überleg bei jedem Fall, welcher Schritt aus der Kette dieses Pfades übersprungen wird.",
+        "en": "For each case, consider which step in this path's chain is being skipped."
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": {
+        "de": "3. Zum Nachdenken: wer das Buch führt, bestimmt den Weg",
+        "en": "3. Something to think about: whoever keeps the book decides the route"
+      },
+      "intro": {
+        "de": "Auf diese Frage gibt es keine richtige Antwort.",
+        "en": "There is no right answer to this one."
+      },
+      "text": {
+        "de": "Ein Name ist nur so viel wert wie die Antwort, die man darauf bekommt. Wer den Namensdienst betreibt, sieht jede Seite, die du besuchst - und kann eine Antwort auch weglassen. Es braucht keine Zensur im großen Stil dafür, es genügt ein Eintrag, der fehlt. Überlege, was es bedeutet, dass diese Stelle in fast jedem Land bei wenigen großen Anbietern liegt. Wem müsste man vertrauen können, damit das in Ordnung ist - und woran würdest du merken, wenn dieses Vertrauen enttäuscht wird?",
+        "en": "A name is worth only as much as the answer you get for it. Whoever runs the name service sees every site you visit - and can also leave an answer out. No grand censorship is needed for that, a missing entry is enough. Think about what it means that in almost every country this function sits with a few large providers. Whom would you have to be able to trust for that to be acceptable - and how would you notice if that trust were betrayed?"
+      }
+    }
+  ]
+}

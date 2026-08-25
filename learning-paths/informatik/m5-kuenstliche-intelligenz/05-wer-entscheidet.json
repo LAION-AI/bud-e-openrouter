@@ -1,0 +1,227 @@
+{
+  "key": "wer-entscheidet",
+  "title": {
+    "de": "Wer entscheidet, wenn niemand entscheidet",
+    "en": "Who decides, when nobody decides"
+  },
+  "summary": {
+    "de": "Verantwortung, Urheberschaft und die Frage, wer nachsehen darf - die Fragen, die keine Technik beantwortet.",
+    "en": "Responsibility, authorship and who is allowed to look - the questions no technology answers."
+  },
+  "icon": "🧑‍⚖️",
+  "accent": "violet",
+  "minutes": 15,
+  "screens": [
+    {
+      "key": "monate-vorher",
+      "title": {
+        "de": "Monate vorher, am Schreibtisch",
+        "en": "Months beforehand, at a desk"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Ein Mensch, der plötzlich ausweichen muss, entscheidet in Sekundenbruchteilen und hinterher weiß niemand genau, warum so. Bei einem selbstfahrenden Auto wird dieselbe Entscheidung Monate vorher getroffen, an einem Schreibtisch - und für alle Fälle gleichzeitig.",
+            "en": "A person who suddenly has to swerve decides in fractions of a second, and afterwards nobody knows exactly why that way. In a self-driving car the same decision is made months beforehand, at a desk - and for all cases at once."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Das ist der eigentlich neue Punkt, und er hat wenig mit Technik zu tun. Wer legt fest, wie das Auto sich verhält? Der Programmierer? Die Herstellerfirma? Der Gesetzgeber? Der Käufer? Und würdest du ein Auto kaufen, das im Zweifel dich opfert - oder eines, das im Zweifel andere opfert, und wärst du bereit, neben so einem zu gehen?",
+            "en": "That is the genuinely new point, and it has little to do with technology. Who determines how the car behaves? The programmer? The manufacturer? The legislator? The buyer? And would you buy a car that in case of doubt sacrifices you - or one that in case of doubt sacrifices others, and would you be willing to walk beside such a car?"
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "note",
+          "icon": "📜",
+          "title": {
+            "de": "In Deutschland gibt es dazu eine Antwort",
+            "en": "In Germany there is an answer to this"
+          },
+          "text": {
+            "de": "Eine Ethik-Kommission hat 2017 Regeln formuliert, die bis heute gelten: Sachschaden geht immer vor Personenschaden. Und Menschenleben dürfen nicht gegeneinander aufgerechnet werden - nicht nach Alter, nicht nach Anzahl. Das ist eine Entscheidung, die man auch anders hätte treffen können, und in anderen Ländern hat man das.",
+            "en": "An ethics commission formulated rules in 2017 that still hold: damage to property always takes precedence over harm to people. And human lives may not be weighed against one another - not by age, not by number. That is a decision that could have been made differently, and in other countries it was."
+          }
+        }
+      ]
+    },
+    {
+      "key": "offene-fragen",
+      "title": {
+        "de": "Vier Fragen, die noch offen sind",
+        "en": "Four questions still open"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Bei den folgenden gibt es keine fertige Antwort - weder in diesem Text noch sonst irgendwo. Sie werden gerade verhandelt, in Gerichten, Parlamenten und Redaktionen, und dein Jahrgang wird darüber mitentscheiden.",
+            "en": "For the following there is no ready answer - neither in this text nor anywhere else. They are being negotiated right now, in courts, parliaments and newsrooms, and your year group will help decide them."
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "de": "**Wem gehört das Ergebnis?** Ein Bild im Stil einer lebenden Künstlerin, erzeugt von einem Modell, das mit ihren Werken trainiert wurde. Sie hat nichts unterschrieben und bekommt nichts.",
+              "en": "**Who owns the result?** A picture in the style of a living artist, produced by a model trained on her works. She signed nothing and receives nothing."
+            },
+            {
+              "de": "**Wer haftet?** Wenn eine medizinische Software einen Tumor übersieht - der Arzt, der ihr vertraut hat, die Firma, die sie verkauft, oder die Klinik, die sie eingekauft hat?",
+              "en": "**Who is liable?** When medical software misses a tumour - the doctor who trusted it, the company that sold it, or the hospital that bought it?"
+            },
+            {
+              "de": "**Wer prüft?** Wenn eine Bewerbung aussortiert wird und niemand die Regel benennen kann, weil sie in Milliarden Zahlen steckt statt in einer `if`-Zeile.",
+              "en": "**Who checks?** When an application is filtered out and nobody can name the rule, because it sits in billions of numbers rather than in an `if` line."
+            },
+            {
+              "de": "**Was heißt Demokratie**, wenn sich Stimmen, Videos und Zeugen fälschen lassen - und wenn umgekehrt jeder echte Beleg als Fälschung abgetan werden kann?",
+              "en": "**What does democracy mean** when voices, videos and witnesses can be faked - and when conversely any genuine piece of evidence can be dismissed as a fake?"
+            }
+          ]
+        },
+        {
+          "kind": "callout",
+          "tone": "warn",
+          "icon": "🎬",
+          "title": {
+            "de": "Die zweite Hälfte der Deepfake-Frage",
+            "en": "The second half of the deepfake question"
+          },
+          "text": {
+            "de": "Über gefälschte Videos wird viel geredet. Die gefährlichere Folge ist die umgekehrte: Wenn alles gefälscht sein könnte, kann sich jeder herausreden. Ein echtes Video wird zum „das war doch KI“. Was verloren geht, ist nicht die Wahrheit - es ist die Möglichkeit, etwas zu beweisen.",
+            "en": "Much is said about faked videos. The more dangerous consequence is the reverse: if everything could be fake, anyone can talk their way out. A genuine video becomes \"that was AI\". What is lost is not truth - it is the possibility of proving anything."
+          }
+        }
+      ]
+    },
+    {
+      "key": "die-andere-seite",
+      "title": {
+        "de": "Und die andere Seite",
+        "en": "And the other side"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Ein Modul über KI, das nur Warnungen enthält, wäre genauso schief wie eines, das nur staunt. Beides gehört zusammen - und die Seite, die seltener erzählt wird, ist die hier.",
+            "en": "A module about AI containing only warnings would be as skewed as one containing only wonder. Both belong together - and the side told less often is this one."
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "de": "Modelle finden auf Röntgenbildern Tumore, die Menschen übersehen - und übersehen andere, die Menschen finden. Zusammen sind sie besser als jeder allein.",
+              "en": "Models find tumours on X-rays that people miss - and miss others that people find. Together they are better than either alone."
+            },
+            {
+              "de": "Sie übersetzen zwischen Sprachen, für die es kaum Dolmetscher gibt. Für viele Menschen ist das der erste Zugang zu Informationen überhaupt.",
+              "en": "They translate between languages for which there are barely any interpreters. For many people that is the first access to information at all."
+            },
+            {
+              "de": "Sie lesen für Blinde vor, was eine Kamera sieht, und schreiben mit, was in einem lauten Raum gesagt wird.",
+              "en": "They read aloud to blind people what a camera sees, and transcribe what is said in a noisy room."
+            },
+            {
+              "de": "Sie haben 2020 die Struktur von Proteinen vorhergesagt - ein Problem, an dem die Biologie fünfzig Jahre gearbeitet hatte.",
+              "en": "In 2020 they predicted the structure of proteins - a problem biology had worked on for fifty years."
+            }
+          ]
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Die Frage ist deshalb nicht, ob man das will. Die Frage ist, wer entscheidet, wofür es eingesetzt wird - und wer nachsehen darf, ob es funktioniert. Beides sind keine technischen Fragen, sondern Fragen danach, wie wir zusammenleben wollen. Und Antworten darauf gibt kein Modell.",
+            "en": "So the question is not whether one wants this. The question is who decides what it is used for - and who is allowed to check whether it works. Neither is a technical question; both are questions about how we want to live together. And no model gives answers to those."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "tip",
+          "icon": "🤖",
+          "title": {
+            "de": "Rede ich gerade mit einem Menschen?",
+            "en": "Am I talking to a human?"
+          },
+          "text": {
+            "de": "Alan Turing hat 1950 vorgeschlagen, genau das zum Maßstab zu machen: Wenn ein Mensch im Gespräch nicht mehr unterscheiden kann, ob am anderen Ende eine Maschine sitzt - reicht das? Die Frage war siebzig Jahre lang ein Gedankenspiel. Sie ist keines mehr. Überlegt in der Klasse, welche Fragen ihr stellen würdet, um es herauszufinden.",
+            "en": "Alan Turing proposed in 1950 that exactly this be the measure: if a person in conversation can no longer tell whether a machine sits at the other end - is that enough? For seventy years the question was a thought experiment. It is one no longer. Discuss in class which questions you would ask to find out."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": { "de": "Alan Turing, Computing Machinery and Intelligence (1950)", "en": "Alan Turing, Computing Machinery and Intelligence (1950)" },
+              "url": "https://academic.oup.com/mind/article/LIX/236/433/986238"
+            },
+            {
+              "label": { "de": "Teachable Machine (Google)", "en": "Teachable Machine (Google)" },
+              "url": "https://teachablemachine.withgoogle.com"
+            },
+            {
+              "label": { "de": "Bildungsplan Informatik Sek I, Hamburg", "en": "Hamburg curriculum for computer science, lower secondary" },
+              "url": "https://www.hamburg.de/resource/blob/798514/ad3c2fdfb3a32b9545a271dfceae5772/informatik-data.pdf"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": {
+        "de": "1. Lückentext: die Bilanz des Moduls",
+        "en": "1. Fill in the blanks: what this module adds up to"
+      },
+      "intro": {
+        "de": "Setze die fehlenden Wörter ein.",
+        "en": "Fill in the missing words."
+      },
+      "text": {
+        "de": "Beim herkömmlichen Programmieren liefert der Mensch die Regeln, beim ___ liefert er die Beispiele. Die kleinste Einheit eines neuronalen Netzes heißt ___, und alles Gelernte steckt in den ___. Am Ende steht keine sichere Antwort, sondern eine ___. Ist die Auswahl der Trainingsdaten einseitig, entsteht ein ___. Ein Modell ist deshalb kein Richter, sondern ein ___ seiner Daten - und wer sagt „die KI hat entschieden“, verschiebt die ___. Bei selbstfahrenden Autos wird die Entscheidung ___ vorher am Schreibtisch getroffen, und in Deutschland gilt dabei: Sachschaden vor ___. Die gefährlichere Folge gefälschter Videos ist, dass sich auch echte Belege als Fälschung ___ lassen. Die offenen Fragen sind am Ende keine technischen, sondern die danach, wer ___ darf, ob etwas funktioniert.",
+        "en": "In conventional programming the human supplies the rules; in ___ they supply the examples. The smallest unit of a neural network is called a ___, and everything learned sits in the ___. At the end there is no sure answer but a ___. If the choice of training data is one-sided, a ___ arises. So a model is not a judge but a ___ of its data - and whoever says \"the AI decided\" shifts the ___. With self-driving cars the decision is made ___ beforehand at a desk, and in Germany the rule is: property damage before ___. The more dangerous consequence of faked videos is that genuine evidence can also be ___ as fake. In the end the open questions are not technical but about who is allowed to ___ whether something works."
+      }
+    },
+    {
+      "kind": "compare",
+      "title": {
+        "de": "2. Vergleiche: derselbe Einsatz, zwei Urteile",
+        "en": "2. Compare: the same use, two judgements"
+      },
+      "intro": {
+        "de": "Ein Modell, zwei Anwendungen.",
+        "en": "One model, two applications."
+      },
+      "text": {
+        "de": "Nimm ein System zur Gesichtserkennung. Beschreibe einen Einsatz, den du befürwortest, und einen, den du ablehnst - beide mit demselben technischen Kern. Arbeite heraus, was genau den Unterschied macht: Ist es der Ort, der Zweck, die Freiwilligkeit, die Möglichkeit zu widersprechen, oder wer nachsehen darf? Formuliere daraus zwei Bedingungen, die aus deiner Sicht erfüllt sein müssten, damit ein solcher Einsatz in Ordnung ist. Prüfe zum Schluss deine eigenen Bedingungen an einem dritten Fall, der dir zuerst schwer zuzuordnen war.",
+        "en": "Take a facial recognition system. Describe one use you support and one you reject - both with the same technical core. Work out what exactly makes the difference: is it the place, the purpose, whether it is voluntary, the possibility of objecting, or who is allowed to check? From that, formulate two conditions that in your view would have to be met for such a use to be acceptable. Finally, test your own conditions on a third case that you found hard to place at first."
+      },
+      "hint": {
+        "de": "Denk daran, ob die Betroffenen wissen, dass es passiert - und ob sie es ändern könnten.",
+        "en": "Consider whether those affected know it is happening - and whether they could change it."
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": {
+        "de": "3. Zum Nachdenken: eine Vorhersage aus der Vergangenheit",
+        "en": "3. Something to think about: a prediction from the past"
+      },
+      "intro": {
+        "de": "Auf diese Frage gibt es keine richtige Antwort.",
+        "en": "There is no right answer to this one."
+      },
+      "text": {
+        "de": "Ein Modell lernt aus dem, was war. Wenn in den Daten der letzten zwanzig Jahre bestimmte Menschen seltener eingestellt, seltener befördert oder häufiger kontrolliert wurden, dann steht genau das in den Beispielen - und ein Modell, das daraus lernt, macht aus der Vergangenheit eine Vorhersage für die Zukunft. Überlege, was das für jemanden bedeutet, der davon betroffen ist, obwohl er persönlich nie etwas getan hat. Und zweitens: Wen würdest du fragen wollen, warum die Entscheidung so ausgefallen ist - wenn niemand die Regel benennen kann?",
+        "en": "A model learns from what was. If in the data of the last twenty years certain people were hired less often, promoted less often or checked more often, then exactly that is in the examples - and a model learning from it turns the past into a prediction for the future. Think about what that means for someone affected by it although they personally never did anything. And secondly: whom would you want to ask why the decision came out that way - when nobody can name the rule?"
+      }
+    }
+  ]
+}

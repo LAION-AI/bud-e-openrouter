@@ -1,0 +1,257 @@
+{
+  "key": "fragen-an-die-daten",
+  "title": {
+    "de": "Fragen an die Daten",
+    "en": "Questions to the data"
+  },
+  "summary": {
+    "de": "Auswählen, filtern, sortieren, gruppieren - und der Moment, in dem aus Zeilen eine Person wird.",
+    "en": "Select, filter, sort, group - and the moment rows turn into a person."
+  },
+  "icon": "🔍",
+  "accent": "rose",
+  "minutes": 14,
+  "screens": [
+    {
+      "key": "auswaehlen-und-filtern",
+      "title": {
+        "de": "Zeig mir nur die, auf die etwas zutrifft",
+        "en": "Show me only those that match"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Eine Tabelle mit einer Million Zeilen ist nutzlos, solange man sie nur ansehen kann. Nützlich wird sie durch die Abfrage: die Fähigkeit, in Sekundenbruchteilen genau die Zeilen herauszuholen, die zusammenpassen.",
+            "en": "A table with a million rows is useless as long as you can only look at it. It becomes useful through the query: the ability to pull out, in fractions of a second, exactly the rows that match."
+          }
+        },
+        {
+          "kind": "steps",
+          "items": [
+            {
+              "title": { "de": "Auswählen", "en": "Select" },
+              "text": {
+                "de": "Welche Spalten sollen überhaupt erscheinen? Meist braucht man nicht alle - und schon das ist eine Entscheidung: Was ich nicht anzeige, sehe ich nicht.",
+                "en": "Which columns should appear at all? Usually you do not need all of them - and even that is a decision: what I do not display, I do not see."
+              }
+            },
+            {
+              "title": { "de": "Filtern", "en": "Filter" },
+              "text": {
+                "de": "Welche Bedingung müssen die Zeilen erfüllen? „Ort ist 22765“, „geboren nach 2008“, „mehr als 40 Videos“. Genau dieselbe Art Bedingung, die du in Scratch und Python geschrieben hast.",
+                "en": "Which condition must the rows meet? \"place is 22765\", \"born after 2008\", \"more than 40 videos\". Exactly the same kind of condition you wrote in Scratch and Python."
+              }
+            },
+            {
+              "title": { "de": "Sortieren", "en": "Sort" },
+              "text": {
+                "de": "Wonach, auf- oder absteigend? Wer oben steht, wird zuerst gesehen - und bei Bewerbungen, Suchergebnissen oder Wartelisten ist das nicht nebensächlich.",
+                "en": "By what, ascending or descending? Whoever is at the top is seen first - and with applications, search results or waiting lists that is no small matter."
+              }
+            },
+            {
+              "title": { "de": "Gruppieren und zählen", "en": "Group and count" },
+              "text": {
+                "de": "Wie viele je Ort? Wer ist am häufigsten da? Hier wird aus Einzelangaben Statistik - und aus Statistik werden Entscheidungen.",
+                "en": "How many per place? Who is there most often? Here individual details become statistics - and statistics become decisions."
+              }
+            }
+          ]
+        },
+        {
+          "kind": "callout",
+          "tone": "fact",
+          "icon": "🗣️",
+          "title": {
+            "de": "Abfragen klingen fast wie Deutsch",
+            "en": "Queries read almost like English"
+          },
+          "text": {
+            "de": "Die Sprache dafür heißt SQL, und sie wurde absichtlich so gebaut, dass man sie vorlesen kann: `SELECT ort, geboren FROM nutzer WHERE ort = '22765'`. Wähle Ort und Geburtsjahr aus der Tabelle Nutzer, wo der Ort 22765 ist. Wer die vier Schritte von oben verstanden hat, kann das lesen, ohne es je gelernt zu haben.",
+            "en": "The language for this is called SQL, and it was deliberately built to be read aloud: `SELECT place, born FROM users WHERE place = '22765'`. Select place and year of birth from the table users where place is 22765. Whoever has understood the four steps above can read that without ever having learned it."
+          }
+        }
+      ]
+    },
+    {
+      "key": "aus-zeilen-wird-eine-person",
+      "title": {
+        "de": "Der Moment, in dem aus Zeilen eine Person wird",
+        "en": "The moment rows become a person"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Nimm die Tabelle aus dem letzten Pfad. Und jetzt eine Abfrage: Zeig mir alle aus 22765, geboren 2010, die nach 22 Uhr online waren. Zwei Zeilen bleiben übrig.",
+            "en": "Take the table from the last path. And now a query: show me everyone from 22765, born 2010, who was online after 10 p.m. Two rows remain."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Keine einzelne Spalte hat jemanden verraten. Der Ort nicht, das Jahr nicht, die Uhrzeit nicht. Die Verknüpfung hat es getan. Genau das ist das Werkzeug - und genau deshalb ist es zweischneidig: Dieselbe Abfrage findet in einem Krankenhaus die Patienten, die eine Nachuntersuchung brauchen, und in einem sozialen Netzwerk die Jugendlichen, die nachts wach liegen.",
+            "en": "No single column gave anyone away. Not the place, not the year, not the time. The combination did. That is precisely the tool - and precisely why it cuts both ways: the same query finds, in a hospital, the patients needing a follow-up, and, in a social network, the teenagers lying awake at night."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "🧪",
+          "title": {
+            "de": "Formuliert zwei Abfragen",
+            "en": "Formulate two queries"
+          },
+          "text": {
+            "de": "Denkt euch zu zweit eine Tabelle über eure Schule aus - erfundene Zeilen, keine echten Namen. Formuliert dann zwei Abfragen in normalen Sätzen: eine, deren Ergebnis harmlos ist („wie viele je Jahrgang“), und eine, die genau eine Person übrig lässt. Vergleicht, wie wenige Bedingungen die zweite braucht. Meistens sind es drei.",
+            "en": "In pairs, invent a table about your school - made-up rows, no real names. Then formulate two queries in plain sentences: one whose result is harmless (\"how many per year group\"), and one that leaves exactly one person. Compare how few conditions the second needs. Usually it is three."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "warn",
+          "icon": "🚫",
+          "title": {
+            "de": "Bitte mit erfundenen Daten",
+            "en": "With invented data, please"
+          },
+          "text": {
+            "de": "Für diese Übung niemals echte Angaben über Mitschülerinnen und Mitschüler verwenden - auch nicht „nur zum Ausprobieren“. Erfundene Datensätze zeigen genau dasselbe und verletzen niemanden. Wer das Thema ernst nimmt, fängt bei sich an.",
+            "en": "For this exercise never use real details about classmates - not even \"just to try it\". Invented data sets show exactly the same thing and harm nobody. Whoever takes this subject seriously starts with themselves."
+          }
+        }
+      ]
+    },
+    {
+      "key": "wer-darf-fragen",
+      "title": {
+        "de": "Wer darf welche Frage stellen",
+        "en": "Who may ask which question"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Die entscheidende Frage ist nicht, ob die Daten da sind. Sie sind da, meistens aus gutem Grund. Die Frage ist, wer welche Verknüpfung machen darf.",
+            "en": "The decisive question is not whether the data exist. They do, usually for good reason. The question is who may make which combination."
+          }
+        },
+        {
+          "kind": "table",
+          "head": [
+            { "de": "Abfrage", "en": "Query" },
+            { "de": "Wer könnte sie stellen wollen", "en": "Who might want to ask it" },
+            { "de": "Wäre das in Ordnung?", "en": "Would that be all right?" }
+          ],
+          "rows": [
+            [
+              { "de": "Noten meiner Klasse", "en": "Grades of my class" },
+              { "de": "Die Klassenlehrerin", "en": "The class teacher" },
+              { "de": "Ja - dafür ist sie zuständig", "en": "Yes - that is her responsibility" }
+            ],
+            [
+              { "de": "Noten aller Klassen", "en": "Grades of all classes" },
+              { "de": "Dieselbe Lehrerin", "en": "The same teacher" },
+              { "de": "Fraglich - wozu?", "en": "Questionable - what for?" }
+            ],
+            [
+              { "de": "Fehlzeiten plus Adressen", "en": "Absences plus addresses" },
+              { "de": "Die Schulverwaltung", "en": "School administration" },
+              { "de": "Nur mit klarem Anlass", "en": "Only with a clear reason" }
+            ],
+            [
+              { "de": "Fehlzeiten plus Wohngegend", "en": "Absences plus neighbourhood" },
+              { "de": "Eine Auswertung „zur Förderung“", "en": "An analysis \"for support purposes\"" },
+              { "de": "Heikel - hier entstehen Vorurteile", "en": "Delicate - this is how prejudice is built" }
+            ]
+          ]
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Die letzte Zeile ist die wichtigste. Eine Abfrage kann technisch einwandfrei sein und trotzdem falsch - weil sie einen Zusammenhang herstellt, der Menschen in Schubladen steckt. Und weil das Ergebnis als Zahl daherkommt, wirkt es objektiv, obwohl jemand entschieden hat, genau diese beiden Spalten nebeneinanderzulegen.",
+            "en": "The last row is the most important. A query can be technically flawless and still wrong - because it creates a connection that puts people in boxes. And because the result arrives as a number, it looks objective, although somebody decided to place exactly those two columns side by side."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "note",
+          "icon": "⚖️",
+          "title": {
+            "de": "Deshalb kommen jetzt die Regeln",
+            "en": "Which is why the rules come next"
+          },
+          "text": {
+            "de": "Weil Verknüpfen so mächtig ist, hat der Gesetzgeber nicht darauf gesetzt, dass alle vernünftig damit umgehen. Er hat den Grundsatz umgedreht: Erlaubt ist nicht, was nicht verboten ist - sondern verboten, was nicht erlaubt wurde. Das ist der nächste Pfad.",
+            "en": "Because combining is so powerful, lawmakers did not rely on everyone being sensible about it. They reversed the principle: not everything that is not forbidden is allowed - rather, everything that has not been allowed is forbidden. That is the next path."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": { "de": "inf-schule.de: Datenbanken und Abfragen", "en": "inf-schule.de: databases and queries" },
+              "url": "https://www.inf-schule.de/datenbanken"
+            },
+            {
+              "label": { "de": "Der Hamburgische Beauftragte für Datenschutz und Informationsfreiheit", "en": "Hamburg Commissioner for Data Protection and Freedom of Information" },
+              "url": "https://datenschutz-hamburg.de"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": {
+        "de": "1. Lückentext: fragen, filtern, gruppieren",
+        "en": "1. Fill in the blanks: query, filter, group"
+      },
+      "intro": {
+        "de": "Setze die fehlenden Wörter ein.",
+        "en": "Fill in the missing words."
+      },
+      "text": {
+        "de": "Um aus einer Tabelle gezielt Zeilen herauszuholen, stellt man eine ___. Zuerst wählt man aus, welche ___ erscheinen sollen. Dann gibt man eine Bedingung an, nach der ___ wird - dieselbe Art Bedingung wie beim Programmieren. Danach kann man die Ergebnisse ___, und wer dabei oben landet, wird zuerst gesehen. Fasst man Zeilen zusammen und zählt sie, spricht man vom ___. Die Sprache für Abfragen heißt ___. Gefährlich wird eine Abfrage nicht durch eine einzelne Spalte, sondern durch die ___ mehrerer. Deshalb ist die entscheidende Frage nicht, ob die Daten ___ sind, sondern wer welche Verknüpfung machen ___.",
+        "en": "To pull specific rows out of a table you issue a ___. First you choose which ___ should appear. Then you give a condition to ___ by - the same kind of condition as in programming. After that you can ___ the results, and whoever ends up at the top is seen first. Combining rows and counting them is called ___. The language for queries is called ___. A query becomes dangerous not through a single column but through the ___ of several. Which is why the decisive question is not whether the data ___, but who ___ make which combination."
+      }
+    },
+    {
+      "kind": "compare",
+      "title": {
+        "de": "2. Formulieren und vergleichen: harmlos und heikel",
+        "en": "2. Formulate and compare: harmless and delicate"
+      },
+      "intro": {
+        "de": "Arbeite mit erfundenen Daten, nie mit echten.",
+        "en": "Work with invented data, never with real data."
+      },
+      "text": {
+        "de": "Erfinde eine Tabelle mit fünf Spalten über Nutzer eines sozialen Netzwerks und schreib acht erfundene Zeilen hinein. Formuliere dann zwei Abfragen in normalen Sätzen: eine, deren Ergebnis eine harmlose Statistik ist, und eine, die genau eine deiner erfundenen Personen übrig lässt. Gib an, wie viele Bedingungen die zweite gebraucht hat. Erkläre danach den Unterschied zwischen beiden, ohne die Wörter „gut“ und „schlecht“ zu benutzen - und beschreibe, ab welcher Zahl übrig bleibender Zeilen aus Statistik ein Steckbrief wird.",
+        "en": "Invent a table with five columns about users of a social network and write eight made-up rows into it. Then formulate two queries in plain sentences: one whose result is a harmless statistic, and one that leaves exactly one of your invented people. State how many conditions the second needed. Then explain the difference between the two without using the words \"good\" and \"bad\" - and describe at what number of remaining rows a statistic turns into a description of a person."
+      },
+      "hint": {
+        "de": "Überleg, ob es einen klaren Schnitt gibt oder einen fließenden Übergang - und was das für Regeln bedeutet.",
+        "en": "Consider whether there is a clear cut or a gradual transition - and what that means for making rules."
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": {
+        "de": "3. Zum Nachdenken: wenn eine Zahl objektiv aussieht",
+        "en": "3. Something to think about: when a number looks objective"
+      },
+      "intro": {
+        "de": "Auf diese Frage gibt es keine richtige Antwort.",
+        "en": "There is no right answer to this one."
+      },
+      "text": {
+        "de": "Das Ergebnis einer Abfrage ist eine Zahl oder eine Liste, und beides wirkt sachlich - als hätte niemand etwas entschieden. Dabei hat jemand entschieden, welche Spalten es überhaupt gibt, welche verglichen werden und was als Bedingung gilt. Überlege, wo dir schon einmal eine Zahl begegnet ist, die sehr überzeugend wirkte, obwohl die eigentliche Entscheidung vorher gefallen war. Woran könnte man erkennen, dass eine Auswertung eine Meinung transportiert - und wen müsste man dafür fragen dürfen?",
+        "en": "The result of a query is a number or a list, and both look matter-of-fact - as if nobody had decided anything. Yet somebody decided which columns exist at all, which are compared and what counts as a condition. Think of a time you met a number that seemed very convincing although the real decision had been taken beforehand. How might you recognise that an analysis carries an opinion - and whom would you have to be allowed to ask?"
+      }
+    }
+  ]
+}

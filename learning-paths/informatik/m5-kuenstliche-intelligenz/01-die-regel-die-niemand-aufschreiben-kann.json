@@ -1,0 +1,255 @@
+{
+  "key": "regel-die-niemand-aufschreiben-kann",
+  "title": {
+    "de": "Die Regel, die niemand aufschreiben kann",
+    "en": "The rule nobody can write down"
+  },
+  "summary": {
+    "de": "Warum manche Aufgaben kein Programm im alten Sinn zulassen - und was stattdessen passiert.",
+    "en": "Why some tasks allow no program in the old sense - and what happens instead."
+  },
+  "icon": "🐈",
+  "accent": "violet",
+  "minutes": 13,
+  "screens": [
+    {
+      "key": "die-katze",
+      "title": {
+        "de": "Schreib eine Regel für Katze",
+        "en": "Write a rule for cat"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Versuch es einmal ernsthaft: Schreib eine Regel auf, an der man eine Katze erkennt. Vier Beine? Der Tisch auch. Fell? Ein Teppich auch. Schnurrhaare, spitze Ohren, ein Schwanz - und dann kommt eine Katze von hinten, im Dunkeln, halb hinter einem Sofa, und jede deiner Regeln fällt um.",
+            "en": "Try it seriously for once: write down a rule for recognising a cat. Four legs? So has the table. Fur? So has a rug. Whiskers, pointed ears, a tail - and then a cat appears from behind, in the dark, half hidden by a sofa, and every one of your rules collapses."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Ein zweijähriges Kind kann das trotzdem. Es hat vielleicht zwanzig Katzen gesehen und erkennt danach jede, auch gezeichnete, auch von hinten. Und es kann nicht sagen, woran. Genau in diese Lücke stößt das maschinelle Lernen.",
+            "en": "A two-year-old can do it anyway. Perhaps twenty cats have been seen, and afterwards every one is recognised, including drawings, including from behind. And the child cannot say by what. It is exactly into this gap that machine learning moves."
+          }
+        },
+        {
+          "kind": "table",
+          "head": [
+            { "de": "Wer liefert was", "en": "Who supplies what" },
+            { "de": "Herkömmliches Programm", "en": "Conventional program" },
+            { "de": "Maschinelles Lernen", "en": "Machine learning" }
+          ],
+          "rows": [
+            [
+              { "de": "Der Mensch liefert", "en": "The human supplies" },
+              { "de": "die Regeln", "en": "the rules" },
+              { "de": "die Beispiele", "en": "the examples" }
+            ],
+            [
+              { "de": "Der Rechner liefert", "en": "The machine supplies" },
+              { "de": "das Ergebnis", "en": "the result" },
+              { "de": "die Regeln und das Ergebnis", "en": "the rules and the result" }
+            ],
+            [
+              { "de": "Gut für", "en": "Good for" },
+              { "de": "alles Genaue: rechnen, sortieren", "en": "anything exact: calculating, sorting" },
+              { "de": "alles Unscharfe: erkennen, einschätzen", "en": "anything fuzzy: recognising, estimating" }
+            ],
+            [
+              { "de": "Nachvollziehbar?", "en": "Traceable?" },
+              { "de": "ja, Zeile für Zeile", "en": "yes, line by line" },
+              { "de": "oft nicht", "en": "often not" }
+            ]
+          ]
+        },
+        {
+          "kind": "callout",
+          "tone": "note",
+          "icon": "🔄",
+          "title": {
+            "de": "Der Unterschied in einem Satz",
+            "en": "The difference in one sentence"
+          },
+          "text": {
+            "de": "Bei einem herkömmlichen Programm schreibt ein Mensch die Regeln auf, und der Rechner führt sie aus. Beim maschinellen Lernen bekommt der Rechner Beispiele und sucht sich die Regeln selbst. Alles, was du in M1 und M3 gebaut hast, gehört zur ersten Sorte.",
+            "en": "In a conventional program a human writes down the rules and the machine carries them out. In machine learning the machine gets examples and finds the rules itself. Everything you built in M1 and M3 belongs to the first kind."
+          }
+        }
+      ]
+    },
+    {
+      "key": "drei-begriffe",
+      "title": {
+        "de": "Drei Begriffe, die durcheinandergehen",
+        "en": "Three terms that get muddled"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "KI, maschinelles Lernen, Deep Learning - in Zeitungen stehen sie oft als Synonyme. Sie stecken aber ineinander wie Fahrzeug, Auto und Elektroauto.",
+            "en": "AI, machine learning, deep learning - in the papers they often appear as synonyms. But they nest inside one another like vehicle, car and electric car."
+          }
+        },
+        {
+          "kind": "steps",
+          "items": [
+            {
+              "title": { "de": "KI ist der Oberbegriff", "en": "AI is the umbrella term" },
+              "text": {
+                "de": "Alles, was klug wirkt. Auch ein Schachprogramm aus den Achtzigern, das aus fest programmierten Regeln bestand, zählte dazu. Das Wort sagt nichts darüber aus, wie etwas gebaut ist.",
+                "en": "Anything that seems clever. Even a chess program from the eighties, made purely of hard-coded rules, counted. The word says nothing about how something is built."
+              }
+            },
+            {
+              "title": { "de": "Maschinelles Lernen ist ein Weg dorthin", "en": "Machine learning is one route to it" },
+              "text": {
+                "de": "Nämlich der, bei dem aus Beispielen gelernt wird statt aus Regeln. Das meiste, worüber heute geredet wird, ist das.",
+                "en": "Namely the one where learning happens from examples rather than from rules. Most of what is talked about today is this."
+              }
+            },
+            {
+              "title": { "de": "Deep Learning ist eine Sorte davon", "en": "Deep learning is one kind of that" },
+              "text": {
+                "de": "Maschinelles Lernen mit vielen Schichten hintereinander. Genau darum geht es im nächsten Pfad - und dort wirst du sehen, dass „tief“ nichts Geheimnisvolles bedeutet, sondern schlicht: viele Schichten.",
+                "en": "Machine learning with many layers one after another. That is exactly what the next path is about - and there you will see that \"deep\" means nothing mysterious, simply: many layers."
+              }
+            }
+          ]
+        },
+        {
+          "kind": "callout",
+          "tone": "warn",
+          "icon": "🎭",
+          "title": {
+            "de": "„Intelligenz“ ist ein Werbewort",
+            "en": "\"Intelligence\" is a marketing word"
+          },
+          "text": {
+            "de": "Ein System, das Katzen erkennt, weiß nicht, was eine Katze ist. Es hat kein Bild von der Welt, keine Absicht, kein Verständnis. Es hat Muster in Zahlen gefunden. Das ist erstaunlich genug - man muss es nicht mit Denken verwechseln. Die Werbung tut es trotzdem, weil „Mustererkennung“ sich schlechter verkauft.",
+            "en": "A system that recognises cats does not know what a cat is. It has no picture of the world, no intention, no understanding. It found patterns in numbers. That is astonishing enough - there is no need to confuse it with thinking. Advertising does anyway, because \"pattern recognition\" sells worse."
+          }
+        }
+      ]
+    },
+    {
+      "key": "wo-es-dir-begegnet",
+      "title": {
+        "de": "Wo es dir längst begegnet",
+        "en": "Where you already meet it"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Nicht erst seit den Chatprogrammen. Maschinelles Lernen steckt seit Jahren in Dingen, die du täglich benutzt, ohne dass jemand ein großes Wort darum gemacht hätte.",
+            "en": "Not just since chat programs. Machine learning has been in things you use daily for years, without anyone making a fuss about it."
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "de": "**Die Autokorrektur** deiner Tastatur - sie hat gelernt, welche Wörter aufeinander folgen, nicht welche Regeln die Grammatik hat.",
+              "en": "**Your keyboard's autocorrect** - it learned which words follow one another, not what the rules of grammar are."
+            },
+            {
+              "de": "**Die Fotogalerie**, die alle Bilder deiner Großmutter zusammenlegt, ohne dass jemand ihren Namen eingetippt hat.",
+              "en": "**The photo gallery** that groups all pictures of your grandmother without anyone having typed her name."
+            },
+            {
+              "de": "**Der Spamfilter** - eines der ersten und bis heute erfolgreichsten Beispiele überhaupt.",
+              "en": "**The spam filter** - one of the earliest and to this day most successful examples of all."
+            },
+            {
+              "de": "**Die Empfehlung**, welches Video als Nächstes kommt. Sie hat gelernt, was Menschen lange schauen - nicht, was gut ist.",
+              "en": "**The recommendation** of what video comes next. It learned what people watch for a long time - not what is good."
+            },
+            {
+              "de": "**Die Übersetzung**, die seit etwa 2016 plötzlich viel besser wurde. Genau da wurde von Regeln auf Beispiele umgestellt.",
+              "en": "**Translation**, which suddenly got much better around 2016. That is exactly when it switched from rules to examples."
+            }
+          ]
+        },
+        {
+          "kind": "callout",
+          "tone": "fact",
+          "icon": "📬",
+          "title": {
+            "de": "Der Spamfilter erklärt das ganze Prinzip",
+            "en": "The spam filter explains the whole principle"
+          },
+          "text": {
+            "de": "Niemand hat je eine Regel geschrieben, was Spam ist - das ginge auch nicht, denn die Absender ändern ihre Tricks ständig. Stattdessen bekam das System Millionen Mails, jede beschriftet mit „Spam“ oder „kein Spam“. Es fand die Muster selbst. Und jedes Mal, wenn du eine Mail als Spam markierst, lieferst du ein weiteres Beispiel.",
+            "en": "Nobody ever wrote a rule for what spam is - it would not work either, since senders keep changing their tricks. Instead the system was given millions of emails, each labelled \"spam\" or \"not spam\". It found the patterns itself. And every time you mark a mail as spam, you supply one more example."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": { "de": "Teachable Machine - selbst ein Modell trainieren", "en": "Teachable Machine - train a model yourself" },
+              "url": "https://teachablemachine.withgoogle.com"
+            },
+            {
+              "label": { "de": "Bildungsplan Informatik Sek I, Hamburg", "en": "Hamburg curriculum for computer science, lower secondary" },
+              "url": "https://www.hamburg.de/resource/blob/798514/ad3c2fdfb3a32b9545a271dfceae5772/informatik-data.pdf"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": {
+        "de": "1. Lückentext: Regeln oder Beispiele",
+        "en": "1. Fill in the blanks: rules or examples"
+      },
+      "intro": {
+        "de": "Setze die fehlenden Wörter ein.",
+        "en": "Fill in the missing words."
+      },
+      "text": {
+        "de": "Bei einem herkömmlichen Programm liefert der Mensch die ___, und der Rechner führt sie aus. Beim ___ liefert der Mensch stattdessen die ___ und der Rechner sucht sich die Regeln selbst. Das eignet sich vor allem für Aufgaben, die ___ sind - Erkennen und Einschätzen. Dafür ist das Ergebnis oft nicht mehr ___. Der Oberbegriff für all das lautet ___; eine Sorte maschinellen Lernens mit vielen Schichten heißt ___. Ein System, das Katzen erkennt, hat kein ___ von der Welt - es hat ___ in Zahlen gefunden. Ein frühes und bis heute erfolgreiches Beispiel ist der ___, der nie nach festen Regeln arbeitete.",
+        "en": "In a conventional program the human supplies the ___ and the machine carries them out. In ___ the human instead supplies the ___ and the machine finds the rules itself. This suits above all tasks that are ___ - recognising and estimating. In return the result is often no longer ___. The umbrella term for all this is ___; a kind of machine learning with many layers is called ___. A system that recognises cats has no ___ of the world - it found ___ in numbers. An early and still successful example is the ___, which never worked from fixed rules."
+      }
+    },
+    {
+      "kind": "compare",
+      "title": {
+        "de": "2. Vergleiche: welche Aufgabe für welchen Weg",
+        "en": "2. Compare: which task for which route"
+      },
+      "intro": {
+        "de": "Zwei Aufgaben, zwei Bauweisen.",
+        "en": "Two tasks, two designs."
+      },
+      "text": {
+        "de": "Nenne eine Aufgabe, für die ein herkömmliches Programm die bessere Wahl ist, und eine, für die man maschinelles Lernen braucht. Begründe beides mit der Frage, ob sich eine klare Regel aufschreiben lässt - und versuch bei der zweiten Aufgabe ernsthaft, eine solche Regel zu formulieren, bis du merkst, woran es scheitert. Beschreibe zum Schluss, was du beim Scheitern über die Aufgabe selbst gelernt hast.",
+        "en": "Name a task for which a conventional program is the better choice, and one that needs machine learning. Justify both by the question of whether a clear rule can be written down - and for the second task, seriously try to formulate such a rule until you notice where it fails. Finally, describe what that failure taught you about the task itself."
+      },
+      "hint": {
+        "de": "Die Steuererklärung hat Regeln. Ob ein Gesicht freundlich aussieht, nicht.",
+        "en": "A tax return has rules. Whether a face looks friendly does not."
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": {
+        "de": "3. Zum Nachdenken: was du kannst, ohne es erklären zu können",
+        "en": "3. Something to think about: what you can do without explaining it"
+      },
+      "intro": {
+        "de": "Auf diese Frage gibt es keine richtige Antwort.",
+        "en": "There is no right answer to this one."
+      },
+      "text": {
+        "de": "Du erkennst die Stimme deiner Mutter unter hundert anderen, du siehst einem Freund an, dass etwas nicht stimmt, du fängst einen Ball, ohne eine Flugbahn zu berechnen. Nichts davon könntest du jemandem als Regel aufschreiben. Überlege, was du sonst noch kannst, ohne sagen zu können, wie. Und dann: Wenn Menschen so vieles können, ohne es erklären zu können - was bedeutet das für die Frage, ob man einer Maschine trauen sollte, die es genauso wenig erklären kann?",
+        "en": "You recognise your mother's voice among a hundred others, you can tell from a friend's face that something is wrong, you catch a ball without calculating a trajectory. None of that could you write down for someone as a rule. Think about what else you can do without being able to say how. And then: if people can do so much without being able to explain it - what does that mean for whether one should trust a machine that can explain it just as little?"
+      }
+    }
+  ]
+}

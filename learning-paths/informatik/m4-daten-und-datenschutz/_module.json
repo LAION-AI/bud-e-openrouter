@@ -1,0 +1,11 @@
+{
+  "key": "m4-daten-und-datenschutz",
+  "title": { "de": "Datenbanken und Datenschutz", "en": "Databases and data protection" },
+  "description": {
+    "de": "Wie aus einzelnen harmlosen Angaben ein Bild wird - und warum Datenschutz nicht Daten schützt, sondern Menschen.",
+    "en": "How separate harmless details add up to a picture - and why data protection protects people, not data."
+  },
+  "icon": "🗃️",
+  "accent": "rose",
+  "badge": "M4"
+}

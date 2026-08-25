@@ -1,0 +1,242 @@
+{
+  "key": "der-spiegel-nicht-der-richter",
+  "title": {
+    "de": "Der Spiegel, nicht der Richter",
+    "en": "The mirror, not the judge"
+  },
+  "summary": {
+    "de": "Bias, Halluzinationen und andere Grenzen - warum ein Modell nur wiedergeben kann, was in seinen Daten stand.",
+    "en": "Bias, hallucinations and other limits - why a model can only reflect what was in its data."
+  },
+  "icon": "🪞",
+  "accent": "violet",
+  "minutes": 14,
+  "screens": [
+    {
+      "key": "wie-bias-entsteht",
+      "title": {
+        "de": "Wie eine Schieflage entsteht",
+        "en": "How a skew comes about"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Ein Modell kann nur lernen, was in seinen Beispielen steckt. Diesen Satz hast du im letzten Pfad selbst ausprobiert, mit einem hellen und einem dunklen Hintergrund. Jetzt geht es um dieselbe Sache, wenn es nicht um Hände geht, sondern um Menschen.",
+            "en": "A model can only learn what is in its examples. You tried that sentence out yourself in the last path, with a light and a dark background. Now the same thing, when it is not about hands but about people."
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "de": "Sind die Trainingsbilder überwiegend helle Gesichter, wird das Modell bei dunklen schlechter. Nicht aus Absicht - weil es weniger davon gesehen hat.",
+              "en": "If the training pictures are mostly light faces, the model gets worse on dark ones. Not by intent - because it saw fewer of them."
+            },
+            {
+              "de": "Wurden in zehn Jahren Bewerbungen überwiegend Männer eingestellt, lernt ein Modell, Männer zu bevorzugen. Es hat keine Meinung dazu; es reproduziert, was in den Daten steht.",
+              "en": "If over ten years mostly men were hired, a model learns to prefer men. It has no opinion about it; it reproduces what is in the data."
+            },
+            {
+              "de": "Ist eine Sprache im Internet unterrepräsentiert, funktioniert die Übersetzung dorthin schlechter - und bleibt schlechter, weil weniger Menschen sie nutzen.",
+              "en": "If a language is underrepresented online, translation into it works worse - and stays worse, because fewer people use it."
+            },
+            {
+              "de": "Wurde in einem Stadtteil häufiger kontrolliert, findet ein Modell dort mehr Auffälligkeiten - und empfiehlt, dort noch häufiger zu kontrollieren.",
+              "en": "If one district was checked more often, a model finds more irregularities there - and recommends checking there even more often."
+            }
+          ]
+        },
+        {
+          "kind": "callout",
+          "tone": "fact",
+          "icon": "🔁",
+          "title": {
+            "de": "Der letzte Punkt ist der gefährlichste",
+            "en": "The last point is the most dangerous"
+          },
+          "text": {
+            "de": "Er heißt Rückkopplung: Das Modell beeinflusst die Welt, aus der es lernt, und bestätigt sich dadurch selbst. Was einmal in den Daten steht, erzeugt neue Daten derselben Sorte. Von innen sieht das aus wie eine immer bessere Vorhersage - dabei ist es eine sich verstärkende Schleife.",
+            "en": "It is called feedback: the model influences the world it learns from, and thereby confirms itself. Whatever is once in the data produces new data of the same kind. From the inside it looks like an ever better prediction - while in fact it is a self-reinforcing loop."
+          }
+        }
+      ]
+    },
+    {
+      "key": "wer-entschieden-hat",
+      "title": {
+        "de": "„Die KI hat entschieden“",
+        "en": "\"The AI decided\""
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Diesen Satz hört man oft, und er ist immer falsch. Ein Modell ist kein neutrales Urteil, sondern ein sehr genauer Spiegel seiner Trainingsdaten - samt aller Verzerrungen darin.",
+            "en": "You hear that sentence often, and it is always wrong. A model is not a neutral judgement but a very accurate mirror of its training data - including every distortion in it."
+          }
+        },
+        {
+          "kind": "steps",
+          "items": [
+            {
+              "title": { "de": "Jemand hat die Daten ausgewählt", "en": "Somebody chose the data" },
+              "text": {
+                "de": "Welche Beispiele wurden gesammelt, welche weggelassen? Diese Entscheidung fiel, bevor eine einzige Zahl trainiert wurde - und sie bestimmt alles Weitere.",
+                "en": "Which examples were collected, which left out? That decision came before a single number was trained - and it determines everything that follows."
+              }
+            },
+            {
+              "title": { "de": "Jemand hat sie beschriftet", "en": "Somebody labelled them" },
+              "text": {
+                "de": "Bei überwachtem Lernen musste ein Mensch bei jedem Beispiel hinschreiben, was es ist. Was für den einen „aggressiv“ ist, ist für den anderen „deutlich“. Diese Urteile stecken danach im Modell.",
+                "en": "In supervised learning a person had to write down for each example what it is. What is \"aggressive\" to one is \"forthright\" to another. Those judgements then sit inside the model."
+              }
+            },
+            {
+              "title": { "de": "Jemand hat es eingesetzt", "en": "Somebody deployed it" },
+              "text": {
+                "de": "Und zwar für einen bestimmten Zweck, mit einer bestimmten Schwelle. Ab wie viel Prozent gilt eine Bewerbung als aussortiert? Diese Zahl hat ein Mensch gewählt.",
+                "en": "For a particular purpose, with a particular threshold. From what percentage does an application count as filtered out? A person chose that number."
+              }
+            }
+          ]
+        },
+        {
+          "kind": "callout",
+          "tone": "warn",
+          "icon": "🫥",
+          "title": {
+            "de": "Verantwortung lässt sich nicht abgeben",
+            "en": "Responsibility cannot be handed over"
+          },
+          "text": {
+            "de": "Wer sagt „die KI hat entschieden“, verschiebt die Verantwortung auf etwas, das keine tragen kann. Entschieden haben die, die die Daten ausgewählt, sie beschriftet und das System eingesetzt haben. Genau deshalb schreibt die europäische KI-Verordnung inzwischen vor, dass bei wichtigen Entscheidungen ein Mensch beteiligt sein muss.",
+            "en": "Whoever says \"the AI decided\" shifts responsibility onto something that can bear none. The decisions were made by those who chose the data, labelled it and deployed the system. Which is exactly why the European AI regulation now requires a human to be involved in important decisions."
+          }
+        }
+      ]
+    },
+    {
+      "key": "fluessig-und-falsch",
+      "title": {
+        "de": "Flüssig und falsch",
+        "en": "Fluent and wrong"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Und dann die Grenze, die dir im Alltag am häufigsten begegnet: Ein Sprachmodell antwortet flüssig auf jede Frage - auch auf die, deren Antwort es nicht kennt.",
+            "en": "And then the limit you meet most often in daily life: a language model answers every question fluently - including those whose answer it does not know."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Es ist im Kern eine sehr gute Vorhersage, welches Wort als Nächstes plausibel wäre. Bei einer Frage, deren Antwort in den Trainingsdaten stand, kommt dabei etwas Richtiges heraus. Bei einer Frage, deren Antwort dort nicht stand, kommt trotzdem etwas heraus - im selben sicheren Ton, mit erfundenen Namen, Jahreszahlen und Quellenangaben. Fachleute nennen das Halluzinieren.",
+            "en": "At heart it is a very good prediction of which word would plausibly come next. For a question whose answer was in the training data, something correct emerges. For a question whose answer was not, something emerges anyway - in the same confident tone, with invented names, dates and citations. Specialists call this hallucinating."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "warn",
+          "icon": "🎓",
+          "title": {
+            "de": "Genau darum geht es beim Nachprüfen",
+            "en": "Which is what checking is for"
+          },
+          "text": {
+            "de": "Der Text sieht bei einer richtigen und bei einer erfundenen Antwort exakt gleich aus - es gibt kein Merkmal, an dem man den Unterschied erkennt. Deshalb gilt: Alles, was zählt, wird nachgeschlagen. Bei einer Zahl, einem Datum, einem Zitat, einem Namen. Wer das für übertrieben hält, hat noch keine erfundene Quellenangabe abgegeben.",
+            "en": "The text looks exactly the same for a correct and an invented answer - there is no feature by which to tell them apart. So the rule is: anything that matters gets looked up. A number, a date, a quotation, a name. Whoever thinks that excessive has not yet handed in an invented citation."
+          }
+        },
+        {
+          "kind": "table",
+          "head": [
+            { "de": "Wofür so ein System taugt", "en": "What such a system is good for" },
+            { "de": "Wofür nicht", "en": "What it is not good for" }
+          ],
+          "rows": [
+            [
+              { "de": "Formulieren, umschreiben, zusammenfassen", "en": "Phrasing, rewriting, summarising" },
+              { "de": "Fakten, die du nicht prüfen kannst", "en": "Facts you cannot check" }
+            ],
+            [
+              { "de": "Ideen sammeln, Gegenargumente finden", "en": "Collecting ideas, finding counterarguments" },
+              { "de": "Rechnungen, auf die es ankommt", "en": "Calculations that matter" }
+            ],
+            [
+              { "de": "Etwas erklärt bekommen, das du danach prüfst", "en": "Getting something explained that you then check" },
+              { "de": "Entscheidungen über Menschen", "en": "Decisions about people" }
+            ]
+          ]
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": { "de": "Der Hamburgische Beauftragte für Datenschutz und Informationsfreiheit", "en": "Hamburg Commissioner for Data Protection and Freedom of Information" },
+              "url": "https://datenschutz-hamburg.de"
+            },
+            {
+              "label": { "de": "inf-schule.de: Künstliche Intelligenz", "en": "inf-schule.de: artificial intelligence" },
+              "url": "https://www.inf-schule.de/ki"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": {
+        "de": "1. Lückentext: Schieflage und Grenzen",
+        "en": "1. Fill in the blanks: skew and limits"
+      },
+      "intro": {
+        "de": "Setze die fehlenden Wörter ein.",
+        "en": "Fill in the missing words."
+      },
+      "text": {
+        "de": "Ein Modell kann nur lernen, was in seinen ___ steckt. Ist die Auswahl einseitig, entsteht eine Schieflage, die man ___ nennt. Beeinflusst das Modell dabei die Welt, aus der es lernt, spricht man von ___ - die Vorhersage bestätigt sich selbst. Ein Modell ist deshalb kein neutraler Richter, sondern ein ___ seiner Daten. Wer sagt „die KI hat entschieden“, verschiebt die ___ auf etwas, das keine tragen kann. Tatsächlich hat jemand die Daten ausgewählt, jemand hat sie ___ und jemand hat eine ___ festgelegt, ab der etwas gilt. Ein Sprachmodell sagt vorher, welches ___ plausibel als Nächstes käme; kennt es die Antwort nicht, erfindet es eine - das nennt man ___. Man sieht dem Text den Unterschied nicht an, deshalb muss alles Wichtige ___ werden.",
+        "en": "A model can only learn what is in its ___. If the selection is one-sided, a skew arises that is called ___. If the model thereby influences the world it learns from, this is called ___ - the prediction confirms itself. So a model is not a neutral judge but a ___ of its data. Whoever says \"the AI decided\" shifts the ___ onto something that can bear none. In fact somebody chose the data, somebody ___ it and somebody set a ___ from which something counts. A language model predicts which ___ would plausibly come next; if it does not know the answer it invents one - this is called ___. You cannot see the difference in the text, so anything important must be ___."
+      }
+    },
+    {
+      "kind": "compare",
+      "title": {
+        "de": "2. Ausprobieren und vergleichen: zwei Sorten Frage",
+        "en": "2. Try it and compare: two kinds of question"
+      },
+      "intro": {
+        "de": "Nachprüfen gehört zur Aufgabe.",
+        "en": "Checking is part of the task."
+      },
+      "text": {
+        "de": "Ein Taschenrechner ist bei `7 mal 8` zuverlässiger als jeder Mensch. Ein Sprachmodell ist bei der Frage, wie viele Buchstaben in einem Wort stehen, unzuverlässiger als jedes Kind. Beides sind Computer. Erkläre, woran dieser Unterschied liegt - denk daran, wer die Regeln aufgestellt hat und ob am Ende ein berechnetes Ergebnis steht oder eine Wahrscheinlichkeit. Stell danach einem Sprachmodell zwei Fragen: eine, deren Antwort du sicher kennst, und eine über etwas sehr Seltenes, das du danach nachschlagen kannst. Vergleiche, wie sicher beide Antworten klingen, und leite daraus eine eigene Regel ab, wann du nachprüfst.",
+        "en": "A calculator is more reliable than any human at `7 times 8`. A language model is less reliable than any child at counting the letters in a word. Both are computers. Explain what accounts for this difference - think about who set the rules and whether the end product is a calculated result or a probability. Then ask a language model two questions: one whose answer you know for certain, and one about something very obscure that you can look up afterwards. Compare how confident both answers sound, and derive your own rule for when you check."
+      },
+      "hint": {
+        "de": "Achte darauf, ob der Ton der Antwort sich zwischen den beiden Fällen überhaupt unterscheidet.",
+        "en": "Watch whether the tone of the answer differs at all between the two cases."
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": {
+        "de": "3. Zum Nachdenken: überzeugend formuliert",
+        "en": "3. Something to think about: convincingly phrased"
+      },
+      "intro": {
+        "de": "Auf diese Frage gibt es keine richtige Antwort.",
+        "en": "There is no right answer to this one."
+      },
+      "text": {
+        "de": "Wann hast du zuletzt etwas geglaubt, weil es gut formuliert war? Ein sicher klingender Satz, eine Zahl mit Nachkommastelle, ein Wort, das nach Fachsprache klang. Menschen halten Flüssigkeit für ein Zeichen von Wissen - bei anderen Menschen ist das oft berechtigt, bei einem Sprachmodell nie. Überlege, woran du künftig festmachen willst, ob du etwas glaubst. Und dann die unangenehme Frage: Wo hast du selbst schon einmal sicherer geklungen, als du warst?",
+        "en": "When did you last believe something because it was well phrased? A confident-sounding sentence, a number with a decimal place, a word that sounded technical. People take fluency as a sign of knowledge - with other people that is often justified, with a language model never. Think about what you want to base belief on in future. And then the uncomfortable question: where have you yourself sounded more certain than you were?"
+      }
+    }
+  ]
+}

@@ -1,0 +1,349 @@
+{
+  "key": "kisten-mit-namen",
+  "title": {
+    "de": "Kisten mit Namen",
+    "en": "Boxes with names"
+  },
+  "summary": {
+    "de": "Wie sich ein Programm etwas merkt - und warum drei plus drei nicht immer sechs ergibt.",
+    "en": "How a program remembers something - and why three plus three is not always six."
+  },
+  "icon": "📦",
+  "accent": "emerald",
+  "minutes": 14,
+  "screens": [
+    {
+      "key": "was-sich-ein-programm-merkt",
+      "title": {
+        "de": "Ohne Gedächtnis kein Spiel",
+        "en": "No memory, no game"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Jedes Spiel, das du kennst, merkt sich etwas. Den Punktestand. Wie viele Leben du noch hast. Wie du heißt. Wie weit du gekommen bist. Nimm das weg, und es bleibt eine hübsche Animation ohne Sinn.",
+            "en": "Every game you know remembers something. The score. How many lives you have left. Your name. How far you got. Take that away and what remains is a pretty animation with no point."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Ein Programm merkt sich Dinge in Variablen. Eine Variable ist eine Kiste mit einem Namen, die genau einen Wert enthält. Du kannst hineinsehen, so oft du willst, und du kannst etwas Neues hineinlegen - dann ist das Alte weg. Nicht verschoben, nicht daneben: weg. Diese eine Eigenschaft überrascht am Anfang fast jeden.",
+            "en": "A program remembers things in variables. A variable is a box with a name holding exactly one value. You can look inside as often as you like, and you can put something new in - and then the old thing is gone. Not moved, not next to it: gone. That single property surprises almost everyone at first."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "note",
+          "icon": "🏷️",
+          "title": {
+            "de": "Der Name ist für dich, nicht für den Rechner",
+            "en": "The name is for you, not for the machine"
+          },
+          "text": {
+            "de": "Dem Computer ist es völlig gleich, ob die Kiste `punkte` heißt oder `x7`. Dir nicht. In drei Wochen liest du deinen eigenen Code wie ein Fremder - und dann entscheidet der Name darüber, ob du ihn verstehst. Nimm ruhig lange Namen: `verbleibende_leben` ist besser als `vl`.",
+            "en": "The computer does not care in the slightest whether the box is called `score` or `x7`. You do. In three weeks you will read your own code like a stranger - and then the name decides whether you understand it. Long names are fine: `remaining_lives` beats `rl`."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "🎯",
+          "title": {
+            "de": "Leg eine Variable an",
+            "en": "Create a variable"
+          },
+          "text": {
+            "de": "In Scratch: links auf „Variablen“, dann „Neue Variable“. Nenn sie `punkte`. Es erscheint ein kleines Kästchen oben links auf der Bühne, das ihren Wert anzeigt. Häng jetzt „setze punkte auf 0“ unter die grüne Flagge und danach „ändere punkte um 1“. Klick ein paarmal. Du siehst live zu, wie sich das Programm etwas merkt.",
+            "en": "In Scratch: click \"Variables\" on the left, then \"Make a Variable\". Call it `score`. A small box appears at the top left of the stage showing its value. Now attach \"set score to 0\" under the green flag and after it \"change score by 1\". Click a few times. You are watching a program remember, live."
+          }
+        }
+      ]
+    },
+    {
+      "key": "anlegen-zuweisen-aendern",
+      "title": {
+        "de": "Hineinlegen und verändern",
+        "en": "Putting in and changing"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Es gibt genau zwei Arten, den Inhalt einer Kiste zu ändern: Du legst etwas Bestimmtes hinein, oder du sagst, um wie viel sich das Vorhandene verschieben soll. Scratch hat für beides einen eigenen Baustein - und der Unterschied ist wichtiger, als er aussieht.",
+            "en": "There are exactly two ways to change what is in a box: you put something specific in, or you say by how much what is already there should shift. Scratch has a separate block for each - and the difference matters more than it looks."
+          }
+        },
+        {
+          "kind": "table",
+          "head": [
+            {
+              "de": "Baustein",
+              "en": "Block"
+            },
+            {
+              "de": "Was er tut",
+              "en": "What it does"
+            },
+            {
+              "de": "Wofür man ihn nimmt",
+              "en": "What you use it for"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "de": "setze punkte auf 0",
+                "en": "set score to 0"
+              },
+              {
+                "de": "Wirft weg, was drin war, und legt 0 hinein",
+                "en": "Throws away what was inside and puts 0 in"
+              },
+              {
+                "de": "Am Anfang eines Spiels, beim Zurücksetzen",
+                "en": "At the start of a game, when resetting"
+              }
+            ],
+            [
+              {
+                "de": "ändere punkte um 1",
+                "en": "change score by 1"
+              },
+              {
+                "de": "Nimmt den alten Wert und rechnet 1 dazu",
+                "en": "Takes the old value and adds 1 to it"
+              },
+              {
+                "de": "Immer dann, wenn etwas dazukommt",
+                "en": "Whenever something is added"
+              }
+            ],
+            [
+              {
+                "de": "ändere leben um -1",
+                "en": "change lives by -1"
+              },
+              {
+                "de": "Dasselbe rückwärts: zieht 1 ab",
+                "en": "The same in reverse: subtracts 1"
+              },
+              {
+                "de": "Wenn der Spieler einen Fehler macht",
+                "en": "When the player makes a mistake"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "callout",
+          "tone": "warn",
+          "icon": "🔁",
+          "title": {
+            "de": "Der häufigste Anfängerfehler",
+            "en": "The most common beginner's mistake"
+          },
+          "text": {
+            "de": "Wer „setze punkte auf 1“ in eine Wiederholung steckt, statt „ändere punkte um 1“, wundert sich, warum der Punktestand ewig auf 1 stehen bleibt. Setzen heißt: alles Bisherige vergessen. Ändern heißt: darauf aufbauen. Fast jedes kaputte Spiel im Anfangsunterricht hat genau diesen Fehler.",
+            "en": "Anyone who puts \"set score to 1\" inside a repeat instead of \"change score by 1\" wonders why the score sits at 1 forever. Setting means: forget everything so far. Changing means: build on it. Almost every broken game in a beginners' class has exactly this bug."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Genau deshalb steht in fast jedem Programm ganz oben ein Block, der alle Variablen auf einen Startwert setzt. Ohne ihn beginnt dein Spiel beim zweiten Durchgang mit dem Punktestand des ersten - und du suchst den Fehler an einer ganz anderen Stelle.",
+            "en": "That is precisely why almost every program starts with a block that sets all variables to a starting value. Without it, your game begins its second round with the score of the first - and you will hunt for the bug somewhere else entirely."
+          }
+        }
+      ]
+    },
+    {
+      "key": "was-in-die-kiste-passt",
+      "title": {
+        "de": "Was in die Kiste passt",
+        "en": "What fits in the box"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "In eine Variable passt nicht nur eine Zahl. Auch ein Text passt hinein, oder ein schlichtes Ja oder Nein. Welche Sorte Wert darin steckt, nennt man den Datentyp - und der entscheidet darüber, was ein Pluszeichen überhaupt bedeutet.",
+            "en": "A variable does not only hold a number. Text fits in too, or a plain yes or no. Which kind of value is inside is called the data type - and it decides what a plus sign even means."
+          }
+        },
+        {
+          "kind": "table",
+          "head": [
+            {
+              "de": "Datentyp",
+              "en": "Data type"
+            },
+            {
+              "de": "Beispiel",
+              "en": "Example"
+            },
+            {
+              "de": "Wofür im Spiel",
+              "en": "Where in a game"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "de": "Ganze Zahl",
+                "en": "Whole number"
+              },
+              {
+                "de": "0, 7, -3",
+                "en": "0, 7, -3"
+              },
+              {
+                "de": "Punkte, Leben, Level",
+                "en": "Score, lives, level"
+              }
+            ],
+            [
+              {
+                "de": "Kommazahl",
+                "en": "Decimal number"
+              },
+              {
+                "de": "1,5 oder 0,25",
+                "en": "1.5 or 0.25"
+              },
+              {
+                "de": "Geschwindigkeit, Sekunden",
+                "en": "Speed, seconds"
+              }
+            ],
+            [
+              {
+                "de": "Zeichenkette (Text)",
+                "en": "String (text)"
+              },
+              {
+                "de": "„Mia“, „Level 3“",
+                "en": "\"Mia\", \"Level 3\""
+              },
+              {
+                "de": "Name des Spielers, Meldungen",
+                "en": "Player's name, messages"
+              }
+            ],
+            [
+              {
+                "de": "Wahrheitswert",
+                "en": "Boolean"
+              },
+              {
+                "de": "wahr oder falsch",
+                "en": "true or false"
+              },
+              {
+                "de": "Ist das Spiel vorbei?",
+                "en": "Is the game over?"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "callout",
+          "tone": "fact",
+          "icon": "➕",
+          "title": {
+            "de": "Warum 3 + 3 nicht immer 6 ist",
+            "en": "Why 3 + 3 is not always 6"
+          },
+          "text": {
+            "de": "Nimmst du die Zahlen 3 und 3, ergibt Plus die Zahl 6. Nimmst du die Texte „3“ und „3“, ergibt Plus in vielen Sprachen den Text „33“ - er hängt sie einfach aneinander. Dasselbe Zeichen, zwei völlig verschiedene Bedeutungen, und was gilt, entscheidet allein der Datentyp. Wenn ein Programm einmal 33 statt 6 ausrechnet, weißt du sofort, wo du suchen musst.",
+            "en": "Take the numbers 3 and 3 and plus gives you the number 6. Take the texts \"3\" and \"3\" and in many languages plus gives you the text \"33\" - it simply sticks them together. The same sign, two completely different meanings, and the data type alone decides which applies. If a program ever computes 33 instead of 6, you know at once where to look."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "🙋",
+          "title": {
+            "de": "Frag nach dem Namen",
+            "en": "Ask for a name"
+          },
+          "text": {
+            "de": "Nimm in Scratch den Baustein „frage Wie heißt du? und warte“. Was der Spieler eintippt, landet in `Antwort`. Häng danach „sage verbinde Hallo, mit Antwort“ an. Die Katze begrüßt dich mit deinem eigenen Namen. Genau so entsteht der Eindruck, ein Programm würde dich kennen: Es hat nur einen Text in einer Kiste.",
+            "en": "In Scratch, use the block \"ask What's your name? and wait\". Whatever the player types lands in `answer`. Then attach \"say join Hello, with answer\". The cat greets you by your own name. That is exactly how the impression arises that a program knows you: it just has some text in a box."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "Scratch - Variablen ausprobieren",
+                "en": "Scratch - try out variables"
+              },
+              "url": "https://scratch.mit.edu"
+            },
+            {
+              "label": {
+                "de": "inf-schule.de: Variablen und Datentypen",
+                "en": "inf-schule.de: variables and data types"
+              },
+              "url": "https://www.inf-schule.de/imperative-programmierung"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": {
+        "de": "1. Lückentext: Kiste, Wert, Datentyp",
+        "en": "1. Fill in the blanks: box, value, data type"
+      },
+      "intro": {
+        "de": "Setze die fehlenden Wörter ein.",
+        "en": "Fill in the missing words."
+      },
+      "text": {
+        "de": "Damit sich ein Programm etwas merken kann, braucht es eine ___ - anschaulich eine Kiste mit einem Namen. Etwas hineinzulegen nennt man eine ___; was vorher drin war, ist danach ___. Der Baustein „setze … auf“ wirft den alten Wert weg, der Baustein „___ … um“ rechnet dagegen etwas dazu. Welche Sorte Wert in der Kiste steckt, sagt der ___. Eine Zahl wie 7 ist eine ___, ein Text wie „Mia“ heißt ___, und wahr oder falsch nennt man einen ___. Rechnet ein Programm aus 3 und 3 plötzlich die 33, dann hat es die beiden als ___ behandelt und nicht als Zahlen.",
+        "en": "For a program to remember something it needs a ___ - a box with a name, if you like. Putting something into it is called an ___; whatever was in there before is afterwards ___. The block \"set … to\" throws the old value away, whereas the block \"___ … by\" adds something to it. Which kind of value sits in the box is given by the ___. A number such as 7 is a ___, a text such as \"Mia\" is called a ___, and true or false is called a ___. If a program suddenly computes 33 out of 3 and 3, it treated them as ___ and not as numbers."
+      }
+    },
+    {
+      "kind": "compare",
+      "title": {
+        "de": "2. Ausprobieren und vergleichen: setzen gegen ändern",
+        "en": "2. Try it and compare: setting versus changing"
+      },
+      "intro": {
+        "de": "Bau beide Fassungen in Scratch, bevor du antwortest.",
+        "en": "Build both versions in Scratch before you answer."
+      },
+      "text": {
+        "de": "Bau ein winziges Programm: unter der grünen Flagge „setze punkte auf 0“, darunter „wiederhole 10-mal“ und darin „ändere punkte um 1“. Lass es laufen und notiere den Endstand. Ersetze dann im Inneren der Wiederholung den Baustein durch „setze punkte auf 1“ und lass es noch einmal laufen. Halte beide Endstände fest und erkläre, warum sie sich unterscheiden, obwohl beide Programme genau zehnmal etwas mit derselben Variablen tun. Beschreibe zum Schluss eine Stelle in einem echten Spiel, an der man den einen Baustein braucht und den anderen nicht.",
+        "en": "Build a tiny program: under the green flag \"set score to 0\", below it \"repeat 10 times\" and inside it \"change score by 1\". Run it and note the final value. Then, inside the repeat, replace the block with \"set score to 1\" and run it again. Record both final values and explain why they differ, even though both programs do something to the same variable exactly ten times. Finally, describe a place in a real game where you need one block and not the other."
+      },
+      "hint": {
+        "de": "Frag dich bei jedem Durchlauf: Was stand vorher in der Kiste, und interessiert das den Baustein überhaupt?",
+        "en": "For each pass, ask yourself: what was in the box before, and does the block care at all?"
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": {
+        "de": "3. Zum Nachdenken: was beim Überschreiben verloren geht",
+        "en": "3. Something to think about: what gets lost when you overwrite"
+      },
+      "intro": {
+        "de": "Auf diese Frage gibt es keine richtige Antwort.",
+        "en": "There is no right answer to this one."
+      },
+      "text": {
+        "de": "Eine Variable kennt keine Vergangenheit. Sobald ein neuer Wert hineingeht, ist der alte nicht wiederherstellbar - es sei denn, jemand hat vorher daran gedacht, ihn woanders aufzuheben. Genau diese Entscheidung treffen Programme ständig, auch über dich: Welcher Punktestand wird gespeichert, welcher Chatverlauf bleibt, welches Foto ist nach dem Überschreiben endgültig fort. Überleg, wo dir das schon einmal passiert ist. Und dann die schwierigere Frage: Wo wäre es dir lieber, dass ein Programm sich etwas gerade nicht merkt?",
+        "en": "A variable has no past. As soon as a new value goes in, the old one cannot be recovered - unless someone thought beforehand to keep it somewhere else. Programs make exactly that decision constantly, including about you: which score gets saved, which chat history stays, which photo is gone for good once overwritten. Think of a time this happened to you. And then the harder question: where would you rather a program did not remember something?"
+      }
+    }
+  ]
+}

@@ -1,0 +1,269 @@
+{
+  "key": "entscheiden-in-text",
+  "title": {
+    "de": "Entscheiden in Text",
+    "en": "Deciding in text"
+  },
+  "summary": {
+    "de": "if, elif, else - und der berühmteste Tippfehler der Informatik: ein Gleichheitszeichen zu wenig.",
+    "en": "if, elif, else - and computing's most famous typo: one equals sign short."
+  },
+  "icon": "🚦",
+  "accent": "indigo",
+  "minutes": 13,
+  "screens": [
+    {
+      "key": "if-und-else",
+      "title": {
+        "de": "Wenn, sonst wenn, sonst",
+        "en": "If, else if, else"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "`if` heißt „wenn“, `else` heißt „sonst“, und `elif` ist die Abkürzung für „sonst wenn“. Damit lassen sich beliebig viele Fälle unterscheiden - und du kennst das Prinzip längst aus Scratch.",
+            "en": "`if` means if, `else` means otherwise, and `elif` is short for \"else if\". With these you can distinguish any number of cases - and you know the principle already from Scratch."
+          }
+        },
+        {
+          "kind": "steps",
+          "items": [
+            {
+              "title": { "de": "if allein", "en": "if on its own" },
+              "text": {
+                "de": "`if punkte > 100:` und darunter eingerückt, was dann passieren soll. Trifft die Bedingung nicht zu, wird der eingerückte Teil übersprungen und es geht darunter weiter.",
+                "en": "`if score > 100:` and, indented below, what should happen then. If the condition does not hold, the indented part is skipped and things carry on below."
+              }
+            },
+            {
+              "title": { "de": "if und else", "en": "if and else" },
+              "text": {
+                "de": "Mit `else:` kommt der zweite Weg dazu. Genau einer der beiden wird gegangen - nie beide, nie keiner. Das `else` bekommt keine Bedingung; es fängt alles auf, was übrig ist.",
+                "en": "With `else:` the second path appears. Exactly one of the two is taken - never both, never neither. The `else` gets no condition; it catches whatever is left."
+              }
+            },
+            {
+              "title": { "de": "elif für mehr Fälle", "en": "elif for more cases" },
+              "text": {
+                "de": "Zwischen `if` und `else` passen beliebig viele `elif`. Wichtig: Sie werden von oben nach unten geprüft, und beim ersten Treffer ist Schluss. Die Reihenfolge entscheidet also mit.",
+                "en": "Between `if` and `else` you can fit any number of `elif`. Important: they are checked from top to bottom, and the first match ends it. So the order matters too."
+              }
+            }
+          ]
+        },
+        {
+          "kind": "callout",
+          "tone": "warn",
+          "icon": "🔢",
+          "title": {
+            "de": "Die Reihenfolge ist keine Nebensache",
+            "en": "The order is not a detail"
+          },
+          "text": {
+            "de": "Steht `if note < 5:` vor `if note < 3:`, wird der zweite Fall nie erreicht - jede Note unter 3 ist auch unter 5. Bei Bereichen prüft man deshalb immer vom engsten zum weitesten. Dieser Fehler kracht nicht; das Programm läuft und liefert stillschweigend falsche Ergebnisse. Das macht ihn gefährlich.",
+            "en": "If `if grade < 5:` comes before `if grade < 3:`, the second case is never reached - every grade below 3 is also below 5. So with ranges you always check from narrowest to widest. This bug does not crash; the program runs and quietly delivers wrong results. That is what makes it dangerous."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "📓",
+          "title": {
+            "de": "Der Notenrechner",
+            "en": "The grade calculator"
+          },
+          "text": {
+            "de": "Bau im Notizbuch ein Programm, das nach Punkten fragt und die Note ausgibt: ab 85 eine 1, ab 70 eine 2, ab 55 eine 3, ab 40 eine 4, sonst eine 5. Eine Kette aus `if`, drei `elif` und einem `else`. Vertausch danach absichtlich zwei Zeilen und sieh, was herauskommt.",
+            "en": "In the notebook, build a program that asks for points and prints the grade: from 85 a 1, from 70 a 2, from 55 a 3, from 40 a 4, otherwise a 5. A chain of `if`, three `elif` and one `else`. Then deliberately swap two lines and see what comes out."
+          }
+        }
+      ]
+    },
+    {
+      "key": "gleich-oder-gleich",
+      "title": {
+        "de": "Ein Gleichheitszeichen oder zwei",
+        "en": "One equals sign or two"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "`=` legt einen Wert in eine Kiste. `==` fragt, ob zwei Werte gleich sind. Der Unterschied ist ein einziges Zeichen und der berühmteste Tippfehler der Informatik - in manchen Sprachen hat er Millionen gekostet.",
+            "en": "`=` puts a value into a box. `==` asks whether two values are equal. The difference is a single character and computing's most famous typo - in some languages it has cost millions."
+          }
+        },
+        {
+          "kind": "table",
+          "head": [
+            { "de": "Zeichen", "en": "Symbol" },
+            { "de": "Bedeutung", "en": "Meaning" },
+            { "de": "Beispiel", "en": "Example" }
+          ],
+          "rows": [
+            [
+              { "de": "==", "en": "==" },
+              { "de": "ist gleich?", "en": "is equal to?" },
+              { "de": "if name == \"Mia\":", "en": "if name == \"Mia\":" }
+            ],
+            [
+              { "de": "!=", "en": "!=" },
+              { "de": "ist ungleich?", "en": "is not equal to?" },
+              { "de": "if antwort != \"ja\":", "en": "if answer != \"yes\":" }
+            ],
+            [
+              { "de": "< und >", "en": "< and >" },
+              { "de": "kleiner, größer", "en": "less than, greater than" },
+              { "de": "if alter > 17:", "en": "if age > 17:" }
+            ],
+            [
+              { "de": "<= und >=", "en": "<= and >=" },
+              { "de": "kleiner oder gleich", "en": "less than or equal" },
+              { "de": "if punkte >= 85:", "en": "if score >= 85:" }
+            ]
+          ]
+        },
+        {
+          "kind": "callout",
+          "tone": "fact",
+          "icon": "🛡️",
+          "title": {
+            "de": "Python passt hier auf dich auf",
+            "en": "Python looks out for you here"
+          },
+          "text": {
+            "de": "Schreibst du `if punkte = 100:`, weigert sich Python und meldet einen Fehler. In C und einigen anderen Sprachen wäre das erlaubt gewesen - dort hätte die Zeile stillschweigend zugewiesen und die Bedingung wäre immer wahr. Genau daraus sind schon echte Sicherheitslücken entstanden.",
+            "en": "If you write `if score = 100:`, Python refuses and reports an error. In C and some other languages that would have been allowed - there the line would have quietly assigned and the condition would always be true. Real security holes have arisen from exactly that."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "tip",
+          "icon": "🔤",
+          "title": {
+            "de": "Groß und klein sind zwei verschiedene Texte",
+            "en": "Upper and lower case are two different texts"
+          },
+          "text": {
+            "de": "`\"Gut\" == \"gut\"` ist falsch. Für Python sind das zwei verschiedene Zeichenketten. Wenn dein Programm auf Eingaben reagieren soll, schreib `antwort.lower()` - das macht alles klein, bevor verglichen wird. Ein kleiner Zusatz, der dein Programm freundlich macht.",
+            "en": "`\"Good\" == \"good\"` is false. To Python those are two different strings. If your program should react to input, write `answer.lower()` - that makes everything lowercase before comparing. A small addition that makes your program friendly."
+          }
+        }
+      ]
+    },
+    {
+      "key": "verknuepfen",
+      "title": {
+        "de": "Zwei Bedingungen zugleich",
+        "en": "Two conditions at once"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "`and`, `or`, `not` - die drei Wörter aus Scratch, jetzt getippt. Damit lässt sich fast jede Regel ausdrücken, die dir einfällt. Und mit dem `and` fängt auch das häufigste Missverständnis an.",
+            "en": "`and`, `or`, `not` - the three words from Scratch, typed. With them you can express almost any rule you can think of. And with `and` the most common misunderstanding begins."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "`and` ist streng: Nur wenn beide Seiten wahr sind, ist das Ganze wahr. `or` ist großzügig: Eine wahre Seite genügt. `not` dreht um. Klingt einfach - und trotzdem wird in echten Programmen ständig `and` geschrieben, wo `or` gemeint war. Der Fehler fällt oft erst auf, wenn der seltene Fall eintritt.",
+            "en": "`and` is strict: only when both sides are true is the whole thing true. `or` is generous: one true side is enough. `not` reverses. Sounds simple - and yet real programs constantly say `and` where `or` was meant. The bug often only shows up when the rare case occurs."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "note",
+          "icon": "🎫",
+          "title": {
+            "de": "Ein Beispiel, das jeder kennt",
+            "en": "An example everyone knows"
+          },
+          "text": {
+            "de": "„Ermäßigt fahren dürfen Schüler und unter 18-Jährige.“ Mit `and` bräuchte man beides - eine 19-jährige Schülerin ginge leer aus. Mit `or` genügt eines. Welche Regel gemeint war, steht nicht im Code, sondern im Kopf desjenigen, der sie geschrieben hat. Deshalb lohnt es sich, bei jeder Bedingung einmal laut zu sagen, was sie bedeutet.",
+            "en": "\"Reduced fares for pupils and under-18s.\" With `and` you would need both - a 19-year-old pupil would lose out. With `or` one is enough. Which rule was meant is not in the code but in the head of whoever wrote it. Which is why it pays to say out loud, once, what each condition means."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "🧪",
+          "title": {
+            "de": "Alle vier Fälle durchprobieren",
+            "en": "Try all four cases"
+          },
+          "text": {
+            "de": "Tipp im Notizbuch nacheinander `print(True and False)`, `print(True or False)`, `print(not True)`. Bau dann eine kleine Regel mit zwei Variablen und probier alle vier Kombinationen durch - beide wahr, nur die erste, nur die zweite, keine. Rate vorher, was herauskommt, und vergleich dann. Genau so prüfen Profis eine Bedingung.",
+            "en": "In the notebook, type in turn `print(True and False)`, `print(True or False)`, `print(not True)`. Then build a small rule with two variables and try all four combinations - both true, only the first, only the second, neither. Guess the outcome first, then compare. That is exactly how professionals check a condition."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": { "de": "Python-Dokumentation: Kontrollstrukturen", "en": "Python documentation: control flow" },
+              "url": "https://docs.python.org/3/tutorial/controlflow.html"
+            },
+            {
+              "label": { "de": "inf-schule.de: Fallunterscheidungen", "en": "inf-schule.de: conditional branching" },
+              "url": "https://www.inf-schule.de/imperative-programmierung"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": {
+        "de": "1. Lückentext: vergleichen und verknüpfen",
+        "en": "1. Fill in the blanks: comparing and combining"
+      },
+      "intro": {
+        "de": "Setze die fehlenden Wörter ein.",
+        "en": "Fill in the missing words."
+      },
+      "text": {
+        "de": "Eine Bedingung beginnt mit ___ und endet mit einem Doppelpunkt; was dazugehört, wird ___. Der zweite Weg heißt ___ und bekommt keine eigene Bedingung. Weitere Fälle dazwischen schreibt man mit ___; geprüft werden sie von ___ nach unten, und beim ersten Treffer ist Schluss. Ein einzelnes `=` legt einen Wert ab, verglichen wird dagegen mit ___. Ungleich schreibt man als ___. Sollen beide Bedingungen gelten, verknüpft man sie mit ___; genügt eine, nimmt man ___. Umgedreht wird eine Bedingung mit ___. Damit Groß- und Kleinschreibung keine Rolle spielt, hängt man an einen Text ___ an.",
+        "en": "A condition starts with ___ and ends with a colon; whatever belongs to it is ___. The second path is called ___ and gets no condition of its own. Further cases in between are written with ___; they are checked from ___ downwards, and the first match ends it. A single `=` stores a value, whereas comparing uses ___. Not equal is written as ___. If both conditions must hold you join them with ___; if one is enough you use ___. A condition is reversed with ___. So that upper and lower case do not matter, you append ___ to a text."
+      }
+    },
+    {
+      "kind": "compare",
+      "title": {
+        "de": "2. Ausprobieren und vergleichen: die vertauschte Kette",
+        "en": "2. Try it and compare: the swapped chain"
+      },
+      "intro": {
+        "de": "Diese Aufgabe gehört ins Notizbuch.",
+        "en": "This task belongs in the notebook."
+      },
+      "text": {
+        "de": "Bau den Notenrechner aus diesem Pfad: ab 85 eine 1, ab 70 eine 2, ab 55 eine 3, ab 40 eine 4, sonst eine 5. Probier ihn mit 90, 72, 60, 45 und 20 Punkten aus und notiere die Ergebnisse. Vertausch dann die Zeile für die 1 und die Zeile für die 4, sodass zuerst auf 40 geprüft wird, und probier dieselben fünf Werte noch einmal. Beschreibe genau, was sich ändert, und erkläre, warum das Programm dabei nicht abstürzt, obwohl es falsch rechnet - und warum gerade das gefährlich ist.",
+        "en": "Build the grade calculator from this path: from 85 a 1, from 70 a 2, from 55 a 3, from 40 a 4, otherwise a 5. Try it with 90, 72, 60, 45 and 20 points and note the results. Then swap the line for the 1 and the line for the 4, so that 40 is checked first, and try the same five values again. Describe exactly what changes, and explain why the program does not crash even though it computes wrongly - and why precisely that is dangerous."
+      },
+      "hint": {
+        "de": "Frag dich bei jeder Zeile: Welche Werte kommen hier überhaupt noch an, nachdem die Zeilen darüber geprüft wurden?",
+        "en": "For each line ask: which values even reach this point after the lines above have been checked?"
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": {
+        "de": "3. Zum Nachdenken: eine Regel, die niemand nachlesen kann",
+        "en": "3. Something to think about: a rule nobody can look up"
+      },
+      "intro": {
+        "de": "Auf diese Frage gibt es keine richtige Antwort.",
+        "en": "There is no right answer to this one."
+      },
+      "text": {
+        "de": "Ob in einer Bedingung `and` oder `or` steht, entscheidet darüber, wer eine Ermäßigung bekommt, wessen Antrag durchgeht, wer eine Nachricht sieht. Diese Entscheidung steckt in einem einzigen Wort, tief in einer Datei, die außer ein paar Menschen niemand liest. Überlege, was das bedeutet: Regeln, die alle betreffen, aber fast niemand nachlesen kann. Sollten Programme, die über Menschen entscheiden, ihre Bedingungen offenlegen müssen? Und was spräche dagegen?",
+        "en": "Whether a condition says `and` or `or` decides who gets a discount, whose application goes through, who sees a message. That decision sits in a single word, deep in a file that nobody but a few people reads. Think about what that means: rules that affect everyone but almost nobody can look up. Should programs that decide about people have to disclose their conditions? And what would speak against it?"
+      }
+    }
+  ]
+}

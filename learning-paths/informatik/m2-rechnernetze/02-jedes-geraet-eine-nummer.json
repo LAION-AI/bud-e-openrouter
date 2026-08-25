@@ -1,0 +1,324 @@
+{
+  "key": "jedes-geraet-eine-nummer",
+  "title": {
+    "de": "Jedes Gerät braucht eine Nummer",
+    "en": "Every device needs a number"
+  },
+  "summary": {
+    "de": "IP-Adressen, Subnetze und der einfachste Test der Welt - drei Zeilen, die jede Störung eingrenzen.",
+    "en": "IP addresses, subnets and the simplest test in the world - three lines that narrow down any fault."
+  },
+  "icon": "🔢",
+  "accent": "sky",
+  "minutes": 14,
+  "screens": [
+    {
+      "key": "die-hausnummer",
+      "title": {
+        "de": "Ein Haus ohne Hausnummer",
+        "en": "A house without a number"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "In einem Netz muss jedes Gerät ansprechbar sein. Dafür bekommt es eine Nummer: die IP-Adresse. Ohne sie ist ein Gerät im Netz das, was ein Haus ohne Hausnummer für den Postboten wäre - es steht da, aber niemand kann ihm etwas schicken.",
+            "en": "In a network every device has to be addressable. For that it gets a number: the IP address. Without one, a device in a network is what a house without a number would be to a postman - it is there, but nobody can send it anything."
+          }
+        },
+        {
+          "kind": "table",
+          "head": [
+            {
+              "de": "Teil",
+              "en": "Part"
+            },
+            {
+              "de": "Beispiel",
+              "en": "Example"
+            },
+            {
+              "de": "Bedeutung",
+              "en": "Meaning"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "de": "Netzanteil",
+                "en": "Network part"
+              },
+              {
+                "de": "192.168.1.",
+                "en": "192.168.1."
+              },
+              {
+                "de": "In welchem Netz - bei allen Geräten zu Hause gleich",
+                "en": "Which network - the same on every device at home"
+              }
+            ],
+            [
+              {
+                "de": "Geräteanteil",
+                "en": "Host part"
+              },
+              {
+                "de": ".42",
+                "en": ".42"
+              },
+              {
+                "de": "Welches Gerät in diesem Netz",
+                "en": "Which device in that network"
+              }
+            ],
+            [
+              {
+                "de": "Subnetzmaske",
+                "en": "Subnet mask"
+              },
+              {
+                "de": "255.255.255.0",
+                "en": "255.255.255.0"
+              },
+              {
+                "de": "Wo die Grenze zwischen beiden verläuft",
+                "en": "Where the boundary between the two runs"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Das Subnetz ist die Antwort auf die Frage „bist du bei mir um die Ecke oder weiter weg?“. Geräte im selben Subnetz reden direkt miteinander, ohne Umweg. Für alles andere braucht es jemanden, der den Weg nach draußen kennt - davon handelt der nächste Pfad.",
+            "en": "The subnet answers the question \"are you round the corner from me or further away?\". Devices in the same subnet talk to each other directly, with no detour. For everything else you need somebody who knows the way out - that is the next path."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "fact",
+          "icon": "🏠",
+          "title": {
+            "de": "Warum bei fast allen dieselbe Nummer steht",
+            "en": "Why almost everyone has the same number"
+          },
+          "text": {
+            "de": "Zu Hause beginnt deine Adresse fast sicher mit `192.168.` oder `10.`. Bei deiner Nachbarin auch. Das stört niemanden, weil diese Bereiche für private Netze reserviert sind und hinter dem Router aufhören. Nach draußen tritt ihr beide mit der Adresse eures Anschlusses auf - eine für den ganzen Haushalt.",
+            "en": "At home your address almost certainly starts with `192.168.` or `10.`. So does your neighbour's. Nobody minds, because those ranges are reserved for private networks and stop at the router. To the outside world you both appear with the address of your connection - one for the whole household."
+          }
+        }
+      ]
+    },
+    {
+      "key": "selber-nachsehen",
+      "title": {
+        "de": "Selbst nachsehen, was dein Gerät weiß",
+        "en": "See for yourself what your device knows"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Das Schöne an diesem Thema: Du kannst alles davon in zwei Minuten an deinem eigenen Rechner überprüfen. Es braucht kein Labor, nur ein Fenster mit einer Eingabezeile.",
+            "en": "The good thing about this topic: you can check all of it on your own machine in two minutes. No lab needed, just a window with a command line."
+          }
+        },
+        {
+          "kind": "steps",
+          "items": [
+            {
+              "title": {
+                "de": "Die Eingabezeile öffnen",
+                "en": "Open the command line"
+              },
+              "text": {
+                "de": "Windows: Windows-Taste, dann `cmd` tippen. Mac: Programme, Dienstprogramme, Terminal. Linux: Strg+Alt+T. Es erscheint ein schlichtes Fenster mit blinkendem Cursor - hier tippt man Befehle statt zu klicken.",
+                "en": "Windows: press the Windows key and type `cmd`. Mac: Applications, Utilities, Terminal. Linux: Ctrl+Alt+T. A plain window with a blinking cursor appears - here you type commands instead of clicking."
+              }
+            },
+            {
+              "title": {
+                "de": "Die eigene Adresse anzeigen",
+                "en": "Show your own address"
+              },
+              "text": {
+                "de": "Tipp `ipconfig` (Windows) oder `ip addr` (Mac und Linux). Zwischen viel Text steht eine Zeile mit vier Zahlen - das ist deine IP-Adresse in diesem Netz. Daneben die Subnetzmaske.",
+                "en": "Type `ipconfig` (Windows) or `ip addr` (Mac and Linux). Among a lot of text there is a line with four numbers - that is your IP address in this network. Next to it, the subnet mask."
+              }
+            },
+            {
+              "title": {
+                "de": "Mit jemandem vergleichen",
+                "en": "Compare with someone"
+              },
+              "text": {
+                "de": "Vergleicht eure Adressen im Klassenzimmer oder zu Hause. Die ersten drei Zahlen sind gleich, die letzte ist verschieden. Ihr seid im selben Subnetz - deshalb funktioniert der nächste Schritt.",
+                "en": "Compare your addresses in the classroom or at home. The first three numbers are the same, the last one differs. You are in the same subnet - which is why the next step works."
+              }
+            }
+          ]
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "🏓",
+          "title": {
+            "de": "Ping - der einfachste Test der Welt",
+            "en": "Ping - the simplest test in the world"
+          },
+          "text": {
+            "de": "Tipp `ping 8.8.8.8`. Dein Rechner schickt ein winziges Paket los und misst, wie lange die Antwort braucht - meist zwischen 10 und 40 Millisekunden. Kommt eine Antwort, ist der Weg frei. Kommt keine, weißt du schon eine Menge: dass es nicht an der Webseite liegt. Probier danach `ping` mit der Adresse deiner Sitznachbarin.",
+            "en": "Type `ping 8.8.8.8`. Your machine sends off a tiny packet and measures how long the answer takes - usually between 10 and 40 milliseconds. If an answer comes, the way is clear. If none comes, you already know a lot: that it is not the website's fault. Then try `ping` with the address of the person next to you."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "fact",
+          "icon": "🌊",
+          "title": {
+            "de": "Was 40 Millisekunden bedeuten",
+            "en": "What 40 milliseconds means"
+          },
+          "text": {
+            "de": "Ein Ping nach Amerika dauert etwa 100 Millisekunden - hin und zurück. Licht braucht für diese Strecke im Glasfaserkabel gut 60. Deine Anfrage ist also fast so schnell unterwegs, wie es physikalisch überhaupt geht. Und genau deshalb wird es nie viel schneller werden: Der Rest ist Naturgesetz.",
+            "en": "A ping to America takes about 100 milliseconds - there and back. Light needs a good 60 for that distance in fibre. So your request travels almost as fast as is physically possible at all. And that is exactly why it will never get much quicker: the rest is a law of nature."
+          }
+        }
+      ]
+    },
+    {
+      "key": "wenn-es-klemmt",
+      "title": {
+        "de": "Ein Problem beschreiben statt es nur zu haben",
+        "en": "Describing a problem instead of just having one"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "„Das Internet geht nicht“ ist keine Fehlerbeschreibung. Mit einer Adresse und einem Ping kannst du in dreißig Sekunden sagen, welcher Teil der Kette klemmt - und das ist der Unterschied zwischen Hilflosigkeit und Können.",
+            "en": "\"The internet is not working\" is not a description of a fault. With an address and a ping you can say in thirty seconds which part of the chain is stuck - and that is the difference between helplessness and competence."
+          }
+        },
+        {
+          "kind": "steps",
+          "items": [
+            {
+              "title": {
+                "de": "Habe ich überhaupt eine Adresse?",
+                "en": "Do I even have an address?"
+              },
+              "text": {
+                "de": "Steht bei `ipconfig` eine Adresse, die mit `169.254.` beginnt, hat dein Gerät keine bekommen und sich selbst eine ausgedacht. Dann liegt es am Netz vor dir, nicht an deinem Rechner.",
+                "en": "If `ipconfig` shows an address starting with `169.254.`, your device did not get one and made one up for itself. Then the problem lies in the network ahead of you, not in your machine."
+              }
+            },
+            {
+              "title": {
+                "de": "Komme ich bis zum Router?",
+                "en": "Can I reach the router?"
+              },
+              "text": {
+                "de": "Ping die Adresse deines Routers - meist endet sie auf `.1`. Antwortet er, ist das eigene Netz in Ordnung. Antwortet er nicht, steckt der Fehler zwischen dir und ihm: Kabel, WLAN, falsches Netz.",
+                "en": "Ping your router's address - usually it ends in `.1`. If it answers, your own network is fine. If not, the fault sits between you and it: cable, Wi-Fi, wrong network."
+              }
+            },
+            {
+              "title": {
+                "de": "Komme ich nach draußen?",
+                "en": "Can I get out?"
+              },
+              "text": {
+                "de": "`ping 8.8.8.8`. Antwortet diese Adresse, funktioniert alles bis hinaus ins Internet. Wenn dann trotzdem keine Seite lädt, liegt es an etwas anderem - und genau darum geht es im Pfad über Namen und Nummern.",
+                "en": "`ping 8.8.8.8`. If that address answers, everything works right out into the internet. If pages still do not load, something else is wrong - and that is exactly what the path about names and numbers is for."
+              }
+            }
+          ]
+        },
+        {
+          "kind": "callout",
+          "tone": "tip",
+          "icon": "🪜",
+          "title": {
+            "de": "Immer von innen nach außen",
+            "en": "Always from the inside out"
+          },
+          "text": {
+            "de": "Erst das eigene Gerät, dann das eigene Netz, dann der Weg nach draußen. Diese Reihenfolge gilt bei jeder Störung und in jedem Beruf, der mit Technik zu tun hat. Wer stattdessen wahllos Kabel zieht, findet den Fehler auch - aber erst nach einer Stunde.",
+            "en": "First your own device, then your own network, then the way out. This order applies to every fault and in every job that involves technology. Whoever pulls cables at random will also find the fault - but only after an hour."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "inf-schule.de: Adressierung im Netz",
+                "en": "inf-schule.de: addressing in networks"
+              },
+              "url": "https://www.inf-schule.de/rechnernetze"
+            },
+            {
+              "label": {
+                "de": "RFC 1918 - private Adressbereiche",
+                "en": "RFC 1918 - private address ranges"
+              },
+              "url": "https://www.rfc-editor.org/rfc/rfc1918"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": {
+        "de": "1. Lückentext: Adressen und Nachbarschaft",
+        "en": "1. Fill in the blanks: addresses and neighbourhood"
+      },
+      "intro": {
+        "de": "Setze die fehlenden Wörter ein.",
+        "en": "Fill in the missing words."
+      },
+      "text": {
+        "de": "Damit ein Gerät im Netz ansprechbar ist, braucht es eine ___. Sie besteht aus einem ___, der bei allen Geräten im selben Netz gleich ist, und einem ___, der jedes Gerät unterscheidet. Wo die Grenze zwischen beiden verläuft, sagt die ___. Geräte im selben ___ reden direkt miteinander. Zu Hause beginnen die Adressen meist mit ___, weil dieser Bereich für private Netze reserviert ist. Die eigene Adresse zeigt der Befehl ___ an. Ob ein anderes Gerät antwortet, prüft man mit ___. Beginnt die eigene Adresse mit `169.254.`, hat das Gerät gar keine ___ und sich selbst eine ausgedacht.",
+        "en": "For a device to be addressable in a network it needs an ___. It consists of a ___, which is the same on all devices in the same network, and a ___, which distinguishes each device. Where the boundary between them runs is given by the ___. Devices in the same ___ talk to each other directly. At home, addresses usually start with ___, because that range is reserved for private networks. Your own address is shown by the command ___. Whether another device answers is checked with ___. If your own address starts with `169.254.`, the device got no ___ at all and invented one for itself."
+      }
+    },
+    {
+      "kind": "compare",
+      "title": {
+        "de": "2. Ausprobieren und vergleichen: wer ist um die Ecke",
+        "en": "2. Try it and compare: who is round the corner"
+      },
+      "intro": {
+        "de": "Diese Aufgabe braucht ein Gerät mit Eingabezeile.",
+        "en": "This task needs a device with a command line."
+      },
+      "text": {
+        "de": "Lass dir mit `ipconfig` oder `ip addr` deine eigene Adresse und Subnetzmaske anzeigen und notiere beide. Vergleiche sie mit der Adresse eines anderen Geräts im selben Netz. Pinge dieses Gerät an, dann den Router, dann `8.8.8.8`, und notiere die Antwortzeiten. Erkläre anhand deiner Zahlen, welcher Ping am schnellsten war und warum das so sein muss. Gib danach an, welche der drei Antworten fehlen müsste, damit du sicher sagen kannst: Der Fehler liegt in meinem eigenen Netz und nicht beim Anbieter.",
+        "en": "Use `ipconfig` or `ip addr` to display your own address and subnet mask, and note both. Compare them with the address of another device in the same network. Ping that device, then the router, then `8.8.8.8`, and note the response times. Using your numbers, explain which ping was fastest and why it has to be. Then state which of the three answers would have to be missing for you to say with confidence: the fault is in my own network and not at the provider."
+      },
+      "hint": {
+        "de": "Überleg, wie weit das Paket bei jedem der drei Ziele tatsächlich reisen muss.",
+        "en": "Consider how far the packet actually has to travel for each of the three targets."
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": {
+        "de": "3. Zum Nachdenken: eine Nummer, die dich meint",
+        "en": "3. Something to think about: a number that means you"
+      },
+      "intro": {
+        "de": "Auf diese Frage gibt es keine richtige Antwort.",
+        "en": "There is no right answer to this one."
+      },
+      "text": {
+        "de": "Jede Seite, die du aufrufst, sieht die Adresse deines Anschlusses - sonst wüsste sie nicht, wohin sie antworten soll. Sie verrät nicht deinen Namen, aber ungefähr, wo du bist, und sie bleibt oft tagelang dieselbe. Überlege, was das bedeutet: Man muss dich nicht kennen, um dich wiederzuerkennen. Wo findest du das in Ordnung, weil es technisch nötig ist, und wo würde es dich stören? Und was ändert sich daran, wenn ein ganzer Haushalt nach außen hin unter einer einzigen Nummer auftritt?",
+        "en": "Every site you visit sees the address of your connection - otherwise it would not know where to reply. It does not reveal your name, but roughly where you are, and it often stays the same for days. Think about what that means: nobody has to know you in order to recognise you again. Where do you find that acceptable because it is technically necessary, and where would it bother you? And what changes when a whole household appears to the outside world under a single number?"
+      }
+    }
+  ]
+}

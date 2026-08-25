@@ -1,0 +1,14 @@
+{
+  "key": "m2-rechnernetze",
+  "title": {
+    "de": "Kommunikation und Rechnernetze",
+    "en": "Communication and computer networks"
+  },
+  "description": {
+    "de": "Was zwischen dem Tippen einer Adresse und dem Erscheinen der Seite wirklich passiert - und wie viele fremde Rechner daran beteiligt sind.",
+    "en": "What really happens between typing an address and the page appearing - and how many strangers' machines are involved."
+  },
+  "icon": "🌐",
+  "accent": "sky",
+  "badge": "M2"
+}

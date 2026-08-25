@@ -1,0 +1,323 @@
+{
+  "key": "wenn-dann-sonst",
+  "title": {
+    "de": "Wenn, dann, sonst",
+    "en": "If, then, otherwise"
+  },
+  "summary": {
+    "de": "Wie ein Programm entscheidet - und warum es zwischen wahr und falsch nichts gibt.",
+    "en": "How a program decides - and why between true and false there is nothing."
+  },
+  "icon": "🔀",
+  "accent": "emerald",
+  "minutes": 14,
+  "screens": [
+    {
+      "key": "die-gabelung",
+      "title": {
+        "de": "Der Weg teilt sich",
+        "en": "The path forks"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Bis jetzt lief dein Programm immer gleich ab. Von oben nach unten, jedes Mal derselbe Weg. Ein Spiel wird daraus erst, wenn es unterschiedlich reagiert - je nachdem, was passiert ist.",
+            "en": "So far your program has always run the same way. Top to bottom, the same path every time. It only becomes a game once it reacts differently - depending on what has happened."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Dafür gibt es den Baustein „falls … dann“. Er prüft eine Bedingung und führt aus, was in ihm steckt - aber nur, wenn die Bedingung zutrifft. Trifft sie nicht zu, überspringt er alles darin und macht darunter weiter. Das nennt man eine bedingte Anweisung.",
+            "en": "For that there is the block \"if … then\". It checks a condition and carries out what sits inside it - but only if the condition holds. If it does not, it skips everything inside and carries on below. That is called a conditional statement."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "note",
+          "icon": "🍦",
+          "title": {
+            "de": "Du machst das den ganzen Tag",
+            "en": "You do this all day long"
+          },
+          "text": {
+            "de": "Wenn es regnet, nimm die Jacke. Wenn noch Geld übrig ist, kauf ein Eis. Wenn der Bus schon weg ist, geh zu Fuß. Jedes „wenn“ in deinem Kopf ist eine Verzweigung - du bemerkst sie nur nicht, weil du sie in Millisekunden nimmst.",
+            "en": "If it rains, take a jacket. If there is money left, buy an ice cream. If the bus has gone, walk. Every \"if\" in your head is a branch - you just do not notice, because you take it in milliseconds."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Kommt ein „sonst“ dazu, wird aus der bedingten Anweisung eine Verzweigung: Zwei Wege, und genau einer wird gegangen. Nie beide, nie keiner. Diese Sicherheit ist der Grund, warum man mit Verzweigungen etwas bauen kann, dem man trauen kann.",
+            "en": "Add an \"else\" and the conditional statement becomes a branch: two paths, and exactly one of them is taken. Never both, never neither. That certainty is why you can build something trustworthy out of branches."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "🎈",
+          "title": {
+            "de": "Die Katze reagiert",
+            "en": "Make the cat react"
+          },
+          "text": {
+            "de": "In Scratch: „frage Wie alt bist du? und warte“, darunter „falls Antwort > 12 dann“ mit „sage Du darfst schon selbst entscheiden.“, und im Sonst-Zweig „sage Frag lieber jemanden.“. Den Vergleich `>` findest du bei den grünen Bausteinen unter „Operatoren“ - zieh ihn in das sechseckige Loch.",
+            "en": "In Scratch: \"ask How old are you? and wait\", below it \"if answer > 12 then\" with \"say You can decide for yourself.\", and in the else branch \"say Better ask someone.\". You find the comparison `>` among the green Operator blocks - drag it into the hexagonal slot."
+          }
+        }
+      ]
+    },
+    {
+      "key": "wahrheitswerte",
+      "title": {
+        "de": "Wahr oder falsch, dazwischen nichts",
+        "en": "True or false, nothing in between"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Was in der Bedingung steht, hat immer genau zwei mögliche Ergebnisse: wahr oder falsch. Kein „ein bisschen“, kein „kommt darauf an“. Diese Sorte Wert heißt Wahrheitswert, und in Scratch erkennst du sie an der sechseckigen Form.",
+            "en": "Whatever is in the condition always has exactly two possible results: true or false. No \"a little bit\", no \"it depends\". That kind of value is called a boolean, and in Scratch you recognise it by its hexagonal shape."
+          }
+        },
+        {
+          "kind": "table",
+          "head": [
+            {
+              "de": "Vergleich",
+              "en": "Comparison"
+            },
+            {
+              "de": "Liest sich als",
+              "en": "Reads as"
+            },
+            {
+              "de": "Beispiel, das wahr ist",
+              "en": "Example that is true"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "de": "=",
+                "en": "="
+              },
+              {
+                "de": "ist gleich",
+                "en": "is equal to"
+              },
+              {
+                "de": "leben = 0",
+                "en": "lives = 0"
+              }
+            ],
+            [
+              {
+                "de": "<",
+                "en": "<"
+              },
+              {
+                "de": "ist kleiner als",
+                "en": "is less than"
+              },
+              {
+                "de": "zeit < 10",
+                "en": "time < 10"
+              }
+            ],
+            [
+              {
+                "de": ">",
+                "en": ">"
+              },
+              {
+                "de": "ist größer als",
+                "en": "is greater than"
+              },
+              {
+                "de": "punkte > 100",
+                "en": "score > 100"
+              }
+            ],
+            [
+              {
+                "de": "wird berührt?",
+                "en": "touching?"
+              },
+              {
+                "de": "berührt gerade etwas",
+                "en": "is touching something"
+              },
+              {
+                "de": "wird Rand berührt?",
+                "en": "touching edge?"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Zwei Bedingungen lassen sich verknüpfen. „und“ ist nur wahr, wenn beide wahr sind - streng. „oder“ ist schon wahr, wenn eine von beiden wahr ist - großzügig. Und „nicht“ dreht um, was drinsteht. Mit diesen drei Wörtern lässt sich fast jede Regel ausdrücken, die dir einfällt.",
+            "en": "Two conditions can be combined. \"and\" is only true when both are true - strict. \"or\" is already true when one of them is true - generous. And \"not\" reverses whatever is inside. With these three words you can express almost any rule you can think of."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "warn",
+          "icon": "⚖️",
+          "title": {
+            "de": "Der Klassiker: und wo oder gemeint war",
+            "en": "The classic: and where or was meant"
+          },
+          "text": {
+            "de": "„Ich fahre mit, wenn Lea und Ben mitkommen“ heißt: Kommt nur Lea, fahre ich nicht. Wolltest du das? Wenn du eigentlich meintest „einer von beiden reicht mir“, brauchst du „oder“. In Programmen wird dieser Unterschied ständig verwechselt - und niemand merkt es, bis der eine seltene Fall eintritt.",
+            "en": "\"I'll come along if Lea and Ben come too\" means: if only Lea comes, I do not. Did you mean that? If you actually meant \"either of them is enough for me\", you need \"or\". In programs this difference gets confused constantly - and nobody notices until the one rare case turns up."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "🎮",
+          "title": {
+            "de": "Zwei Bedingungen zugleich",
+            "en": "Two conditions at once"
+          },
+          "text": {
+            "de": "Bau in Scratch: „falls punkte > 10 und leben > 0 dann sage Weiter so!“. Zieh dafür den grünen „und“-Baustein in das Sechseck und in seine beiden Löcher je einen Vergleich. Ändere die Werte deiner Variablen von Hand, indem du auf der Bühne mit der rechten Maustaste auf die Anzeige klickst - so testest du beide Fälle in Sekunden.",
+            "en": "Build this in Scratch: \"if score > 10 and lives > 0 then say Keep it up!\". Drag the green \"and\" block into the hexagon and put a comparison into each of its two slots. Change your variables by hand by right-clicking their display on the stage - that way you test both cases in seconds."
+          }
+        }
+      ]
+    },
+    {
+      "key": "wer-die-regel-schreibt",
+      "title": {
+        "de": "Wer die Bedingung aufgeschrieben hat",
+        "en": "Who wrote the condition"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Ein Programm entscheidet nicht. Es prüft eine Bedingung, die vorher jemand hingeschrieben hat, und tut dann das eine oder das andere. Der Satz klingt harmlos und ist die wichtigste Erkenntnis dieses Moduls.",
+            "en": "A program does not decide. It checks a condition somebody wrote down beforehand, and then does one thing or the other. That sentence sounds harmless and is the most important insight in this module."
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "de": "Ein Spiel entscheidet, ob du gewonnen hast - jemand hat festgelegt, ab wie vielen Punkten das gilt.",
+              "en": "A game decides whether you have won - someone set how many points that takes."
+            },
+            {
+              "de": "Ein Fahrkartenautomat entscheidet, ob du ermäßigt fahren darfst - jemand hat eine Altersgrenze eingetippt.",
+              "en": "A ticket machine decides whether you get the reduced fare - someone typed in an age limit."
+            },
+            {
+              "de": "Eine App entscheidet, welches Video du als Nächstes siehst - jemand hat aufgeschrieben, was dabei zählt.",
+              "en": "An app decides which video you see next - someone wrote down what counts for that."
+            },
+            {
+              "de": "Ein Rauchmelder entscheidet, wann er losgeht - jemand hat einen Schwellenwert gewählt, nicht zu hoch und nicht zu tief.",
+              "en": "A smoke alarm decides when to go off - someone chose a threshold, not too high and not too low."
+            }
+          ]
+        },
+        {
+          "kind": "callout",
+          "tone": "fact",
+          "icon": "📏",
+          "title": {
+            "de": "Die Grenze ist eine Entscheidung, keine Naturkonstante",
+            "en": "The limit is a decision, not a law of nature"
+          },
+          "text": {
+            "de": "„Ermäßigt bis 17 Jahre“ könnte genauso gut 16 oder 18 heißen. Der Unterschied für den Einzelnen ist erheblich, und niemand kann bei der Bedingung nachfragen - man kann nur den fragen, der sie aufgeschrieben hat. Wer versteht, dass hinter jedem `falls` ein Mensch steht, weiß, an wen man sich wendet.",
+            "en": "\"Reduced fare up to 17\" could just as well be 16 or 18. For the individual the difference is considerable, and you cannot argue with the condition - only with the person who wrote it. Whoever understands that behind every `if` there is a human being knows whom to turn to."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Deshalb ist die Verzweigung mehr als ein Baustein. Sie ist die Stelle, an der aus einer Meinung eine Regel wird, die dann millionenfach ohne Nachfragen angewendet wird. Wenn du eine schreibst, entscheide bewusst, was drinstehen soll.",
+            "en": "That is why the branch is more than a block. It is the point at which an opinion becomes a rule that is then applied a million times without anyone being asked. When you write one, decide deliberately what should be in it."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "Scratch - Operatoren ausprobieren",
+                "en": "Scratch - try out operators"
+              },
+              "url": "https://scratch.mit.edu"
+            },
+            {
+              "label": {
+                "de": "inf-schule.de: Fallunterscheidungen",
+                "en": "inf-schule.de: conditional branching"
+              },
+              "url": "https://www.inf-schule.de/imperative-programmierung"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": {
+        "de": "1. Lückentext: prüfen und verzweigen",
+        "en": "1. Fill in the blanks: checking and branching"
+      },
+      "intro": {
+        "de": "Setze die fehlenden Wörter ein.",
+        "en": "Fill in the missing words."
+      },
+      "text": {
+        "de": "Ein Baustein, der etwas nur unter einer Voraussetzung ausführt, heißt ___. Kommt ein Sonst-Zweig dazu, spricht man von einer ___; dann wird genau ___ Weg gegangen. Was in der Bedingung geprüft wird, ergibt immer wahr oder falsch - eine solche Größe nennt man ___. In Scratch erkennst du sie an ihrer ___ Form. Zwei Bedingungen lassen sich mit ___ verknüpfen, wenn beide gelten müssen, und mit ___, wenn eine genügt. Das Wort ___ dreht eine Bedingung um. Hinter jedem solchen Vergleich steht am Ende ein ___, der die Grenze festgelegt hat.",
+        "en": "A block that only runs something under a certain condition is called a ___. Add an else branch and you speak of a ___; then exactly ___ path is taken. Whatever is checked in the condition always yields true or false - such a value is called a ___. In Scratch you recognise it by its ___ shape. Two conditions can be joined with ___ when both must hold, and with ___ when one is enough. The word ___ reverses a condition. Behind every such comparison there is ultimately a ___ who set the limit."
+      }
+    },
+    {
+      "kind": "compare",
+      "title": {
+        "de": "2. Ausprobieren und vergleichen: und gegen oder",
+        "en": "2. Try it and compare: and versus or"
+      },
+      "intro": {
+        "de": "Bau beide Fassungen in Scratch und teste alle vier Fälle.",
+        "en": "Build both versions in Scratch and test all four cases."
+      },
+      "text": {
+        "de": "Bau ein Programm mit zwei Variablen, `punkte` und `leben`. Fassung A prüft „falls punkte > 10 und leben > 0“, Fassung B prüft „falls punkte > 10 oder leben > 0“. Setz die beiden Variablen nacheinander auf alle vier Kombinationen: beide erfüllt, nur die erste, nur die zweite, keine. Halte für jede Kombination fest, was Fassung A und was Fassung B tut. Erkläre danach, welche Fassung du für eine Bonusrunde in einem Spiel nehmen würdest und welche für eine Warnung, dass es gleich vorbei ist.",
+        "en": "Build a program with two variables, `score` and `lives`. Version A checks \"if score > 10 and lives > 0\", version B checks \"if score > 10 or lives > 0\". Set the two variables in turn to all four combinations: both met, only the first, only the second, neither. Record for each combination what version A does and what version B does. Then explain which version you would use for a bonus round in a game and which for a warning that it is about to end."
+      },
+      "hint": {
+        "de": "Schreib dir eine kleine Tabelle mit vier Zeilen auf, bevor du testest - und rate zuerst, was herauskommt.",
+        "en": "Draw yourself a small four-row table before you test - and guess the outcome first."
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": {
+        "de": "3. Zum Nachdenken: Regeln, die sich nicht pressen lassen",
+        "en": "3. Something to think about: rules that will not be squeezed"
+      },
+      "intro": {
+        "de": "Auf diese Frage gibt es keine richtige Antwort.",
+        "en": "There is no right answer to this one."
+      },
+      "text": {
+        "de": "Eine Bedingung kennt nur wahr und falsch. „Bist du erwachsen?“ lässt sich damit beantworten, sobald jemand ein Alter festlegt. „Hast du dich angestrengt?“ nicht. „Ist dieser Kommentar verletzend?“ auch nicht - und trotzdem entscheiden Programme genau darüber, millionenfach am Tag. Denk an eine Regel aus deinem Alltag, bei der ein Mensch anders urteilt als jede feste Grenze es könnte. Was ginge verloren, wenn man sie in ein `falls` pressen müsste - und was gewönne man vielleicht sogar?",
+        "en": "A condition knows only true and false. \"Are you an adult?\" can be answered as soon as someone fixes an age. \"Did you make an effort?\" cannot. \"Is this comment hurtful?\" cannot either - and yet programs decide exactly that, millions of times a day. Think of a rule from your own life where a human judges differently from any fixed limit. What would be lost if it had to be squeezed into an `if` - and what might even be gained?"
+      }
+    }
+  ]
+}

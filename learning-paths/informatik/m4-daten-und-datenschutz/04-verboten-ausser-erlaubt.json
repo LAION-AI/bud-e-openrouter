@@ -1,0 +1,239 @@
+{
+  "key": "verboten-ausser-erlaubt",
+  "title": {
+    "de": "Verboten, außer erlaubt",
+    "en": "Forbidden unless allowed"
+  },
+  "summary": {
+    "de": "Vier Regeln, die der Gesetzgeber aus der Macht des Verknüpfens gezogen hat - und warum sie andersherum funktionieren, als man denkt.",
+    "en": "Four rules lawmakers drew from the power of combining - and why they work the other way round from what you would expect."
+  },
+  "icon": "⚖️",
+  "accent": "rose",
+  "minutes": 14,
+  "screens": [
+    {
+      "key": "umgekehrter-grundsatz",
+      "title": {
+        "de": "Der Grundsatz steht auf dem Kopf",
+        "en": "The principle stands on its head"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Normalerweise gilt: Erlaubt ist, was nicht verboten ist. Beim Umgang mit personenbezogenen Daten gilt in der Europäischen Union das Gegenteil - und das ist keine Kleinigkeit, sondern der Kern des Ganzen.",
+            "en": "Normally the rule is: whatever is not forbidden is allowed. For handling personal data, the European Union has the opposite - and that is not a detail but the heart of the matter."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Jede Verarbeitung personenbezogener Daten ist grundsätzlich verboten. Erlaubt wird sie nur, wenn ein Gesetz sie ausdrücklich zulässt oder die betroffene Person eingewilligt hat. Fachleute nennen das Verbot mit Erlaubnisvorbehalt. Wer Daten verarbeiten will, muss also begründen, warum er darf - nicht du, warum er nicht soll.",
+            "en": "Any processing of personal data is forbidden in principle. It becomes permitted only if a law expressly allows it or the person concerned has consented. Specialists call this prohibition subject to permission. So whoever wants to process data must justify why they may - not you why they should not."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "fact",
+          "icon": "🔄",
+          "title": {
+            "de": "Warum diese Richtung entscheidend ist",
+            "en": "Why this direction is decisive"
+          },
+          "text": {
+            "de": "Müsstest du jeder einzelnen Verarbeitung widersprechen, hättest du keine Chance - niemand liest hundert Datenschutzerklärungen im Monat. Weil es umgekehrt läuft, liegt die Arbeit bei dem, der etwas will. Das ist der Unterschied zwischen einem Recht auf dem Papier und einem, das im Alltag trägt.",
+            "en": "If you had to object to every single act of processing you would have no chance - nobody reads a hundred privacy notices a month. Because it runs the other way, the work sits with whoever wants something. That is the difference between a right on paper and one that carries in daily life."
+          }
+        }
+      ]
+    },
+    {
+      "key": "vier-regeln",
+      "title": {
+        "de": "Vier Regeln, die daraus folgen",
+        "en": "Four rules that follow from it"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Aus diesem Grundsatz ergeben sich vier Prinzipien, die überall dort gelten, wo Daten über Menschen verarbeitet werden - in der Schule genauso wie bei einem Weltkonzern.",
+            "en": "From this principle follow four rules that apply wherever data about people are processed - at school just as at a global corporation."
+          }
+        },
+        {
+          "kind": "steps",
+          "items": [
+            {
+              "title": { "de": "Zweckbindung", "en": "Purpose limitation" },
+              "text": {
+                "de": "Daten, die für einen Zweck erhoben wurden, dürfen nicht einfach für einen anderen benutzt werden. Deine Adresse für die Lieferung ist nicht deine Adresse für Werbung. Die Schule darf deine Fehlzeiten für das Zeugnis führen - aber nicht, um sie einer Versicherung zu verkaufen.",
+                "en": "Data collected for one purpose may not simply be used for another. Your address for delivery is not your address for advertising. The school may keep your absences for your report - but not to sell them to an insurer."
+              }
+            },
+            {
+              "title": { "de": "Datensparsamkeit", "en": "Data minimisation" },
+              "text": {
+                "de": "Erhoben werden darf nur, was für den Zweck nötig ist. Ein Taschenrechner braucht keinen Standort. Ein Formular für einen Bibliotheksausweis braucht nicht deinen Beruf. Bei jedem Feld gilt die Frage: Wofür genau?",
+                "en": "Only what is necessary for the purpose may be collected. A calculator does not need your location. A library card form does not need your occupation. For every field the question is: for what exactly?"
+              }
+            },
+            {
+              "title": { "de": "Transparenz", "en": "Transparency" },
+              "text": {
+                "de": "Du hast das Recht zu erfahren, was über dich gespeichert ist - von jeder Stelle, kostenlos, in verständlicher Form. Nicht auf Antrag mit Begründung, sondern einfach so, weil du es bist.",
+                "en": "You have the right to learn what is stored about you - from every organisation, free of charge, in comprehensible form. Not on application with justification, but simply because it is you."
+              }
+            },
+            {
+              "title": { "de": "Richtigkeit", "en": "Accuracy" },
+              "text": {
+                "de": "Was falsch ist, muss berichtigt werden. Das klingt selbstverständlich und ist es nicht: Ein falscher Eintrag wandert durch Kopien weiter und begegnet dir Jahre später an einer Stelle, an der du ihn nicht erwartest.",
+                "en": "What is wrong must be corrected. That sounds obvious and is not: a wrong entry travels onward through copies and meets you years later somewhere you do not expect it."
+              }
+            }
+          ]
+        },
+        {
+          "kind": "callout",
+          "tone": "note",
+          "icon": "✍️",
+          "title": {
+            "de": "Und die Einwilligung",
+            "en": "And consent"
+          },
+          "text": {
+            "de": "Damit eine Einwilligung zählt, muss sie freiwillig sein, konkret benennen wofür, und man muss sie zurücknehmen können. Ein Kreuz bei „Ich akzeptiere alles“ erfüllt das oft nicht. Und: Ohne Einwilligung darf ein Dienst dir nicht einfach die Nutzung verweigern, wenn er die Daten für seine eigentliche Leistung gar nicht braucht.",
+            "en": "For consent to count, it must be freely given, name specifically what for, and be withdrawable. A tick next to \"I accept everything\" often does not meet that. And: without consent a service may not simply refuse you use of it, if it does not need the data for its actual function at all."
+          }
+        }
+      ]
+    },
+    {
+      "key": "die-schalter",
+      "title": {
+        "de": "Die Schalter, die Datenschutz heißen",
+        "en": "The switches called privacy settings"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Jeder Dienst hat einen Bereich namens Datenschutzeinstellungen. Der Name verspricht mehr, als die meisten davon halten - und der Unterschied lässt sich in zehn Minuten selbst prüfen.",
+            "en": "Every service has an area called privacy settings. The name promises more than most of them deliver - and the difference can be checked yourself in ten minutes."
+          }
+        },
+        {
+          "kind": "table",
+          "head": [
+            { "de": "Sorte Schalter", "en": "Kind of switch" },
+            { "de": "Wer sieht danach weniger", "en": "Who sees less afterwards" },
+            { "de": "Beispiel", "en": "Example" }
+          ],
+          "rows": [
+            [
+              { "de": "Sichtbarkeit", "en": "Visibility" },
+              { "de": "Andere Nutzer", "en": "Other users" },
+              { "de": "„Wer darf mein Profil sehen“", "en": "\"Who can see my profile\"" }
+            ],
+            [
+              { "de": "Verarbeitung", "en": "Processing" },
+              { "de": "Der Anbieter selbst", "en": "The provider itself" },
+              { "de": "„Aktivitäten außerhalb der App“", "en": "\"Activity off the app\"" }
+            ],
+            [
+              { "de": "Werbung", "en": "Advertising" },
+              { "de": "Dritte - manchmal", "en": "Third parties - sometimes" },
+              { "de": "„Personalisierte Anzeigen“", "en": "\"Personalised ads\"" }
+            ]
+          ]
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "⚙️",
+          "title": {
+            "de": "Prüf drei Schalter",
+            "en": "Check three switches"
+          },
+          "text": {
+            "de": "Öffne die Datenschutzeinstellungen eines Dienstes, den du benutzt, und such dir drei Schalter aus. Frag bei jedem: Schützt er meine Daten *vor dem Anbieter* - oder nur davor, dass andere Nutzer sie sehen? Zähl danach, wie viele von deinen drei in die erste Kategorie fielen. Bei den meisten Diensten ist es keiner oder einer.",
+            "en": "Open the privacy settings of a service you use and pick three switches. For each, ask: does it protect my data *from the provider* - or only from other users seeing them? Then count how many of your three fell into the first category. With most services it is none or one."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Das ist kein Grund zur Empörung, sondern eine Beobachtung, die man einmal gemacht haben sollte. Ein Anbieter hat kein Interesse daran, sich selbst auszusperren - dafür sind die Regeln da. Und dafür gibt es das Auskunftsrecht, um das es im nächsten Pfad geht.",
+            "en": "That is no reason for outrage but an observation worth making once. A provider has no interest in locking itself out - that is what the rules are for. And that is what the right of access is for, which the next path is about."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": { "de": "Datenschutz-Grundverordnung, amtlicher Text", "en": "General Data Protection Regulation, official text" },
+              "url": "https://eur-lex.europa.eu/eli/reg/2016/679/oj"
+            },
+            {
+              "label": { "de": "Der Hamburgische Beauftragte für Datenschutz und Informationsfreiheit", "en": "Hamburg Commissioner for Data Protection and Freedom of Information" },
+              "url": "https://datenschutz-hamburg.de"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": {
+        "de": "1. Lückentext: die Regeln der DSGVO",
+        "en": "1. Fill in the blanks: the rules of the GDPR"
+      },
+      "intro": {
+        "de": "Setze die fehlenden Wörter ein.",
+        "en": "Fill in the missing words."
+      },
+      "text": {
+        "de": "In der Europäischen Union ist jede Verarbeitung personenbezogener Daten grundsätzlich ___, außer ein Gesetz erlaubt sie oder die Person hat ___. Fachleute nennen das Verbot mit ___. Daten dürfen nur für den Zweck genutzt werden, für den sie erhoben wurden - das Prinzip der ___. Erhoben werden darf nur das Nötige; das nennt man ___. Jeder darf erfahren, was über ihn gespeichert ist, und zwar ___ und in verständlicher Form - das Prinzip der ___. Was falsch gespeichert ist, muss ___ werden. Eine Einwilligung zählt nur, wenn sie ___ ist und sich zurücknehmen lässt. Viele Schalter in den Einstellungen schützen dabei nicht vor dem ___, sondern nur vor anderen Nutzern.",
+        "en": "In the European Union any processing of personal data is in principle ___, unless a law allows it or the person has ___. Specialists call this prohibition subject to ___. Data may only be used for the purpose they were collected for - the principle of ___. Only what is necessary may be collected; that is called ___. Everyone may learn what is stored about them, ___ and in comprehensible form - the principle of ___. Whatever is stored wrongly must be ___. Consent only counts if it is ___ and can be withdrawn. Many switches in the settings do not protect against the ___ but only against other users."
+      }
+    },
+    {
+      "kind": "compare",
+      "title": {
+        "de": "2. Ausprobieren und vergleichen: drei Schalter, zwei Sorten",
+        "en": "2. Try it and compare: three switches, two kinds"
+      },
+      "intro": {
+        "de": "Sieh dir einen Dienst an, den du wirklich benutzt.",
+        "en": "Look at a service you actually use."
+      },
+      "text": {
+        "de": "Öffne die Datenschutzeinstellungen eines Dienstes deiner Wahl und notiere drei Schalter mit ihrer genauen Bezeichnung. Ordne jeden einer der beiden Sorten zu: Schützt er deine Daten vor anderen Nutzern oder vor dem Anbieter selbst? Erkläre danach anhand deiner Liste, ob die Bezeichnung „Datenschutzeinstellungen“ für diese Seite zutreffend oder irreführend ist. Setze dein Ergebnis dabei ausdrücklich zum Prinzip der Zweckbindung in Beziehung: Welcher deiner drei Schalter hätte damit zu tun, welcher nicht?",
+        "en": "Open the privacy settings of a service of your choice and note three switches with their exact wording. Assign each to one of two kinds: does it protect your data from other users or from the provider itself? Then, using your list, explain whether the label \"privacy settings\" is apt or misleading for that page. Relate your finding explicitly to the principle of purpose limitation: which of your three switches would have to do with it, and which would not?"
+      },
+      "hint": {
+        "de": "Frag bei jedem Schalter: Wer genau sieht nach dem Umlegen weniger als vorher?",
+        "en": "For each switch ask: who exactly sees less after you flip it than before?"
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": {
+        "de": "3. Zum Nachdenken: was kostenlos wirklich heißt",
+        "en": "3. Something to think about: what free really means"
+      },
+      "intro": {
+        "de": "Auf diese Frage gibt es keine richtige Antwort.",
+        "en": "There is no right answer to this one."
+      },
+      "text": {
+        "de": "Die meisten Dienste, die du täglich nutzt, kosten kein Geld. Trotzdem arbeiten dort Tausende Menschen in teuren Gebäuden mit riesigen Rechenzentren. Irgendetwas muss dieses Geld hereinbringen. Überlege, was du stattdessen gibst - und ob du das für einen fairen Tausch hältst. Und dann die schwierigere Frage: Würdest du für einen dieser Dienste Geld zahlen, wenn er dafür nichts über dich sammelt? Wie viel, und was müsste er dir dafür glaubhaft versichern?",
+        "en": "Most of the services you use daily cost no money. Yet thousands of people work there in expensive buildings with huge data centres. Something must be bringing that money in. Think about what you give instead - and whether you consider that a fair exchange. And then the harder question: would you pay money for one of these services if in return it collected nothing about you? How much, and what would it have to credibly assure you of?"
+      }
+    }
+  ]
+}

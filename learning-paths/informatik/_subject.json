@@ -1,0 +1,13 @@
+{
+  "key": "informatik",
+  "title": {
+    "de": "Informatik",
+    "en": "Computer science"
+  },
+  "description": {
+    "de": "Wie Rechner arbeiten, wie sie miteinander reden und was das für uns bedeutet.",
+    "en": "How computers work, how they talk to each other and what that means for us."
+  },
+  "icon": "💻",
+  "accent": "indigo"
+}

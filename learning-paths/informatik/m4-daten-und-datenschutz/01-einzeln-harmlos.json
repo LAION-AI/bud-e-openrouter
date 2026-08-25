@@ -1,0 +1,252 @@
+{
+  "key": "einzeln-harmlos",
+  "title": {
+    "de": "Einzeln harmlos",
+    "en": "Harmless on their own"
+  },
+  "summary": {
+    "de": "Wie drei völlig belanglose Angaben zusammen genügen, um dich eindeutig zu bestimmen.",
+    "en": "How three utterly trivial details together are enough to pin you down exactly."
+  },
+  "icon": "🧩",
+  "accent": "rose",
+  "minutes": 13,
+  "screens": [
+    {
+      "key": "drei-angaben",
+      "title": {
+        "de": "Drei Angaben, und du bist gefunden",
+        "en": "Three details, and you are found"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Deine Postleitzahl verrät nichts über dich - Zehntausende teilen sie. Dein Geburtsdatum auch nicht, den Tag haben Millionen. Dein Geschlecht schon gar nicht. Drei völlig harmlose Angaben. Zusammen reichen sie, um die meisten Menschen eindeutig zu bestimmen.",
+            "en": "Your postcode says nothing about you - tens of thousands share it. Nor does your date of birth; millions have that day. Your gender least of all. Three entirely harmless details. Together they are enough to identify most people uniquely."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Rechne es nach: In einem Postleitzahlgebiet leben vielleicht 20 000 Menschen. Von denen haben ungefähr 20 000 geteilt durch 365 mal, sagen wir, 15 Jahrgänge - also etwa vier - genau dein Geburtsdatum. Die Hälfte davon hat dein Geschlecht. Bleiben zwei Menschen. Eine weitere Angabe, und es bist nur noch du.",
+            "en": "Do the arithmetic: a postcode area might hold 20,000 people. Of those, roughly 20,000 divided by 365 times, say, 15 year groups - about four - share your exact date of birth. Half of them share your gender. Two people remain. One more detail and it is only you."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "fact",
+          "icon": "🔑",
+          "title": {
+            "de": "Der Kern des ganzen Themas",
+            "en": "The heart of the whole subject"
+          },
+          "text": {
+            "de": "Der Wert einer Angabe hängt nicht an ihr selbst, sondern daran, was sonst noch bekannt ist. Deshalb ist „was ist daran schon Schlimmes?“ bei einzelnen Daten fast immer die falsche Frage. Die richtige lautet: Was ergibt sie zusammen mit dem, was ohnehin schon vorliegt?",
+            "en": "The value of a detail lies not in itself but in what else is known. Which is why \"what harm can it do?\" is almost always the wrong question about a single piece of data. The right one is: what does it add up to alongside what is already on file?"
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "🧮",
+          "title": {
+            "de": "Rechnet es für eure Klasse durch",
+            "en": "Work it out for your class"
+          },
+          "text": {
+            "de": "Wie viele in eurer Klasse haben denselben Anfangsbuchstaben im Vornamen? Wie viele davon fahren mit demselben Bus? Wie viele davon haben ein Geschwisterkind? Nach drei Fragen bleibt fast immer genau eine Person übrig - ohne dass jemand einen Namen genannt hätte.",
+            "en": "How many in your class share the same initial letter of their first name? How many of those take the same bus? How many of those have a sibling? After three questions almost always exactly one person is left - without anyone having said a name."
+          }
+        }
+      ]
+    },
+    {
+      "key": "was-alles-dazugehoert",
+      "title": {
+        "de": "Viel mehr, als die meisten denken",
+        "en": "Far more than most people think"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Personenbezogene Daten sind alle Angaben, die sich einer bestimmten Person zuordnen lassen. Das Wort klingt nach Name und Adresse - gemeint ist sehr viel mehr.",
+            "en": "Personal data means all details that can be assigned to a particular person. The phrase sounds like name and address - a great deal more is meant."
+          }
+        },
+        {
+          "kind": "table",
+          "head": [
+            { "de": "Was", "en": "What" },
+            { "de": "Woher es kommt", "en": "Where it comes from" },
+            { "de": "Was es verrät", "en": "What it reveals" }
+          ],
+          "rows": [
+            [
+              { "de": "Standortverlauf", "en": "Location history" },
+              { "de": "Läuft im Hintergrund mit", "en": "Runs in the background" },
+              { "de": "Wohnort, Schule, Arztbesuche", "en": "Home, school, doctor's visits" }
+            ],
+            [
+              { "de": "Uhrzeiten der Nutzung", "en": "Times of use" },
+              { "de": "Jede App merkt sie sich", "en": "Every app records them" },
+              { "de": "Schlafrhythmus, Prüfungsstress", "en": "Sleep patterns, exam stress" }
+            ],
+            [
+              { "de": "Verweildauer bei einem Video", "en": "How long you stay on a video" },
+              { "de": "Wird auf die Sekunde gemessen", "en": "Measured to the second" },
+              { "de": "Interessen, Stimmung", "en": "Interests, mood" }
+            ],
+            [
+              { "de": "Gerätenummer", "en": "Device identifier" },
+              { "de": "Steckt in jedem Handy", "en": "Sits in every phone" },
+              { "de": "Erkennt dich ohne Namen wieder", "en": "Recognises you with no name" }
+            ]
+          ]
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "📱",
+          "title": {
+            "de": "Sieh nach, was dein Handy weiß",
+            "en": "Look at what your phone knows"
+          },
+          "text": {
+            "de": "In den Einstellungen jedes Handys gibt es einen Standortverlauf. Öffne ihn. Bei den meisten steht dort auf den Tag genau, wo sie in den letzten Monaten waren, mit Uhrzeit. Diese Liste hat niemand bewusst angelegt - sie ist entstanden, weil niemand widersprochen hat.",
+            "en": "In every phone's settings there is a location history. Open it. For most people it says to the day, with times, where they were over the last months. Nobody consciously created this list - it came into being because nobody objected."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Der Unterschied ist entscheidend: Was du angibst, weißt du. Was nebenbei anfällt, weißt du meistens nicht. Und gerade das Zweite ist genauer, ehrlicher und aufschlussreicher als alles, was du je in ein Formular schreiben würdest.",
+            "en": "The difference matters: what you provide, you know about. What accumulates on the side, you usually do not. And it is precisely the second kind that is more accurate, more honest and more revealing than anything you would ever write in a form."
+          }
+        }
+      ]
+    },
+    {
+      "key": "spuren-die-bleiben",
+      "title": {
+        "de": "Spuren, die man nicht wieder loswird",
+        "en": "Traces you cannot take back"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Ein Gespräch verklingt. Ein Zettel geht verloren. Ein Datensatz nicht - er wird kopiert, gesichert, weitergegeben und liegt in zehn Jahren noch da, in einer Form, die niemand mehr überblickt.",
+            "en": "A conversation fades. A note gets lost. A data record does not - it is copied, backed up, passed on, and in ten years it is still there, in a form nobody oversees any more."
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "de": "Ein Foto, das gelöscht wurde, kann in einer Sicherungskopie weiterleben - und die gehört jemand anderem.",
+              "en": "A deleted photo can live on in a backup - and that backup belongs to somebody else."
+            },
+            {
+              "de": "Ein Konto, das man schließt, löscht selten alles: Was weitergegeben wurde, ist weg aus deiner Reichweite.",
+              "en": "Closing an account rarely deletes everything: whatever was passed on is beyond your reach."
+            },
+            {
+              "de": "Etwas, das heute belanglos ist, kann es in fünf Jahren nicht mehr sein - Menschen ändern sich, Regeln auch.",
+              "en": "Something trivial today may not be in five years - people change, and so do rules."
+            },
+            {
+              "de": "Daten über dich entstehen auch, wenn andere etwas hochladen. Auf dem Gruppenfoto bist du mit drauf.",
+              "en": "Data about you also arises when others upload something. You are in the group photo too."
+            }
+          ]
+        },
+        {
+          "kind": "callout",
+          "tone": "note",
+          "icon": "⏳",
+          "title": {
+            "de": "Warum das kein Grund zur Panik ist",
+            "en": "Why this is no reason to panic"
+          },
+          "text": {
+            "de": "Es geht in diesem Modul nicht darum, dir Angst zu machen oder dir zu raten, offline zu gehen. Es geht darum, dass du weißt, was passiert - und dann selbst entscheidest. Wer die Regeln kennt, kann bewusst zustimmen. Wer sie nicht kennt, stimmt trotzdem zu, nur ohne es zu merken.",
+            "en": "This module is not about frightening you or advising you to go offline. It is about your knowing what happens - and then deciding for yourself. Whoever knows the rules can agree deliberately. Whoever does not know them agrees anyway, just without noticing."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Genau deshalb kommen in den nächsten Pfaden erst die Technik und dann die Regeln: Wie eine Datenbank überhaupt Angaben zusammenführt, was eine Abfrage kann - und was der Gesetzgeber daraus gefolgert hat.",
+            "en": "That is exactly why the next paths bring first the technology and then the rules: how a database brings details together at all, what a query can do - and what lawmakers concluded from it."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": { "de": "Der Hamburgische Beauftragte für Datenschutz und Informationsfreiheit", "en": "Hamburg Commissioner for Data Protection and Freedom of Information" },
+              "url": "https://datenschutz-hamburg.de"
+            },
+            {
+              "label": { "de": "Datenschutz-Grundverordnung, amtlicher Text", "en": "General Data Protection Regulation, official text" },
+              "url": "https://eur-lex.europa.eu/eli/reg/2016/679/oj"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": {
+        "de": "1. Lückentext: einzeln und zusammen",
+        "en": "1. Fill in the blanks: alone and together"
+      },
+      "intro": {
+        "de": "Setze die fehlenden Wörter ein.",
+        "en": "Fill in the missing words."
+      },
+      "text": {
+        "de": "Alle Angaben, die sich einer bestimmten Person zuordnen lassen, heißen ___. Einzeln sind Postleitzahl, ___ und Geschlecht harmlos; zusammen machen sie die meisten Menschen ___. Der Wert einer Angabe hängt also davon ab, was ___ noch bekannt ist. Neben dem, was man selbst angibt, entsteht sehr viel nebenbei: der ___, die Uhrzeiten der Nutzung oder die ___ bei einem Video. Solche Angaben sind oft ___ als alles, was man freiwillig in ein Formular schreibt. Anders als ein Gespräch verklingt ein ___ nicht, sondern wird kopiert und weitergegeben. Wer die Regeln kennt, kann bewusst ___; wer sie nicht kennt, tut es trotzdem, nur ohne es zu ___.",
+        "en": "All details that can be assigned to a particular person are called ___. Individually, postcode, ___ and gender are harmless; together they make most people ___. So the value of a detail depends on what ___ is known. Besides what you supply yourself, a great deal accrues on the side: the ___, the times of use or the ___ on a video. Such details are often ___ than anything you would voluntarily write in a form. Unlike a conversation, a ___ does not fade but is copied and passed on. Whoever knows the rules can deliberately ___; whoever does not know them does it anyway, only without ___ it."
+      }
+    },
+    {
+      "kind": "compare",
+      "title": {
+        "de": "2. Ausprobieren und vergleichen: zwei Angaben über dich",
+        "en": "2. Try it and compare: two details about you"
+      },
+      "intro": {
+        "de": "Sieh zuerst nach, dann urteile.",
+        "en": "Look first, judge afterwards."
+      },
+      "text": {
+        "de": "Öffne den Standortverlauf oder die Nutzungsstatistik auf deinem Gerät und sieh dir an, was dort steht - ohne etwas davon in der Klasse vorzuzeigen. Wähle danach zwei Angaben über dich aus: eine, die du selbst angegeben hast, und eine, die nebenbei entstanden ist. Beschreibe für beide, wie viel man daraus über dich erfahren kann, und begründe, welche der beiden mehr verrät. Erkläre zum Schluss, was sich an deiner Einschätzung ändert, wenn beide Angaben zusammengeführt werden.",
+        "en": "Open the location history or usage statistics on your device and look at what is there - without showing any of it to the class. Then pick two details about yourself: one you supplied yourself and one that accrued on the side. For both, describe how much can be learned about you from it, and justify which of the two reveals more. Finally explain what changes in your assessment if the two are brought together."
+      },
+      "hint": {
+        "de": "Frag dich bei beiden: Könnte ich das abstreiten - und würde es mir jemand glauben?",
+        "en": "For both, ask yourself: could I deny it - and would anyone believe me?"
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": {
+        "de": "3. Zum Nachdenken: was du zurücknehmen würdest",
+        "en": "3. Something to think about: what you would take back"
+      },
+      "intro": {
+        "de": "Auf diese Frage gibt es keine richtige Antwort.",
+        "en": "There is no right answer to this one."
+      },
+      "text": {
+        "de": "Stell dir vor, du dürftest eine einzige Spur aus den letzten Jahren löschen - endgültig, überall, aus jeder Sicherungskopie. Welche wäre es, und warum gerade die? Überlege dabei auch, ob es überhaupt eine gibt, die dich stört, oder ob dich eher der Gedanke stört, dass es sie gibt, ohne dass du es entschieden hast. Und dann die schwierigere Frage: Wärst du bereit, dafür auf eine Bequemlichkeit zu verzichten, die du täglich nutzt?",
+        "en": "Imagine you could delete a single trace from the last few years - permanently, everywhere, from every backup. Which would it be, and why that one? Consider too whether there is any that actually bothers you, or whether what bothers you is the thought that it exists without your having decided. And then the harder question: would you be willing to give up a convenience you use daily in exchange?"
+      }
+    }
+  ]
+}

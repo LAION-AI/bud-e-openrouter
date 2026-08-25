@@ -1,0 +1,11 @@
+{
+  "key": "m3-textbasierte-programmierung",
+  "title": { "de": "Textbasierte Programmierung", "en": "Text-based programming" },
+  "description": {
+    "de": "Dieselben Bausteine noch einmal, diesmal getippt - in Python, direkt im Notizbuch nebenan, und angewendet auf Aufgaben, die ohne Programm mühsam wären.",
+    "en": "The same building blocks again, typed this time - in Python, right in the notebook next door, applied to tasks that would be tedious without a program."
+  },
+  "icon": "🐍",
+  "accent": "indigo",
+  "badge": "M3"
+}

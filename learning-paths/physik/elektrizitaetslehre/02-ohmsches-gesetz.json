@@ -1,6 +1,9 @@
 {
   "key": "ohmsches-gesetz",
-  "title": { "de": "Die eine Formel, die alles zusammenhält", "en": "The one formula that holds it together" },
+  "title": {
+    "de": "Die eine Formel, die alles zusammenhält",
+    "en": "The one formula that holds it together"
+  },
   "summary": {
     "de": "Drei Größen, ein Dreieck, und plötzlich kannst du ausrechnen, warum ein Kabel warm wird und ein Vorwiderstand die LED rettet.",
     "en": "Three quantities, one triangle, and suddenly you can work out why a cable gets warm and how a resistor saves the LED."
@@ -11,7 +14,10 @@
   "screens": [
     {
       "key": "widerstand",
-      "title": { "de": "Was im Weg steht", "en": "What stands in the way" },
+      "title": {
+        "de": "Was im Weg steht",
+        "en": "What stands in the way"
+      },
       "blocks": [
         {
           "kind": "lead",
@@ -30,31 +36,70 @@
         {
           "kind": "table",
           "highlightFirst": true,
-          "caption": { "de": "Größenordnungen, an denen man sich festhalten kann.", "en": "Orders of magnitude to hold on to." },
+          "caption": {
+            "de": "Größenordnungen, an denen man sich festhalten kann.",
+            "en": "Orders of magnitude to hold on to."
+          },
           "head": [
-            { "de": "Was", "en": "What" },
-            { "de": "Ungefähr", "en": "Roughly" }
+            {
+              "de": "Was",
+              "en": "What"
+            },
+            {
+              "de": "Ungefähr",
+              "en": "Roughly"
+            }
           ],
           "rows": [
             [
-              { "de": "1 m Kupferkabel im Haushalt", "en": "1 m household copper cable" },
-              { "de": "0,01 Ω - fast nichts", "en": "0.01 Ω - almost nothing" }
+              {
+                "de": "1 m Kupferkabel im Haushalt",
+                "en": "1 m household copper cable"
+              },
+              {
+                "de": "0,01 Ω - fast nichts",
+                "en": "0.01 Ω - almost nothing"
+              }
             ],
             [
-              { "de": "Glühdraht einer Lampe (heiß)", "en": "filament of a lamp (hot)" },
-              { "de": "einige hundert Ω", "en": "a few hundred Ω" }
+              {
+                "de": "Glühdraht einer Lampe (heiß)",
+                "en": "filament of a lamp (hot)"
+              },
+              {
+                "de": "einige hundert Ω",
+                "en": "a few hundred Ω"
+              }
             ],
             [
-              { "de": "Vorwiderstand für eine LED", "en": "series resistor for an LED" },
-              { "de": "220 Ω", "en": "220 Ω" }
+              {
+                "de": "Vorwiderstand für eine LED",
+                "en": "series resistor for an LED"
+              },
+              {
+                "de": "220 Ω",
+                "en": "220 Ω"
+              }
             ],
             [
-              { "de": "Mensch, feuchte Haut", "en": "human, damp skin" },
-              { "de": "etwa 1 000 Ω", "en": "about 1,000 Ω" }
+              {
+                "de": "Mensch, feuchte Haut",
+                "en": "human, damp skin"
+              },
+              {
+                "de": "etwa 1 000 Ω",
+                "en": "about 1,000 Ω"
+              }
             ],
             [
-              { "de": "Mensch, trockene Haut", "en": "human, dry skin" },
-              { "de": "10 000 bis 100 000 Ω", "en": "10,000 to 100,000 Ω" }
+              {
+                "de": "Mensch, trockene Haut",
+                "en": "human, dry skin"
+              },
+              {
+                "de": "10 000 bis 100 000 Ω",
+                "en": "10,000 to 100,000 Ω"
+              }
             ]
           ]
         },
@@ -62,7 +107,10 @@
           "kind": "callout",
           "tone": "fact",
           "icon": "🌡️",
-          "title": { "de": "Warum eine Glühlampe kalt ganz anders ist", "en": "Why a filament lamp is different when cold" },
+          "title": {
+            "de": "Warum eine Glühlampe kalt ganz anders ist",
+            "en": "Why a filament lamp is different when cold"
+          },
           "text": {
             "de": "Miss den Widerstand einer alten Glühlampe im ausgeschalteten Zustand: erstaunlich klein. Heiß ist er zehnmal so groß. Deshalb fließt im ersten Moment nach dem Einschalten ein Vielfaches - und deshalb gehen Glühlampen fast immer genau beim Einschalten kaputt, nie mittendrin.",
             "en": "Measure the resistance of an old filament lamp while it is off: surprisingly small. Hot, it is ten times larger. So in the first instant after switching on, many times more current flows - and that is why filament lamps almost always fail at the moment of switching on, never in the middle."
@@ -72,7 +120,10 @@
     },
     {
       "key": "die-formel",
-      "title": { "de": "U = R · I", "en": "U = R · I" },
+      "title": {
+        "de": "U = R · I",
+        "en": "U = R · I"
+      },
       "blocks": [
         {
           "kind": "lead",
@@ -85,7 +136,10 @@
           "kind": "callout",
           "tone": "tip",
           "icon": "🔺",
-          "title": { "de": "Das Dreieck: einmal verstehen, nie wieder nachschlagen", "en": "The triangle: understand once, never look up again" },
+          "title": {
+            "de": "Das Dreieck: einmal verstehen, nie wieder nachschlagen",
+            "en": "The triangle: understand once, never look up again"
+          },
           "text": {
             "de": "Schreibe U oben, darunter nebeneinander R und I. Halte zu, was du suchen willst, und lies ab, was stehen bleibt: U zugehalten → R · I. R zugehalten → U geteilt durch I. I zugehalten → U geteilt durch R. Drei Formeln, eine Zeichnung.",
             "en": "Write U on top, and R and I side by side beneath. Cover what you are looking for and read off what remains: cover U → R · I. Cover R → U divided by I. Cover I → U divided by R. Three formulas, one drawing."
@@ -95,21 +149,30 @@
           "kind": "steps",
           "items": [
             {
-              "title": { "de": "Taschenlampe", "en": "Torch" },
+              "title": {
+                "de": "Taschenlampe",
+                "en": "Torch"
+              },
               "text": {
                 "de": "Drei Batterien ergeben 4,5 V, das Lämpchen hat 15 Ω. I = U / R = 4,5 V / 15 Ω = 0,3 A, also 300 Milliampere.",
                 "en": "Three batteries give 4.5 V, the bulb has 15 Ω. I = U / R = 4.5 V / 15 Ω = 0.3 A, that is 300 milliamps."
               }
             },
             {
-              "title": { "de": "LED mit Vorwiderstand", "en": "LED with a series resistor" },
+              "title": {
+                "de": "LED mit Vorwiderstand",
+                "en": "LED with a series resistor"
+              },
               "text": {
                 "de": "Über dem 220-Ω-Widerstand liegen etwa 2 V. I = 2 V / 220 Ω ≈ 0,009 A, also gut 9 mA - genau richtig für eine LED. Ohne den Widerstand wäre der Strom um ein Vielfaches höher, und die LED hielte Sekunden.",
                 "en": "About 2 V sits across the 220 Ω resistor. I = 2 V / 220 Ω ≈ 0.009 A, a good 9 mA - just right for an LED. Without the resistor the current would be many times higher and the LED would last seconds."
               }
             },
             {
-              "title": { "de": "Rückwärts gerechnet", "en": "Worked backwards" },
+              "title": {
+                "de": "Rückwärts gerechnet",
+                "en": "Worked backwards"
+              },
               "text": {
                 "de": "Ein Gerät zieht an 230 V genau 2 A. Dann ist R = U / I = 230 V / 2 A = 115 Ω. Aus zwei gemessenen Größen wird die dritte - immer.",
                 "en": "A device draws exactly 2 A at 230 V. Then R = U / I = 230 V / 2 A = 115 Ω. Two measured quantities give the third - always."
@@ -121,7 +184,10 @@
           "kind": "callout",
           "tone": "warn",
           "icon": "⚠️",
-          "title": { "de": "Es heißt Gesetz, ist aber keins", "en": "It is called a law, but it is not one" },
+          "title": {
+            "de": "Es heißt Gesetz, ist aber keins",
+            "en": "It is called a law, but it is not one"
+          },
           "text": {
             "de": "Das ohmsche Gesetz gilt nicht immer. Bei einer Glühlampe steigt der Widerstand mit der Temperatur, bei einer LED oder einer Diode ist der Zusammenhang völlig krumm. Es ist eine sehr gute Beschreibung für Metalle bei gleichbleibender Temperatur - kein Naturgesetz wie die Erhaltung der Energie.",
             "en": "Ohm's law does not always hold. In a filament lamp the resistance rises with temperature; in an LED or a diode the relationship is thoroughly bent. It is a very good description for metals at constant temperature - not a law of nature like the conservation of energy."
@@ -131,7 +197,10 @@
     },
     {
       "key": "warm",
-      "title": { "de": "Warum Kabel warm werden", "en": "Why cables get warm" },
+      "title": {
+        "de": "Warum Kabel warm werden",
+        "en": "Why cables get warm"
+      },
       "blocks": [
         {
           "kind": "lead",
@@ -151,7 +220,10 @@
           "kind": "callout",
           "tone": "fact",
           "icon": "🔥",
-          "title": { "de": "Derselbe Effekt, zweimal beabsichtigt und einmal nicht", "en": "The same effect, twice on purpose and once not" },
+          "title": {
+            "de": "Derselbe Effekt, zweimal beabsichtigt und einmal nicht",
+            "en": "The same effect, twice on purpose and once not"
+          },
           "text": {
             "de": "Im Wasserkocher gewollt: dort soll die Wendel heiß werden. Im Toaster gewollt. In der Schmelzsicherung gewollt: Der dünne Draht darin ist absichtlich die schwächste Stelle und schmilzt, bevor die Leitung in der Wand zu heiß wird. Im Verlängerungskabel unerwünscht - deshalb sind Kabel dick.",
             "en": "In a kettle it is wanted: the element is supposed to get hot. In a toaster, wanted. In a fuse, wanted: the thin wire inside is deliberately the weakest point and melts before the wiring in the wall gets too hot. In an extension lead, unwanted - which is why cables are thick."
@@ -161,7 +233,10 @@
           "kind": "callout",
           "tone": "try",
           "icon": "🧪",
-          "title": { "de": "Selbst messen, mit dem, was da ist", "en": "Measure it yourself, with what is there" },
+          "title": {
+            "de": "Selbst messen, mit dem, was da ist",
+            "en": "Measure it yourself, with what is there"
+          },
           "text": {
             "de": "Nimm eine Batterie, ein Multimeter und drei verschiedene Widerstände. Miss bei jedem Spannung und Strom und rechne R aus. Dann vergleiche mit dem aufgedruckten Wert. Die Abweichung ist meistens klein - und die Frage, woher sie kommt, ist der Anfang jeder ernsthaften Messtechnik.",
             "en": "Take a battery, a multimeter and three different resistors. Measure voltage and current for each and work out R. Then compare with the printed value. The deviation is usually small - and asking where it comes from is the beginning of all serious measurement."
@@ -171,11 +246,17 @@
           "kind": "sources",
           "items": [
             {
-              "label": { "de": "LEIFIphysik: Ohmsches Gesetz", "en": "LEIFIphysik: Ohm's law" },
+              "label": {
+                "de": "LEIFIphysik: Ohmsches Gesetz",
+                "en": "LEIFIphysik: Ohm's law"
+              },
               "url": "https://www.leifiphysik.de/elektrizitaetslehre/ohmsches-gesetz"
             },
             {
-              "label": { "de": "Physikalisch-Technische Bundesanstalt", "en": "Physikalisch-Technische Bundesanstalt" },
+              "label": {
+                "de": "Physikalisch-Technische Bundesanstalt",
+                "en": "Physikalisch-Technische Bundesanstalt"
+              },
               "url": "https://www.ptb.de"
             }
           ]
@@ -186,8 +267,14 @@
   "exercises": [
     {
       "kind": "cloze",
-      "title": { "de": "1. Lückentext: drei Größen, ein Zusammenhang", "en": "1. Fill in the blanks: three quantities, one relationship" },
-      "intro": { "de": "Setze die fehlenden Wörter und Zahlen ein.", "en": "Fill in the missing words and numbers." },
+      "title": {
+        "de": "1. Lückentext: drei Größen, ein Zusammenhang",
+        "en": "1. Fill in the blanks: three quantities, one relationship"
+      },
+      "intro": {
+        "de": "Setze die fehlenden Wörter und Zahlen ein.",
+        "en": "Fill in the missing words and numbers."
+      },
       "text": {
         "de": "Wie schwer es die Ladung in einem Bauteil hat, sagt der ___, gemessen in ___. Er ist umso größer, je ___ und je dünner ein Kabel ist. Der Zusammenhang zwischen Spannung, Widerstand und Stromstärke heißt ___ und lautet U = ___ · I. Sucht man die Stromstärke, teilt man die Spannung durch den ___. An 4,5 Volt und 15 Ohm fließen also ___ Ampere. Der Zusammenhang gilt nicht immer: Bei einer Glühlampe steigt der Widerstand mit der ___. Fließt Strom durch einen Widerstand, wird er ___ - im Wasserkocher erwünscht, im Verlängerungskabel nicht. Genau darauf beruht auch die ___, deren dünner Draht absichtlich zuerst schmilzt.",
         "en": "How hard the charge has it in a component is given by the ___, measured in ___. It is larger the ___ and the thinner a cable is. The relationship between voltage, resistance and current is called ___ and reads U = ___ · I. To find the current you divide the voltage by the ___. At 4.5 volts and 15 ohms, ___ amperes therefore flow. The relationship does not always hold: in a filament lamp the resistance rises with ___. When current flows through a resistance it gets ___ - wanted in a kettle, not in an extension lead. That is also what a ___ relies on, its thin wire deliberately melting first."
@@ -195,8 +282,14 @@
     },
     {
       "kind": "compare",
-      "title": { "de": "2. Vergleiche: zweimal Wärme, einmal gewollt", "en": "2. Compare: heat twice, wanted once" },
-      "intro": { "de": "Setze zwei Bauteile zueinander in Beziehung und rechne.", "en": "Relate two components to each other and calculate." },
+      "title": {
+        "de": "2. Vergleiche: zweimal Wärme, einmal gewollt",
+        "en": "2. Compare: heat twice, wanted once"
+      },
+      "intro": {
+        "de": "Setze zwei Bauteile zueinander in Beziehung und rechne.",
+        "en": "Relate two components to each other and calculate."
+      },
       "text": {
         "de": "Ein Wasserkocher und ein Verlängerungskabel werden beide warm, wenn Strom fließt - beim einen ist das der Zweck, beim anderen ein Ärgernis. Erkläre mit dem ohmschen Gesetz, wodurch sich die beiden unterscheiden, und leite daraus ab, warum Kabel für hohe Ströme dick sein müssen. Rechne dazu aus, welchen Widerstand ein Gerät hat, das an 230 Volt genau 8,7 Ampere zieht.",
         "en": "A kettle and an extension lead both get warm when current flows - in one case that is the point, in the other a nuisance. Using Ohm's law, explain how the two differ, and deduce why cables for high currents must be thick. Work out the resistance of a device drawing exactly 8.7 amperes at 230 volts."
@@ -208,8 +301,14 @@
     },
     {
       "kind": "reflect",
-      "title": { "de": "3. Zum Nachdenken: ein Gesetz, das keines ist", "en": "3. Something to think about: a law that is not one" },
-      "intro": { "de": "Auf diese Frage gibt es keine richtige Antwort.", "en": "There is no right answer to this one." },
+      "title": {
+        "de": "3. Zum Nachdenken: ein Gesetz, das keines ist",
+        "en": "3. Something to think about: a law that is not one"
+      },
+      "intro": {
+        "de": "Auf diese Frage gibt es keine richtige Antwort.",
+        "en": "There is no right answer to this one."
+      },
       "text": {
         "de": "Das ohmsche Gesetz heißt Gesetz, gilt aber nur unter Bedingungen - für Metalle bei gleichbleibender Temperatur. Trotzdem ist es eines der nützlichsten Werkzeuge der Physik. In anderen Fächern begegnen dir ähnliche Fälle: Regeln, die fast immer stimmen und deren Ausnahmen man kennen muss. Überlege, was eine Regel wertvoll macht, obwohl sie nicht ausnahmslos gilt - und was passieren kann, wenn jemand ihre Grenzen nicht kennt.",
         "en": "Ohm's law is called a law but only holds under conditions - for metals at constant temperature. Even so it is one of the most useful tools in physics. Other subjects hold similar cases: rules that nearly always hold and whose exceptions you have to know. Consider what makes a rule valuable although it does not hold without exception - and what can happen when someone does not know its limits."

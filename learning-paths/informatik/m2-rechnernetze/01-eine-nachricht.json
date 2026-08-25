@@ -1,0 +1,263 @@
+{
+  "key": "eine-nachricht-in-teilen",
+  "title": {
+    "de": "Eine Nachricht, die niemand ganz gesehen hat",
+    "en": "A message nobody saw in one piece"
+  },
+  "summary": {
+    "de": "Protokolle, Datenpakete und warum das Internet keine Leitung ist, sondern eine Poststraße.",
+    "en": "Protocols, data packets and why the internet is not a line but a postal route."
+  },
+  "icon": "📦",
+  "accent": "sky",
+  "minutes": 13,
+  "screens": [
+    {
+      "key": "eine-sekunde",
+      "title": {
+        "de": "Was in einer Sekunde passiert",
+        "en": "What happens in one second"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Du tippst eine Adresse ein und drückst Enter. Bis die Seite da ist, vergeht weniger als eine Sekunde. In dieser Sekunde war deine Anfrage bei einer Handvoll fremder Rechner, von denen keiner die ganze Nachricht kannte - und trotzdem kam alles vollständig an.",
+            "en": "You type an address and press Enter. Less than a second passes before the page is there. In that second your request visited a handful of strangers' machines, none of which knew the whole message - and still everything arrived complete."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Damit das klappt, muss vorher etwas verabredet worden sein. Solche Verabredungen heißen Protokolle: feste Regeln darüber, wer wann was sagt und in welcher Form. Nicht anders als am Telefon - erst „Hallo?“, dann der Name, dann das Anliegen. Wenn zwei sich nicht an dieselbe Reihenfolge halten, reden sie aneinander vorbei.",
+            "en": "For that to work, something must have been agreed beforehand. Such agreements are called protocols: fixed rules about who says what, when and in which form. No different from a phone call - first \"Hello?\", then the name, then the matter at hand. If two people do not follow the same order, they talk past each other."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "note",
+          "icon": "📞",
+          "title": {
+            "de": "Du kennst Protokolle aus dem Alltag",
+            "en": "You know protocols from everyday life"
+          },
+          "text": {
+            "de": "Beim Bäcker: anstellen, dran sein, bestellen, zahlen, gehen. Wer mitten in der Schlange „Zwei Brötchen!“ ruft, bricht das Protokoll - und wird nicht bedient. Nicht weil er unhöflich wäre, sondern weil niemand weiß, wie es weitergehen soll.",
+            "en": "At the baker's: queue, get your turn, order, pay, leave. Anyone shouting \"Two rolls!\" from the middle of the queue breaks the protocol - and does not get served. Not because they are rude, but because nobody knows how to continue."
+          }
+        },
+        {
+          "kind": "timeline",
+          "entries": [
+            {
+              "year": "1837",
+              "title": {
+                "de": "Der Telegraf",
+                "en": "The telegraph"
+              },
+              "text": {
+                "de": "Erstmals ist eine Nachricht schneller als der Bote, der sie trägt. Vorher brauchte eine Botschaft von Hamburg nach Rom genau so lange wie ein Pferd.",
+                "en": "For the first time a message is faster than the messenger carrying it. Before that, a message from Hamburg to Rome took exactly as long as a horse."
+              }
+            },
+            {
+              "year": "1876",
+              "title": {
+                "de": "Das Telefon",
+                "en": "The telephone"
+              },
+              "text": {
+                "de": "Eine feste Leitung, exklusiv für zwei Gesprächspartner - auch in den Sprechpausen blockiert.",
+                "en": "A fixed line, exclusive to two people - blocked even during the silences."
+              }
+            },
+            {
+              "year": "1969",
+              "title": {
+                "de": "Das ARPANET",
+                "en": "The ARPANET"
+              },
+              "text": {
+                "de": "Vier Rechner. Die erste Nachricht sollte „LOGIN“ heißen; nach „LO“ stürzte das System ab. So fing das Internet an.",
+                "en": "Four computers. The first message was meant to be \"LOGIN\"; after \"LO\" the system crashed. That is how the internet began."
+              }
+            },
+            {
+              "year": "1989",
+              "title": {
+                "de": "Das World Wide Web",
+                "en": "The World Wide Web"
+              },
+              "text": {
+                "de": "Nicht das Internet selbst, sondern ein Dienst darauf - so wie E-Mail einer ist. Der Unterschied wird bis heute verwechselt.",
+                "en": "Not the internet itself but a service on top of it - as email is. The difference is still confused today."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "warum-pakete",
+      "title": {
+        "de": "Warum Pakete und keine Leitung",
+        "en": "Why packets and not a line"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Beim Telefon war eine Leitung während des Gesprächs für zwei Leute reserviert - auch wenn beide schwiegen. Das Internet macht es völlig anders, und darin liegt der Grund, warum Milliarden Menschen gleichzeitig online sein können.",
+            "en": "On the telephone a line was reserved for two people for the duration of the call - even while both were silent. The internet does it completely differently, and therein lies the reason why billions of people can be online at once."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Es zerlegt jede Nachricht in Datenpakete. Jedes Paket trägt Absender und Empfänger, wie ein Briefumschlag, und reist einzeln los. Die Wege teilen sich alle - so wie eine Straße von allen Autos benutzt wird und nicht für eine Fahrt gesperrt.",
+            "en": "It breaks every message into data packets. Each packet carries a sender and a recipient, like an envelope, and travels on its own. All the routes are shared - the way a road is used by every car rather than closed off for one journey."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "fact",
+          "icon": "🧩",
+          "title": {
+            "de": "Ein Foto ist ein Puzzle aus tausend Umschlägen",
+            "en": "A photo is a jigsaw of a thousand envelopes"
+          },
+          "text": {
+            "de": "Ein Bild von 1,5 Megabyte reist in ungefähr tausend Paketen. Sie können auf verschiedenen Wegen laufen, überholen sich unterwegs und kommen durcheinander an. Dass am Ende trotzdem das Foto da ist und nicht ein Farbsalat, ist die Leistung des Protokolls: Es nummeriert die Teile, sortiert sie und fordert Fehlendes noch einmal an.",
+            "en": "A 1.5 megabyte picture travels in roughly a thousand packets. They can take different routes, overtake one another on the way and arrive out of order. That the photo is there at the end rather than a mess of colour is the protocol's doing: it numbers the parts, sorts them and asks again for whatever is missing."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "✉️",
+          "title": {
+            "de": "Spielt es in der Klasse durch",
+            "en": "Act it out in class"
+          },
+          "text": {
+            "de": "Schreibt einen Satz auf fünf Zettel, ein Wort je Zettel, und nummeriert sie. Mischt die Zettel und lasst sie über verschiedene Mitschüler quer durch den Raum wandern. Am Ziel wird nach Nummern sortiert - der Satz ist wieder da. Nehmt dann einen Zettel heimlich weg: Der Empfänger merkt es sofort, weil eine Nummer fehlt. Genau das tut ein Protokoll.",
+            "en": "Write a sentence on five slips of paper, one word each, and number them. Shuffle them and pass them across the room via different classmates. At the destination they are sorted by number - the sentence is back. Then secretly remove one slip: the recipient notices at once, because a number is missing. That is exactly what a protocol does."
+          }
+        }
+      ]
+    },
+    {
+      "key": "warum-so-gebaut",
+      "title": {
+        "de": "Warum es ausgerechnet so gebaut wurde",
+        "en": "Why it was built this way of all ways"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Pakete statt Leitungen sind unbequemer: Man muss nummerieren, sortieren, nachfordern. Es gab einen Grund, diesen Aufwand in Kauf zu nehmen - und der hat mit Ausfällen zu tun.",
+            "en": "Packets instead of lines are less convenient: you have to number, sort and re-request. There was a reason to accept that effort - and it has to do with failure."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Fällt bei einer festen Leitung irgendwo ein Stück aus, ist das Gespräch beendet. Bei Paketen nicht: Sie suchen sich einfach einen anderen Weg. Kein Rechner im Netz muss die ganze Strecke kennen - jeder muss nur wissen, in welche Richtung das Paket als Nächstes soll. Ein Netz, das aus solchen Teilen besteht, überlebt den Ausfall einzelner Teile.",
+            "en": "If a fixed line fails somewhere, the conversation is over. Not so with packets: they simply find another route. No machine in the network needs to know the whole path - each only needs to know which way the packet should go next. A network made of such parts survives the failure of individual parts."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "fact",
+          "icon": "🌍",
+          "title": {
+            "de": "Niemand betreibt das Internet",
+            "en": "Nobody runs the internet"
+          },
+          "text": {
+            "de": "Es gibt keine Zentrale, keinen Hauptschalter, keine Firma, der es gehört. Es ist ein Zusammenschluss von Hunderttausenden Netzen, die sich auf gemeinsame Protokolle geeinigt haben - mehr nicht. Genau deshalb konnte es so schnell wachsen: Wer mitmachen wollte, musste niemanden um Erlaubnis fragen, sondern nur die Regeln einhalten.",
+            "en": "There is no headquarters, no master switch, no company that owns it. It is a joining together of hundreds of thousands of networks that agreed on shared protocols - nothing more. That is precisely why it could grow so fast: anyone wanting to join did not have to ask permission, only to follow the rules."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Diese Bauweise ist eine Entscheidung gewesen, keine Naturgegebenheit. Man hätte das Netz auch so bauen können, dass alles über eine Stelle läuft, die mitliest und genehmigt. In einigen Ländern wird genau daran gearbeitet. Was am Anfang als technische Frage aussah, ist deshalb längst eine politische.",
+            "en": "This design was a decision, not a fact of nature. The network could have been built so that everything ran through one place that reads along and approves. In some countries exactly that is being worked on. What looked at first like a technical question is therefore long since a political one."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "inf-schule.de: Rechnernetze",
+                "en": "inf-schule.de: computer networks"
+              },
+              "url": "https://www.inf-schule.de/rechnernetze"
+            },
+            {
+              "label": {
+                "de": "RFC 791 - das Internet Protocol im Original",
+                "en": "RFC 791 - the Internet Protocol, original text"
+              },
+              "url": "https://www.rfc-editor.org/rfc/rfc791"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": {
+        "de": "1. Lückentext: Regeln und Pakete",
+        "en": "1. Fill in the blanks: rules and packets"
+      },
+      "intro": {
+        "de": "Setze die fehlenden Wörter ein.",
+        "en": "Fill in the missing words."
+      },
+      "text": {
+        "de": "Damit zwei Rechner sich verstehen, müssen sie sich an dieselben Regeln halten; solche Regeln nennt man ___. Eine Nachricht wird dafür in einzelne ___ zerlegt, die getrennt reisen. Jedes davon trägt wie ein Briefumschlag einen Absender und einen ___. Weil die Teile durcheinander ankommen können, werden sie ___ und am Ziel wieder ___. Fehlt eines, wird es einfach noch einmal ___. Beim Telefon war dagegen eine ___ für zwei Gesprächspartner reserviert, auch in den Pausen. Der Vorteil der Pakete zeigt sich beim Ausfall: Sie suchen sich einen anderen ___. Das World Wide Web ist übrigens nicht das Internet selbst, sondern ein ___ darauf.",
+        "en": "For two computers to understand each other they must follow the same rules; such rules are called ___. A message is broken up into separate ___ which travel independently. Like an envelope, each one carries a sender and a ___. Because the parts may arrive out of order, they are ___ and at the destination put back in ___. If one is missing it is simply ___ again. On the telephone, by contrast, a ___ was reserved for two people, even during the pauses. The advantage of packets shows when something fails: they find another ___. The World Wide Web, by the way, is not the internet itself but a ___ on top of it."
+      }
+    },
+    {
+      "kind": "compare",
+      "title": {
+        "de": "2. Vergleiche: feste Leitung gegen geteilte Wege",
+        "en": "2. Compare: fixed line versus shared routes"
+      },
+      "intro": {
+        "de": "Zwei Bauweisen, gegenübergestellt.",
+        "en": "Two designs, set side by side."
+      },
+      "text": {
+        "de": "Stell dir zwei Städte vor, die miteinander verbunden werden sollen. In Stadt A bekommt jedes Gespräch eine eigene Leitung, die für die Dauer des Gesprächs niemand anderes benutzen darf. In Stadt B werden alle Nachrichten zerlegt und über gemeinsame Wege geschickt. Erkläre für beide Bauweisen, was passiert, wenn plötzlich zehnmal so viele Menschen gleichzeitig telefonieren wollen, und was passiert, wenn mitten in der Nacht eine Verbindung ausfällt. Leite daraus ab, warum das Internet so gebaut wurde, wie es gebaut ist - und nenne einen Nachteil, den man dafür in Kauf nimmt.",
+        "en": "Imagine two cities to be connected. In city A every conversation gets its own line, which nobody else may use for the duration. In city B all messages are broken up and sent over shared routes. For both designs, explain what happens when suddenly ten times as many people want to talk at once, and what happens when a connection fails in the middle of the night. From that, work out why the internet was built the way it is - and name one disadvantage accepted in return."
+      },
+      "hint": {
+        "de": "Denk daran, wie viel von einer Leitung ungenutzt bleibt, während zwei Menschen einander zuhören.",
+        "en": "Think about how much of a line goes unused while two people are listening to each other."
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": {
+        "de": "3. Zum Nachdenken: Regeln, an die sich alle halten",
+        "en": "3. Something to think about: rules everyone keeps"
+      },
+      "intro": {
+        "de": "Auf diese Frage gibt es keine richtige Antwort.",
+        "en": "There is no right answer to this one."
+      },
+      "text": {
+        "de": "Das Internet funktioniert, weil sich Hunderttausende Netze freiwillig an dieselben Protokolle halten - ohne dass jemand sie dazu zwingt und ohne dass sie einander kennen. Das ist erstaunlich, wenn man bedenkt, wie schwer sich Menschen sonst auf gemeinsame Regeln einigen. Überlege, wo in deinem Leben etwas nur deshalb funktioniert, weil sich alle an eine Verabredung halten, die niemand kontrolliert. Was hält die Leute davon ab, sich nicht daran zu halten - und was würde passieren, wenn einer damit anfinge?",
+        "en": "The internet works because hundreds of thousands of networks voluntarily follow the same protocols - with nobody forcing them and without knowing one another. That is astonishing, given how hard people otherwise find it to agree on shared rules. Think of something in your life that only works because everyone keeps to an agreement nobody polices. What stops people from breaking it - and what would happen if one of them started?"
+      }
+    }
+  ]
+}

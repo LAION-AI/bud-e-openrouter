@@ -1,0 +1,263 @@
+{
+  "key": "zehnmal-dasselbe",
+  "title": {
+    "de": "Zehnmal dasselbe, einmal geschrieben",
+    "en": "The same thing ten times, written once"
+  },
+  "summary": {
+    "de": "Schleifen: wie man aufhört, Bausteine zu stapeln, und anfängt, den Rechner zählen zu lassen.",
+    "en": "Loops: how to stop stacking blocks and start letting the machine do the counting."
+  },
+  "icon": "🔁",
+  "accent": "emerald",
+  "minutes": 14,
+  "screens": [
+    {
+      "key": "der-turm",
+      "title": {
+        "de": "Der Turm, den niemand bauen will",
+        "en": "The tower nobody wants to build"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Zeichne ein Quadrat: geh 100 Schritte, dreh dich um 90 Grad, geh 100 Schritte, dreh dich um 90 Grad - und so weiter. Acht Bausteine. Jetzt ein Achteck. Sechzehn. Jetzt ein Kreis, also ein Vieleck mit 360 Ecken. Spätestens hier hört das Stapeln auf, Spaß zu machen.",
+            "en": "Draw a square: move 100 steps, turn 90 degrees, move 100 steps, turn 90 degrees - and so on. Eight blocks. Now an octagon. Sixteen. Now a circle, that is, a polygon with 360 corners. At the latest here, stacking stops being fun."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Eine Schleife ist die Antwort darauf. Sie sagt dem Rechner: Nimm das hier und mach es mehrfach. Du schreibst zwei Bausteine und bekommst zweihundert Ausführungen. Das ist nicht nur bequem - es ist auch weniger fehleranfällig. Wenn du deine Meinung änderst und statt 100 lieber 120 Schritte willst, änderst du eine Zahl statt achtzig.",
+            "en": "A loop is the answer to that. It tells the machine: take this and do it several times. You write two blocks and get two hundred executions. That is not just convenient - it is also less error-prone. If you change your mind and want 120 steps instead of 100, you change one number instead of eighty."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "🟦",
+          "title": {
+            "de": "Das Quadrat in vier Bausteinen",
+            "en": "The square in four blocks"
+          },
+          "text": {
+            "de": "In Scratch: „wenn grüne Flagge angeklickt“, dann „wiederhole 4-mal“, und hinein kommen „gehe 100er-Schritt“ und „drehe dich um 90 Grad“. Nimm aus der Kategorie „Malstift“ noch „schalte Stift ein“ dazu, dann siehst du die Linie. Ändere die 4 auf 3 und die 90 auf 120 - und schon zeichnet die Katze ein Dreieck. Probier auch 8 und 45.",
+            "en": "In Scratch: \"when green flag clicked\", then \"repeat 4\", and inside it \"move 100 steps\" and \"turn 90 degrees\". Add \"pen down\" from the Pen category and you will see the line. Change the 4 to 3 and the 90 to 120 - and the cat draws a triangle. Try 8 and 45 as well."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "fact",
+          "icon": "🧮",
+          "title": {
+            "de": "Die Regel dahinter",
+            "en": "The rule behind it"
+          },
+          "text": {
+            "de": "Bei jedem Vieleck ergeben alle Drehungen zusammen genau eine volle Umdrehung, also 360 Grad. Bei vier Ecken sind das 90 Grad pro Schritt, bei drei Ecken 120, bei zehn Ecken 36. Du hast gerade nebenbei ein Stück Geometrie ausprobiert, das sich sonst nur schwer vorstellen lässt.",
+            "en": "For every polygon, all the turns together add up to exactly one full revolution, that is 360 degrees. With four corners that is 90 degrees per step, with three corners 120, with ten corners 36. You have just tried out, in passing, a piece of geometry that is otherwise hard to picture."
+          }
+        }
+      ]
+    },
+    {
+      "key": "zwei-sorten",
+      "title": {
+        "de": "Zwei Sorten Schleife, zwei verschiedene Fragen",
+        "en": "Two kinds of loop, two different questions"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Manchmal weißt du vorher, wie oft etwas passieren soll. Manchmal nicht - du weißt nur, wann Schluss sein soll. Für beides gibt es eine eigene Schleife, und die Frage „weiß ich die Anzahl schon?“ entscheidet, welche du nimmst.",
+            "en": "Sometimes you know in advance how often something should happen. Sometimes you do not - you only know when it should stop. There is a separate loop for each, and the question \"do I already know the number?\" decides which one you use."
+          }
+        },
+        {
+          "kind": "steps",
+          "items": [
+            {
+              "title": {
+                "de": "Wie oft? Die Zählschleife",
+                "en": "How often? The counting loop"
+              },
+              "text": {
+                "de": "„wiederhole 10-mal“ - der Rechner zählt selbst mit und hört nach zehn Durchgängen auf. Nimm sie, wenn die Zahl feststeht: zehn Runden, vier Seiten, drei Versuche.",
+                "en": "\"repeat 10\" - the machine counts along by itself and stops after ten passes. Use it when the number is fixed: ten rounds, four sides, three attempts."
+              }
+            },
+            {
+              "title": {
+                "de": "Solange was? Die bedingte Schleife",
+                "en": "Until what? The conditional loop"
+              },
+              "text": {
+                "de": "„wiederhole bis …“ - hier steht keine Zahl, sondern eine Bedingung. Der Rechner prüft vor jedem Durchgang, ob sie schon zutrifft. Nimm sie, wenn du das Ende nicht vorher kennst: bis der Spieler richtig geraten hat, bis die Zeit um ist, bis die Katze den Rand berührt.",
+                "en": "\"repeat until …\" - here there is no number but a condition. The machine checks before each pass whether it already holds. Use it when you cannot know the end in advance: until the player guesses right, until time is up, until the cat touches the edge."
+              }
+            },
+            {
+              "title": {
+                "de": "Für immer",
+                "en": "Forever"
+              },
+              "text": {
+                "de": "„wiederhole fortlaufend“ hört nie von selbst auf. Das klingt nach einem Fehler und ist in Spielen der Normalfall: Die Steuerung muss ja ständig prüfen, ob jemand eine Taste drückt, solange das Spiel läuft.",
+                "en": "\"forever\" never stops by itself. That sounds like a bug and in games it is the normal case: the controls have to keep checking whether someone is pressing a key for as long as the game runs."
+              }
+            }
+          ]
+        },
+        {
+          "kind": "callout",
+          "tone": "warn",
+          "icon": "♾️",
+          "title": {
+            "de": "Die Endlosschleife - jeder baut sie einmal",
+            "en": "The endless loop - everyone builds one"
+          },
+          "text": {
+            "de": "„wiederhole bis punkte = 10“, und drinnen wird `punkte` nie verändert: Dann wird die Bedingung nie wahr, und das Programm hängt. Das ist kein Drama und geht in Scratch mit dem roten Stoppknopf wieder weg. Die Regel dagegen ist einfach: In jeder bedingten Schleife muss sich drinnen etwas ändern, das die Bedingung betrifft.",
+            "en": "\"repeat until score = 10\", and inside, `score` is never changed: then the condition never becomes true and the program hangs. That is no disaster and in Scratch the red stop button ends it. The rule against it is simple: in every conditional loop, something inside has to change that affects the condition."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Bau sie ruhig einmal absichtlich. Wer eine Endlosschleife bewusst erzeugt hat, erschrickt beim nächsten Mal nicht, sondern erkennt sie - und weiß, wo er nachsehen muss.",
+            "en": "Go ahead and build one on purpose. Anyone who has deliberately produced an endless loop does not panic the next time but recognises it - and knows where to look."
+          }
+        }
+      ]
+    },
+    {
+      "key": "schleifen-im-alltag",
+      "title": {
+        "de": "Wo Schleifen dir jeden Tag begegnen",
+        "en": "Where loops meet you every day"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Die Ladeanzeige, die sich dreht. Der Feed, der immer weiter nachlädt. Die Ampel, die nachts stur ihren Takt durchzieht. Alles Schleifen - jemand hat einmal aufgeschrieben, was wiederholt werden soll, und seitdem läuft es.",
+            "en": "The spinner that keeps turning. The feed that keeps loading more. The traffic light that stubbornly runs its cycle at night. All loops - someone once wrote down what should be repeated, and it has been running ever since."
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "de": "Ein Wecker prüft jede Sekunde, ob die eingestellte Zeit erreicht ist - eine Schleife mit Bedingung.",
+              "en": "An alarm clock checks every second whether the set time has been reached - a loop with a condition."
+            },
+            {
+              "de": "Eine Musik-App spielt Titel für Titel ab, bis die Liste zu Ende ist - eine Zählschleife über alle Lieder.",
+              "en": "A music app plays track after track until the list ends - a counting loop over all the songs."
+            },
+            {
+              "de": "Ein Spiel zeichnet 60-mal pro Sekunde ein neues Bild, solange es läuft - eine Endlosschleife, die genau so gewollt ist.",
+              "en": "A game draws a new picture 60 times a second while it runs - an endless loop, and exactly as intended."
+            },
+            {
+              "de": "Eine Waschmaschine wiederholt Waschen und Schleudern nach einem festen Programm - Schleifen gibt es auch ohne Bildschirm.",
+              "en": "A washing machine repeats washing and spinning to a fixed program - loops exist without screens too."
+            }
+          ]
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "🌈",
+          "title": {
+            "de": "Zwei Schleifen ineinander",
+            "en": "Two loops inside each other"
+          },
+          "text": {
+            "de": "Nimm dein Quadrat-Programm und pack es komplett in eine zweite Schleife: „wiederhole 12-mal“, und darin dein Quadrat plus „drehe dich um 30 Grad“. Lass es laufen. Es entsteht ein Muster, das aussieht wie eine Blume - aus vier Bausteinen. Wenn du „ändere Farbe um 10“ hinzufügst, wird es bunt.",
+            "en": "Take your square program and put the whole thing inside a second loop: \"repeat 12\", and inside it your square plus \"turn 30 degrees\". Run it. A pattern appears that looks like a flower - from four blocks. Add \"change pen colour by 10\" and it turns colourful."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Das ist der Moment, in dem viele merken, worum es beim Programmieren eigentlich geht: nicht darum, dem Rechner viel Arbeit abzunehmen, sondern darum, mit wenigen klaren Anweisungen etwas entstehen zu lassen, das man selbst so nie von Hand hingekriegt hätte.",
+            "en": "That is the moment many people realise what programming is actually about: not taking work off the machine's hands, but using a few clear instructions to bring about something you could never have produced by hand."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "Scratch - Muster zeichnen mit dem Malstift",
+                "en": "Scratch - drawing patterns with the pen"
+              },
+              "url": "https://scratch.mit.edu/ideas"
+            },
+            {
+              "label": {
+                "de": "inf-schule.de: Wiederholungen",
+                "en": "inf-schule.de: repetitions"
+              },
+              "url": "https://www.inf-schule.de/imperative-programmierung"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": {
+        "de": "1. Lückentext: wiederholen statt stapeln",
+        "en": "1. Fill in the blanks: repeat instead of stack"
+      },
+      "intro": {
+        "de": "Setze die fehlenden Wörter ein.",
+        "en": "Fill in the missing words."
+      },
+      "text": {
+        "de": "Wer dieselben Bausteine immer wieder untereinander hängt, baut einen Turm; kürzer geht es mit einer ___. Steht die Anzahl schon vorher fest, nimmt man die ___, in Scratch „wiederhole 10-mal“. Weiß man nur, wann Schluss sein soll, nimmt man stattdessen eine Schleife mit einer ___. Soll etwas nie aufhören, gibt es „wiederhole ___“. Ändert sich innerhalb einer bedingten Schleife nichts, was die Bedingung betrifft, entsteht eine ___, und das Programm hängt. Beim Vieleck ergeben alle Drehungen zusammen ___ Grad; bei einem Quadrat sind das ___ Grad je Schritt. Steckt man eine Schleife in eine zweite, spricht man von ___ Schleifen.",
+        "en": "Anyone who hangs the same blocks under one another over and over builds a tower; it is shorter with a ___. If the number is fixed in advance you use the ___, in Scratch \"repeat 10\". If you only know when it should stop, you use a loop with a ___ instead. If something should never stop there is \"repeat ___\". If nothing inside a conditional loop changes that affects the condition, you get an ___, and the program hangs. In a polygon all the turns together add up to ___ degrees; for a square that is ___ degrees per step. Putting one loop inside another gives you ___ loops."
+      }
+    },
+    {
+      "kind": "compare",
+      "title": {
+        "de": "2. Ausprobieren und vergleichen: welche Schleife wofür",
+        "en": "2. Try it and compare: which loop for what"
+      },
+      "intro": {
+        "de": "Bau beide Programme in Scratch, bevor du entscheidest.",
+        "en": "Build both programs in Scratch before you decide."
+      },
+      "text": {
+        "de": "Programm A: Die Katze soll genau zwanzig Schritte machen und dann stehen bleiben. Programm B: Die Katze soll laufen, bis sie den Rand der Bühne berührt - egal, wie viele Schritte das sind. Bau beide und lass sie laufen. Versuch danach absichtlich, Programm B mit einer Zählschleife zu lösen und Programm A mit einer bedingten Schleife. Beschreibe für beide Versuche, was daran umständlich oder unzuverlässig wird, und formuliere daraus eine Faustregel, wann man welche Schleife nimmt.",
+        "en": "Program A: the cat should take exactly twenty steps and then stop. Program B: the cat should walk until it touches the edge of the stage - no matter how many steps that takes. Build both and run them. Then deliberately try to solve program B with a counting loop and program A with a conditional loop. For both attempts, describe what becomes awkward or unreliable, and turn that into a rule of thumb for which loop to use when."
+      },
+      "hint": {
+        "de": "Frag dich in beiden Fällen: Könnte ich die Zahl der Durchgänge vorher hinschreiben, ohne das Programm laufen zu lassen?",
+        "en": "In both cases, ask yourself: could I write down the number of passes in advance, without running the program?"
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": {
+        "de": "3. Zum Nachdenken: was Maschinen mühelos können",
+        "en": "3. Something to think about: what machines find effortless"
+      },
+      "intro": {
+        "de": "Auf diese Frage gibt es keine richtige Antwort.",
+        "en": "There is no right answer to this one."
+      },
+      "text": {
+        "de": "Ein Mensch, der zehntausendmal dasselbe tun soll, wird müde, unaufmerksam und irgendwann wütend. Eine Maschine wiederholt den zehntausendsten Durchgang genauso wie den ersten - und genau darauf beruht ein großer Teil unserer Welt, von der Fabrik bis zur Rechtschreibprüfung. Überlege, welche Wiederholung in deinem Alltag du sofort abgeben würdest, wenn du sie in eine Schleife packen könntest. Und dann die Gegenfrage: Gibt es etwas, das du oft wiederholst und trotzdem nicht abgeben möchtest - und was macht den Unterschied?",
+        "en": "A person asked to do the same thing ten thousand times gets tired, careless and eventually angry. A machine performs the ten-thousandth pass exactly like the first - and a large part of our world rests on that, from the factory to the spell checker. Think about which repetition in your day you would hand over immediately if you could wrap it in a loop. And then the counter-question: is there something you repeat often and still would not want to hand over - and what makes the difference?"
+      }
+    }
+  ]
+}

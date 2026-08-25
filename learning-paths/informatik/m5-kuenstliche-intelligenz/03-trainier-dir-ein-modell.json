@@ -1,0 +1,253 @@
+{
+  "key": "trainier-dir-ein-modell",
+  "title": {
+    "de": "Trainier dir ein Modell",
+    "en": "Train yourself a model"
+  },
+  "summary": {
+    "de": "Zehn Minuten, eine Webcam und der lehrreichste Fehler, den du an diesem Tag machen wirst.",
+    "en": "Ten minutes, a webcam and the most instructive mistake you will make that day."
+  },
+  "icon": "📸",
+  "accent": "violet",
+  "minutes": 14,
+  "screens": [
+    {
+      "key": "in-zehn-minuten",
+      "title": {
+        "de": "In zehn Minuten zum eigenen Modell",
+        "en": "Your own model in ten minutes"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Über KI zu reden ist eine Sache. Eine zu bauen eine andere - und sie dauert kürzer als eine Schulstunde, kostet nichts und braucht kein Konto.",
+            "en": "Talking about AI is one thing. Building one is another - and it takes less than a lesson, costs nothing and needs no account."
+          }
+        },
+        {
+          "kind": "steps",
+          "items": [
+            {
+              "title": { "de": "Teachable Machine öffnen", "en": "Open Teachable Machine" },
+              "text": {
+                "de": "Die Seite läuft im Browser, ohne Anmeldung. Wähle „Bild-Projekt“ und dann „Standard-Bildmodell“. Alles Weitere passiert auf deinem eigenen Rechner - die Bilder verlassen ihn nicht.",
+                "en": "The page runs in the browser without signing in. Choose \"Image Project\" and then \"Standard image model\". Everything else happens on your own machine - the pictures never leave it."
+              }
+            },
+            {
+              "title": { "de": "Zwei Kategorien wählen", "en": "Pick two categories" },
+              "text": {
+                "de": "Etwas Einfaches: Hand offen gegen Hand zur Faust. Stift gegen Radiergummi. Brille auf gegen Brille ab. Zwei Dinge, die sich klar unterscheiden - fürs erste Mal reicht das völlig.",
+                "en": "Something simple: open hand versus fist. Pen versus eraser. Glasses on versus glasses off. Two things that clearly differ - for a first attempt that is quite enough."
+              }
+            },
+            {
+              "title": { "de": "Je dreißig Bilder aufnehmen", "en": "Record thirty pictures each" },
+              "text": {
+                "de": "Knopf gedrückt halten und die Hand dabei ein wenig bewegen. Dreißig Bilder sind in fünf Sekunden aufgenommen. Danach dasselbe für die zweite Kategorie.",
+                "en": "Hold the button and move your hand a little while doing so. Thirty pictures are recorded in five seconds. Then the same for the second category."
+              }
+            },
+            {
+              "title": { "de": "Trainieren und ausprobieren", "en": "Train and try it out" },
+              "text": {
+                "de": "Ein Klick, ein paar Sekunden Warten, fertig. Rechts siehst du live, wie sicher sich das Modell ist - eine Prozentzahl, die sich bewegt, während du dich bewegst. Genau das, was im letzten Pfad hinten aus dem Netz herauskam.",
+                "en": "One click, a few seconds of waiting, done. On the right you see live how confident the model is - a percentage that moves as you move. Exactly what came out of the back of the network in the last path."
+              }
+            }
+          ]
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "🖐️",
+          "title": {
+            "de": "Der erste Aha-Moment",
+            "en": "The first moment of surprise"
+          },
+          "text": {
+            "de": "Halte die Hand langsam von offen zu Faust. Beobachte die Prozentzahl: Sie springt nicht, sie wandert. Irgendwo dazwischen steht es 50 zu 50. Es gibt keinen Punkt, an dem das Modell „umschaltet“ - es war nie sicher, es war immer nur unterschiedlich zuversichtlich.",
+            "en": "Move your hand slowly from open to fist. Watch the percentage: it does not jump, it drifts. Somewhere in between it stands at 50-50. There is no point at which the model \"switches\" - it was never certain, only differently confident."
+          }
+        }
+      ]
+    },
+    {
+      "key": "der-test-der-wehtut",
+      "title": {
+        "de": "Der Test, der wehtut",
+        "en": "The test that hurts"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Jetzt der Moment, für den sich der ganze Pfad lohnt. Zeig dem Modell etwas, das zu keiner der beiden Kategorien gehört. Deinen Ellbogen. Eine Kaffeetasse. Die leere Wand.",
+            "en": "Now the moment that makes the whole path worthwhile. Show the model something that belongs to neither category. Your elbow. A coffee cup. The blank wall."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Es antwortet trotzdem. Und zwar nicht mit „weiß ich nicht“, sondern mit „87 Prozent Faust“. Es kann gar nicht anders: Es kennt nur zwei Möglichkeiten, und die Prozente müssen zusammen 100 ergeben. „Nichts davon“ ist keine Antwort, die es geben kann - niemand hat ihm diese Kategorie beigebracht.",
+            "en": "It answers anyway. And not with \"I don't know\" but with \"87 per cent fist\". It cannot do otherwise: it knows only two possibilities, and the percentages have to add up to 100. \"None of these\" is not an answer it can give - nobody taught it that category."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "warn",
+          "icon": "🎯",
+          "title": {
+            "de": "Sicher klingen und richtig liegen sind zweierlei",
+            "en": "Sounding certain and being right are two things"
+          },
+          "text": {
+            "de": "Diese 87 Prozent sehen genauso vertrauenswürdig aus wie die 94 Prozent bei einer echten Faust. Man sieht der Zahl nicht an, ob das Modell die Frage überhaupt beantworten konnte. Genau dieser Effekt steckt auch hinter Sprachmodellen, die flüssig etwas Falsches erzählen - dazu mehr im nächsten Pfad.",
+            "en": "Those 87 per cent look exactly as trustworthy as the 94 per cent for a real fist. You cannot tell from the number whether the model could answer the question at all. This very effect also lies behind language models that fluently tell you something false - more on that in the next path."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "tip",
+          "icon": "🚪",
+          "title": {
+            "de": "Was Fachleute dagegen tun",
+            "en": "What specialists do about it"
+          },
+          "text": {
+            "de": "Sie bauen eine dritte Kategorie ein: „nichts davon“, trainiert mit hundert zufälligen Bildern. Probier es aus - es verändert das Verhalten deines Modells schlagartig. Diese eine Idee ist in echten Systemen der Unterschied zwischen brauchbar und gefährlich.",
+            "en": "They add a third category: \"none of these\", trained with a hundred random pictures. Try it - it changes your model's behaviour dramatically. In real systems this single idea is the difference between usable and dangerous."
+          }
+        }
+      ]
+    },
+    {
+      "key": "gute-beispiele",
+      "title": {
+        "de": "Was gute Beispiele ausmacht",
+        "en": "What makes good examples"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Ein Modell kann nur lernen, was in seinen Beispielen steckt. Dieser Satz klingt harmlos - und du kannst ihn in fünf Minuten selbst erleben, mit einem Versuch, der jedes Mal funktioniert.",
+            "en": "A model can only learn what is in its examples. That sentence sounds harmless - and you can experience it yourself in five minutes, with an experiment that works every time."
+          }
+        },
+        {
+          "kind": "steps",
+          "items": [
+            {
+              "title": { "de": "Trainiere absichtlich einseitig", "en": "Train one-sidedly on purpose" },
+              "text": {
+                "de": "Nimm alle Bilder der einen Kategorie vor dem Fenster auf und alle der anderen vor der dunklen Tafel. Trainiere und probiere aus - es funktioniert scheinbar hervorragend.",
+                "en": "Record all pictures of one category in front of the window and all of the other in front of the dark board. Train it and try it out - it seems to work splendidly."
+              }
+            },
+            {
+              "title": { "de": "Und jetzt tausche den Hintergrund", "en": "And now swap the background" },
+              "text": {
+                "de": "Zeig dieselbe Handhaltung vor dem jeweils anderen Hintergrund. Das Modell liegt daneben - und zwar zuverlässig. Es hat nie deine Hand gelernt, sondern die Helligkeit dahinter.",
+                "en": "Show the same hand position in front of the other background. The model gets it wrong - reliably. It never learned your hand, it learned the brightness behind it."
+              }
+            },
+            {
+              "title": { "de": "Dann noch einmal, richtig", "en": "Then again, properly" },
+              "text": {
+                "de": "Nimm für beide Kategorien Bilder vor beiden Hintergründen auf, aus verschiedenen Winkeln, mit unterschiedlichem Licht. Jetzt lernt es das, was du eigentlich meintest.",
+                "en": "Record pictures of both categories in front of both backgrounds, from different angles, in different light. Now it learns what you actually meant."
+              }
+            }
+          ]
+        },
+        {
+          "kind": "callout",
+          "tone": "fact",
+          "icon": "🐺",
+          "title": {
+            "de": "Ein berühmtes Beispiel aus der Forschung",
+            "en": "A famous example from research"
+          },
+          "text": {
+            "de": "Ein Modell sollte Huskys von Wölfen unterscheiden und tat es fast fehlerfrei. Bis jemand nachsah, worauf es tatsächlich achtete: auf Schnee im Hintergrund. Alle Wolfsbilder waren im Winter aufgenommen. Ein Wolf auf Gras wurde zum Husky, ein Husky im Schnee zum Wolf.",
+            "en": "A model was to tell huskies from wolves and did so almost flawlessly. Until somebody checked what it was actually attending to: snow in the background. All the wolf pictures had been taken in winter. A wolf on grass became a husky, a husky in snow became a wolf."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Wer diesen Versuch einmal selbst gemacht hat, glaubt danach keiner Prozentzahl mehr ungeprüft. Und genau darum geht es in diesem Modul mehr als um jede Definition.",
+            "en": "Anyone who has done this experiment themselves never again believes a percentage unchecked. And that matters more in this module than any definition."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": { "de": "Teachable Machine (Google)", "en": "Teachable Machine (Google)" },
+              "url": "https://teachablemachine.withgoogle.com"
+            },
+            {
+              "label": { "de": "inf-schule.de: Künstliche Intelligenz", "en": "inf-schule.de: artificial intelligence" },
+              "url": "https://www.inf-schule.de/ki"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": {
+        "de": "1. Lückentext: Beispiele, Training, Zuversicht",
+        "en": "1. Fill in the blanks: examples, training, confidence"
+      },
+      "intro": {
+        "de": "Setze die fehlenden Wörter ein.",
+        "en": "Fill in the missing words."
+      },
+      "text": {
+        "de": "Um ein eigenes Modell zu trainieren, braucht man zwei ___ und für jede etwa dreißig ___. Nach dem Training zeigt das System keine sichere Antwort, sondern eine ___, die sich bewegt, während man sich bewegt. Zeigt man ihm etwas, das zu keiner Kategorie gehört, antwortet es trotzdem - denn „nichts davon“ hat ihm niemand ___. Fachleute bauen deshalb eine dritte ___ ein. Ein Modell lernt immer nur das, was in seinen ___ steckt: Sind alle Bilder einer Klasse vor demselben ___ aufgenommen, lernt es diesen statt des Gegenstands. Im berühmten Beispiel mit Wölfen und Huskys achtete das Modell in Wahrheit auf ___. Man sieht einer Prozentzahl nicht an, ob das Modell die Frage überhaupt ___ konnte.",
+        "en": "To train your own model you need two ___ and about thirty ___ for each. After training the system shows not a sure answer but a ___ that moves as you move. Show it something belonging to neither category and it answers anyway - because nobody ___ it \"none of these\". Specialists therefore add a third ___. A model only ever learns what is in its ___: if all pictures of one class were taken in front of the same ___, it learns that instead of the object. In the famous wolves-and-huskies example the model was really attending to ___. You cannot tell from a percentage whether the model could ___ the question at all."
+      }
+    },
+    {
+      "kind": "compare",
+      "title": {
+        "de": "2. Trainieren und vergleichen: einseitig gegen vielfältig",
+        "en": "2. Train and compare: one-sided versus varied"
+      },
+      "intro": {
+        "de": "Diese Aufgabe braucht eine Webcam und etwa zwanzig Minuten.",
+        "en": "This task needs a webcam and about twenty minutes."
+      },
+      "text": {
+        "de": "Trainiere dasselbe Modell zweimal. Fassung A: Alle Bilder der ersten Kategorie vor einem hellen Hintergrund, alle der zweiten vor einem dunklen. Fassung B: Für beide Kategorien Bilder vor beiden Hintergründen, aus verschiedenen Winkeln. Teste beide Fassungen mit denselben zehn Situationen und notiere, wie oft jede richtig lag. Beschreibe danach, worauf Fassung A tatsächlich geachtet hat, und erkläre, warum sie beim ersten Ausprobieren trotzdem gut aussah. Zeig zum Schluss beiden Fassungen etwas völlig Fremdes und halte fest, was sie antworten.",
+        "en": "Train the same model twice. Version A: all pictures of the first category in front of a light background, all of the second in front of a dark one. Version B: for both categories, pictures in front of both backgrounds, from different angles. Test both versions with the same ten situations and note how often each was right. Then describe what version A was actually attending to, and explain why it nevertheless looked good on first try. Finally, show both versions something entirely foreign and record what they answer."
+      },
+      "hint": {
+        "de": "Prüf Fassung A nicht nur mit Bildern, die den Trainingsbildern ähneln - genau das ist der Punkt.",
+        "en": "Do not test version A only with pictures resembling the training pictures - that is precisely the point."
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": {
+        "de": "3. Zum Nachdenken: wie viele Beispiele brauchst du",
+        "en": "3. Something to think about: how many examples do you need"
+      },
+      "intro": {
+        "de": "Auf diese Frage gibt es keine richtige Antwort.",
+        "en": "There is no right answer to this one."
+      },
+      "text": {
+        "de": "Dein Modell brauchte dreißig Bilder je Kategorie, große Modelle brauchen Millionen. Ein Kind, dem man einmal ein Zebra zeigt, erkennt danach jedes Zebra - auf einem Foto, als Zeichnung, als Plüschtier. Überleg, was Menschen dabei mitbringen, das ein Modell nicht hat. Und dann die andere Richtung: Gibt es etwas, das du erst nach vielen hundert Wiederholungen gelernt hast - und war es dieselbe Art von Lernen?",
+        "en": "Your model needed thirty pictures per category, large models need millions. A child shown a zebra once afterwards recognises every zebra - in a photo, as a drawing, as a cuddly toy. Think about what people bring to this that a model does not have. And then the other direction: is there something you only learned after many hundreds of repetitions - and was that the same kind of learning?"
+      }
+    }
+  ]
+}
