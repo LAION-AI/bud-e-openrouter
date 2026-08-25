@@ -62,7 +62,11 @@ export const DEFAULT_MAIL_ACCOUNT: MailAccount = {
   imapPass: "",
   folder: "INBOX",
 
-  useSmtp: true,
+  // Aus: hochgeladen wird per IMAP APPEND direkt in den Ordner. Über SMTP
+  // ginge die Mail den Umweg über die Zustellung und läge danach im
+  // Posteingang statt im Sync-Ordner - der Abgleich fände sie dort nie
+  // wieder. Die SMTP-Angaben stehen trotzdem bereit, wer sie braucht.
+  useSmtp: false,
   smtpHost: "smtp.mail.schuldock.de",
   smtpPort: 465,
   smtpTls: true,
