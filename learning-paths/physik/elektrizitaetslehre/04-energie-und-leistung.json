@@ -1,0 +1,257 @@
+{
+  "key": "energie-und-leistung",
+  "title": { "de": "Was die Stromrechnung wirklich sagt", "en": "What the electricity bill really says" },
+  "summary": {
+    "de": "Warum der Wasserkocher zweihundertmal so viel zieht wie das Ladegerät - und trotzdem weniger kostet als der Kühlschrank.",
+    "en": "Why a kettle draws two hundred times as much as a phone charger - and still costs less than the fridge."
+  },
+  "icon": "🧾",
+  "accent": "amber",
+  "minutes": 14,
+  "screens": [
+    {
+      "key": "watt",
+      "title": { "de": "Watt steht auf jedem Gerät", "en": "Watts are printed on everything" },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Dreh irgendein Gerät um. Auf dem Aufkleber steht eine Zahl mit einem W dahinter. Diese Zahl sagt, wie schnell das Gerät Energie umsetzt - nicht wie viel, sondern wie schnell. Der Unterschied ist der ganze Inhalt dieses Lernpfads.",
+            "en": "Turn any appliance over. The label carries a number followed by a W. That number says how fast the device converts energy - not how much, but how fast. That difference is the entire content of this path."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Die Leistung P wird in Watt gemessen und ergibt sich aus zwei Größen, die du schon kennst: P = U · I. Spannung mal Stromstärke. Weil in Deutschland fast überall 230 Volt anliegen, kannst du aus der Wattzahl sofort den Strom ausrechnen - und damit auch, was auf einer Leitung noch Platz hat.",
+            "en": "Power P is measured in watts and comes from two quantities you already know: P = U · I. Voltage times current. Since almost everything in Germany runs on 230 volts, the wattage tells you the current straight away - and with it, what else will fit on a circuit."
+          }
+        },
+        {
+          "kind": "table",
+          "highlightFirst": true,
+          "caption": { "de": "Alle Ströme bei 230 Volt gerechnet.", "en": "All currents calculated at 230 volts." },
+          "head": [
+            { "de": "Gerät", "en": "Device" },
+            { "de": "Leistung", "en": "Power" },
+            { "de": "Strom", "en": "Current" }
+          ],
+          "rows": [
+            [
+              { "de": "LED-Lampe", "en": "LED lamp" },
+              { "de": "9 W", "en": "9 W" },
+              { "de": "0,04 A", "en": "0.04 A" }
+            ],
+            [
+              { "de": "Handy-Ladegerät", "en": "phone charger" },
+              { "de": "10 W", "en": "10 W" },
+              { "de": "0,04 A", "en": "0.04 A" }
+            ],
+            [
+              { "de": "Kühlschrank (wenn er läuft)", "en": "fridge (while running)" },
+              { "de": "100 W", "en": "100 W" },
+              { "de": "0,43 A", "en": "0.43 A" }
+            ],
+            [
+              { "de": "Fernseher", "en": "television" },
+              { "de": "120 W", "en": "120 W" },
+              { "de": "0,52 A", "en": "0.52 A" }
+            ],
+            [
+              { "de": "Föhn", "en": "hairdryer" },
+              { "de": "1 800 W", "en": "1,800 W" },
+              { "de": "7,8 A", "en": "7.8 A" }
+            ],
+            [
+              { "de": "Wasserkocher", "en": "kettle" },
+              { "de": "2 000 W", "en": "2,000 W" },
+              { "de": "8,7 A", "en": "8.7 A" }
+            ]
+          ]
+        },
+        {
+          "kind": "callout",
+          "tone": "fact",
+          "icon": "🔥",
+          "title": { "de": "Alles, was heizt, ist groß", "en": "Everything that heats is large" },
+          "text": {
+            "de": "Sieh dir die Liste an: Die dicken Zahlen gehören alle zu Geräten, die etwas warm machen. Wasserkocher, Föhn, Herd, Toaster, Waschmaschine. Elektronik dagegen - Handy, Fernseher, Laptop - ist im Vergleich winzig. Wärme zu erzeugen kostet mehr Leistung als jedes Rechnen.",
+            "en": "Look at the list: the big numbers all belong to devices that make something warm. Kettle, hairdryer, hob, toaster, washing machine. Electronics by contrast - phone, television, laptop - are tiny. Making heat costs more power than any amount of computing."
+          }
+        }
+      ]
+    },
+    {
+      "key": "kilowattstunde",
+      "title": { "de": "Die Kilowattstunde: Leistung mal Zeit", "en": "The kilowatt hour: power times time" },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Auf der Stromrechnung steht nicht Watt, sondern Kilowattstunden. Und der Preis pro Kilowattstunde liegt in Deutschland derzeit bei ungefähr 40 Cent. Damit kannst du jedes Gerät durchrechnen.",
+            "en": "The bill does not show watts but kilowatt hours. And the price per kilowatt hour in Germany is currently around 40 cents. With that you can work out any appliance."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Eine Kilowattstunde ist die Energie, die ein Gerät mit 1 000 Watt in einer Stunde umsetzt. Die Rechnung: Leistung in Kilowatt mal Stunden. Ein Wasserkocher mit 2 000 Watt braucht in fünf Minuten also 2 kW · 1/12 h ≈ 0,17 kWh, das sind rund sieben Cent.",
+            "en": "A kilowatt hour is the energy a 1,000 watt device converts in one hour. The sum: power in kilowatts times hours. A 2,000 watt kettle running for five minutes therefore uses 2 kW · 1/12 h ≈ 0.17 kWh, about seven cents."
+          }
+        },
+        {
+          "kind": "table",
+          "highlightFirst": true,
+          "caption": { "de": "Bei 40 Cent je Kilowattstunde.", "en": "At 40 cents per kilowatt hour." },
+          "head": [
+            { "de": "Was", "en": "What" },
+            { "de": "Energie", "en": "Energy" },
+            { "de": "Kosten", "en": "Cost" }
+          ],
+          "rows": [
+            [
+              { "de": "LED-Lampe, 4 Stunden", "en": "LED lamp, 4 hours" },
+              { "de": "0,04 kWh", "en": "0.04 kWh" },
+              { "de": "1,4 ct", "en": "1.4 ct" }
+            ],
+            [
+              { "de": "Wasserkocher, 5 Minuten", "en": "kettle, 5 minutes" },
+              { "de": "0,17 kWh", "en": "0.17 kWh" },
+              { "de": "6,7 ct", "en": "6.7 ct" }
+            ],
+            [
+              { "de": "Föhn, 10 Minuten", "en": "hairdryer, 10 minutes" },
+              { "de": "0,30 kWh", "en": "0.30 kWh" },
+              { "de": "12 ct", "en": "12 ct" }
+            ],
+            [
+              { "de": "Fernseher, 3 Stunden", "en": "television, 3 hours" },
+              { "de": "0,36 kWh", "en": "0.36 kWh" },
+              { "de": "14 ct", "en": "14 ct" }
+            ],
+            [
+              { "de": "Kühlschrank, ganzer Tag", "en": "fridge, all day" },
+              { "de": "≈ 0,8 kWh", "en": "≈ 0.8 kWh" },
+              { "de": "≈ 32 ct", "en": "≈ 32 ct" }
+            ]
+          ]
+        },
+        {
+          "kind": "callout",
+          "tone": "tip",
+          "icon": "🧊",
+          "title": { "de": "Der Kühlschrank schlägt den Wasserkocher", "en": "The fridge beats the kettle" },
+          "text": {
+            "de": "Der Wasserkocher hat die zwanzigfache Leistung des Kühlschranks - und kostet trotzdem weniger im Jahr. Der Grund ist die Zeit: Der Kocher läuft vielleicht zehn Minuten am Tag, der Kühlschrank rund um die Uhr, wenn auch nicht durchgehend. Wer Strom sparen will, sucht deshalb nicht das stärkste Gerät, sondern das, welches am längsten läuft.",
+            "en": "The kettle has twenty times the power of the fridge - and still costs less per year. The reason is time: the kettle runs perhaps ten minutes a day, the fridge around the clock, if not continuously. So anyone wanting to save electricity looks not for the most powerful device but for the one running longest."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "🔢",
+          "title": { "de": "Rechne deinen eigenen Tag durch", "en": "Work out your own day" },
+          "text": {
+            "de": "Nimm drei Geräte, die du heute benutzt hast. Lies die Wattzahl vom Aufkleber ab, schätze die Zeit, rechne die Kilowattstunden aus und multipliziere mit 0,40 Euro. Die meisten unterschätzen dabei die Dauerläufer und überschätzen die Kraftpakete.",
+            "en": "Take three devices you used today. Read the wattage off the label, estimate the time, work out the kilowatt hours and multiply by 0.40 euros. Most people underestimate the ones that run all the time and overestimate the powerful ones."
+          }
+        }
+      ]
+    },
+    {
+      "key": "wohin",
+      "title": { "de": "Wohin die Energie verschwindet", "en": "Where the energy disappears to" },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Energie geht nicht verloren - sie wird umgewandelt. Bei jedem Gerät lohnt die Frage: In was denn eigentlich? Die Antwort ist überraschend oft: in Wärme, auch dort, wo man es nicht will.",
+            "en": "Energy does not get lost - it gets converted. With every device it is worth asking: into what, exactly? Surprisingly often the answer is: into heat, even where nobody wants it."
+          }
+        },
+        {
+          "kind": "steps",
+          "items": [
+            {
+              "title": { "de": "Wasserkocher: fast alles nützlich", "en": "Kettle: nearly all of it useful" },
+              "text": {
+                "de": "Hier soll Wärme entstehen, und sie entsteht direkt im Wasser. Fast die gesamte elektrische Energie landet dort, wo sie hin soll. Wenig ist so effizient.",
+                "en": "Here heat is wanted, and it appears directly in the water. Almost all the electrical energy ends up where it should. Little else is so efficient."
+              }
+            },
+            {
+              "title": { "de": "LED: das meiste wird Licht", "en": "LED: most of it becomes light" },
+              "text": {
+                "de": "Eine LED wandelt einen großen Teil in Licht um und wird nur handwarm. Die alte Glühlampe machte umgekehrt fast alles zu Wärme und nur einen kleinen Rest zu Licht - deshalb konnte man sich an ihr verbrennen und deshalb wurde sie abgeschafft.",
+                "en": "An LED turns a large share into light and only gets hand-warm. The old filament lamp did the opposite, making nearly everything heat and only a small remainder light - which is why you could burn yourself on one, and why it was phased out."
+              }
+            },
+            {
+              "title": { "de": "Ladegerät: ein bisschen bleibt hängen", "en": "Charger: a little stays behind" },
+              "text": {
+                "de": "Ein warmes Ladegerät zeigt dir genau, welcher Teil nicht im Akku ankommt. Die Wärme ist kein Zeichen von Kraft, sondern von Verlust.",
+                "en": "A warm charger shows you exactly the part that never reaches the battery. The warmth is not a sign of power but of loss."
+              }
+            }
+          ]
+        },
+        {
+          "kind": "callout",
+          "tone": "note",
+          "icon": "⏳",
+          "title": { "de": "Standby: klein mal lang ist groß", "en": "Standby: small times long is large" },
+          "text": {
+            "de": "Ein Gerät im Bereitschaftsbetrieb zieht vielleicht ein Watt. Das klingt nach nichts. Aber ein Watt über ein ganzes Jahr sind rund 8,8 Kilowattstunden, also etwa 3,50 Euro - für ein Gerät, das nichts getan hat. Bei zehn solchen Geräten wird daraus ein Betrag, über den man reden kann.",
+            "en": "A device on standby draws perhaps one watt. That sounds like nothing. But one watt over a whole year is about 8.8 kilowatt hours, roughly 3.50 euros - for a device that did nothing. With ten such devices it becomes a sum worth discussing."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": { "de": "Bundesnetzagentur: Strompreise für Haushalte", "en": "Bundesnetzagentur: household electricity prices" },
+              "url": "https://www.bundesnetzagentur.de"
+            },
+            {
+              "label": { "de": "Umweltbundesamt: Stromverbrauch privater Haushalte", "en": "Umweltbundesamt: household electricity use" },
+              "url": "https://www.umweltbundesamt.de"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": { "de": "1. Lückentext: von Watt zur Rechnung", "en": "1. Fill in the blanks: from watts to the bill" },
+      "intro": { "de": "Setze die fehlenden Wörter, Zahlen und Einheiten ein.", "en": "Fill in the missing words, numbers and units." },
+      "text": {
+        "de": "Wie schnell ein Gerät Energie umsetzt, sagt die ___, gemessen in ___. Sie ergibt sich aus P = U · ___. Bei 230 Volt zieht ein Wasserkocher mit 2 000 Watt also rund ___ Ampere. Auf der Rechnung steht dagegen nicht die Leistung, sondern die umgesetzte ___, gemessen in ___. Man erhält sie, indem man die Leistung mit der ___ multipliziert. Eine Kilowattstunde kostet derzeit etwa ___ Cent. Obwohl der Wasserkocher zwanzigmal so stark ist wie der Kühlschrank, kostet dieser im Jahr mehr - entscheidend ist eben nicht die Leistung allein, sondern auch die ___. Energie geht dabei nie verloren, sie wird nur ___; bei vielen Geräten landet ein Teil unerwünscht als ___.",
+        "en": "How fast a device converts energy is given by the ___, measured in ___. It follows from P = U · ___. At 230 volts a 2,000 watt kettle therefore draws about ___ amperes. The bill, however, does not show power but the ___ converted, measured in ___. You get it by multiplying the power by the ___. One kilowatt hour currently costs about ___ cents. Although the kettle is twenty times as powerful as the fridge, the fridge costs more per year - what decides is not the power alone but also the ___. Energy is never lost in this, only ___; in many devices a share ends up unwanted as ___."
+      }
+    },
+    {
+      "kind": "compare",
+      "title": { "de": "2. Vergleiche und rechne: stark gegen ausdauernd", "en": "2. Compare and calculate: powerful against persistent" },
+      "intro": { "de": "Rechne beide Fälle aus und ziehe daraus einen Schluss.", "en": "Work out both cases and draw a conclusion." },
+      "text": {
+        "de": "Ein Wasserkocher mit 2 000 Watt läuft täglich zehn Minuten. Ein Router mit 10 Watt läuft rund um die Uhr. Rechne für beide den Jahresverbrauch in Kilowattstunden aus und die Kosten bei 40 Cent je Kilowattstunde. Erkläre anschließend, warum die Wattzahl allein eine schlechte Grundlage für Sparentscheidungen ist - und welche zweite Größe man immer mitdenken muss.",
+        "en": "A 2,000 watt kettle runs ten minutes a day. A 10 watt router runs around the clock. Work out the yearly consumption in kilowatt hours for both and the cost at 40 cents per kilowatt hour. Then explain why wattage alone is a poor basis for saving decisions - and which second quantity always has to be considered."
+      },
+      "hint": {
+        "de": "Ein Jahr hat 365 Tage; für den Router rechne mit 24 Stunden täglich.",
+        "en": "A year has 365 days; for the router use 24 hours a day."
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": { "de": "3. Zum Nachdenken: die unsichtbare Rechnung", "en": "3. Something to think about: the invisible bill" },
+      "intro": { "de": "Auf diese Frage gibt es keine richtige Antwort.", "en": "There is no right answer to this one." },
+      "text": {
+        "de": "Strom ist die einzige Ware, die man kauft, ohne sie zu sehen, zu wiegen oder abzuzählen - man merkt erst am Jahresende, wie viel es war. Überlege, was sich ändern würde, wenn an jedem Gerät sichtbar mitliefe, was es gerade kostet. Und dann eine Frage, die weiter reicht: Wo in deinem Alltag verbrauchst du noch etwas, dessen Menge du gar nicht wahrnimmst - und würde es dein Verhalten ändern, wenn du es sehen könntest?",
+        "en": "Electricity is the only thing you buy without seeing, weighing or counting it - you only notice at the end of the year how much there was. Consider what would change if every device visibly displayed what it was costing right now. And then a question that reaches further: where else in your daily life do you consume something whose quantity you never perceive - and would seeing it change what you do?"
+      }
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "key": "elektrizitaetslehre",
+  "title": { "de": "Elektrizitätslehre", "en": "Electricity" },
+  "description": {
+    "de": "Vom Stromkreis bis zur Stromrechnung: was in den Kabeln passiert, warum eine Lichterkette ganz ausfällt und weshalb 230 Volt gefährlich sind, eine 9-Volt-Batterie aber nicht.",
+    "en": "From the circuit to the electricity bill: what happens in the cables, why a string of lights goes out completely, and why 230 volts is dangerous while a 9-volt battery is not."
+  },
+  "icon": "⚡",
+  "accent": "amber",
+  "badge": "Jg. 8-10"
+}

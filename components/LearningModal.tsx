@@ -18,6 +18,8 @@ import {
   type LearningPath,
   loadProgress,
   type Localized,
+  type Module,
+  pathsOf,
   pick,
   type Progress,
   saveProgress,
@@ -106,6 +108,7 @@ export default function LearningModal({
 
   const [progress, setProgress] = useState<Progress>(() => loadProgress());
   const [subjectKey, setSubjectKey] = useState<string | null>(null);
+  const [moduleKey, setModuleKey] = useState<string | null>(null);
   const [pathKey, setPathKey] = useState<string | null>(null);
   const [screenIndex, setScreenIndex] = useState(0);
   const [showResume, setShowResume] = useState(false);
@@ -142,7 +145,8 @@ export default function LearningModal({
   }, []);
 
   const subject = catalogue.find((s) => s.key === subjectKey) ?? null;
-  const path = subject?.paths.find((p) => p.key === pathKey) ?? null;
+  const module = subject?.modules.find((m) => m.key === moduleKey) ?? null;
+  const path = module?.paths.find((p) => p.key === pathKey) ?? null;
   const screen: Screen | null = path?.screens[screenIndex] ?? null;
   /** The exercises live on a screen of their own, right after the content. */
   const hasExercises = (path?.exercises?.length ?? 0) > 0;
@@ -166,14 +170,21 @@ export default function LearningModal({
     saveProgress(next);
   };
 
-  const openPath = (nextSubject: Subject, nextPath: LearningPath, at = 0) => {
+  const openPath = (
+    nextSubject: Subject,
+    nextModule: Module,
+    nextPath: LearningPath,
+    at = 0,
+  ) => {
     setSubjectKey(nextSubject.key);
+    setModuleKey(nextModule.key);
     setPathKey(nextPath.key);
     setScreenIndex(at);
     setShowResume(false);
     remember({
       ...progress,
       lastSubject: nextSubject.key,
+      lastModule: nextModule.key,
       lastPath: nextPath.key,
       screens: { ...progress.screens, [nextPath.key]: at },
     });
@@ -221,6 +232,7 @@ export default function LearningModal({
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
         if (pathKey) leaveReader();
+        else if (moduleKey) setModuleKey(null);
         else if (subjectKey) setSubjectKey(null);
         else onClose();
         return;
@@ -233,20 +245,33 @@ export default function LearningModal({
     };
     globalThis.addEventListener("keydown", onKey);
     return () => globalThis.removeEventListener("keydown", onKey);
-  }, [onClose, pathKey, subjectKey, screenIndex, progress]);
+  }, [onClose, pathKey, moduleKey, subjectKey, screenIndex, progress]);
 
-  const resumeTarget = progress.lastPath ? findPath(progress.lastPath) : null;
+  // Searched in the catalogue actually shown, so a path from a dropped-in
+  // file can be resumed as well as a built-in one.
+  const resumeTarget = progress.lastPath
+    ? findPath(progress.lastPath, catalogue)
+    : null;
 
   return (
     <div class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm flex items-center justify-center z-50 p-2 md:p-4">
       <div class="bg-white rounded-xl shadow-2xl w-[96vw] h-[93vh] flex flex-col overflow-hidden">
         {/* ---------------------------------------------------- title bar */}
         <header class="flex items-center gap-3 px-4 py-2.5 bg-slate-800 text-white shrink-0">
-          {(subjectKey || pathKey) && (
+          {(subjectKey || moduleKey || pathKey) && (
             <button
               type="button"
-              onClick={() => (pathKey ? leaveReader() : setSubjectKey(null))}
-              title={pathKey ? t("backToPaths") : t("backToSubjects")}
+              onClick={() =>
+                pathKey
+                  ? leaveReader()
+                  : moduleKey
+                  ? setModuleKey(null)
+                  : setSubjectKey(null)}
+              title={pathKey
+                ? t("backToPaths")
+                : moduleKey
+                ? t("backToModules")
+                : t("backToSubjects")}
               class="p-1.5 rounded hover:bg-white/15 shrink-0"
             >
               <BackIcon />
@@ -330,6 +355,7 @@ export default function LearningModal({
                 if (resumeTarget) {
                   openPath(
                     resumeTarget.subject,
+                    resumeTarget.module,
                     resumeTarget.path,
                     progress.screens[resumeTarget.path.key] ?? 0,
                   );
@@ -340,13 +366,23 @@ export default function LearningModal({
             />
           )}
 
-          {subject && !path && (
-            <PathGrid
+          {subject && !module && !path && (
+            <ModuleGrid
               t={t}
               L={L}
               subject={subject}
               progress={progress}
-              onOpen={(p, at) => openPath(subject, p, at)}
+              onOpen={(m) => setModuleKey(m.key)}
+            />
+          )}
+
+          {subject && module && !path && (
+            <PathGrid
+              t={t}
+              L={L}
+              module={module}
+              progress={progress}
+              onOpen={(p, at) => openPath(subject, module, p, at)}
             />
           )}
 
@@ -503,7 +539,15 @@ function SubjectGrid({
             </div>
             <div class="mt-5 flex items-center gap-2 text-sm font-medium text-white/90">
               <span class="px-2.5 py-1 rounded-full bg-white/20">
-                {subject.paths.length}{" "}
+                {subject.modules.length}{" "}
+                {L(
+                  subject.modules.length === 1
+                    ? { de: "Modul", en: "module" }
+                    : { de: "Module", en: "modules" },
+                )}
+              </span>
+              <span class="px-2.5 py-1 rounded-full bg-white/20">
+                {pathsOf(subject).length}{" "}
                 {L({ de: "Lernpfade", en: "learning paths" })}
               </span>
               <span class="opacity-0 group-hover:opacity-100 transition-opacity">
@@ -517,9 +561,17 @@ function SubjectGrid({
   );
 }
 
-// -------------------------------------------------------------- path level
+// ------------------------------------------------------------ module level
 
-function PathGrid({
+/**
+ * The modules of one subject.
+ *
+ * Sits between subjects and paths because a subject the size of Informatik is
+ * a curriculum, not a pile of topics. The tile carries an optional badge -
+ * "M1", "Jg. 8-10" - so a teacher can see at a glance which part of the plan
+ * a module covers.
+ */
+function ModuleGrid({
   t,
   L,
   subject,
@@ -530,7 +582,7 @@ function PathGrid({
   L: (value: { de: string; en: string }) => string;
   subject: Subject;
   progress: Progress;
-  onOpen: (path: LearningPath, at: number) => void;
+  onOpen: (module: Module) => void;
 }) {
   return (
     <div class="max-w-5xl mx-auto px-4 py-8">
@@ -538,12 +590,101 @@ function PathGrid({
         <span class="text-4xl leading-none">{subject.icon}</span>
         <div>
           <h3 class="text-2xl font-bold text-slate-800">{L(subject.title)}</h3>
+          <p class="text-slate-500 text-sm">{t("chooseModuleHint")}</p>
+        </div>
+      </div>
+
+      <div class="mt-6 grid gap-4 sm:grid-cols-2">
+        {subject.modules.map((module) => {
+          // How far the reader has come across this module's paths.
+          const started = module.paths.filter((p) =>
+            (progress.screens[p.key] ?? 0) > 0
+          ).length;
+          const minutes = module.paths.reduce((n, p) => n + p.minutes, 0);
+          const accent = ACCENTS[module.accent];
+
+          return (
+            <button
+              type="button"
+              key={module.key}
+              onClick={() => onOpen(module)}
+              class={`group text-left rounded-xl border-2 bg-white p-5 transition-all
+                hover:-translate-y-0.5 hover:shadow-md ${accent.soft}`}
+            >
+              <div class="flex items-start gap-3">
+                <span class="text-3xl leading-none shrink-0">{module.icon}</span>
+                <div class="min-w-0 flex-1">
+                  <div class="flex items-center gap-2 flex-wrap">
+                    <h4 class={`text-lg font-bold ${accent.text}`}>
+                      {L(module.title)}
+                    </h4>
+                    {module.badge && (
+                      <span
+                        class={`text-[11px] font-semibold px-2 py-0.5 rounded-full ${accent.chip}`}
+                      >
+                        {module.badge}
+                      </span>
+                    )}
+                  </div>
+                  <p class="text-slate-600 text-sm mt-1 leading-snug">
+                    {L(module.description)}
+                  </p>
+                </div>
+              </div>
+
+              <div class="mt-4 flex items-center gap-2 text-xs text-slate-500 flex-wrap">
+                <span class={`px-2 py-0.5 rounded-full ${accent.chip}`}>
+                  {module.paths.length}{" "}
+                  {L({ de: "Lernpfade", en: "learning paths" })}
+                </span>
+                <span class="px-2 py-0.5 rounded-full bg-slate-100">
+                  ~{minutes} min
+                </span>
+                {started > 0 && (
+                  <span class="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800">
+                    {started}/{module.paths.length}{" "}
+                    {L({ de: "begonnen", en: "started" })}
+                  </span>
+                )}
+                <span class="ml-auto opacity-0 group-hover:opacity-100 transition-opacity">
+                  →
+                </span>
+              </div>
+            </button>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+// -------------------------------------------------------------- path level
+
+function PathGrid({
+  t,
+  L,
+  module,
+  progress,
+  onOpen,
+}: {
+  t: (key: string) => string;
+  L: (value: { de: string; en: string }) => string;
+  module: Module;
+  progress: Progress;
+  onOpen: (path: LearningPath, at: number) => void;
+}) {
+  return (
+    <div class="max-w-5xl mx-auto px-4 py-8">
+      <div class="flex items-center gap-3">
+        <span class="text-4xl leading-none">{module.icon}</span>
+        <div>
+          <h3 class="text-2xl font-bold text-slate-800">{L(module.title)}</h3>
           <p class="text-slate-500 text-sm">{t("choosePathHint")}</p>
         </div>
       </div>
 
       <div class="mt-7 grid gap-5 md:grid-cols-2">
-        {subject.paths.map((path) => {
+        {module.paths.map((path) => {
           const reached = progress.screens[path.key];
           const started = reached !== undefined && reached > 0;
           const done = reached !== undefined &&

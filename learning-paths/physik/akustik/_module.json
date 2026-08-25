@@ -1,0 +1,11 @@
+{
+  "key": "akustik",
+  "title": { "de": "Akustik", "en": "Acoustics" },
+  "description": {
+    "de": "Wie Schall entsteht, wie schnell er ist und was man daraus alles ablesen kann.",
+    "en": "How sound is made, how fast it travels and what can be read from that."
+  },
+  "icon": "🔊",
+  "accent": "violet",
+  "badge": "Jg. 7-9"
+}

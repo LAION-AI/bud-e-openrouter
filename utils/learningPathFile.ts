@@ -21,6 +21,7 @@
 
 import type {
   Accent,
+  Module,
   Block,
   CalloutTone,
   Exercise,
@@ -496,29 +497,90 @@ export function parseSubjectMeta(
   };
 }
 
+export interface ModuleMeta {
+  key: string;
+  title: Localized;
+  description: Localized;
+  icon: string;
+  accent: Accent;
+  badge?: string;
+}
+
+/** Reads the _module.json that describes a folder of paths. */
+export function parseModuleMeta(
+  raw: unknown,
+  file: string,
+  fallbackKey: string,
+  fallbackAccent: Accent,
+): { meta?: ModuleMeta; errors: string[]; warnings: string[] } {
+  const p = new Problems();
+  if (!isObject(raw)) {
+    p.fail(file, "the file must contain a JSON object");
+    return { errors: p.errors, warnings: p.warnings };
+  }
+  const title = localized(raw.title, "title", p);
+  const description = localized(raw.description, "description", p, false);
+  const accent = str(raw.accent) as Accent;
+  if (accent && !ACCENTS.includes(accent)) {
+    p.fail("accent", `unknown colour "${accent}" - allowed: ${ACCENTS.join(", ")}`);
+  }
+  if (!title || p.errors.length) {
+    return { errors: p.errors, warnings: p.warnings };
+  }
+  return {
+    meta: {
+      key: str(raw.key, fallbackKey),
+      title,
+      description: description ?? { de: "", en: "" },
+      icon: str(raw.icon, "📗"),
+      // A module without its own colour takes the subject's, so a folder made
+      // in a hurry still looks like it belongs.
+      accent: accent && ACCENTS.includes(accent) ? accent : fallbackAccent,
+      ...(str(raw.badge) ? { badge: str(raw.badge).slice(0, 12) } : {}),
+    },
+    errors: p.errors,
+    warnings: p.warnings,
+  };
+}
+
 /**
  * Merges loaded subjects into the built-in ones.
  *
- * A file whose subject key already exists adds its paths to that subject
- * rather than making a second tile with the same name; a path key that already
- * exists replaces the built-in one, which is what makes it possible to correct
- * a shipped path without touching the source.
+ * Matching happens by key at every level: a subject that already exists gains
+ * the new modules rather than appearing twice, a module that already exists
+ * gains the new paths, and a path key that already exists replaces the
+ * built-in one. That last rule is what makes it possible to correct a shipped
+ * path by dropping a file next to it, without touching the source.
  */
 export function mergeSubjects(
   builtin: Subject[],
   extra: Subject[],
 ): Subject[] {
-  const out = builtin.map((s) => ({ ...s, paths: [...s.paths] }));
+  const out = builtin.map((s) => ({
+    ...s,
+    modules: s.modules.map((m) => ({ ...m, paths: [...m.paths] })),
+  }));
+
   for (const add of extra) {
-    const found = out.find((s) => s.key === add.key);
-    if (!found) {
-      out.push({ ...add, paths: [...add.paths] });
+    const subject = out.find((s) => s.key === add.key);
+    if (!subject) {
+      out.push({
+        ...add,
+        modules: add.modules.map((m) => ({ ...m, paths: [...m.paths] })),
+      });
       continue;
     }
-    for (const path of add.paths) {
-      const at = found.paths.findIndex((p) => p.key === path.key);
-      if (at >= 0) found.paths[at] = path;
-      else found.paths.push(path);
+    for (const addModule of add.modules) {
+      const module = subject.modules.find((m) => m.key === addModule.key);
+      if (!module) {
+        subject.modules.push({ ...addModule, paths: [...addModule.paths] });
+        continue;
+      }
+      for (const path of addModule.paths) {
+        const at = module.paths.findIndex((p) => p.key === path.key);
+        if (at >= 0) module.paths[at] = path;
+        else module.paths.push(path);
+      }
     }
   }
   return out;

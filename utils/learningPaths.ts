@@ -126,13 +126,38 @@ export interface LearningPath {
   exercises?: Exercise[];
 }
 
+/**
+ * A module groups the paths that belong to one part of a subject.
+ *
+ * Three levels rather than two, because a subject the size of Informatik does
+ * not have "some paths" - it has a curriculum. Hamburg's compulsory Informatik
+ * is five prescribed modules, each with its own topics, and flattening that
+ * into one long list of tiles would hide exactly the structure a teacher
+ * plans along.
+ */
+export interface Module {
+  key: string;
+  title: Localized;
+  description: Localized;
+  icon: string;
+  accent: Accent;
+  /** Shown on the tile, e.g. "M1" or "Jg. 8-10". Optional. */
+  badge?: string;
+  paths: LearningPath[];
+}
+
 export interface Subject {
   key: string;
   title: Localized;
   description: Localized;
   icon: string;
   accent: Accent;
-  paths: LearningPath[];
+  modules: Module[];
+}
+
+/** Every path of a subject, across its modules. */
+export function pathsOf(subject: Subject): LearningPath[] {
+  return subject.modules.flatMap((m) => m.paths);
 }
 
 /** Falls back to English so a half translated string can never blank a page. */
@@ -148,6 +173,7 @@ export interface Progress {
   /** Screen index reached per path key, so several paths can be open at once. */
   screens: Record<string, number>;
   lastSubject?: string;
+  lastModule?: string;
   lastPath?: string;
 }
 
@@ -179,10 +205,13 @@ export function saveProgress(progress: Progress): void {
 
 export function findPath(
   pathKey: string,
-): { subject: Subject; path: LearningPath } | null {
-  for (const subject of subjects) {
-    const path = subject.paths.find((p) => p.key === pathKey);
-    if (path) return { subject, path };
+  within: Subject[] = subjects,
+): { subject: Subject; module: Module; path: LearningPath } | null {
+  for (const subject of within) {
+    for (const module of subject.modules) {
+      const path = module.paths.find((p) => p.key === pathKey);
+      if (path) return { subject, module, path };
+    }
   }
   return null;
 }
@@ -4308,26 +4337,40 @@ const howEmailWorks: LearningPath = {
 
 export const subjects: Subject[] = [
   {
-    key: "computing",
-    title: {
-      de: "Informatische Grundbildung",
-      en: "Computing Basics",
-    },
+    key: "informatik",
+    title: { de: "Informatik", en: "Computer science" },
     description: {
       de:
-        "Wie Computer entstanden sind, wie sie im Inneren wirklich arbeiten und warum sie jedes Jahr schneller werden - ohne Vorwissen, ohne Formelangst.",
+        "Wie Rechner arbeiten, wie sie miteinander reden und was das für uns bedeutet - von den Grundlagen bis zum Hamburger Pflichtfach.",
       en:
-        "How computers came about, how they really work inside and why they get faster every year - no prior knowledge, no fear of formulas.",
+        "How computers work, how they talk to each other and what that means for us - from the basics to Hamburg's compulsory subject.",
     },
     icon: "💻",
     accent: "indigo",
-    paths: [
-      whatIsAComputer,
-      bitsAndBytes,
-      pixelsAndResolution,
-      pixelsAndMegapixels,
-      howEmailWorks,
-      exponentialGrowth,
+    modules: [
+      {
+        key: "grundbildung",
+        title: {
+          de: "Informatische Grundbildung",
+          en: "Computing basics",
+        },
+        description: {
+          de:
+            "Wie Computer entstanden sind, wie sie im Inneren wirklich arbeiten und warum sie jedes Jahr schneller werden - ohne Vorwissen, ohne Formelangst.",
+          en:
+            "How computers came about, how they really work inside and why they get faster every year - no prior knowledge, no fear of formulas.",
+        },
+        icon: "🧭",
+        accent: "indigo",
+        paths: [
+          whatIsAComputer,
+          bitsAndBytes,
+          pixelsAndResolution,
+          pixelsAndMegapixels,
+          howEmailWorks,
+          exponentialGrowth,
+        ],
+      },
     ],
   },
 ];

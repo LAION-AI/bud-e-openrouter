@@ -1,0 +1,224 @@
+{
+  "key": "schall-und-hoeren",
+  "title": { "de": "Warum Blitz und Donner nicht zusammen ankommen", "en": "Why lightning and thunder do not arrive together" },
+  "summary": {
+    "de": "Eine Messung, die du ohne jedes Gerät machen kannst - und was sie über Luft, Wasser und Stahl verrät.",
+    "en": "A measurement you can take without any instrument - and what it reveals about air, water and steel."
+  },
+  "icon": "🔊",
+  "accent": "violet",
+  "minutes": 11,
+  "screens": [
+    {
+      "key": "die-luecke",
+      "title": { "de": "Die Lücke zwischen Sehen und Hören", "en": "The gap between seeing and hearing" },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Du siehst den Blitz und zählst: einundzwanzig, zweiundzwanzig, dreiundzwanzig - dann kracht es. Diese Lücke ist kein Zufall, sondern eine Messung, die du ohne jedes Gerät durchführen kannst.",
+            "en": "You see the flash and count: one, two, three - then the crash comes. That gap is not a coincidence but a measurement you can take without any instrument."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Licht ist so schnell, dass es für die paar Kilometer bis zum Gewitter praktisch keine Zeit braucht - rund 300 000 Kilometer schafft es in einer Sekunde. Der Schall dagegen legt in derselben Sekunde nur etwa 343 Meter zurück, gemessen in Luft bei 20 Grad Celsius. Fast eine Million mal langsamer.",
+            "en": "Light is so fast that the few kilometres to a thunderstorm take it practically no time - around 300,000 kilometres in a second. Sound, in that same second, covers only about 343 metres, measured in air at 20 degrees Celsius. Almost a million times slower."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "tip",
+          "icon": "🧮",
+          "title": { "de": "Die Faustregel", "en": "The rule of thumb" },
+          "text": {
+            "de": "Sekunden zählen, durch drei teilen - das ist die Entfernung in Kilometern. Drei Sekunden sind also ungefähr ein Kilometer. Genau genommen sind es 343 Meter je Sekunde, also etwas mehr als ein Drittel Kilometer; für ein Gewitter ist die einfache Regel genau genug.",
+            "en": "Count the seconds and divide by three - that is the distance in kilometres. Three seconds is therefore roughly one kilometre. Strictly it is 343 metres per second, a little over a third of a kilometre; for a thunderstorm the simple rule is close enough."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "warn",
+          "icon": "⛈️",
+          "title": { "de": "Wann es ernst wird", "en": "When it gets serious" },
+          "text": {
+            "de": "Unter zehn Sekunden Abstand ist das Gewitter näher als drei Kilometer - dann gehört man ins Haus oder ins Auto. Und nach dem letzten Donner wartet man noch eine halbe Stunde: Blitze schlagen auch aus einer Wolke ein, die schon weitergezogen scheint.",
+            "en": "Under ten seconds means the storm is closer than three kilometres - time to go inside or into a car. And after the last thunder you wait another half hour: lightning also strikes from a cloud that appears to have moved on."
+          }
+        }
+      ]
+    },
+    {
+      "key": "was-schall-ist",
+      "title": { "de": "Was da eigentlich durch die Luft läuft", "en": "What is actually travelling through the air" },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Es ist keine Luft, die von der Wolke zu dir fliegt. Was ankommt, ist eine Verdichtung, die durch die Luft weitergereicht wird - so wie eine Welle über ein Stadion läuft, ohne dass jemand seinen Platz verlässt.",
+            "en": "It is not air flying from the cloud to you. What arrives is a compression passed along through the air - like a wave running round a stadium without anybody leaving their seat."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Ein Lautsprecher drückt die Luft vor sich zusammen, zieht sich zurück, drückt wieder. Jedes Luftteilchen stößt sein Nachbarteilchen an und schwingt an seinen Platz zurück. Weitergegeben wird nur der Stoß, nicht das Teilchen. Deshalb braucht Schall auch immer einen Stoff, in dem er sich ausbreiten kann.",
+            "en": "A loudspeaker squeezes the air in front of it, pulls back, squeezes again. Every air particle nudges its neighbour and swings back to its place. Only the nudge is passed on, not the particle. That is also why sound always needs some material to travel through."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "fact",
+          "icon": "🌌",
+          "title": { "de": "Im Weltall hört dich niemand", "en": "In space nobody hears you" },
+          "text": {
+            "de": "Der Satz aus dem Filmplakat stimmt tatsächlich. Wo fast keine Teilchen sind, kann auch niemand einen Stoß weitergeben. Explosionen im Weltraum wären lautlos - was Filme regelmäßig ignorieren, weil Stille im Kino schlecht wirkt.",
+            "en": "The line from the film poster is actually right. Where there are almost no particles, nobody can pass a nudge along. Explosions in space would be silent - which films routinely ignore, because silence works badly in a cinema."
+          }
+        },
+        {
+          "kind": "table",
+          "highlightFirst": true,
+          "caption": { "de": "Je enger die Teilchen beieinanderliegen, desto schneller die Weitergabe.", "en": "The closer the particles sit, the faster the passing on." },
+          "head": [
+            { "de": "Stoff", "en": "Material" },
+            { "de": "Geschwindigkeit", "en": "Speed" },
+            { "de": "Im Vergleich zu Luft", "en": "Compared with air" }
+          ],
+          "rows": [
+            [
+              { "de": "Luft (20 °C)", "en": "air (20 °C)" },
+              { "de": "343 m/s", "en": "343 m/s" },
+              { "de": "-", "en": "-" }
+            ],
+            [
+              { "de": "Wasser", "en": "water" },
+              { "de": "1 480 m/s", "en": "1,480 m/s" },
+              { "de": "gut 4-mal so schnell", "en": "a good 4 times faster" }
+            ],
+            [
+              { "de": "Holz", "en": "wood" },
+              { "de": "etwa 3 300 m/s", "en": "about 3,300 m/s" },
+              { "de": "rund 10-mal", "en": "around 10 times" }
+            ],
+            [
+              { "de": "Stahl", "en": "steel" },
+              { "de": "5 900 m/s", "en": "5,900 m/s" },
+              { "de": "rund 17-mal", "en": "around 17 times" }
+            ]
+          ]
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "👂",
+          "title": { "de": "Selbst ausprobieren, an einem Tisch", "en": "Try it yourself, on a table" },
+          "text": {
+            "de": "Leg ein Ohr flach auf eine lange Tischplatte und lass jemanden am anderen Ende leise klopfen. Du hörst es zweimal: einmal durch das Holz, kurz darauf durch die Luft. Der Abstand ist winzig, aber bei einem langen Tisch bemerkbar - und derselbe Effekt, aus dem Westernhelden ihr Ohr auf die Schiene legen.",
+            "en": "Put one ear flat on a long table top and have somebody tap quietly at the other end. You hear it twice: once through the wood, shortly after through the air. The gap is tiny, but noticeable on a long table - and the same effect that made western heroes put an ear to the rail."
+          }
+        }
+      ]
+    },
+    {
+      "key": "wofuer-man-das-braucht",
+      "title": { "de": "Wozu man Schall benutzt, der zurückkommt", "en": "What a returning sound is good for" },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Wenn man weiß, wie schnell Schall ist, kann man aus einer Zeit eine Entfernung machen. Genau das tun Fledermäuse, Schiffe und Ärzte - und es ist dieselbe Rechnung wie beim Gewitter, nur rückwärts.",
+            "en": "Once you know how fast sound is, you can turn a time into a distance. That is exactly what bats, ships and doctors do - and it is the same sum as with the thunderstorm, just backwards."
+          }
+        },
+        {
+          "kind": "steps",
+          "items": [
+            {
+              "title": { "de": "Fledermäuse", "en": "Bats" },
+              "text": {
+                "de": "Sie rufen und hören auf das Echo. Aus der Verzögerung ergibt sich die Entfernung, aus der Veränderung des Tons die Bewegung der Beute. Sie sehen mit den Ohren, und zwar genau genug, um eine Mücke im Dunkeln zu fangen.",
+                "en": "They call and listen for the echo. The delay gives the distance, the change in pitch gives the movement of the prey. They see with their ears, accurately enough to catch a mosquito in the dark."
+              }
+            },
+            {
+              "title": { "de": "Schiffe", "en": "Ships" },
+              "text": {
+                "de": "Ein Echolot schickt einen Impuls nach unten und misst, wann er zurückkommt. Weil Schall im Wasser 1 480 Meter je Sekunde schafft, bedeutet eine Zehntelsekunde rund 74 Meter Wassertiefe - hin und zurück gerechnet.",
+                "en": "An echo sounder sends a pulse downwards and measures when it returns. Since sound manages 1,480 metres per second in water, a tenth of a second means about 74 metres of depth - counting there and back."
+              }
+            },
+            {
+              "title": { "de": "Ultraschall beim Arzt", "en": "Ultrasound at the doctor's" },
+              "text": {
+                "de": "Dasselbe Verfahren, nur mit Tönen weit oberhalb dessen, was Menschen hören. Aus tausenden Echos entsteht ein Bild - ohne Strahlung, weshalb man es auch bei Ungeborenen einsetzen kann.",
+                "en": "The same method, only with tones far above what humans can hear. Thousands of echoes build a picture - without radiation, which is why it can be used on the unborn."
+              }
+            }
+          ]
+        },
+        {
+          "kind": "callout",
+          "tone": "note",
+          "icon": "🌡️",
+          "title": { "de": "Warum die 343 nicht immer stimmen", "en": "Why the 343 is not always right" },
+          "text": {
+            "de": "Die Zahl gilt für 20 Grad. Bei null Grad sind es nur etwa 331 Meter je Sekunde, bei 30 Grad rund 349. Warme Luft leitet Schall schneller, weil sich die Teilchen ohnehin schon schneller bewegen. Für die Gewitterregel spielt das keine Rolle - für ein Echolot sehr wohl.",
+            "en": "The figure holds for 20 degrees. At zero it is only about 331 metres per second, at 30 degrees around 349. Warm air carries sound faster because the particles are already moving faster. For the thunderstorm rule this makes no difference - for an echo sounder it certainly does."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": { "de": "LEIFIphysik: Schallgeschwindigkeit", "en": "LEIFIphysik: speed of sound" },
+              "url": "https://www.leifiphysik.de/akustik/schallausbreitung"
+            },
+            {
+              "label": { "de": "Deutscher Wetterdienst: Gewitter", "en": "Deutscher Wetterdienst: thunderstorms" },
+              "url": "https://www.dwd.de"
+            },
+            {
+              "label": { "de": "Physikalisch-Technische Bundesanstalt", "en": "Physikalisch-Technische Bundesanstalt" },
+              "url": "https://www.ptb.de"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": { "de": "1. Lückentext: vom Blitz bis zum Echolot", "en": "1. Fill in the blanks: from the flash to the echo sounder" },
+      "intro": { "de": "Setze die fehlenden Wörter und Zahlen ein.", "en": "Fill in the missing words and numbers." },
+      "text": {
+        "de": "Schall breitet sich in Luft bei 20 Grad mit etwa ___ Metern pro Sekunde aus, Licht dagegen praktisch ___. Zählt man nach dem Blitz die ___ und teilt sie durch ___, erhält man die Entfernung in ___. Weitergegeben wird dabei nicht die Luft selbst, sondern eine ___, die von Teilchen zu Teilchen läuft. Deshalb kann sich Schall im ___ gar nicht ausbreiten. Je enger die Teilchen beieinanderliegen, desto ___ ist er: In Wasser sind es 1 480, in ___ sogar 5 900 Meter pro Sekunde. Wer die Geschwindigkeit kennt, kann aus einer gemessenen Zeit eine ___ berechnen - genau das tun Fledermäuse mit dem ___ ihres Rufs.",
+        "en": "Sound travels through air at 20 degrees at about ___ metres per second, while light is practically ___. Counting the ___ after the flash and dividing by ___ gives the distance in ___. What is passed on is not the air itself but a ___ running from particle to particle. That is why sound cannot travel in a ___ at all. The closer the particles sit, the ___ it is: in water 1,480 and in ___ even 5,900 metres per second. Anyone who knows the speed can turn a measured time into a ___ - which is exactly what bats do with the ___ of their call."
+      }
+    },
+    {
+      "kind": "compare",
+      "title": { "de": "2. Vergleiche: das Ohr an der Schiene", "en": "2. Compare: an ear to the rail" },
+      "intro": { "de": "Setze zwei Beobachtungen zueinander in Beziehung und rechne nach.", "en": "Relate two observations to each other and check by calculating." },
+      "text": {
+        "de": "In Stahl ist Schall etwa siebzehnmal schneller als in Luft. Erkläre damit, warum man ein herannahendes Fahrzeug früher hört, wenn man das Ohr an die Schiene legt, als wenn man einfach horcht. Rechne außerdem aus, wie lange der Schall für 1 700 Meter durch Luft und wie lange durch Stahl braucht - und begründe aus dem Teilchenbild, woher der Unterschied kommt.",
+        "en": "In steel sound is about seventeen times faster than in air. Use that to explain why an approaching vehicle is heard sooner with an ear on the rail than by simply listening. Also work out how long sound takes for 1,700 metres through air and through steel - and explain from the particle picture where the difference comes from."
+      },
+      "hint": {
+        "de": "Rechne Zeit = Strecke geteilt durch Geschwindigkeit, und überlege, wie weit ein Stoß bis zum nächsten Teilchen zu laufen hat.",
+        "en": "Use time = distance divided by speed, and think about how far a nudge has to travel to the next particle."
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": { "de": "3. Zum Nachdenken: mit den Ohren sehen", "en": "3. Something to think about: seeing with your ears" },
+      "intro": { "de": "Auf diese Frage gibt es keine richtige Antwort.", "en": "There is no right answer to this one." },
+      "text": {
+        "de": "Fledermäuse, Wale und U-Boote benutzen Schall, um wahrzunehmen, was ihre Augen nicht erreichen. Manche blinde Menschen tun dasselbe mit Zungenklicks und finden sich damit erstaunlich sicher zurecht. Überlege, was sich für dich ändern würde, wenn du Entfernungen hören statt sehen müsstest - und wo im Alltag du das längst tust, ohne darüber nachzudenken: beim Rückwärtsfahren, in einem dunklen Raum, oder wenn du an einem Klang hörst, wie groß ein Zimmer ist.",
+        "en": "Bats, whales and submarines use sound to perceive what their eyes cannot reach. Some blind people do the same with tongue clicks and get around remarkably confidently. Consider what would change for you if you had to hear distances rather than see them - and where in daily life you already do exactly that without thinking: reversing a car, moving through a dark room, or hearing from a sound how large a space is."
+      }
+    }
+  ]
+}

@@ -3,28 +3,57 @@
 Ein Lernpfad ist eine Datei. Du legst sie in einen Ordner, lädst die Seite neu,
 und sie ist da — ohne dass jemand am Quelltext von Bud-E etwas ändern muss.
 
-Das funktioniert für jedes Fach. Informatische Grundbildung ist nur dasjenige,
-das mitgeliefert wird; Physik, Biologie, Geschichte oder Musik entstehen genauso.
+Das funktioniert für jedes Fach. Informatik ist nur dasjenige, das mitgeliefert
+wird; Physik, Biologie, Geschichte oder Musik entstehen genauso.
 
 ---
+
+## Drei Ebenen
+
+Die Inhalte sind dreistufig geordnet, und die Ordner bilden das eins zu eins ab:
+
+```
+Fach          Informatik            ein Ordner
+  Modul       Rechnernetze          ein Unterordner
+    Lernpfad  Wie Daten reisen      eine .json-Datei darin
+```
+
+Die mittlere Ebene ist der Grund für diese Struktur: Ein Fach wie Informatik
+hat kein loses Bündel von Themen, sondern ein Curriculum. Hamburgs Pflichtfach
+besteht aus fünf vorgeschriebenen Modulen — und die alle in eine einzige
+Kachelreihe zu kippen, würde genau die Gliederung verstecken, an der eine
+Lehrkraft ihren Unterricht plant.
 
 ## Der schnellste Weg zum ersten Pfad
 
 ```
 learning-paths/
   physik/
-    _subject.json      ← beschreibt das Fach (die Kachel)
-    schall.json        ← ein Lernpfad
-    optik.json         ← noch einer
-  biologie/
-    _subject.json
-    zellen.json
+    _subject.json                 ← beschreibt das Fach (die Kachel)
+    elektrizitaetslehre/
+      _module.json                ← beschreibt das Modul
+      01-stromkreis.json          ← ein Lernpfad
+      02-ohmsches-gesetz.json     ← noch einer
+    akustik/
+      _module.json
+      schall.json
 ```
 
-Ein Ordner ist ein Fach. Jede `.json`-Datei darin ist ein Lernpfad. Fertig.
+Ein Ordner ist ein Fach. Ein Unterordner ist ein Modul. Jede `.json`-Datei
+darin ist ein Lernpfad. Dateien, deren Name mit `_` beginnt, sind Beschreibungen
+und keine Pfade.
 
-Im Repository liegt unter `learning-paths/physik/` ein vollständiges Beispiel,
-das du kopieren und umschreiben kannst. Das ist der empfohlene Anfang.
+Im Repository liegt unter `learning-paths/physik/` ein vollständiges Beispiel
+mit zwei Modulen und sechs Pfaden. Das ist der empfohlene Anfang: kopieren und
+umschreiben.
+
+**Reihenfolge:** Innerhalb eines Moduls werden die Dateien alphabetisch
+sortiert. Wer eine bestimmte Abfolge will, stellt Zahlen voran — `01-`, `02-`,
+wie im Beispiel.
+
+**Pfade ohne Modul:** Liegt eine `.json` direkt im Fach-Ordner, wird sie nicht
+verworfen, sondern in ein Modul gesteckt, das wie das Fach heißt. Du bekommst
+eine Warnung dazu. Sauberer ist ein Unterordner.
 
 ### Wo der Ordner liegt
 
@@ -86,11 +115,43 @@ ohne sie heißt das Fach wie der Ordner.
 
 | Feld | Pflicht | Bedeutung |
 |---|---|---|
-| `key` | nein | Kennung. Ohne Angabe der Ordnername. Gleicher `key` wie ein bestehendes Fach → die Pfade werden dort einsortiert. |
+| `key` | nein | Kennung. Ohne Angabe der Ordnername. Gleicher `key` wie ein bestehendes Fach → die Module werden dort einsortiert. |
 | `title` | **ja** | Name auf der Kachel |
 | `description` | nein | Ein bis zwei Sätze unter dem Namen |
 | `icon` | nein | Ein Emoji. Vorgabe: 📚 |
 | `accent` | nein | Farbe, siehe unten |
+
+---
+
+## Aufbau einer Modul-Datei
+
+`_module.json` beschreibt die Kachel innerhalb eines Fachs. Ebenfalls optional.
+
+```json
+{
+  "key": "elektrizitaetslehre",
+  "title": { "de": "Elektrizitätslehre", "en": "Electricity" },
+  "description": {
+    "de": "Vom Stromkreis bis zur Stromrechnung.",
+    "en": "From the circuit to the electricity bill."
+  },
+  "icon": "⚡",
+  "accent": "amber",
+  "badge": "Jg. 8-10"
+}
+```
+
+| Feld | Pflicht | Bedeutung |
+|---|---|---|
+| `key` | nein | Kennung. Ohne Angabe der Ordnername. Gleicher `key` wie ein bestehendes Modul → die Pfade werden dort einsortiert. |
+| `title` | **ja** | Name auf der Kachel |
+| `description` | nein | Ein bis zwei Sätze |
+| `icon` | nein | Emoji. Vorgabe: 📗 |
+| `accent` | nein | Farbe. Ohne Angabe **erbt das Modul die Farbe des Fachs** |
+| `badge` | nein | Kurzes Kennzeichen auf der Kachel: `"M1"`, `"Jg. 8-10"`, `"Grundkurs"`. Höchstens 12 Zeichen |
+
+Das `badge` ist der praktischste Teil: Damit sieht man auf der Kachel, welchen
+Teil des Lehrplans ein Modul abdeckt, ohne es öffnen zu müssen.
 
 ---
 
@@ -111,7 +172,7 @@ ohne sie heißt das Fach wie der Ordner.
 
 | Feld | Pflicht | Bedeutung |
 |---|---|---|
-| `key` | **ja** | Kleinbuchstaben, Ziffern, Bindestriche. Gleicher `key` wie ein mitgelieferter Pfad → **ersetzt** ihn. So korrigierst du einen vorhandenen Pfad, ohne den Quelltext anzufassen. |
+| `key` | **ja** | Kleinbuchstaben, Ziffern, Bindestriche. Gleicher `key` wie ein Pfad im selben Modul → **ersetzt** ihn. So korrigierst du einen vorhandenen Pfad, ohne den Quelltext anzufassen. |
 | `title` | **ja** | Überschrift |
 | `summary` | **ja** | Ein Satz auf der Übersicht |
 | `icon` | nein | Emoji. Vorgabe: 📘 |
@@ -400,7 +461,7 @@ Pfade halten sich daran, und sie lesen sich deshalb wie aus einem Guss.
 
 Sobald der Pfad geladen ist, funktioniert alles Weitere ohne dein Zutun:
 
-* die Kachel auf der Startseite,
+* die Kachel des Fachs und die Kachel des Moduls,
 * das Blättern samt Fortschrittsbalken,
 * das Merken der zuletzt gelesenen Seite,
 * der Wechsel zwischen Deutsch und Englisch,
@@ -418,5 +479,6 @@ Sobald der Pfad geladen ist, funktioniert alles Weitere ohne dein Zutun:
 3. Hat der Lückentext in beiden Sprachen gleich viele `___`?
 4. Beginnen alle Quellen-Adressen mit `https://`?
 5. Ist `key` klein geschrieben und ohne Leerzeichen?
-6. `/api/learning-paths?reload=1` aufgerufen und die Antwort auf `errors`
+6. Liegt die Datei in einem **Modul-Unterordner**, nicht direkt im Fach?
+7. `/api/learning-paths?reload=1` aufgerufen und die Antwort auf `errors`
    und `warnings` durchgesehen?

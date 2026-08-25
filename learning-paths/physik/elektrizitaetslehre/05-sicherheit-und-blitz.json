@@ -1,0 +1,235 @@
+{
+  "key": "sicherheit-und-blitz",
+  "title": { "de": "Von 30 Milliampere bis zum Blitz", "en": "From 30 milliamps to lightning" },
+  "summary": {
+    "de": "Warum eine winzige Stromstärke tödlich sein kann, wie ein Schalter im Sicherungskasten das verhindert - und was in einem Gewitter wirklich passiert.",
+    "en": "Why a tiny current can be lethal, how one switch in the fuse box prevents it - and what really happens in a thunderstorm."
+  },
+  "icon": "⚡",
+  "accent": "rose",
+  "minutes": 15,
+  "screens": [
+    {
+      "key": "was-gefaehrlich-ist",
+      "title": { "de": "Nicht die Volt bringen dich um", "en": "It is not the volts that kill you" },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Ein Blitz hat hundert Millionen Volt. Ein Weidezaun hat zehntausend. Eine Steckdose hat 230. Von diesen dreien sterben Menschen am häufigsten an der Steckdose. Das klingt verkehrt - und erklärt genau, worauf es ankommt.",
+            "en": "A lightning bolt carries a hundred million volts. An electric fence carries ten thousand. A socket carries 230. Of these three, people most often die at the socket. That sounds wrong - and explains exactly what matters."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Gefährlich ist nicht die Spannung, sondern der Strom, der durch den Körper fließt - und wie lange. Ein Weidezaun gibt einen sehr kurzen Stoß mit sehr wenig Ladung ab. Eine Steckdose liefert dauerhaft, so lange du dranhängst. Und der menschliche Körper leitet leider gut genug.",
+            "en": "What is dangerous is not the voltage but the current flowing through the body - and for how long. An electric fence delivers a very short jolt with very little charge. A socket delivers continuously, as long as you are attached. And the human body unfortunately conducts well enough."
+          }
+        },
+        {
+          "kind": "table",
+          "highlightFirst": true,
+          "caption": {
+            "de": "Wirkung von Wechselstrom auf den Menschen, Größenordnungen.",
+            "en": "Effect of alternating current on people, orders of magnitude."
+          },
+          "head": [
+            { "de": "Strom durch den Körper", "en": "Current through the body" },
+            { "de": "Wirkung", "en": "Effect" }
+          ],
+          "rows": [
+            [
+              { "de": "etwa 1 mA", "en": "about 1 mA" },
+              { "de": "gerade spürbar, ein Kribbeln", "en": "just noticeable, a tingle" }
+            ],
+            [
+              { "de": "etwa 10 mA", "en": "about 10 mA" },
+              { "de": "Muskeln verkrampfen - man kann nicht mehr loslassen", "en": "muscles cramp - you can no longer let go" }
+            ],
+            [
+              { "de": "ab etwa 30 mA", "en": "from about 30 mA" },
+              { "de": "gefährlich; hier greift der Schutzschalter ein", "en": "dangerous; this is where the safety switch steps in" }
+            ],
+            [
+              { "de": "ab etwa 50 mA", "en": "from about 50 mA" },
+              { "de": "lebensgefährlich, das Herz kann aus dem Takt geraten", "en": "life-threatening, the heart can lose its rhythm" }
+            ]
+          ]
+        },
+        {
+          "kind": "callout",
+          "tone": "warn",
+          "icon": "💧",
+          "title": { "de": "Warum Wasser alles verändert", "en": "Why water changes everything" },
+          "text": {
+            "de": "Trockene Haut hat einen Widerstand von zehntausend bis hunderttausend Ohm - bei 230 Volt fließen dann wenige Milliampere. Feuchte Haut kann auf etwa tausend Ohm fallen. Nach U = R · I bedeutet das rund 230 Milliampere: das Vielfache der tödlichen Grenze. Deshalb sind Steckdosen im Bad besonders geschützt, und deshalb fasst man nie mit nassen Händen an Elektrik.",
+            "en": "Dry skin has a resistance of ten thousand to a hundred thousand ohms - at 230 volts that means a few milliamps. Damp skin can drop to about a thousand ohms. By U = R · I that means around 230 milliamps: many times the lethal threshold. Which is why bathroom sockets are specially protected, and why you never touch wiring with wet hands."
+          }
+        }
+      ]
+    },
+    {
+      "key": "schutz",
+      "title": { "de": "Zwei Schalter, zwei verschiedene Aufgaben", "en": "Two switches, two different jobs" },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Im Sicherungskasten sitzen zwei Sorten von Schutzeinrichtungen. Sie sehen ähnlich aus und tun etwas ganz Verschiedenes - die eine schützt das Haus, die andere schützt dich.",
+            "en": "The fuse box holds two kinds of protective device. They look similar and do quite different things - one protects the house, the other protects you."
+          }
+        },
+        {
+          "kind": "steps",
+          "items": [
+            {
+              "title": { "de": "Die Sicherung: schützt die Leitung", "en": "The fuse: protects the wiring" },
+              "text": {
+                "de": "Sie löst aus, wenn zu viel Strom fließt - typisch bei 16 Ampere. Damit verhindert sie, dass die Leitung in der Wand so heiß wird, dass es brennt. Für einen Menschen ist sie viel zu träge: Die tödlichen 50 Milliampere sind ein Dreihundertstel dessen, was sie überhaupt bemerkt.",
+                "en": "It trips when too much current flows - typically at 16 amperes. That prevents the wiring in the wall from getting hot enough to start a fire. For a person it is far too slow: the lethal 50 milliamps are one three-hundredth of what it even notices."
+              }
+            },
+            {
+              "title": { "de": "Der FI-Schalter: schützt den Menschen", "en": "The RCD: protects the person" },
+              "text": {
+                "de": "Er vergleicht ständig, wie viel Strom hin- und wie viel zurückfließt. Normalerweise ist das genau gleich viel. Fehlt etwas auf dem Rückweg, muss es einen anderen Weg genommen haben - zum Beispiel durch einen Menschen zur Erde. Bei einer Abweichung von 30 Milliampere schaltet er in Sekundenbruchteilen ab.",
+                "en": "It constantly compares how much current goes out and how much comes back. Normally that is exactly the same. If something is missing on the return, it must have taken another way - through a person to earth, for example. At a difference of 30 milliamps it cuts off within a fraction of a second."
+              }
+            }
+          ]
+        },
+        {
+          "kind": "callout",
+          "tone": "tip",
+          "icon": "🧠",
+          "title": { "de": "Die eigentliche Idee dahinter", "en": "The real idea behind it" },
+          "text": {
+            "de": "Der FI-Schalter misst nicht, ob ein Mensch da ist - das könnte er gar nicht. Er misst nur, ob die Bilanz stimmt. Was hineingeht, muss herauskommen; alles andere ist ein Leck. Es ist die Erhaltung der Ladung aus dem ersten Lernpfad, eingebaut in ein Bauteil, das dafür sorgt, dass Menschen überleben.",
+            "en": "The RCD does not detect whether a person is there - it could not. It only checks whether the books balance. What goes in must come out; anything else is a leak. It is the conservation of charge from the first path, built into a component that keeps people alive."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "🔎",
+          "title": { "de": "Sieh in euren Sicherungskasten", "en": "Look inside your fuse box" },
+          "text": {
+            "de": "Du erkennst den FI-Schalter an der Prüftaste, meist mit einem T beschriftet. Drückt man sie, erzeugt das Gerät absichtlich eine kleine Unwucht und muss auslösen. Fachleute empfehlen, das halbjährlich zu tun. Frag zu Hause, wann es zuletzt gemacht wurde - viele wissen es nicht.",
+            "en": "You can recognise the RCD by its test button, usually marked with a T. Pressing it makes the device deliberately create a small imbalance, and it must trip. Professionals recommend doing this every six months. Ask at home when it was last done - many people do not know."
+          }
+        }
+      ]
+    },
+    {
+      "key": "blitz",
+      "title": { "de": "Derselbe Vorgang, nur riesig", "en": "The same process, only enormous" },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Ein Gewitter ist Elektrizität in einer Größenordnung, die man im Labor nie erreicht. Und doch passiert dabei genau das, was du an der Batterie gelernt hast: Ladung sammelt sich, bis der Druck reicht, und sucht sich dann den Weg des geringsten Widerstands.",
+            "en": "A thunderstorm is electricity on a scale no laboratory reaches. And yet exactly what you learned with a battery is going on: charge builds up until the push is enough, and then finds the way of least resistance."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "In einer Gewitterwolke reiben Eiskristalle und Graupelkörner aneinander. Dabei trennen sich Ladungen: oben sammelt sich überwiegend positive, unten negative. Zwischen Wolke und Erdboden baut sich eine Spannung von bis zu hundert Millionen Volt auf. Luft ist eigentlich ein guter Isolator - aber irgendwann reicht auch der nicht mehr.",
+            "en": "Inside a thundercloud ice crystals and graupel rub against each other. Charges separate: mostly positive at the top, negative at the bottom. Between cloud and ground a voltage of up to a hundred million volts builds. Air is normally a good insulator - but at some point even that is not enough."
+          }
+        },
+        {
+          "kind": "stats",
+          "entries": [
+            {
+              "value": "≈ 30 000 A",
+              "label": { "de": "Stromstärke im Blitzkanal", "en": "current in the channel" },
+              "hint": { "de": "das Dreitausendfache einer Haussicherung", "en": "three thousand times a household fuse" }
+            },
+            {
+              "value": "≈ 0,3 ms",
+              "label": { "de": "Dauer des Hauptstoßes", "en": "duration of the main stroke" },
+              "hint": { "de": "deshalb bleibt die Energie begrenzt", "en": "which is why the energy stays limited" }
+            },
+            {
+              "value": "≈ 30 000 °C",
+              "label": { "de": "Temperatur im Kanal", "en": "temperature in the channel" },
+              "hint": { "de": "fünfmal so heiß wie die Sonnenoberfläche", "en": "five times the surface of the sun" }
+            }
+          ]
+        },
+        {
+          "kind": "callout",
+          "tone": "fact",
+          "icon": "🔊",
+          "title": { "de": "Der Donner ist die Rechnung dazu", "en": "The thunder is the bill for it" },
+          "text": {
+            "de": "Die Luft im Blitzkanal wird in Sekundenbruchteilen auf dreißigtausend Grad erhitzt und dehnt sich explosionsartig aus. Diese Druckwelle ist der Donner. Weil Licht praktisch sofort da ist und Schall nur 343 Meter pro Sekunde schafft, kannst du die Entfernung zählen: Sekunden geteilt durch drei ergibt Kilometer.",
+            "en": "The air in the channel is heated to thirty thousand degrees in a fraction of a second and expands explosively. That pressure wave is the thunder. Since light arrives practically instantly and sound manages only 343 metres per second, you can count the distance: seconds divided by three gives kilometres."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "warn",
+          "icon": "🚗",
+          "title": { "de": "Warum das Auto sicher ist - und nicht wegen der Reifen", "en": "Why a car is safe - and not because of the tyres" },
+          "text": {
+            "de": "Der verbreitete Satz, Gummireifen würden isolieren, ist falsch: Wer hundert Millionen Volt überwindet, dem sind zwei Zentimeter Gummi gleichgültig. Sicher ist das Auto, weil sein Metallkäfig den Strom außen herum zur Erde leitet, statt durch den Innenraum. Dasselbe Prinzip schützt Flugzeuge - und heißt Faradayscher Käfig.",
+            "en": "The common claim that rubber tyres insulate is wrong: anything that has crossed a hundred million volts is unimpressed by two centimetres of rubber. A car is safe because its metal shell carries the current around the outside to the ground rather than through the inside. The same principle protects aircraft - and is called a Faraday cage."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": { "de": "Deutscher Wetterdienst: Gewitter", "en": "Deutscher Wetterdienst: thunderstorms" },
+              "url": "https://www.dwd.de/DE/wetter/warnungen_aktuell/kriterien/warnkriterien.html"
+            },
+            {
+              "label": { "de": "VDE: Schutz durch Fehlerstrom-Schutzeinrichtungen", "en": "VDE: protection by residual current devices" },
+              "url": "https://www.vde.com"
+            },
+            {
+              "label": { "de": "LEIFIphysik: Elektrische Ladung", "en": "LEIFIphysik: electric charge" },
+              "url": "https://www.leifiphysik.de/elektrizitaetslehre/ladungen-felder"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": { "de": "1. Lückentext: was schützt wovor", "en": "1. Fill in the blanks: what protects against what" },
+      "intro": { "de": "Setze die fehlenden Wörter und Zahlen ein.", "en": "Fill in the missing words and numbers." },
+      "text": {
+        "de": "Für den Menschen gefährlich ist nicht die Spannung allein, sondern der ___, der durch den Körper fließt. Schon ab etwa ___ Milliampere verkrampfen die Muskeln, ab etwa 50 Milliampere wird es lebensgefährlich. Wie viel fließt, hängt vom ___ des Körpers ab, und der sinkt stark, wenn die Haut ___ ist. Im Sicherungskasten schützt die ___ die Leitung vor Überhitzung; sie löst erst bei etwa ___ Ampere aus. Den Menschen schützt dagegen der ___, der vergleicht, ob genauso viel Strom zurückkommt, wie hingeflossen ist. Fehlt etwas, hat es einen anderen Weg genommen, und er schaltet bei ___ Milliampere ab. In einem Gewitter trennen sich in der Wolke ___, bis die Spannung ausreicht, um die Luft leitend zu machen. Ein Auto schützt dabei nicht wegen der Reifen, sondern weil sein Metallkörper wie ein ___ wirkt.",
+        "en": "What is dangerous to a person is not the voltage alone but the ___ flowing through the body. From about ___ milliamps the muscles cramp; from about 50 milliamps it becomes life-threatening. How much flows depends on the body's ___, which drops sharply when the skin is ___. In the fuse box the ___ protects the wiring from overheating; it trips only at about ___ amperes. The person, by contrast, is protected by the ___, which checks whether as much current returns as went out. If something is missing it has taken another way, and it cuts off at ___ milliamps. In a thunderstorm ___ separate inside the cloud until the voltage suffices to make the air conduct. A car protects you not because of its tyres but because its metal body acts as a ___."
+      }
+    },
+    {
+      "kind": "compare",
+      "title": { "de": "2. Vergleiche und rechne: dieselbe Steckdose, zwei Hände", "en": "2. Compare and calculate: the same socket, two hands" },
+      "intro": { "de": "Rechne beide Fälle mit dem ohmschen Gesetz aus.", "en": "Work out both cases using Ohm's law." },
+      "text": {
+        "de": "Eine Person mit trockener Haut hat etwa 10 000 Ohm Widerstand, mit feuchter Haut etwa 1 000 Ohm. Rechne für beide Fälle aus, welcher Strom bei 230 Volt durch den Körper flösse, und vergleiche die Ergebnisse mit der Tabelle aus Bildschirm 1. Erkläre anschließend, warum die Sicherung in beiden Fällen nicht auslösen würde - und warum der FI-Schalter es tut.",
+        "en": "A person with dry skin has about 10,000 ohms of resistance, with damp skin about 1,000 ohms. Work out for both cases what current would flow through the body at 230 volts, and compare the results with the table on screen 1. Then explain why the fuse would not trip in either case - and why the RCD does."
+      },
+      "hint": {
+        "de": "Rechne I = U / R und vergleiche das Ergebnis mit den 16 Ampere der Sicherung.",
+        "en": "Calculate I = U / R and compare the result with the fuse's 16 amperes."
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": { "de": "3. Zum Nachdenken: der Schutz, den man nie bemerkt", "en": "3. Something to think about: the protection you never notice" },
+      "intro": { "de": "Auf diese Frage gibt es keine richtige Antwort.", "en": "There is no right answer to this one." },
+      "text": {
+        "de": "Der FI-Schalter rettet vermutlich jedes Jahr Menschenleben - und niemand weiß, wessen. Wenn er funktioniert, passiert schlicht nichts, und man erfährt nie, dass man in Gefahr war. Solche unsichtbaren Schutzmaßnahmen gibt es überall: Gurte, Impfungen, Geländer, Bauvorschriften. Überlege, warum es so schwer ist, den Wert von etwas zu schätzen, dessen Wirkung darin besteht, dass nichts geschieht - und was das für Entscheidungen bedeutet, bei denen jemand über solche Maßnahmen abstimmen muss.",
+        "en": "The RCD probably saves lives every year - and nobody knows whose. When it works, simply nothing happens, and you never learn that you were in danger. Such invisible protections are everywhere: seatbelts, vaccinations, railings, building codes. Consider why it is so hard to value something whose whole effect is that nothing occurs - and what that means for decisions where somebody has to vote on such measures."
+      }
+    }
+  ]
+}

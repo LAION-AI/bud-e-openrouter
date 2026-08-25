@@ -1,0 +1,215 @@
+{
+  "key": "reihe-und-parallel",
+  "title": { "de": "Warum die Lichterkette ganz ausfällt", "en": "Why the string of lights goes out completely" },
+  "summary": {
+    "de": "Zwei Arten, Dinge zu verbinden - und warum in deiner Wohnung nur eine davon in Frage kommt.",
+    "en": "Two ways to connect things - and why only one of them will do in your flat."
+  },
+  "icon": "💡",
+  "accent": "amber",
+  "minutes": 12,
+  "screens": [
+    {
+      "key": "reihe",
+      "title": { "de": "Hintereinander: alle oder keiner", "en": "In a row: all or nobody" },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Alte Lichterketten hatten eine Eigenschaft, an die sich jeder erinnert, der sie erlebt hat: Ging eine Lampe kaputt, war die ganze Kette dunkel. Und man musste jede einzelne durchprobieren, um die schuldige zu finden.",
+            "en": "Old strings of Christmas lights had one property everybody who lived with them remembers: when one bulb failed, the whole string went dark. And you had to try every single one to find the culprit."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Der Grund ist die Reihenschaltung: Alle Lampen liegen hintereinander auf einem einzigen Weg. Der Strom muss durch jede hindurch. Fällt eine aus, ist der Kreis unterbrochen - und wie du weißt, fließt dann nirgends mehr etwas.",
+            "en": "The reason is the series circuit: all the bulbs sit one behind another on a single path. The current has to go through every one. If one fails, the circle is broken - and as you know, nothing flows anywhere after that."
+          }
+        },
+        {
+          "kind": "table",
+          "highlightFirst": true,
+          "caption": { "de": "Zwei gleiche Lampen an 230 Volt in Reihe.", "en": "Two identical lamps in series at 230 volts." },
+          "head": [
+            { "de": "Größe", "en": "Quantity" },
+            { "de": "In der Reihenschaltung", "en": "In a series circuit" }
+          ],
+          "rows": [
+            [
+              { "de": "Stromstärke", "en": "Current" },
+              { "de": "überall gleich - es gibt ja nur einen Weg", "en": "the same everywhere - there is only one path" }
+            ],
+            [
+              { "de": "Spannung", "en": "Voltage" },
+              { "de": "teilt sich auf: 230 V ergeben 115 V + 115 V", "en": "divides up: 230 V becomes 115 V + 115 V" }
+            ],
+            [
+              { "de": "Widerstand", "en": "Resistance" },
+              { "de": "addiert sich: 10 Ω + 10 Ω + 10 Ω = 30 Ω", "en": "adds up: 10 Ω + 10 Ω + 10 Ω = 30 Ω" }
+            ]
+          ]
+        },
+        {
+          "kind": "callout",
+          "tone": "fact",
+          "icon": "🎄",
+          "title": { "de": "Warum moderne Ketten trotzdem weiterleuchten", "en": "Why modern strings keep glowing anyway" },
+          "text": {
+            "de": "Auch heutige LED-Ketten sind oft in Reihe geschaltet - aber jede LED hat ein winziges Bauteil parallel dazu, das leitend wird, sobald die LED ausfällt. Der Strom bekommt eine Umleitung, und der Rest brennt weiter. Ein kleiner Trick, der ein altes Ärgernis beendet hat.",
+            "en": "Today's LED strings are often still wired in series - but each LED has a tiny component in parallel with it that starts conducting the moment the LED fails. The current gets a bypass and the rest stays lit. A small trick that ended an old annoyance."
+          }
+        }
+      ]
+    },
+    {
+      "key": "parallel",
+      "title": { "de": "Nebeneinander: jeder für sich", "en": "Side by side: each on its own" },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "In deiner Wohnung ist es genau umgekehrt. Du schaltest die Küchenlampe aus, und im Wohnzimmer bleibt es hell. Du ziehst den Toaster raus, und der Kühlschrank läuft weiter. Das ist Parallelschaltung.",
+            "en": "In your flat it is exactly the other way round. You switch off the kitchen light and the living room stays bright. You unplug the toaster and the fridge keeps running. That is a parallel circuit."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Hier bekommt jedes Gerät seinen eigenen Weg zur Quelle. Jede Steckdose in einem Raum liegt parallel zu allen anderen. Deshalb liegen überall dieselben 230 Volt an - und deshalb stört es niemanden, wenn irgendwo etwas ausgeschaltet wird.",
+            "en": "Here every device gets its own way to the source. Every socket in a room lies in parallel with all the others. That is why the same 230 volts is present everywhere - and why it bothers nobody if something somewhere is switched off."
+          }
+        },
+        {
+          "kind": "table",
+          "highlightFirst": true,
+          "caption": { "de": "Dieselben drei Größen, umgekehrtes Verhalten.", "en": "The same three quantities, opposite behaviour." },
+          "head": [
+            { "de": "Größe", "en": "Quantity" },
+            { "de": "In der Parallelschaltung", "en": "In a parallel circuit" }
+          ],
+          "rows": [
+            [
+              { "de": "Spannung", "en": "Voltage" },
+              { "de": "überall gleich - jeder hängt direkt an der Quelle", "en": "the same everywhere - each hangs straight on the source" }
+            ],
+            [
+              { "de": "Stromstärke", "en": "Current" },
+              { "de": "teilt sich auf und addiert sich zum Gesamtstrom", "en": "divides up and adds to the total current" }
+            ],
+            [
+              { "de": "Widerstand", "en": "Resistance" },
+              { "de": "wird kleiner: drei mal 10 Ω parallel ergeben 3,3 Ω", "en": "gets smaller: three 10 Ω in parallel give 3.3 Ω" }
+            ]
+          ]
+        },
+        {
+          "kind": "callout",
+          "tone": "warn",
+          "icon": "🔌",
+          "title": { "de": "Deshalb fliegt die Sicherung", "en": "That is why the fuse blows" },
+          "text": {
+            "de": "Jedes zusätzliche Gerät ist ein weiterer Weg - der Gesamtwiderstand sinkt, der Gesamtstrom steigt. Wasserkocher und Föhn an derselben Leitung ziehen zusammen etwa 16 Ampere. Genau da liegt die übliche Sicherung. Wer noch die Herdplatte dazuschaltet, sitzt im Dunkeln, und zwar aus einem sehr vernünftigen Grund.",
+            "en": "Every extra device is another path - the total resistance falls, the total current rises. A kettle and a hairdryer on the same circuit draw about 16 amperes together. That is exactly where the usual fuse sits. Add the hob and you are in the dark, for a very sensible reason."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "🔋",
+          "title": { "de": "Mit zwei Lämpchen selbst sehen", "en": "See it yourself with two bulbs" },
+          "text": {
+            "de": "Bau beide Schaltungen mit einer Batterie und zwei gleichen Lämpchen. In Reihe leuchten beide schwächer als ein einzelnes - die Spannung teilt sich. Parallel leuchten beide so hell wie eines allein, aber die Batterie ist doppelt so schnell leer. Schraube dann in jeder Schaltung ein Lämpchen heraus und beobachte, was mit dem anderen geschieht.",
+            "en": "Build both circuits with a battery and two identical bulbs. In series both glow more weakly than a single one - the voltage divides. In parallel both are as bright as one alone, but the battery empties twice as fast. Then unscrew one bulb in each circuit and watch what happens to the other."
+          }
+        }
+      ]
+    },
+    {
+      "key": "wo-was",
+      "title": { "de": "Wo man welche nimmt", "en": "Where each one is used" },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Beide Schaltungen sind überall um dich herum. Welche gewählt wird, hängt nur von einer Frage ab: Sollen die Teile voneinander abhängen oder nicht?",
+            "en": "Both circuits are all around you. Which one is chosen depends on a single question: should the parts depend on each other or not?"
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "de": "Reihe, weil Abhängigkeit gewollt ist: Ein Hauptschalter, der alles abschaltet. Eine Sicherung, die in der Leitung liegt. Ein Vorwiderstand vor einer LED.",
+              "en": "Series, because dependence is wanted: a master switch that turns everything off. A fuse sitting in the line. A resistor in front of an LED."
+            },
+            {
+              "de": "Parallel, weil Unabhängigkeit gewollt ist: alle Steckdosen einer Wohnung, alle Lampen eines Autos, alle Geräte an einer Steckdosenleiste.",
+              "en": "Parallel, because independence is wanted: every socket in a flat, every lamp in a car, every device on a power strip."
+            },
+            {
+              "de": "Beides zusammen: In fast jedem Gerät stecken Teile beider Sorten - ein Schalter in Reihe zu einer Gruppe parallel geschalteter Lampen.",
+              "en": "Both together: almost every appliance contains parts of both kinds - a switch in series with a group of lamps wired in parallel."
+            }
+          ]
+        },
+        {
+          "kind": "callout",
+          "tone": "note",
+          "icon": "🚗",
+          "title": { "de": "Eine Ausnahme, die man sieht", "en": "An exception you can see" },
+          "text": {
+            "de": "Alte Autos hatten Blinker, die langsamer blinkten, wenn eine Lampe kaputt war. Das war kein Zufall, sondern Absicht: Ein Bauteil in Reihe reagierte auf den geringeren Gesamtstrom. Ein Fehler, der sich selbst meldet - schlichter und zuverlässiger als jede Warnleuchte.",
+            "en": "Old cars had indicators that blinked faster or slower when a bulb had failed. That was not chance but design: a component in series reacted to the lower total current. A fault that announces itself - simpler and more reliable than any warning light."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": { "de": "LEIFIphysik: Reihen- und Parallelschaltung", "en": "LEIFIphysik: series and parallel circuits" },
+              "url": "https://www.leifiphysik.de/elektrizitaetslehre/reihen-und-parallelschaltung"
+            },
+            {
+              "label": { "de": "VDE: Elektrische Anlagen im Haushalt", "en": "VDE: domestic electrical installations" },
+              "url": "https://www.vde.com"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": { "de": "1. Lückentext: hintereinander oder nebeneinander", "en": "1. Fill in the blanks: one behind another, or side by side" },
+      "intro": { "de": "Setze die fehlenden Wörter und Zahlen ein.", "en": "Fill in the missing words and numbers." },
+      "text": {
+        "de": "Liegen mehrere Bauteile auf einem einzigen Weg hintereinander, spricht man von einer ___. Dort ist die ___ überall gleich, während sich die Spannung ___. Zwei gleiche Lampen an 230 Volt bekommen deshalb je ___ Volt. Die Widerstände ___ sich. Fällt ein Bauteil aus, ist der ganze Kreis ___. Bekommt dagegen jedes Bauteil seinen eigenen Weg, heißt das ___. Dort ist die ___ überall gleich, und die Ströme addieren sich. Der Gesamtwiderstand wird dabei ___. Deshalb steigt der Gesamtstrom mit jedem zusätzlichen Gerät, bis die ___ auslöst. In einer Wohnung sind die Steckdosen aus genau diesem Grund ___ geschaltet.",
+        "en": "When several components sit one behind another on a single path, this is called a ___ circuit. There the ___ is the same everywhere while the voltage ___. Two identical lamps at 230 volts therefore get ___ volts each. The resistances ___. If one component fails, the whole circle is ___. If instead every component gets its own path, it is called a ___ circuit. There the ___ is the same everywhere and the currents add up. The total resistance thereby gets ___. So the total current rises with every extra device until the ___ trips. In a flat the sockets are wired ___ for exactly this reason."
+      }
+    },
+    {
+      "kind": "compare",
+      "title": { "de": "2. Vergleiche: dieselbe Kette, zwei Zeitalter", "en": "2. Compare: the same string, two eras" },
+      "intro": { "de": "Setze zwei Beobachtungen zueinander in Beziehung.", "en": "Relate two observations to each other." },
+      "text": {
+        "de": "Bei einer alten Lichterkette ging alles aus, wenn eine Lampe durchbrannte. Bei einer heutigen LED-Kette leuchtet der Rest weiter, obwohl auch sie in Reihe geschaltet ist. Erkläre, wie das zusammengehen kann, und begründe außerdem, warum man in einer Wohnung niemals eine Reihenschaltung für die Steckdosen wählen würde - nenne dafür zwei verschiedene Gründe.",
+        "en": "In an old string of lights everything went out when a bulb burned through. In a modern LED string the rest keeps glowing, although it too is wired in series. Explain how that can be, and additionally justify why nobody would ever wire the sockets of a flat in series - giving two different reasons."
+      },
+      "hint": {
+        "de": "Für den zweiten Teil: Denk einmal an das Ausfallen und einmal daran, was mit der Spannung geschieht.",
+        "en": "For the second part: think once about failure and once about what happens to the voltage."
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": { "de": "3. Zum Nachdenken: alles oder jeder für sich", "en": "3. Something to think about: all together or each alone" },
+      "intro": { "de": "Auf diese Frage gibt es keine richtige Antwort.", "en": "There is no right answer to this one." },
+      "text": {
+        "de": "Reihe heißt: Fällt einer aus, fallen alle aus. Parallel heißt: Jeder kann für sich ausfallen, ohne dass es die anderen trifft. Dieselbe Wahl gibt es weit außerhalb der Physik - bei einer Gruppenarbeit, bei einer Lieferkette, bei einem Stromnetz, bei einem Team. Suche zwei Beispiele aus deinem eigenen Leben, eines von jeder Sorte. Und dann: Welche Vorteile hat es, voneinander abhängig zu sein - obwohl es doch nach dem Nachteil klingt?",
+        "en": "Series means: if one fails, all fail. Parallel means: each can fail on its own without touching the others. The same choice exists far beyond physics - in group work, in a supply chain, in a power grid, in a team. Find two examples from your own life, one of each kind. And then: what are the advantages of depending on each other - although it sounds like the disadvantage?"
+      }
+    }
+  ]
+}

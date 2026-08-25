@@ -1,0 +1,229 @@
+{
+  "key": "stromkreis",
+  "title": { "de": "Was fließt da eigentlich?", "en": "What is actually flowing?" },
+  "summary": {
+    "de": "Warum ein Kabel allein nichts bewirkt und man immer zwei braucht - und was Strom und Spannung wirklich unterscheidet.",
+    "en": "Why one cable does nothing and you always need two - and what really separates current from voltage."
+  },
+  "icon": "🔌",
+  "accent": "amber",
+  "minutes": 12,
+  "screens": [
+    {
+      "key": "der-kreis",
+      "title": { "de": "Es muss ein Kreis sein", "en": "It has to be a circle" },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Nimm eine Batterie, ein Lämpchen und ein Kabel. Verbinde das Lämpchen mit einem Pol der Batterie. Nichts passiert. Erst wenn ein zweites Kabel zum anderen Pol führt, leuchtet es. Ein Kabel genügt nie - und darin steckt schon fast alles.",
+            "en": "Take a battery, a small bulb and a wire. Connect the bulb to one terminal of the battery. Nothing happens. Only when a second wire runs to the other terminal does it light up. One wire is never enough - and almost everything follows from that."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Der Grund: Elektrischer Strom ist bewegte Ladung, und Ladung geht nirgendwo verloren. Was am einen Pol hinausfließt, muss am anderen wieder hinein. Wo der Weg unterbrochen ist, fließt gar nichts - auch nicht ein bisschen. Deshalb heißt es Stromkreis und nicht Stromlinie.",
+            "en": "The reason: electric current is charge in motion, and charge does not get lost anywhere. Whatever flows out of one terminal has to come back in at the other. Where the way is broken, nothing flows at all - not even a little. That is why it is called a circuit and not a line."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "tip",
+          "icon": "🔦",
+          "title": { "de": "Sieh in eine Taschenlampe", "en": "Look inside a torch" },
+          "text": {
+            "de": "Schraub eine auf. Du findest den Weg immer geschlossen: von der Batterie über einen Kontakt zum Lämpchen, und über das Metallgehäuse oder eine Feder wieder zurück. Der Schalter ist nichts anderes als eine Stelle, an der man diesen Kreis absichtlich unterbricht.",
+            "en": "Unscrew one. You will always find the way closed: from the battery over a contact to the bulb, and back through the metal casing or a spring. The switch is nothing but a place where you deliberately break that circle."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "In einem Metall gibt es freie Elektronen - Ladungsträger, die nicht fest an ihrem Atom hängen. Legt man eine Spannung an, bewegen sie sich alle ein wenig in dieselbe Richtung. Erstaunlich langsam übrigens: Ein einzelnes Elektron kriecht mit weniger als einem Millimeter pro Sekunde durch das Kabel.",
+            "en": "In a metal there are free electrons - charge carriers not firmly attached to their atom. Apply a voltage and they all move a little in the same direction. Astonishingly slowly, in fact: a single electron creeps through the cable at less than a millimetre per second."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "fact",
+          "icon": "🚿",
+          "title": { "de": "Warum das Licht trotzdem sofort angeht", "en": "Why the light still comes on instantly" },
+          "text": {
+            "de": "Wie beim Wasserhahn: Das Rohr ist schon voll. Du drehst auf, und vorne kommt sofort Wasser - nicht dasselbe, das du gerade eingefüllt hast. Im Kabel sind die Elektronen schon überall. Der Anstoß läuft fast mit Lichtgeschwindigkeit durch, die Elektronen selbst bummeln.",
+            "en": "Like a tap: the pipe is already full. You turn it on and water comes out at once - not the water you just put in. In a cable the electrons are already everywhere. The push travels through at nearly the speed of light; the electrons themselves dawdle."
+          }
+        }
+      ]
+    },
+    {
+      "key": "strom-und-spannung",
+      "title": { "de": "Zwei Größen, die dauernd verwechselt werden", "en": "Two quantities that get confused constantly" },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "„Da ist viel Strom drauf\" sagt man über eine Steckdose - und meint eigentlich Spannung. Die beiden sind nicht dasselbe, und der Unterschied entscheidet darüber, was gefährlich ist und was nicht.",
+            "en": "\"There's a lot of current on that\" people say about a socket - and actually mean voltage. The two are not the same, and the difference decides what is dangerous and what is not."
+          }
+        },
+        {
+          "kind": "table",
+          "highlightFirst": true,
+          "caption": {
+            "de": "Ein Wasserbild hilft - solange man weiß, dass es ein Bild ist.",
+            "en": "A water picture helps - as long as you know it is a picture."
+          },
+          "head": [
+            { "de": "Größe", "en": "Quantity" },
+            { "de": "Einheit", "en": "Unit" },
+            { "de": "Beim Wasser", "en": "In water terms" },
+            { "de": "Sagt aus", "en": "Tells you" }
+          ],
+          "rows": [
+            [
+              { "de": "Spannung U", "en": "Voltage U" },
+              { "de": "Volt (V)", "en": "volt (V)" },
+              { "de": "der Höhenunterschied", "en": "the difference in height" },
+              { "de": "wie stark es drängt", "en": "how hard it pushes" }
+            ],
+            [
+              { "de": "Stromstärke I", "en": "Current I" },
+              { "de": "Ampere (A)", "en": "ampere (A)" },
+              { "de": "wie viel pro Sekunde durchkommt", "en": "how much gets through per second" },
+              { "de": "wie viel wirklich fließt", "en": "how much actually flows" }
+            ],
+            [
+              { "de": "Ladung Q", "en": "Charge Q" },
+              { "de": "Coulomb (C)", "en": "coulomb (C)" },
+              { "de": "die Wassermenge", "en": "the amount of water" },
+              { "de": "wie viel insgesamt", "en": "how much in total" }
+            ]
+          ]
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Die Spannung ist da, auch wenn nichts fließt. An einer Steckdose liegen 230 Volt an, ob etwas eingesteckt ist oder nicht - so wie ein voller Wasserturm Druck hat, auch wenn kein Hahn offen ist. Strom fließt erst, wenn du den Kreis schließt.",
+            "en": "The voltage is there even when nothing flows. A socket carries 230 volts whether something is plugged in or not - just as a full water tower has pressure even with every tap closed. Current only flows once you close the circuit."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "warn",
+          "icon": "🪫",
+          "title": { "de": "Deshalb ist eine 9-Volt-Batterie harmlos", "en": "That is why a 9 volt battery is harmless" },
+          "text": {
+            "de": "Leg sie auf die Zunge - es kribbelt, mehr nicht. Dieselbe Batterie kann aber eine Lampe zum Leuchten bringen. Es liegt nicht daran, dass „wenig Strom drin\" wäre: Es liegt daran, dass 9 Volt zu wenig Druck sind, um durch deine Haut nennenswert etwas zu treiben. Bei 230 Volt ist das anders - dazu später mehr.",
+            "en": "Put it on your tongue - it tingles, no more. The same battery can light a lamp. It is not because there is \"little current in it\": it is because 9 volts is too little push to drive anything worth mentioning through your skin. At 230 volts that changes - more on this later."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "note",
+          "icon": "🧭",
+          "title": { "de": "Eine Verabredung, die schief ging", "en": "An agreement that went wrong" },
+          "text": {
+            "de": "Die technische Stromrichtung zeigt von Plus nach Minus. Die Elektronen laufen genau andersherum. Das ist kein Fehler in deinem Buch: Man hat die Richtung festgelegt, bevor man das Elektron kannte, und dann nicht mehr geändert. Zum Rechnen ist es egal, man muss es nur wissen.",
+            "en": "Conventional current flows from plus to minus. The electrons go exactly the other way. This is not a mistake in your book: the direction was agreed before anyone knew about electrons, and never changed afterwards. For calculating it makes no difference - you just have to know."
+          }
+        }
+      ]
+    },
+    {
+      "key": "messen",
+      "title": { "de": "Messen, ohne etwas kaputtzumachen", "en": "Measuring without breaking anything" },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Spannung und Strom misst man auf verschiedene Weise - und wer das verwechselt, hört einen Knall und riecht danach etwas Verbranntes.",
+            "en": "Voltage and current are measured differently - and getting it the wrong way round produces a bang and a burnt smell."
+          }
+        },
+        {
+          "kind": "steps",
+          "items": [
+            {
+              "title": { "de": "Spannung: daneben", "en": "Voltage: alongside" },
+              "text": {
+                "de": "Das Messgerät kommt parallel dazu, wie ein Zuschauer. Es vergleicht zwei Punkte und fragt: Wie groß ist der Unterschied zwischen euch? Dafür lässt es fast keinen Strom durch sich hindurch.",
+                "en": "The meter goes in parallel, like a bystander. It compares two points and asks: how big is the difference between you? For that it lets almost no current through itself."
+              }
+            },
+            {
+              "title": { "de": "Strom: mittendrin", "en": "Current: in the middle" },
+              "text": {
+                "de": "Hier muss das Gerät in den Kreis hinein - der Strom muss durch es hindurch, sonst kann es ihn nicht zählen. Man trennt also das Kabel auf und setzt das Messgerät dazwischen.",
+                "en": "Here the meter has to go into the circuit - the current must pass through it, otherwise it cannot count it. So you break the wire and put the meter in between."
+              }
+            }
+          ]
+        },
+        {
+          "kind": "callout",
+          "tone": "warn",
+          "icon": "💥",
+          "title": { "de": "Der klassische Kurzschluss", "en": "The classic short circuit" },
+          "text": {
+            "de": "Ein Amperemeter lässt Strom fast ungehindert durch - das ist seine Aufgabe. Steckst du es aber parallel an eine Spannungsquelle, hast du deren Pole praktisch mit einem Draht verbunden. Genau das ist ein Kurzschluss: Es fließt, was die Quelle hergibt, bis die Sicherung fällt oder etwas schmilzt.",
+            "en": "An ammeter lets current through almost unhindered - that is its job. But connect it in parallel across a source and you have effectively joined its terminals with a wire. That is exactly a short circuit: whatever the source can deliver flows, until the fuse blows or something melts."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Merksatz, der dich durch die ganze Oberstufe trägt: Spannung misst man zwischen zwei Punkten, Strom durch eine Stelle. Deshalb heißt es auch „die Spannung über dem Widerstand\" und „der Strom durch den Widerstand\".",
+            "en": "A sentence that will carry you through the rest of school: voltage is measured between two points, current through one place. That is also why one says \"the voltage across the resistor\" and \"the current through the resistor\"."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": { "de": "Physikalisch-Technische Bundesanstalt: SI-Einheiten", "en": "Physikalisch-Technische Bundesanstalt: SI units" },
+              "url": "https://www.ptb.de/cms/ptb/fachabteilungen/abt2/fb-24.html"
+            },
+            {
+              "label": { "de": "LEIFIphysik: Elektrischer Stromkreis", "en": "LEIFIphysik: electric circuits" },
+              "url": "https://www.leifiphysik.de/elektrizitaetslehre/einfacher-stromkreis"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": { "de": "1. Lückentext: der geschlossene Kreis", "en": "1. Fill in the blanks: the closed circle" },
+      "intro": { "de": "Setze die fehlenden Wörter ein.", "en": "Fill in the missing words." },
+      "text": {
+        "de": "Damit überhaupt etwas fließt, muss der Weg geschlossen sein; man spricht deshalb vom ___. Elektrischer Strom ist bewegte ___, in einem Metall sind das die freien ___. Wie stark es drängt, sagt die ___, gemessen in ___. Wie viel tatsächlich pro Sekunde durchkommt, sagt die ___, gemessen in ___. Die Spannung liegt an, auch wenn gar nichts ___. Gemessen wird die Spannung ___ zum Bauteil, die Stromstärke dagegen ___ zum Bauteil. Verbindet man die beiden Pole einer Quelle fast widerstandsfrei, entsteht ein ___.",
+        "en": "For anything to flow at all the way must be closed; this is why one speaks of a ___. Electric current is charge in ___, and in a metal that means the free ___. How hard it pushes is given by the ___, measured in ___. How much actually gets through per second is given by the ___, measured in ___. The voltage is present even when nothing ___ at all. Voltage is measured ___ to the component, current ___ to it. Joining the two terminals of a source with almost no resistance produces a ___."
+      }
+    },
+    {
+      "kind": "compare",
+      "title": { "de": "2. Vergleiche: zwei Batterien, ein Unterschied", "en": "2. Compare: two batteries, one difference" },
+      "intro": { "de": "Setze zwei Beobachtungen zueinander in Beziehung.", "en": "Relate two observations to each other." },
+      "text": {
+        "de": "Eine 9-Volt-Blockbatterie auf der Zunge kribbelt nur. Dieselbe Batterie bringt aber ein Lämpchen zum Leuchten, das dabei spürbar warm wird. Eine Steckdose mit 230 Volt kann dagegen lebensgefährlich sein. Erkläre mithilfe von Spannung und Stromstärke, warum die Batterie im einen Fall genug „Kraft\" hat und im anderen nicht - und warum bei der Steckdose beides zusammenkommt.",
+        "en": "A 9 volt battery on your tongue only tingles. The same battery lights a bulb which gets noticeably warm. A 230 volt socket, by contrast, can be lethal. Using voltage and current, explain why the battery has enough \"force\" in one case and not the other - and why with the socket both come together."
+      },
+      "hint": {
+        "de": "Überlege, wodurch der Strom jeweils hindurch muss und wie leicht er das kann.",
+        "en": "Think about what the current has to pass through in each case, and how easily it can."
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": { "de": "3. Zum Nachdenken: das Bild und die Sache", "en": "3. Something to think about: the picture and the thing" },
+      "intro": { "de": "Auf diese Frage gibt es keine richtige Antwort.", "en": "There is no right answer to this one." },
+      "text": {
+        "de": "Der Vergleich mit dem Wasser hilft enorm - und stimmt trotzdem nicht ganz: Wasser kann auslaufen, Ladung nicht; ein Rohr kann leer sein, ein Kabel ist immer voll. In fast jedem Fach arbeitest du mit solchen Bildern, vom Atommodell bis zur Landkarte. Überlege, wo dir ein Bild schon einmal geholfen und wo es dich in die Irre geführt hat. Woran könnte man merken, dass ein Vergleich an seine Grenze kommt?",
+        "en": "The water comparison helps enormously - and still is not quite right: water can leak out, charge cannot; a pipe can be empty, a cable is always full. In almost every subject you work with such pictures, from atomic models to maps. Think of a time a picture helped you and a time it led you astray. How might you notice that a comparison has reached its limit?"
+      }
+    }
+  ]
+}

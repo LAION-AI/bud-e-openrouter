@@ -2,8 +2,8 @@
   "key": "physik",
   "title": { "de": "Physik", "en": "Physics" },
   "description": {
-    "de": "Beispielfach - zeigt, dass ein neues Fach nur ein Ordner mit dieser Datei darin ist.",
-    "en": "Example subject - shows that a new subject is just a folder with this file in it."
+    "de": "Wie die Welt funktioniert, wenn man genau hinsieht - und nachrechnet.",
+    "en": "How the world works when you look closely - and do the sums."
   },
   "icon": "🔭",
   "accent": "violet"

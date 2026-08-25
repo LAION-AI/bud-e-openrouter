@@ -6,6 +6,8 @@
 
 export const learningContent: InternalizationContent = {
   en: {
+    chooseModuleHint: "Choose a module.",
+    backToModules: "Back to the modules",
     tasksTitle: "Check yourself",
     tasksIntro:
       "Three exercises: one to recall, one to think through, one with no right answer at all. Nothing you type here is saved - these are for thinking with.",
@@ -69,6 +71,8 @@ export const learningContent: InternalizationContent = {
     numbers: "The numbers",
   },
   de: {
+    chooseModuleHint: "Wähle ein Modul.",
+    backToModules: "Zurück zu den Modulen",
     tasksTitle: "Überprüfe dich selbst",
     tasksIntro:
       "Drei Aufgaben: eine zum Erinnern, eine zum Durchdenken und eine, auf die es keine richtige Antwort gibt. Was du hier eintippst, wird nirgends gespeichert - es ist zum Denken da.",
