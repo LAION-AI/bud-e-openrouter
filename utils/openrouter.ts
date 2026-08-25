@@ -470,6 +470,13 @@ export function resolveModel(
  * Model first, strictness second: swapping to the alternative model keeps EU
  * and ZDR, whereas relaxing the policy gives them up - so the model swap is
  * tried before the privacy downgrade.
+ *
+ * Music is the exception. Lyria 3 Clip is not a substitute for Lyria 3 Pro -
+ * it writes a 30-second snippet where Pro writes a whole song. A single
+ * hiccup would otherwise hand the listener a third of a song without anyone
+ * noticing why. Lyria also offers neither ZDR nor EU hosting, so swapping
+ * models preserves nothing here anyway: retrying the same model is simply the
+ * better move, and the shorter model stays as a last resort.
  */
 export function attemptsFor(
   cat: Catalog,
@@ -483,17 +490,21 @@ export function attemptsFor(
     out.push({ model: m, level });
   };
   const byId = (id: string) => cat.models.find((m) => m.id === id);
+  const others = () => {
+    for (const id of OR_DEFAULTS[role]) {
+      const m = byId(id);
+      if (m && m.id !== first!.model.id) push(m, "strict");
+    }
+  };
 
   const first = resolveModel(cat, role, override);
   if (!first) return out;
 
   push(first.model, "strict");
-  for (const id of OR_DEFAULTS[role]) {
-    const m = byId(id);
-    if (m && m.id !== first.model.id) push(m, "strict");
-  }
+  if (role !== "music") others();
   push(first.model, "zdr");
   push(first.model, "plain");
+  if (role === "music") others();
   return out;
 }
 
