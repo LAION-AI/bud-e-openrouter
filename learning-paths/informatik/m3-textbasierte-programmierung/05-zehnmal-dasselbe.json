@@ -1,0 +1,253 @@
+{
+  "key": "zehnmal-dasselbe-py",
+  "title": {
+    "de": "Zehnmal dasselbe, einmal geschrieben",
+    "en": "Ten times the same, written once"
+  },
+  "summary": {
+    "de": "Schleifen: wie man aufhört zu wiederholen und anfängt, den Rechner zählen zu lassen.",
+    "en": "Loops: how to stop repeating yourself and let the machine count."
+  },
+  "icon": "🔁",
+  "accent": "indigo",
+  "minutes": 14,
+  "screens": [
+    {
+      "key": "wie-oft",
+      "title": {
+        "de": "Wie oft? Die Zählschleife",
+        "en": "How often? The counting loop"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Schreib die Zahlen von eins bis zehn untereinander. Mit `print` sind das zehn fast gleiche Zeilen. Bis hundert? Bis tausend? Spätestens hier hört das Tippen auf, Spaß zu machen - und genau dafür gibt es Schleifen.",
+            "en": "Write the numbers from one to ten, one per line. With `print` that is ten almost identical lines. Up to a hundred? A thousand? At the latest here typing stops being fun - and that is exactly what loops are for."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "`for i in range(10):` heißt: Mach das Folgende zehnmal. Das `i` zählt dabei mit und ist bei jedem Durchgang eine andere Zahl - beim ersten Mal 0, beim zweiten 1, und so weiter. Damit kannst du rechnen, und genau das macht Schleifen so nützlich.",
+            "en": "`for i in range(10):` means: do the following ten times. The `i` counts along and is a different number each pass - 0 the first time, 1 the second, and so on. You can calculate with it, and that is what makes loops so useful."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "warn",
+          "icon": "0️⃣",
+          "title": {
+            "de": "Python zählt ab null",
+            "en": "Python counts from zero"
+          },
+          "text": {
+            "de": "`range(5)` liefert 0, 1, 2, 3, 4. Fünf Zahlen, aber die Fünf ist nicht dabei. Das wirkt willkürlich und hat einen Grund: So ist die Anzahl der Durchgänge immer genau die Zahl in der Klammer. Willst du bei 1 anfangen, sagst du es dazu: `range(1, 11)` läuft von 1 bis 10.",
+            "en": "`range(5)` gives 0, 1, 2, 3, 4. Five numbers, but five itself is not among them. That seems arbitrary and has a reason: this way the number of passes is always exactly the number in the brackets. To start at 1, say so: `range(1, 11)` runs from 1 to 10."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "note",
+          "icon": "📏",
+          "title": {
+            "de": "Wieder Doppelpunkt und Einrückung",
+            "en": "Colon and indentation again"
+          },
+          "text": {
+            "de": "Genau wie beim `if`: Am Ende der Zeile steht ein Doppelpunkt, und alles, was wiederholt werden soll, wird darunter eingerückt. Was wieder ganz links steht, läuft erst, wenn die Schleife durch ist. Diese eine Regel gilt in Python überall, wo ein Doppelpunkt steht - du hast sie schon einmal gelernt.",
+            "en": "Just as with `if`: a colon at the end of the line, and everything to be repeated is indented below it. Whatever is back at the far left runs only once the loop is finished. This one rule applies everywhere in Python where there is a colon - you have already learned it once."
+          }
+        },
+        {
+          "kind": "notebook",
+          "example": "loops",
+          "cell": 1,
+          "title": {
+            "de": "Deine erste Schleife",
+            "en": "Your first loop"
+          },
+          "text": {
+            "de": "Zwei Zeilen, zehn Ausgaben. In der Aufgabe darunter lässt du sie von 1 bis 10 zählen statt von 0 bis 4 - und dann rückwärts, sodass ein Countdown daraus wird.",
+            "en": "Two lines, ten outputs. In the task below you make it count from 1 to 10 instead of 0 to 4 - and then backwards, so that it becomes a countdown."
+          }
+        }
+      ]
+    },
+    {
+      "key": "solange",
+      "title": {
+        "de": "Solange was? Die zweite Sorte Schleife",
+        "en": "Until what? The second kind of loop"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Manchmal weißt du vorher gar nicht, wie oft etwas passieren soll - nur, wann Schluss ist. „Frag so lange nach, bis die Antwort stimmt.“ Dafür gibt es `while`.",
+            "en": "Sometimes you do not know in advance how often something should happen - only when it should stop. \"Keep asking until the answer is right.\" That is what `while` is for."
+          }
+        },
+        {
+          "kind": "table",
+          "head": [
+            { "de": "Frage", "en": "Question" },
+            { "de": "Schleife", "en": "Loop" },
+            { "de": "Typisch dafür", "en": "Typical use" }
+          ],
+          "rows": [
+            [
+              { "de": "Wie oft?", "en": "How often?" },
+              { "de": "for", "en": "for" },
+              { "de": "Zehn Runden, jeder Buchstabe eines Wortes", "en": "Ten rounds, each letter of a word" }
+            ],
+            [
+              { "de": "Solange was?", "en": "As long as what?" },
+              { "de": "while", "en": "while" },
+              { "de": "Bis richtig geraten, bis die Zeit um ist", "en": "Until guessed right, until time is up" }
+            ]
+          ]
+        },
+        {
+          "kind": "callout",
+          "tone": "warn",
+          "icon": "♾️",
+          "title": {
+            "de": "Die Endlosschleife baut jeder einmal",
+            "en": "Everyone builds an endless loop once"
+          },
+          "text": {
+            "de": "`while countdown > 0:` und drinnen wird `countdown` nie kleiner: Dann hört das Programm nie auf. Im Notizbuch gibt es oben einen Stopp-Knopf, der die Zelle abbricht - du musst die Seite nicht neu laden, und kaputt geht nichts. Die Regel dagegen ist einfach: In jeder `while`-Schleife muss sich drinnen etwas ändern, das die Bedingung betrifft.",
+            "en": "`while countdown > 0:` and inside, `countdown` never gets smaller: then the program never stops. The notebook has a stop button at the top that cancels the cell - you do not have to reload the page, and nothing breaks. The rule against it is simple: inside every `while` loop something must change that affects the condition."
+          }
+        },
+        {
+          "kind": "notebook",
+          "example": "loops",
+          "cell": 5,
+          "title": {
+            "de": "Ein Countdown, und dann kaputt",
+            "en": "A countdown, and then broken"
+          },
+          "text": {
+            "de": "Erst der Countdown, wie er sein soll. Die Aufgabe darunter lässt dich absichtlich die Zeile löschen, die den Zähler kleiner macht - und den Stopp-Knopf ausprobieren. Wer eine Endlosschleife einmal bewusst gebaut hat, erschrickt beim nächsten Mal nicht, sondern erkennt sie.",
+            "en": "First the countdown as it should be. The task below has you deliberately delete the line that decreases the counter - and try out the stop button. Whoever has once deliberately built an endless loop does not panic the next time but recognises it."
+          }
+        }
+      ]
+    },
+    {
+      "key": "durch-alles-laufen",
+      "title": {
+        "de": "Durch alles laufen, was da ist",
+        "en": "Going through everything there is"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Eine `for`-Schleife kann noch mehr als zählen: Sie kann durch alles laufen, was aus mehreren Teilen besteht. Durch ein Wort, Buchstabe für Buchstabe. Oder durch eine Liste.",
+            "en": "A `for` loop can do more than count: it can walk through anything made of several parts. Through a word, letter by letter. Or through a list."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Eine Liste schreibt man in eckige Klammern, die Einträge trennt ein Komma: `faecher = [\"Mathe\", \"Physik\", \"Deutsch\"]`. Danach genügt `for fach in faecher:`, und die Schleife bekommt bei jedem Durchgang einen Eintrag. Wie viele es sind, musst du nicht wissen - `len(faecher)` sagt es dir, falls du es brauchst.",
+            "en": "A list goes in square brackets, entries separated by commas: `subjects = [\"Maths\", \"Physics\", \"German\"]`. Then `for subject in subjects:` is enough, and the loop gets one entry per pass. You do not need to know how many there are - `len(subjects)` tells you if you do."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "fact",
+          "icon": "📊",
+          "title": {
+            "de": "Hier fängt der eigentliche Nutzen an",
+            "en": "Here the real usefulness begins"
+          },
+          "text": {
+            "de": "Fünfzig Messwerte mitteln, das längste Wort in einem Text finden, zählen wie oft ein Buchstabe vorkommt - all das sind wenige Zeilen, sobald man durch eine Liste laufen kann. Von Hand wäre jede dieser Aufgaben eine halbe Stunde stumpfe Arbeit. Genau darum geht es beim Programmieren.",
+            "en": "Averaging fifty measurements, finding the longest word in a text, counting how often a letter occurs - all of these take a few lines once you can walk through a list. By hand each would be half an hour of dull work. That is what programming is for."
+          }
+        },
+        {
+          "kind": "notebook",
+          "example": "loops",
+          "cell": 4,
+          "title": {
+            "de": "Durch eine Liste laufen",
+            "en": "Walking through a list"
+          },
+          "text": {
+            "de": "Im Notizbuch stehen drei Tiere. In der Aufgabe ersetzt du sie durch etwas aus deinem Leben - deine Lieblingslieder, die Fächer am Montag, die Namen deiner Freundinnen und Freunde - und lässt die Schleife dann den längsten Eintrag finden.",
+            "en": "In the notebook there are three animals. In the task you replace them with something from your own life - your favourite songs, Monday's subjects, your friends' names - and then have the loop find the longest entry."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": { "de": "Python-Dokumentation: Kontrollstrukturen", "en": "Python documentation: control flow" },
+              "url": "https://docs.python.org/3/tutorial/controlflow.html"
+            },
+            {
+              "label": { "de": "inf-schule.de: Wiederholungen", "en": "inf-schule.de: repetitions" },
+              "url": "https://www.inf-schule.de/imperative-programmierung"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": {
+        "de": "1. Lückentext: zählen und wiederholen",
+        "en": "1. Fill in the blanks: counting and repeating"
+      },
+      "intro": {
+        "de": "Setze die fehlenden Wörter ein.",
+        "en": "Fill in the missing words."
+      },
+      "text": {
+        "de": "Steht die Anzahl der Durchgänge fest, nimmt man eine ___-Schleife. `range(5)` liefert dabei fünf Zahlen, beginnend bei ___, und die Fünf ist nicht mehr ___. Am Ende der Kopfzeile steht wie beim `if` ein ___, und alles Wiederholte muss ___ werden. Weiß man nur, wann Schluss sein soll, nimmt man stattdessen ___. Ändert sich darin nichts, was die Bedingung betrifft, entsteht eine ___, die man mit dem Stopp-Knopf abbricht. Eine `for`-Schleife kann auch durch ein Wort oder eine ___ laufen; deren Einträge stehen in ___ Klammern. Wie viele Einträge etwas hat, sagt ___.",
+        "en": "When the number of passes is fixed you use a ___ loop. `range(5)` gives five numbers starting at ___, and five itself is no longer ___. At the end of the header line there is, as with `if`, a ___, and everything repeated must be ___. If you only know when it should stop, you use ___ instead. If nothing inside it changes that affects the condition, you get an ___, which you cancel with the stop button. A `for` loop can also walk through a word or a ___, whose entries go in ___ brackets. How many entries something has is given by ___."
+      }
+    },
+    {
+      "kind": "compare",
+      "title": {
+        "de": "2. Ausprobieren und vergleichen: for gegen while",
+        "en": "2. Try it and compare: for versus while"
+      },
+      "intro": {
+        "de": "Diese Aufgabe gehört ins Notizbuch „3 - Schleifen“.",
+        "en": "This task belongs in the notebook \"3 - Loops\"."
+      },
+      "text": {
+        "de": "Schreib zwei Programme, die dasselbe liefern: die Zahlen von 1 bis 10 untereinander. Einmal mit `for`, einmal mit `while`. Zähl bei beiden, wie viele Zeilen du brauchst und an wie vielen Stellen du etwas ändern müsstest, um stattdessen bis 20 zu zählen. Erkläre danach, welche Fassung klarer ist und woran das liegt. Nenne zum Schluss eine Aufgabe, bei der `while` die einzig mögliche Wahl wäre, und begründe, warum `for` dort nicht funktioniert.",
+        "en": "Write two programs producing the same thing: the numbers from 1 to 10, one per line. Once with `for`, once with `while`. For both, count how many lines you need and in how many places you would have to change something to count to 20 instead. Then explain which version is clearer and why. Finally name a task where `while` would be the only possible choice, and justify why `for` would not work there."
+      },
+      "hint": {
+        "de": "Zähl bei der while-Fassung auch die Zeile mit, in der der Zähler erhöht wird - sie ist leicht zu vergessen.",
+        "en": "In the while version, count the line that increases the counter too - it is easy to forget."
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": {
+        "de": "3. Zum Nachdenken: was du nie wieder von Hand machst",
+        "en": "3. Something to think about: what you will never do by hand again"
+      },
+      "intro": {
+        "de": "Auf diese Frage gibt es keine richtige Antwort.",
+        "en": "There is no right answer to this one."
+      },
+      "text": {
+        "de": "Es gibt einen Moment beim Programmierenlernen, in dem man aufhört, stumpfe Wiederholungen hinzunehmen. Man sitzt vor fünfzig Zeilen einer Tabelle und denkt zum ersten Mal: Das könnte auch die Maschine machen. Überleg, welche wiederkehrende Arbeit dir in der Schule oder zu Hause am meisten auf die Nerven geht. Ließe sie sich in klare Schritte fassen? Und wenn nein - woran genau liegt das?",
+        "en": "There is a moment in learning to program when you stop accepting dull repetition. You sit in front of fifty rows of a table and think for the first time: a machine could do this. Think about which recurring chore annoys you most at school or at home. Could it be put into clear steps? And if not - what exactly stands in the way?"
+      }
+    }
+  ]
+}

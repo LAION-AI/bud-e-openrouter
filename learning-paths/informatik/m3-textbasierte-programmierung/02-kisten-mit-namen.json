@@ -1,0 +1,379 @@
+{
+  "key": "kisten-mit-namen-py",
+  "title": {
+    "de": "Kisten mit Namen",
+    "en": "Boxes with names"
+  },
+  "summary": {
+    "de": "Wie sich ein Programm etwas merkt - Variablen, und was für Sorten Werte hineinpassen.",
+    "en": "How a program remembers something - variables, and what kinds of value fit inside."
+  },
+  "icon": "📦",
+  "accent": "indigo",
+  "minutes": 13,
+  "screens": [
+    {
+      "key": "sich-etwas-merken",
+      "title": {
+        "de": "Ohne Gedächtnis geht gar nichts",
+        "en": "Nothing works without memory"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Jedes Programm, das mehr tut als eine Zeile auszugeben, muss sich etwas merken: deinen Namen, den Punktestand, wie oft du schon geraten hast. Dafür gibt es Variablen - und die sind einfacher, als der Name klingt.",
+            "en": "Every program that does more than print one line has to remember something: your name, the score, how often you have guessed. That is what variables are for - and they are simpler than the name suggests."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Eine Variable ist eine Kiste mit einem Namen, in der genau ein Wert liegt. Du legst etwas hinein, kannst so oft hineinsehen, wie du willst, und etwas Neues hineinlegen - dann ist das Alte weg. Nicht daneben, nicht darunter: weg. Diese eine Eigenschaft überrascht am Anfang fast jeden.",
+            "en": "A variable is a box with a name holding exactly one value. You put something in, you can look inside as often as you like, and you can put something new in - and then the old thing is gone. Not beside it, not underneath: gone. That single property surprises almost everyone at first."
+          }
+        },
+        {
+          "kind": "table",
+          "head": [
+            {
+              "de": "Zeile",
+              "en": "Line"
+            },
+            {
+              "de": "Was passiert",
+              "en": "What happens"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "de": "punkte = 0",
+                "en": "score = 0"
+              },
+              {
+                "de": "Leg die Null in die Kiste namens punkte",
+                "en": "Put zero into the box called score"
+              }
+            ],
+            [
+              {
+                "de": "print(punkte)",
+                "en": "print(score)"
+              },
+              {
+                "de": "Sieh nach, was drin ist, und gib es aus",
+                "en": "Look at what is inside and print it"
+              }
+            ],
+            [
+              {
+                "de": "punkte = punkte + 1",
+                "en": "score = score + 1"
+              },
+              {
+                "de": "Nimm den alten Wert, rechne eins dazu, leg ihn zurück",
+                "en": "Take the old value, add one, put it back"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "callout",
+          "tone": "note",
+          "icon": "🟰",
+          "title": {
+            "de": "Das Gleichheitszeichen ist keines",
+            "en": "The equals sign is not one"
+          },
+          "text": {
+            "de": "`punkte = 0` sieht aus wie eine Gleichung aus dem Matheunterricht, ist aber ein Befehl: Leg die Null in die Kiste. Deshalb ist auch `punkte = punkte + 1` kein Widerspruch - als Gleichung wäre das Unsinn, als Befehl heißt es: eins mehr als vorher. Gelesen wird immer von rechts nach links.",
+            "en": "`score = 0` looks like an equation from a maths lesson but is a command: put zero into the box. That is why `score = score + 1` is not a contradiction either - as an equation it would be nonsense, as a command it means: one more than before. It is always read from right to left."
+          }
+        },
+        {
+          "kind": "notebook",
+          "example": "hello",
+          "cell": 4,
+          "title": {
+            "de": "Deine erste Variable",
+            "en": "Your first variable"
+          },
+          "text": {
+            "de": "Zwei Zeilen: eine Kiste anlegen und hineinsehen. Die Aufgabe darunter lässt dich eine `lieblingszahl` anlegen, sie ausgeben, dann ändern und noch einmal ausgeben - in derselben Zelle. Was du dabei siehst, ist genau die Eigenschaft von oben.",
+            "en": "Two lines: make a box and look inside. The task below has you create a `favourite_number`, print it, then change it and print it again - all in the same cell. What you see is exactly the property described above."
+          }
+        }
+      ]
+    },
+    {
+      "key": "sorten-von-werten",
+      "title": {
+        "de": "Was in die Kiste passt",
+        "en": "What fits in the box"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "In eine Variable passt nicht nur eine Zahl. Auch Text passt hinein, oder ein schlichtes Ja und Nein. Welche Sorte Wert darin liegt, nennt man den Datentyp - und den kennst du schon aus dem letzten Pfad, auch wenn er dort noch keinen Namen hatte.",
+            "en": "A variable holds more than a number. Text fits in too, or a plain yes and no. Which kind of value lies inside is called the data type - and you already met it in the last path, even if it had no name there."
+          }
+        },
+        {
+          "kind": "table",
+          "head": [
+            {
+              "de": "Sorte",
+              "en": "Kind"
+            },
+            {
+              "de": "Heißt in Python",
+              "en": "Called in Python"
+            },
+            {
+              "de": "Beispiel",
+              "en": "Example"
+            },
+            {
+              "de": "Wofür",
+              "en": "What for"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "de": "Ganze Zahl",
+                "en": "Whole number"
+              },
+              {
+                "de": "int",
+                "en": "int"
+              },
+              {
+                "de": "42",
+                "en": "42"
+              },
+              {
+                "de": "Punkte, Leben, Anzahl",
+                "en": "Score, lives, counts"
+              }
+            ],
+            [
+              {
+                "de": "Kommazahl",
+                "en": "Decimal"
+              },
+              {
+                "de": "float",
+                "en": "float"
+              },
+              {
+                "de": "1.5 - mit Punkt!",
+                "en": "1.5 - with a dot!"
+              },
+              {
+                "de": "Messwerte, Zeiten",
+                "en": "Measurements, times"
+              }
+            ],
+            [
+              {
+                "de": "Text",
+                "en": "Text"
+              },
+              {
+                "de": "str",
+                "en": "str"
+              },
+              {
+                "de": "\"Mia\"",
+                "en": "\"Mia\""
+              },
+              {
+                "de": "Namen, Meldungen",
+                "en": "Names, messages"
+              }
+            ],
+            [
+              {
+                "de": "Wahr oder falsch",
+                "en": "True or false"
+              },
+              {
+                "de": "bool",
+                "en": "bool"
+              },
+              {
+                "de": "True",
+                "en": "True"
+              },
+              {
+                "de": "Ist das Spiel vorbei?",
+                "en": "Is the game over?"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "callout",
+          "tone": "warn",
+          "icon": "🔢",
+          "title": {
+            "de": "Kommazahlen mit Punkt",
+            "en": "Decimals with a dot"
+          },
+          "text": {
+            "de": "`1.5`, nicht `1,5`. Python kommt aus dem Englischen, und dort trennt ein Punkt die Nachkommastellen. Schreibst du ein Komma, liest Python zwei Werte statt einem - ein Fehler, der einen ganzen Nachmittag kosten kann, wenn man ihn nicht kennt. Jetzt kennst du ihn.",
+            "en": "`1.5`, not `1,5`. Python comes from English, where a dot separates the decimals. Write a comma and Python reads two values instead of one - a mistake that can cost a whole afternoon if you do not know about it. Now you do."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "tip",
+          "icon": "🏷️",
+          "title": {
+            "de": "Namen sind für dich, nicht für den Rechner",
+            "en": "Names are for you, not the machine"
+          },
+          "text": {
+            "de": "Dem Rechner ist gleich, ob eine Variable `x` heißt oder `verbleibende_versuche`. Dir nicht: In drei Wochen liest du deinen eigenen Code wie ein Fremder. Erlaubt sind Buchstaben, Ziffern und Unterstriche - keine Leerzeichen, keine Ziffer am Anfang. Und Groß- und Kleinschreibung macht einen Unterschied.",
+            "en": "The machine does not care whether a variable is called `x` or `remaining_attempts`. You do: in three weeks you will read your own code like a stranger. Letters, digits and underscores are allowed - no spaces, no leading digit. And upper and lower case make a difference."
+          }
+        },
+        {
+          "kind": "notebook",
+          "example": "hello",
+          "cell": 5,
+          "title": {
+            "de": "Mit Variablen rechnen",
+            "en": "Calculating with variables"
+          },
+          "text": {
+            "de": "Hier stehen zwei Variablen nebeneinander, und Python rechnet mit ihnen wie mit Zahlen. In der Aufgabe rechnest du dein Taschengeld für ein Jahr aus - und wie lange du für etwas sparen müsstest, das du dir wirklich wünschst.",
+            "en": "Here two variables sit side by side, and Python calculates with them as if they were numbers. In the task you work out your pocket money for a year - and how long you would have to save for something you really want."
+          }
+        }
+      ]
+    },
+    {
+      "key": "zwischen-zellen",
+      "title": {
+        "de": "Was das Programm behält",
+        "en": "What the program keeps"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Im Notizbuch teilen sich alle Zellen ein Gedächtnis. Was du oben in eine Variable gelegt hast, ist auch zehn Zellen weiter unten noch da - solange du die obere Zelle einmal ausgeführt hast.",
+            "en": "In the notebook all cells share one memory. What you put into a variable at the top is still there ten cells further down - as long as you ran the upper cell once."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Daraus folgt der häufigste Stolperstein für Anfänger: Ein `NameError` heißt oft nicht, dass du dich vertippt hast, sondern dass die Zelle, in der die Variable angelegt wird, noch nie gelaufen ist. Die Reihenfolge, in der du auf die Ausführen-Knöpfe drückst, ist die Reihenfolge, in der Python die Zeilen sieht.",
+            "en": "From that comes the most common beginner's stumbling block: a `NameError` often means not that you mistyped but that the cell creating the variable has never run. The order in which you press the run buttons is the order in which Python sees the lines."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "tip",
+          "icon": "🔄",
+          "title": {
+            "de": "Wenn nichts mehr zusammenpasst",
+            "en": "When nothing fits together any more"
+          },
+          "text": {
+            "de": "Manchmal hat man so viel hin und her ausgeführt, dass man den Überblick verliert. Dann hilft: Interpreter neu starten und alle Zellen der Reihe nach von oben ausführen. Danach ist der Zustand genau der, den der Code beschreibt - und nicht der, der zufällig entstanden ist.",
+            "en": "Sometimes you have run things back and forth so much that you lose track. Then the fix is: restart the interpreter and run all cells from the top in order. Afterwards the state is exactly what the code describes - not what happened to accumulate."
+          }
+        },
+        {
+          "kind": "notebook",
+          "example": "hello",
+          "cell": 6,
+          "title": {
+            "de": "Über Zellen hinweg",
+            "en": "Across cells"
+          },
+          "text": {
+            "de": "Diese Zelle benutzt Variablen, die drei Zellen weiter oben angelegt wurden. Die Abschlussaufgabe des Notizbuchs lässt dich einen kleinen Rechner für dein eigenes Leben bauen - Tage bis zu den Ferien, Stunden Schlaf in dieser Woche, Liter Wasser im Jahr. Was du ausrechnest, ist egal; wichtig ist der Moment, in dem dir auffällt, dass du ihn selbst gebaut hast.",
+            "en": "This cell uses variables created three cells further up. The notebook's closing task has you build a small calculator for your own life - days until the holidays, hours of sleep this week, litres of water in a year. What you compute does not matter; what matters is the moment you notice that you built it yourself."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "Python-Dokumentation: erste Schritte mit Zahlen und Text",
+                "en": "Python documentation: first steps with numbers and text"
+              },
+              "url": "https://docs.python.org/3/tutorial/introduction.html"
+            },
+            {
+              "label": {
+                "de": "inf-schule.de: Variablen und Datentypen",
+                "en": "inf-schule.de: variables and data types"
+              },
+              "url": "https://www.inf-schule.de/imperative-programmierung"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": {
+        "de": "1. Lückentext: Kiste, Wert, Datentyp",
+        "en": "1. Fill in the blanks: box, value, data type"
+      },
+      "intro": {
+        "de": "Setze die fehlenden Wörter ein.",
+        "en": "Fill in the missing words."
+      },
+      "text": {
+        "de": "Damit sich ein Programm etwas merken kann, braucht es eine ___ - anschaulich eine Kiste mit einem Namen. Etwas hineinzulegen nennt man eine ___; der alte Wert ist danach ___. Gelesen wird eine solche Zeile von ___ nach links. Welche Sorte Wert in der Kiste steckt, sagt der ___. Eine ganze Zahl heißt in Python ___, ein Text ___, und wahr oder falsch heißt ___. Kommazahlen schreibt man mit einem ___ statt eines Kommas. Im Notizbuch teilen sich alle Zellen ein ___, deshalb bedeutet ein `NameError` oft nur, dass eine Zelle noch nicht ___ wurde. Namen dienen nicht dem Rechner, sondern dem ___, der den Code später liest.",
+        "en": "For a program to remember something it needs a ___ - a box with a name, if you like. Putting something into it is called an ___; the old value is afterwards ___. Such a line is read from ___ to left. Which kind of value sits in the box is given by the ___. A whole number in Python is called ___, text is ___, and true or false is ___. Decimals are written with a ___ instead of a comma. In the notebook all cells share one ___, which is why a `NameError` often only means that a cell has not been ___ yet. Names serve not the machine but the ___ who reads the code later."
+      }
+    },
+    {
+      "kind": "compare",
+      "title": {
+        "de": "2. Ausprobieren und vergleichen: was beim Überschreiben passiert",
+        "en": "2. Try it and compare: what happens when you overwrite"
+      },
+      "intro": {
+        "de": "Diese Aufgabe gehört ins Notizbuch „1 - Hallo Welt“.",
+        "en": "This task belongs in the notebook \"1 - Hello world\"."
+      },
+      "text": {
+        "de": "Leg eine Variable an, gib sie aus, ändere ihren Wert und gib sie noch einmal aus - alles in einer Zelle. Notiere beide Ausgaben. Schreib danach dieselben vier Zeilen in einer anderen Reihenfolge und lass sie erneut laufen. Erkläre anhand deiner beiden Ergebnisse, warum die Reihenfolge der Zeilen bei Variablen wichtiger ist als bei einer Rechnung auf Papier - und beschreibe, woran man im Notizbuch merkt, dass eine Zelle noch gar nicht ausgeführt wurde.",
+        "en": "Create a variable, print it, change its value and print it again - all in one cell. Note both outputs. Then write the same four lines in a different order and run them again. Using your two results, explain why the order of lines matters more with variables than in a calculation on paper - and describe how you can tell in the notebook that a cell has not been run at all."
+      },
+      "hint": {
+        "de": "Links neben einer ausgeführten Zelle steht eine Nummer. Bei einer nie ausgeführten Zelle nicht.",
+        "en": "To the left of a cell that has run there is a number. Not so for a cell that never ran."
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": {
+        "de": "3. Zum Nachdenken: was beim Überschreiben verloren geht",
+        "en": "3. Something to think about: what is lost when you overwrite"
+      },
+      "intro": {
+        "de": "Auf diese Frage gibt es keine richtige Antwort.",
+        "en": "There is no right answer to this one."
+      },
+      "text": {
+        "de": "Eine Variable kennt keine Vergangenheit. Sobald ein neuer Wert hineingeht, ist der alte nicht wiederherstellbar - es sei denn, jemand hat vorher daran gedacht, ihn woanders aufzuheben. Genau diese Entscheidung treffen Programme ständig, auch über dich: Welcher Punktestand wird gespeichert, welcher Chatverlauf bleibt, welches Foto ist nach dem Überschreiben endgültig fort. Überleg, wo dir das schon einmal passiert ist - und wo du froh warst, dass etwas eben nicht aufgehoben wurde.",
+        "en": "A variable has no past. As soon as a new value goes in, the old one cannot be recovered - unless somebody thought beforehand to keep it somewhere else. Programs make exactly that decision constantly, including about you: which score gets saved, which chat history stays, which photo is gone for good once overwritten. Think of a time this happened to you - and of a time you were glad something was not kept."
+      }
+    }
+  ]
+}

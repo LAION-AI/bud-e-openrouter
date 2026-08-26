@@ -1,0 +1,264 @@
+{
+  "key": "das-programm-fragt-zurueck",
+  "title": {
+    "de": "Das Programm fragt zurück",
+    "en": "The program asks back"
+  },
+  "summary": {
+    "de": "Eingaben mit input - der Moment, in dem aus einem Text auf dem Bildschirm ein Gespräch wird.",
+    "en": "Input with input - the moment text on a screen turns into a conversation."
+  },
+  "icon": "💬",
+  "accent": "indigo",
+  "minutes": 13,
+  "screens": [
+    {
+      "key": "eine-frage-stellen",
+      "title": {
+        "de": "Bis jetzt hat nur das Programm geredet",
+        "en": "So far only the program was talking"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Deine bisherigen Programme haben etwas ausgegeben und waren fertig. Jedes Mal dasselbe. Interessant wird es, wenn das Programm auf dich reagiert - und dafür muss es dich erst einmal etwas fragen dürfen.",
+            "en": "Your programs so far printed something and were done. The same thing every time. It gets interesting when the program reacts to you - and for that it first has to be allowed to ask you something."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Der Befehl dafür heißt `input`. Er hält das Programm an, zeigt eine Frage und wartet, bis du etwas eintippst und Enter drückst. Was du eingegeben hast, kommt als Ergebnis zurück - und das legt man üblicherweise gleich in eine Variable, sonst wäre es sofort wieder verloren.",
+            "en": "The command for this is `input`. It stops the program, shows a question and waits until you type something and press Enter. What you entered comes back as the result - and you usually put that straight into a variable, otherwise it would be lost again immediately."
+          }
+        },
+        {
+          "kind": "table",
+          "head": [
+            { "de": "Zeile", "en": "Line" },
+            { "de": "Was der Rechner tut", "en": "What the machine does" }
+          ],
+          "rows": [
+            [
+              { "de": "name = input(\"Wie heißt du? \")", "en": "name = input(\"What's your name? \")" },
+              { "de": "Fragt, wartet, legt die Antwort in die Kiste `name`", "en": "Asks, waits, puts the answer into the box `name`" }
+            ],
+            [
+              { "de": "print(\"Hallo \" + name)", "en": "print(\"Hello \" + name)" },
+              { "de": "Setzt Gruß und Antwort zusammen und gibt beides aus", "en": "Joins greeting and answer and prints both" }
+            ]
+          ]
+        },
+        {
+          "kind": "notebook",
+          "example": "chat",
+          "cell": 1,
+          "title": {
+            "de": "Lass dich begrüßen",
+            "en": "Get yourself greeted"
+          },
+          "text": {
+            "de": "Zwei Zeilen im Notizbuch - lass sie laufen und tipp deinen Namen ein. Unter der Zelle erscheint ein Eingabefeld, genau wie in einem echten Programm. Die Aufgabe danach lässt dich zusätzlich nach dem Lieblingsessen fragen und beides in einem Satz unterbringen.",
+            "en": "Two lines in the notebook - run them and type your name. An input field appears below the cell, just as in a real program. The task afterwards has you also ask for a favourite food and put both into one sentence."
+          }
+        }
+      ]
+    },
+    {
+      "key": "immer-text",
+      "title": {
+        "de": "Der Satz, der die Hälfte aller Fehler erklärt",
+        "en": "The sentence that explains half of all errors"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "`input` gibt immer Text zurück. Immer. Auch wenn du eine Zahl eintippst, auch wenn nur Ziffern dastehen. Dieser eine Satz ist der Grund für die meisten unerklärlichen Fehler am Anfang.",
+            "en": "`input` always returns text. Always. Even when you type a number, even when there are only digits. That single sentence causes most of the inexplicable errors at the start."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Erinnerst du dich an `\"3\" + \"7\"` gleich `37` aus dem ersten Pfad? Genau das passiert hier. Tippst du bei `alter = input(...)` eine 12 ein und rechnest dann `alter + 10`, kracht es - weil Python Text und Zahl nicht zusammenrechnen kann. Die Lösung ist ein einziges Wort: `int(...)` drumherum macht aus dem Text eine ganze Zahl.",
+            "en": "Remember `\"3\" + \"7\"` giving `37` from the first path? Exactly that happens here. If you type 12 into `age = input(...)` and then calculate `age + 10`, it crashes - because Python cannot add text and a number. The fix is a single word: `int(...)` around it turns the text into a whole number."
+          }
+        },
+        {
+          "kind": "table",
+          "head": [
+            { "de": "Umwandlung", "en": "Conversion" },
+            { "de": "Macht daraus", "en": "Turns it into" },
+            { "de": "Wofür", "en": "What for" }
+          ],
+          "rows": [
+            [
+              { "de": "int(\"12\")", "en": "int(\"12\")" },
+              { "de": "die Zahl 12", "en": "the number 12" },
+              { "de": "Alter, Anzahl, Punkte", "en": "Age, counts, score" }
+            ],
+            [
+              { "de": "float(\"1.5\")", "en": "float(\"1.5\")" },
+              { "de": "die Kommazahl 1,5", "en": "the decimal 1.5" },
+              { "de": "Messwerte, Gewichte", "en": "Measurements, weights" }
+            ],
+            [
+              { "de": "str(12)", "en": "str(12)" },
+              { "de": "den Text \"12\"", "en": "the text \"12\"" },
+              { "de": "Zum Zusammenkleben mit +", "en": "For gluing together with +" }
+            ]
+          ]
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "💥",
+          "title": {
+            "de": "Bau den Fehler absichtlich",
+            "en": "Cause the error on purpose"
+          },
+          "text": {
+            "de": "Schreib `alter = input(\"Wie alt bist du? \")` und darunter `print(alter + 10)`. Lass es laufen. Es kracht mit einem `TypeError`, und die Meldung sagt genau, welche zwei Dinge nicht zusammenpassen. Setz dann `int(...)` darum. Diesen Fehler einmal absichtlich gesehen zu haben, ist mehr wert als drei Warnungen.",
+            "en": "Write `age = input(\"How old are you? \")` and below it `print(age + 10)`. Run it. It crashes with a `TypeError`, and the message says exactly which two things do not fit. Then put `int(...)` around it. Having deliberately seen this error once is worth more than three warnings."
+          }
+        },
+        {
+          "kind": "notebook",
+          "example": "chat",
+          "cell": 3,
+          "title": {
+            "de": "Ein ganzes kleines Gespräch",
+            "en": "A whole little conversation"
+          },
+          "text": {
+            "de": "Diese Zelle fragt nach Name, Stimmung und Alter - und rechnet mit dem Alter weiter. Genau dort steht das `int(alter)`, über das wir eben geredet haben. Lass es laufen und schau dir an, an welcher Stelle die Umwandlung nötig ist und an welcher nicht.",
+            "en": "This cell asks for a name, a mood and an age - and calculates with the age. That is exactly where the `int(age)` we just talked about sits. Run it and look at where the conversion is needed and where it is not."
+          }
+        }
+      ]
+    },
+    {
+      "key": "warum-eingabe-alles-aendert",
+      "title": {
+        "de": "Warum eine Frage alles ändert",
+        "en": "Why one question changes everything"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Mit `input` wird aus einem Programm, das immer dasselbe tut, eines, das jedes Mal anders laufen kann. Und genau dadurch entsteht ein Problem, das dich von jetzt an begleitet: Du weißt vorher nicht, was jemand eingibt.",
+            "en": "With `input` a program that always does the same thing becomes one that can run differently every time. And that creates a problem which will accompany you from now on: you do not know in advance what somebody will type."
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "de": "Jemand tippt seinen Namen, wo eine Zahl erwartet wird. Das Programm stürzt ab.",
+              "en": "Somebody types their name where a number is expected. The program crashes."
+            },
+            {
+              "de": "Jemand drückt einfach Enter, ohne etwas einzugeben. Was dann?",
+              "en": "Somebody just presses Enter without typing anything. What then?"
+            },
+            {
+              "de": "Jemand schreibt „Gut“ statt „gut“. Für Python sind das zwei verschiedene Texte.",
+              "en": "Somebody writes \"Good\" instead of \"good\". To Python those are two different texts."
+            },
+            {
+              "de": "Jemand tippt eine negative Zahl, an die niemand gedacht hat.",
+              "en": "Somebody types a negative number nobody thought of."
+            }
+          ]
+        },
+        {
+          "kind": "callout",
+          "tone": "fact",
+          "icon": "🛡️",
+          "title": {
+            "de": "Genau davon lebt ein ganzer Beruf",
+            "en": "A whole profession lives on exactly this"
+          },
+          "text": {
+            "de": "„Was, wenn jemand etwas Unerwartetes eingibt?“ ist die Frage, die den Unterschied zwischen einem Programm und einem benutzbaren Programm ausmacht. Jede App, die dich etwas eingeben lässt, hat jemanden beschäftigt, der genau darüber nachgedacht hat - und jede App, die abstürzt, hatte niemanden.",
+            "en": "\"What if somebody enters something unexpected?\" is the question that separates a program from a usable program. Every app that lets you type something employed somebody who thought about exactly this - and every app that crashes had nobody."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Im nächsten Pfad bekommst du das Werkzeug dafür: Bedingungen, mit denen ein Programm unterschiedlich reagieren kann, je nachdem was eingegeben wurde. Damit werden aus Fragen echte Gespräche.",
+            "en": "In the next path you get the tool for it: conditions, with which a program can react differently depending on what was entered. That turns questions into real conversations."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": { "de": "Python-Dokumentation: Eingabe und Ausgabe", "en": "Python documentation: input and output" },
+              "url": "https://docs.python.org/3/tutorial/inputoutput.html"
+            },
+            {
+              "label": { "de": "inf-schule.de: Ein- und Ausgabe", "en": "inf-schule.de: input and output" },
+              "url": "https://www.inf-schule.de/imperative-programmierung"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": {
+        "de": "1. Lückentext: fragen und umwandeln",
+        "en": "1. Fill in the blanks: asking and converting"
+      },
+      "intro": {
+        "de": "Setze die fehlenden Wörter ein.",
+        "en": "Fill in the missing words."
+      },
+      "text": {
+        "de": "Damit ein Programm dich etwas fragen kann, benutzt man den Befehl ___. Er hält das Programm an und ___, bis du Enter drückst. Damit die Antwort nicht verloren geht, legt man sie in eine ___. Zurück kommt dabei immer ___, auch wenn du eine Zahl eingetippt hast. Zum Rechnen muss man daraus erst eine Zahl machen, und zwar mit ___ für ganze Zahlen oder mit ___ für Kommazahlen. Vergisst man das, meldet Python einen ___. Umgekehrt macht ___ aus einer Zahl wieder Text. Sobald ein Programm fragt, weiß man vorher nicht mehr, was jemand ___ - und genau darum muss man an die Fälle denken, an die zuerst niemand ___.",
+        "en": "For a program to ask you something you use the command ___. It stops the program and ___ until you press Enter. So that the answer is not lost you put it into a ___. What comes back is always ___, even if you typed a number. To calculate you first have to turn it into a number, using ___ for whole numbers or ___ for decimals. Forget that and Python reports a ___. The other way round, ___ turns a number back into text. As soon as a program asks, you no longer know in advance what somebody will ___ - and that is why you have to think of the cases nobody ___ of at first."
+      }
+    },
+    {
+      "kind": "compare",
+      "title": {
+        "de": "2. Ausprobieren und vergleichen: mit und ohne Umwandlung",
+        "en": "2. Try it and compare: with and without conversion"
+      },
+      "intro": {
+        "de": "Diese Aufgabe gehört ins Notizbuch „2 - Ein kleines Gespräch“.",
+        "en": "This task belongs in the notebook \"2 - A small conversation\"."
+      },
+      "text": {
+        "de": "Schreib zwei Programme, die sich in genau einem Wort unterscheiden. Programm A: `zahl = input(\"Zahl: \")` und `print(zahl + zahl)`. Programm B: dasselbe mit `int(...)` um das `input`. Gib beide Male 3 ein und notiere die Ausgaben. Erkläre, warum dasselbe Pluszeichen zweimal etwas anderes bedeutet. Gib danach bei Programm B absichtlich dein Vorname ein statt einer Zahl, lies die Fehlermeldung und schreib die letzte Zeile davon ab - sie sagt dir genau, was schiefging.",
+        "en": "Write two programs differing in exactly one word. Program A: `number = input(\"Number: \")` and `print(number + number)`. Program B: the same with `int(...)` around the `input`. Enter 3 both times and note the outputs. Explain why the same plus sign means two different things. Then in program B deliberately enter your first name instead of a number, read the error message and copy out its last line - it tells you exactly what went wrong."
+      },
+      "hint": {
+        "de": "Frag dich bei jedem Wert: Ist das gerade eine Zahl oder eine Kette von Zeichen, die zufällig wie eine Zahl aussieht?",
+        "en": "For each value ask: is this a number right now, or a string of characters that merely looks like one?"
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": {
+        "de": "3. Zum Nachdenken: das Gefühl, gemeint zu sein",
+        "en": "3. Something to think about: the feeling of being meant"
+      },
+      "intro": {
+        "de": "Auf diese Frage gibt es keine richtige Antwort.",
+        "en": "There is no right answer to this one."
+      },
+      "text": {
+        "de": "Ein Programm, das dich mit deinem Namen begrüßt, wirkt sofort persönlicher - dabei hat es nur einen Text in eine Kiste gelegt und wieder herausgeholt. Genau so funktionierten die ersten Chatprogramme der Welt; das berühmteste hieß ELIZA, war 1966 fertig und bestand fast nur aus solchen Zeilen. Menschen haben ihm trotzdem ihre Sorgen erzählt. Überlege, warum das so gut funktioniert - und ob es einen Unterschied macht, ob man weiß, wie es gemacht ist.",
+        "en": "A program that greets you by name feels immediately more personal - although it only put some text into a box and took it out again. That is exactly how the world's first chat programs worked; the most famous was called ELIZA, finished in 1966, and consisted almost entirely of such lines. People told it their troubles anyway. Think about why that works so well - and whether it makes a difference to know how it is done."
+      }
+    }
+  ]
+}

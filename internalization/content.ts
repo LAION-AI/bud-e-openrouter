@@ -686,7 +686,11 @@ export const notebookContent: InternalizationContent = {
       "Every notebook is saved in this browser on its own. Create as many as you like - one per topic works well.",
     examples: "Examples to learn from",
     examplesHint:
-      "Opens as your own copy, so you can change anything without losing the original.",
+      "Your own copy - change anything you like. Reopening picks up where you left off.",
+    exampleStarted: "You have worked on this one",
+    resetExample: "Start over",
+    confirmResetExample:
+      "Start this example over? Everything you typed into it will be lost.",
     untitled: "Untitled",
     nameHint: "Name of this notebook - click to rename.",
     delete: "Delete",
@@ -777,7 +781,11 @@ export const notebookContent: InternalizationContent = {
       "Jedes Notebook wird einzeln in diesem Browser gespeichert. Leg so viele an, wie du magst - eins pro Thema bewährt sich.",
     examples: "Beispiele zum Lernen",
     examplesHint:
-      "Wird als deine eigene Kopie geöffnet - du kannst also alles verändern, ohne das Original zu verlieren.",
+      "Deine eigene Kopie - ändere daran, was du willst. Beim nächsten Öffnen geht es dort weiter.",
+    exampleStarted: "Daran hast du schon gearbeitet",
+    resetExample: "Neu anfangen",
+    confirmResetExample:
+      "Dieses Beispiel neu anfangen? Alles, was du hineingeschrieben hast, geht verloren.",
     untitled: "Ohne Titel",
     nameHint: "Name dieses Notebooks - zum Umbenennen anklicken.",
     delete: "Löschen",

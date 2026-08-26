@@ -214,6 +214,14 @@ function renderBlock(block: Block, lang: string): string {
     }
     case "caption":
       return `<p class="cap">${L(block.text)}</p>`;
+    case "notebook": {
+      // On paper there is nothing to click, so the block becomes a plain
+      // note saying where the exercise lives.
+      const title = block.title ? `<span class="t">${L(block.title)}</span> ` : "";
+      const at = block.cell ? ` (Zelle ${block.cell})` : "";
+      return `<div class="callout">${title}${L(block.text)}` +
+        ` <em>[Notizbuch: ${esc(block.example)}${at}]</em></div>`;
+    }
     case "sources": {
       const items = block.items
         .map((s) => `<li>${L(s.label)} - ${esc(s.url)}</li>`)

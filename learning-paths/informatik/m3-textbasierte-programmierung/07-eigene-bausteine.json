@@ -1,0 +1,271 @@
+{
+  "key": "eigene-bausteine-py",
+  "title": {
+    "de": "Eigene Bausteine, und wofür das alles gut ist",
+    "en": "Blocks of your own, and what all this is for"
+  },
+  "summary": {
+    "de": "Funktionen selbst schreiben - und damit endlich echte Aufgaben lösen statt Übungen.",
+    "en": "Writing functions yourself - and finally solving real tasks instead of exercises."
+  },
+  "icon": "🧰",
+  "accent": "indigo",
+  "minutes": 15,
+  "screens": [
+    {
+      "key": "dreimal-dasselbe",
+      "title": {
+        "de": "Wer dreimal dasselbe schreibt",
+        "en": "Whoever writes the same thing three times"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Du hast fertige Bausteine benutzt: `print`, `input`, `random.randint`. Jetzt baust du eigene. Der Anlass ist immer derselbe: Man merkt, dass man zum dritten Mal fast dasselbe tippt.",
+            "en": "You have used ready-made blocks: `print`, `input`, `random.randint`. Now you build your own. The reason is always the same: you notice you are typing almost the same thing for the third time."
+          }
+        },
+        {
+          "kind": "steps",
+          "items": [
+            {
+              "title": { "de": "Definieren mit def", "en": "Define it with def" },
+              "text": {
+                "de": "`def flaeche(laenge, breite):` und darunter eingerückt, was passieren soll - dieselbe Regel wie bei `if` und `for`. Beim Ausführen dieser Zeilen passiert noch nichts; du hast dem Rechner nur beigebracht, was das Wort bedeutet.",
+                "en": "`def area(length, width):` and, indented below, what should happen - the same rule as with `if` and `for`. Running these lines does nothing yet; you have only taught the machine what the word means."
+              }
+            },
+            {
+              "title": { "de": "Aufrufen mit Klammern", "en": "Call it with brackets" },
+              "text": {
+                "de": "`flaeche(3, 4)` - jetzt läuft es. Die Klammern sind der Unterschied zwischen „ich meine den Baustein“ und „führ ihn jetzt aus“.",
+                "en": "`area(3, 4)` - now it runs. The brackets are the difference between \"I mean the block\" and \"run it now\"."
+              }
+            },
+            {
+              "title": { "de": "Etwas hineingeben", "en": "Pass something in" },
+              "text": {
+                "de": "Was in den Klammern der Definition steht, heißt Parameter. Das macht aus einem starren Baustein einen, der sich anpasst - eine Funktion für alle Rechtecke statt eine je Rechteck.",
+                "en": "What stands in the brackets of the definition is called a parameter. That turns a rigid block into one that adapts - one function for all rectangles instead of one per rectangle."
+              }
+            },
+            {
+              "title": { "de": "Und etwas herausbekommen", "en": "And get something back" },
+              "text": {
+                "de": "`return ergebnis` gibt einen Wert zurück, mit dem du weiterrechnen kannst. Ohne `return` tut die Funktion etwas; mit `return` liefert sie etwas. Der Unterschied ist wichtiger, als er klingt.",
+                "en": "`return result` hands back a value you can carry on calculating with. Without `return` the function does something; with `return` it delivers something. That difference matters more than it sounds."
+              }
+            }
+          ]
+        },
+        {
+          "kind": "callout",
+          "tone": "tip",
+          "icon": "📛",
+          "title": {
+            "de": "Der Name ist die halbe Funktion",
+            "en": "The name is half the function"
+          },
+          "text": {
+            "de": "Eine Funktion, die etwas ausrechnet, heißt am besten wie das Ergebnis: `flaeche`, `durchschnitt`, `note_fuer`. Eine, die etwas tut, heißt wie die Tätigkeit: `zeichne`, `frage_nach`. Fällt dir kein guter Name ein, macht die Funktion meistens zwei Dinge auf einmal - dann teil sie.",
+            "en": "A function that computes something is best named after its result: `area`, `average`, `grade_for`. One that does something is named after the action: `draw`, `ask_for`. If no good name comes to mind, the function is usually doing two things at once - then split it."
+          }
+        },
+        {
+          "kind": "notebook",
+          "example": "packages",
+          "cell": 1,
+          "title": {
+            "de": "Eine Funktion, die verschlüsselt",
+            "en": "A function that encrypts"
+          },
+          "text": {
+            "de": "Im Notizbuch steht eine echte Funktion mit `def`, Parametern und `return`: die Caesar-Verschlüsselung, die Julius Caesar tatsächlich benutzt hat. In der Aufgabe verschlüsselst du eine eigene Nachricht und gibst sie jemandem in der Klasse - mit und ohne die Zahl.",
+            "en": "In the notebook there is a real function with `def`, parameters and `return`: the Caesar cipher, which Julius Caesar actually used. In the task you encrypt a message of your own and give it to somebody in class - with and without the number."
+          }
+        }
+      ]
+    },
+    {
+      "key": "wofuer",
+      "title": {
+        "de": "Wofür man das dann benutzt",
+        "en": "What you then use it for"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Hier entscheidet sich, ob dieses Modul ein Programmierkurs war oder Informatikunterricht. Ein Programm ist ein Werkzeug, und ein Werkzeug zeigt seinen Wert an einer echten Aufgabe - nicht an einer erfundenen.",
+            "en": "Here it is decided whether this module was a programming course or a computing lesson. A program is a tool, and a tool shows its worth on a real task - not an invented one."
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "de": "**Physik:** Eine Messreihe auswerten. `sum(werte) / len(werte)` ist der Mittelwert, `max` und `min` liefern die Spannweite. Von Hand eine halbe Stunde mit drei Rechenfehlern - als Programm drei Zeilen, die du beim nächsten Versuch wiederverwendest.",
+              "en": "**Physics:** evaluating a series of measurements. `sum(values) / len(values)` is the mean, `max` and `min` give the range. By hand half an hour with three slips - as a program, three lines you reuse next time."
+            },
+            {
+              "de": "**Mathematik:** Eine Vermutung für alle Zahlen bis 10 000 prüfen. Ein Beweis ist das nicht, aber du siehst sofort, ob es sich lohnt, einen zu suchen.",
+              "en": "**Mathematics:** testing a conjecture for all numbers up to 10,000. Not a proof, but you see at once whether it is worth looking for one."
+            },
+            {
+              "de": "**Sprachen:** Zählen, welche Wörter in einem Text am häufigsten vorkommen - bei einer Gedichtanalyse in Sekunden statt mit Strichliste.",
+              "en": "**Languages:** counting which words occur most often in a text - for a poetry analysis, in seconds instead of with tally marks."
+            },
+            {
+              "de": "**Alltag:** Aus hundert Fotos die umbenennen, die ein bestimmtes Datum tragen. Von Hand ein verlorener Nachmittag.",
+              "en": "**Everyday life:** renaming those of a hundred photos that carry a certain date. By hand, a lost afternoon."
+            }
+          ]
+        },
+        {
+          "kind": "callout",
+          "tone": "fact",
+          "icon": "⏳",
+          "title": {
+            "de": "Die Rechnung, die man einmal machen sollte",
+            "en": "The calculation worth doing once"
+          },
+          "text": {
+            "de": "Eine Aufgabe dauert von Hand zehn Minuten und kommt zwanzigmal im Jahr - das sind gut drei Stunden. Ein Programm dafür kostet dich vielleicht eine Stunde, einmal. Ab dem siebten Mal bist du im Plus. Aber Vorsicht vor der Falle: Man kann auch zwei Stunden in etwas stecken, das man einmal im Jahr in fünf Minuten erledigt hätte.",
+            "en": "A task takes ten minutes by hand and comes up twenty times a year - that is a good three hours. A program for it costs you perhaps one hour, once. From the seventh time you are ahead. But beware the trap: you can also sink two hours into something you would have done once a year in five minutes."
+          }
+        },
+        {
+          "kind": "notebook",
+          "example": "packages",
+          "cell": 3,
+          "title": {
+            "de": "Ein Verfahren knacken, in einer Schleife",
+            "en": "Breaking a cipher, in one loop"
+          },
+          "text": {
+            "de": "Die Caesar-Verschlüsselung galt zweitausend Jahre als sicher und fällt hier in drei Zeilen: Eine Schleife probiert alle 25 Möglichkeiten durch, eine davon ergibt Sinn. Die Aufgabe lässt dich das mit deinem eigenen Text tun - und darüber nachdenken, was das für Passwörter aus einem einzigen Wort bedeutet.",
+            "en": "The Caesar cipher was considered secure for two thousand years and falls here in three lines: a loop tries all 25 possibilities, one of them makes sense. The task has you do this with your own text - and think about what it means for passwords made of a single word."
+          }
+        }
+      ]
+    },
+    {
+      "key": "was-bleibt",
+      "title": {
+        "de": "Was bleibt, wenn du nie wieder Python schreibst",
+        "en": "What remains if you never write Python again"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Die meisten Menschen, die programmieren können, sind keine Programmierer. Es sind Biologinnen, die Messreihen auswerten, Journalisten, die Datensätze durchsuchen, Lehrerinnen, die sich Arbeit sparen, Handwerker, die ihre Angebote automatisch erstellen.",
+            "en": "Most people who can program are not programmers. They are biologists evaluating measurement series, journalists searching data sets, teachers saving themselves work, tradespeople generating their quotes automatically."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Programmieren ist wie Schreiben: ein Hilfsmittel für alle, kein Beruf für wenige. Und selbst wenn du nach diesem Modul nie wieder eine Zeile tippst, bleibt etwas - du weißt jetzt, dass hinter jeder automatischen Entscheidung eine Regel steht, die ein Mensch aufgeschrieben hat. Genau solche `if`-Zeilen, wie du sie jetzt selbst schreiben kannst.",
+            "en": "Programming is like writing: an aid for everyone, not a profession for a few. And even if you never type another line after this module, something remains - you now know that behind every automatic decision there is a rule a human wrote down. Exactly the kind of `if` lines you can now write yourself."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "tip",
+          "icon": "🧭",
+          "title": {
+            "de": "Zwei Gewohnheiten, die immer helfen",
+            "en": "Two habits that always help"
+          },
+          "text": {
+            "de": "Erstens: kleine Schritte. Schreib fünf Zeilen, lass sie laufen, dann die nächsten fünf - wer dreißig Zeilen am Stück tippt, sucht den Fehler in dreißig Zeilen. Zweitens: Lies die Fehlermeldung, wirklich lesen. Sie nennt die Zeile und die Art des Fehlers, und in langen Meldungen steht die Ursache in der **letzten** Zeile, nicht in der ersten.",
+            "en": "First: small steps. Write five lines, run them, then the next five - whoever types thirty lines in one go hunts the bug in thirty lines. Second: read the error message, really read it. It names the line and the kind of fault, and in long messages the cause is in the **last** line, not the first."
+          }
+        },
+        {
+          "kind": "notebook",
+          "example": "packages",
+          "cell": 6,
+          "title": {
+            "de": "Zum Schluss: alles zusammen",
+            "en": "Finally: everything together"
+          },
+          "text": {
+            "de": "Eine Kuh, die sagt, was du eingibst - verschlüsselt. Darin steckt alles aus diesem Modul: Eingabe, eine eigene Funktion, eine Bibliothek aus dem Internet, eine Schleife und Bedingungen. Fünf Zeilen, die vor sechs Pfaden noch unmöglich ausgesehen hätten.",
+            "en": "A cow saying whatever you type - encrypted. It contains everything from this module: input, a function of your own, a library from the internet, a loop and conditions. Five lines that six paths ago would have looked impossible."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": { "de": "Python-Dokumentation: Funktionen definieren", "en": "Python documentation: defining functions" },
+              "url": "https://docs.python.org/3/tutorial/controlflow.html"
+            },
+            {
+              "label": { "de": "Python-Dokumentation: Listen und Datenstrukturen", "en": "Python documentation: lists and data structures" },
+              "url": "https://docs.python.org/3/tutorial/datastructures.html"
+            },
+            {
+              "label": { "de": "Bildungsplan Informatik Sek I, Hamburg", "en": "Hamburg curriculum for computer science, lower secondary" },
+              "url": "https://www.hamburg.de/resource/blob/798514/ad3c2fdfb3a32b9545a271dfceae5772/informatik-data.pdf"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": {
+        "de": "1. Lückentext: eigene Bausteine bauen",
+        "en": "1. Fill in the blanks: building your own blocks"
+      },
+      "intro": {
+        "de": "Setze die fehlenden Wörter ein.",
+        "en": "Fill in the missing words."
+      },
+      "text": {
+        "de": "Wer dreimal fast dasselbe tippt, macht besser eine ___ daraus. Definiert wird sie mit dem Wort ___, und wie bei `if` und `for` folgt ein Doppelpunkt und eine ___. Ausgeführt wird sie erst beim Aufruf mit ___. Was man ihr mitgibt, heißt ___; was sie zurückliefert, gibt man mit ___ zurück. Den Mittelwert einer Liste bekommt man aus `sum(werte)` geteilt durch ___. Ob sich ein eigenes Programm lohnt, hängt vor allem davon ab, wie ___ die Aufgabe wiederkommt. In einer langen Fehlermeldung steht die Ursache in der ___ Zeile. Und die meisten Menschen, die programmieren können, sind gar keine ___.",
+        "en": "Whoever types almost the same thing three times had better make it a ___. It is defined with the word ___, and as with `if` and `for` a colon follows plus an ___. It only runs when called with ___. What you pass in is called a ___; what it hands back is returned with ___. The mean of a list comes from `sum(values)` divided by ___. Whether your own program is worth it depends above all on how ___ the task comes back. In a long error message the cause is in the ___ line. And most people who can program are not ___ at all."
+      }
+    },
+    {
+      "kind": "compare",
+      "title": {
+        "de": "2. Bauen und begründen: deine eigene Auswertung",
+        "en": "2. Build and justify: your own evaluation"
+      },
+      "intro": {
+        "de": "Diese Aufgabe braucht das Notizbuch und echte Zahlen aus deinem Leben.",
+        "en": "This task needs the notebook and real numbers from your own life."
+      },
+      "text": {
+        "de": "Such dir zehn echte Werte - Noten, Temperaturen, Wegzeiten, Trainingsergebnisse - und schreib ein Programm, das Mittelwert, größten und kleinsten Wert ausgibt. Bau danach eine Funktion `auswerten(werte)` daraus, die du mit einer zweiten Zahlenreihe noch einmal aufrufen kannst. Prüf beides zuerst mit drei Zahlen, deren Ergebnis du im Kopf kennst. Beschreibe zum Schluss, wie lange du für dieselbe Auswertung von Hand gebraucht hättest, und nenne eine Aufgabe aus deinem Alltag, bei der sich ein Programm ausdrücklich **nicht** lohnt.",
+        "en": "Find ten real values - grades, temperatures, journey times, training results - and write a program that prints the mean, the largest and the smallest. Then turn it into a function `evaluate(values)` that you can call again with a second set of numbers. Test both first with three numbers whose result you know in your head. Finally describe how long the same evaluation would have taken you by hand, and name a task from your daily life where a program is expressly **not** worth it."
+      },
+      "hint": {
+        "de": "Rechne ehrlich: Die Zeit fürs Schreiben des Programms gehört mit in die Rechnung.",
+        "en": "Be honest in the sum: the time spent writing the program belongs in the calculation."
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": {
+        "de": "3. Zum Nachdenken: wem gegenüber man sich beschwert",
+        "en": "3. Something to think about: whom you complain to"
+      },
+      "intro": {
+        "de": "Auf diese Frage gibt es keine richtige Antwort.",
+        "en": "There is no right answer to this one."
+      },
+      "text": {
+        "de": "Programme entscheiden inzwischen mit: welche Videos dir vorgeschlagen werden, welche Bewerbung zuerst gelesen wird, wie ein Auto in einer Gefahrensituation lenkt. Geschrieben hat sie jemand, der Bedingungen formuliert hat - genau solche Zeilen, wie du sie jetzt schreiben kannst. Überlege, was es bedeutet, dass hinter jeder automatischen Entscheidung ein Mensch steht, der sie so und nicht anders aufgeschrieben hat. Ändert das etwas daran, wem gegenüber man sich beschweren kann - und wüsstest du, an wen du dich wenden würdest?",
+        "en": "Programs now help decide: which videos you are shown, which application is read first, how a car steers in a dangerous situation. Somebody wrote them by formulating conditions - exactly the kind of lines you can now write yourself. Think about what it means that behind every automatic decision there is a person who wrote it down this way and not another. Does that change whom one can complain to - and would you know whom to turn to?"
+      }
+    }
+  ]
+}

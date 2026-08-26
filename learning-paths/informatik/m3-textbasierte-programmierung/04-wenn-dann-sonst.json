@@ -1,0 +1,271 @@
+{
+  "key": "wenn-dann-sonst-py",
+  "title": {
+    "de": "Wenn, dann, sonst",
+    "en": "If, then, otherwise"
+  },
+  "summary": {
+    "de": "Wie ein Programm entscheidet - und wie es dabei zum ersten Mal auf dich reagiert.",
+    "en": "How a program decides - and how it first reacts to you in the process."
+  },
+  "icon": "🚦",
+  "accent": "indigo",
+  "minutes": 14,
+  "screens": [
+    {
+      "key": "die-gabelung",
+      "title": {
+        "de": "Der Weg teilt sich",
+        "en": "The path forks"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Du machst das den ganzen Tag: Wenn es regnet, nimm die Jacke. Wenn noch Geld übrig ist, kauf ein Eis. Wenn der Bus weg ist, geh zu Fuß. Ein Programm kann das auch - mit einem Wort, das genauso heißt: `if`.",
+            "en": "You do this all day: if it rains, take a jacket. If there is money left, buy an ice cream. If the bus has gone, walk. A program can do it too - with a word that means exactly that: `if`."
+          }
+        },
+        {
+          "kind": "table",
+          "head": [
+            { "de": "Auf Deutsch", "en": "In plain words" },
+            { "de": "In Python", "en": "In Python" }
+          ],
+          "rows": [
+            [
+              { "de": "wenn …", "en": "if …" },
+              { "de": "if bedingung:", "en": "if condition:" }
+            ],
+            [
+              { "de": "sonst wenn …", "en": "else if …" },
+              { "de": "elif bedingung:", "en": "elif condition:" }
+            ],
+            [
+              { "de": "sonst", "en": "otherwise" },
+              { "de": "else:", "en": "else:" }
+            ]
+          ]
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Zwei Kleinigkeiten fallen sofort auf. Erstens der Doppelpunkt am Ende der Zeile - der gehört dazu und wird oft vergessen. Zweitens rückt man alles ein, was zu dieser Bedingung gehört. Beides erklärt der nächste Bildschirm; erst einmal reicht es zu wissen, dass beides sein muss.",
+            "en": "Two small things stand out at once. First the colon at the end of the line - it belongs there and is often forgotten. Second, everything belonging to that condition is indented. The next screen explains both; for now it is enough to know that both are required."
+          }
+        },
+        {
+          "kind": "notebook",
+          "example": "chat",
+          "cell": 2,
+          "title": {
+            "de": "Ein Programm, das antwortet",
+            "en": "A program that answers"
+          },
+          "text": {
+            "de": "Hier steht ein `if` mit `elif` und `else` - das Programm fragt, wie es dir geht, und antwortet unterschiedlich. Lass es dreimal laufen und tipp jedes Mal etwas anderes ein. In der Aufgabe darunter ergänzt du einen dritten Fall für „müde“.",
+            "en": "Here is an `if` with `elif` and `else` - the program asks how you are and answers differently. Run it three times and type something different each time. In the task below you add a third case for \"tired\"."
+          }
+        }
+      ]
+    },
+    {
+      "key": "einruecken",
+      "title": {
+        "de": "Warum die Leerzeichen zählen",
+        "en": "Why the spaces count"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Jetzt die eine Sache an Python, die man nirgends sonst so kennt: Die Leerzeichen am Zeilenanfang sind Teil des Programms. Nicht Geschmackssache - Bedeutung.",
+            "en": "Now the one thing about Python you will not find quite like this anywhere else: the spaces at the start of a line are part of the program. Not a matter of taste - meaning."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Was eingerückt unter einem `if` steht, gehört dazu und wird nur ausgeführt, wenn die Bedingung stimmt. Was wieder ganz links steht, gehört nicht mehr dazu und läuft immer. Andere Programmiersprachen benutzen dafür geschweifte Klammern; Python spart sie sich und nimmt stattdessen den Abstand ernst.",
+            "en": "Whatever is indented under an `if` belongs to it and only runs when the condition holds. Whatever is back at the far left no longer belongs to it and always runs. Other languages use curly braces for this; Python does without and takes the spacing seriously instead."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "fact",
+          "icon": "📏",
+          "title": {
+            "de": "Vier Leerzeichen, ein anderes Programm",
+            "en": "Four spaces, a different program"
+          },
+          "text": {
+            "de": "Steht `print(\"Tschüss\")` eingerückt unter einem `if`, erscheint es nur manchmal. Steht es links, erscheint es immer. Derselbe Text, dieselbe Reihenfolge, zwei verschiedene Programme - der einzige Unterschied sind vier Leerzeichen. Das klingt streng und hat einen Vorteil: Man sieht die Struktur, ohne sie suchen zu müssen.",
+            "en": "If `print(\"Bye\")` is indented under an `if`, it only appears sometimes. If it is at the left, it always appears. The same text, the same order, two different programs - the only difference is four spaces. That sounds strict and has an advantage: you see the structure without having to look for it."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "tip",
+          "icon": "⌨️",
+          "title": {
+            "de": "Die Tabulator-Taste macht das für dich",
+            "en": "The tab key does it for you"
+          },
+          "text": {
+            "de": "Im Notizbuch fügt Tab genau vier Leerzeichen ein. Nach einer Zeile mit Doppelpunkt einmal Tab drücken - fertig. Meldet Python später einen `IndentationError`, ist meistens genau hier etwas durcheinandergeraten: mal Tab, mal Leerzeichen, oder eine Zeile zu weit links.",
+            "en": "In the notebook, Tab inserts exactly four spaces. After a line with a colon, press Tab once - done. If Python later reports an `IndentationError`, usually something got mixed up right here: sometimes tabs, sometimes spaces, or one line too far left."
+          }
+        }
+      ]
+    },
+    {
+      "key": "vergleichen-und-verknuepfen",
+      "title": {
+        "de": "Was in der Bedingung stehen darf",
+        "en": "What may go in the condition"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Zwischen `if` und dem Doppelpunkt steht etwas, das entweder wahr oder falsch ist. Dazwischen gibt es nichts - kein „ein bisschen“, kein „kommt darauf an“.",
+            "en": "Between `if` and the colon stands something that is either true or false. There is nothing in between - no \"a bit\", no \"it depends\"."
+          }
+        },
+        {
+          "kind": "table",
+          "head": [
+            { "de": "Zeichen", "en": "Symbol" },
+            { "de": "Bedeutung", "en": "Meaning" },
+            { "de": "Beispiel", "en": "Example" }
+          ],
+          "rows": [
+            [
+              { "de": "==", "en": "==" },
+              { "de": "ist gleich?", "en": "is equal to?" },
+              { "de": "if name == \"Mia\":", "en": "if name == \"Mia\":" }
+            ],
+            [
+              { "de": "!=", "en": "!=" },
+              { "de": "ist ungleich?", "en": "is not equal to?" },
+              { "de": "if antwort != \"ja\":", "en": "if answer != \"yes\":" }
+            ],
+            [
+              { "de": "< und >", "en": "< and >" },
+              { "de": "kleiner, größer", "en": "less, greater" },
+              { "de": "if alter > 17:", "en": "if age > 17:" }
+            ],
+            [
+              { "de": "and, or, not", "en": "and, or, not" },
+              { "de": "beides, eines, umgedreht", "en": "both, either, reversed" },
+              { "de": "if punkte > 10 and leben > 0:", "en": "if score > 10 and lives > 0:" }
+            ]
+          ]
+        },
+        {
+          "kind": "callout",
+          "tone": "warn",
+          "icon": "🟰",
+          "title": {
+            "de": "Ein Gleichheitszeichen oder zwei",
+            "en": "One equals sign or two"
+          },
+          "text": {
+            "de": "`=` legt einen Wert in eine Kiste, `==` fragt, ob zwei Werte gleich sind. Der Unterschied ist ein einziges Zeichen und der berühmteste Tippfehler der Informatik. Python passt hier auf dich auf und meldet einen Fehler - in manchen anderen Sprachen wäre die Zeile erlaubt gewesen und hätte stillschweigend etwas völlig anderes getan.",
+            "en": "`=` puts a value into a box, `==` asks whether two values are equal. The difference is a single character and computing's most famous typo. Python looks out for you here and reports an error - in some other languages the line would have been allowed and would silently have done something completely different."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "tip",
+          "icon": "🔤",
+          "title": {
+            "de": "Groß und klein sind zwei verschiedene Texte",
+            "en": "Upper and lower case are two different texts"
+          },
+          "text": {
+            "de": "`\"Gut\" == \"gut\"` ist falsch - für Python sind das zwei verschiedene Zeichenketten. Wenn dein Programm auf Eingaben reagieren soll, schreib `antwort.lower()`: Das macht alles klein, bevor verglichen wird. Ein kleiner Zusatz, der dein Programm freundlich macht.",
+            "en": "`\"Good\" == \"good\"` is false - to Python those are two different strings. If your program should react to input, write `answer.lower()`: that makes everything lowercase before comparing. A small addition that makes your program friendly."
+          }
+        },
+        {
+          "kind": "notebook",
+          "example": "chat",
+          "cell": 3,
+          "title": {
+            "de": "Fragen, vergleichen, antworten",
+            "en": "Ask, compare, answer"
+          },
+          "text": {
+            "de": "Das größere Beispiel setzt alles zusammen: fragen, vergleichen, unterschiedlich antworten, rechnen. Die Abschlussaufgabe lässt dich einen eigenen kleinen Gesprächspartner bauen - und erzählt, warum genau so 1966 das erste Chatprogramm der Welt funktionierte.",
+            "en": "The bigger example puts it all together: ask, compare, answer differently, calculate. The closing task has you build your own little conversation partner - and tells you why the world's first chat program worked exactly like this in 1966."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": { "de": "Python-Dokumentation: Kontrollstrukturen", "en": "Python documentation: control flow" },
+              "url": "https://docs.python.org/3/tutorial/controlflow.html"
+            },
+            {
+              "label": { "de": "inf-schule.de: Fallunterscheidungen", "en": "inf-schule.de: conditional branching" },
+              "url": "https://www.inf-schule.de/imperative-programmierung"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": {
+        "de": "1. Lückentext: entscheiden in Python",
+        "en": "1. Fill in the blanks: deciding in Python"
+      },
+      "intro": {
+        "de": "Setze die fehlenden Wörter ein.",
+        "en": "Fill in the missing words."
+      },
+      "text": {
+        "de": "Eine Bedingung beginnt mit dem Wort ___ und endet mit einem ___. Alles, was dazugehört, muss darunter ___ werden - üblich sind vier ___. Der zweite Weg heißt ___ und bekommt keine eigene Bedingung. Weitere Fälle dazwischen schreibt man mit ___. Ein einzelnes `=` legt einen Wert ab; verglichen wird dagegen mit ___. Sollen zwei Bedingungen zugleich gelten, verknüpft man sie mit ___; genügt eine von beiden, nimmt man ___. Damit Groß- und Kleinschreibung keine Rolle spielt, hängt man an einen Text ___ an. Stimmt die Einrückung nicht, meldet Python einen ___.",
+        "en": "A condition begins with the word ___ and ends with a ___. Everything belonging to it must be ___ below - usually by four ___. The second path is called ___ and gets no condition of its own. Further cases in between are written with ___. A single `=` stores a value; comparing uses ___ instead. If two conditions must both hold you join them with ___; if either is enough you use ___. So that upper and lower case do not matter, you append ___ to a text. If the indentation is wrong, Python reports an ___."
+      }
+    },
+    {
+      "kind": "compare",
+      "title": {
+        "de": "2. Ausprobieren und vergleichen: eingerückt oder nicht",
+        "en": "2. Try it and compare: indented or not"
+      },
+      "intro": {
+        "de": "Diese Aufgabe gehört ins Notizbuch „2 - Ein kleines Gespräch“.",
+        "en": "This task belongs in the notebook \"2 - A small conversation\"."
+      },
+      "text": {
+        "de": "Bau ein kleines Programm, das nach dem Wetter fragt und bei „regen“ etwas anderes sagt als sonst. Häng darunter eine Zeile `print(\"Bis morgen!\")` an - einmal eingerückt unter dem `if`, einmal ganz links. Lass beide Fassungen je zweimal laufen: einmal mit „regen“, einmal mit „sonne“. Notiere alle vier Ausgaben und erkläre daran, was die Einrückung genau bewirkt. Beschreibe zum Schluss, welche der beiden Fassungen du für einen Abschiedsgruß haben möchtest und warum.",
+        "en": "Build a small program that asks about the weather and says something different for \"rain\" than otherwise. Add a line `print(\"See you tomorrow!\")` below it - once indented under the `if`, once at the far left. Run both versions twice each: once with \"rain\", once with \"sun\". Note all four outputs and use them to explain exactly what the indentation does. Finally describe which of the two versions you would want for a farewell greeting, and why."
+      },
+      "hint": {
+        "de": "Frag dich bei jeder Zeile: Gehört sie zur Bedingung oder kommt sie danach?",
+        "en": "For each line ask: does it belong to the condition, or does it come after it?"
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": {
+        "de": "3. Zum Nachdenken: Regeln, die sich nicht pressen lassen",
+        "en": "3. Something to think about: rules that will not be squeezed"
+      },
+      "intro": {
+        "de": "Auf diese Frage gibt es keine richtige Antwort.",
+        "en": "There is no right answer to this one."
+      },
+      "text": {
+        "de": "Eine Bedingung kennt nur wahr und falsch. „Bist du erwachsen?“ lässt sich damit beantworten, sobald jemand ein Alter festlegt. „Hast du dich angestrengt?“ nicht. „Ist dieser Kommentar verletzend?“ auch nicht - und trotzdem entscheiden Programme genau darüber, millionenfach am Tag. Denk an eine Regel aus deinem Alltag, bei der ein Mensch anders urteilt als jede feste Grenze es könnte. Was ginge verloren, wenn man sie in ein `if` pressen müsste?",
+        "en": "A condition knows only true and false. \"Are you an adult?\" can be answered as soon as somebody fixes an age. \"Did you make an effort?\" cannot. \"Is this comment hurtful?\" cannot either - and yet programs decide exactly that, millions of times a day. Think of a rule from your own life where a human judges differently from any fixed limit. What would be lost if it had to be squeezed into an `if`?"
+      }
+    }
+  ]
+}

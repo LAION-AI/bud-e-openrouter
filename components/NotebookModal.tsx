@@ -45,6 +45,8 @@ export default function NotebookModal({
   onClose,
   onNotebookOpen,
   revision = 0,
+  openExample,
+  focusCell,
 }: {
   lang?: string;
   onClose: () => void;
@@ -52,6 +54,10 @@ export default function NotebookModal({
   onNotebookOpen?: (notebook: Notebook) => void;
   /** Bumped by the chat after a tool changed something, so we re-read. */
   revision?: number;
+  /** Opened straight away - set when a learning path linked here. */
+  openExample?: string;
+  /** 1-based code cell to scroll to, counted within that example. */
+  focusCell?: number;
 }) {
   const t = (key: string) =>
     (notebookContent[lang]?.[key] ?? notebookContent.en[key] ?? key) as string;
@@ -102,6 +108,13 @@ export default function NotebookModal({
     setNotebooks(listNotebooks());
     onNotebookOpen?.(notebook);
   }, [notebook]);
+
+  // Opened from a learning path: show that example straight away.
+  useEffect(() => {
+    if (!openExample) return;
+    openExampleBook(openExample, focusCell);
+    setSidebarOpen(false); // the reader came for one exercise, not the list
+  }, [openExample, focusCell]);
 
   // A tool call changed something behind our back - read it back in.
   useEffect(() => {
@@ -338,16 +351,45 @@ export default function NotebookModal({
    * the others. So an existing copy is reopened instead, and whatever was
    * typed into it is still there.
    */
-  const openExample = (key: string) => {
+  const openExampleBook = (key: string, cell?: number) => {
     const spec = EXAMPLES.find((e) => e.key === key);
     if (!spec) return;
     const mine = listNotebooks().find((n) => n.fromExample === key);
-    if (mine) {
-      setNotebook(mine);
-      setNotebooks(listNotebooks());
-      counterRef.current = 0;
-      return;
-    }
+    const nb = mine ?? notebookFromExample(spec, lang);
+    if (!mine) saveNotebook(nb);
+    setNotebook(nb);
+    setNotebooks(listNotebooks());
+    counterRef.current = 0;
+    if (cell !== undefined) scrollToCodeCell(nb, cell);
+  };
+
+  /**
+   * Scrolls to the n-th code cell and puts the cursor in it.
+   *
+   * Counted over code cells only, because that is how a learning path talks
+   * about them - the markdown in between is not numbered anywhere.
+   */
+  const scrollToCodeCell = (nb: Notebook, oneBased: number) => {
+    const code = nb.cells.filter((c) => c.type === "code");
+    const target = code[oneBased - 1] ?? code[code.length - 1];
+    if (!target) return;
+    setActiveCell(target.id);
+    // After the render that shows this notebook, not before it.
+    setTimeout(() => {
+      document.getElementById(`cell-${target.id}`)?.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
+    }, 60);
+  };
+
+  /** Throws away a worked-on example and starts it over. */
+  const resetExample = (key: string) => {
+    const mine = listNotebooks().find((n) => n.fromExample === key);
+    if (mine && !confirm(t("confirmResetExample"))) return;
+    if (mine) deleteNotebook(mine.id);
+    const spec = EXAMPLES.find((e) => e.key === key);
+    if (!spec) return;
     const nb = notebookFromExample(spec, lang);
     saveNotebook(nb);
     setNotebook(nb);
@@ -561,7 +603,8 @@ export default function NotebookModal({
               currentId={notebook.id}
               onOpen={openNotebook}
               onCreate={createNotebook}
-              onOpenExample={openExample}
+              onOpenExample={(key) => openExampleBook(key)}
+              onResetExample={resetExample}
               onRemove={removeNotebook}
             />
           )}
@@ -752,6 +795,7 @@ function Sidebar({
   onOpen,
   onCreate,
   onOpenExample,
+  onResetExample,
   onRemove,
 }: {
   t: (k: string) => string;
@@ -761,11 +805,78 @@ function Sidebar({
   onOpen: (nb: Notebook) => void;
   onCreate: () => void;
   onOpenExample: (key: string) => void;
+  onResetExample: (key: string) => void;
   onRemove: (id: string) => void;
 }) {
+  // Copies of examples are listed with their example, not as loose notebooks:
+  // otherwise "1 - Hallo Welt" shows up twice and looks like a stray copy.
+  const byExample = new Map<string, Notebook>();
+  for (const nb of notebooks) {
+    if (nb.fromExample && !byExample.has(nb.fromExample)) {
+      byExample.set(nb.fromExample, nb);
+    }
+  }
+  const mine = notebooks.filter((nb) => !nb.fromExample);
+
   return (
     <aside class="w-64 md:w-72 shrink-0 border-r bg-white overflow-y-auto">
       <div class="p-3 space-y-5">
+        <section>
+          <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-500 mb-1.5">
+            {t("examples")}
+          </h3>
+          <p class="text-xs text-slate-500 mb-2">{t("examplesHint")}</p>
+          <ul class="space-y-1.5">
+            {EXAMPLES.map((spec) => {
+              const copy = byExample.get(spec.key);
+              const open = copy?.id === currentId;
+              const touched = copy?.cells.some((c) =>
+                c.outputs.length > 0 || c.count !== null
+              );
+              return (
+                <li key={spec.key} class="group relative">
+                  <button
+                    onClick={() => onOpenExample(spec.key)}
+                    class={`w-full text-left px-2.5 py-2 border rounded-lg transition-colors ${
+                      open
+                        ? "border-blue-400 bg-blue-50"
+                        : "border-slate-200 hover:border-blue-400 hover:bg-blue-50/60"
+                    }`}
+                  >
+                    <div class="flex items-start gap-1.5">
+                      <span class="text-base leading-tight shrink-0">📗</span>
+                      <div class="min-w-0 flex-1">
+                        <div class="font-medium text-sm text-slate-800">
+                          {spec.name[lang] ?? spec.name.de}
+                        </div>
+                        <div class="text-xs text-slate-500 leading-snug mt-0.5">
+                          {spec.about[lang] ?? spec.about.de}
+                        </div>
+                        {touched && (
+                          <div class="text-xs text-emerald-700 font-medium mt-1">
+                            {t("exampleStarted")}
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  </button>
+                  {copy && (
+                    <button
+                      onClick={() => onResetExample(spec.key)}
+                      title={t("resetExample")}
+                      class="absolute top-1.5 right-1.5 opacity-0 group-hover:opacity-100
+                             px-1.5 py-0.5 text-slate-500 hover:text-slate-800
+                             hover:bg-slate-100 rounded text-xs"
+                    >
+                      ↺
+                    </button>
+                  )}
+                </li>
+              );
+            })}
+          </ul>
+        </section>
+
         <section>
           <div class="flex items-center justify-between mb-1.5">
             <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-500">
@@ -782,15 +893,14 @@ function Sidebar({
           </div>
           <p class="text-xs text-slate-500 mb-2">{t("notebooksHint")}</p>
 
-          {notebooks.length === 0
+          {mine.length === 0
             ? <p class="text-sm text-slate-400">{t("noNotebooks")}</p>
             : (
               <ul class="space-y-0.5">
-                {notebooks.map((nb) => (
+                {mine.map((nb) => (
                   <li key={nb.id} class="group flex items-center gap-1">
                     <button
-                      onClick={() =>
-                        onOpen(nb)}
+                      onClick={() => onOpen(nb)}
                       class={`flex-1 min-w-0 text-left px-2 py-1.5 rounded-md text-sm ${
                         nb.id === currentId
                           ? "bg-blue-50 text-blue-900 font-semibold"
@@ -803,8 +913,7 @@ function Sidebar({
                       </span>
                     </button>
                     <button
-                      onClick={() =>
-                        onRemove(nb.id)}
+                      onClick={() => onRemove(nb.id)}
                       title={t("delete")}
                       class="opacity-0 group-hover:opacity-100 px-1.5 py-1
                              text-red-600 hover:bg-red-50 rounded text-xs shrink-0"
@@ -815,31 +924,6 @@ function Sidebar({
                 ))}
               </ul>
             )}
-        </section>
-
-        <section>
-          <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-500 mb-1.5">
-            {t("examples")}
-          </h3>
-          <p class="text-xs text-slate-500 mb-2">{t("examplesHint")}</p>
-          <ul class="space-y-1.5">
-            {EXAMPLES.map((spec) => (
-              <li key={spec.key}>
-                <button
-                  onClick={() => onOpenExample(spec.key)}
-                  class="w-full text-left px-2.5 py-2 border border-slate-200 rounded-lg
-                         hover:border-blue-400 hover:bg-blue-50/60"
-                >
-                  <div class="font-medium text-sm text-slate-800">
-                    {spec.name[lang] ?? spec.name.de}
-                  </div>
-                  <div class="text-xs text-slate-500 leading-snug mt-0.5">
-                    {spec.about[lang] ?? spec.about.de}
-                  </div>
-                </button>
-              </li>
-            ))}
-          </ul>
         </section>
       </div>
     </aside>
@@ -966,6 +1050,8 @@ function CellView({
 
   return (
     <div
+      // Named so a link from a learning path can scroll straight to it.
+      id={`cell-${cell.id}`}
       class={`rounded-xl border bg-white shadow-sm overflow-hidden transition
               ${
         active

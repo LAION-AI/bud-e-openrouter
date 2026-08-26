@@ -1,9 +1,12 @@
 {
   "key": "m3-textbasierte-programmierung",
-  "title": { "de": "Textbasierte Programmierung", "en": "Text-based programming" },
+  "title": {
+    "de": "Textbasierte Programmierung",
+    "en": "Text-based programming"
+  },
   "description": {
-    "de": "Dieselben Bausteine noch einmal, diesmal getippt - in Python, direkt im Notizbuch nebenan, und angewendet auf Aufgaben, die ohne Programm mühsam wären.",
-    "en": "The same building blocks again, typed this time - in Python, right in the notebook next door, applied to tasks that would be tedious without a program."
+    "de": "Von der ersten Zeile Python bis zum eigenen Programm - Schritt für Schritt, mit dem Notizbuch nebenan, in dem du jedes Beispiel selbst ausprobierst.",
+    "en": "From your first line of Python to a program of your own - step by step, with the notebook next door where you try out every example yourself."
   },
   "icon": "🐍",
   "accent": "indigo",

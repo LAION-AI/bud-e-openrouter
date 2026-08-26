@@ -255,6 +255,11 @@ export default function ChatIsland({ lang }: { lang: string }) {
   );
   const [showMailSync, setShowMailSync] = useState(false);
   const [showNotebook, setShowNotebook] = useState(false);
+  // Set when a learning path sent the reader here, so the notebook can open
+  // at the right example and the path can be picked up again afterwards.
+  const [notebookJump, setNotebookJump] = useState<
+    { example: string; cell?: number } | null
+  >(null);
   const [showLearning, setShowLearning] = useState(false);
 
   // Permissions are read once per render; both default to off.
@@ -4547,18 +4552,35 @@ ${result.snapshot}`
       )}
 
       {showLearning && (
-        <LearningModal lang={lang} onClose={() => setShowLearning(false)} />
+        <LearningModal
+          lang={lang}
+          onClose={() => setShowLearning(false)}
+          onOpenNotebook={(example, cell) => {
+            // Two overlays on top of each other help nobody: step out of the
+            // path, into the notebook, and back again when it closes.
+            setNotebookJump({ example, cell });
+            setShowLearning(false);
+            setShowNotebook(true);
+          }}
+        />
       )}
 
       {showNotebook && (
         <NotebookModal
           lang={lang}
           revision={notebookRevision}
+          openExample={notebookJump?.example}
+          focusCell={notebookJump?.cell}
           onNotebookOpen={(nb) => {
             activeNotebookRef.current = nb;
           }}
           onClose={() => {
             setShowNotebook(false);
+            // Came from a learning path - go back to where the reader was.
+            if (notebookJump) {
+              setNotebookJump(null);
+              setShowLearning(true);
+            }
             // The permission may have been toggled while the window was open.
             setNotebookToolsAllowed(isNotebookAssistantAllowed());
           }}

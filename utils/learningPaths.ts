@@ -60,6 +60,23 @@ export type Block =
   | { kind: "stats"; entries: StatEntry[] }
   | { kind: "quote"; text: Localized; source?: Localized }
   | { kind: "caption"; text: Localized }
+  /**
+   * A link into one of the notebook's example books.
+   *
+   * Reading about a loop and writing one are two different things, and the
+   * gap between them is where most people give up. This block closes it: one
+   * click opens the notebook at the example that belongs to the paragraph
+   * just read, optionally scrolled to a particular cell.
+   */
+  | {
+    kind: "notebook";
+    /** Key of the example, e.g. "hello" - see utils/notebookExamples.ts */
+    example: string;
+    /** 1-based code cell to scroll to. Omitted means the top. */
+    cell?: number;
+    title?: Localized;
+    text: Localized;
+  }
   | { kind: "sources"; items: SourceLink[] };
 
 export interface Screen {

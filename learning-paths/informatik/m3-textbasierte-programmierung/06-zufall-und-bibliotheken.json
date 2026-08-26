@@ -1,0 +1,257 @@
+{
+  "key": "zufall-und-bibliotheken",
+  "title": {
+    "de": "Zufall und fertige Bausteine",
+    "en": "Randomness and ready-made blocks"
+  },
+  "summary": {
+    "de": "Was eine Bibliothek ist, wie man sie holt - und wie daraus ein Spiel wird, das man verlieren kann.",
+    "en": "What a library is, how to fetch one - and how it turns into a game you can lose."
+  },
+  "icon": "🎲",
+  "accent": "indigo",
+  "minutes": 14,
+  "screens": [
+    {
+      "key": "was-ist-eine-bibliothek",
+      "title": {
+        "de": "Was andere schon gebaut haben",
+        "en": "What others have already built"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Bisher hast du alles selbst geschrieben. Das muss nicht sein - und es macht auch niemand so. Zu Python gehören Tausende fertiger Bausteine, geschrieben von Menschen, die du nie treffen wirst, und sie zu benutzen ist der ganz normale Weg.",
+            "en": "So far you have written everything yourself. That is not necessary - and nobody does it that way. Python comes with thousands of ready-made building blocks, written by people you will never meet, and using them is the perfectly normal way."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Eine solche Sammlung nennt man Bibliothek oder Modul. Man holt sie mit `import` dazu, und danach kann man ihre Bausteine benutzen. Vor dem Punkt steht, woher etwas kommt, dahinter, was es tut: `random.randint(1, 6)` heißt „aus der Sammlung random die Funktion randint“. Ein Würfel, in einer Zeile.",
+            "en": "Such a collection is called a library or module. You fetch it with `import`, and then you can use its blocks. Before the dot stands where something comes from, after it what it does: `random.randint(1, 6)` means \"from the collection random, the function randint\". A die, in one line."
+          }
+        },
+        {
+          "kind": "table",
+          "head": [
+            { "de": "Bibliothek", "en": "Library" },
+            { "de": "Wofür", "en": "What for" },
+            { "de": "Ein Beispiel", "en": "One example" }
+          ],
+          "rows": [
+            [
+              { "de": "random", "en": "random" },
+              { "de": "Zufall", "en": "Randomness" },
+              { "de": "random.randint(1, 6)", "en": "random.randint(1, 6)" }
+            ],
+            [
+              { "de": "math", "en": "math" },
+              { "de": "Wurzeln, Kreiszahl, Winkel", "en": "Roots, pi, angles" },
+              { "de": "math.sqrt(2)", "en": "math.sqrt(2)" }
+            ],
+            [
+              { "de": "time", "en": "time" },
+              { "de": "Warten und Zeit messen", "en": "Waiting and timing" },
+              { "de": "time.sleep(1)", "en": "time.sleep(1)" }
+            ],
+            [
+              { "de": "statistics", "en": "statistics" },
+              { "de": "Mittelwert, Median", "en": "Mean, median" },
+              { "de": "statistics.mean(werte)", "en": "statistics.mean(values)" }
+            ]
+          ]
+        },
+        {
+          "kind": "callout",
+          "tone": "note",
+          "icon": "🔧",
+          "title": {
+            "de": "Das ist kein Schummeln",
+            "en": "This is not cheating"
+          },
+          "text": {
+            "de": "Niemand schmiedet seine Schrauben selbst, bevor er ein Regal baut. Genauso schreibt niemand eine Wurzelfunktion neu. Eine Bibliothek zu benutzen heißt nicht, weniger zu können - es heißt, nicht neu zu erfinden, was es schon gibt, und die Zeit für das Eigentliche zu haben.",
+            "en": "Nobody forges their own screws before building a shelf. In the same way nobody rewrites a square root function. Using a library does not mean you can do less - it means not reinventing what already exists, and having the time for what actually matters."
+          }
+        }
+      ]
+    },
+    {
+      "key": "zufall",
+      "title": {
+        "de": "Zufall, den man ausrechnen kann",
+        "en": "Randomness you can calculate"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Zufall ist für einen Rechner eine seltsame Sache: Er tut immer genau, was dasteht. Trotzdem kann er würfeln - mit einem Verfahren, das aus einer Startzahl eine Folge berechnet, die aussieht wie Zufall und sich nicht vorhersagen lässt, wenn man die Startzahl nicht kennt.",
+            "en": "Randomness is a strange thing for a machine: it always does exactly what is written. Even so it can roll dice - with a procedure that computes from a starting number a sequence that looks like randomness and cannot be predicted if you do not know the starting number."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "🎲",
+          "title": {
+            "de": "Tausendmal würfeln, in vier Zeilen",
+            "en": "Roll a thousand times, in four lines"
+          },
+          "text": {
+            "de": "`import random`, eine Schleife über tausend Würfe mit `random.randint(1, 6)`, und mitzählen, wie oft die Sechs kommt. Bei zehn Würfen ist alles möglich; bei tausend landest du sehr nah bei einem Sechstel. Du siehst gerade Wahrscheinlichkeit bei der Arbeit zu - etwas, das man mit einem echten Würfel eine Stunde lang machen müsste.",
+            "en": "`import random`, a loop over a thousand rolls with `random.randint(1, 6)`, and count how often a six comes up. With ten rolls anything can happen; with a thousand you land very close to one sixth. You are watching probability at work - something that would take an hour with a real die."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Damit hast du auch das Werkzeug für Spiele: Eine Zahl, die niemand vorher kennt, ist der Anfang von fast jedem Ratespiel, jedem Kartenspiel und jedem Würfelspiel. Und weil du Eingabe, Bedingungen und Schleifen schon kannst, fehlt dir jetzt nichts mehr.",
+            "en": "That also gives you the tool for games: a number nobody knows in advance is the beginning of almost every guessing game, card game and dice game. And since you already know input, conditions and loops, nothing is missing any more."
+          }
+        },
+        {
+          "kind": "notebook",
+          "example": "guessing",
+          "cell": 2,
+          "title": {
+            "de": "Dein erstes richtiges Spiel",
+            "en": "Your first real game"
+          },
+          "text": {
+            "de": "Das Zahlenraten: Der Rechner denkt sich eine Zahl, du rätst, er sagt zu klein oder zu groß. Alles, was du in diesem Modul gelernt hast, steckt in diesen fünfzehn Zeilen. In der Aufgabe darunter baust du „heiß“ und „kalt“ ein.",
+            "en": "The number guessing game: the machine thinks of a number, you guess, it says too small or too big. Everything you learned in this module sits in these fifteen lines. In the task below you add \"hot\" and \"cold\"."
+          }
+        }
+      ]
+    },
+    {
+      "key": "nachinstallieren",
+      "title": {
+        "de": "Noch mehr holen, aus dem Internet",
+        "en": "Fetching more, from the internet"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "`random` und `math` gehören zu Python dazu. Noch viel mehr liegt im Internet bereit, geschrieben und verschenkt von Menschen auf der ganzen Welt. Zum Holen braucht es einen einzigen Befehl.",
+            "en": "`random` and `math` come with Python. Far more lies ready on the internet, written and given away by people all over the world. Fetching it takes a single command."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "`!pip install cowsay` holt ein Paket und macht es in dieser Sitzung benutzbar - genau wie in professionellen Umgebungen. Der Ausruf davor sagt: Das ist kein Python-Befehl, sondern eine Anweisung an die Umgebung. Danach funktioniert `import cowsay` wie bei jeder eingebauten Bibliothek.",
+            "en": "`!pip install cowsay` fetches a package and makes it usable in this session - exactly as in professional environments. The exclamation mark says: this is not a Python command but an instruction to the environment. Afterwards `import cowsay` works like any built-in library."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "fact",
+          "icon": "🌍",
+          "title": {
+            "de": "Fast alle Software wird so gebaut",
+            "en": "Almost all software is built this way"
+          },
+          "text": {
+            "de": "Ein heutiges Programm besteht zu einem großen Teil aus Bausteinen anderer Leute. Das macht die Arbeit schnell und schafft eine merkwürdige Abhängigkeit: Man verlässt sich auf Code, den man nie gelesen hat, von Menschen, die man nicht kennt. Meistens geht das gut, und wenn nicht, betrifft es viele auf einmal.",
+            "en": "A program today consists largely of other people's building blocks. That makes work fast and creates a curious dependency: you rely on code you have never read, from people you do not know. Usually it goes well, and when it does not, it affects many at once."
+          }
+        },
+        {
+          "kind": "notebook",
+          "example": "packages",
+          "cell": 4,
+          "title": {
+            "de": "Ein Paket holen und benutzen",
+            "en": "Fetch a package and use it"
+          },
+          "text": {
+            "de": "Im Notizbuch „5 - Geheimschrift und Pakete“ installierst du `cowsay` und lässt eine Kuh sprechen. Die Aufgabe danach schickt dich auf pypi.org, wo Hunderttausende solcher Pakete liegen - such dir eins aus, dessen Name dir gefällt, und finde heraus, ob es hier läuft.",
+            "en": "In the notebook \"5 - Secret writing and packages\" you install `cowsay` and make a cow speak. The task afterwards sends you to pypi.org, where hundreds of thousands of such packages live - pick one whose name you like and find out whether it runs here."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "warn",
+          "icon": "🌐",
+          "title": {
+            "de": "Was hier nicht geht",
+            "en": "What does not work here"
+          },
+          "text": {
+            "de": "Python läuft in deinem Browser, nicht auf einem Server. Pakete aus reinem Python funktionieren; große wie `numpy` und `matplotlib` sind schon dabei. Pakete, die auf das Betriebssystem zugreifen - Dateien, Netzwerk, Kamera - gibt es hier nicht. Dafür kann auch nichts kaputtgehen.",
+            "en": "Python runs in your browser, not on a server. Pure Python packages work; large ones like `numpy` and `matplotlib` are already included. Packages that reach into the operating system - files, network, camera - are not available here. In return, nothing can break."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": { "de": "Python-Dokumentation: die mitgelieferten Bibliotheken", "en": "Python documentation: the standard library" },
+              "url": "https://docs.python.org/3/library/"
+            },
+            {
+              "label": { "de": "PyPI - der Index, aus dem pip holt", "en": "PyPI - the index pip fetches from" },
+              "url": "https://pypi.org"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": {
+        "de": "1. Lückentext: holen und benutzen",
+        "en": "1. Fill in the blanks: fetching and using"
+      },
+      "intro": {
+        "de": "Setze die fehlenden Wörter ein.",
+        "en": "Fill in the missing words."
+      },
+      "text": {
+        "de": "Eine Sammlung fertiger Bausteine nennt man ___ oder Modul. Dazugeholt wird sie mit dem Befehl ___. Danach sagt der ___ vor dem Namen, woher eine Funktion stammt. Zufallszahlen liefert die Bibliothek ___, einen Würfel bekommt man mit `random.___(1, 6)`. Wurzeln zieht man mit ___. Solche Sammlungen zu benutzen ist kein ___, sondern der normale Weg. Was nicht zu Python gehört, holt man mit `!pip ___` aus dem Internet. Der Ausruf davor sagt, dass es kein ___-Befehl ist. Nicht alles funktioniert hier, denn Python läuft in deinem ___ und nicht auf einem Server.",
+        "en": "A collection of ready-made blocks is called a ___ or module. It is fetched with the command ___. Afterwards the ___ before the name says where a function comes from. Random numbers come from the library ___; you get a die with `random.___(1, 6)`. Square roots are taken with ___. Using such collections is not ___ but the normal way. What does not come with Python is fetched from the internet with `!pip ___`. The exclamation mark says it is not a ___ command. Not everything works here, because Python runs in your ___ and not on a server."
+      }
+    },
+    {
+      "kind": "compare",
+      "title": {
+        "de": "2. Ausprobieren und vergleichen: zehn Würfe gegen tausend",
+        "en": "2. Try it and compare: ten rolls versus a thousand"
+      },
+      "intro": {
+        "de": "Diese Aufgabe gehört ins Notizbuch „4 - Zahlenraten“.",
+        "en": "This task belongs in the notebook \"4 - Guess the number\"."
+      },
+      "text": {
+        "de": "Schreib ein Programm, das mit `random.randint(1, 6)` würfelt und mitzählt, wie oft die Sechs kommt. Lass es erst zehnmal würfeln, dann hundertmal, dann tausendmal, und notiere jedes Mal den Anteil der Sechsen. Vergleiche die drei Ergebnisse mit dem, was du erwartet hättest, und erkläre, warum die Abweichung bei wenigen Würfen so groß ist und bei vielen so klein. Führ dieselbe Zelle danach ein zweites Mal aus und beschreibe, was sich ändert und was gleich bleibt.",
+        "en": "Write a program that rolls with `random.randint(1, 6)` and counts how often a six comes up. Roll ten times first, then a hundred, then a thousand, noting the share of sixes each time. Compare the three results with what you would have expected, and explain why the deviation is so large with few rolls and so small with many. Then run the same cell a second time and describe what changes and what stays the same."
+      },
+      "hint": {
+        "de": "Ein Sechstel sind rund 16,7 Prozent. Wie weit bist du bei zehn Würfen davon weg, wie weit bei tausend?",
+        "en": "One sixth is about 16.7 per cent. How far off are you with ten rolls, how far with a thousand?"
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": {
+        "de": "3. Zum Nachdenken: benutzen, ohne zu verstehen",
+        "en": "3. Something to think about: using without understanding"
+      },
+      "intro": {
+        "de": "Auf diese Frage gibt es keine richtige Antwort.",
+        "en": "There is no right answer to this one."
+      },
+      "text": {
+        "de": "Du benutzt `print` und `random`, ohne zu wissen, wie sie innen arbeiten - und das ist völlig in Ordnung, sonst käme man nie voran. Genauso benutzt du einen Aufzug, ein Medikament, eine Suchmaschine. Überlege, wo du dieses Vertrauen bewusst gibst und wo es dir unwohl dabei ist. Woran machst du fest, ob etwas vertrauenswürdig ist, das du nicht durchschaust - und ändert sich dein Maßstab, je nachdem wie viel auf dem Spiel steht?",
+        "en": "You use `print` and `random` without knowing how they work inside - and that is entirely fine, otherwise you would never get anywhere. In the same way you use a lift, a medicine, a search engine. Think about where you grant that trust deliberately and where it makes you uneasy. What do you base trustworthiness on for something you cannot see into - and does your standard change with how much is at stake?"
+      }
+    }
+  ]
+}

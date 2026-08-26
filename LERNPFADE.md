@@ -357,6 +357,41 @@ Das ist der häufigste Fehler; die Prüfung sagt dir Zeile und Anzahl.
 { "kind": "caption", "text": { "de": "Vereinfachte Darstellung.", "en": "…" } }
 ```
 
+### `notebook` — Sprung ins Programmier-Notizbuch
+
+Ein Knopf, der das mitgelieferte Notizbuch an genau der Stelle öffnet, um die
+es im Text gerade geht. Lesen und Tippen sind zwei verschiedene Dinge, und
+zwischen beidem geben die meisten Menschen auf — dieser Block schließt die
+Lücke.
+
+```json
+{
+  "kind": "notebook",
+  "example": "hello",
+  "cell": 2,
+  "title": { "de": "Probier den Unterschied selbst", "en": "Try the difference" },
+  "text": {
+    "de": "Beide Zeilen stehen im Notizbuch untereinander - lass sie laufen.",
+    "en": "Both lines sit one below the other in the notebook - run them."
+  }
+}
+```
+
+| Feld | | |
+|---|---|---|
+| `example` | Pflicht | Schlüssel eines Beispiel-Notizbuchs: `hello`, `chat`, `loops`, `guessing`, `packages` |
+| `cell` | optional | Zu welcher **Codezelle** gesprungen wird, ab 1 gezählt. Markdown-Zellen zählen nicht mit. |
+| `title` | optional | Überschrift des Kastens; ohne sie steht dort „Probier es im Notizbuch“. |
+| `text` | Pflicht | Was dort zu tun ist. |
+
+Beim Prüfen wird nachgesehen, ob es das Beispiel gibt — ein Tippfehler im
+Schlüssel ist ein Fehler und keine stumme Schaltfläche ins Leere. Die
+Zellennummern stehen in `utils/notebookExamples.ts`; wer dort Zellen
+einfügt, sollte die Verweise durchsehen.
+
+Auf dem gedruckten Arbeitsblatt wird daraus ein Hinweis in eckigen Klammern,
+denn Papier kann man nicht anklicken.
+
 ### `sources` — Quellenangaben
 
 Gehört ans Ende des letzten Bildschirms. Adressen müssen mit `http://` oder

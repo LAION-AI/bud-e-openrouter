@@ -7,6 +7,8 @@
 export const learningContent: InternalizationContent = {
   en: {
     chooseModuleHint: "Choose a module.",
+    openNotebook: "Try it in the notebook",
+    openNotebookHint: "Opens the notebook",
     backToModules: "Back to the modules",
     tasksTitle: "Check yourself",
     tasksIntro:
@@ -72,6 +74,8 @@ export const learningContent: InternalizationContent = {
   },
   de: {
     chooseModuleHint: "Wähle ein Modul.",
+    openNotebook: "Probier es im Notizbuch",
+    openNotebookHint: "Öffnet das Notizbuch",
     backToModules: "Zurück zu den Modulen",
     tasksTitle: "Überprüfe dich selbst",
     tasksIntro:

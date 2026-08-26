@@ -31,6 +31,16 @@ import type {
   Screen,
   Subject,
 } from "./learningPaths.ts";
+import { EXAMPLES } from "./notebookExamples.ts";
+
+/**
+ * The example notebooks a "notebook" block may point at.
+ *
+ * Taken from the examples themselves rather than written out here, so a
+ * renamed example turns into a clear parse error instead of a button that
+ * opens nothing.
+ */
+const EXAMPLE_KEYS: string[] = EXAMPLES.map((e) => e.key);
 
 /** What came out of one file, plus anything worth telling the author. */
 export interface ParseResult {
@@ -63,6 +73,7 @@ const BLOCK_KINDS = [
   "stats",
   "quote",
   "caption",
+  "notebook",
   "sources",
 ] as const;
 
@@ -291,6 +302,38 @@ function parseBlock(raw: any, where: string, p: Problems): Block | null {
           : null;
       }).filter(Boolean);
       return entries.length ? { kind, entries } as Block : null;
+    }
+
+    case "notebook": {
+      // The example has to exist, otherwise the button opens an empty
+      // notebook and the reader is left wondering what went wrong.
+      const example = str(raw.example);
+      if (!EXAMPLE_KEYS.includes(example)) {
+        p.fail(
+          `${where}.example`,
+          `unknown example "${example}" - available: ${EXAMPLE_KEYS.join(", ")}`,
+        );
+        return null;
+      }
+      const text = localized(raw.text, `${where}.text`, p);
+      const title = localized(raw.title, `${where}.title`, p, false);
+      const cellRaw = raw.cell;
+      let cell: number | undefined;
+      if (cellRaw !== undefined) {
+        if (typeof cellRaw !== "number" || !Number.isInteger(cellRaw) || cellRaw < 1) {
+          p.fail(`${where}.cell`, "must be a whole number, counting code cells from 1");
+          return null;
+        }
+        cell = cellRaw;
+      }
+      if (!text) return null;
+      return {
+        kind,
+        example,
+        ...(cell !== undefined ? { cell } : {}),
+        ...(title ? { title } : {}),
+        text,
+      };
     }
 
     case "sources": {

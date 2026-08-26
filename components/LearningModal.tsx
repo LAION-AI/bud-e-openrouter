@@ -98,9 +98,17 @@ const CALLOUTS = {
 export default function LearningModal({
   lang = "en",
   onClose,
+  onOpenNotebook,
 }: {
   lang?: string;
   onClose: () => void;
+  /**
+   * Opens an example notebook at the given cell.
+   *
+   * Supplied by whoever can host the notebook window. Without it the
+   * notebook blocks still show their text, only without a button.
+   */
+  onOpenNotebook?: (example: string, cell?: number) => void;
 }) {
   const t = (key: string) =>
     (learningContent[lang]?.[key] ?? learningContent.en[key] ?? key) as string;
@@ -387,7 +395,13 @@ export default function LearningModal({
           )}
 
           {path && screen && (
-            <ScreenView key={screen.key} t={t} L={L} screen={screen} />
+            <ScreenView
+              key={screen.key}
+              t={t}
+              L={L}
+              screen={screen}
+              onOpenNotebook={onOpenNotebook}
+            />
           )}
 
           {onExerciseScreen && (
@@ -925,10 +939,12 @@ function ScreenView({
   t,
   L,
   screen,
+  onOpenNotebook,
 }: {
   t: (key: string) => string;
   L: (value: { de: string; en: string }) => string;
   screen: Screen;
+  onOpenNotebook?: (example: string, cell?: number) => void;
 }) {
   return (
     <article class="max-w-3xl mx-auto px-4 py-8">
@@ -937,7 +953,13 @@ function ScreenView({
       </h3>
       <div class="space-y-5">
         {screen.blocks.map((block, i) => (
-          <BlockView key={i} block={block} t={t} L={L} />
+          <BlockView
+            key={i}
+            block={block}
+            t={t}
+            L={L}
+            onOpenNotebook={onOpenNotebook}
+          />
         ))}
       </div>
     </article>
@@ -948,10 +970,13 @@ function BlockView({
   block,
   t,
   L,
+  onOpenNotebook,
 }: {
   block: Block;
   t: (key: string) => string;
   L: (value: { de: string; en: string }) => string;
+  /** Opens an example notebook. Absent when nothing can host one. */
+  onOpenNotebook?: (example: string, cell?: number) => void;
 }) {
   switch (block.kind) {
     case "lead":
@@ -1135,6 +1160,46 @@ function BlockView({
           {L(block.text)}
         </p>
       );
+
+    case "notebook": {
+      // Reading about a loop and writing one are two different things. This
+      // is the bridge: one click and the example is open, at the right cell.
+      const label = block.title ? L(block.title) : t("openNotebook");
+      if (!onOpenNotebook) {
+        // No host for the notebook window - show the text, drop the button,
+        // so a reader is not offered something that cannot happen.
+        return (
+          <aside class="flex gap-3 rounded-xl border-2 px-4 py-3 border-slate-300 bg-slate-50 text-slate-700">
+            <span class="text-2xl leading-none shrink-0">📓</span>
+            <div class="min-w-0">
+              <p class="font-bold text-sm">{label}</p>
+              <p class="leading-relaxed mt-0.5">{L(block.text)}</p>
+            </div>
+          </aside>
+        );
+      }
+      return (
+        <button
+          type="button"
+          onClick={() => onOpenNotebook(block.example, block.cell)}
+          class="group w-full text-left flex gap-3 rounded-xl border-2 px-4 py-3
+                 border-indigo-300 bg-indigo-50 text-indigo-900 transition-all
+                 hover:border-indigo-500 hover:bg-indigo-100 hover:shadow-md"
+        >
+          <span class="text-2xl leading-none shrink-0">📓</span>
+          <div class="min-w-0 flex-1">
+            <p class="font-bold text-sm">{label}</p>
+            <p class="leading-relaxed mt-0.5">{L(block.text)}</p>
+            <p class="text-xs font-semibold mt-2 text-indigo-700">
+              {t("openNotebookHint")}
+              <span class="inline-block ml-1 transition-transform group-hover:translate-x-0.5">
+                →
+              </span>
+            </p>
+          </div>
+        </button>
+      );
+    }
 
     case "sources":
       return (
