@@ -8,7 +8,8 @@
     "build": "deno run -A dev.ts build",
     "preview": "deno run -A main.ts",
     "update": "deno run -A -r https://fresh.deno.dev/update .",
-    "pyodide": "deno run -A scripts/fetch-pyodide.ts"
+    "pyodide": "deno run -A scripts/fetch-pyodide.ts",
+    "check-paths": "deno run -A scripts/check-learning-paths.ts"
   },
   "lint": {
     "rules": {
