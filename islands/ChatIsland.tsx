@@ -30,6 +30,7 @@ import { useEffect, useRef, useState } from "preact/hooks";
 import {
   chatIslandContent,
   mailSyncContent,
+  docsContent,
   notebookContent,
 } from "../internalization/content.ts";
 
@@ -44,11 +45,18 @@ import {
 // Optional sync of the whole local state through an IMAP mailbox the user owns.
 import MailSyncModal from "../components/MailSyncModal.tsx";
 import NotebookModal from "../components/NotebookModal.tsx";
+import DocsModal from "../components/DocsModal.tsx";
 import LearningModal from "../components/LearningModal.tsx";
 import { schedulePythonBoot } from "../utils/pythonKernel.ts";
 import { learningContent } from "../internalization/learning-content.ts";
 
 // Tools the assistant may use once the user grants the matching permission.
+import {
+  applyDocsAction,
+  type DocsAction,
+  isDocsAssistantAllowed,
+} from "../utils/docsTools.ts";
+import { type DocMeta, listDocs } from "../utils/docStore.ts";
 import {
   applyNotebookAction,
   isAssistantAllowed as isNotebookAssistantAllowed,
@@ -264,6 +272,24 @@ export default function ChatIsland({ lang }: { lang: string }) {
 
   // Permissions are read once per render; both default to off.
   const [notebookToolsAllowed, setNotebookToolsAllowed] = useState(false);
+  const [showDocs, setShowDocs] = useState(false);
+  const [docsToolsAllowed, setDocsToolsAllowed] = useState(false);
+  const [docsRevision, setDocsRevision] = useState(0);
+  const [docList, setDocList] = useState<DocMeta[]>([]);
+  const activeDocRef = useRef<DocMeta | null>(null);
+  /** A .docx from the chat, on its way into the editor. */
+  const [incomingDoc, setIncomingDoc] = useState<
+    { name: string; bytes: Uint8Array } | null
+  >(null);
+  const [openDocId, setOpenDocId] = useState<string | undefined>(undefined);
+
+  // The names of the documents travel with every request, so they have to be
+  // known before the first one - and they are re-read whenever the window
+  // closes or a tool call changed something.
+  useEffect(() => {
+    setDocsToolsAllowed(isDocsAssistantAllowed());
+    listDocs().then(setDocList).catch(() => setDocList([]));
+  }, [docsRevision]);
   const [mailToolsAllowed, setMailToolsAllowed] = useState(false);
   /** The notebook the assistant edits: whatever the window last had open. */
   const activeNotebookRef = useRef<Notebook | null>(null);
@@ -1204,7 +1230,8 @@ export default function ChatIsland({ lang }: { lang: string }) {
     | { kind: "grade"; criteria?: string }
     // Both only reachable while the matching permission is switched on.
     | { kind: "notebook"; payload: Record<string, unknown> }
-    | { kind: "mail"; payload: Record<string, unknown> };
+    | { kind: "mail"; payload: Record<string, unknown> }
+    | { kind: "docs"; payload: Record<string, unknown> };
 
   const isImageTrigger = (
     t: AutoTrigger,
@@ -1357,6 +1384,7 @@ export default function ChatIsland({ lang }: { lang: string }) {
       "mail",
       "song",
       "grade",
+      "docs",
     ]);
     const keys = Object.keys(obj);
     if (keys.length !== 1) return false;
@@ -1373,6 +1401,10 @@ export default function ChatIsland({ lang }: { lang: string }) {
     }
     if (key === "mail") {
       return mailToolsAllowed && !!v && typeof v === "object" &&
+        typeof (v as any).action === "string";
+    }
+    if (key === "docs") {
+      return docsToolsAllowed && !!v && typeof v === "object" &&
         typeof (v as any).action === "string";
     }
 
@@ -1513,6 +1545,12 @@ export default function ChatIsland({ lang }: { lang: string }) {
       if (k === "mail" && mailToolsAllowed) {
         if (val && typeof val === "object") {
           triggers.push({ kind: "mail", payload: val });
+        }
+        continue;
+      }
+      if (k === "docs" && docsToolsAllowed) {
+        if (val && typeof val === "object") {
+          triggers.push({ kind: "docs", payload: val });
         }
         continue;
       }
@@ -1695,7 +1733,7 @@ export default function ChatIsland({ lang }: { lang: string }) {
       // summarise afterwards - but it still needs a label here.
       if (t.kind === "song") return `${t.kind}: "${t.prompt}"`;
       if (t.kind === "grade") return "grade";
-      if (t.kind === "notebook" || t.kind === "mail") return t.kind;
+      if (t.kind === "notebook" || t.kind === "mail" || t.kind === "docs") return t.kind;
       return `${t.kind}: "${t.q}"`;
     }).join(", ");
 
@@ -2514,6 +2552,10 @@ export default function ChatIsland({ lang }: { lang: string }) {
       notebookName: notebookToolsAllowed && nb ? nb.name : "",
       notebookCells: notebookToolsAllowed && nb ? nb.cells.length : 0,
       mailFolders: mailOn ? loadMailLimits().folders : [],
+      docs: docsToolsAllowed,
+      // Names only, and only with permission. The server strips them again
+      // before they go anywhere near the system prompt.
+      docNames: docsToolsAllowed ? docList.map((d) => d.name) : [],
     };
   };
 
@@ -2525,7 +2567,7 @@ export default function ChatIsland({ lang }: { lang: string }) {
    * model sees the result of its own action and can react to it.
    */
   const runToolTrigger = async (
-    trig: Extract<AutoTrigger, { kind: "notebook" | "mail" }>,
+    trig: Extract<AutoTrigger, { kind: "notebook" | "mail" | "docs" }>,
     accumulated: Message[],
   ): Promise<{ accumulated: Message[]; success: boolean }> => {
     const say = (text: string, extra?: Record<string, unknown>[]) => {
@@ -2560,6 +2602,34 @@ export default function ChatIsland({ lang }: { lang: string }) {
           ? `${result.message}
 
 ${result.snapshot}`
+          : result.message;
+        return { accumulated: say(text), success: result.ok };
+      }
+
+      // ----- word processor -----
+      if (trig.kind === "docs") {
+        if (!docsToolsAllowed) {
+          return {
+            accumulated: say(chatIslandContent[lang]["toolDocsDenied"]),
+            success: false,
+          };
+        }
+        await serverLog("tool.docs", { action: trig.payload.action });
+
+        // The shape was checked when the trigger was accepted; the module
+        // itself validates the details and refuses what it cannot use.
+        const result = await applyDocsAction(
+          trig.payload as unknown as DocsAction,
+          activeDocRef.current?.id,
+        );
+        if (result.openId) {
+          // Show what was just written, and keep an open window in step.
+          setOpenDocId(result.openId);
+          setDocsRevision((n) => n + 1);
+          setDocList(await listDocs());
+        }
+        const text = result.snapshot
+          ? `${result.message}\n\n${result.snapshot}`
           : result.message;
         return { accumulated: say(text), success: result.ok };
       }
@@ -3301,7 +3371,8 @@ ${result.snapshot}`
         } else if (trig.kind === "song") {
           const out = await runSongTrigger(trig, accumulated);
           accumulated = out.accumulated;
-        } else if (trig.kind === "notebook" || trig.kind === "mail") {
+        } else if (trig.kind === "notebook" || trig.kind === "mail" ||
+          trig.kind === "docs") {
           // The assistant should see what came back, so these do continue the
           // conversation - but through their own follow-up, not the search
           // summary.
@@ -3442,7 +3513,8 @@ ${result.snapshot}`
         } else if (trig.kind === "song") {
           const out = await runSongTrigger(trig, accumulated);
           accumulated = out.accumulated;
-        } else if (trig.kind === "notebook" || trig.kind === "mail") {
+        } else if (trig.kind === "notebook" || trig.kind === "mail" ||
+          trig.kind === "docs") {
           // This path has no follow-up round; the result is shown as it is.
           const out = await runToolTrigger(trig, accumulated);
           accumulated = out.accumulated;
@@ -3506,7 +3578,7 @@ ${result.snapshot}`
     };
 
     const keyOf = (t: AutoTrigger) => {
-      if (t.kind === "notebook" || t.kind === "mail") {
+      if (t.kind === "notebook" || t.kind === "mail" || t.kind === "docs") {
         return `${t.kind}|${JSON.stringify(t.payload)}`;
       }
       if (t.kind === "imagegen") {
@@ -3703,7 +3775,8 @@ ${result.snapshot}`
         } else if (trig.kind === "song") {
           const out = await runSongTrigger(trig, accumulated);
           accumulated = out.accumulated;
-        } else if (trig.kind === "notebook" || trig.kind === "mail") {
+        } else if (trig.kind === "notebook" || trig.kind === "mail" ||
+          trig.kind === "docs") {
           const out = await runToolTrigger(trig, accumulated);
           accumulated = out.accumulated;
           if (out.success) toolFollowUp = true;
@@ -4348,42 +4421,41 @@ ${result.snapshot}`
           </button>
         )}
 
+        {/*
+          Named rather than drawn. A compass and a pair of angle brackets both
+          left people guessing what they would open; the word does not.
+        */}
         <button
-          class="rounded-full bg-slate-200 px-4 py-2 mx-2 mb-2"
+          class="rounded-full bg-indigo-100 text-indigo-900 hover:bg-indigo-200
+                 font-semibold text-sm px-4 py-2 mx-2 mb-2 flex items-center gap-1.5
+                 transition-colors"
           title={learningContent[lang]?.title ?? "Lernpfade"}
           onClick={() => setShowLearning(true)}
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            height="24"
-            viewBox="0 -960 960 960"
-            width="24"
-          >
-            <circle
-              cx="480"
-              cy="-480"
-              r="360"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="80"
-            />
-            <path d="m300-300 280-140 140-280-280 140-140 280Z" />
-          </svg>
+          <span class="text-base leading-none">🧭</span>
+          {learningContent[lang]?.title ?? "Lernpfade"}
         </button>
 
         <button
-          class="rounded-full bg-slate-200 px-4 py-2 mx-2 mb-2"
-          title={notebookContent[lang]?.title ?? "Python notebook"}
+          class="rounded-full bg-amber-100 text-amber-900 hover:bg-amber-200
+                 font-semibold text-sm px-4 py-2 mx-2 mb-2 flex items-center gap-1.5
+                 transition-colors"
+          title={notebookContent[lang]?.title ?? "Python"}
           onClick={() => setShowNotebook(true)}
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            height="24"
-            viewBox="0 -960 960 960"
-            width="24"
-          >
-            <path d="M320-240 80-480l240-240 57 57-184 183 183 183-56 57Zm320 0-57-57 184-183-184-183 57-57 240 240-240 240Z" />
-          </svg>
+          <span class="text-base leading-none">🐍</span>
+          Python
+        </button>
+
+        <button
+          class="rounded-full bg-sky-100 text-sky-900 hover:bg-sky-200
+                 font-semibold text-sm px-4 py-2 mx-2 mb-2 flex items-center gap-1.5
+                 transition-colors"
+          title={docsContent[lang]?.subtitle ?? "Docs"}
+          onClick={() => setShowDocs(true)}
+        >
+          <span class="text-base leading-none">📄</span>
+          Docs
         </button>
 
         {[...localStorageKeys]
@@ -4500,6 +4572,20 @@ ${result.snapshot}`
       <ChatTemplate
         lang={lang}
         songAutoplay={songAutoplay}
+        onOpenInEditor={(name, base64) => {
+          // Straight from a message into the word processor: the file is
+          // decoded here, so the editor only ever sees bytes.
+          try {
+            const bin = atob(base64);
+            const bytes = new Uint8Array(bin.length);
+            for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+            setIncomingDoc({ name, bytes });
+            setOpenDocId(undefined);
+            setShowDocs(true);
+          } catch (err) {
+            console.warn("[docs] could not decode the attachment:", err);
+          }
+        }}
         parentImages={images}
         parentPdfs={pdfs}
         messages={messages}
@@ -4583,6 +4669,26 @@ ${result.snapshot}`
             }
             // The permission may have been toggled while the window was open.
             setNotebookToolsAllowed(isNotebookAssistantAllowed());
+          }}
+        />
+      )}
+
+      {showDocs && (
+        <DocsModal
+          lang={lang}
+          revision={docsRevision}
+          incoming={incomingDoc}
+          openId={openDocId}
+          onDocOpen={(meta) => {
+            activeDocRef.current = meta;
+          }}
+          onClose={() => {
+            setShowDocs(false);
+            setIncomingDoc(null);
+            setOpenDocId(undefined);
+            // The permission may have been toggled while the window was open.
+            setDocsToolsAllowed(isDocsAssistantAllowed());
+            listDocs().then(setDocList);
           }}
         />
       )}
