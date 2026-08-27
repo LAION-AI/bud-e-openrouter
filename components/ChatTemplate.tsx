@@ -275,11 +275,13 @@ function AgentSteps(
 
 /** A file the assistant produced, offered for download. */
 function FileDownload(
-  { name, mime, data, lang }: {
+  { name, mime, data, lang, onOpenInEditor }: {
     name: string;
     mime: string;
     data: string;
     lang: string;
+    /** Opens a .docx in the word processor instead of downloading it. */
+    onOpenInEditor?: (name: string, base64: string) => void;
   },
 ) {
   const t = (k: string) =>
@@ -300,16 +302,31 @@ function FileDownload(
   };
 
   const kb = Math.max(1, Math.round((data.length * 3 / 4) / 1024));
+  // A .docx can be opened in the editor; anything else can only be saved.
+  const editable = /wordprocessingml/.test(mime) || /\.docx?$/i.test(name);
   return (
-    <button
-      type="button"
-      onClick={save}
-      class="my-2 flex items-center gap-2 px-3 py-2 rounded-lg border border-blue-200 bg-blue-50 hover:bg-blue-100 text-sm text-blue-900"
-    >
-      <span class="text-lg leading-none">📄</span>
-      <span class="font-medium">{name}</span>
-      <span class="text-blue-700/70 text-xs">{kb} KB · {t("download")}</span>
-    </button>
+    <span class="my-2 inline-flex flex-wrap items-stretch gap-1.5">
+      <button
+        type="button"
+        onClick={save}
+        class="flex items-center gap-2 px-3 py-2 rounded-lg border border-blue-200 bg-blue-50 hover:bg-blue-100 text-sm text-blue-900"
+      >
+        <span class="text-lg leading-none">📄</span>
+        <span class="font-medium">{name}</span>
+        <span class="text-blue-700/70 text-xs">{kb} KB · {t("download")}</span>
+      </button>
+      {editable && onOpenInEditor && (
+        <button
+          type="button"
+          onClick={() => onOpenInEditor(name, data)}
+          title={t("openInEditorHint")}
+          class="flex items-center gap-1.5 px-3 py-2 rounded-lg border border-emerald-200 bg-emerald-50 hover:bg-emerald-100 text-sm text-emerald-900"
+        >
+          <span class="text-lg leading-none">✏️</span>
+          <span class="font-medium">{t("openInEditor")}</span>
+        </button>
+      )}
+    </span>
   );
 }
 
@@ -470,10 +487,13 @@ export default function ChatTemplate(props: {
   onTrashAction: () => void;
   /** Whether a finished song starts by itself. Off means the user presses play. */
   songAutoplay?: boolean;
+  /** Opens a .docx from the chat in the word processor. */
+  onOpenInEditor?: (name: string, base64: string) => void;
 }) {
   const {
     lang,
     songAutoplay = false,
+    onOpenInEditor,
     parentImages,
     parentPdfs,
     messages,
@@ -528,6 +548,7 @@ export default function ChatTemplate(props: {
           name={content.name ?? "datei"}
           mime={content.mime ?? "application/octet-stream"}
           data={content.data ?? ""}
+          onOpenInEditor={onOpenInEditor}
         />
       );
     }

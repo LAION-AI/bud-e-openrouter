@@ -16,7 +16,7 @@
 
 /* ============================== ZIP reading ============================== */
 
-interface ZipEntry {
+export interface ZipEntry {
   name: string;
   data: Uint8Array;
 }
