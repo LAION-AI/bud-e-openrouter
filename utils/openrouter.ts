@@ -387,6 +387,22 @@ export interface Resolved {
   origin: "override" | "default" | "alternative" | "substitute";
 }
 
+/**
+ * Models to lift to the front of their group in the dropdown.
+ *
+ * Not defaults - the defaults are pinned above everything and are what the
+ * app actually uses. These are ones worth finding: a list of four hundred
+ * entries sorted by price buries an interesting model in the middle, and the
+ * GLM pair sat at positions 90 and 222.
+ *
+ * They keep their group, so nothing about the privacy ordering changes: both
+ * are ZDR without EU hosting and therefore sit in the ZDR group, which is the
+ * first of the non-EU ones.
+ */
+export const OR_FEATURED: Partial<Record<Role, string[]>> = {
+  llm: ["z-ai/glm-5.3-flash", "z-ai/glm-5.3"],
+};
+
 /** Privacy rank: EU+ZDR highest, then EU, then ZDR, then neither. */
 export function rank(m: CatalogModel): number {
   return (m.eu ? 2 : 0) + (m.zdr ? 1 : 0);
@@ -399,7 +415,8 @@ export function rank(m: CatalogModel): number {
  * override it or the list becomes useless:
  *   - the two configured models go first, since they are what we recommend;
  *   - ":batch" variants sink, because they are not for interactive use;
- *   - in the TTS list, models that actually speak beat music generators.
+ *   - in the TTS list, models that actually speak beat music generators;
+ *   - featured models lead their own group, without leaving it.
  */
 export function sortForRole(
   models: CatalogModel[],
@@ -411,6 +428,11 @@ export function sortForRole(
     return i === -1 ? preferred.length : i;
   };
   const batch = (m: CatalogModel) => m.id.includes(":batch") ? 1 : 0;
+  const featured = role ? (OR_FEATURED[role] ?? []) : [];
+  const lifted = (m: CatalogModel) => {
+    const i = featured.indexOf(m.id);
+    return i === -1 ? featured.length : i;
+  };
 
   return [...models].sort((a, b) => {
     const p = pinned(a) - pinned(b);
@@ -423,6 +445,10 @@ export function sortForRole(
     if (t !== 0) return t;
     const r = rank(b) - rank(a);
     if (r !== 0) return r;
+    // Inside a group the featured ones come first - after the privacy sort,
+    // so highlighting a model can never push it past a more private one.
+    const f = lifted(a) - lifted(b);
+    if (f !== 0) return f;
     const price = a.promptPrice - b.promptPrice;
     if (price !== 0) return price;
     return a.id.localeCompare(b.id);
