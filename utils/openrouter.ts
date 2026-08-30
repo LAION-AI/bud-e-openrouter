@@ -526,11 +526,17 @@ export function attemptsFor(
   const first = resolveModel(cat, role, override);
   if (!first) return out;
 
+  // Someone who picked a model in the settings gets that model. Swapping it
+  // out at the first hiccup would answer a question they did not ask - so the
+  // chosen one is tried on every strictness level before anything else, and
+  // the defaults only serve as a last resort.
+  const chosen = first.origin === "override";
+
   push(first.model, "strict");
-  if (role !== "music") others();
+  if (!chosen && role !== "music") others();
   push(first.model, "zdr");
   push(first.model, "plain");
-  if (role === "music") others();
+  if (chosen || role === "music") others();
   return out;
 }
 

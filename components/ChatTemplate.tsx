@@ -489,11 +489,14 @@ export default function ChatTemplate(props: {
   songAutoplay?: boolean;
   /** Opens a .docx from the chat in the word processor. */
   onOpenInEditor?: (name: string, base64: string) => void;
+  /** When a reasoning model started thinking, in ms since the epoch. */
+  thinkingSince?: number | null;
 }) {
   const {
     lang,
     songAutoplay = false,
     onOpenInEditor,
+    thinkingSince = null,
     parentImages,
     parentPdfs,
     messages,
@@ -697,6 +700,15 @@ export default function ChatTemplate(props: {
           >
             Cancel
           </button>
+        )}
+
+        {/*
+          Some models think for a long time before writing anything - a minute
+          is normal on a long prompt. Without this the screen looked frozen,
+          which is what it was mistaken for.
+        */}
+        {!isComplete && thinkingSince !== null && (
+          <ThinkingBadge since={thinkingSince} lang={lang} />
         )}
 
         <button
@@ -912,5 +924,33 @@ export default function ChatTemplate(props: {
         )}
       </div>
     </div>
+  );
+}
+
+/**
+ * "Thinking, 12 s" while a reasoning model works.
+ *
+ * The seconds matter: a spinner says "wait", a counter says "this is normal
+ * and it is getting on with it", and it is the difference between waiting and
+ * reloading the page.
+ */
+function ThinkingBadge({ since, lang }: { since: number; lang: string }) {
+  const [now, setNow] = useState(Date.now());
+  useEffect(() => {
+    const t = setInterval(() => setNow(Date.now()), 1000);
+    return () => clearInterval(t);
+  }, []);
+  const seconds = Math.max(0, Math.round((now - since) / 1000));
+  const t = (k: string) =>
+    (chatTemplateContent[lang]?.[k] ?? chatTemplateContent.en[k]) as string;
+  return (
+    <span
+      class="px-3 py-1 rounded text-sm border bg-amber-50 border-amber-300
+             text-amber-900 flex items-center gap-1.5"
+      title={t("thinkingHint")}
+    >
+      <span class="inline-block w-2 h-2 rounded-full bg-amber-500 animate-pulse" />
+      {t("thinking")} · {seconds}s
+    </span>
   );
 }

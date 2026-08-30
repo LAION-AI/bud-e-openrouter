@@ -459,11 +459,24 @@ function sseError(
  * dropped. Split out of the middleware path so OpenRouter, which speaks the
  * same dialect, reuses it instead of carrying a second copy of this loop.
  */
+/**
+ * Forwards an upstream SSE stream to the browser.
+ *
+ * `openNext` supplies the next attempt in the model/strictness chain, and is
+ * used when a stream ends without having delivered a single character.
+ *
+ * That case is not hypothetical: with `allow_fallbacks: false` OpenRouter
+ * stays with the one provider it picked, and if that provider goes quiet -
+ * measured with GLM 5.3 on a long prompt, HTTP 200, thirty keep-alives, then
+ * the end - nothing arrives and there is no error to react to. Retrying is
+ * safe here because not one byte has reached the browser yet.
+ */
 function streamUpstream(
   upstream: Response,
   model: string,
   provider: string,
   route?: string,
+  openNext?: () => Promise<{ resp: Response; route: string; model: string } | null>,
 ): Response {
   const headers: Record<string, string> = { "Content-Type": "text/event-stream" };
   if (route) headers["X-OpenRouter-Route"] = route;
@@ -473,11 +486,121 @@ function streamUpstream(
       async start(controller) {
         let closed = false;
         let sentAny = false;
+        /**
+         * The last error an attempt reported, held back rather than sent.
+         *
+         * A failing attempt that is followed by a working one must not leave
+         * "BACKEND ERROR" standing in the conversation above the answer - so
+         * the error only goes out if nothing else arrives.
+         */
+        let heldError: string | null = null;
         const finish = () => {
           if (closed) return;
-          if (!sentAny) controller.enqueue({ event: "no_content", data: "{}", id: Date.now() });
+          if (!sentAny) {
+            if (heldError) {
+              controller.enqueue({ event: "error", data: heldError, id: Date.now() });
+            } else {
+              controller.enqueue({ event: "no_content", data: "{}", id: Date.now() });
+            }
+          }
           closed = true;
           controller.close();
+        };
+
+        /**
+         * Reads one upstream stream to its end.
+         *
+         * Returns whether any visible text came out of it - the caller uses
+         * that to decide whether the next attempt is worth making.
+         */
+        const pump = async (source: Response): Promise<boolean> => {
+          let gotText = false;
+          const decoder = new TextDecoder();
+          const reader = source.body!.getReader();
+          let buffer = "";
+          let currentEvent = "message";
+          let done_ = false;
+
+          while (!done_) {
+            const { done, value } = await reader.read();
+            if (done) break;
+            buffer += decoder.decode(value, { stream: true });
+            const lines = buffer.split("\n");
+            buffer = lines.pop() || "";
+
+            for (const raw of lines) {
+              const line = raw.trimEnd();
+
+              // OpenRouter sends ": OPENROUTER PROCESSING" as a keep-alive
+              // while a model thinks. Passed on as a heartbeat so the browser
+              // can show that something is happening, and so anything between
+              // us and it does not take a silent minute for a dead connection.
+              if (line.startsWith(":")) {
+                controller.enqueue({ event: "thinking", data: '""', id: Date.now() });
+                continue;
+              }
+              if (line === "data: [DONE]") {
+                done_ = true;
+                continue;
+              }
+              if (line.startsWith("event: ")) {
+                currentEvent = line.slice(7).trim() || "message";
+                continue;
+              }
+              if (!line.startsWith("data: ")) continue;
+
+              const jsonStr = line.substring(6);
+              if (currentEvent === "error") {
+                heldError = jsonStr;
+                currentEvent = "message";
+                continue;
+              }
+
+              try {
+                const data = JSON.parse(jsonStr);
+                const delta = data?.choices?.[0]?.delta;
+
+                // Reasoning models send their thinking here, with content an
+                // empty string alongside it. Forwarded as its own event: the
+                // reader sees that work is happening instead of a minute of
+                // nothing, and it never lands in the answer itself.
+                if (typeof delta?.reasoning === "string" && delta.reasoning) {
+                  // The payload is an empty JSON string, not an object. A
+                  // browser tab still running the previous build does not know
+                  // this event, falls through to its "append the text" path,
+                  // and an object there becomes "[object Object]" in the
+                  // answer. An empty string is dropped by that same path.
+                  controller.enqueue({
+                    event: "thinking",
+                    data: '""',
+                    id: Date.now(),
+                  });
+                }
+
+                if (typeof delta?.content === "string" && delta.content.length > 0) {
+                  if (delta.content === "<|im_end|>") {
+                    done_ = true;
+                  } else {
+                    sentAny = true;
+                    gotText = true;
+                    controller.enqueue({
+                      data: JSON.stringify(delta.content),
+                      id: Date.now(),
+                      event: "message",
+                    });
+                  }
+                }
+                if (data?.error) heldError = JSON.stringify(data.error);
+              } catch {
+                if (jsonStr && jsonStr !== "[DONE]") {
+                  sentAny = true;
+                  gotText = true;
+                  controller.enqueue({ data: JSON.stringify(jsonStr), id: Date.now(), event: "message" });
+                }
+              }
+            }
+          }
+          return gotText;
         };
 
         try {
@@ -485,62 +608,34 @@ function streamUpstream(
           const decoder = new TextDecoder();
 
           if (ctype.includes("text/event-stream")) {
-            const reader = upstream.body!.getReader();
-            let buffer = "";
-            let currentEvent = "message";
+            let gotText = await pump(upstream);
 
-            while (true) {
-              const { done, value } = await reader.read();
-              if (done) break;
-              buffer += decoder.decode(value, { stream: true });
-              const lines = buffer.split("\n");
-              buffer = lines.pop() || "";
-
-              for (const raw of lines) {
-                const line = raw.trimEnd();
-
-                if (line === "data: [DONE]") {
-                  finish();
-                  continue;
-                }
-                if (line.startsWith("event: ")) {
-                  currentEvent = line.slice(7).trim() || "message";
-                  continue;
-                }
-                if (!line.startsWith("data: ")) continue;
-
-                const jsonStr = line.substring(6);
-                if (currentEvent === "error") {
-                  controller.enqueue({ event: "error", data: jsonStr, id: Date.now() });
-                  currentEvent = "message";
-                  continue;
-                }
-
+            // Nothing at all came through. Try the next model or the next
+            // strictness level rather than handing the reader an empty answer.
+            while (!gotText && openNext) {
+              const next = await openNext();
+              if (!next) break;
+              console.warn(
+                `[OR] empty stream from ${route ?? model}, retrying with ${next.route}`,
+              );
+              if (!next.resp.body) break;
+              const nextType = (next.resp.headers.get("content-type") || "").toLowerCase();
+              if (!nextType.includes("text/event-stream")) {
+                const raw = await next.resp.text();
+                let text = "";
                 try {
-                  const data = JSON.parse(jsonStr);
-                  const delta = data?.choices?.[0]?.delta;
-                  if (typeof delta?.content === "string" && delta.content.length > 0) {
-                    if (delta.content === "<|im_end|>") {
-                      finish();
-                    } else {
-                      sentAny = true;
-                      controller.enqueue({
-                        data: JSON.stringify(delta.content),
-                        id: Date.now(),
-                        event: "message",
-                      });
-                    }
-                  }
-                  if (data?.error) {
-                    controller.enqueue({ event: "error", data: JSON.stringify(data.error), id: Date.now() });
-                  }
+                  text = extractAssistantText(JSON.parse(raw));
                 } catch {
-                  if (jsonStr && jsonStr !== "[DONE]") {
-                    sentAny = true;
-                    controller.enqueue({ data: JSON.stringify(jsonStr), id: Date.now(), event: "message" });
-                  }
+                  text = raw;
                 }
+                if (text) {
+                  sentAny = true;
+                  gotText = true;
+                  controller.enqueue({ data: JSON.stringify(text), id: Date.now(), event: "message" });
+                }
+                break;
               }
+              gotText = await pump(next.resp);
             }
             finish();
           } else {
@@ -958,11 +1053,17 @@ async function getModelResponseStream(
     // Walks the same model/strictness chain the other routes use. The upstream
     // is only handed on once it answered ok, so a rejected attempt costs a
     // retry instead of a broken stream.
+    // A cursor rather than a loop that starts over: an attempt that answered
+    // ok but then delivered nothing has to be able to hand the baton on, and
+    // starting from the top would call the same broken provider again.
+    let cursor = 0;
+    const tried: string[] = [];
+    let lastStatus = 502;
+    let lastText = "";
+
     const openUpstream = async (stream: boolean) => {
-      const tried: string[] = [];
-      let lastStatus = 502;
-      let lastText = "";
-      for (const { model, level } of attempts) {
+      while (cursor < attempts.length) {
+        const { model, level } = attempts[cursor++];
         const policy = await policyFor(model, level);
         const { resp } = await orFetch(universalApiKey, "/chat/completions", {
           model: model.id,
@@ -982,15 +1083,15 @@ async function getModelResponseStream(
         tried.push(`${model.id}:${level}`);
         console.error(`[OR] ${role} ${model.id}:${level} -> ${resp.status} ${lastText.slice(0, 200)}`);
       }
-      return { resp: null, status: lastStatus, text: lastText, tried };
+      return null;
     };
 
     if (wantsStream === false) {
       const r = await openUpstream(false);
-      if (!r.resp) {
+      if (!r) {
         return new Response(
-          r.text || "OpenRouter request failed",
-          { status: r.status ?? 502, headers: { "Content-Type": "application/json" } },
+          lastText || "OpenRouter request failed",
+          { status: lastStatus, headers: { "Content-Type": "application/json" } },
         );
       }
       const txt = await r.resp.text();
@@ -1007,20 +1108,28 @@ async function getModelResponseStream(
     // the existing forwarding loop below handles it unchanged. Point the shared
     // variables at OpenRouter and let it run.
     const r = await openUpstream(true);
-    if (!r.resp || !r.resp.body) {
+    if (!r || !r.resp.body) {
       return new Response(
         JSON.stringify({
           error: {
             provider: "openrouter",
-            status: r.status ?? 502,
-            message: r.text || "All OpenRouter attempts failed",
-            tried: r.tried,
+            status: lastStatus,
+            message: lastText || "All OpenRouter attempts failed",
+            tried,
           },
         }),
         { status: 502, headers: { "Content-Type": "application/json" } },
       );
     }
-    return streamUpstream(r.resp, r.model!, "openrouter", r.route!);
+    // The last argument lets the forwarder move on when a stream that opened
+    // fine turns out to carry nothing.
+    return streamUpstream(
+      r.resp,
+      r.model,
+      "openrouter",
+      r.route,
+      () => openUpstream(true),
+    );
   }
 
   // Non-stream: pass JSON straight through

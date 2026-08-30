@@ -210,6 +210,14 @@ export default function ChatIsland({ lang }: { lang: string }) {
   const [pdfs, setPdfs] = useState([] as PdfFile[]);
 
   const [isStreamComplete, setIsStreamComplete] = useState(true);
+  /**
+   * Seconds a reasoning model has been thinking without producing text yet.
+   *
+   * Null while nothing is pending. Reasoning models can take a minute on a
+   * long prompt before the first character appears, and without this the
+   * screen simply sat there and looked broken.
+   */
+  const [thinkingSince, setThinkingSince] = useState<number | null>(null);
   const [stopList, setStopList] = useState([] as number[]);
   const [currentEditIndex, setCurrentEditIndex] = useState(
     -1 as number | undefined,
@@ -1798,6 +1806,7 @@ export default function ChatIsland({ lang }: { lang: string }) {
     abortRef.current?.abort();
     abortRef.current = null;
     setIsStreamComplete(true);
+    setThinkingSince(null);
 
     playSessionRef.current += 1;
     stopAndResetAudio();
@@ -3174,6 +3183,10 @@ ${result.snapshot}`
     abortRef.current = new AbortController();
 
     setIsStreamComplete(false);
+    // From the moment the question goes out, not from the first sign of life
+    // upstream - a model that thinks for ten seconds before saying anything
+    // would otherwise leave the screen looking dead for those ten seconds.
+    setThinkingSince(Date.now());
     setResetTranscript((n) => n + 1);
 
     // Build outbound user content
@@ -3382,6 +3395,7 @@ ${result.snapshot}`
         }
       }
       setIsStreamComplete(true);
+    setThinkingSince(null);
       serverLog("triggers.summary.maybe", {
         anyResults,
         successCount: successTrigs.length,
@@ -3523,6 +3537,7 @@ ${result.snapshot}`
       setMessages(accumulated);
       safePersist(accumulated, currentChatSuffix);
       setIsStreamComplete(true);
+    setThinkingSince(null);
       return;
     }
 
@@ -3793,6 +3808,7 @@ ${result.snapshot}`
         trigs,
       );
       setIsStreamComplete(true);
+    setThinkingSince(null);
       await serverLog("triggers.summary.result", {
         anyResults,
         successCount: successTrigs.length,
@@ -3808,6 +3824,7 @@ ${result.snapshot}`
       endFinalized = true;
 
       setIsStreamComplete(true);
+    setThinkingSince(null);
       setQuery("");
 
       const flushed = filterThink.flush();
@@ -3942,6 +3959,12 @@ ${result.snapshot}`
           );
           return;
         }
+        if (ev.event === "thinking") {
+          // Either a keep-alive or a piece of the model's reasoning. Both mean
+          // the same thing here: it is working, it just has nothing to show.
+          setThinkingSince((t) => t ?? Date.now());
+          return;
+        }
         if (ev.event === "no_content") {
           return;
         }
@@ -3969,6 +3992,7 @@ ${result.snapshot}`
         if (!chunk) return;
 
         gotAnyText = true;
+        setThinkingSince(null);
         ensureDraft();
 
         // full text (inkl. JSON) für Trigger-Erkennung
@@ -4034,6 +4058,7 @@ ${result.snapshot}`
       async onerror(err: FatalError) {
         await serverLog("sse.error", { message: String(err?.message || err) });
         setIsStreamComplete(true);
+    setThinkingSince(null);
         ensureDraft();
         appendToAssistant(`\n\n${String(err?.message || err)}`);
         throw err;
@@ -4572,6 +4597,7 @@ ${result.snapshot}`
       <ChatTemplate
         lang={lang}
         songAutoplay={songAutoplay}
+        thinkingSince={thinkingSince}
         onOpenInEditor={(name, base64) => {
           // Straight from a message into the word processor: the file is
           // decoded here, so the editor only ever sees bytes.
@@ -4594,6 +4620,7 @@ ${result.snapshot}`
           abortRef.current?.abort();
           abortRef.current = null;
           setIsStreamComplete(true);
+    setThinkingSince(null);
         }}
         readAlways={readAlways}
         autoScroll={autoScroll}
