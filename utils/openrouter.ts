@@ -400,7 +400,16 @@ export interface Resolved {
  * first of the non-EU ones.
  */
 export const OR_FEATURED: Partial<Record<Role, string[]>> = {
-  llm: ["z-ai/glm-5.3-flash", "z-ai/glm-5.3"],
+  llm: [
+    "z-ai/glm-5.3-flash",
+    "z-ai/glm-5.3",
+    "meta/muse-spark-1.3",
+    "meta/muse-spark-1.3-contributor",
+  ],
+  // The Muse Spark pair reads pictures as well, so they are worth finding in
+  // the vision list too. The GLM pair is not repeated here: only the flash
+  // one sees images at all, and it was asked for as a language model.
+  vlm: ["meta/muse-spark-1.3", "meta/muse-spark-1.3-contributor"],
 };
 
 /** Privacy rank: EU+ZDR highest, then EU, then ZDR, then neither. */
