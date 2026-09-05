@@ -801,11 +801,29 @@ async function getModelResponseStream(
 
     return {
       ...m,
-      content: m.content.map((c: any) =>
-        c?.type === "image_url"
-          ? { type: "image_url", image_url: c.image_url }
-          : c
-      ),
+      content: m.content.map((c: any) => {
+        if (c?.type === "image_url") {
+          return { type: "image_url", image_url: c.image_url };
+        }
+        // A PDF goes upstream as OpenRouter's "file" part. Ours said
+        // `type: "pdf"`, which no chat API knows - it was dropped without a
+        // word, and the assistant then asked for the document that was
+        // already attached. Measured against the live API: the same file as
+        // a "file" part comes back with the right title.
+        // Only on the OpenRouter path. The Gemini branch further down and the
+        // middleware both read `type: "pdf"` themselves; converting it here
+        // would take their documents away from them.
+        if (useOpenRouter && c?.type === "pdf" && c.data) {
+          return {
+            type: "file",
+            file: {
+              filename: c.name || c.filename || "dokument.pdf",
+              file_data: `data:${c.mime_type || "application/pdf"};base64,${c.data}`,
+            },
+          };
+        }
+        return c;
+      }),
     };
   });
 

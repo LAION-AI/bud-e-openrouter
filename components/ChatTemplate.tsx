@@ -491,12 +491,22 @@ export default function ChatTemplate(props: {
   onOpenInEditor?: (name: string, base64: string) => void;
   /** When a reasoning model started thinking, in ms since the epoch. */
   thinkingSince?: number | null;
+  /** Documents read into text in the browser, waiting to be sent. */
+  parentDocTexts?: { name: string; kind: string; chars: number }[];
+  onDocTextsChange?: (docs: { name: string; kind: string; chars: number }[]) => void;
+  /** Files that could not be read, one sentence each. */
+  uploadProblems?: string[];
+  onDismissProblems?: () => void;
 }) {
   const {
     lang,
     songAutoplay = false,
     onOpenInEditor,
     thinkingSince = null,
+    parentDocTexts = [],
+    onDocTextsChange,
+    uploadProblems = [],
+    onDismissProblems,
     parentImages,
     parentPdfs,
     messages,
@@ -845,7 +855,29 @@ export default function ChatTemplate(props: {
           );
         })}
 
-        {(parentImages?.length > 0 || parentPdfs?.length > 0) && (
+        {uploadProblems.length > 0 && (
+          <div class="w-full flex justify-center">
+            <div class="max-w-xl w-full m-2 px-3 py-2 rounded-lg border border-amber-300
+                        bg-amber-50 text-amber-900 text-sm flex items-start gap-2">
+              <span class="text-lg leading-none shrink-0">📎</span>
+              <div class="min-w-0 flex-1">
+                {uploadProblems.map((p, i) => <p key={i} class="leading-snug">{p}</p>)}
+              </div>
+              {onDismissProblems && (
+                <button
+                  onClick={onDismissProblems}
+                  class="shrink-0 px-1.5 text-amber-700 hover:text-amber-900"
+                  title="Ausblenden"
+                >
+                  ✕
+                </button>
+              )}
+            </div>
+          </div>
+        )}
+
+        {(parentImages?.length > 0 || parentPdfs?.length > 0 ||
+          parentDocTexts.length > 0) && (
           <div class="w-full flex justify-center">
             <div class="p-2 flex flex-wrap max-w-xs gap-4">
               {parentImages.map((image: AnyImg, index: number) => (
@@ -917,6 +949,45 @@ export default function ChatTemplate(props: {
                       <path d="M6 6l12 12" />
                     </svg>
                   </button>
+                </div>
+              ))}
+
+              {/* Documents that were read here: the character count says the
+                  text actually arrived, which a file name alone does not. */}
+              {parentDocTexts.map((doc, index: number) => (
+                <div
+                  key={`doc-${index}`}
+                  class="relative group w-32 h-32 flex flex-col items-center justify-center
+                         bg-sky-100 rounded-lg shadow-xl p-2 text-center"
+                >
+                  <span class="text-3xl leading-none mb-1">📄</span>
+                  <span class="text-xs font-mono break-all overflow-hidden leading-tight">
+                    {doc.name}
+                  </span>
+                  <span class="text-[10px] text-sky-800 mt-1">
+                    {doc.chars.toLocaleString("de-DE")} Zeichen
+                  </span>
+                  {onDocTextsChange && (
+                    <button
+                      onClick={() =>
+                        onDocTextsChange(parentDocTexts.filter((_, i) => i !== index))}
+                      class="absolute top-1 right-1 bg-red-500 text-white rounded-full p-1
+                             opacity-0 group-hover:opacity-100 transition-opacity"
+                      title="Entfernen"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                      >
+                        <path d="M18 6l-12 12" />
+                        <path d="M6 6l12 12" />
+                      </svg>
+                    </button>
+                  )}
                 </div>
               ))}
             </div>

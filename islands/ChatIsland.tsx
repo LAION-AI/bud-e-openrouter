@@ -17,7 +17,11 @@ import {
   takeSpeechChunk,
 } from "../utils/ttsChunks.ts";
 import { DEFAULT_TTS_PROMPT } from "../utils/openrouter.ts";
-import { PdfUploadButton, PdfFile } from "../components/PdfUploadButton.tsx";
+import {
+  PdfFile,
+  PdfUploadButton,
+  TextFile,
+} from "../components/PdfUploadButton.tsx";
 
 // Necessary for streaming service
 import {
@@ -208,6 +212,10 @@ export default function ChatIsland({ lang }: { lang: string }) {
   // The concrete “Image” type depends on your uploader; keep as any[] to avoid collisions with DOM Image
   const [images, setImages] = useState([] as any[]);
   const [pdfs, setPdfs] = useState([] as PdfFile[]);
+  /** Documents that were read into text in the browser - .docx, .rtf and so on. */
+  const [docTexts, setDocTexts] = useState([] as TextFile[]);
+  /** Files that could not be read, shown above the input line. */
+  const [uploadProblems, setUploadProblems] = useState([] as string[]);
 
   const [isStreamComplete, setIsStreamComplete] = useState(true);
   /**
@@ -2043,6 +2051,12 @@ export default function ChatIsland({ lang }: { lang: string }) {
 
   const handlePdfsUploaded = (newPdfs: PdfFile[]) => {
     setPdfs((prevPdfs) => [...prevPdfs, ...newPdfs]);
+    setUploadProblems([]);
+  };
+
+  const handleTextsUploaded = (newTexts: TextFile[]) => {
+    setDocTexts((prev) => [...prev, ...newTexts]);
+    setUploadProblems([]);
   };
 
   const handleImageChange = (images_: any[]) => {
@@ -3220,6 +3234,11 @@ ${result.snapshot}`
     }];
     if (images.length > 0) for (const img of images) contentPayload.push(img);
     if (pdfs.length > 0) for (const pdf of pdfs) contentPayload.push(pdf);
+    // Documents that were unpacked in the browser travel as text parts - no
+    // chat API takes a .docx, so this is the only way they arrive at all.
+    for (const doc of docTexts) {
+      contentPayload.push({ type: "text", text: doc.text });
+    }
 
     const newMessagesArr: Message[] = [
       ...previousMessages,
@@ -3229,6 +3248,8 @@ ${result.snapshot}`
     // Clear composer state
     setImages([]);
     setPdfs([]);
+    setDocTexts([]);
+    setUploadProblems([]);
     setMessages(newMessagesArr);
     safePersist(newMessagesArr, currentChatSuffix);
     setQuery("");
@@ -4598,6 +4619,11 @@ ${result.snapshot}`
         lang={lang}
         songAutoplay={songAutoplay}
         thinkingSince={thinkingSince}
+        parentDocTexts={docTexts}
+        onDocTextsChange={(rest) =>
+          setDocTexts(docTexts.filter((d) => rest.some((r) => r.name === d.name)))}
+        uploadProblems={uploadProblems}
+        onDismissProblems={() => setUploadProblems([])}
         onOpenInEditor={(name, base64) => {
           // Straight from a message into the word processor: the file is
           // decoded here, so the editor only ever sees bytes.
@@ -4755,7 +4781,12 @@ ${result.snapshot}`
               messages={[...messages, { role: "user", content: images }]}
             />
 
-            <PdfUploadButton onPdfsUploaded={handlePdfsUploaded} />
+            <PdfUploadButton
+              onPdfsUploaded={handlePdfsUploaded}
+              onTextsUploaded={handleTextsUploaded}
+              onError={setUploadProblems}
+            />
+
 
             <VoiceRecordButton
               resetTranscript={resetTranscript}
