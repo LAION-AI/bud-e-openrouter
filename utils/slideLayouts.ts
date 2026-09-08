@@ -165,7 +165,7 @@ export const THEMES: Record<string, Theme> = {
     sectionText: "#ffffff",
     titleFont: "Calibri",
     bodyFont: "Calibri",
-    decor: (k) => k === "title" ? [shape({ x: 0, y: 0, w: SLIDE_W, h: 200, fill: "#1f3864" })] : [],
+    decor: (k) => k === "title" ? [shape({ x: 0, y: 0, w: SLIDE_W, h: 180, fill: "#1f3864" })] : [],
   }),
   green: theme({
     key: "green",
@@ -185,8 +185,8 @@ export const THEMES: Record<string, Theme> = {
       k === "content"
         ? [shape({ shape: "ellipse", x: 880, y: 470, w: 120, h: 60, rotation: -30, fill: "#a7d7b8" })]
         : [
-          shape({ shape: "ellipse", x: 700, y: 380, w: 260, h: 120, rotation: -25, fill: "#3a9d5d" }),
-          shape({ shape: "ellipse", x: 780, y: 440, w: 220, h: 100, rotation: -20, fill: "#a7d7b8" }),
+          shape({ shape: "ellipse", x: 720, y: 468, w: 260, h: 110, rotation: -25, fill: "#3a9d5d" }),
+          shape({ shape: "ellipse", x: 820, y: 500, w: 200, h: 90, rotation: -20, fill: "#a7d7b8" }),
           shape({ shape: "ellipse", x: -40, y: -30, w: 200, h: 90, rotation: 30, fill: "#a7d7b8" }),
         ],
   }),
@@ -202,7 +202,7 @@ export const THEMES: Record<string, Theme> = {
     sectionText: "#fff7ed",
     titleFont: "Georgia",
     bodyFont: "Calibri",
-    decor: (k) => k === "title" ? [shape({ x: 0, y: 0, w: SLIDE_W, h: 200, fill: "#c2410c" })] : [shape({ x: 0, y: 520, w: SLIDE_W, h: 20, fill: "#f6c78a" })],
+    decor: (k) => k === "title" ? [shape({ x: 0, y: 0, w: SLIDE_W, h: 180, fill: "#c2410c" })] : [shape({ x: 0, y: 520, w: SLIDE_W, h: 20, fill: "#f6c78a" })],
   }),
   dark: theme({
     key: "dark",
@@ -272,7 +272,7 @@ export const THEMES: Record<string, Theme> = {
       };
       return k === "content"
         ? [...nodes(700, 500, 5), shape({ x: 0, y: 0, w: SLIDE_W, h: 4, fill: "#22d3ee" })]
-        : [...nodes(60, 470, 8), ...nodes(560, 40, 8), shape({ shape: "hexagon", x: 760, y: 300, w: 180, h: 160, stroke: "#22d3ee", strokeWidth: 2 })];
+        : [...nodes(60, 480, 8), ...nodes(60, 30, 6), shape({ shape: "hexagon", x: 770, y: 30, w: 160, h: 140, stroke: "#22d3ee", strokeWidth: 2 })];
     },
   }),
   soziales: theme({
@@ -292,9 +292,10 @@ export const THEMES: Record<string, Theme> = {
       k === "content"
         ? [shape({ shape: "ellipse", x: 890, y: 480, w: 90, h: 90, fill: "#fdba9d" }), shape({ shape: "ellipse", x: 850, y: 500, w: 60, h: 60, fill: "#f97362" })]
         : [
-          shape({ shape: "ellipse", x: -60, y: 340, w: 260, h: 260, fill: "#fdba9d" }),
-          shape({ shape: "ellipse", x: 90, y: 400, w: 200, h: 200, fill: "#f97362" }),
-          shape({ shape: "ellipse", x: 780, y: -80, w: 240, h: 240, fill: "#fde5d8" }),
+          shape({ shape: "ellipse", x: -70, y: -90, w: 260, h: 260, fill: "#fdba9d" }),
+          shape({ shape: "ellipse", x: 100, y: -60, w: 170, h: 170, fill: "#f97362" }),
+          shape({ shape: "ellipse", x: 780, y: 420, w: 240, h: 240, fill: "#fde5d8" }),
+          shape({ shape: "ellipse", x: 870, y: 470, w: 130, h: 130, fill: "#fdba9d" }),
         ],
   }),
   spiel: theme({
@@ -315,10 +316,10 @@ export const THEMES: Record<string, Theme> = {
       k === "content"
         ? [shape({ shape: "star5", x: 890, y: 470, w: 50, h: 50, fill: "#facc15" }), shape({ shape: "diamond", x: 850, y: 495, w: 30, h: 30, fill: "#f472b6" })]
         : [
-          shape({ shape: "star5", x: 760, y: 60, w: 120, h: 120, fill: "#facc15" }),
-          shape({ shape: "triangle", x: 80, y: 380, w: 110, h: 100, rotation: 15, fill: "#f472b6" }),
-          shape({ shape: "diamond", x: 840, y: 400, w: 80, h: 80, fill: "#22d3ee" }),
-          shape({ shape: "ellipse", x: 200, y: 440, w: 60, h: 60, fill: "#4ade80" }),
+          shape({ shape: "star5", x: 780, y: 40, w: 120, h: 120, fill: "#facc15" }),
+          shape({ shape: "triangle", x: 50, y: 40, w: 100, h: 90, rotation: 15, fill: "#f472b6" }),
+          shape({ shape: "diamond", x: 870, y: 450, w: 70, h: 70, fill: "#22d3ee" }),
+          shape({ shape: "ellipse", x: 60, y: 470, w: 50, h: 50, fill: "#4ade80" }),
         ],
   }),
   sport: theme({
@@ -337,8 +338,8 @@ export const THEMES: Record<string, Theme> = {
       k === "content"
         ? [shape({ x: 0, y: 0, w: SLIDE_W, h: 12, fill: "#dc2626" }), shape({ x: 0, y: 12, w: SLIDE_W, h: 4, fill: "#111111" })]
         : [
-          shape({ x: 620, y: -120, w: 120, h: 800, rotation: 30, fill: "#dc2626" }),
-          shape({ x: 720, y: -120, w: 50, h: 800, rotation: 30, fill: "#111111" }),
+          shape({ x: 885, y: -100, w: 64, h: 760, rotation: 20, fill: "#dc2626" }),
+          shape({ x: 953, y: -100, w: 30, h: 760, rotation: 20, fill: "#111111" }),
         ],
   }),
   gesellschaft: theme({
@@ -358,9 +359,9 @@ export const THEMES: Record<string, Theme> = {
       k === "content"
         ? [shape({ x: 0, y: 526, w: SLIDE_W, h: 14, fill: "#99f6e4" })]
         : [
-          shape({ x: 0, y: 440, w: SLIDE_W, h: 30, fill: "#99f6e4" }),
-          shape({ x: 0, y: 470, w: SLIDE_W, h: 35, fill: "#5eead4" }),
-          shape({ x: 0, y: 505, w: SLIDE_W, h: 35, fill: "#0f766e" }),
+          shape({ x: 0, y: 486, w: SLIDE_W, h: 16, fill: "#99f6e4" }),
+          shape({ x: 0, y: 502, w: SLIDE_W, h: 18, fill: "#5eead4" }),
+          shape({ x: 0, y: 520, w: SLIDE_W, h: 20, fill: "#0f766e" }),
         ],
   }),
   kunst: theme({
@@ -382,10 +383,11 @@ export const THEMES: Record<string, Theme> = {
           shape({ shape: "ellipse", x: 870, y: 500, w: 50, h: 50, fill: "#db2777" }),
         ]
         : [
-          shape({ shape: "ellipse", x: 640, y: 300, w: 260, h: 260, fill: "#fbbf24" }),
-          shape({ shape: "ellipse", x: 780, y: 360, w: 220, h: 220, fill: "#db2777" }),
-          shape({ shape: "ellipse", x: 720, y: 440, w: 150, h: 150, fill: "#3b82f6" }),
+          shape({ shape: "ellipse", x: 700, y: -110, w: 240, h: 240, fill: "#fbbf24" }),
+          shape({ shape: "ellipse", x: 850, y: -20, w: 180, h: 180, fill: "#db2777" }),
+          shape({ shape: "ellipse", x: 790, y: 90, w: 110, h: 110, fill: "#3b82f6" }),
           shape({ shape: "ellipse", x: -60, y: -60, w: 200, h: 200, fill: "#a3e635" }),
+          shape({ shape: "ellipse", x: 40, y: 470, w: 80, h: 80, fill: "#db2777" }),
         ],
   }),
   literatur: theme({
@@ -427,7 +429,7 @@ export const THEMES: Record<string, Theme> = {
         shape({ shape: "hexagon", x, y, w, h: w * 0.87, ...(fill ? { fill } : { stroke: "#2563eb", strokeWidth: 1.5 }) });
       return k === "content"
         ? [hex(880, 470, 60), hex(925, 500, 40, "#bfdbfe")]
-        : [hex(720, 60, 120), hex(810, 120, 120, "#bfdbfe"), hex(720, 180, 120), hex(60, 400, 90, "#bfdbfe"), hex(130, 440, 70)];
+        : [hex(720, 20, 120), hex(810, 80, 120, "#bfdbfe"), hex(650, 100, 90), hex(40, 460, 70, "#bfdbfe"), hex(100, 490, 55)];
     },
   }),
   geschichte: theme({
@@ -464,7 +466,7 @@ export const THEMES: Record<string, Theme> = {
     decor: (k) => {
       const bars = (x0: number, y0: number, heights: number[], w: number) =>
         heights.map((h, i) => shape({ x: x0 + i * (w + 6), y: y0 - h, w, h, fill: i % 2 ? "#6366f1" : "#f59e0b" }));
-      return k === "content" ? bars(840, 530, [20, 40, 28, 48, 24], 14) : bars(600, 520, [60, 120, 90, 160, 70, 130, 100, 180], 30);
+      return k === "content" ? bars(840, 530, [20, 40, 28, 48, 24], 14) : bars(690, 528, [40, 80, 55, 100, 45, 90, 65, 110], 26);
     },
   }),
 };
@@ -498,7 +500,7 @@ function bulletParagraphs(lines: string[], base: Partial<Run>): Paragraph[] {
     const level = /^\s{2,}/.test(raw) ? 1 : 0;
     const line = raw.trim().replace(/^[-*•]\s+/, "");
     return {
-      runs: inlineRuns(line, { ...base, size: level ? (base.size ?? 20) - 2 : base.size }),
+      runs: inlineRuns(line, { ...base, size: level ? (base.size ?? 26) - 4 : base.size }),
       bullet: true,
       ...(level ? { level } : {}),
     };
@@ -510,13 +512,19 @@ function textParagraphsOf(text: string, base: Partial<Run>): Paragraph[] {
     .map((p) => ({ runs: inlineRuns(p.trim(), base) }));
 }
 
-/** Point size that gets a list onto the slide without a scrollbar. */
+/**
+ * Point size that gets a list onto the slide without a scrollbar.
+ *
+ * PowerPoint's own body text is 28 points; anything much smaller leaves the
+ * lower half of a widescreen slide empty and reads like a document. So the
+ * base is generous and only comes down when the list is long.
+ */
 function fitSize(lines: number, base: number): number {
   if (lines <= 4) return base;
   if (lines <= 6) return base - 2;
-  if (lines <= 8) return base - 4;
-  if (lines <= 11) return base - 6;
-  return base - 8;
+  if (lines <= 8) return base - 5;
+  if (lines <= 11) return base - 8;
+  return base - 10;
 }
 
 /* --------------------------------------------------------------- images */
@@ -666,76 +674,82 @@ export function buildSlide(
     els.push({ kind: "shape", id: newElementId(), x, y, w, h: 5, shape: "rect", fill: t.accent, decor: true });
 
   const heading = (title: string) => {
-    text({ x: 60, y: 36, w: 840, h: 84 }, [{
-      runs: inlineRuns(title, { ...titleBase, size: 32, bold: true }),
+    // One line, always: a heading that wraps lands on the body text.
+    const n = title.replace(/\*/g, "").length;
+    const size = n > 44 ? 26 : n > 34 ? 30 : n > 26 ? 33 : 36;
+    text({ x: 60, y: 34, w: 840, h: 92 }, [{
+      runs: inlineRuns(title, { ...titleBase, size, bold: true }),
     }], { valign: "middle", placeholder: "title" });
-    rule(60, 122, 110);
+    rule(60, 130, 120);
   };
+  const BODY = { x: 60, y: 150, w: 840, h: 350 };
 
-  const bullets = (lines: string[], box: { x: number; y: number; w: number; h: number }, size = 20) =>
+  const bullets = (lines: string[], box: { x: number; y: number; w: number; h: number }, size = 26) =>
     text(box, bulletParagraphs(lines, { ...base, size: fitSize(lines.length, size) }), { placeholder: "body" });
-  const running = (body: string, box: { x: number; y: number; w: number; h: number }, size = 20) => {
-    const ps = textParagraphsOf(body, { ...base, size: fitSize(body.split(/\n/).length + Math.floor(body.length / 220), size) });
+  const running = (body: string, box: { x: number; y: number; w: number; h: number }, size = 24) => {
+    const ps = textParagraphsOf(body, { ...base, size: fitSize(body.split(/\n/).length + Math.floor(body.length / 180), size) });
     text(box, ps, { placeholder: "body" });
   };
   const column = (content: string[] | string | undefined, box: { x: number; y: number; w: number; h: number }) => {
-    if (Array.isArray(content)) bullets(content, box, 18);
-    else if (content) running(content, box, 18);
-    else text(box, [{ runs: [{ ...base, size: 18, text: "" }], bullet: true }], { placeholder: "body" });
+    if (Array.isArray(content)) bullets(content, box, 22);
+    else if (content) running(content, box, 20);
+    else text(box, [{ runs: [{ ...base, size: 22, text: "" }], bullet: true }], { placeholder: "body" });
   };
 
   switch (layout) {
     case "title": {
-      text({ x: 80, y: 215, w: 800, h: 120 }, [{
-        runs: inlineRuns(spec.title ?? "", { ...titleBase, size: 40, bold: true }),
+      const long = (spec.title ?? "").length > 34;
+      text({ x: 60, y: 205, w: 840, h: 140 }, [{
+        runs: inlineRuns(spec.title ?? "", { ...titleBase, size: long ? 40 : 48, bold: true }),
         align: "center",
       }], { valign: "middle", placeholder: "title" });
-      rule(400, 342, 160);
+      rule(400, 352, 160);
       if (spec.subtitle) {
-        text({ x: 120, y: 360, w: 720, h: 90 }, [{
-          runs: inlineRuns(spec.subtitle, { ...base, size: 22 }),
+        text({ x: 100, y: 372, w: 760, h: 100 }, [{
+          runs: inlineRuns(spec.subtitle, { ...base, size: 26 }),
           align: "center",
         }], { valign: "top", placeholder: "subtitle" });
       }
       break;
     }
     case "section": {
-      text({ x: 80, y: 180, w: 800, h: 130 }, [{
-        runs: inlineRuns(spec.title ?? "", { ...titleBase, size: 40, bold: true }),
+      const long = (spec.title ?? "").length > 34;
+      text({ x: 60, y: 165, w: 840, h: 150 }, [{
+        runs: inlineRuns(spec.title ?? "", { ...titleBase, size: long ? 38 : 44, bold: true }),
         align: "center",
       }], { valign: "middle", placeholder: "title" });
-      els.push({ kind: "shape", id: newElementId(), x: 400, y: 318, w: 160, h: 5, shape: "rect", fill: t.accent, decor: true });
+      els.push({ kind: "shape", id: newElementId(), x: 400, y: 322, w: 160, h: 5, shape: "rect", fill: t.accent, decor: true });
       if (spec.subtitle ?? spec.text) {
-        text({ x: 120, y: 336, w: 720, h: 120 }, textParagraphsOf(spec.subtitle ?? spec.text ?? "", { ...base, size: 22 })
+        text({ x: 100, y: 342, w: 760, h: 130 }, textParagraphsOf(spec.subtitle ?? spec.text ?? "", { ...base, size: 24 })
           .map((p) => ({ ...p, align: "center" as const })), { placeholder: "subtitle" });
       }
       break;
     }
     case "bullets": {
       heading(spec.title ?? "");
-      bullets(spec.bullets ?? (spec.text ? spec.text.split("\n") : [""]), { x: 60, y: 142, w: 840, h: 356 });
+      bullets(spec.bullets ?? (spec.text ? spec.text.split("\n") : [""]), BODY);
       break;
     }
     case "text": {
       heading(spec.title ?? "");
-      running(spec.text ?? (spec.bullets ?? [""]).join("\n"), { x: 60, y: 142, w: 840, h: 356 });
+      running(spec.text ?? (spec.bullets ?? [""]).join("\n"), BODY);
       break;
     }
     case "image-right":
     case "image-left": {
       heading(spec.title ?? "");
       const right = layout === "image-right";
-      const textBox = { x: right ? 60 : 500, y: 142, w: 410, h: 356 };
-      const imgSlot = { x: right ? 510 : 60, y: 142, w: 390, h: 356 };
-      if (hasBullets) bullets(spec.bullets!, textBox, 20);
-      else if (hasText) running(spec.text!, textBox, 20);
-      else bullets([""], textBox, 20);
+      const textBox = { x: right ? 60 : 490, y: 150, w: 420, h: 350 };
+      const imgSlot = { x: right ? 510 : 60, y: 150, w: 390, h: 350 };
+      if (hasBullets) bullets(spec.bullets!, textBox, 24);
+      else if (hasText) running(spec.text!, textBox, 22);
+      else bullets([""], textBox, 24);
       if (src) {
         const img = fitImage(src, spec.caption ? { ...imgSlot, h: imgSlot.h - 40 } : imgSlot);
         els.push(img);
         if (spec.caption) {
-          text({ x: imgSlot.x, y: img.y + img.h + 6, w: imgSlot.w, h: 34 }, [{
-            runs: inlineRuns(spec.caption, { ...base, size: 12, italic: true }),
+          text({ x: imgSlot.x, y: img.y + img.h + 6, w: imgSlot.w, h: 36 }, [{
+            runs: inlineRuns(spec.caption, { ...base, size: 14, italic: true }),
             align: "center",
           }], { placeholder: "caption" });
         }
@@ -748,51 +762,67 @@ export function buildSlide(
     case "image-full": {
       const withTitle = !!spec.title;
       if (withTitle) heading(spec.title!);
-      const slot = withTitle ? { x: 60, y: 138, w: 840, h: spec.caption ? 330 : 370 } : { x: 40, y: 30, w: 880, h: spec.caption ? 440 : 480 };
+      const slot = withTitle ? { x: 60, y: 146, w: 840, h: spec.caption ? 316 : 354 } : { x: 40, y: 30, w: 880, h: spec.caption ? 436 : 480 };
       if (src) {
         const img = fitImage(src, slot);
         els.push(img);
         if (spec.caption) {
           text({ x: 60, y: img.y + img.h + 8, w: 840, h: 40 }, [{
-            runs: inlineRuns(spec.caption, { ...base, size: 14, italic: true }),
+            runs: inlineRuns(spec.caption, { ...base, size: 16, italic: true }),
             align: "center",
           }], { placeholder: "caption" });
         }
       } else if (spec.text || spec.bullets) {
-        if (spec.bullets) bullets(spec.bullets, { x: 60, y: 142, w: 840, h: 356 });
-        else running(spec.text!, { x: 60, y: 142, w: 840, h: 356 });
+        if (spec.bullets) bullets(spec.bullets, BODY);
+        else running(spec.text!, BODY);
       } else {
         els.push({ kind: "shape", id: newElementId(), ...slot, shape: "rect", stroke: t.accent2, strokeWidth: 1.5, paragraphs: [{ runs: [{ ...base, size: 14, text: "🖼" }], align: "center" }], valign: "middle" });
         if (spec.caption) {
-          text({ x: 60, y: slot.y + slot.h + 8, w: 840, h: 40 }, [{ runs: inlineRuns(spec.caption, { ...base, size: 14, italic: true }), align: "center" }], { placeholder: "caption" });
+          text({ x: 60, y: slot.y + slot.h + 8, w: 840, h: 40 }, [{ runs: inlineRuns(spec.caption, { ...base, size: 16, italic: true }), align: "center" }], { placeholder: "caption" });
         }
       }
       break;
     }
     case "two-columns": {
       heading(spec.title ?? "");
-      const top = spec.leftTitle || spec.rightTitle ? 190 : 142;
+      const titled = !!(spec.leftTitle || spec.rightTitle);
+      const top = titled ? 206 : 150;
+      // A thin divider between the columns, in the accent colour.
+      els.push({ kind: "shape", id: newElementId(), x: 479, y: 150, w: 2, h: 340, shape: "rect", fill: t.accent2, decor: true });
       if (spec.leftTitle) {
-        text({ x: 60, y: 140, w: 400, h: 44 }, [{ runs: inlineRuns(spec.leftTitle, { ...base, size: 20, bold: true, color: t.accent }) }], { valign: "middle", placeholder: "columnTitle" });
+        text({ x: 60, y: 148, w: 400, h: 50 }, [{ runs: inlineRuns(spec.leftTitle, { ...base, size: 24, bold: true, color: t.accent }) }], { valign: "middle", placeholder: "columnTitle" });
       }
       if (spec.rightTitle) {
-        text({ x: 500, y: 140, w: 400, h: 44 }, [{ runs: inlineRuns(spec.rightTitle, { ...base, size: 20, bold: true, color: t.accent }) }], { valign: "middle", placeholder: "columnTitle" });
+        text({ x: 500, y: 148, w: 400, h: 50 }, [{ runs: inlineRuns(spec.rightTitle, { ...base, size: 24, bold: true, color: t.accent }) }], { valign: "middle", placeholder: "columnTitle" });
       }
-      column(spec.left, { x: 60, y: top, w: 400, h: 498 - top });
-      column(spec.right, { x: 500, y: top, w: 400, h: 498 - top });
+      column(spec.left, { x: 60, y: top, w: 400, h: 500 - top });
+      column(spec.right, { x: 500, y: top, w: 400, h: 500 - top });
       break;
     }
     case "quote": {
       if (spec.title) heading(spec.title);
       const q = spec.quote ?? spec.text ?? "";
-      text({ x: 100, y: spec.title ? 160 : 120, w: 760, h: 260 }, [{
-        runs: inlineRuns(`„${q}“`, { ...titleBase, size: q.length > 160 ? 22 : 28, italic: true }),
+      // A large opening quotation mark in the accent colour sets the tone;
+      // the quote itself sits large and centred, the author beneath it.
+      els.push({
+        kind: "text",
+        id: newElementId(),
+        x: 50,
+        y: spec.title ? 120 : 40,
+        w: 220,
+        h: 220,
+        paragraphs: [{ runs: [{ text: "\u201c", size: 140, bold: true, color: t.accent2, font: "Georgia" }] }],
+        decor: true,
+      } as TextElement);
+      text({ x: 110, y: spec.title ? 170 : 130, w: 740, h: 250 }, [{
+        runs: inlineRuns(q, { ...titleBase, size: q.length > 160 ? 26 : q.length > 90 ? 30 : 34, italic: true }),
         align: "center",
       }], { valign: "middle", placeholder: "quote" });
       if (spec.author) {
-        text({ x: 100, y: 430, w: 760, h: 40 }, [{
-          runs: inlineRuns(`— ${spec.author}`, { ...base, size: 16 }),
-          align: "right",
+        els.push({ kind: "shape", id: newElementId(), x: 430, y: 428, w: 100, h: 3, shape: "rect", fill: t.accent, decor: true });
+        text({ x: 110, y: 438, w: 740, h: 50 }, [{
+          runs: inlineRuns(spec.author, { ...base, size: 20 }),
+          align: "center",
         }], { placeholder: "author" });
       }
       break;

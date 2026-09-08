@@ -793,7 +793,7 @@ function runXml(r: Run, lang: string): string {
   return `<a:r><a:rPr ${attrs}>${inner}</a:rPr><a:t>${esc(r.text)}</a:t></a:r>`;
 }
 
-function paragraphXml(p: Paragraph, lang: string): string {
+function paragraphXml(p: Paragraph, lang: string, first = false): string {
   const level = p.level ?? 0;
   const algn = p.align === "center" ? "ctr" : p.align === "right" ? "r" : p.align === "justify" ? "just" : undefined;
   const indent = p.bullet || p.numbered;
@@ -811,14 +811,18 @@ function paragraphXml(p: Paragraph, lang: string): string {
     : "<a:buNone/>";
   const size = p.runs.find((r) => r.size)?.size;
   const endPr = `<a:endParaRPr lang="${lang}"${size ? ` sz="${Math.round(size * 100)}"` : ""} dirty="0"/>`;
-  return `<a:p><a:pPr${pAttrs ? " " + pAttrs : ""}>${bu}</a:pPr>${p.runs.map((r) => runXml(r, lang)).join("")}${endPr}</a:p>`;
+  // Space before a paragraph, as the editor shows it: a little between
+  // bullet points, more between paragraphs of running text.
+  const before = indent ? (level ? 200 : 600) : first ? 0 : 900;
+  const spc = before ? `<a:spcBef><a:spcPts val="${before}"/></a:spcBef>` : "";
+  return `<a:p><a:pPr${pAttrs ? " " + pAttrs : ""}>${spc}${bu}</a:pPr>${p.runs.map((r) => runXml(r, lang)).join("")}${endPr}</a:p>`;
 }
 
 function txBodyXml(paragraphs: Paragraph[], valign: string | undefined, lang: string): string {
   const anchor = valign === "middle" ? "ctr" : valign === "bottom" ? "b" : "t";
   const ps = paragraphs.length ? paragraphs : [{ runs: [{ text: "" }] }];
   return `<p:txBody><a:bodyPr wrap="square" rtlCol="0" anchor="${anchor}"><a:normAutofit/></a:bodyPr><a:lstStyle/>${
-    ps.map((p) => paragraphXml(p, lang)).join("")
+    ps.map((p, i) => paragraphXml(p, lang, i === 0)).join("")
   }</p:txBody>`;
 }
 

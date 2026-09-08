@@ -54,6 +54,25 @@ import {
 import { isSlidesAssistantAllowed, setSlidesAssistantAllowed } from "../utils/slidesTools.ts";
 
 const SIZES = [10, 12, 14, 16, 18, 20, 24, 28, 32, 36, 40, 48, 60];
+/** Where the editor left off: which deck, which slide. */
+const LAST_KEY = "bude-slides-last";
+const AUTOSAVE_MS = 800;
+
+function readLast(): { id: string; slide: number } | null {
+  try {
+    const raw = localStorage.getItem(LAST_KEY);
+    return raw ? JSON.parse(raw) : null;
+  } catch {
+    return null;
+  }
+}
+function writeLast(id: string, slide: number) {
+  try {
+    localStorage.setItem(LAST_KEY, JSON.stringify({ id, slide }));
+  } catch {
+    // Private mode: it simply will not remember.
+  }
+}
 const MAX_IMAGE_PX = 1600;
 const HISTORY = 60;
 
@@ -289,8 +308,10 @@ function TextView({ paragraphs, valign }: { paragraphs: Paragraph[]; valign?: st
         return (
           <div
             key={i}
-            class="relative leading-[1.25] whitespace-pre-wrap break-words"
-            style={`text-align:${p.align ?? "left"};padding-left:${indent}px;min-height:1em`}
+            class="relative leading-[1.3] whitespace-pre-wrap break-words"
+            style={`text-align:${p.align ?? "left"};padding-left:${indent}px;min-height:1em;${
+              (p.bullet || p.numbered) && !(p.level) ? "margin-top:0.3em;" : p.level ? "margin-top:0.1em;" : i > 0 ? "margin-top:0.45em;" : ""
+            }`}
           >
             {(p.bullet || p.numbered) && (
               <span class="absolute" style={`left:${(p.level ?? 0) * 24 + 2}px;${p.runs[0]?.size ? `font-size:${p.runs[0].size}pt;` : ""}${p.runs[0]?.color ? `color:${p.runs[0].color}` : ""}`}>
@@ -530,7 +551,33 @@ export default function SlidesModal(
   useEffect(() => {
     setAllowed(isSlidesAssistantAllowed());
     refresh();
+    // Back where it was left, unless something specific was asked for.
+    if (incoming || openId) return;
+    const last = readLast();
+    if (!last) return;
+    (async () => {
+      const rec = await loadDeck(last.id);
+      if (!rec) return;
+      load(rec);
+      setCurrent(Math.max(0, Math.min(last.slide, rec.deck.slides.length - 1)));
+    })();
   }, []);
+
+  // Remember the place, and save every change after a short pause. Closing
+  // the window, opening another deck, losing the tab - none of it loses work
+  // any more; "Save" is still there for those who want to press it.
+  useEffect(() => {
+    if (!id) return;
+    writeLast(id, current);
+  }, [id, current]);
+
+  useEffect(() => {
+    if (!dirty) return;
+    const timer = setTimeout(() => {
+      autosave();
+    }, AUTOSAVE_MS);
+    return () => clearTimeout(timer);
+  }, [dirty, deck, name]);
 
   const load = (rec: { id: string; name: string; deck: Deck; created?: string }) => {
     setId(rec.id);
@@ -566,6 +613,7 @@ export default function SlidesModal(
     if (!incoming) return;
     (async () => {
       setBusy(true);
+      if (dirty) await autosave();
       try {
         const d = await pptxToDeck(incoming.bytes);
         const deckName = await freeDeckName(incoming.name.replace(/\.pptx?$/i, ""));
@@ -611,6 +659,25 @@ export default function SlidesModal(
 
   // -------------------------------------------------------------- actions
 
+  /** Saves without ceremony; used by the timer and on the way out. */
+  const autosave = async () => {
+    const ok = await saveDeck({
+      id: idRef.current,
+      name: nameRef.current,
+      deck: deckRef.current,
+      created: createdRef.current,
+    });
+    if (ok) {
+      savedJson.current = JSON.stringify(deckRef.current);
+      setDirty(false);
+      setStatus(t("autosaved"));
+      refresh();
+    } else {
+      setStatus(t("saveFailed"));
+    }
+    return ok;
+  };
+
   const save = async () => {
     commitEdit();
     setBusy(true);
@@ -632,7 +699,8 @@ export default function SlidesModal(
   };
 
   const open = async (deckId: string) => {
-    if (dirty && !confirm(t("confirmDiscard"))) return;
+    commitEdit();
+    if (dirty) await autosave();
     const rec = await loadDeck(deckId);
     if (!rec) return;
     load(rec);
@@ -641,7 +709,8 @@ export default function SlidesModal(
   };
 
   const create = async () => {
-    if (dirty && !confirm(t("confirmDiscard"))) return;
+    commitEdit();
+    if (dirty) await autosave();
     load({ id: newDeckId(), name: await freeDeckName(t("untitled")), deck: emptyDeck() });
     setStatus("");
   };
@@ -680,6 +749,7 @@ export default function SlidesModal(
   };
 
   const importFile = async (file: File) => {
+    if (dirty) await autosave();
     if (/\.ppt$/i.test(file.name) && !/\.pptx$/i.test(file.name)) {
       setStatus(t("oldPpt"));
       return;
@@ -1033,7 +1103,13 @@ export default function SlidesModal(
       if (e.key === "Escape") {
         if (editing) commitEdit();
         else if (selected) setSelected(null);
-        else if (!dirty) onClose();
+        else if (picker) setPicker(null);
+        else {
+          (async () => {
+            if (dirty) await autosave();
+            onClose();
+          })();
+        }
         return;
       }
       if (typing) return;
@@ -1143,8 +1219,9 @@ export default function SlidesModal(
             {t("download")}
           </button>
           <button
-            onClick={() => {
-              if (dirty && !confirm(t("confirmDiscard"))) return;
+            onClick={async () => {
+              commitEdit();
+              if (dirty) await autosave();
               onClose();
             }}
             title={t("close")}

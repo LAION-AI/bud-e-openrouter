@@ -901,6 +901,7 @@ export const docsContent: InternalizationContent = {
     imageAdded: "Picture added.",
     imageFailed: "Picture could not be added",
     changedByAssistant: "Bud-E changed this document.",
+    autosaved: "Saved automatically.",
     confirmDiscard: "There are unsaved changes. Discard them?",
     confirmDelete: "Delete this document? This cannot be undone.",
     fileSection: "File",
@@ -967,6 +968,7 @@ export const docsContent: InternalizationContent = {
     imageAdded: "Bild eingefügt.",
     imageFailed: "Bild konnte nicht eingefügt werden",
     changedByAssistant: "Bud-E hat dieses Dokument geändert.",
+    autosaved: "Automatisch gespeichert.",
     confirmDiscard: "Es gibt nicht gespeicherte Änderungen. Verwerfen?",
     confirmDelete: "Dieses Dokument löschen? Das lässt sich nicht rückgängig machen.",
     fileSection: "Datei",
@@ -1090,6 +1092,7 @@ export const slidesContent: InternalizationContent = {
     design: "Design",
     designHint: "Colours, fonts and decoration for the whole presentation",
     designApplied: "Design applied.",
+    autosaved: "Saved automatically.",
   },
   de: {
     title: "Slides",
@@ -1173,6 +1176,7 @@ export const slidesContent: InternalizationContent = {
     design: "Design",
     designHint: "Farben, Schriften und Schmuck für die ganze Präsentation",
     designApplied: "Design übernommen.",
+    autosaved: "Automatisch gespeichert.",
   },
 };
 

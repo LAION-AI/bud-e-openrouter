@@ -44,6 +44,9 @@ const FONTS = [
 ];
 
 const SIZES = [12, 14, 16, 18, 24, 32, 40];
+/** Where the editor left off. */
+const LAST_KEY = "bude-docs-last";
+const AUTOSAVE_MS = 1200;
 
 /** How large a picture may be before it is scaled down on the way in. */
 const MAX_IMAGE_PX = 1600;
@@ -71,7 +74,13 @@ export default function DocsModal(
   const [id, setId] = useState<string>(() => newDocId());
   const [name, setName] = useState(t("untitled"));
   const [created, setCreated] = useState<string | undefined>(undefined);
-  const [dirty, setDirty] = useState(false);
+  const [dirty, setDirtyState] = useState(false);
+  const [edits, setEdits] = useState(0);
+  /** Every change bumps a counter, so the autosave timer restarts each time. */
+  const setDirty = (v: boolean) => {
+    setDirtyState(v);
+    if (v) setEdits((n) => n + 1);
+  };
   const [status, setStatus] = useState("");
   // Open on a desk, closed on a phone: there the list would leave the page
   // a sliver, and it slides in over the page instead when asked for.
@@ -82,6 +91,12 @@ export default function DocsModal(
   const [busy, setBusy] = useState(false);
 
   const areaRef = useRef<HTMLDivElement | null>(null);
+  const idRef = useRef(id);
+  const nameRef = useRef(name);
+  const createdRef = useRef(created);
+  idRef.current = id;
+  nameRef.current = name;
+  createdRef.current = created;
   const fileRef = useRef<HTMLInputElement | null>(null);
   const imageRef = useRef<HTMLInputElement | null>(null);
   const savedHtml = useRef("");
@@ -93,7 +108,31 @@ export default function DocsModal(
   useEffect(() => {
     setAllowed(isDocsAssistantAllowed());
     refresh();
+    // Back to the document that was open last, unless one was asked for.
+    if (incoming || openId) return;
+    try {
+      const last = localStorage.getItem(LAST_KEY);
+      if (last) open(last);
+    } catch {
+      // Private mode.
+    }
   }, []);
+
+  useEffect(() => {
+    try {
+      localStorage.setItem(LAST_KEY, id);
+    } catch {
+      // Private mode.
+    }
+  }, [id]);
+
+  // Every change is saved after a short pause; closing the window or
+  // switching documents loses nothing. The Save button stays for the habit.
+  useEffect(() => {
+    if (!dirty) return;
+    const timer = setTimeout(() => autosave(), AUTOSAVE_MS);
+    return () => clearTimeout(timer);
+  }, [dirty, edits]);
 
   // A tool call changed something behind our back.
   useEffect(() => {
@@ -169,6 +208,18 @@ export default function DocsModal(
     setDirty(true);
   };
 
+  const autosave = async () => {
+    const html = getHtml();
+    const ok = await saveDoc({ id: idRef.current, name: nameRef.current, html, created: createdRef.current });
+    if (ok) {
+      savedHtml.current = html;
+      setDirty(false);
+      setStatus(t("autosaved"));
+      await refresh();
+    } else setStatus(t("saveFailed"));
+    return ok;
+  };
+
   const save = async () => {
     const html = getHtml();
     setBusy(true);
@@ -186,7 +237,7 @@ export default function DocsModal(
   };
 
   const open = async (docId: string) => {
-    if (dirty && !confirm(t("confirmDiscard"))) return;
+    if (dirty) await autosave();
     const doc = await loadDoc(docId);
     if (!doc) return;
     if (typeof globalThis.matchMedia === "function" && !globalThis.matchMedia("(min-width: 768px)").matches) {
@@ -202,7 +253,7 @@ export default function DocsModal(
   };
 
   const create = async () => {
-    if (dirty && !confirm(t("confirmDiscard"))) return;
+    if (dirty) await autosave();
     const fresh = newDocId();
     setId(fresh);
     setName(await freeName(t("untitled")));
@@ -356,7 +407,12 @@ export default function DocsModal(
         e.preventDefault();
         save();
       }
-      if (e.key === "Escape" && !dirty) onClose();
+      if (e.key === "Escape") {
+        (async () => {
+          if (dirty) await autosave();
+          onClose();
+        })();
+      }
     };
     document.addEventListener("keydown", onKey);
     return () => document.removeEventListener("keydown", onKey);
@@ -438,8 +494,8 @@ export default function DocsModal(
             {t("download")}
           </button>
           <button
-            onClick={() => {
-              if (dirty && !confirm(t("confirmDiscard"))) return;
+            onClick={async () => {
+              if (dirty) await autosave();
               onClose();
             }}
             title={t("close")}
