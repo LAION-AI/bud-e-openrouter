@@ -28,9 +28,20 @@ import {
   type Slide,
   SLIDE_H,
   SLIDE_W,
+  slideBackgroundCss,
   type SlideElement,
 } from "../utils/pptx.ts";
-import { imageSize, THEMES } from "../utils/slideLayouts.ts";
+import {
+  applyTheme,
+  buildSlide,
+  imageSize,
+  LAYOUTS,
+  newSlideSpec,
+  relayoutSlide,
+  type SlideLayout,
+  THEMES,
+  themeOf,
+} from "../utils/slideLayouts.ts";
 import {
   type DeckMeta,
   deleteDeck,
@@ -330,7 +341,7 @@ export function SlideView(
   return (
     <div
       class="relative shadow-lg select-none"
-      style={`width:${SLIDE_W * scale}px;height:${SLIDE_H * scale}px;background:${slide.background ?? "#ffffff"}`}
+      style={`width:${SLIDE_W * scale}px;height:${SLIDE_H * scale}px;background:${slideBackgroundCss(slide)}`}
     >
       <div
         class="absolute left-0 top-0 origin-top-left"
@@ -436,6 +447,8 @@ export default function SlidesModal(
   const [scale, setScale] = useState(0.6);
   const [presenting, setPresenting] = useState(false);
   const [showShapes, setShowShapes] = useState(false);
+  /** Which picker is open: a new slide, a layout for this one, or a design. */
+  const [picker, setPicker] = useState<null | "new" | "layout" | "design">(null);
   const [showNotes, setShowNotes] = useState(false);
 
   const stageRef = useRef<HTMLDivElement | null>(null);
@@ -694,6 +707,34 @@ export default function SlidesModal(
 
   // ------------------------------------------------------- slide actions
 
+  const themeNow = () => themeOf(deck.theme);
+
+  /** A slide from the picker, with placeholder text in the right places. */
+  const addSlideFromLayout = (layout: SlideLayout) => {
+    const built = buildSlide(newSlideSpec(layout, lang), themeNow(), () => null, { first: deck.slides.length === 0 }).slide;
+    setDeck((d) => ({ ...d, slides: [...d.slides.slice(0, current + 1), built, ...d.slides.slice(current + 1)] }));
+    setCurrent(current + 1);
+    setSelected(null);
+    setPicker(null);
+  };
+
+  /** The current slide's content, rearranged. Boxes moved by hand start over. */
+  const changeLayout = (layout: SlideLayout) => {
+    commitEdit();
+    const next = relayoutSlide(deckRef.current.slides[current], layout, themeNow(), lang);
+    setDeck((d) => ({ ...d, slides: d.slides.map((sl, i) => (i === current ? next : sl)) }));
+    setSelected(null);
+    setPicker(null);
+  };
+
+  const changeTheme = (key: string) => {
+    commitEdit();
+    setDeck((d) => applyTheme(d, key));
+    setSelected(null);
+    setPicker(null);
+    setStatus(t("designApplied"));
+  };
+
   const addSlide = (after = current) => {
     const s = emptySlide();
     if (slide?.background) s.background = slide.background;
@@ -730,7 +771,7 @@ export default function SlidesModal(
 
   // ----------------------------------------------------- element actions
 
-  const themeFont = THEMES[deck.theme ?? ""]?.font;
+  const themeFont = THEMES[deck.theme ?? ""]?.bodyFont;
   const addText = () => {
     const el: SlideElement = {
       kind: "text",
@@ -1117,7 +1158,9 @@ export default function SlidesModal(
 
         {/* ------------------------------------------------------ toolbar */}
         <div class="flex flex-wrap items-center gap-1 px-2 md:px-3 py-1.5 border-b bg-slate-50 shrink-0 text-sm">
-          <Btn onClick={() => addSlide()} title={t("newSlide")} label={<span>+ {t("slide")}</span>} />
+          <Btn onClick={() => setPicker(picker === "new" ? null : "new")} title={t("newSlide")} label={<span>+ {t("slide")} ▾</span>} active={picker === "new"} />
+          <Btn onClick={() => setPicker(picker === "layout" ? null : "layout")} title={t("layoutHint")} label={<span>{t("layout")}</span>} active={picker === "layout"} />
+          <Btn onClick={() => setPicker(picker === "design" ? null : "design")} title={t("designHint")} label={<span>🎨 {t("design")}</span>} active={picker === "design"} />
           <Btn onClick={duplicateSlide} title={t("duplicateSlide")} label={<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></svg>} />
           <Btn onClick={deleteSlide} title={t("deleteSlide")} label={<span>🗑</span>} />
           <Sep />
@@ -1306,7 +1349,63 @@ export default function SlidesModal(
           </div>
 
           {/* The stage. */}
-          <div class="flex-1 min-h-0 flex flex-col">
+          <div class="flex-1 min-h-0 flex flex-col relative">
+            {picker && (
+              <div class="absolute inset-0 z-20 bg-slate-900/40 flex items-start justify-center p-3 overflow-y-auto" onClick={() => setPicker(null)}>
+                <div class="bg-white rounded-xl shadow-2xl p-3 md:p-4 w-full max-w-3xl" onClick={(e) => e.stopPropagation()}>
+                  <div class="flex items-center justify-between mb-2">
+                    <h3 class="font-semibold text-slate-800">
+                      {picker === "design" ? t("design") : picker === "layout" ? t("changeLayout") : t("newFromLayout")}
+                    </h3>
+                    <button onClick={() => setPicker(null)} class="px-2 text-slate-500 hover:text-slate-800">✕</button>
+                  </div>
+                  {picker === "design"
+                    ? (
+                      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2">
+                        {Object.values(THEMES).map((th) => {
+                          const sample = buildSlide(
+                            { layout: "title", title: th.label[lang === "en" ? "en" : "de"], subtitle: "Aa Bb Cc" },
+                            th,
+                            () => null,
+                          ).slide;
+                          return (
+                            <button
+                              key={th.key}
+                              onClick={() => changeTheme(th.key)}
+                              class={`rounded-lg border p-1.5 text-left hover:border-blue-400 hover:bg-blue-50/60 ${deck.theme === th.key ? "border-blue-500 ring-2 ring-blue-200" : "border-slate-200"}`}
+                            >
+                              <div class="pointer-events-none mx-auto" style="width:160px">
+                                <SlideView slide={sample} scale={160 / SLIDE_W} />
+                              </div>
+                              <span class="block text-xs mt-1 text-slate-700 truncate">{th.label[lang === "en" ? "en" : "de"]}</span>
+                            </button>
+                          );
+                        })}
+                      </div>
+                    )
+                    : (
+                      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2">
+                        {LAYOUTS.map((l) => {
+                          const sample = buildSlide(newSlideSpec(l.key, lang), themeNow(), () => null, { first: l.key === "title" }).slide;
+                          return (
+                            <button
+                              key={l.key}
+                              onClick={() => picker === "new" ? addSlideFromLayout(l.key) : changeLayout(l.key)}
+                              class={`rounded-lg border p-1.5 text-left hover:border-blue-400 hover:bg-blue-50/60 ${picker === "layout" && slide?.layout === l.key ? "border-blue-500 ring-2 ring-blue-200" : "border-slate-200"}`}
+                              title={l.key}
+                            >
+                              <div class="pointer-events-none mx-auto" style="width:128px">
+                                <SlideView slide={sample} scale={128 / SLIDE_W} />
+                              </div>
+                              <span class="block text-xs mt-1 text-slate-700 truncate">{lang === "en" ? l.en : l.de}</span>
+                            </button>
+                          );
+                        })}
+                      </div>
+                    )}
+                </div>
+              </div>
+            )}
             <div ref={stageRef} class="flex-1 min-h-0 overflow-hidden bg-slate-200 flex items-center justify-center p-3">
               {slide && (
                 <SlideView

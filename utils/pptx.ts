@@ -66,6 +66,8 @@ interface BaseElement {
   h: number;
   /** Degrees, clockwise. */
   rotation?: number;
+  /** Part of the theme's decoration - replaced when the theme changes. */
+  decor?: boolean;
 }
 
 export interface TextElement extends BaseElement {
@@ -76,7 +78,7 @@ export interface TextElement extends BaseElement {
   strokeWidth?: number;
   valign?: "top" | "middle" | "bottom";
   /** Where it came from, so a title stays a title on the way back out. */
-  placeholder?: "title" | "subtitle" | "body";
+  placeholder?: "title" | "subtitle" | "body" | "caption" | "columnTitle" | "quote" | "author";
 }
 
 export interface ImageElement extends BaseElement {
@@ -108,12 +110,32 @@ export interface ShapeElement extends BaseElement {
 
 export type SlideElement = TextElement | ImageElement | ShapeElement;
 
+/** A two-colour gradient across the slide. */
+export interface Gradient {
+  from: string;
+  to: string;
+  /** Degrees, 0 = left to right, 90 = top to bottom. */
+  angle: number;
+}
+
 export interface Slide {
   id: string;
   /** "#rrggbb"; white when absent. */
   background?: string;
+  /** Takes precedence over the plain colour when present. */
+  gradient?: Gradient;
+  /** Which layout built it, so a theme change can rebuild it. */
+  layout?: string;
   notes?: string;
   elements: SlideElement[];
+}
+
+/** The slide's background as CSS, for the editor and the thumbnails. */
+export function slideBackgroundCss(slide: Slide): string {
+  if (slide.gradient) {
+    return `linear-gradient(${slide.gradient.angle + 90}deg, ${slide.gradient.from}, ${slide.gradient.to})`;
+  }
+  return slide.background ?? "#ffffff";
 }
 
 export interface Deck {
@@ -519,13 +541,34 @@ export async function pptxToDeck(bytes: Uint8Array): Promise<Deck> {
     }
 
     const slide: Slide = { id: newSlideId(), elements: [] };
-    const bgOf = (tree: XNode | undefined) =>
-      colorOf(path(tree, tree?.name === "#root" ? tree.children[0]?.name ?? "" : "", "p:cSld", "p:bg", "p:bgPr", "a:solidFill"));
-    const bg = bgOf(sld) ?? bgOf(layout) ?? bgOf(master);
-    if (bg && bg !== "#ffffff") slide.background = bg;
+    const bgPrOf = (tree: XNode | undefined) =>
+      path(tree, tree?.name === "#root" ? tree.children[0]?.name ?? "" : "", "p:cSld", "p:bg", "p:bgPr");
+    const bgPr = [sld, layout, master].map(bgPrOf).find((n) => n && (child(n, "a:solidFill") || child(n, "a:gradFill")));
+    const grad = child(bgPr, "a:gradFill");
+    if (grad) {
+      // Two stops are what we draw; a longer list keeps its first and last.
+      const stops = kids(child(grad, "a:gsLst"), "a:gs");
+      const from = colorOf(stops[0]);
+      const to = colorOf(stops[stops.length - 1]);
+      const ang = Number(child(grad, "a:lin")?.attrs.ang ?? 5400000) / 60000;
+      if (from && to) slide.gradient = { from, to, angle: ang };
+    } else {
+      const bg = colorOf(child(bgPr, "a:solidFill"));
+      if (bg && bg !== "#ffffff") slide.background = bg;
+    }
 
     const spTree = path(sld, "p:sld", "p:cSld", "p:spTree");
+    const cSldName = path(sld, "p:sld", "p:cSld")?.attrs.name ?? "";
+    const layoutMark = cSldName.match(/^layout:([a-z-]+)$/)?.[1];
+    if (layoutMark) slide.layout = layoutMark;
     let counter = 0;
+    /** What a shape's name says about it, if we wrote it. */
+    const marksOf = (nv: XNode | undefined): { decor?: true; role?: string } => {
+      const name = path(nv, "p:cNvPr")?.attrs.name ?? "";
+      if (/^Dekor\b/.test(name)) return { decor: true };
+      const role = name.match(/^Rolle:([a-zA-Z]+)\b/)?.[1];
+      return role ? { role } : {};
+    };
 
     const walk = (node: XNode, parent?: { ox: number; oy: number; sx: number; sy: number }) => {
       for (const c of node.children) {
@@ -582,12 +625,15 @@ export async function pptxToDeck(bytes: Uint8Array): Promise<Deck> {
           const box = fit(xf, parent);
           const id = `e${++counter}_${slide.id}`;
           const shape = PRST_TO_SHAPE[prst];
+          const marks = marksOf(child(c, "p:nvSpPr"));
+          const decor = marks.decor ? { decor: true as const } : {};
 
           if (shape && shape !== "rect" || (shape === "rect" && (fill || stroke) && !ph)) {
             slide.elements.push({
               kind: "shape",
               id,
               ...box,
+              ...decor,
               ...(xf.rot ? { rotation: xf.rot } : {}),
               shape: shape ?? "rect",
               ...(fill ? { fill } : {}),
@@ -597,10 +643,13 @@ export async function pptxToDeck(bytes: Uint8Array): Promise<Deck> {
               ...(valign ? { valign } : {}),
             });
           } else if (hasText) {
+            const ROLES = ["subtitle", "body", "caption", "columnTitle", "quote", "author"];
+            const role = marks.role && ROLES.includes(marks.role) ? marks.role as TextElement["placeholder"] : undefined;
             slide.elements.push({
               kind: "text",
               id,
               ...box,
+              ...decor,
               ...(xf.rot ? { rotation: xf.rot } : {}),
               paragraphs,
               ...(fill ? { fill } : {}),
@@ -608,6 +657,8 @@ export async function pptxToDeck(bytes: Uint8Array): Promise<Deck> {
               ...(valign ? { valign } : {}),
               ...(phType === "title" || phType === "ctrTitle"
                 ? { placeholder: "title" as const }
+                : role
+                ? { placeholder: role }
                 : phType === "subTitle"
                 ? { placeholder: "subtitle" as const }
                 : phType === "body"
@@ -620,6 +671,7 @@ export async function pptxToDeck(bytes: Uint8Array): Promise<Deck> {
               kind: "shape",
               id,
               ...box,
+              ...decor,
               shape: "rect",
               ...(fill ? { fill } : {}),
               ...(stroke ? { stroke } : {}),
@@ -793,9 +845,13 @@ function elementXml(
   lang: string,
   imageRel: (src: string) => string,
 ): string {
+  // Names are free text to PowerPoint and are shown in its selection pane;
+  // we use them to carry what the format has no field for: which shapes are
+  // the design's decoration, and which role a text box plays.
+  const mark = e.decor ? "Dekor" : "";
   if (e.kind === "image") {
     const rId = imageRel(e.src);
-    return `<p:pic><p:nvPicPr><p:cNvPr id="${n}" name="Bild ${n}"/><p:cNvPicPr><a:picLocks noChangeAspect="1"/></p:cNvPicPr><p:nvPr/></p:nvPicPr>` +
+    return `<p:pic><p:nvPicPr><p:cNvPr id="${n}" name="${mark || "Bild"} ${n}"/><p:cNvPicPr><a:picLocks noChangeAspect="1"/></p:cNvPicPr><p:nvPr/></p:nvPicPr>` +
       `<p:blipFill><a:blip r:embed="${rId}"/><a:stretch><a:fillRect/></a:stretch></p:blipFill>` +
       `<p:spPr>${xfrmXml(e)}<a:prstGeom prst="rect"><a:avLst/></a:prstGeom></p:spPr></p:pic>`;
   }
@@ -808,7 +864,8 @@ function elementXml(
     const nv = isTitle
       ? `<p:cNvSpPr><a:spLocks noGrp="1"/></p:cNvSpPr><p:nvPr><p:ph type="title"/></p:nvPr>`
       : `<p:cNvSpPr txBox="1"/><p:nvPr/>`;
-    return `<p:sp><p:nvSpPr><p:cNvPr id="${n}" name="${isTitle ? "Titel" : "Textfeld"} ${n}"/>${nv}</p:nvSpPr>` +
+    const role = e.placeholder && !isTitle ? `Rolle:${e.placeholder}` : "";
+    return `<p:sp><p:nvSpPr><p:cNvPr id="${n}" name="${isTitle ? "Titel" : role || mark || "Textfeld"} ${n}"/>${nv}</p:nvSpPr>` +
       `<p:spPr>${xfrmXml(e)}<a:prstGeom prst="rect"><a:avLst/></a:prstGeom>${e.fill ? solidFill(e.fill) : "<a:noFill/>"}${
         lineXml(e.stroke, e.strokeWidth)
       }</p:spPr>${txBodyXml(e.paragraphs, e.valign, lang)}</p:sp>`;
@@ -819,17 +876,24 @@ function elementXml(
   const fill = isLine ? "<a:noFill/>" : e.fill ? solidFill(e.fill) : "<a:noFill/>";
   const stroke = isLine ? (e.stroke ?? "#000000") : e.stroke;
   const body = isLine ? "" : txBodyXml(e.paragraphs ?? [], e.valign ?? "middle", lang);
-  return `<p:sp><p:nvSpPr><p:cNvPr id="${n}" name="Form ${n}"/><p:cNvSpPr/><p:nvPr/></p:nvSpPr>` +
+  return `<p:sp><p:nvSpPr><p:cNvPr id="${n}" name="${mark || "Form"} ${n}"/><p:cNvSpPr/><p:nvPr/></p:nvSpPr>` +
     `<p:spPr>${xfrmXml(e)}<a:prstGeom prst="${prst}"><a:avLst/></a:prstGeom>${fill}${lineXml(stroke, e.strokeWidth ?? (isLine ? 2 : 1))}</p:spPr>${body}</p:sp>`;
 }
 
 function slideXml(slide: Slide, lang: string, imageRel: (src: string) => string): string {
-  const bg = slide.background
+  const bg = slide.gradient
+    ? `<p:bg><p:bgPr><a:gradFill rotWithShape="1"><a:gsLst>` +
+      `<a:gs pos="0"><a:srgbClr val="${hex(slide.gradient.from)}"/></a:gs>` +
+      `<a:gs pos="100000"><a:srgbClr val="${hex(slide.gradient.to)}"/></a:gs>` +
+      `</a:gsLst><a:lin ang="${Math.round(slide.gradient.angle * 60000)}" scaled="0"/></a:gradFill><a:effectLst/></p:bgPr></p:bg>`
+    : slide.background
     ? `<p:bg><p:bgPr>${solidFill(slide.background)}<a:effectLst/></p:bgPr></p:bg>`
     : "";
   const shapes = slide.elements.map((e, i) => elementXml(e, i + 2, lang, imageRel)).join("");
+  // The slide's name carries the layout it was built with.
+  const cSldName = slide.layout ? ` name="layout:${esc(slide.layout)}"` : "";
   return XMLDECL +
-    `<p:sld ${NS_A} ${NS_R} ${NS_P}><p:cSld>${bg}<p:spTree>` +
+    `<p:sld ${NS_A} ${NS_R} ${NS_P}><p:cSld${cSldName}>${bg}<p:spTree>` +
     `<p:nvGrpSpPr><p:cNvPr id="1" name=""/><p:cNvGrpSpPr/><p:nvPr/></p:nvGrpSpPr>` +
     `<p:grpSpPr><a:xfrm><a:off x="0" y="0"/><a:ext cx="0" cy="0"/><a:chOff x="0" y="0"/><a:chExt cx="0" cy="0"/></a:xfrm></p:grpSpPr>` +
     shapes +
@@ -1104,7 +1168,8 @@ export async function deckToPptx(deck: Deck, opts: { lang?: string; title?: stri
 /** The deck as text, for the assistant and for tests. */
 export function deckToText(deck: Deck): string {
   return deck.slides.map((s, i) => {
-    const lines: string[] = [`Folie ${i + 1}${s.background ? ` (Hintergrund ${s.background})` : ""}:`];
+    const bgNote = s.gradient ? ` (Verlauf ${s.gradient.from}→${s.gradient.to})` : s.background ? ` (Hintergrund ${s.background})` : "";
+    const lines: string[] = [`Folie ${i + 1}${bgNote}:`];
     for (const e of s.elements) {
       if (e.kind === "image") {
         lines.push(`  [Bild ${Math.round(e.w)}x${Math.round(e.h)} bei ${Math.round(e.x)},${Math.round(e.y)}]`);

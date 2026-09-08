@@ -16,7 +16,7 @@
  */
 
 import { type Deck, deckToText, type Slide } from "./pptx.ts";
-import { buildDeck, buildSlide, DEFAULT_THEME, type SlideSpec, THEMES, themeOf } from "./slideLayouts.ts";
+import { applyTheme, buildDeck, buildSlide, DEFAULT_THEME, type SlideSpec, THEMES, themeOf } from "./slideLayouts.ts";
 import {
   type DeckMeta,
   type DeckRecord,
@@ -59,6 +59,8 @@ export type SlidesAction =
   | ({ action: "replace_slide"; deck?: string; slide: number } & SlideSpec)
   | { action: "delete_slide"; deck?: string; slide: number }
   | { action: "rename"; deck?: string; name: string }
+  /** Another design for the whole deck. */
+  | { action: "theme"; deck?: string; theme: string }
   | { action: "delete"; deck: string };
 
 export interface SlidesToolResult {
@@ -183,6 +185,9 @@ export async function applySlidesAction(
     case "create": {
       const specs = specsOf((action as { slides?: unknown }).slides);
       if (!specs.length) return { ok: false, message: 'Es fehlen die Folien: "slides" ist leer.' };
+      if (action.theme && !THEMES[String(action.theme).toLowerCase()]) {
+        return { ok: false, message: `Ein Design "${action.theme}" gibt es nicht. Zur Wahl stehen: ${Object.keys(THEMES).join(", ")}.` };
+      }
       const name = await freeDeckName(action.name || "Ohne Titel");
       const id = newDeckId();
       const { deck, missingImages } = buildDeck(specs, action.theme, resolveImage);
@@ -248,6 +253,19 @@ export async function applySlidesAction(
       if (!(await saveDeck({ ...rec, deck: { ...rec.deck, slides } }))) return quotaFail(rec.name);
       const fresh = (await loadDeck(rec.id))!;
       return { ...full(fresh), message: `Folie ${n} aus "${rec.name}" gelöscht.` };
+    }
+
+    case "theme": {
+      const rec = await find(action.deck, currentId);
+      if (!rec) return { ok: false, message: nameHelp(action.deck, await listDecks()) };
+      const key = String(action.theme ?? "").toLowerCase();
+      if (!THEMES[key]) {
+        return { ok: false, message: `Ein Design "${action.theme}" gibt es nicht. Zur Wahl stehen: ${Object.keys(THEMES).join(", ")}.` };
+      }
+      const deck = applyTheme(rec.deck, key);
+      if (!(await saveDeck({ ...rec, deck }))) return quotaFail(rec.name);
+      const fresh = (await loadDeck(rec.id))!;
+      return { ...full(fresh), message: `"${rec.name}" im Design "${THEMES[key].label.de}" (${key}).` };
     }
 
     case "rename": {
