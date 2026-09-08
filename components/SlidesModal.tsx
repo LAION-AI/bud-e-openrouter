@@ -52,6 +52,7 @@ import {
   saveDeck,
 } from "../utils/slideStore.ts";
 import { isSlidesAssistantAllowed, setSlidesAssistantAllowed } from "../utils/slidesTools.ts";
+import { type AudioNote, audioKb, canRecord, type Recorder, startRecording } from "../utils/audioNote.ts";
 
 const SIZES = [10, 12, 14, 16, 18, 20, 24, 28, 32, 36, 40, 48, 60];
 /** Where the editor left off: which deck, which slide. */
@@ -471,6 +472,15 @@ export default function SlidesModal(
   /** Which picker is open: a new slide, a layout for this one, or a design. */
   const [picker, setPicker] = useState<null | "new" | "layout" | "design">(null);
   const [showNotes, setShowNotes] = useState(false);
+  /** Recording for the current slide: idle, running, or being encoded. */
+  const [recState, setRecState] = useState<"idle" | "recording" | "encoding">("idle");
+  const [recError, setRecError] = useState("");
+  const [recSeconds, setRecSeconds] = useState(0);
+  const [playing, setPlaying] = useState(false);
+  const recorderRef = useRef<Recorder | null>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  /** In the show: play each slide's narration and move on when it ends. */
+  const [autoAdvance, setAutoAdvance] = useState(true);
 
   const stageRef = useRef<HTMLDivElement | null>(null);
   const fileRef = useRef<HTMLInputElement | null>(null);
@@ -1159,6 +1169,84 @@ export default function SlidesModal(
     return () => removeEventListener("beforeunload", before);
   }, [dirty]);
 
+  // ----------------------------------------------------------- narration
+
+  const startRec = async () => {
+    setRecError("");
+    if (!canRecord()) {
+      setRecError(t("noMic"));
+      return;
+    }
+    try {
+      audioRef.current?.pause();
+      setPlaying(false);
+      recorderRef.current = await startRecording();
+      setRecState("recording");
+      setRecSeconds(0);
+    } catch (err) {
+      setRecError(`${t("micDenied")} (${String(err instanceof Error ? err.message : err).slice(0, 80)})`);
+    }
+  };
+
+  const stopRec = async () => {
+    const rec = recorderRef.current;
+    if (!rec) return;
+    recorderRef.current = null;
+    setRecState("encoding");
+    try {
+      const note: AudioNote = await rec.stop();
+      const at = currentRef.current;
+      updateSlide((sl) => ({ ...sl, audio: note }), { current: at });
+    } catch (err) {
+      setRecError(String(err instanceof Error ? err.message : err).slice(0, 120));
+    } finally {
+      setRecState("idle");
+    }
+  };
+
+  const deleteAudio = () => {
+    audioRef.current?.pause();
+    setPlaying(false);
+    updateSlide((sl) => {
+      const { audio: _a, ...rest } = sl;
+      return rest;
+    });
+  };
+
+  const togglePlay = () => {
+    const el = audioRef.current;
+    if (!el) return;
+    if (el.paused) {
+      el.currentTime = 0;
+      el.play().then(() => setPlaying(true)).catch(() => setPlaying(false));
+    } else {
+      el.pause();
+      setPlaying(false);
+    }
+  };
+
+  // The seconds tick while recording, and any recording stops with the
+  // slide it belongs to: switching slides mid-recording ends it there.
+  useEffect(() => {
+    if (recState !== "recording") return;
+    const timer = setInterval(() => setRecSeconds((n) => n + 1), 1000);
+    return () => clearInterval(timer);
+  }, [recState]);
+  useEffect(() => {
+    if (recState === "recording") stopRec();
+    audioRef.current?.pause();
+    setPlaying(false);
+  }, [current]);
+
+  // In the show, the narration plays as each slide comes up.
+  useEffect(() => {
+    if (!presenting) return;
+    const el = audioRef.current;
+    if (!el || !slide?.audio) return;
+    el.currentTime = 0;
+    el.play().then(() => setPlaying(true)).catch(() => setPlaying(false));
+  }, [presenting, current]);
+
   // ---------------------------------------------------------------- view
 
   if (presenting) {
@@ -1167,9 +1255,23 @@ export default function SlidesModal(
         <div ref={stageRef} class="w-full h-full flex items-center justify-center">
           <SlideView slide={slide} scale={scale} />
         </div>
-        <div class="absolute bottom-3 right-4 text-white/60 text-sm select-none">
-          {current + 1} / {deck.slides.length} · Esc
+        <div class="absolute bottom-3 right-4 text-white/60 text-sm select-none flex items-center gap-3">
+          {slide?.audio && <span title={t("narration")}>{playing ? "🔊" : "🔈"} {slide.audio.seconds}s</span>}
+          <span>{current + 1} / {deck.slides.length} · Esc</span>
         </div>
+        {slide?.audio && (
+          <audio
+            key={slide.id}
+            ref={audioRef}
+            src={slide.audio.src}
+            onEnded={() => {
+              setPlaying(false);
+              // On to the next slide once the narration is over - the show
+              // runs itself, the way a recorded talk should.
+              if (autoAdvance && current < deck.slides.length - 1) setTimeout(() => setCurrent((c) => Math.min(c + 1, deck.slides.length - 1)), 600);
+            }}
+          />
+        )}
         <button
           onClick={(e) => {
             e.stopPropagation();
@@ -1416,6 +1518,7 @@ export default function SlidesModal(
                   <SlideView slide={s} scale={0.125} />
                 </div>
                 <span class="absolute left-0.5 bottom-0.5 text-[10px] bg-black/50 text-white rounded px-1 leading-4">{i + 1}</span>
+                {s.audio && <span class="absolute right-0.5 bottom-0.5 text-[10px] bg-black/50 text-white rounded px-1 leading-4" title={`${s.audio.seconds}s`}>🔊</span>}
               </button>
             ))}
             <div class="shrink-0 flex md:flex-row gap-1 justify-center">
@@ -1483,7 +1586,17 @@ export default function SlidesModal(
                 </div>
               </div>
             )}
-            <div ref={stageRef} class="flex-1 min-h-0 overflow-hidden bg-slate-200 flex items-center justify-center p-3">
+            {/* The desk around the slide: a click there ends editing and
+                clears the selection, as it does in every slide program. */}
+            <div
+              ref={stageRef}
+              class="flex-1 min-h-0 overflow-hidden bg-slate-200 flex items-center justify-center p-3"
+              onPointerDown={(e) => {
+                if (e.target !== e.currentTarget) return;
+                commitEdit();
+                setSelected(null);
+              }}
+            >
               {slide && (
                 <SlideView
                   slide={slide}
@@ -1505,6 +1618,40 @@ export default function SlidesModal(
                 class="shrink-0 h-24 md:h-28 border-t px-3 py-2 text-sm outline-none resize-none bg-amber-50/60"
               />
             )}
+            {/* The narration strip: record, listen, record again. */}
+            <div class="shrink-0 border-t bg-slate-50 px-3 py-1.5 flex flex-wrap items-center gap-2 text-sm" data-narration>
+              <span class="font-semibold text-slate-700">🎙 {t("narration")}</span>
+              {recState === "recording"
+                ? (
+                  <button onClick={stopRec} class="px-3 py-1 rounded-lg bg-red-600 text-white font-semibold animate-pulse" title={t("recording")}>
+                    ■ {t("stop")} · {recSeconds}s
+                  </button>
+                )
+                : recState === "encoding"
+                ? <span class="text-slate-500">{t("encoding")}</span>
+                : (
+                  <button onClick={startRec} class="px-3 py-1 rounded-lg bg-red-100 text-red-800 hover:bg-red-200 font-semibold" title={slide?.audio ? t("rerecord") : t("record")}>
+                    ● {slide?.audio ? t("rerecord") : t("record")}
+                  </button>
+                )}
+              {slide?.audio && recState === "idle" && (
+                <>
+                  <button onClick={togglePlay} class="px-3 py-1 rounded-lg bg-white border hover:bg-slate-100" title={playing ? t("pause") : t("play")}>
+                    {playing ? "⏸" : "▶"} {playing ? t("pause") : t("play")}
+                  </button>
+                  <span class="text-xs text-slate-500">{slide.audio.seconds}s · {audioKb(slide.audio)} KB</span>
+                  <button onClick={deleteAudio} class="px-2 py-1 rounded text-red-600 hover:bg-red-50 text-xs" title={t("deleteAudio")}>✕</button>
+                  <audio key={slide.id} ref={audioRef} src={slide.audio.src} onEnded={() => setPlaying(false)} />
+                </>
+              )}
+              {recError && <span class="text-xs text-red-700">{recError}</span>}
+              {!recError && !slide?.audio && recState === "idle" && <span class="text-xs text-slate-500 hidden md:inline">{t("narrationHint")}</span>}
+              <span class="flex-1" />
+              <label class="text-xs text-slate-600 flex items-center gap-1" title={t("autoAdvance")}>
+                <input type="checkbox" checked={autoAdvance} onChange={(e) => setAutoAdvance((e.target as HTMLInputElement).checked)} />
+                {t("autoAdvance")}
+              </label>
+            </div>
             <p class="shrink-0 text-[11px] text-slate-500 px-3 py-1 border-t bg-white hidden md:block">{t("hint")}</p>
           </div>
         </div>

@@ -61,6 +61,8 @@ export type SlidesAction =
   | { action: "rename"; deck?: string; name: string }
   /** Another design for the whole deck. */
   | { action: "theme"; deck?: string; theme: string }
+  /** Hear the narration of one slide, or of every slide that has one. */
+  | { action: "listen"; deck?: string; slide?: number }
   | { action: "delete"; deck: string };
 
 export interface SlidesToolResult {
@@ -268,6 +270,37 @@ export async function applySlidesAction(
       return { ...full(fresh), message: `"${rec.name}" im Design "${THEMES[key].label.de}" (${key}).` };
     }
 
+    case "listen": {
+      const rec = await find(action.deck, currentId);
+      if (!rec) return { ok: false, message: nameHelp(action.deck, await listDecks()) };
+      const wanted = typeof action.slide === "number" ? [Math.floor(action.slide)] : rec.deck.slides.map((_, i) => i + 1);
+      const withAudio = wanted.filter((n) => rec.deck.slides[n - 1]?.audio);
+      if (!withAudio.length) {
+        return {
+          ok: false,
+          message: typeof action.slide === "number"
+            ? `Auf Folie ${action.slide} von "${rec.name}" ist nichts aufgenommen.`
+            : `In "${rec.name}" ist auf keiner Folie etwas aufgenommen.`,
+        };
+      }
+      const lines: string[] = [];
+      for (const n of withAudio) {
+        const a = rec.deck.slides[n - 1].audio!;
+        try {
+          const text = await transcribe(a.src);
+          lines.push(`Folie ${n} (${a.seconds} s gesprochen): ${text}`);
+        } catch (err) {
+          lines.push(`Folie ${n}: Die Spracherkennung hat nicht geklappt - ${String(err instanceof Error ? err.message : err).slice(0, 200)}`);
+        }
+      }
+      return {
+        ok: true,
+        message: `Aufnahmen aus "${rec.name}" angehört (${withAudio.length} Folie${withAudio.length === 1 ? "" : "n"}).`,
+        openId: rec.id,
+        snapshot: lines.join("\n\n"),
+      };
+    }
+
     case "rename": {
       const rec = await find(action.deck, currentId);
       if (!rec) return { ok: false, message: nameHelp(action.deck, await listDecks()) };
@@ -286,6 +319,38 @@ export async function applySlidesAction(
     }
   }
   return { ok: false, message: "Unbekannte Aktion." };
+}
+
+/**
+ * The words in a recording, through the same speech recognition the
+ * microphone button uses - so whatever the user configured there applies
+ * here too.
+ */
+async function transcribe(src: string): Promise<string> {
+  const m = src.match(/^data:([^;,]+);base64,(.*)$/s);
+  if (!m) throw new Error("keine Aufnahme");
+  const bin = atob(m[2]);
+  const bytes = new Uint8Array(bin.length);
+  for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+  const ext = m[1] === "audio/mp4" ? "m4a" : m[1] === "audio/wav" ? "wav" : m[1] === "audio/ogg" ? "ogg" : "mp3";
+  const form = new FormData();
+  form.append("audio", new Blob([bytes], { type: m[1] }), `folie.${ext}`);
+  const ls = (k: string) => {
+    try {
+      return localStorage.getItem(k) ?? "";
+    } catch {
+      return "";
+    }
+  };
+  form.append("sttUrl", ls("bud-e-stt-url"));
+  form.append("sttKey", ls("bud-e-stt-key"));
+  form.append("sttModel", ls("bud-e-stt-model"));
+  form.append("orModel", ls("bud-e-or-asr-model"));
+  form.append("universalApiKey", ls("bud-e-universal-api-key"));
+  const resp = await fetch("/api/stt", { method: "POST", body: form });
+  const text = await resp.text();
+  if (!resp.ok) throw new Error(text.slice(0, 300) || `HTTP ${resp.status}`);
+  return text.trim();
 }
 
 /** A refusal that says what would have worked. */

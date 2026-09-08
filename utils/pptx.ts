@@ -127,6 +127,8 @@ export interface Slide {
   /** Which layout built it, so a theme change can rebuild it. */
   layout?: string;
   notes?: string;
+  /** A spoken narration: a data: URL (MP3 unless it came from a file) and its length. */
+  audio?: { src: string; seconds: number };
   elements: SlideElement[];
 }
 
@@ -681,6 +683,23 @@ export async function pptxToDeck(bytes: Uint8Array): Promise<Deck> {
         }
 
         if (c.name === "p:pic") {
+          // A narration: PowerPoint stores it as a picture (the loudspeaker
+          // icon) whose nvPr points at the sound. The sound becomes the
+          // slide's audio; the icon is not shown, the player is.
+          const audioLink = path(c, "p:nvPicPr", "p:nvPr", "a:audioFile")?.attrs["r:link"];
+          if (audioLink) {
+            const rel = slideRels.byId[audioLink];
+            const part = rel ? resolve(slidePart, rel.target) : "";
+            const data = part ? entries.get(part) : undefined;
+            if (data && !slide.audio) {
+              const ext = part.toLowerCase().split(".").pop() ?? "mp3";
+              const mime = ext === "m4a" || ext === "mp4" ? "audio/mp4" : ext === "wav" ? "audio/wav" : ext === "ogg" || ext === "oga" ? "audio/ogg" : "audio/mpeg";
+              const name = path(c, "p:nvPicPr", "p:cNvPr")?.attrs.name ?? "";
+              const secs = Number(name.match(/\((\d+(?:\.\d+)?) s\)/)?.[1] ?? 0);
+              slide.audio = { src: `data:${mime};base64,${encodeBase64(data)}`, seconds: secs };
+            }
+            continue;
+          }
           const xf = readXfrm(path(c, "p:spPr", "a:xfrm"));
           const embed = path(c, "p:blipFill", "a:blip")?.attrs["r:embed"];
           const rel = embed ? slideRels.byId[embed] : undefined;
@@ -757,6 +776,39 @@ export async function pptxToDeck(bytes: Uint8Array): Promise<Deck> {
 }
 
 /* ============================================================ writing */
+
+/** The loudspeaker PowerPoint shows for an embedded sound, 64 x 64 PNG. */
+const SPEAKER_PNG = "iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAABaElEQVR42u1byxKDMAhEpt+m1/ZL7VV/rj0543R8EEAbyO5ZUnbZkMekRAAAAEC76CzBff/81EJknt/dbQLURNwqRJeFuFYIzki+JF/OSL4kb85KXpo/U+PgzNWX8IADslf/jA8cUFtC0zSq4zSxnIW8dgyOTp6IaBhe6rE4Ovk9EcII4EF+SwTpuI9IxJcYbbWrcYCFfEm85DuOYnlpoyt1B0ea757Wd+sBnk1MKsLym9M0mkVJuRUuWQ1wFshe4SanAASAABAAAkCAzAKslz7sBDEFbA4xH4ZKLOhxcPK0/+0OsCZ8xcnz9imgFeGX/N44Ia7FNSKsY6Txku/+dim6JFdSsStuhP6+CniS0jTIKpZBDxG0DbKafYBFBGmDrH4jpBVB0yAX7L6ly/ZAgmj77SDOAiVqZas+HHAmQBYXHPGAAyzqRa++2AFRRZDkzZ6DRSN/uBE6QrP/GKlZiGz7FgAAgFvwBeubqPF7hDgjAAAAAElFTkSuQmCC";
+
+/**
+ * A sound on a slide, the way PowerPoint writes one: a picture shape that
+ * points at the media, and a timing tree that starts it when the slide
+ * comes up. The last shape id on the slide is passed in so the ids stay
+ * unique.
+ */
+function audioPicXml(n: number, seconds: number, rels: { link: string; media: string; icon: string }): string {
+  return `<p:pic><p:nvPicPr><p:cNvPr id="${n}" name="Audio ${n} (${seconds} s)"><a:hlinkClick r:id="" action="ppaction://media"/></p:cNvPr>` +
+    `<p:cNvPicPr><a:picLocks noChangeAspect="1"/></p:cNvPicPr><p:nvPr><a:audioFile r:link="${rels.link}"/>` +
+    `<p:extLst><p:ext uri="{DAA4B4D4-6D71-4841-9C94-3DE7FCFB9230}"><p14:media xmlns:p14="http://schemas.microsoft.com/office/powerpoint/2010/main" r:embed="${rels.media}"/></p:ext></p:extLst></p:nvPr></p:nvPicPr>` +
+    `<p:blipFill><a:blip r:embed="${rels.icon}"/><a:stretch><a:fillRect/></a:stretch></p:blipFill>` +
+    `<p:spPr><a:xfrm><a:off x="${emu(SLIDE_W - 60)}" y="${emu(SLIDE_H - 60)}"/><a:ext cx="${emu(44)}" cy="${emu(44)}"/></a:xfrm><a:prstGeom prst="rect"><a:avLst/></a:prstGeom></p:spPr></p:pic>`;
+}
+
+function audioTimingXml(spid: number, seconds: number): string {
+  const dur = Math.max(1000, Math.round(seconds * 1000));
+  return `<p:timing><p:tnLst><p:par><p:cTn id="1" dur="indefinite" restart="never" nodeType="tmRoot"><p:childTnLst>` +
+    `<p:seq concurrent="1" nextAc="seek"><p:cTn id="2" dur="indefinite" nodeType="mainSeq"><p:childTnLst>` +
+    `<p:par><p:cTn id="3" fill="hold"><p:stCondLst><p:cond delay="indefinite"/><p:cond evt="onBegin" delay="0"><p:tn val="2"/></p:cond></p:stCondLst><p:childTnLst>` +
+    `<p:par><p:cTn id="4" fill="hold"><p:stCondLst><p:cond delay="0"/></p:stCondLst><p:childTnLst>` +
+    `<p:par><p:cTn id="5" presetID="1" presetClass="mediacall" presetSubtype="0" fill="hold" nodeType="withEffect"><p:stCondLst><p:cond delay="0"/></p:stCondLst><p:childTnLst>` +
+    `<p:cmd type="call" cmd="playFrom(0.0)"><p:cBhvr><p:cTn id="6" dur="${dur}" fill="hold"/><p:tgtEl><p:spTgt spid="${spid}"/></p:tgtEl></p:cBhvr></p:cmd>` +
+    `</p:childTnLst></p:cTn></p:par></p:childTnLst></p:cTn></p:par></p:childTnLst></p:cTn></p:par></p:childTnLst></p:cTn>` +
+    `<p:prevCondLst><p:cond evt="onPrev" delay="0"><p:tgtEl><p:sldTgt/></p:tgtEl></p:cond></p:prevCondLst>` +
+    `<p:nextCondLst><p:cond evt="onNext" delay="0"><p:tgtEl><p:sldTgt/></p:tgtEl></p:cond></p:nextCondLst></p:seq>` +
+    `<p:audio><p:cMediaNode vol="80000"><p:cTn id="7" fill="hold" display="0"><p:stCondLst><p:cond delay="indefinite"/><p:cond evt="onBegin" delay="0"><p:tn val="5"/></p:cond></p:stCondLst>` +
+    `<p:endCondLst><p:cond evt="onStopAudio" delay="0"><p:tgtEl><p:sldTgt/></p:tgtEl></p:cond></p:endCondLst></p:cTn><p:tgtEl><p:spTgt spid="${spid}"/></p:tgtEl></p:cMediaNode></p:audio>` +
+    `</p:childTnLst></p:cTn></p:par></p:tnLst></p:timing>`;
+}
 
 const NS_A = 'xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main"';
 const NS_R = 'xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"';
@@ -884,7 +936,12 @@ function elementXml(
     `<p:spPr>${xfrmXml(e)}<a:prstGeom prst="${prst}"><a:avLst/></a:prstGeom>${fill}${lineXml(stroke, e.strokeWidth ?? (isLine ? 2 : 1))}</p:spPr>${body}</p:sp>`;
 }
 
-function slideXml(slide: Slide, lang: string, imageRel: (src: string) => string): string {
+function slideXml(
+  slide: Slide,
+  lang: string,
+  imageRel: (src: string) => string,
+  audioRels?: { link: string; media: string; icon: string },
+): string {
   const bg = slide.gradient
     ? `<p:bg><p:bgPr><a:gradFill rotWithShape="1"><a:gsLst>` +
       `<a:gs pos="0"><a:srgbClr val="${hex(slide.gradient.from)}"/></a:gs>` +
@@ -894,14 +951,17 @@ function slideXml(slide: Slide, lang: string, imageRel: (src: string) => string)
     ? `<p:bg><p:bgPr>${solidFill(slide.background)}<a:effectLst/></p:bgPr></p:bg>`
     : "";
   const shapes = slide.elements.map((e, i) => elementXml(e, i + 2, lang, imageRel)).join("");
+  const audioId = slide.elements.length + 2;
+  const audio = slide.audio && audioRels ? audioPicXml(audioId, slide.audio.seconds, audioRels) : "";
+  const timing = slide.audio && audioRels ? audioTimingXml(audioId, slide.audio.seconds) : "";
   // The slide's name carries the layout it was built with.
   const cSldName = slide.layout ? ` name="layout:${esc(slide.layout)}"` : "";
   return XMLDECL +
     `<p:sld ${NS_A} ${NS_R} ${NS_P}><p:cSld${cSldName}>${bg}<p:spTree>` +
     `<p:nvGrpSpPr><p:cNvPr id="1" name=""/><p:cNvGrpSpPr/><p:nvPr/></p:nvGrpSpPr>` +
     `<p:grpSpPr><a:xfrm><a:off x="0" y="0"/><a:ext cx="0" cy="0"/><a:chOff x="0" y="0"/><a:chExt cx="0" cy="0"/></a:xfrm></p:grpSpPr>` +
-    shapes +
-    `</p:spTree></p:cSld><p:clrMapOvr><a:masterClrMapping/></p:clrMapOvr></p:sld>`;
+    shapes + audio +
+    `</p:spTree></p:cSld><p:clrMapOvr><a:masterClrMapping/></p:clrMapOvr>${timing}</p:sld>`;
 }
 
 function notesXml(text: string, lang: string): string {
@@ -973,9 +1033,11 @@ const NOTES_MASTER = XMLDECL +
   `<p:notesStyle>${lvlStyles("+mn-lt", [12, 12, 12, 12, 12])}</p:notesStyle></p:notesMaster>`;
 
 function rels(list: { id: string; type: string; target: string }[]): string {
+  const typeOf = (t: string) =>
+    t === "media2010" ? "http://schemas.microsoft.com/office/2007/relationships/media" : `${REL}/${t}`;
   return XMLDECL +
     `<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">` +
-    list.map((r) => `<Relationship Id="${r.id}" Type="${REL}/${r.type}" Target="${r.target}"/>`).join("") +
+    list.map((r) => `<Relationship Id="${r.id}" Type="${typeOf(r.type)}" Target="${r.target}"/>`).join("") +
     `</Relationships>`;
 }
 
@@ -1032,7 +1094,25 @@ export async function deckToPptx(deck: Deck, opts: { lang?: string; title?: stri
       slideRels.push({ id, type: "image", target: "../" + part.slice(4) });
       return id;
     };
-    put(`ppt/slides/slide${n}.xml`, slideXml(slide, lang, imageRel));
+    let audioRels: { link: string; media: string; icon: string } | undefined;
+    if (slide.audio) {
+      const m = slide.audio.src.match(/^data:(audio\/[a-z0-9.+-]+);base64,(.*)$/s);
+      if (m) {
+        const ext = m[1] === "audio/mp4" ? "m4a" : m[1] === "audio/wav" || m[1] === "audio/x-wav" ? "wav" : m[1] === "audio/ogg" ? "ogg" : "mp3";
+        const part = `ppt/media/media${n}.${ext}`;
+        put(part, decodeBase64(m[2]));
+        mediaTypes.add(ext);
+        const iconPart = mediaFor(`data:image/png;base64,${SPEAKER_PNG}`);
+        const link = `rId${slideRels.length + 1}`;
+        slideRels.push({ id: link, type: "audio", target: "../" + part.slice(4) });
+        const media = `rId${slideRels.length + 1}`;
+        slideRels.push({ id: media, type: "media2010", target: "../" + part.slice(4) });
+        const icon = `rId${slideRels.length + 1}`;
+        slideRels.push({ id: icon, type: "image", target: "../" + iconPart.slice(4) });
+        audioRels = { link, media, icon };
+      }
+    }
+    put(`ppt/slides/slide${n}.xml`, slideXml(slide, lang, imageRel, audioRels));
     if (slide.notes?.trim()) {
       slideRels.push({ id: `rId${slideRels.length + 1}`, type: "notesSlide", target: `../notesSlides/notesSlide${n}.xml` });
       put(`ppt/notesSlides/notesSlide${n}.xml`, notesXml(slide.notes, lang));
@@ -1152,9 +1232,10 @@ export async function deckToPptx(deck: Deck, opts: { lang?: string; title?: stri
   const defaults = [
     `<Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/>`,
     `<Default Extension="xml" ContentType="application/xml"/>`,
-    ...[...mediaTypes].map((ext) =>
-      `<Default Extension="${ext}" ContentType="image/${ext === "jpeg" ? "jpeg" : ext}"/>`
-    ),
+    ...[...mediaTypes].map((ext) => {
+      const audio = ext === "mp3" ? "audio/mpeg" : ext === "m4a" ? "audio/mp4" : ext === "wav" ? "audio/wav" : ext === "ogg" ? "audio/ogg" : "";
+      return `<Default Extension="${ext}" ContentType="${audio || `image/${ext === "jpeg" ? "jpeg" : ext}`}"/>`;
+    }),
   ];
   files.unshift({
     name: "[Content_Types].xml",
@@ -1185,6 +1266,7 @@ export function deckToText(deck: Deck): string {
       }
     }
     if (s.notes?.trim()) lines.push(`  Notizen: ${s.notes.trim().replace(/\n/g, " / ")}`);
+    if (s.audio) lines.push(`  [Audio: ${s.audio.seconds} s gesprochen]`);
     return lines.join("\n");
   }).join("\n\n");
 }

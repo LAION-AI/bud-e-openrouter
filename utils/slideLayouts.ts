@@ -971,15 +971,29 @@ export function applyTheme(deck: Deck, themeKey: string): Deck {
   // a file written before the marks existed does not say so.
   const old = deck.theme ? THEMES[deck.theme] : undefined;
   const oldColors = old ? new Set([old.accent, old.accent2, old.sectionBg, old.sectionGradient?.from].filter(Boolean)) : new Set<string>();
+  const isOldDecor = (e: SlideElement) =>
+    e.kind === "shape" && !paragraphsText(e.paragraphs).trim() &&
+    ((e.fill && oldColors.has(e.fill)) || (!e.fill && e.stroke && oldColors.has(e.stroke)));
   const slides = deck.slides.map((s, i) => {
-    if (LAYOUTS.some((l) => l.key === s.layout)) {
+    if (LAYOUTS.some((l) => l.key === s.layout) && s.layout !== "blank") {
       const built = buildSlide(slideToSpec(s), t, () => null, { first: i === 0 }).slide;
-      return { ...built, id: s.id };
+      return { ...built, id: s.id, ...(s.audio ? { audio: s.audio } : {}) };
+    }
+    // No layout yet: the first slide becomes the title slide, every other
+    // one gets a heading with its content beneath - so the design shows at
+    // once, with whatever words and pictures the slide already had.
+    const hasContent = s.elements.some((e) => e.kind === "image" || (e.kind === "text" && paragraphsText(e.paragraphs).trim()));
+    if (!hasContent || !s.elements.some((e) => e.kind === "shape" && !e.decor && !isOldDecor(e))) {
+      const spec = slideToSpec(s);
+      const layout: SlideLayout = i === 0 ? "title" : spec.image ? "image-right" : spec.text && !spec.bullets ? "text" : "bullets";
+      const fresh = newSlideSpec(layout, "de");
+      for (const k of Object.keys(fresh) as (keyof SlideSpec)[]) {
+        if (spec[k] === undefined) (spec as Record<string, unknown>)[k] = fresh[k];
+      }
+      const built = buildSlide({ ...spec, layout }, t, () => null, { first: i === 0 }).slide;
+      return { ...built, id: s.id, ...(s.audio ? { audio: s.audio } : {}) };
     }
     const bgColor = t.bgGradient?.from ?? t.bg;
-    const isOldDecor = (e: SlideElement) =>
-      e.kind === "shape" && !paragraphsText(e.paragraphs).trim() &&
-      ((e.fill && oldColors.has(e.fill)) || (!e.fill && e.stroke && oldColors.has(e.stroke)));
     const kept = s.elements.filter((e) => !e.decor && !isOldDecor(e)).map((e) => {
       if (e.kind === "text" && e.placeholder === "title") {
         return { ...e, paragraphs: e.paragraphs.map((p) => ({ ...p, runs: p.runs.map((r) => ({ ...r, color: t.title, font: t.titleFont })) })) };
