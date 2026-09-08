@@ -35,6 +35,8 @@ import {
   chatIslandContent,
   mailSyncContent,
   docsContent,
+  slidesContent,
+  chatTemplateContent,
   notebookContent,
 } from "../internalization/content.ts";
 
@@ -50,6 +52,7 @@ import {
 import MailSyncModal from "../components/MailSyncModal.tsx";
 import NotebookModal from "../components/NotebookModal.tsx";
 import DocsModal from "../components/DocsModal.tsx";
+import SlidesModal from "../components/SlidesModal.tsx";
 import LearningModal from "../components/LearningModal.tsx";
 import { schedulePythonBoot } from "../utils/pythonKernel.ts";
 import { learningContent } from "../internalization/learning-content.ts";
@@ -61,6 +64,13 @@ import {
   isDocsAssistantAllowed,
 } from "../utils/docsTools.ts";
 import { type DocMeta, listDocs } from "../utils/docStore.ts";
+import {
+  applySlidesAction,
+  isSlidesAssistantAllowed,
+  type SlidesAction,
+} from "../utils/slidesTools.ts";
+import { type DeckMeta, listDecks, loadDeck } from "../utils/slideStore.ts";
+import { deckToPptx } from "../utils/pptx.ts";
 import {
   applyNotebookAction,
   isAssistantAllowed as isNotebookAssistantAllowed,
@@ -106,6 +116,41 @@ class FatalError extends Error {}
 
 // No frontend default for image generation on purpose: when no model is named
 // explicitly, the request omits the field and the API uses its own default.
+
+
+/**
+ * The sentence inside a provider error.
+ *
+ * An error from a provider arrives wrapped in ours, and that one in
+ * OpenRouter's: three layers of JSON around one sentence, such as "This
+ * request requires at least $0.50 in balance". The reader gets the sentence,
+ * and the remedy hint that travels with it.
+ */
+function readableError(v: unknown, depth = 0): { message: string; hint?: string } {
+  // Each layer costs two steps (the object, then its message string), and
+  // OpenRouter's errors arrive three layers deep.
+  if (depth > 10) return { message: typeof v === "string" ? v : JSON.stringify(v ?? "") };
+  if (typeof v === "string") {
+    const t = v.trim();
+    if (t.startsWith("{")) {
+      try {
+        return readableError(JSON.parse(t), depth + 1);
+      } catch {
+        return { message: t };
+      }
+    }
+    return { message: t };
+  }
+  if (v && typeof v === "object") {
+    const o = v as Record<string, unknown>;
+    if (o.error !== undefined) return readableError(o.error, depth + 1);
+    const inner = readableError(o.message ?? "", depth + 1);
+    const meta = o.metadata as Record<string, unknown> | undefined;
+    const hint = inner.hint ?? (typeof meta?.remedy_hint === "string" ? meta.remedy_hint : undefined);
+    return { message: inner.message, ...(hint ? { hint } : {}) };
+  }
+  return { message: String(v ?? "") };
+}
 
 interface Message {
   role: string;
@@ -299,12 +344,23 @@ export default function ChatIsland({ lang }: { lang: string }) {
   >(null);
   const [openDocId, setOpenDocId] = useState<string | undefined>(undefined);
 
+  // The slide editor, wired the same way as the word processor.
+  const [showSlides, setShowSlides] = useState(false);
+  const [slidesToolsAllowed, setSlidesToolsAllowed] = useState(false);
+  const [slidesRevision, setSlidesRevision] = useState(0);
+  const [deckList, setDeckList] = useState<DeckMeta[]>([]);
+  const activeDeckRef = useRef<DeckMeta | null>(null);
+  const [incomingDeck, setIncomingDeck] = useState<{ name: string; bytes: Uint8Array } | null>(null);
+  const [openDeckId, setOpenDeckId] = useState<string | undefined>(undefined);
+
   // The names of the documents travel with every request, so they have to be
   // known before the first one - and they are re-read whenever the window
   // closes or a tool call changed something.
   useEffect(() => {
     setDocsToolsAllowed(isDocsAssistantAllowed());
     listDocs().then(setDocList).catch(() => setDocList([]));
+    setSlidesToolsAllowed(isSlidesAssistantAllowed());
+    listDecks().then(setDeckList).catch(() => setDeckList([]));
   }, [docsRevision]);
   const [mailToolsAllowed, setMailToolsAllowed] = useState(false);
   /** The notebook the assistant edits: whatever the window last had open. */
@@ -1247,7 +1303,8 @@ export default function ChatIsland({ lang }: { lang: string }) {
     // Both only reachable while the matching permission is switched on.
     | { kind: "notebook"; payload: Record<string, unknown> }
     | { kind: "mail"; payload: Record<string, unknown> }
-    | { kind: "docs"; payload: Record<string, unknown> };
+    | { kind: "docs"; payload: Record<string, unknown> }
+    | { kind: "slides"; payload: Record<string, unknown> };
 
   const isImageTrigger = (
     t: AutoTrigger,
@@ -1401,6 +1458,7 @@ export default function ChatIsland({ lang }: { lang: string }) {
       "song",
       "grade",
       "docs",
+      "slides",
     ]);
     const keys = Object.keys(obj);
     if (keys.length !== 1) return false;
@@ -1421,6 +1479,10 @@ export default function ChatIsland({ lang }: { lang: string }) {
     }
     if (key === "docs") {
       return docsToolsAllowed && !!v && typeof v === "object" &&
+        typeof (v as any).action === "string";
+    }
+    if (key === "slides") {
+      return slidesToolsAllowed && !!v && typeof v === "object" &&
         typeof (v as any).action === "string";
     }
 
@@ -1567,6 +1629,12 @@ export default function ChatIsland({ lang }: { lang: string }) {
       if (k === "docs" && docsToolsAllowed) {
         if (val && typeof val === "object") {
           triggers.push({ kind: "docs", payload: val });
+        }
+        continue;
+      }
+      if (k === "slides" && slidesToolsAllowed) {
+        if (val && typeof val === "object") {
+          triggers.push({ kind: "slides", payload: val });
         }
         continue;
       }
@@ -1749,7 +1817,7 @@ export default function ChatIsland({ lang }: { lang: string }) {
       // summarise afterwards - but it still needs a label here.
       if (t.kind === "song") return `${t.kind}: "${t.prompt}"`;
       if (t.kind === "grade") return "grade";
-      if (t.kind === "notebook" || t.kind === "mail" || t.kind === "docs") return t.kind;
+      if (t.kind === "notebook" || t.kind === "mail" || t.kind === "docs" || t.kind === "slides") return t.kind;
       return `${t.kind}: "${t.q}"`;
     }).join(", ");
 
@@ -2579,6 +2647,8 @@ export default function ChatIsland({ lang }: { lang: string }) {
       // Names only, and only with permission. The server strips them again
       // before they go anywhere near the system prompt.
       docNames: docsToolsAllowed ? docList.map((d) => d.name) : [],
+      slides: slidesToolsAllowed,
+      slideNames: slidesToolsAllowed ? deckList.map((d) => d.name) : [],
     };
   };
 
@@ -2590,7 +2660,7 @@ export default function ChatIsland({ lang }: { lang: string }) {
    * model sees the result of its own action and can react to it.
    */
   const runToolTrigger = async (
-    trig: Extract<AutoTrigger, { kind: "notebook" | "mail" | "docs" }>,
+    trig: Extract<AutoTrigger, { kind: "notebook" | "mail" | "docs" | "slides" }>,
     accumulated: Message[],
   ): Promise<{ accumulated: Message[]; success: boolean }> => {
     const say = (text: string, extra?: Record<string, unknown>[]) => {
@@ -2655,6 +2725,50 @@ ${result.snapshot}`
           ? `${result.message}\n\n${result.snapshot}`
           : result.message;
         return { accumulated: say(text), success: result.ok };
+      }
+
+      // ----- slide editor -----
+      if (trig.kind === "slides") {
+        if (!slidesToolsAllowed) {
+          return {
+            accumulated: say(chatIslandContent[lang]["toolSlidesDenied"]),
+            success: false,
+          };
+        }
+        await serverLog("tool.slides", { action: trig.payload.action });
+
+        // Pictures come from this conversation: an id the assistant saw on
+        // a generated or uploaded image is looked up in the history.
+        const result = await applySlidesAction(
+          trig.payload as unknown as SlidesAction,
+          activeDeckRef.current?.id,
+          (ref) => findImageByIdInMessages(accumulated, ref),
+        );
+        if (result.openId) {
+          setSlidesRevision((n) => n + 1);
+          const list = await listDecks();
+          setDeckList(list);
+          // What the assistant just built or read is the deck "on screen"
+          // from now on, whether or not the editor window is open - so a
+          // following "add a slide" needs no name.
+          const meta = list.find((d) => d.id === result.openId);
+          if (meta) activeDeckRef.current = meta;
+        }
+        const text = result.snapshot
+          ? `${result.message}\n\n${result.snapshot}`
+          : result.message;
+        // The deck itself is offered as a chip - open in the editor, or
+        // download as .pptx - rather than dumped into the text.
+        const extra = result.attachment
+          ? [{
+            type: "slides_ref",
+            id: `deck_${result.attachment.deckId}_${Date.now()}`,
+            deckId: result.attachment.deckId,
+            name: result.attachment.name,
+            slides: result.attachment.slides,
+          }]
+          : undefined;
+        return { accumulated: say(text, extra), success: result.ok };
       }
 
       // ----- mailbox -----
@@ -3275,6 +3389,7 @@ ${result.snapshot}`
       // Notebook and mailbox actions answer with text the assistant should
       // react to, but they must not go through the search summary.
       let toolFollowUp = false;
+      let imageFollowUp = false;
       const successTrigs: AutoTrigger[] = [];
       for (const trig of jsonUserTriggers) {
         if (trig.kind === "wikipedia") {
@@ -3399,6 +3514,10 @@ ${result.snapshot}`
           // deliberately not pushed to successTrigs.
           const out = await runImageTrigger(trig, accumulated);
           accumulated = out.accumulated;
+          // With an editor open to it, a picture is usually a step, not the
+          // end: "make an image and put it on a slide" needs a second turn
+          // in which the assistant sees the image's id and places it.
+          if (out.success && (slidesToolsAllowed || docsToolsAllowed)) imageFollowUp = true;
         } else if (trig.kind === "grade") {
           const out = await runGradeTrigger(trig, accumulated);
           accumulated = out.accumulated;
@@ -3406,7 +3525,7 @@ ${result.snapshot}`
           const out = await runSongTrigger(trig, accumulated);
           accumulated = out.accumulated;
         } else if (trig.kind === "notebook" || trig.kind === "mail" ||
-          trig.kind === "docs") {
+          trig.kind === "docs" || trig.kind === "slides") {
           // The assistant should see what came back, so these do continue the
           // conversation - but through their own follow-up, not the search
           // summary.
@@ -3429,6 +3548,8 @@ ${result.snapshot}`
         // that is what makes a chain like "search, then read, then summarise"
         // possible without the user prompting each step.
         startStream(chatIslandContent[lang]["toolFollowUp"], accumulated);
+      } else if (imageFollowUp) {
+        startStream(chatIslandContent[lang]["imageFollowUp"], accumulated);
       }
       return;
     }
@@ -3549,7 +3670,7 @@ ${result.snapshot}`
           const out = await runSongTrigger(trig, accumulated);
           accumulated = out.accumulated;
         } else if (trig.kind === "notebook" || trig.kind === "mail" ||
-          trig.kind === "docs") {
+          trig.kind === "docs" || trig.kind === "slides") {
           // This path has no follow-up round; the result is shown as it is.
           const out = await runToolTrigger(trig, accumulated);
           accumulated = out.accumulated;
@@ -3614,7 +3735,7 @@ ${result.snapshot}`
     };
 
     const keyOf = (t: AutoTrigger) => {
-      if (t.kind === "notebook" || t.kind === "mail" || t.kind === "docs") {
+      if (t.kind === "notebook" || t.kind === "mail" || t.kind === "docs" || t.kind === "slides") {
         return `${t.kind}|${JSON.stringify(t.payload)}`;
       }
       if (t.kind === "imagegen") {
@@ -3642,12 +3763,16 @@ ${result.snapshot}`
       anyResults: boolean;
       accumulated: Message[];
       successTrigs: AutoTrigger[];
+      toolFollowUp: boolean;
+      imageFollowUp: boolean;
     }> => {
       if (!trigs.length) {
         return {
           anyResults: false,
           accumulated: messagesRef.current,
           successTrigs: [],
+          toolFollowUp: false,
+          imageFollowUp: false,
         };
       }
 
@@ -3665,6 +3790,8 @@ ${result.snapshot}`
           anyResults: false,
           accumulated: messagesRef.current,
           successTrigs: [],
+          toolFollowUp: false,
+          imageFollowUp: false,
         };
       }
 
@@ -3678,6 +3805,7 @@ ${result.snapshot}`
       // Notebook and mailbox actions answer with text the assistant should
       // react to, but they must not go through the search summary.
       let toolFollowUp = false;
+      let imageFollowUp = false;
       const successTrigs: AutoTrigger[] = [];
 
       for (const trig of fresh) {
@@ -3802,9 +3930,13 @@ ${result.snapshot}`
           setMessages(accumulated);
           safePersist(accumulated, currentChatSuffix);
         } else if (isImageTrigger(trig)) {
-          // Images are shown directly; no auto-summary run afterwards.
+          // Images are shown directly; no auto-summary run afterwards. But
+          // with an editor open to the assistant, a picture is usually one
+          // step of a task - "make an image and put it on a slide" - so it
+          // gets a turn in which it sees the image's id and can place it.
           const out = await runImageTrigger(trig, accumulated);
           accumulated = out.accumulated;
+          if (out.success && (slidesToolsAllowed || docsToolsAllowed)) imageFollowUp = true;
         } else if (trig.kind === "grade") {
           const out = await runGradeTrigger(trig, accumulated);
           accumulated = out.accumulated;
@@ -3812,22 +3944,21 @@ ${result.snapshot}`
           const out = await runSongTrigger(trig, accumulated);
           accumulated = out.accumulated;
         } else if (trig.kind === "notebook" || trig.kind === "mail" ||
-          trig.kind === "docs") {
+          trig.kind === "docs" || trig.kind === "slides") {
           const out = await runToolTrigger(trig, accumulated);
           accumulated = out.accumulated;
           if (out.success) toolFollowUp = true;
         }
       }
 
-      return { anyResults, accumulated, successTrigs };
+      return { anyResults, accumulated, successTrigs, toolFollowUp, imageFollowUp };
     };
 
     // Zusammenfassung nach Triggern (nur bei Erfolg)
     const runTriggersAndMaybeSummarize = async (trigs: AutoTrigger[]) => {
       await serverLog("triggers.summary.maybe", { requested: trigs.length });
-      const { anyResults, accumulated, successTrigs } = await handleTriggers(
-        trigs,
-      );
+      const { anyResults, accumulated, successTrigs, toolFollowUp, imageFollowUp } =
+        await handleTriggers(trigs);
       setIsStreamComplete(true);
     setThinkingSince(null);
       await serverLog("triggers.summary.result", {
@@ -3837,6 +3968,14 @@ ${result.snapshot}`
       if (anyResults && successTrigs.length) {
         const summaryPrompt = buildAutoSummaryPrompt(successTrigs);
         startStream(summaryPrompt, accumulated);
+      } else if (toolFollowUp) {
+        // A tool answered (a document read, a deck built): the assistant
+        // gets to see that answer and say something about it, or take the
+        // next step. Without this the conversation simply stopped at the
+        // raw tool output.
+        startStream(chatIslandContent[lang]["toolFollowUp"], accumulated);
+      } else if (imageFollowUp) {
+        startStream(chatIslandContent[lang]["imageFollowUp"], accumulated);
       }
     };
 
@@ -3952,11 +4091,12 @@ ${result.snapshot}`
         if (response.ok) return;
         if (response.status !== 200) {
           const errorText = await response.text().catch(() => "");
+          const clean = readableError(errorText || response.statusText);
           ensureDraft();
           appendToAssistant(
             `\n\n**BACKEND ERROR**\nStatuscode: ${response.status}\nMessage: ${
-              errorText || response.statusText
-            }`,
+              clean.message || errorText || response.statusText
+            }${clean.hint ? `\n${clean.hint}` : ""}`,
           );
           throw new FatalError(errorText || response.statusText);
         }
@@ -3972,11 +4112,12 @@ ${result.snapshot}`
               return { message: ev.data };
             }
           })();
+          const clean = readableError(err);
           ensureDraft();
           appendToAssistant(
             `\n\n**BACKEND ERROR**\nStatuscode: ${
               err?.status ?? ""
-            }\nMessage: ${err?.message ?? ""}`,
+            }\nMessage: ${clean.message || err?.message || ""}${clean.hint ? `\n${clean.hint}` : ""}`,
           );
           return;
         }
@@ -4076,12 +4217,24 @@ ${result.snapshot}`
         }
       },
 
-      async onerror(err: FatalError) {
-        await serverLog("sse.error", { message: String(err?.message || err) });
+      // Synchronous on purpose. The library reads this handler's return
+      // value as the number of milliseconds to wait before retrying; an
+      // async function returns a Promise, which it took for "0", and every
+      // failed request was retried without pause - fourteen error blocks in
+      // twelve seconds, and no end to it. Throwing is what stops the retries,
+      // and it only stops them when thrown synchronously.
+      onerror(err: unknown) {
+        const text = err instanceof Error ? err.message : String(err);
+        serverLog("sse.error", { message: text });
         setIsStreamComplete(true);
-    setThinkingSince(null);
-        ensureDraft();
-        appendToAssistant(`\n\n${String(err?.message || err)}`);
+        setThinkingSince(null);
+        // A FatalError was raised by onopen above, which has already put the
+        // readable version of it on screen; showing it a second time helped
+        // nobody. Anything else is shown once, cleaned up the same way.
+        if (!(err instanceof FatalError)) {
+          ensureDraft();
+          appendToAssistant(`\n\n${readableError(text).message}`);
+        }
         throw err;
       },
 
@@ -4473,7 +4626,7 @@ ${result.snapshot}`
         */}
         <button
           class="rounded-full bg-indigo-100 text-indigo-900 hover:bg-indigo-200
-                 font-semibold text-sm px-4 py-2 mx-2 mb-2 flex items-center gap-1.5
+                 font-semibold text-sm px-3 py-1.5 mx-1 mb-1.5 md:px-4 md:py-2 md:mx-2 md:mb-2 flex items-center gap-1.5
                  transition-colors"
           title={learningContent[lang]?.title ?? "Lernpfade"}
           onClick={() => setShowLearning(true)}
@@ -4484,7 +4637,7 @@ ${result.snapshot}`
 
         <button
           class="rounded-full bg-amber-100 text-amber-900 hover:bg-amber-200
-                 font-semibold text-sm px-4 py-2 mx-2 mb-2 flex items-center gap-1.5
+                 font-semibold text-sm px-3 py-1.5 mx-1 mb-1.5 md:px-4 md:py-2 md:mx-2 md:mb-2 flex items-center gap-1.5
                  transition-colors"
           title={notebookContent[lang]?.title ?? "Python"}
           onClick={() => setShowNotebook(true)}
@@ -4495,13 +4648,24 @@ ${result.snapshot}`
 
         <button
           class="rounded-full bg-sky-100 text-sky-900 hover:bg-sky-200
-                 font-semibold text-sm px-4 py-2 mx-2 mb-2 flex items-center gap-1.5
+                 font-semibold text-sm px-3 py-1.5 mx-1 mb-1.5 md:px-4 md:py-2 md:mx-2 md:mb-2 flex items-center gap-1.5
                  transition-colors"
           title={docsContent[lang]?.subtitle ?? "Docs"}
           onClick={() => setShowDocs(true)}
         >
           <span class="text-base leading-none">📄</span>
           Docs
+        </button>
+
+        <button
+          class="rounded-full bg-violet-100 text-violet-900 hover:bg-violet-200
+                 font-semibold text-sm px-3 py-1.5 mx-1 mb-1.5 md:px-4 md:py-2 md:mx-2 md:mb-2 flex items-center gap-1.5
+                 transition-colors"
+          title={slidesContent[lang]?.subtitle ?? "Slides"}
+          onClick={() => setShowSlides(true)}
+        >
+          <span class="text-base leading-none">📊</span>
+          Slides
         </button>
 
         {[...localStorageKeys]
@@ -4514,7 +4678,7 @@ ${result.snapshot}`
                   chatSuffix === currentChatSuffix
                     ? "bg-slate-400 text-white font-bold"
                     : "bg-slate-200"
-                } px-4 py-2 mx-2 mb-2`}
+                } px-3 py-1.5 mx-1 mb-1.5 md:px-4 md:py-2 md:mx-2 md:mb-2`}
                 onClick={() => setCurrentChatSuffix(chatSuffix)}
               >
                 {Number(chatSuffix) + 1}
@@ -4531,7 +4695,7 @@ ${result.snapshot}`
 
         {Object.keys(localStorageKeys).length > 0 && (
           <button
-            class="rounded-full bg-red-200 font-bold px-4 py-2 mx-2 mb-2"
+            class="rounded-full bg-red-200 font-bold text-sm md:text-base px-3 py-1.5 mx-1 mb-1.5 md:px-4 md:py-2 md:mx-2 md:mb-2"
             onClick={() => deleteCurrentChat()}
           >
             <svg
@@ -4550,7 +4714,7 @@ ${result.snapshot}`
 
         {Object.keys(localStorageKeys).length > 0 && (
           <button
-            class="rounded-full bg-red-200 font-bold px-4 py-2 mx-2 mb-2"
+            class="rounded-full bg-red-200 font-bold text-sm md:text-base px-3 py-1.5 mx-1 mb-1.5 md:px-4 md:py-2 md:mx-2 md:mb-2"
             onClick={() => deleteAllChats()}
           >
             <svg
@@ -4569,7 +4733,7 @@ ${result.snapshot}`
 
         {Object.keys(localStorageKeys).length > 0 && (
           <button
-            class="rounded-full bg-green-200 font-bold px-4 py-2 mx-2 mb-2"
+            class="rounded-full bg-green-200 font-bold text-sm md:text-base px-3 py-1.5 mx-1 mb-1.5 md:px-4 md:py-2 md:mx-2 md:mb-2"
             onClick={() => saveChatsToLocalFile()}
           >
             <svg
@@ -4592,7 +4756,7 @@ ${result.snapshot}`
           onChange={(e) => restoreChatsFromLocalFile(e)}
         />
         <button
-          class="rounded-full bg-green-200 font-bold px-4 py-2 mx-2 mb-2"
+          class="rounded-full bg-green-200 font-bold text-sm md:text-base px-3 py-1.5 mx-1 mb-1.5 md:px-4 md:py-2 md:mx-2 md:mb-2"
           onClick={() =>
             document.getElementById("restoreChatFromLocalFile")?.click()}
         >
@@ -4625,18 +4789,50 @@ ${result.snapshot}`
         uploadProblems={uploadProblems}
         onDismissProblems={() => setUploadProblems([])}
         onOpenInEditor={(name, base64) => {
-          // Straight from a message into the word processor: the file is
-          // decoded here, so the editor only ever sees bytes.
+          // Straight from a message into its editor: the file is decoded
+          // here, so the editors only ever see bytes. Which editor is
+          // decided by the extension.
           try {
             const bin = atob(base64);
             const bytes = new Uint8Array(bin.length);
             for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
-            setIncomingDoc({ name, bytes });
-            setOpenDocId(undefined);
-            setShowDocs(true);
+            if (/\.pptx$/i.test(name)) {
+              setIncomingDeck({ name, bytes });
+              setOpenDeckId(undefined);
+              setShowSlides(true);
+            } else {
+              setIncomingDoc({ name, bytes });
+              setOpenDocId(undefined);
+              setShowDocs(true);
+            }
           } catch (err) {
             console.warn("[docs] could not decode the attachment:", err);
           }
+        }}
+        onOpenDeck={(deckId) => {
+          setIncomingDeck(null);
+          setOpenDeckId(deckId);
+          setShowSlides(true);
+        }}
+        onDownloadDeck={async (deckId, name) => {
+          // Built from the store at the moment of the click, so the file has
+          // every edit that was saved since the assistant made the deck.
+          const rec = await loadDeck(deckId);
+          if (!rec) {
+            alert(chatTemplateContent[lang]?.deckGone ?? "This presentation was deleted.");
+            return;
+          }
+          const bytes = await deckToPptx(rec.deck, { lang, title: rec.name });
+          const url = URL.createObjectURL(
+            new Blob([bytes as BlobPart], {
+              type: "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+            }),
+          );
+          const a = document.createElement("a");
+          a.href = url;
+          a.download = `${(rec.name || name).replace(/[\\/:*?"<>|]/g, "_")}.pptx`;
+          a.click();
+          setTimeout(() => URL.revokeObjectURL(url), 10_000);
         }}
         parentImages={images}
         parentPdfs={pdfs}
@@ -4742,6 +4938,25 @@ ${result.snapshot}`
             // The permission may have been toggled while the window was open.
             setDocsToolsAllowed(isDocsAssistantAllowed());
             listDocs().then(setDocList);
+          }}
+        />
+      )}
+
+      {showSlides && (
+        <SlidesModal
+          lang={lang}
+          revision={slidesRevision}
+          incoming={incomingDeck}
+          openId={openDeckId}
+          onDeckOpen={(meta) => {
+            activeDeckRef.current = meta;
+          }}
+          onClose={() => {
+            setShowSlides(false);
+            setIncomingDeck(null);
+            setOpenDeckId(undefined);
+            setSlidesToolsAllowed(isSlidesAssistantAllowed());
+            listDecks().then(setDeckList);
           }}
         />
       )}

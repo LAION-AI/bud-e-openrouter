@@ -302,8 +302,8 @@ function FileDownload(
   };
 
   const kb = Math.max(1, Math.round((data.length * 3 / 4) / 1024));
-  // A .docx can be opened in the editor; anything else can only be saved.
-  const editable = /wordprocessingml/.test(mime) || /\.docx?$/i.test(name);
+  // A .docx or .pptx can be opened in its editor; anything else can only be saved.
+  const editable = /wordprocessingml|presentationml/.test(mime) || /\.(docx?|pptx)$/i.test(name);
   return (
     <span class="my-2 inline-flex flex-wrap items-stretch gap-1.5">
       <button
@@ -326,6 +326,50 @@ function FileDownload(
           <span class="font-medium">{t("openInEditor")}</span>
         </button>
       )}
+    </span>
+  );
+}
+
+/**
+ * A presentation the assistant built, offered to open or download.
+ *
+ * It carries no bytes - the deck lives in the browser's store and the .pptx
+ * is produced on the way out. That keeps the chat history small however
+ * many pictures the slides hold, and a download always gives the latest
+ * saved version, edits included.
+ */
+function DeckChip(
+  { deckId, name, slides, lang, onOpen, onDownload }: {
+    deckId: string;
+    name: string;
+    slides: number;
+    lang: string;
+    onOpen?: (deckId: string) => void;
+    onDownload?: (deckId: string, name: string) => void;
+  },
+) {
+  const t = (k: string) =>
+    (chatTemplateContent[lang]?.[k] ?? chatTemplateContent.en[k]) as string;
+  return (
+    <span class="my-2 inline-flex flex-wrap items-stretch gap-1.5">
+      <button
+        type="button"
+        onClick={() => onOpen?.(deckId)}
+        title={t("openSlidesHint")}
+        class="flex items-center gap-2 px-3 py-2 rounded-lg border border-violet-200 bg-violet-50 hover:bg-violet-100 text-sm text-violet-900"
+      >
+        <span class="text-lg leading-none">📊</span>
+        <span class="font-medium">{name}</span>
+        <span class="text-violet-700/70 text-xs">{slides} {t("slidesLabel")} · {t("openSlides")}</span>
+      </button>
+      <button
+        type="button"
+        onClick={() => onDownload?.(deckId, name)}
+        class="flex items-center gap-1.5 px-3 py-2 rounded-lg border border-blue-200 bg-blue-50 hover:bg-blue-100 text-sm text-blue-900"
+      >
+        <span class="text-lg leading-none">⬇</span>
+        <span class="font-medium">{t("downloadPptx")}</span>
+      </button>
     </span>
   );
 }
@@ -489,6 +533,10 @@ export default function ChatTemplate(props: {
   songAutoplay?: boolean;
   /** Opens a .docx from the chat in the word processor. */
   onOpenInEditor?: (name: string, base64: string) => void;
+  /** Opens a presentation the assistant built, by its id in the store. */
+  onOpenDeck?: (deckId: string) => void;
+  /** Hands such a presentation over as a .pptx download. */
+  onDownloadDeck?: (deckId: string, name: string) => void;
   /** When a reasoning model started thinking, in ms since the epoch. */
   thinkingSince?: number | null;
   /** Documents read into text in the browser, waiting to be sent. */
@@ -502,6 +550,8 @@ export default function ChatTemplate(props: {
     lang,
     songAutoplay = false,
     onOpenInEditor,
+    onOpenDeck,
+    onDownloadDeck,
     thinkingSince = null,
     parentDocTexts = [],
     onDocTextsChange,
@@ -550,6 +600,19 @@ export default function ChatTemplate(props: {
           steps={content.steps ?? []}
           running={content.running === true}
           failed={content.failed === true}
+        />
+      );
+    }
+    if (content?.type === "slides_ref") {
+      return (
+        <DeckChip
+          key={idx}
+          lang={lang}
+          deckId={String(content.deckId ?? "")}
+          name={content.name ?? ""}
+          slides={Number(content.slides ?? 0)}
+          onOpen={onOpenDeck}
+          onDownload={onDownloadDeck}
         />
       );
     }

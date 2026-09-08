@@ -73,7 +73,11 @@ export default function DocsModal(
   const [created, setCreated] = useState<string | undefined>(undefined);
   const [dirty, setDirty] = useState(false);
   const [status, setStatus] = useState("");
-  const [sidebarOpen, setSidebarOpen] = useState(true);
+  // Open on a desk, closed on a phone: there the list would leave the page
+  // a sliver, and it slides in over the page instead when asked for.
+  const [sidebarOpen, setSidebarOpen] = useState(
+    () => typeof globalThis.matchMedia === "function" ? globalThis.matchMedia("(min-width: 768px)").matches : true,
+  );
   const [assistantAllowed, setAllowed] = useState(false);
   const [busy, setBusy] = useState(false);
 
@@ -185,6 +189,9 @@ export default function DocsModal(
     if (dirty && !confirm(t("confirmDiscard"))) return;
     const doc = await loadDoc(docId);
     if (!doc) return;
+    if (typeof globalThis.matchMedia === "function" && !globalThis.matchMedia("(min-width: 768px)").matches) {
+      setSidebarOpen(false);
+    }
     setId(doc.id);
     setName(doc.name);
     setCreated(doc.created);
@@ -375,10 +382,10 @@ export default function DocsModal(
   // ----------------------------------------------------------------- view
 
   return (
-    <div class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm flex items-center justify-center z-50 p-2 md:p-4">
-      <div class="bg-white rounded-xl shadow-2xl w-[96vw] h-[93vh] flex flex-col overflow-hidden">
+    <div class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm flex items-center justify-center z-50 p-1 md:p-4">
+      <div class="bg-white rounded-xl shadow-2xl w-full h-full md:w-[96vw] md:h-[93vh] flex flex-col overflow-hidden">
         {/* ---------------------------------------------------- title bar */}
-        <header class="flex items-center gap-3 px-4 py-2.5 bg-slate-800 text-white shrink-0">
+        <header class="flex items-center gap-2 md:gap-3 px-3 md:px-4 py-2 bg-slate-800 text-white shrink-0">
           <button
             onClick={() => setSidebarOpen((v) => !v)}
             title={t("myDocs")}
@@ -389,7 +396,7 @@ export default function DocsModal(
             </svg>
           </button>
 
-          <div class="min-w-0 flex items-baseline gap-2">
+          <div class="min-w-0 flex items-baseline gap-2 flex-1">
             <span class="text-2xl leading-none">📄</span>
             <input
               value={name}
@@ -400,7 +407,7 @@ export default function DocsModal(
               title={t("nameHint")}
               class="bg-transparent font-semibold truncate outline-none
                      border-b border-transparent hover:border-white/30
-                     focus:border-white/60 min-w-0 w-40 md:w-64"
+                     focus:border-white/60 min-w-0 w-full md:w-64"
             />
             {dirty && (
               <span class="text-xs text-amber-300 shrink-0">{t("unsaved")}</span>
@@ -426,7 +433,7 @@ export default function DocsModal(
             disabled={busy}
             title={t("downloadHint")}
             class="px-3 py-1.5 rounded-lg bg-blue-500 hover:bg-blue-400
-                   text-sm font-semibold disabled:opacity-50 shrink-0"
+                   text-sm font-semibold disabled:opacity-50 shrink-0 hidden sm:block"
           >
             {t("download")}
           </button>
@@ -515,11 +522,13 @@ export default function DocsModal(
           <Btn
             onClick={() => exec("superscript")}
             title={t("superscript")}
+            rare
             label={<span>x²</span>}
           />
           <Btn
             onClick={() => exec("subscript")}
             title={t("subscript")}
+            rare
             label={<span>x₂</span>}
           />
           <input
@@ -540,8 +549,10 @@ export default function DocsModal(
             title={t("numbers")}
             label={<span>1. —</span>}
           />
-          <Btn onClick={() => exec("outdent")} title={t("outdent")} label={<span>⇤</span>} />
-          <Btn onClick={() => exec("indent")} title={t("indent")} label={<span>⇥</span>} />
+          <Btn onClick={() => exec("outdent")} title={t("outdent")}
+            rare label={<span>⇤</span>} />
+          <Btn onClick={() => exec("indent")} title={t("indent")}
+            rare label={<span>⇥</span>} />
 
           <Sep />
           <Btn
@@ -562,6 +573,7 @@ export default function DocsModal(
           <Btn
             onClick={() => exec("justifyFull")}
             title={t("alignJustify")}
+            rare
             label={<AlignIcon kind="justify" />}
           />
 
@@ -590,9 +602,11 @@ export default function DocsModal(
         </div>
 
         {/* --------------------------------------------- body: side + page */}
-        <div class="flex-1 flex min-h-0">
+        <div class="flex-1 flex min-h-0 relative">
           {sidebarOpen && (
-            <aside class="w-60 md:w-72 shrink-0 border-r bg-white overflow-y-auto">
+            <>
+              <div class="md:hidden absolute inset-0 bg-black/30 z-20" onClick={() => setSidebarOpen(false)} />
+              <aside class="absolute md:static z-30 left-0 top-0 bottom-0 w-72 shrink-0 border-r bg-white overflow-y-auto shadow-xl md:shadow-none">
               <div class="p-3 space-y-4">
                 <section>
                   <div class="flex items-center justify-between mb-1.5">
@@ -693,6 +707,7 @@ export default function DocsModal(
                 </section>
               </div>
             </aside>
+            </>
           )}
 
           {/* The page itself, on a grey desk like a word processor. */}
@@ -753,10 +768,12 @@ export default function DocsModal(
 /* ------------------------------------------------------------- small bits */
 
 function Btn(
-  { onClick, title, label }: {
+  { onClick, title, label, rare }: {
     onClick: () => void;
     title: string;
     label: preact.ComponentChildren;
+    /** Hidden on a phone, where the toolbar has no room for it. */
+    rare?: boolean;
   },
 ) {
   return (
@@ -764,9 +781,9 @@ function Btn(
       onMouseDown={(e) => e.preventDefault()} // keep the selection
       onClick={onClick}
       title={title}
-      class="min-w-[30px] h-7 px-1.5 rounded border border-slate-200 bg-white
-             hover:bg-slate-100 hover:border-slate-300 flex items-center
-             justify-center text-slate-700"
+      class={`min-w-[30px] h-7 px-1.5 rounded border border-slate-200 bg-white
+             hover:bg-slate-100 hover:border-slate-300 items-center
+             justify-center text-slate-700 ${rare ? "hidden sm:flex" : "flex"}`}
     >
       {label}
     </button>
