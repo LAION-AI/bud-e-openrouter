@@ -57,6 +57,13 @@ changing application code. Restart after replacing static runtime files too.
 Runtime downloads are excluded from Git; install them in each new checkout or
 deployment before using the corresponding editors.
 
+For the Docker Compose template, copy `.example.env` to `docker-compose/.env`,
+configure `docker-compose/caddy/Caddyfile` for your hostname, then run
+`docker compose -f docker-compose/docker-compose.yml up -d`. Its application
+container fetches this repository and installs the browser runtimes before
+building. The named `classroom-data` volume retains the classroom database and
+encryption key across container replacements.
+
 ## Classroom storage
 
 Set `CLASSROOM_DATA_DIR` to an absolute, writable directory. The default is
