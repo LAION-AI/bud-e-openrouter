@@ -5,7 +5,7 @@
  * @importantFunctions useChatState
  */
 
-import { useState, useEffect, useRef } from "preact/hooks";
+import { useState, useEffect, useRef, type MutableRef } from "preact/hooks";
 import { Message, Settings, AudioFileDict, PdfFile } from "../types.ts";
 import { chatIslandContent } from "../../../internalization/content.ts";
 
@@ -55,7 +55,7 @@ export interface UseChatStateReturn {
   // Core message state
   messages: Message[];
   setMessages: (msgs: Message[] | ((prev: Message[]) => Message[])) => void;
-  messagesRef: React.MutableRefObject<Message[]>;
+  messagesRef: MutableRef<Message[]>;
 
   // Query/input state
   query: string;
@@ -77,7 +77,7 @@ export interface UseChatStateReturn {
   // Stream state
   isStreamComplete: boolean;
   setIsStreamComplete: (complete: boolean) => void;
-  abortRef: React.MutableRefObject<AbortController | null>;
+  abortRef: MutableRef<AbortController | null>;
 
   // Edit state
   currentEditIndex: number | undefined;
@@ -94,7 +94,7 @@ export interface UseChatStateReturn {
   setAudioFileDict: (dict: AudioFileDict | ((prev: AudioFileDict) => AudioFileDict)) => void;
   stopList: number[];
   setStopList: (list: number[] | ((prev: number[]) => number[])) => void;
-  playSessionRef: React.MutableRefObject<number>;
+  playSessionRef: MutableRef<number>;
   pendingManualSpeak: Set<number>;
   setPendingManualSpeak: (set: Set<number> | ((prev: Set<number>) => Set<number>)) => void;
 

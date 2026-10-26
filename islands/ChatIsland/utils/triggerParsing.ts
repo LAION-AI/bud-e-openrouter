@@ -240,8 +240,9 @@ export const jsonObjToTriggers = (
         if (vObj.image_id || vObj.imageId) {
           imageId = String(vObj.image_id ?? vObj.imageId).trim();
         }
-        if (Array.isArray(vObj.image_ids ?? vObj.imageIds)) {
-          imageIds = (vObj.image_ids ?? vObj.imageIds as unknown[])
+        const referenceIds = vObj.image_ids ?? vObj.imageIds;
+        if (Array.isArray(referenceIds)) {
+          imageIds = referenceIds
             .filter((id) => typeof id === "string" && id.length > 0) as string[];
         }
 

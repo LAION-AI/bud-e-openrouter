@@ -5,7 +5,7 @@
  * @importantFunctions useAudioPlayback, getTTS, playAudio, stopAndResetAudio
  */
 
-import { useRef, useCallback } from "preact/hooks";
+import { useRef, useCallback, type MutableRef } from "preact/hooks";
 import { AudioItem, AudioFileDict, Settings } from "../types.ts";
 import { cleanForTTS, splitIntoSmartChunks } from "../utils/textProcessing.ts";
 import { chatIslandContent } from "../../../internalization/content.ts";
@@ -17,7 +17,7 @@ export interface UseAudioPlaybackParams {
   setAudioFileDict: (dict: AudioFileDict | ((prev: AudioFileDict) => AudioFileDict)) => void;
   stopList: number[];
   setStopList: (list: number[] | ((prev: number[]) => number[])) => void;
-  playSessionRef: React.MutableRefObject<number>;
+  playSessionRef: MutableRef<number>;
   readAlways: boolean;
   setReadAlways: (value: boolean) => void;
   setPendingManualSpeak: (set: Set<number> | ((prev: Set<number>) => Set<number>)) => void;

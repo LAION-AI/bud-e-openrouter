@@ -993,8 +993,8 @@ export const startStream = async (
       }
     },
 
-    async onerror(err: Error) {
-      await ctx.serverLog("sse.error", { message: String(err?.message || err) });
+    onerror(err: Error) {
+      void ctx.serverLog("sse.error", { message: String(err?.message || err) }).catch(() => {});
       ctx.setIsStreamComplete(true);
       ensureDraft();
       appendToAssistant(`\n\n${String(err?.message || err)}`);
