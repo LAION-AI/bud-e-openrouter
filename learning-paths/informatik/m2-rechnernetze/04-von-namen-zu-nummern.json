@@ -10,7 +10,7 @@
   },
   "icon": "📖",
   "accent": "sky",
-  "minutes": 14,
+  "minutes": 19,
   "screens": [
     {
       "key": "das-telefonbuch",
@@ -201,6 +201,13 @@
             "de": "Genau das ist der praktische Gewinn dieses Moduls. Nicht, dass du Netze bauen könntest - sondern dass du eine Störung einordnen kannst statt ihr ausgeliefert zu sein. Diese Fähigkeit hält länger als jedes Gerät in deinem Haushalt.",
             "en": "That is precisely the practical gain of this module. Not that you could build networks - but that you can place a fault instead of being at its mercy. That ability outlasts every device in your home."
           }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Der älteste IT-Rat der Welt hilft auch hier: Hast du es schon aus- und wieder eingeschaltet? Dahinter steckt oft das Telefonbuch: Alte, falsche Antworten kleben im Zwischenspeicher – der Rechner fragt gar nicht neu. Neustart leert den Kleber, frische Antwort, Seite lädt. Magie? Nein: Cache.",
+            "en": "The world's oldest IT advice helps here too: did you turn it off and on again? Behind it often sits the phone book: old, wrong answers stick in the cache – the computer does not even ask anew. Restart empties the glue, fresh answer, page loads. Magic? No: cache."
+          }
         }
       ]
     },
@@ -270,6 +277,76 @@
               "url": "https://www.inf-schule.de/rechnernetze"
             }
           ]
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Früher stand das Telefonbuch als dickes Buch im Flur – einmal im Jahr neu, dazwischen veraltet. DNS ist dasselbe Buch, nur lebendig: Es ändert sich sekündlich, weltweit gleichzeitig. Wer das Buch versteht, versteht, warum Umzüge im Netz Sekunden dauern und früher ein Jahr.",
+            "en": "Earlier the phone book stood as a fat book in the hall – new once a year, outdated between. DNS is the same book, only alive: changing secondly, worldwide at once. Whoever understands the book understands why moves in the net take seconds and earlier a year."
+          }
+        }
+      ]
+    },
+    {
+      "key": "wenn-namen-luegen",
+      "title": {
+        "de": "Wenn Namen lügen",
+        "en": "When names lie"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Namen sind für Menschen, Nummern für Rechner – und genau dazwischen lauern die Betrüger.",
+            "en": "Names are for humans, numbers for computers – and exactly in between lurk the fraudsters."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Eine Phishing-Mail verlinkt auf sparkase-login.de statt sparkasse-login.de – ein Buchstabe fehlt, das Auge überliest ihn. Dahinter steckt eine fremde Nummer mit einer Kopie der echten Seite. Wer dort sein Passwort eintippt, schenkt es her. Darum: Adresszeile lesen, Buchstabe für Buchstabe, besonders bei Banken und Paketen.",
+            "en": "A phishing mail links to sparkase-login.de instead of sparkasse-login.de – one letter missing, the eye skips it. Behind it sits a foreign number with a copy of the real page. Whoever types their password there gives it away. Hence: read the address bar, letter by letter, especially for banks and parcels."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Umgekehrt sperren Behörden manchmal Namen statt Nummern: Das Telefonbuch antwortet dann mit Absicht falsch – die Seite „existiert nicht“. Und Firmen biegen Namen intern um: shop.intern landet nie im öffentlichen Telefonbuch. Derselbe Mechanismus schützt und zensiert – je nachdem, wer an den Schaltern sitzt.",
+            "en": "Conversely, authorities sometimes block names instead of numbers: the phone book then deliberately answers wrong – the page “does not exist”. And companies bend names internally: shop.internal never lands in the public phone book. The same mechanism protects and censors – depending on who sits at the switches."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "warn",
+          "icon": "🎣",
+          "title": {
+            "de": "Der 10-Sekunden-Test",
+            "en": "The 10-second test"
+          },
+          "text": {
+            "de": "Bevor du irgendwo ein Passwort eingibst: Zehn Sekunden nur die Adresszeile anstarren. Stimmt jeder Buchstabe? Fangt sie mit https an? Zehn Sekunden, die noch nie jemand bereut hat.",
+            "en": "Before typing a password anywhere: stare at nothing but the address bar for ten seconds. Is every letter right? Does it start with https? Ten seconds nobody ever regretted."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Lies Adressen von rechts nach links: Bei shop.com.evil.ru steht links vom ersten Schrägstrich der Wirt – und der heißt evil.ru, nicht shop.com. Alles davor ist Deko des Betrügers. Diese eine Regel entlarvt die meisten Fake-Shops: Wem gehört das letzte Stück vor dem Strich?",
+            "en": "Read addresses right to left: at shop.com.evil.ru left of the first slash stands the host – called evil.ru, not shop.com. Everything before is the fraudster's decor. This one rule exposes most fake shops: whom belongs the last piece before the slash to?"
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "🕵️",
+          "title": {
+            "de": "Echt oder Fake",
+            "en": "Real or fake"
+          },
+          "text": {
+            "de": "Schreibe drei Adressen auf – zwei echte, eine gefälschte – und lasse die Familie raten. Wer die Rechts-nach-links-Regel kennt, gewinnt immer. Familienspiel mit Lerneffekt.",
+            "en": "Write three addresses down – two real, one faked – and let the family guess. Whoever knows the right-to-left rule always wins. Family game with learning effect."
+          }
         }
       ]
     }

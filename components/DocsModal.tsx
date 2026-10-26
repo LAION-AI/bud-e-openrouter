@@ -85,7 +85,10 @@ export default function DocsModal(
   // Open on a desk, closed on a phone: there the list would leave the page
   // a sliver, and it slides in over the page instead when asked for.
   const [sidebarOpen, setSidebarOpen] = useState(
-    () => typeof globalThis.matchMedia === "function" ? globalThis.matchMedia("(min-width: 768px)").matches : true,
+    () =>
+      typeof globalThis.matchMedia === "function"
+        ? globalThis.matchMedia("(min-width: 768px)").matches
+        : true,
   );
   const [assistantAllowed, setAllowed] = useState(false);
   const [busy, setBusy] = useState(false);
@@ -210,7 +213,12 @@ export default function DocsModal(
 
   const autosave = async () => {
     const html = getHtml();
-    const ok = await saveDoc({ id: idRef.current, name: nameRef.current, html, created: createdRef.current });
+    const ok = await saveDoc({
+      id: idRef.current,
+      name: nameRef.current,
+      html,
+      created: createdRef.current,
+    });
     if (ok) {
       savedHtml.current = html;
       setDirty(false);
@@ -240,7 +248,10 @@ export default function DocsModal(
     if (dirty) await autosave();
     const doc = await loadDoc(docId);
     if (!doc) return;
-    if (typeof globalThis.matchMedia === "function" && !globalThis.matchMedia("(min-width: 768px)").matches) {
+    if (
+      typeof globalThis.matchMedia === "function" &&
+      !globalThis.matchMedia("(min-width: 768px)").matches
+    ) {
       setSidebarOpen(false);
     }
     setId(doc.id);
@@ -312,8 +323,13 @@ export default function DocsModal(
         html = /\.html?$/i.test(file.name)
           ? text
           : text.split(/\n{2,}/).map((p) =>
-            `<p>${p.replace(/[<>&]/g, (c) => ({ "<": "&lt;", ">": "&gt;", "&": "&amp;" }[c]!))
-              .replace(/\n/g, "<br>")}</p>`
+            `<p>${
+              p.replace(
+                /[<>&]/g,
+                (c) => ({ "<": "&lt;", ">": "&gt;", "&": "&amp;" }[c]!),
+              )
+                .replace(/\n/g, "<br>")
+            }</p>`
           ).join("");
       } else {
         setStatus(t("unsupportedFile"));
@@ -393,10 +409,17 @@ export default function DocsModal(
   const insertTable = () => {
     const rows = 3, cols = 3;
     const head = `<tr>${
-      Array.from({ length: cols }, (_, i) => `<th>Spalte ${i + 1}</th>`).join("")
+      Array.from({ length: cols }, (_, i) => `<th>Spalte ${i + 1}</th>`).join(
+        "",
+      )
     }</tr>`;
-    const body = Array.from({ length: rows - 1 }, () =>
-      `<tr>${Array.from({ length: cols }, () => "<td>&nbsp;</td>").join("")}</tr>`).join("");
+    const body = Array.from(
+      { length: rows - 1 },
+      () =>
+        `<tr>${
+          Array.from({ length: cols }, () => "<td>&nbsp;</td>").join("")
+        }</tr>`,
+    ).join("");
     exec("insertHTML", `<table>${head}${body}</table><p><br></p>`);
   };
 
@@ -409,7 +432,7 @@ export default function DocsModal(
       }
       if (e.key === "Escape") {
         (async () => {
-          if (dirty) await autosave();
+          if (dirty || getHtml() !== savedHtml.current) await autosave();
           onClose();
         })();
       }
@@ -466,7 +489,9 @@ export default function DocsModal(
                      focus:border-white/60 min-w-0 w-full md:w-64"
             />
             {dirty && (
-              <span class="text-xs text-amber-300 shrink-0">{t("unsaved")}</span>
+              <span class="text-xs text-amber-300 shrink-0">
+                {t("unsaved")}
+              </span>
             )}
           </div>
 
@@ -495,7 +520,7 @@ export default function DocsModal(
           </button>
           <button
             onClick={async () => {
-              if (dirty) await autosave();
+              if (dirty || getHtml() !== savedHtml.current) await autosave();
               onClose();
             }}
             title={t("close")}
@@ -509,6 +534,20 @@ export default function DocsModal(
 
         {/* ------------------------------------------------------ toolbar */}
         <div class="flex flex-wrap items-center gap-1 px-3 py-2 border-b bg-slate-50 shrink-0 text-sm">
+          <label class="flex items-center gap-1.5 mx-2 text-xs cursor-pointer">
+            <input
+              type="checkbox"
+              checked={assistantAllowed}
+              onChange={(e) => {
+                const on = e.currentTarget.checked;
+                setDocsAssistantAllowed(on);
+                setAllowed(on);
+              }}
+            />
+            {lang === "de"
+              ? "Bud-E darf lesen und bearbeiten"
+              : "Allow Bud-E to read and edit"}
+          </label>
           <select
             onChange={(e) => {
               const v = (e.target as HTMLSelectElement).value;
@@ -563,8 +602,16 @@ export default function DocsModal(
           </select>
 
           <Sep />
-          <Btn onClick={() => exec("bold")} title={t("bold")} label={<b>B</b>} />
-          <Btn onClick={() => exec("italic")} title={t("italic")} label={<i>I</i>} />
+          <Btn
+            onClick={() => exec("bold")}
+            title={t("bold")}
+            label={<b>B</b>}
+          />
+          <Btn
+            onClick={() => exec("italic")}
+            title={t("italic")}
+            label={<i>I</i>}
+          />
           <Btn
             onClick={() => exec("underline")}
             title={t("underline")}
@@ -589,7 +636,8 @@ export default function DocsModal(
           />
           <input
             type="color"
-            onChange={(e) => exec("foreColor", (e.target as HTMLInputElement).value)}
+            onChange={(e) =>
+              exec("foreColor", (e.target as HTMLInputElement).value)}
             title={t("color")}
             class="w-7 h-7 rounded border bg-white cursor-pointer p-0.5"
           />
@@ -605,10 +653,18 @@ export default function DocsModal(
             title={t("numbers")}
             label={<span>1. —</span>}
           />
-          <Btn onClick={() => exec("outdent")} title={t("outdent")}
-            rare label={<span>⇤</span>} />
-          <Btn onClick={() => exec("indent")} title={t("indent")}
-            rare label={<span>⇥</span>} />
+          <Btn
+            onClick={() => exec("outdent")}
+            title={t("outdent")}
+            rare
+            label={<span>⇤</span>}
+          />
+          <Btn
+            onClick={() => exec("indent")}
+            title={t("indent")}
+            rare
+            label={<span>⇥</span>}
+          />
 
           <Sep />
           <Btn
@@ -639,7 +695,11 @@ export default function DocsModal(
             title={t("image")}
             label={<span>🖼️</span>}
           />
-          <Btn onClick={insertTable} title={t("table")} label={<span>▦</span>} />
+          <Btn
+            onClick={insertTable}
+            title={t("table")}
+            label={<span>▦</span>}
+          />
           <Btn
             onClick={() => exec("insertHorizontalRule")}
             title={t("pageBreak")}
@@ -661,108 +721,114 @@ export default function DocsModal(
         <div class="flex-1 flex min-h-0 relative">
           {sidebarOpen && (
             <>
-              <div class="md:hidden absolute inset-0 bg-black/30 z-20" onClick={() => setSidebarOpen(false)} />
+              <div
+                class="md:hidden absolute inset-0 bg-black/30 z-20"
+                onClick={() => setSidebarOpen(false)}
+              />
               <aside class="absolute md:static z-30 left-0 top-0 bottom-0 w-72 shrink-0 border-r bg-white overflow-y-auto shadow-xl md:shadow-none">
-              <div class="p-3 space-y-4">
-                <section>
-                  <div class="flex items-center justify-between mb-1.5">
+                <div class="p-3 space-y-4">
+                  <section>
+                    <div class="flex items-center justify-between mb-1.5">
+                      <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                        {t("myDocs")}
+                      </h3>
+                      <button
+                        onClick={create}
+                        title={t("newDoc")}
+                        class="px-2 py-0.5 rounded-md bg-green-100 text-green-800
+                             hover:bg-green-200 text-sm font-bold leading-none"
+                      >
+                        +
+                      </button>
+                    </div>
+                    <p class="text-xs text-slate-500 mb-2">{t("docsHint")}</p>
+                    {docs.length === 0
+                      ? <p class="text-sm text-slate-400">{t("noDocs")}</p>
+                      : (
+                        <ul class="space-y-0.5">
+                          {docs.map((d) => (
+                            <li
+                              key={d.id}
+                              class="group flex items-center gap-1"
+                            >
+                              <button
+                                onClick={() => open(d.id)}
+                                class={`flex-1 min-w-0 text-left px-2 py-1.5 rounded-md text-sm ${
+                                  d.id === id
+                                    ? "bg-blue-50 text-blue-900 font-semibold"
+                                    : "hover:bg-slate-100"
+                                }`}
+                              >
+                                <span class="block truncate">{d.name}</span>
+                                <span class="block text-xs text-slate-400">
+                                  {d.chars} {t("chars")}
+                                </span>
+                              </button>
+                              <button
+                                onClick={() => remove(d.id)}
+                                title={t("delete")}
+                                class="opacity-0 group-hover:opacity-100 px-1.5 py-1
+                                     text-red-600 hover:bg-red-50 rounded text-xs shrink-0"
+                              >
+                                ✕
+                              </button>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                  </section>
+
+                  <section class="space-y-2">
                     <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-500">
-                      {t("myDocs")}
+                      {t("fileSection")}
                     </h3>
                     <button
-                      onClick={create}
-                      title={t("newDoc")}
-                      class="px-2 py-0.5 rounded-md bg-green-100 text-green-800
-                             hover:bg-green-200 text-sm font-bold leading-none"
+                      onClick={() => fileRef.current?.click()}
+                      class="w-full text-left px-2.5 py-2 border border-slate-200 rounded-lg
+                           hover:border-blue-400 hover:bg-blue-50/60 text-sm"
                     >
-                      +
-                    </button>
-                  </div>
-                  <p class="text-xs text-slate-500 mb-2">{t("docsHint")}</p>
-                  {docs.length === 0
-                    ? <p class="text-sm text-slate-400">{t("noDocs")}</p>
-                    : (
-                      <ul class="space-y-0.5">
-                        {docs.map((d) => (
-                          <li key={d.id} class="group flex items-center gap-1">
-                            <button
-                              onClick={() => open(d.id)}
-                              class={`flex-1 min-w-0 text-left px-2 py-1.5 rounded-md text-sm ${
-                                d.id === id
-                                  ? "bg-blue-50 text-blue-900 font-semibold"
-                                  : "hover:bg-slate-100"
-                              }`}
-                            >
-                              <span class="block truncate">{d.name}</span>
-                              <span class="block text-xs text-slate-400">
-                                {d.chars} {t("chars")}
-                              </span>
-                            </button>
-                            <button
-                              onClick={() => remove(d.id)}
-                              title={t("delete")}
-                              class="opacity-0 group-hover:opacity-100 px-1.5 py-1
-                                     text-red-600 hover:bg-red-50 rounded text-xs shrink-0"
-                            >
-                              ✕
-                            </button>
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                </section>
-
-                <section class="space-y-2">
-                  <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-500">
-                    {t("fileSection")}
-                  </h3>
-                  <button
-                    onClick={() => fileRef.current?.click()}
-                    class="w-full text-left px-2.5 py-2 border border-slate-200 rounded-lg
-                           hover:border-blue-400 hover:bg-blue-50/60 text-sm"
-                  >
-                    {t("importFile")}
-                    <span class="block text-xs text-slate-500">
-                      {t("importHint")}
-                    </span>
-                  </button>
-                  <button
-                    onClick={download}
-                    class="w-full text-left px-2.5 py-2 border border-slate-200 rounded-lg
-                           hover:border-blue-400 hover:bg-blue-50/60 text-sm"
-                  >
-                    {t("exportDocx")}
-                    <span class="block text-xs text-slate-500">
-                      {t("exportHint")}
-                    </span>
-                  </button>
-                </section>
-
-                <section>
-                  <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-500 mb-1.5">
-                    {t("assistantSection")}
-                  </h3>
-                  <label class="flex items-start gap-2 text-sm cursor-pointer">
-                    <input
-                      type="checkbox"
-                      checked={assistantAllowed}
-                      onChange={(e) => {
-                        const on = (e.target as HTMLInputElement).checked;
-                        setDocsAssistantAllowed(on);
-                        setAllowed(on);
-                      }}
-                      class="mt-0.5"
-                    />
-                    <span>
-                      {t("allowAssistant")}
+                      {t("importFile")}
                       <span class="block text-xs text-slate-500">
-                        {t("allowAssistantHint")}
+                        {t("importHint")}
                       </span>
-                    </span>
-                  </label>
-                </section>
-              </div>
-            </aside>
+                    </button>
+                    <button
+                      onClick={download}
+                      class="w-full text-left px-2.5 py-2 border border-slate-200 rounded-lg
+                           hover:border-blue-400 hover:bg-blue-50/60 text-sm"
+                    >
+                      {t("exportDocx")}
+                      <span class="block text-xs text-slate-500">
+                        {t("exportHint")}
+                      </span>
+                    </button>
+                  </section>
+
+                  <section>
+                    <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-500 mb-1.5">
+                      {t("assistantSection")}
+                    </h3>
+                    <label class="flex items-start gap-2 text-sm cursor-pointer">
+                      <input
+                        type="checkbox"
+                        checked={assistantAllowed}
+                        onChange={(e) => {
+                          const on = (e.target as HTMLInputElement).checked;
+                          setDocsAssistantAllowed(on);
+                          setAllowed(on);
+                        }}
+                        class="mt-0.5"
+                      />
+                      <span>
+                        {t("allowAssistant")}
+                        <span class="block text-xs text-slate-500">
+                          {t("allowAssistantHint")}
+                        </span>
+                      </span>
+                    </label>
+                  </section>
+                </div>
+              </aside>
             </>
           )}
 
@@ -850,7 +916,9 @@ function Sep() {
   return <span class="w-px h-5 bg-slate-300 mx-1" />;
 }
 
-function AlignIcon({ kind }: { kind: "left" | "center" | "right" | "justify" }) {
+function AlignIcon(
+  { kind }: { kind: "left" | "center" | "right" | "justify" },
+) {
   const widths = {
     left: [14, 9, 12, 7],
     center: [14, 10, 12, 8],
@@ -862,7 +930,14 @@ function AlignIcon({ kind }: { kind: "left" | "center" | "right" | "justify" }) 
   return (
     <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
       {widths.map((w, i) => (
-        <rect key={i} x={x(w)} y={4 + i * 3.4} width={w} height="1.8" rx="0.9" />
+        <rect
+          key={i}
+          x={x(w)}
+          y={4 + i * 3.4}
+          width={w}
+          height="1.8"
+          rx="0.9"
+        />
       ))}
     </svg>
   );

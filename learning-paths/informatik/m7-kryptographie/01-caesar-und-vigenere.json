@@ -1,0 +1,326 @@
+{
+  "accent": "rose",
+  "exercises": [
+    {
+      "hint": {
+        "de": "Alle Antworten stehen auf den Bildschirmen davor – lies sie noch einmal von oben.",
+        "en": "All answers sit on the screens before – read them once more from the top."
+      },
+      "intro": {
+        "de": "Setze die fehlenden Wörter ein.",
+        "en": "Fill in the missing words."
+      },
+      "kind": "cloze",
+      "text": {
+        "de": "Schon ___ Caesar verschob jeden ___ um drei Stellen: Aus ___ wird ___. Mit Verschiebung 13 wird daraus ein ___: Zweimal anwenden gibt den ___ zurück. Ersetzt jedes Zeichen immer das gleiche, heißt das Verfahren ___. Dann verrät die ___ alles: Der häufigste Buchstabe im Deutschen ist das ___. ___ nimmt ein ___ und verschiebt jeden Buchstaben anders – ___. Dreihundert Jahre galt das als ___. Das Problem aller dieser Verfahren: Beide Seiten brauchen denselben ___. Nach ___ steckt die Sicherheit im ___, nicht im geheimen Verfahren. Ohne ___ Übergabe nützt der beste ___ nichts.",
+        "en": "Even ___ Caesar shifted every ___ by three: ___ becomes ___. With a shift of 13 it becomes a ___: applying it twice returns the ___. If every character always becomes the same one, the method is called ___. Then ___ gives everything away: the most frequent letter in English is ___. ___ takes a ___ and shifts every letter differently – ___. For three hundred years that counted as ___. The problem of all these methods: both sides need the same ___. According to ___, security sits in the ___, not in the secret method. Without ___ handover, even the best ___ is useless."
+      },
+      "title": {
+        "de": "1. Lückentext",
+        "en": "1. Fill in the blanks"
+      }
+    },
+    {
+      "hint": {
+        "de": "Schreib beide Male das Alphabet unter die Buchstaben – wo wiederholt sich was?",
+        "en": "Write the alphabet beneath the letters both times – where does something repeat?"
+      },
+      "intro": {
+        "de": "Setze zwei Beobachtungen zueinander in Beziehung.",
+        "en": "Relate two observations to each other."
+      },
+      "kind": "compare",
+      "text": {
+        "de": "Verschlüssle das Wort ANGRIFF einmal mit Caesar (+3) und einmal mit Vigenère und dem Schlüsselwort GEHEIM. Erkläre, warum beim zweiten Mal derselbe Buchstabe verschieden herauskommt – und was das für die Häufigkeitsanalyse bedeutet.",
+        "en": "Encrypt the word ATTACK once with Caesar (+3) and once with Vigenère using the keyword LEMON. Explain why the second time the same letter comes out differently – and what that means for frequency analysis."
+      },
+      "title": {
+        "de": "2. Vergleiche",
+        "en": "2. Compare"
+      }
+    },
+    {
+      "intro": {
+        "de": "Auf diese Frage gibt es keine richtige Antwort.",
+        "en": "There is no right answer to this one."
+      },
+      "kind": "reflect",
+      "text": {
+        "de": "Erfinde mit einem Freund eine Geheimschrift für Zettel in der Klasse. Was ist euer Schlüssel, was euer Verfahren – und was passiert, wenn ein Zettel gefunden wird?",
+        "en": "Invent a secret writing with a friend for notes in class. What is your key, what is your method – and what happens if a note is found?"
+      },
+      "title": {
+        "de": "3. Zum Nachdenken",
+        "en": "3. Something to think about"
+      }
+    }
+  ],
+  "icon": "🕵️",
+  "key": "caesar-und-vigenere",
+  "minutes": 22,
+  "screens": [
+    {
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Schon Julius Caesar verschlüsselte Nachrichten – mit einem Trick, den du in einer Minute lernst: Jeder Buchstabe rutscht um drei Stellen weiter.",
+            "en": "Even Julius Caesar encrypted messages – with a trick you learn in a minute: every letter slides three places forward."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Aus HALLO wird KDOOR: H wird K, A wird D, L wird O, O wird R. Am Ende geht es vorne weiter – aus Z wird C. Zum Entschlüsseln schiebst du einfach zurück. Mit Verschiebung 13 wird es zum Spiel: Zweimal anwenden gibt den Klartext zurück, weil 13 genau die Hälfte von 26 ist.",
+            "en": "HALLO becomes KDOOR: H turns K, A turns D, L turns O, O turns R. At the end it wraps around – Z becomes C. To decrypt you simply slide back. With a shift of 13 it becomes a game: applying it twice returns the plaintext, because 13 is exactly half of 26."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "✉️",
+          "title": {
+            "de": "Erste Botschaft",
+            "en": "First message"
+          },
+          "text": {
+            "de": "Verschlüssle deinen Vornamen mit +3 und gib den Zettel weiter – mit der Zahl dazu. Kann die Person ihn lesen? Und jetzt ohne die Zahl: Wie lange rät sie?",
+            "en": "Encrypt your first name with +3 and pass the note on – with the number attached. Can the person read it? And now without the number: how long do they guess?"
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Caesar lebt weiter – in Escape-Rooms und beim Geocaching: Fast jedes Rätsel mit verdrehten Buchstaben ist ein Caesar mit anderer Zahl. Wer +3 im Schlaf kann, knackt dort die erste Truhe. Und in Foren versteckt ROT13 Spoiler vor neugierigen Blicken: markieren, drehen, lesen – der älteste Spoiler-Schutz des Internets, benannt nach der Drehung um 13.",
+            "en": "Caesar lives on – in escape rooms and geocaching: almost every riddle with twisted letters is a Caesar with a different number. Whoever masters +3 in their sleep cracks the first chest there. And in forums ROT13 hides spoilers from curious eyes: mark, rotate, read – the internet's oldest spoiler guard, named after the turn by 13."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "🗝️",
+          "title": {
+            "de": "Erste Truhe",
+            "en": "First chest"
+          },
+          "text": {
+            "de": "Suche im Netz nach einem Geocaching-Rätsel mit „Caesar“ – du erkennst es sofort. Knacke es auf Papier, ohne Rechner: Das ist Kryptographie mit Stift, wie vor 2000 Jahren.",
+            "en": "Search the net for a geocaching riddle with “Caesar” – you spot it at once. Crack it on paper, without a computer: that is cryptography with a pen, like 2000 years ago."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Caesar selbst nutzte die Verschiebung für Heeresbefehle – Boten kannten den Text nicht, Generäle schon. Stell dir vor: Du bist Bote, wirst gefangen, der Zettel ist Kauderwelsch. Folter nützt nichts gegen einen Zettel, den nicht einmal der Träger lesen kann. Genau dafür sind Geheimschriften da: Wissen teilen, ohne es mitzuteilen.",
+            "en": "Caesar himself used the shift for army orders – couriers did not know the text, generals did. Imagine: you are the courier, get caught, the note is gibberish. Torture helps nothing against a note not even the carrier can read. Exactly that is what secret writings are for: sharing knowledge without sharing it."
+          }
+        }
+      ],
+      "title": {
+        "de": "Geheimtinte für Anfänger",
+        "en": "Invisible ink for beginners"
+      }
+    },
+    {
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Caesar ist nur ein Spezialfall: Ersetzt jedes Zeichen immer das gleiche, heißt das Verfahren monoalphabetisch. Und jedes solche Verfahren hat denselben Feind.",
+            "en": "Caesar is only a special case: if every character always becomes the same one, the method is called monoalphabetic. And every such method has the same enemy."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Der Feind heißt Häufigkeitsanalyse: Im Deutschen ist das E mit Abstand der häufigste Buchstabe. Zähle im Geheimtext die Zeichen – das häufigste ist vermutlich ein E. Dann das zweithäufigste, dann Wortenden und doppelte Buchstaben. So fällt jede monoalphabetische Verschlüsselung, egal wie wild das Alphabet verdreht ist.",
+            "en": "The enemy is called frequency analysis: in English the letter E is by far the most frequent. Count the characters in the ciphertext – the most frequent is probably an E. Then the second most frequent, then word endings and double letters. That is how every monoalphabetic cipher falls, no matter how wildly the alphabet is twisted."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "fact",
+          "icon": "📊",
+          "title": {
+            "de": "Zum Merken",
+            "en": "Worth remembering"
+          },
+          "text": {
+            "de": "Monoalphabetisch heißt: ein Klartext-Buchstabe, immer derselbe Geheim-Buchstabe. Genau diese Treue verrät ihn.",
+            "en": "Monoalphabetic means: one plaintext letter, always the same secret letter. Exactly that loyalty betrays it."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Wie dominant das E ist? In 100 deutschen Buchstaben stecken im Schnitt 17 E – dann lange nichts, dann N, I, R. Im Geheimtext suchst du also das häufigste Zeichen: Fast sicher ein E. So haben arabische Gelehrte um Al-Kindi schon im 9. Jahrhundert in Bagdad geheime Schriften gelesen – tausend Jahre vor Computern, mit nichts als Zählen und Geduld.",
+            "en": "How dominant is E? In 100 German letters sit on average 17 Es – then long nothing, then N, I, R. In the ciphertext you thus seek the most frequent character: almost surely an E. That is how Arab scholars around Al-Kindi read secret writings in Baghdad back in the 9th century – a thousand years before computers, with nothing but counting and patience."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "fact",
+          "icon": "📜",
+          "title": {
+            "de": "Bagdad, 9. Jahrhundert",
+            "en": "Baghdad, 9th century"
+          },
+          "text": {
+            "de": "Al-Kindi und das Haus der Weisheit: Während in Europa kaum jemand schrieb, wurde in Bagdad gerechnet, übersetzt – und geknackt. Die Häufigkeitsanalyse ist älter als jede Universität Deutschlands.",
+            "en": "Al-Kindi and the House of Wisdom: while in Europe hardly anyone wrote, Baghdad computed, translated – and cracked. Frequency analysis is older than any German university."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Zähle selbst: Nimm einen Absatz aus deinem Lieblingsbuch, striche alle E an – wie viel Prozent sind es? Dann N, I, R, S, T. Deine Strichliste ist eine Häufigkeitstabelle im Kleinformat – und genau so haben codeknackende Mönche, Diplomaten und Detektive jahrhundertelang gearbeitet: mit Strichen statt Servern.",
+            "en": "Count yourself: take a paragraph from your favourite book, tick all Es – what percent are they? Then N, I, R, S, T. Your tally is a frequency table in small format – and exactly so code-breaking monks, diplomats and detectives worked for centuries: with tallies instead of servers."
+          }
+        }
+      ],
+      "title": {
+        "de": "Ein Alphabet, ein Schlüssel",
+        "en": "One alphabet, one key"
+      }
+    },
+    {
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Der Ausweg: Lass denselben Buchstaben jedes Mal anders herauskommen. Dann nützt Zählen nichts mehr.",
+            "en": "The way out: let the same letter come out differently each time. Then counting helps no more."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Vigenère nimmt ein Schlüsselwort, zum Beispiel GEHEIM: Der erste Buchstabe verschiebt um G, der zweite um E, der dritte um H – danach geht es von vorne los. Ein E im Text wird mal D, mal K, mal wieder anders: Das Verfahren ist polyalphabetisch. Dreihundert Jahre galt es als unknackbar, erst im 19. Jahrhundert fiel es – weil sich das Schlüsselwort in langen Texten verrät.",
+            "en": "Vigenère takes a keyword, say LEMON: the first letter shifts by L, the second by E, the third by M – then it starts over. An E in the text becomes D once, K another time, different again after: the method is polyalphabetic. For three hundred years it counted as unbreakable, only falling in the 19th century – because the keyword betrays itself in long texts."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Der Preis der Stärke: Beide Seiten brauchen dasselbe Schlüsselwort – und müssen es irgendwie austauschen, ohne dass der Feind mithört. Genau dieses Schlüsselübergabe-Problem beendet die klassische Zeit und beginnt die moderne.",
+            "en": "The price of strength: both sides need the same keyword – and must somehow exchange it without the enemy listening in. Exactly this key-handover problem ends the classical era and begins the modern one."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Wie fiel das „Unknackbare“? Ein Preuße namens Kasiski bemerkte 1863: Wiederholt sich eine Buchstabengruppe im Geheimtext alle 15 Zeichen, verrät der Abstand die Schlüssellänge – 15 heißt Länge 3, 5 oder 15. Danach ist der Rest Fleiß: Jede dritte, fünfte oder fünfzehnte Stelle ist wieder monoalphabetisch – und fällt wie jede. Lange Texte verraten lange Schlüssel.",
+            "en": "How did the “unbreakable” fall? A Prussian named Kasiski noticed in 1863: if a letter group repeats every 15 characters in the ciphertext, the distance betrays the key length – 15 means length 3, 5 or 15. The rest is diligence after: every third, fifth or fifteenth position is monoalphabetic again – and falls like any. Long texts betray long keys."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "note",
+          "icon": "🔍",
+          "title": {
+            "de": "Selbst testen",
+            "en": "Test yourself"
+          },
+          "text": {
+            "de": "Nimm einen langen Vigenère-Text und suche wiederholte Dreiergruppen. Miss die Abstände, nimm den größten gemeinsamen Teiler – das ist oft die Schlüssellänge. Du hast gerade Kasiski nachgemacht, 160 Jahre später.",
+            "en": "Take a long Vigenère text and find repeated triplets. Measure the distances, take the greatest common divisor – that is often the key length. You just redid Kasiski, 160 years later."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Vigenère war übrigens Diplomat, kein Mathematiker: Blaise de Vigenère diente am französischen Hof und schrieb über Geheimschriften nebenbei. Seine Methode überlebte ihn um Jahrhunderte – weil sie das erste Verfahren war, das dem Zählen widerstand. Manchmal kommt der Fortschritt nicht aus der Theorie, sondern aus der Praxis der Höfe.",
+            "en": "Vigenère was incidentally a diplomat, no mathematician: Blaise de Vigenère served at the French court and wrote about secret writings on the side. His method outlived him by centuries – because it was the first method resisting counting. Sometimes progress comes not from theory but from the practice of courts."
+          }
+        }
+      ],
+      "title": {
+        "de": "Das unknackbare Rezept",
+        "en": "The unbreakable recipe"
+      }
+    },
+    {
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Der wichtigste Satz der Kryptographie ist kein Verfahren, sondern ein Prinzip: Die Sicherheit steckt im Schlüssel, nicht im Geheimhalten des Verfahrens.",
+            "en": "The most important sentence in cryptography is no method but a principle: security sits in the key, not in keeping the method secret."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Nach Kerckhoffs darf der Feind alles wissen – Verfahren, Programm, sogar Quellcode. Nur den Schlüssel nicht. Darum prüft die Welt offene Verfahren jahrelang, statt auf Geheimtricks zu vertrauen: Was tausend Feinde nicht knacken, ist sicher. Was einer versteckt, ist es meistens nicht.",
+            "en": "After Kerckhoffs the enemy may know everything – method, program, even source code. Only not the key. Hence the world tests open methods for years instead of trusting secret tricks: what a thousand enemies cannot crack is safe. What one person hides mostly is not."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Alles bisher heißt symmetrisch: Ein Schlüssel schließt zu und auf. Schnell, bewährt – und mit einem Geburtsfehler: Der Schlüssel muss zum Partner, und unterwegs lauert der Feind. Wie man einen Schlüssel übergibt, ohne ihn zu übergeben, erzählt der nächste Pfad.",
+            "en": "Everything so far is called symmetric: one key locks and unlocks. Fast, proven – and with a birth defect: the key must reach the partner, and the enemy lurks on the way. How to hand over a key without handing it over is told by the next path."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "Hamburg: Bildungsplan Studienstufe (Informatik)",
+                "en": "Hamburg: syllabus for the upper stage (computing)"
+              },
+              "url": "https://www.hamburg.de/politik-und-verwaltung/behoerden/bsfb/veroeffentlichungen/bildungsplaene/start-sek2-2022-123118"
+            },
+            {
+              "label": {
+                "de": "GI: Bildungsstandards Informatik",
+                "en": "GI: computing education standards"
+              },
+              "url": "https://gi.de/meldung/bildungsstandards-gi-stellt-neue-empfehlungen-fuer-den-informatikunterricht-vor"
+            }
+          ]
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Kerckhoffs lebt heute in deinem Messenger: Das Signal-Protokoll – Herz von Signal und WhatsApp – liegt offen da, jeder darf es prüfen, niemand findet Löcher. Das Gegenteil: irgendeine „Geheimtrick-App“ aus dem Netz, deren Verfahren niemand kennt. Welcher vertraust du deine Nachrichten an? Genau: der geprüften, nicht der geheimen.",
+            "en": "Kerckhoffs lives today in your messenger: the Signal protocol – heart of Signal and WhatsApp – lies open, anyone may check it, nobody finds holes. The opposite: some “secret-trick app” from the net whose method nobody knows. Which do you trust your messages with? Exactly: the examined one, not the secret one."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "tip",
+          "icon": "🔑",
+          "title": {
+            "de": "Lebensregel",
+            "en": "Life rule"
+          },
+          "text": {
+            "de": "Passwort geheim, Methode egal: So erkennst du seriöse Sicherheit. Wer mit Geheimverfahren wirbt statt mit geprüften, verkauft Nebel. Merksatz für jeden Download: offen und geprüft schlägt geheim und neu.",
+            "en": "Password secret, method whatever: thus you spot serious security. Whoever advertises secret methods instead of examined ones sells fog. Motto for every download: open and examined beats secret and new."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Übertrage Kerckhoffs auf dein Handy-Passwort: Das Verfahren – sechs Ziffern eintippen – kennt jeder. Sicher ist es trotzdem, weil nur du die Ziffern kennst. Würde die Sicherheit an der Geheimhaltung der Methode hängen, wäre jedes Handy geknackt, sobald einer zuschaut. Methode offen, Schlüssel geheim: So funktioniert Sicherheit, die Alltag aushält.",
+            "en": "Transfer Kerckhoffs to your phone PIN: the method – typing six digits – everybody knows. It is safe anyway because only you know the digits. If security hung on hiding the method, every phone would be cracked once someone watches. Method open, key secret: thus works security that survives everyday life."
+          }
+        }
+      ],
+      "title": {
+        "de": "Das wichtigste Prinzip",
+        "en": "The most important principle"
+      }
+    }
+  ],
+  "summary": {
+    "de": "Von Caesars +3 bis Vigenère: warum Zählen alles verrät – und wo der Schlüssel wohnen muss.",
+    "en": "From Caesar's +3 to Vigenère: why counting reveals everything – and where the key must live."
+  },
+  "title": {
+    "de": "Von Caesar bis Vigenère",
+    "en": "From Caesar to Vigenère"
+  }
+}

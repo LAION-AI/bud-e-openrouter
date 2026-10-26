@@ -10,7 +10,7 @@
   },
   "icon": "🔁",
   "accent": "indigo",
-  "minutes": 14,
+  "minutes": 19,
   "screens": [
     {
       "key": "wie-oft",
@@ -91,20 +91,47 @@
         {
           "kind": "table",
           "head": [
-            { "de": "Frage", "en": "Question" },
-            { "de": "Schleife", "en": "Loop" },
-            { "de": "Typisch dafür", "en": "Typical use" }
+            {
+              "de": "Frage",
+              "en": "Question"
+            },
+            {
+              "de": "Schleife",
+              "en": "Loop"
+            },
+            {
+              "de": "Typisch dafür",
+              "en": "Typical use"
+            }
           ],
           "rows": [
             [
-              { "de": "Wie oft?", "en": "How often?" },
-              { "de": "for", "en": "for" },
-              { "de": "Zehn Runden, jeder Buchstabe eines Wortes", "en": "Ten rounds, each letter of a word" }
+              {
+                "de": "Wie oft?",
+                "en": "How often?"
+              },
+              {
+                "de": "for",
+                "en": "for"
+              },
+              {
+                "de": "Zehn Runden, jeder Buchstabe eines Wortes",
+                "en": "Ten rounds, each letter of a word"
+              }
             ],
             [
-              { "de": "Solange was?", "en": "As long as what?" },
-              { "de": "while", "en": "while" },
-              { "de": "Bis richtig geraten, bis die Zeit um ist", "en": "Until guessed right, until time is up" }
+              {
+                "de": "Solange was?",
+                "en": "As long as what?"
+              },
+              {
+                "de": "while",
+                "en": "while"
+              },
+              {
+                "de": "Bis richtig geraten, bis die Zeit um ist",
+                "en": "Until guessed right, until time is up"
+              }
             ]
           ]
         },
@@ -132,6 +159,13 @@
           "text": {
             "de": "Erst der Countdown, wie er sein soll. Die Aufgabe darunter lässt dich absichtlich die Zeile löschen, die den Zähler kleiner macht - und den Stopp-Knopf ausprobieren. Wer eine Endlosschleife einmal bewusst gebaut hat, erschrickt beim nächsten Mal nicht, sondern erkennt sie.",
             "en": "First the countdown as it should be. The task below has you deliberately delete the line that decreases the counter - and try out the stop button. Whoever has once deliberately built an endless loop does not panic the next time but recognises it."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Dein Ladebalken ist eine while-Schleife mit Prozent-Anzeige: Solange geladen kleiner als 100 ist, weiterladen und Balken malen. Jedes „noch 3 Minuten“ kommt aus so einer Schleife. Wenn der Balken hängt, hängt meist die Schleife – die Bedingung wird nie wahr. Ab heute weißt du bei jedem Balken: Dahinter wartet jemand auf eine Zahl.",
+            "en": "Your loading bar is a while loop with percent display: while loaded is below 100, keep loading and paint the bar. Every “3 minutes left” comes from such a loop. When the bar hangs, mostly the loop hangs – the condition never turns true. From today you know with every bar: behind it someone waits for a number."
           }
         }
       ]
@@ -187,14 +221,105 @@
           "kind": "sources",
           "items": [
             {
-              "label": { "de": "Python-Dokumentation: Kontrollstrukturen", "en": "Python documentation: control flow" },
+              "label": {
+                "de": "Python-Dokumentation: Kontrollstrukturen",
+                "en": "Python documentation: control flow"
+              },
               "url": "https://docs.python.org/3/tutorial/controlflow.html"
             },
             {
-              "label": { "de": "inf-schule.de: Wiederholungen", "en": "inf-schule.de: repetitions" },
+              "label": {
+                "de": "inf-schule.de: Wiederholungen",
+                "en": "inf-schule.de: repetitions"
+              },
               "url": "https://www.inf-schule.de/imperative-programmierung"
             }
           ]
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Die Anwesenheitsliste der Zukunft: `for name in klasse` – fragen, Haken setzen, weiter. Drei Zeilen statt dreißig Minuten Aufruf. Lehrer, die das sehen, wollen es sofort haben – und du hast gerade Schulverwaltung automatisiert. Vorsicht: Ruhm verpflichtet.",
+            "en": "The attendance list of the future: `for name in class` – ask, tick, onward. Three lines instead of thirty minutes roll call. Teachers seeing that want it at once – and you just automated school administration. Careful: fame obliges."
+          }
+        }
+      ]
+    },
+    {
+      "key": "fleissarbeit-abgeben",
+      "title": {
+        "de": "Fleißarbeit abgeben",
+        "en": "Handing over the drudgery"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Schleifen sind dafür da, dass du die langweilige Arbeit nicht machst. Drei Fleißarbeiten für deine erste `for`-Schleife:",
+            "en": "Loops exist so you do not do the boring work. Three chores for your first `for` loop:"
+          }
+        },
+        {
+          "kind": "steps",
+          "items": [
+            {
+              "title": {
+                "de": "Der Einmaleins-Trainer",
+                "en": "The times-table trainer"
+              },
+              "text": {
+                "de": "Zehn Aufgaben, ein Zähler für Richtige: `for i in range(1, 11)` fragt, prüft mit `==` und lobt am Ende. Deine kleine Schwester lernt damit, du hast programmiert.",
+                "en": "Ten tasks, one counter for correct ones: `for i in range(1, 11)` asks, checks with `==` and praises at the end. Your little sister learns with it, you programmed."
+              }
+            },
+            {
+              "title": {
+                "de": "Der Sparplan",
+                "en": "The savings plan"
+              },
+              "text": {
+                "de": "Fünf Euro pro Woche, 52 Wochen: Die Schleife addiert, du staunst über 260 Euro. Ändere den Betrag – und sieh sofort, was ein Jahr Disziplin wert ist.",
+                "en": "Five euros a week, 52 weeks: the loop adds up, you marvel at 260 euros. Change the amount – and see at once what a year of discipline is worth."
+              }
+            },
+            {
+              "title": {
+                "de": "Der Countdown",
+                "en": "The countdown"
+              },
+              "text": {
+                "de": "Von 10 bis 0 mit `while`, dann „Start!“. Klingt klein – aber jede Rakete, jede Prüfung, jede Geburtstagstorte fängt so an.",
+                "en": "From 10 to 0 with `while`, then “Go!”. Sounds small – but every rocket, every exam, every birthday cake starts like that."
+              }
+            }
+          ]
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Merksatz für alle drei: Die Schleife macht die Wiederholung, du machst den Sinn. Wer das einmal gespürt hat – zehn Aufgaben, null Langeweile –, gibt Fleißarbeit nie wieder von Hand ab.",
+            "en": "Motto for all three: the loop does the repetition, you supply the meaning. Whoever felt that once – ten tasks, zero boredom – never hands in drudgery by hand again."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Führe zum ersten Mal Buch: zwei Listen – Einnahmen, Ausgaben. Zwei Schleifen summieren, Differenz ausgeben: dein Monat in einer Zahl. Taschengeld, Döner, Kino – alles drin, nichts geschönt. Wer seine Zahlen kennt, streitet nie mehr über Geld, sondern rechnet. Erwachsenwerden fängt mit einer Schleife an.",
+            "en": "Keep books for the first time: two lists – income, expenses. Two loops sum up, difference out: your month in one number. Pocket money, kebab, cinema – all inside, nothing prettied. Whoever knows their numbers never quarrels about money again but computes. Growing up starts with a loop."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "fact",
+          "icon": "📈",
+          "title": {
+            "de": "Zinsen",
+            "en": "Interest"
+          },
+          "text": {
+            "de": "Lege 100 Euro zu 2 Prozent an und lasse eine Schleife zehn Jahre laufen: Jedes Jahr mal 1,02. Das Ergebnis – über 121 Euro – heißt Zinseszins und erklärt, warum früh anfangen alles schlägt. Banken lieben Schleifen. Jetzt du auch.",
+            "en": "Put 100 euros at 2 percent and let a loop run ten years: every year times 1.02. The result – over 121 euros – is called compound interest, explaining why starting early beats everything. Banks love loops. Now you too."
+          }
         }
       ]
     }

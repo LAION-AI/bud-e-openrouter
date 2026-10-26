@@ -1,0 +1,345 @@
+{
+  "accent": "sky",
+  "exercises": [
+    {
+      "hint": {
+        "de": "Alle Antworten stehen auf den Bildschirmen davor – lies sie noch einmal von oben.",
+        "en": "All answers sit on the screens before – read them once more from the top."
+      },
+      "intro": {
+        "de": "Setze die fehlenden Wörter ein.",
+        "en": "Fill in the missing words."
+      },
+      "kind": "cloze",
+      "text": {
+        "de": "Der Feind ___ alles mit, versteht aber ___. Schlimmer: Er spielt ___ in der Mitte – Alice glaubt, mit ___ zu reden, Bob glaubt, mit ___ zu reden. Das heißt ___-Angriff. Dagegen hilft nur ein ___: Woher weiß Alice, dass die Nachricht wirklich von ___ ist? Eine digitale ___ beweist es – prüfen kann es jeder. Darum steht hinter jedem Schloss-Symbol ein ___: Eine vertrauenswürdige Stelle ___ schriftlich, dass dieser Schlüssel wirklich zur ___ gehört. Ohne diesen Ausweis wäre jede ___ möglich.",
+        "en": "The enemy ___ everything along but understands ___. Worse: they play ___ in the middle – Alice believes she talks to ___, Bob believes he talks to ___. That is called a ___ attack. Only ___ helps against that: how does Alice know the message truly comes from ___? A digital ___ proves it – anyone can check. Hence behind every padlock sits a ___: a trusted office confirms ___ that this key truly belongs to the ___. Without that ID any ___ would be possible."
+      },
+      "title": {
+        "de": "1. Lückentext",
+        "en": "1. Fill in the blanks"
+      }
+    },
+    {
+      "hint": {
+        "de": "Was kann der Empfänger jeweils beweisen – und wem?",
+        "en": "What can the receiver prove in each case – and to whom?"
+      },
+      "intro": {
+        "de": "Setze zwei Beobachtungen zueinander in Beziehung.",
+        "en": "Relate two observations to each other."
+      },
+      "kind": "compare",
+      "text": {
+        "de": "Du bestellst Sneaker für 120 Euro – einmal per Nachricht ohne Unterschrift, einmal digital unterschrieben. Der Shop behauptet später, du hättest 12 Paar bestellt. Vergleiche beide Fälle: Was kannst du jeweils beweisen – und wem?",
+        "en": "You order sneakers for 120 euros – once via message without signature, once digitally signed. Later the shop claims you ordered 12 pairs. Compare both cases: what can you prove in each – and to whom?"
+      },
+      "title": {
+        "de": "2. Vergleiche",
+        "en": "2. Compare"
+      }
+    },
+    {
+      "intro": {
+        "de": "Auf diese Frage gibt es keine richtige Antwort.",
+        "en": "There is no right answer to this one."
+      },
+      "kind": "reflect",
+      "text": {
+        "de": "Wem vertraust du online blind – Shop, Bank, Messenger? Und was müsste passieren, damit du misstrauisch würdest?",
+        "en": "Whom do you trust online blindly – shop, bank, messenger? And what would have to happen for you to grow suspicious?"
+      },
+      "title": {
+        "de": "3. Zum Nachdenken",
+        "en": "3. Something to think about"
+      }
+    }
+  ],
+  "icon": "🕵️‍♂️",
+  "key": "der-mann-in-der-mitte",
+  "minutes": 18,
+  "screens": [
+    {
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Alice und Bob tauschen Schlüssel nach Diffie-Hellman. Mallory sitzt in der Mitte und liest mit. Am Ende glauben beide, sie seien sicher – und beide irren sich.",
+            "en": "Alice and Bob swap keys via Diffie-Hellman. Mallory sits in the middle and reads along. At the end both believe they are safe – and both are wrong."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "So geht es: Alice schickt ihre Zahl – Mallory fängt sie ab und schickt Alice seine eigene. Bob schickt seine Zahl – Mallory fängt auch sie ab und schickt Bob seine eigene. Ergebnis: Alice teilt ein Geheimnis mit Mallory, Bob teilt eins mit Mallory. Jede Nachricht wird entschlüsselt, gelesen, neu verschlüsselt, weitergeschickt. Niemand merkt etwas – die Verschlüsselung funktioniert tadellos, nur mit der falschen Person.",
+            "en": "How it goes: Alice sends her number – Mallory intercepts it and sends Alice their own. Bob sends his number – Mallory intercepts that too and sends Bob their own. Result: Alice shares a secret with Mallory, Bob shares one with Mallory. Every message gets decrypted, read, re-encrypted, forwarded. Nobody notices anything – the encryption works flawlessly, just with the wrong person."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "warn",
+          "icon": "📮",
+          "title": {
+            "de": "Die Postkarten-Lehre",
+            "en": "The postcard lesson"
+          },
+          "text": {
+            "de": "Verschlüsselung ohne Authentifizierung ist wie ein Tresor, den dir ein Fremder aufstellt: stabil, massiv – und er hat den Zweitschlüssel. Diffie-Hellman ohne Unterschrift schützt vor Zuhörern, nicht vor Mittelsmännern.",
+            "en": "Encryption without authentication is like a safe a stranger installs for you: solid, massive – and they hold the spare key. Diffie-Hellman without signature guards against listeners, not against middlemen."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Offenes Café-WLAN ist Mallorys Paradies: Ohne Passwort fliegen alle Postkarten offen durch die Luft – Passwörter, Chats, alles lesbar für jeden mit Laptop nebenan. Die Lösung heißt Umschlag: VPN oder nur Seiten mit Schloss. Regel für unterwegs: kein Banking im offenen WLAN ohne VPN. Niemals. Wirklich niemals.",
+            "en": "Open café Wi-Fi is Mallory's paradise: without password all postcards fly openly through the air – passwords, chats, all readable for anyone with a laptop nearby. The fix is called envelope: VPN or only pages with padlocks. Rule for the road: no banking on open Wi-Fi without VPN. Never. Really never."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "warn",
+          "icon": "☕",
+          "title": {
+            "de": "Café-Regel",
+            "en": "Café rule"
+          },
+          "text": {
+            "de": "Schaue dich im nächsten Café um: zwanzig Laptops, ein offenes Netz. Ab heute weißt du, wer hier alles Mallory sein könnte – und du bist es nicht, weil du diesen Pfad gelesen hast.",
+            "en": "Look around in the next café: twenty laptops, one open net. From today you know who here could all be Mallory – and you are not, because you read this path."
+          }
+        }
+      ],
+      "title": {
+        "de": "Der Postbote liest mit",
+        "en": "The postman reads along"
+      }
+    },
+    {
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Wie entlarvt man einen Mittelsmann? Genauso wie im echten Leben: durch etwas, das nur der Echte wissen oder können kann.",
+            "en": "How do you expose a middleman? Exactly like in real life: through something only the genuine one can know or do."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Du kennst das längst: Bei unbekannter Nummer rufst du zurück – die Stimme verrät den Freund. Messenger zeigen eine Sicherheitsnummer pro Kontakt: Einmal verglichen (am besten persönlich oder per zweitem Kanal), schlägt jede fremde Nummer dazwischen Alarm. Und Überweisungen bestätigt die Bank per zweitem Weg – App plus SMS-Code. Immer dasselbe Muster: ein zweiter, unabhängiger Kanal entlarvt den Mann in der Mitte.",
+            "en": "You know this already: with an unknown number you call back – the voice betrays the friend. Messengers show a security number per contact: once compared (best in person or via a second channel), every foreign number in between raises alarm. And the bank confirms transfers via a second way – app plus SMS code. Always the same pattern: a second, independent channel exposes the man in the middle."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "📱",
+          "title": {
+            "de": "Heute prüfen",
+            "en": "Check today"
+          },
+          "text": {
+            "de": "Öffne in deinem Messenger einen Chat, tippe auf den Kontaktnamen und suche Sicherheitsnummer oder Verschlüsselungs-Info. Vergleiche sie einmal mit dem Handy deines Gegenübers – ein Blick, und ihr wisst: Hier hört niemand mit.",
+            "en": "Open a chat in your messenger, tap the contact name and find the security number or encryption info. Compare it once with your counterpart's phone – one glance, and you know: nobody listens in here."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Der fieseste Trick kommt per Anruf: „Hier ist Ihre Bank, nennen Sie mir Ihre TAN!“ Echte Banken tun das nie – Betrüger immer. Gegenmittel aus diesem Bildschirm: auflegen, selbst anrufen, Nummer aus dem Telefonbuch, nicht aus dem Anruf. Der zweite Kanal entlarvt den ersten. Wer zurückruft, ruft Mallory aus der Leitung.",
+            "en": "The nastiest trick comes by call: “This is your bank, tell me your TAN!” Real banks never do that – fraudsters always. Remedy from this screen: hang up, call back yourself, number from the phone book, not from the call. The second channel exposes the first. Whoever calls back kicks Mallory off the line."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "tip",
+          "icon": "📞",
+          "title": {
+            "de": "Rückruf-Regel",
+            "en": "Call-back rule"
+          },
+          "text": {
+            "de": "Erzähle die Rückruf-Regel deinen Großeltern – sie sind das Lieblingsziel solcher Anrufe. Ein Satz reicht: „Leg auf, ruf selbst an.“ Du hast gerade Familie geschützt, mit Kryptographie-Wissen.",
+            "en": "Tell the call-back rule to your grandparents – they are the favourite target of such calls. One sentence suffices: “Hang up, call back yourself.” You just protected family, with cryptography knowledge."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Noch ein zweiter Kanal aus deinem Leben: Paketboten. „Ihr Paket liegt beim Nachbarn“ – per Zettel, per Mail UND per App: drei Kanäle, eine Nachricht. Wer alle drei fälschen will, muss dreimal lügen – und fliegt beim ersten Widerspruch auf. Verteilt eure Geheimnisse darum nie über einen Weg allein.",
+            "en": "One more second channel from your life: parcel couriers. “Your parcel waits at the neighbour's” – via note, mail AND app: three channels, one message. Whoever wants to fake all three must lie three times – and trips at the first contradiction. Hence never spread your secrets over one way alone."
+          }
+        }
+      ],
+      "title": {
+        "de": "Wie man ihn entlarvt",
+        "en": "How to expose them"
+      }
+    },
+    {
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Jetzt schließt sich der Kreis zu den letzten Pfaden: Diffie-Hellman liefert das Geheimnis, die Unterschrift liefert den Beweis, wem es gehört.",
+            "en": "Now the circle closes back to the last paths: Diffie-Hellman delivers the secret, the signature delivers the proof of whose it is."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "In der Praxis läuft beides zusammen: Bevor Alice Bobs Zahl traut, prüft sie seine Unterschrift darunter – mit seinem öffentlichen Schlüssel. Stimmt sie, kommt die Zahl wirklich von Bob, und der Mittelsmann bleibt draußen. Unterschrift ohne Schlüssel ist wertlos, Schlüssel ohne Unterschrift ist angreifbar: Erst das Paar ist sicher.",
+            "en": "In practice both run together: before Alice trusts Bob's number, she checks his signature beneath – with his public key. If it holds, the number truly comes from Bob, and the middleman stays outside. Signature without key is worthless, key without signature is attackable: only the pair is safe."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Und wer bürgt für den öffentlichen Schlüssel selbst? Das Zertifikat – der Ausweis vom Amt. Kette vollständig: Zertifikat sagt, wem der Schlüssel gehört. Unterschrift sagt, von wem die Zahl kommt. Diffie-Hellman sagt, was das Geheimnis ist. Drei Glieder, und der Mann in der Mitte geht leer aus.",
+            "en": "And who vouches for the public key itself? The certificate – the ID from the office. Chain complete: the certificate says whom the key belongs to. The signature says whom the number comes from. Diffie-Hellman says what the secret is. Three links, and the man in the middle leaves empty-handed."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "Hamburg: Bildungsplan Studienstufe (Informatik)",
+                "en": "Hamburg: syllabus for the upper stage (computing)"
+              },
+              "url": "https://www.hamburg.de/politik-und-verwaltung/behoerden/bsfb/veroeffentlichungen/bildungsplaene/start-sek2-2022-123118"
+            },
+            {
+              "label": {
+                "de": "GI: Bildungsstandards Informatik",
+                "en": "GI: computing education standards"
+              },
+              "url": "https://gi.de/meldung/bildungsstandards-gi-stellt-neue-empfehlungen-fuer-den-informatikunterricht-vor"
+            }
+          ]
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Warum Messenger wie Signal als sicher gelten? Sie bauen genau diese Kette ein, unsichtbar: Schlüssel per Diffie-Hellman, Unterschriften darunter, Zertifikate dahinter – und die Sicherheitsnummer zum Vergleichen für dich. Du tippst nur, der Rest passiert. Gute Sicherheit merkt man nicht – man merkt nur ihren Ausfall.",
+            "en": "Why do messengers like Signal count as safe? They build exactly this chain in, invisibly: keys via Diffie-Hellman, signatures beneath, certificates behind – and the security number to compare for you. You only type, the rest happens. Good security goes unnoticed – only its failure gets noticed."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "note",
+          "icon": "🔗",
+          "title": {
+            "de": "Drei Glieder",
+            "en": "Three links"
+          },
+          "text": {
+            "de": "Merksatz für die Klausur unds Leben: Geheimnis ohne Beweis ist blind, Beweis ohne Ausweis ist wertlos. Diffie-Hellman, Unterschrift, Zertifikat – reißt ein Glied, reißt die Kette.",
+            "en": "Motto for exams and life: secret without proof is blind, proof without ID is worthless. Diffie-Hellman, signature, certificate – if one link tears, the chain tears."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Frag dich bei jeder App, die „sicher“ ruft: Wer bürgt? Bei Signal eine Stiftung, bei der Bank die Aufsicht, beim Staat das Gesetz. Vertrauen ist nie Technik allein – immer Technik plus jemand, der dafür geradesteht. Wer nur Technik verspricht und keinen Namen nennt, verkauft die halbe Kette.",
+            "en": "Ask with every app shouting “secure”: who vouches? With Signal a foundation, with the bank the supervisors, with the state the law. Trust is never technology alone – always technology plus someone answerable for it. Whoever promises only technology and names no name sells half the chain."
+          }
+        }
+      ],
+      "title": {
+        "de": "Der Kreis schließt sich",
+        "en": "The circle closes"
+      }
+    },
+    {
+      "key": "angriff-zum-nachspielen",
+      "title": {
+        "de": "Angriff zum Nachspielen",
+        "en": "Attack to reenact"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Diesen Angriff spielt ihr zu dritt nach – mit Zetteln, in fünf Minuten. Danach versteht ihr ihn für immer.",
+            "en": "Reenact this attack in threes – with notes, in five minutes. Afterwards you understand it forever."
+          }
+        },
+        {
+          "kind": "steps",
+          "items": [
+            {
+              "title": {
+                "de": "Rollen verteilen",
+                "en": "Hand out roles"
+              },
+              "text": {
+                "de": "Alice und Bob sitzen auseinander, Mallory dazwischen. Alice und Bob dürfen nur über Mallory Zettel tauschen – reden ist verboten.",
+                "en": "Alice and Bob sit apart, Mallory between. Alice and Bob may only swap notes via Mallory – talking is forbidden."
+              }
+            },
+            {
+              "title": {
+                "de": "Schlüssel tauschen",
+                "en": "Swap keys"
+              },
+              "text": {
+                "de": "Alice schreibt eine Zahl, Bob schreibt eine Zahl – beide über Mallory. Mallory schreibt beide ab und schickt eigene Zahlen weiter.",
+                "en": "Alice writes a number, Bob writes a number – both via Mallory. Mallory copies both down and forwards own numbers."
+              }
+            },
+            {
+              "title": {
+                "de": "Nachricht schicken",
+                "en": "Send a message"
+              },
+              "text": {
+                "de": "Alice verschlüsselt eine Nachricht mit „ihrem“ Schlüssel (Caesar +3) und schickt sie los. Mallory entschlüsselt, liest, verschlüsselt neu, schickt weiter.",
+                "en": "Alice encrypts a message with “her” key (Caesar +3) and sends it off. Mallory decrypts, reads, re-encrypts, forwards."
+              }
+            },
+            {
+              "title": {
+                "de": "Auflösen",
+                "en": "Reveal"
+              },
+              "text": {
+                "de": "Mallory liest die Nachricht laut vor. Alice und Bob starren sich an: Alles war verschlüsselt – und trotzdem gelesen. Frage an beide: Woran hättet ihr es merken können?",
+                "en": "Mallory reads the message aloud. Alice and Bob stare at each other: everything was encrypted – yet read. Question for both: how could you have noticed?"
+              }
+            }
+          ]
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Die Antwort steht auf den Bildschirmen davor: an einer Unterschrift, die Mallory nicht fälschen kann. Spielt es danach noch einmal – diesmal unterschreibt Alice ihre Zahl mit einem Zeichen, das nur Bob kennt. Mallory scheitert, das Spiel kippt.",
+            "en": "The answer sits on the screens before: a signature Mallory cannot forge. Play it once more afterwards – this time Alice signs her number with a mark only Bob knows. Mallory fails, the game flips."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Nach dem Spiel gilt die Hotel-Regel: Hotel-WLAN plus Bankgeschäfte ist Mallorys Paradies – fremdes Netz, fremde Nachbarn, deine Konten. Entweder VPN an oder warten bis zu Hause. Wer das einmal verinnerlicht hat, surft überall entspannt: nicht weil nichts passieren kann, sondern weil er weiß, wo die Fallen liegen – und daneben tritt.",
+            "en": "After the game the hotel rule counts: hotel Wi-Fi plus banking is Mallory's paradise – foreign net, foreign neighbours, your accounts. Either VPN on or wait until home. Whoever internalised that once surfs relaxed everywhere: not because nothing can happen, but because they know where the traps lie – and step beside them."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Spielt das Zettelspiel aus dem Kasten oben auch einmal mit vier Leuten: Zwei Mallorys hintereinander. Was ändert sich? Nichts – außer dass zwei lesen statt einer. Die Lehre: Gegen Mittelsmänner hilft keine dickere Verschlüsselung, sondern nur der Beweis, wer drüben sitzt. Mehr Schloss, gleiches Problem – bis die Unterschrift kommt.",
+            "en": "Play the note game from the box above also with four people: two Mallorys in a row. What changes? Nothing – except two read instead of one. The lesson: against middlemen no thicker encryption helps, only proof of who sits opposite. More lock, same problem – until the signature arrives."
+          }
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "de": "Abhören ist leicht, Dazwischensetzen auch: Wie der Mann in der Mitte arbeitet – und was ihn entlarvt.",
+    "en": "Listening is easy, stepping between too: how the man in the middle works – and what exposes him."
+  },
+  "title": {
+    "de": "Der Mann in der Mitte",
+    "en": "The man in the middle"
+  }
+}

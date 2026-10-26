@@ -10,7 +10,7 @@
   },
   "icon": "🔌",
   "accent": "amber",
-  "minutes": 12,
+  "minutes": 13,
   "screens": [
     {
       "key": "der-kreis",
@@ -276,6 +276,13 @@
               "url": "https://www.leifiphysik.de/elektrizitaetslehre/einfacher-stromkreis"
             }
           ]
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Basteln ohne Gefahr: Batterie, Lämpchen, zwei Kabel – mehr braucht der erste Stromkreis nicht. Leuchtet es nicht, ist fast immer ein Kontakt lose: wackeln, drücken, staunen. Jeder Elektriker hat so angefangen – mit Wackelkontakten statt Wissen. Der Unterschied: Er gab nicht auf, bis es brannte. Also: das Lämpchen.",
+            "en": "Tinkering without danger: battery, bulb, two wires – the first circuit needs no more. If it does not glow, almost always a contact is loose: wiggle, press, marvel. Every electrician started so – with loose contacts instead of knowledge. The difference: they did not quit until it burned. Meaning: the bulb."
+          }
         }
       ]
     }

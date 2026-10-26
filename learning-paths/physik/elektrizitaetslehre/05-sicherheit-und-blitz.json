@@ -10,7 +10,7 @@
   },
   "icon": "⚡",
   "accent": "rose",
-  "minutes": 15,
+  "minutes": 16,
   "screens": [
     {
       "key": "was-gefaehrlich-ist",
@@ -104,6 +104,13 @@
           "text": {
             "de": "Trockene Haut hat einen Widerstand von zehntausend bis hunderttausend Ohm - bei 230 Volt fließen dann wenige Milliampere. Feuchte Haut kann auf etwa tausend Ohm fallen. Nach U = R · I bedeutet das rund 230 Milliampere: das Vielfache der tödlichen Grenze. Deshalb sind Steckdosen im Bad besonders geschützt, und deshalb fasst man nie mit nassen Händen an Elektrik.",
             "en": "Dry skin has a resistance of ten thousand to a hundred thousand ohms - at 230 volts that means a few milliamps. Damp skin can drop to about a thousand ohms. By U = R · I that means around 230 milliamps: many times the lethal threshold. Which is why bathroom sockets are specially protected, and why you never touch wiring with wet hands."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Merke den Unterschied: Volt drücken, Milliampere töten. Schon wenige Milliampere durchs Herz bringen es aus dem Takt – darum sind schon kleine Ströme gefährlich, wenn sie den falschen Weg nehmen: von Hand zu Hand durch die Brust. Vögel auf der Leitung lachen darüber: ohne Weg durch den Körper kein Schaden. Weg entscheidet, nicht nur Stärke.",
+            "en": "Note the difference: volts push, milliamperes kill. Even few milliamperes through the heart throw it off beat – hence even small currents endanger when taking the wrong way: hand to hand through the chest. Birds on the wire laugh about it: without path through the body no harm. Path decides, not only strength."
           }
         }
       ]

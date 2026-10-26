@@ -2,6 +2,7 @@
 import { Handlers } from "$fresh/server.ts";
 import { ServerSentEventStream } from "https://deno.land/std@0.210.0/http/server_sent_event_stream.ts";
 import { chatContent } from "../../internalization/content.ts";
+import { scratchDataPrompt, scratchPrompt, scratchUnavailablePrompt } from "../../utils/scratchTools.ts";
 import {
   attemptsFor,
   getCatalog,
@@ -10,6 +11,16 @@ import {
   policyFor,
   type Role,
 } from "../../utils/openrouter.ts";
+import {
+  isRequestyKey,
+  getRequestyCatalog,
+  rqAttemptsFor,
+  rqFetch,
+  rqRouteHeader,
+  type RqCatalogModel,
+  type RqStrictness,
+} from "../../utils/requesty.ts";
+import { pagesToParts, pdfToPages } from "../../utils/pdfFallback.ts";
 
 const API_URL = Deno.env.get("LLM_URL") || "";
 const API_KEY = Deno.env.get("LLM_KEY") || "";
@@ -27,6 +38,10 @@ const MIDDLEWARE_BASE_URL = Deno.env.get("MIDDLEWARE_URL") || "";
  * anywhere near the system prompt.
  */
 interface ToolFlags {
+  scratch: boolean;
+  scratchRequested: boolean;
+  scratchEdit: boolean;
+  scratchProject: unknown;
   notebook: boolean;
   mail: boolean;
   /** Song generation is available (OpenRouter key present). */
@@ -75,6 +90,10 @@ function readToolFlags(raw: any): ToolFlags {
   const text = (v: unknown, max: number) =>
     typeof v === "string" ? v.replace(/[\r\n]+/g, " ").trim().slice(0, max) : "";
   return {
+    scratch: raw?.scratch === true,
+    scratchRequested: raw?.scratchRequested === true,
+    scratchEdit: raw?.scratch === true && raw?.scratchEdit === true,
+    scratchProject: raw?.scratch === true ? raw?.scratchProject : undefined,
     notebook: raw?.notebook === true,
     mail: raw?.mail === true,
     music: raw?.music === true,
@@ -217,6 +236,8 @@ marking criteria: if the teacher has not given any, ask.`;
 /** Builds the tool part of the system prompt from our own wording. */
 function buildToolSection(flags: ToolFlags, lang: string): string {
   const parts: string[] = [];
+  if (flags.scratch) parts.push(scratchPrompt(true, lang, flags.scratchEdit), scratchDataPrompt(flags.scratchProject));
+  else if (flags.scratchRequested) parts.push(scratchUnavailablePrompt);
   const de = lang === "de";
 
   // Songs only exist on the OpenRouter path, so the instructions are only
@@ -735,13 +756,17 @@ async function getModelResponseStream(
   // OpenRouter-Modell interpretiert wird.
   orLlmModel: string = "",
   orVlmModel: string = "",
+  rqLlmModel: string = "",
+  rqVlmModel: string = "",
 ) {
   // An OpenRouter key bypasses the middleware: the model, the provider policy
-  // and the URL are all decided further down, in step 7.
+  // and the URL are all decided further down, in step 7. A Requesty key does
+  // the same against Requesty instead - see the Requesty branch there.
   const useOpenRouter = isOpenRouterKey(universalApiKey);
+  const useRequesty = !useOpenRouter && isRequestyKey(universalApiKey);
 
   // If a universal key is provided, override URLs to the middleware using decoded base; fallback to env → origin.
-  if (universalApiKey && !useOpenRouter) {
+  if (universalApiKey && !useOpenRouter && !useRequesty) {
     const decoded = decodeMiddlewareBaseFromUniversalKey(universalApiKey);
     const envBase = (MIDDLEWARE_BASE_URL || "").trim();
     const base = decoded || envBase || (originBase || "").trim();
@@ -757,12 +782,16 @@ async function getModelResponseStream(
     }
   }
 
-  // 1) Universal key format check - "sbe-" for the middleware, "sk-or-v1-" for
-  //    OpenRouter. Anything else is a typo and fails fast rather than being
-  //    forwarded to some upstream as a bearer token.
-  if (universalApiKey !== "" && !useOpenRouter && !universalApiKey.toLowerCase().startsWith("sbe-")) {
+  // 1) Universal key format check - "sbe-" for the middleware, "sk-or-v1-"
+  //    for OpenRouter, "rqsty-" for Requesty. Anything else is a typo and
+  //    fails fast rather than being forwarded to some upstream as a bearer
+  //    token.
+  if (
+    universalApiKey !== "" && !useOpenRouter && !useRequesty &&
+    !universalApiKey.toLowerCase().startsWith("sbe-")
+  ) {
     return new Response(
-      "Invalid Universal API Key. It needs to start with 'sbe-' or 'sk-or-v1-'.",
+      "Invalid Universal API Key. It needs to start with 'sbe-', 'sk-or-v1-' or 'rqsty-'.",
       { status: 400 },
     );
   }
@@ -853,6 +882,16 @@ async function getModelResponseStream(
               filename: c.name || c.filename || "dokument.pdf",
               file_data: `data:${c.mime_type || "application/pdf"};base64,${c.data}`,
             },
+          };
+        }
+        // Same idea for Requesty, in its own dialect: "input_file" parts with
+        // filename and file_data. If the model refuses the file, the Requesty
+        // branch below falls back to labelled page text and page pictures.
+        if (useRequesty && c?.type === "pdf" && c.data) {
+          return {
+            type: "input_file",
+            filename: c.name || c.filename || "dokument.pdf",
+            file_data: `data:${c.mime_type || "application/pdf"};base64,${c.data}`,
           };
         }
         return c;
@@ -1132,7 +1171,7 @@ async function getModelResponseStream(
         lastStatus = resp.status;
         lastText = await resp.text().catch(() => "");
         tried.push(`${model.id}:${level}`);
-        console.error(`[OR] ${role} ${model.id}:${level} -> ${resp.status} ${lastText.slice(0, 200)}`);
+        console.error(`[OR] ${role} ${model.id}:${level} -> ${resp.status} ${toolFlags.scratch ? "[Scratch: Antwortinhalt nicht protokolliert]" : lastText.slice(0, 200)}`);
       }
       return null;
     };
@@ -1178,6 +1217,161 @@ async function getModelResponseStream(
       r.resp,
       r.model,
       "openrouter",
+      r.route,
+      () => openUpstream(true),
+    );
+  }
+
+  /* ------------------------- Requesty ------------------------- */
+  if (useRequesty) {
+    // A picture in the conversation makes this a VLM request; the two roles
+    // have separate overrides in the settings even though they share defaults.
+    const role = isImageInMessages ? "vlm" : "llm";
+    const override = isImageInMessages ? rqVlmModel : rqLlmModel;
+
+    let cat;
+    try {
+      cat = await getRequestyCatalog();
+    } catch (err) {
+      console.error("[RQ] catalog unavailable:", err);
+      return new Response("Could not reach Requesty's model list.", { status: 502 });
+    }
+
+    const attempts = rqAttemptsFor(cat, role, override);
+    if (attempts.length === 0) {
+      return new Response(`No Requesty model available for ${role}.`, { status: 502 });
+    }
+
+    // Native PDF parts ride as "input_file". When every attempt fails on them,
+    // the pages are opened on this server instead - labelled text plus a
+    // picture per page, in order - and the chain runs once more over those.
+    const hasNativePdf = (msgs: any[]) =>
+      msgs.some((m) =>
+        Array.isArray(m.content) &&
+        m.content.some((p: any) => p?.type === "input_file")
+      );
+    const looksLikeFileError = (status: number, text: string) =>
+      status === 400 || status === 415 || status === 422 ||
+      /input_file|file|document|pdf|mime|media|vision|image|unsupported|invalid/i
+        .test(text || "");
+    const withPdfFallback = async (msgs: any[]) => {
+      const out: any[] = [];
+      for (const m of msgs) {
+        if (
+          !Array.isArray(m.content) ||
+          !m.content.some((p: any) => p?.type === "input_file")
+        ) {
+          out.push(m);
+          continue;
+        }
+        const parts: any[] = [];
+        for (const c of m.content) {
+          if (c?.type === "input_file" && c.file_data) {
+            const b64 = String(c.file_data).split(",").pop() ?? "";
+            const bytes = Uint8Array.from(atob(b64), (ch) => ch.charCodeAt(0));
+            const name = c.filename || "dokument.pdf";
+            const { pages, short } = await pdfToPages(name, bytes);
+            parts.push(...pagesToParts(name, pages, short));
+          } else {
+            parts.push(c);
+          }
+        }
+        out.push({ ...m, content: parts });
+      }
+      return out;
+    };
+
+    let cursor = 0;
+    const tried: string[] = [];
+    let lastStatus = 502;
+    let lastText = "";
+    let activeMessages: any[] = messages;
+    let converted = false;
+
+    const walk = async (stream: boolean) => {
+      while (cursor < attempts.length) {
+        const { model, level } = attempts[cursor++];
+        const { resp, base } = await rqFetch(universalApiKey, "/chat/completions", {
+          model: model.id,
+          stream,
+          messages: activeMessages,
+        }, { model, level, referer: originBase });
+        if (resp.ok) {
+          const route = rqRouteHeader({ model: model.id, level, tried: [...tried] });
+          if (tried.length) console.log(`[RQ] ${role} using ${route} via ${base}`);
+          return { resp, route, model: model.id };
+        }
+        lastStatus = resp.status;
+        lastText = await resp.text().catch(() => "");
+        tried.push(`${model.id}:${level}`);
+        console.error(`[RQ] ${role} ${model.id}:${level} -> ${resp.status} ${toolFlags.scratch ? "[Scratch: Antwortinhalt nicht protokolliert]" : lastText.slice(0, 200)}`);
+      }
+      return null;
+    };
+
+    const openUpstream = async (stream: boolean) => {
+      const first = await walk(stream);
+      if (first) return first;
+      // The file rode along natively and every model refused it - open the
+      // pages here and try the same chain once more over text and pictures.
+      if (
+        !converted && hasNativePdf(activeMessages) &&
+        looksLikeFileError(lastStatus, lastText)
+      ) {
+        try {
+          activeMessages = await withPdfFallback(activeMessages);
+        } catch (err: any) {
+          lastStatus = 502;
+          lastText = String(err?.message || err || "PDF konnte nicht gelesen werden.");
+          return null;
+        }
+        converted = true;
+        tried.push("pdf-fallback");
+        cursor = 0;
+        console.log(`[RQ] ${role} retrying with extracted PDF pages`);
+        return await walk(stream);
+      }
+      return null;
+    };
+
+    if (wantsStream === false) {
+      const r = await openUpstream(false);
+      if (!r) {
+        return new Response(
+          lastText || "Requesty request failed",
+          { status: lastStatus, headers: { "Content-Type": "application/json" } },
+        );
+      }
+      const txt = await r.resp.text();
+      return new Response(txt, {
+        status: r.resp.status,
+        headers: {
+          "Content-Type": r.resp.headers.get("content-type") ?? "application/json",
+          "X-Requesty-Route": r.route!,
+        },
+      });
+    }
+
+    // Streaming: Requesty speaks the same OpenAI SSE dialect as everyone
+    // else, so the shared forwarding loop below handles it unchanged.
+    const r = await openUpstream(true);
+    if (!r || !r.resp.body) {
+      return new Response(
+        JSON.stringify({
+          error: {
+            provider: "requesty",
+            status: lastStatus,
+            message: lastText || "All Requesty attempts failed",
+            tried,
+          },
+        }),
+        { status: 502, headers: { "Content-Type": "application/json" } },
+      );
+    }
+    return streamUpstream(
+      r.resp,
+      r.model,
+      "requesty",
       r.route,
       () => openUpstream(true),
     );
@@ -1234,6 +1428,8 @@ export const handler: Handlers = {
       new URL(req.url).origin,
       payload.orLlmModel,
       payload.orVlmModel,
+      payload.rqLlmModel,
+      payload.rqVlmModel,
     );
   },
 
@@ -1293,6 +1489,8 @@ export const handler: Handlers = {
       new URL(req.url).origin,
       payload.orLlmModel,
       payload.orVlmModel,
+      payload.rqLlmModel,
+      payload.rqVlmModel,
     );
   },
 

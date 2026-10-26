@@ -10,7 +10,7 @@
   },
   "icon": "🧾",
   "accent": "amber",
-  "minutes": 14,
+  "minutes": 16,
   "screens": [
     {
       "key": "watt",
@@ -152,6 +152,13 @@
           "text": {
             "de": "Sieh dir die Liste an: Die dicken Zahlen gehören alle zu Geräten, die etwas warm machen. Wasserkocher, Föhn, Herd, Toaster, Waschmaschine. Elektronik dagegen - Handy, Fernseher, Laptop - ist im Vergleich winzig. Wärme zu erzeugen kostet mehr Leistung als jedes Rechnen.",
             "en": "Look at the list: the big numbers all belong to devices that make something warm. Kettle, hairdryer, hob, toaster, washing machine. Electronics by contrast - phone, television, laptop - are tiny. Making heat costs more power than any amount of computing."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Lies die Schilder: Fön 2000 Watt, LED 9 Watt – der Fön frisst über zweihundertmal so viel. Darum wird er heiß und die LED nicht: Leistung wird Wärme oder Licht. Wer Geräte vergleicht, liest Watt wie PS beim Auto: mehr Dampf, mehr Durst.",
+            "en": "Read the labels: hairdryer 2000 watts, LED 9 watts – the dryer devours over two hundred times as much. Hence it gets hot and the LED not: power turns heat or light. Whoever compares devices reads watts like horsepower at cars: more steam, more thirst."
           }
         }
       ]
@@ -379,6 +386,13 @@
               "url": "https://www.umweltbundesamt.de"
             }
           ]
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Der Stromzähler ist deine Ehrlichkeit in Zahlen: Er zählt Kilowattstunden – Leistung mal Zeit. Eine Stunde Fön: zwei Kilowattstunden. Hundert Stunden LED: keine einzige. Wer sparen will, jagt nicht Standby-Krümel, sondern Stundenfresser: heizen, duschen, trocknen. Die Großen fressen den Zähler, nicht die Kleinen.",
+            "en": "The power meter is your honesty in numbers: it counts kilowatt hours – power times time. One hour dryer: two kilowatt hours. A hundred hours LED: not a single one. Whoever wants to save hunts not standby crumbs but hour eaters: heating, showering, drying. The big ones eat the meter, not the small."
+          }
         }
       ]
     }

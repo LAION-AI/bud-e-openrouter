@@ -10,7 +10,7 @@
   },
   "icon": "🔊",
   "accent": "violet",
-  "minutes": 11,
+  "minutes": 13,
   "screens": [
     {
       "key": "die-luecke",
@@ -57,6 +57,13 @@
           "text": {
             "de": "Unter zehn Sekunden Abstand ist das Gewitter näher als drei Kilometer - dann gehört man ins Haus oder ins Auto. Und nach dem letzten Donner wartet man noch eine halbe Stunde: Blitze schlagen auch aus einer Wolke ein, die schon weitergezogen scheint.",
             "en": "Under ten seconds means the storm is closer than three kilometres - time to go inside or into a car. And after the last thunder you wait another half hour: lightning also strikes from a cloud that appears to have moved on."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Teste es beim nächsten Gewitter: Blitz sehen, Sekunden zählen, durch drei teilen – Kilometer. Bei sechs Sekunden steht die Zelle zwei Kilometer weit. Was wie ein Kinderspiel wirkt, ist Messung mit Schallgeschwindigkeit: Licht fast instantan, Schall gemütlich mit 343 Metern pro Sekunde. Du misst Entfernungen mit Ohren.",
+            "en": "Test it at the next thunderstorm: see lightning, count seconds, divide by three – kilometres. At six seconds the cell sits two kilometres off. What feels like a kids' game is measuring with sound speed: light almost instant, sound cosy at 343 metres per second. You measure distances with ears."
           }
         }
       ]
@@ -277,6 +284,13 @@
               "url": "https://www.ptb.de"
             }
           ]
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Fledermäuse leben davon: Sie rufen im Ultraschall – über 20 Kilohertz, unhörbar für dich – und hören das Echo. Aus der Laufzeit bauen sie ein Bild der Nacht: Motte dort, Wand da. Ärzte machen dasselbe mit Ultraschallbildern, Schiffe mit Echolot. Wer Echos liest, sieht mit Ohren.",
+            "en": "Bats live on it: they call in ultrasound – above 20 kilohertz, inaudible to you – hearing the echo. From travel time they build a picture of the night: moth there, wall here. Doctors do the same with ultrasound images, ships with echo sounders. Whoever reads echoes sees with ears."
+          }
         }
       ]
     }

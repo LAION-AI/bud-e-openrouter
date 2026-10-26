@@ -10,7 +10,7 @@
   },
   "icon": "🧩",
   "accent": "rose",
-  "minutes": 13,
+  "minutes": 20,
   "screens": [
     {
       "key": "drei-angaben",
@@ -58,6 +58,13 @@
             "de": "Wie viele in eurer Klasse haben denselben Anfangsbuchstaben im Vornamen? Wie viele davon fahren mit demselben Bus? Wie viele davon haben ein Geschwisterkind? Nach drei Fragen bleibt fast immer genau eine Person übrig - ohne dass jemand einen Namen genannt hätte.",
             "en": "How many in your class share the same initial letter of their first name? How many of those take the same bus? How many of those have a sibling? After three questions almost always exactly one person is left - without anyone having said a name."
           }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Forscher haben es vorgemacht: Aus anonymisierten Netflix-Bewertungen fanden sie Nutzer wieder – über Abgleich mit öffentlichen Filmkritiken. Drei Sterne hier, fünf dort: ein Fingerabdruck aus Geschmack. Anonym heißt nicht unauffindbar – es heißt nur: noch nicht abgeglichen.",
+            "en": "Researchers demonstrated it: from anonymised Netflix ratings they refound users – by matching with public film reviews. Three stars here, five there: a fingerprint from taste. Anonymous does not mean untraceable – only: not yet matched."
+          }
         }
       ]
     },
@@ -78,30 +85,75 @@
         {
           "kind": "table",
           "head": [
-            { "de": "Was", "en": "What" },
-            { "de": "Woher es kommt", "en": "Where it comes from" },
-            { "de": "Was es verrät", "en": "What it reveals" }
+            {
+              "de": "Was",
+              "en": "What"
+            },
+            {
+              "de": "Woher es kommt",
+              "en": "Where it comes from"
+            },
+            {
+              "de": "Was es verrät",
+              "en": "What it reveals"
+            }
           ],
           "rows": [
             [
-              { "de": "Standortverlauf", "en": "Location history" },
-              { "de": "Läuft im Hintergrund mit", "en": "Runs in the background" },
-              { "de": "Wohnort, Schule, Arztbesuche", "en": "Home, school, doctor's visits" }
+              {
+                "de": "Standortverlauf",
+                "en": "Location history"
+              },
+              {
+                "de": "Läuft im Hintergrund mit",
+                "en": "Runs in the background"
+              },
+              {
+                "de": "Wohnort, Schule, Arztbesuche",
+                "en": "Home, school, doctor's visits"
+              }
             ],
             [
-              { "de": "Uhrzeiten der Nutzung", "en": "Times of use" },
-              { "de": "Jede App merkt sie sich", "en": "Every app records them" },
-              { "de": "Schlafrhythmus, Prüfungsstress", "en": "Sleep patterns, exam stress" }
+              {
+                "de": "Uhrzeiten der Nutzung",
+                "en": "Times of use"
+              },
+              {
+                "de": "Jede App merkt sie sich",
+                "en": "Every app records them"
+              },
+              {
+                "de": "Schlafrhythmus, Prüfungsstress",
+                "en": "Sleep patterns, exam stress"
+              }
             ],
             [
-              { "de": "Verweildauer bei einem Video", "en": "How long you stay on a video" },
-              { "de": "Wird auf die Sekunde gemessen", "en": "Measured to the second" },
-              { "de": "Interessen, Stimmung", "en": "Interests, mood" }
+              {
+                "de": "Verweildauer bei einem Video",
+                "en": "How long you stay on a video"
+              },
+              {
+                "de": "Wird auf die Sekunde gemessen",
+                "en": "Measured to the second"
+              },
+              {
+                "de": "Interessen, Stimmung",
+                "en": "Interests, mood"
+              }
             ],
             [
-              { "de": "Gerätenummer", "en": "Device identifier" },
-              { "de": "Steckt in jedem Handy", "en": "Sits in every phone" },
-              { "de": "Erkennt dich ohne Namen wieder", "en": "Recognises you with no name" }
+              {
+                "de": "Gerätenummer",
+                "en": "Device identifier"
+              },
+              {
+                "de": "Steckt in jedem Handy",
+                "en": "Sits in every phone"
+              },
+              {
+                "de": "Erkennt dich ohne Namen wieder",
+                "en": "Recognises you with no name"
+              }
             ]
           ]
         },
@@ -123,6 +175,26 @@
           "text": {
             "de": "Der Unterschied ist entscheidend: Was du angibst, weißt du. Was nebenbei anfällt, weißt du meistens nicht. Und gerade das Zweite ist genauer, ehrlicher und aufschlussreicher als alles, was du je in ein Formular schreiben würdest.",
             "en": "The difference matters: what you provide, you know about. What accumulates on the side, you usually do not. And it is precisely the second kind that is more accurate, more honest and more revealing than anything you would ever write in a form."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Dein Handy verrät dich übrigens auch ohne Worte: Schrittzähler, Bildschirmzeit, Akkuverbrauch pro App. Jede Zahl für sich harmlos – zusammen ein Tagesablauf: aufgestanden, gespielt, geschlafen. Wer viele harmlose Zahlen sammelt, kennt dein Leben besser als dein Tagebuch. Frage dich bei jeder App: Welche Zahl liefere ich gerade?",
+            "en": "Your phone incidentally betrays you without words too: step counter, screen time, battery use per app. Every number harmless alone – together a daily routine: got up, played, slept. Whoever collects many harmless numbers knows your life better than your diary. Ask with every app: which number am I delivering right now?"
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "note",
+          "icon": "📱",
+          "title": {
+            "de": "Zähler-Check",
+            "en": "Counter check"
+          },
+          "text": {
+            "de": "Öffne heute Bildschirmzeit und Schrittzähler: Was erzählen sie über gestern? Schreibe drei Sätze über dich – nur aus Zahlen. Dann frage dich, wer außer dir noch mitliest.",
+            "en": "Open screen time and step counter today: what do they tell about yesterday? Write three sentences about yourself – from numbers only. Then ask who besides you reads along."
           }
         }
       ]
@@ -186,14 +258,90 @@
           "kind": "sources",
           "items": [
             {
-              "label": { "de": "Der Hamburgische Beauftragte für Datenschutz und Informationsfreiheit", "en": "Hamburg Commissioner for Data Protection and Freedom of Information" },
+              "label": {
+                "de": "Der Hamburgische Beauftragte für Datenschutz und Informationsfreiheit",
+                "en": "Hamburg Commissioner for Data Protection and Freedom of Information"
+              },
               "url": "https://datenschutz-hamburg.de"
             },
             {
-              "label": { "de": "Datenschutz-Grundverordnung, amtlicher Text", "en": "General Data Protection Regulation, official text" },
+              "label": {
+                "de": "Datenschutz-Grundverordnung, amtlicher Text",
+                "en": "General Data Protection Regulation, official text"
+              },
               "url": "https://eur-lex.europa.eu/eli/reg/2016/679/oj"
             }
           ]
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Gelöschtes ist übrigens selten weg: Chats leben in Backups, Fotos in Clouds, alles in Kopien von Kopien. „Löschen“ heißt meist nur: für dich unsichtbar. Denk an Tinte auf Löschpapier – weggewischt, aber lesbar. Wer wirklich weg will, muss überschreiben, nicht löschen.",
+            "en": "Deleted is incidentally rarely gone: chats live in backups, photos in clouds, everything in copies of copies. “Deleting” mostly means: invisible to you. Think ink on blotting paper – wiped away but readable. Whoever really wants gone must overwrite, not delete."
+          }
+        }
+      ]
+    },
+    {
+      "key": "der-klassenchat-als-beispiel",
+      "title": {
+        "de": "Der Klassenchat als Beispiel",
+        "en": "The class chat as an example"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Drei harmlose Angaben aus deinem Klassenchat – und Fremde wissen, wer du bist. Spiel es einmal aus der anderen Richtung durch.",
+            "en": "Three harmless details from your class chat – and strangers know who you are. Play it through once from the other direction."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Trikotnummer 7 im Profilbild, Buslinie 284 im Status („Bus wieder zu spät“), Hundename Bello in der Story. Einzeln: nichts. Zusammen: ein Junge aus der 8b, der den 284er nimmt und dessen Hund Bello heißt. Wer Böses will, denkt genau so – er sammelt Puzzleteile, bis das Bild vollständig ist.",
+            "en": "Shirt number 7 in the profile picture, bus line 284 in the status (“bus late again”), dog name Bello in the story. Alone: nothing. Together: a boy from class 8b who takes the 284 and whose dog is called Bello. Whoever means harm thinks exactly like that – collecting puzzle pieces until the picture is complete."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "🧩",
+          "title": {
+            "de": "Der Gegencheck",
+            "en": "The counter-check"
+          },
+          "text": {
+            "de": "Öffne dein eigenes Profil mit fremden Augen: Welche drei Angaben zusammen verraten am meisten? Lösche oder verallgemeinere genau diese drei – aus „Bus 284 zu spät“ wird „Bus zu spät“.",
+            "en": "Open your own profile with a stranger's eyes: which three details together reveal the most? Delete or generalise exactly those three – “bus 284 late” becomes “bus late”."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Noch ein Puzzleteil aus dem Alltag: Trikots mit Namen, Fahrrad mit Aufklebern, Federmappe mit Stickern. Draußen liest jeder mit, was du trägst – Schule, Verein, Urlaubsort. Harmlos? Jedes Teil einzeln schon. Zusammen ein Steckbrief zum Anziehen. Mode ist auch ein Datenleck – nur ein hübsches.",
+            "en": "One more puzzle piece from everyday life: shirts with names, bikes with stickers, pencil cases with decals. Outside everybody reads along what you wear – school, club, holiday spot. Harmless? Each piece alone yes. Together a profile to wear. Fashion is a data leak too – only a pretty one."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "tip",
+          "icon": "👕",
+          "title": {
+            "de": "Garderoben-Check",
+            "en": "Wardrobe check"
+          },
+          "text": {
+            "de": "Lege morgen alles mit Schrift vor die Tür – im Kopf: Was verrät jedes Teil? Schule, Hobbys, Orte? Du musst nichts wegwerfen. Aber wissen, was du sendest, solltest du.",
+            "en": "Tomorrow lay everything with writing before the door – in your head: what does each piece betray? School, hobbies, places? You must throw nothing away. But knowing what you broadcast, you should."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Der Gegencheck wirkt übrigens sofort: Stelle heute drei Angaben auf privat oder lösche sie – und beobachte eine Woche, was fehlt. Meist: nichts. Was niemand vermisst, war überflüssig geteilt. Weniger senden ist der einfachste Datenschutz der Welt: kein Tool, kein Geld, nur drei Klicks.",
+            "en": "The counter-check incidentally works at once: set three details to private today or delete them – watching a week what misses. Mostly: nothing. What nobody misses was shared needlessly. Sending less is the world's simplest data protection: no tool, no money, just three clicks."
+          }
         }
       ]
     }

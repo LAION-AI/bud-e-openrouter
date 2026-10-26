@@ -10,7 +10,7 @@
   },
   "icon": "🎮",
   "accent": "emerald",
-  "minutes": 15,
+  "minutes": 19,
   "screens": [
     {
       "key": "fuenf-schritte",
@@ -324,6 +324,121 @@
               "url": "https://scratch.mit.edu/explore/projects/games"
             }
           ]
+        }
+      ]
+    },
+    {
+      "key": "drei-spiele-ein-geruest",
+      "title": {
+        "de": "Drei Spiele, ein Gerüst",
+        "en": "Three games, one skeleton"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Fangspiel, Ausweichspiel, Labyrinth – drei verschiedene Spiele, dasselbe Gerüst: Figur bewegen, etwas prüfen, Punkte zählen.",
+            "en": "Catching game, dodging game, maze – three different games, the same skeleton: move a sprite, check something, count points."
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "de": "Ein Gerüst, drei Spiele.",
+            "en": "One skeleton, three games."
+          },
+          "head": [
+            {
+              "de": "Spiel",
+              "en": "Game"
+            },
+            {
+              "de": "Ziel",
+              "en": "Goal"
+            },
+            {
+              "de": "Bei Berührung",
+              "en": "On touching"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "de": "Äpfel fangen",
+                "en": "Catch apples"
+              },
+              {
+                "de": "10 Äpfel",
+                "en": "10 apples"
+              },
+              {
+                "de": "+1 Punkt, neuer Apfel",
+                "en": "+1 point, new apple"
+              }
+            ],
+            [
+              {
+                "de": "Bällen ausweichen",
+                "en": "Dodge balls"
+              },
+              {
+                "de": "30 Sekunden überleben",
+                "en": "Survive 30 seconds"
+              },
+              {
+                "de": "Stopp, Zeit sind Punkte",
+                "en": "Stop, time is points"
+              }
+            ],
+            [
+              {
+                "de": "Labyrinth",
+                "en": "Maze"
+              },
+              {
+                "de": "Ausgang erreichen",
+                "en": "Reach the exit"
+              },
+              {
+                "de": "Zurück zum Start",
+                "en": "Back to the start"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Bau erst eins fertig, dann das nächste: Steuerung, Punkte und Stopp-Bedingung nimmst du zu 80 Prozent mit. Profis arbeiten genauso – sie kopieren ihr eigenes Gerüst und bauen nur das Neue dazu.",
+            "en": "Finish one first, then the next: you carry over 80 percent – controls, points, stop condition. Professionals work the same way – they copy their own skeleton and only build what is new."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Lege eine Highscore-Tafel an: statt einer Punkte-Variable eine Liste mit den besten fünf – Namen dazu. Am Ende trägt sich der Spieler ein, wenn er gut genug war: „frage Name und warte“, eintragen, sortieren, die ersten fünf behalten. So überlebt Ruhm das Ausschalten – fast. Echte Tafeln speichern, deine vergisst beim Schließen. Auch das ist eine Lektion: Speicher ist ein eigenes Thema.",
+            "en": "Create a high-score board: instead of one score variable a list with the best five – names included. At the end the player enters if good enough: “ask name and wait”, enter, sort, keep the first five. Thus fame survives switching off – almost. Real boards store, yours forgets on closing. That too is a lesson: storage is its own topic."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "tip",
+          "icon": "👾",
+          "title": {
+            "de": "Schlauere Gegner",
+            "en": "Smarter enemies"
+          },
+          "text": {
+            "de": "Lass den Gegner dich verfolgen: „zeige in Richtung Spieler“ plus „gehe 2er-Schritt“, immer wieder. Zwei Bausteine, und aus Dummheit wird Jagd. Tempo über die Schrittzahl steuern: Level 1 geht 1er-Schritte, Level 5 geht 4er. So entsteht Schwierigkeit aus zwei Zahlen.",
+            "en": "Let the enemy chase you: “point towards player” plus “move 2 steps”, again and again. Two blocks, and dumbness turns into hunt. Steer tempo via step count: level 1 walks 1-steps, level 5 walks 4-steps. Thus difficulty emerges from two numbers."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Veröffentliche dein Spiel: Zeige es der Klasse, lasse alle spielen, sammle die drei häufigsten Kritikpunkte – zu leicht, zu schwer, zu dunkel. Dann baue Version zwei. So arbeiten Studios: kein Spiel erscheint fertig, jedes wächst mit seinen Spielern. Dein erstes Update ist der wichtigste Schritt vom Bastler zum Entwickler.",
+            "en": "Publish your game: show the class, let everybody play, collect the three most frequent complaints – too easy, too hard, too dark. Then build version two. Thus studios work: no game appears finished, each grows with its players. Your first update is the most important step from tinkerer to developer."
+          }
         }
       ]
     }

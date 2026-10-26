@@ -10,7 +10,7 @@
   },
   "icon": "🔺",
   "accent": "amber",
-  "minutes": 13,
+  "minutes": 15,
   "screens": [
     {
       "key": "widerstand",
@@ -114,6 +114,13 @@
           "text": {
             "de": "Miss den Widerstand einer alten Glühlampe im ausgeschalteten Zustand: erstaunlich klein. Heiß ist er zehnmal so groß. Deshalb fließt im ersten Moment nach dem Einschalten ein Vielfaches - und deshalb gehen Glühlampen fast immer genau beim Einschalten kaputt, nie mittendrin.",
             "en": "Measure the resistance of an old filament lamp while it is off: surprisingly small. Hot, it is ten times larger. So in the first instant after switching on, many times more current flows - and that is why filament lamps almost always fail at the moment of switching on, never in the middle."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Denk an einen Gartenschlauch: Druck ist die Spannung, Engstellen sind der Widerstand, Wassermenge der Strom. Schlauch zudrücken – weniger Wasser. Pumpe stärker – mehr Wasser. U gleich R mal I ist nur diese Weisheit in Buchstaben: Druck durch Enge gibt Menge. Wer Schläuche versteht, versteht Ohm.",
+            "en": "Think garden hose: pressure is voltage, narrow spots resistance, water amount current. Squeeze the hose – less water. Pump harder – more water. U equals R times I is only this wisdom in letters: pressure through narrowness gives amount. Whoever grasps hoses grasps Ohm."
           }
         }
       ]
@@ -260,6 +267,13 @@
               "url": "https://www.ptb.de"
             }
           ]
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Fühle es am Ladekabel: Lauwarm ist normal – Strom wärmt jeden Leiter ein bisschen. Heiß ist Alarm: zu viel Strom für zu dünnen Draht, Widerstand frisst Leistung und wird Heizung. Darum haben Föhne dicke Kabel und Handys dünne: Leistung bestimmt Draht. Warm darf, heiß nie.",
+            "en": "Feel it on the charger cable: lukewarm is normal – current warms every conductor a little. Hot is alarm: too much current for too thin wire, resistance eats power turning heater. Hence hairdryers hold fat cables, phones thin ones: power decides wire. Warm may, hot never."
+          }
         }
       ]
     }

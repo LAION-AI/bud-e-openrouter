@@ -28,6 +28,12 @@ export interface TimelineEntry {
 export interface StepEntry {
   title: Localized;
   text: Localized;
+  /** A command or sample output shown directly inside this step. */
+  code?: { text: Localized; caption?: Localized };
+  /** A reference link shown inside the step that needs it. */
+  link?: SourceLink;
+  /** Same-origin download shown directly beside the instruction to save it. */
+  download?: { label: Localized; url: string; filename: string };
 }
 
 export interface StatEntry {
@@ -40,6 +46,7 @@ export type Block =
   | { kind: "lead"; text: Localized }
   | { kind: "heading"; text: Localized }
   | { kind: "paragraph"; text: Localized }
+  | { kind: "code"; text: Localized; caption?: Localized }
   | { kind: "list"; ordered?: boolean; items: Localized[] }
   | { kind: "steps"; items: StepEntry[] }
   | {
@@ -160,6 +167,12 @@ export interface Module {
   accent: Accent;
   /** Shown on the tile, e.g. "M1" or "Jg. 8-10". Optional. */
   badge?: string;
+  /**
+   * Which stage the module belongs to, e.g. "sek1" or "sek2". Optional -
+   * a module without one counts as "sek1". When a subject holds modules
+   * from more than one stage, the module view shows one tab per stage.
+   */
+  level?: string;
   paths: LearningPath[];
 }
 

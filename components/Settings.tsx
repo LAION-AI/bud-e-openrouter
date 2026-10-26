@@ -22,6 +22,7 @@ import {
   setMailAllowed,
 } from "../utils/mailAssistant.ts";
 import OpenRouterModels, { type OrRole } from "./OpenRouterModels.tsx";
+import RequestyModels, { type RqRole } from "./RequestyModels.tsx";
 import { DEFAULT_TTS_PROMPT } from "../utils/openrouter.ts";
 
 /**
@@ -33,6 +34,16 @@ import { DEFAULT_TTS_PROMPT } from "../utils/openrouter.ts";
  */
 function looksLikeOpenRouterKey(key: string): boolean {
   return /^sk-or-v1-[A-Za-z0-9]/.test((key ?? "").trim());
+}
+
+/**
+ * Recognises a Requesty key in the browser.
+ *
+ * Same reasoning as above: a copy of the server-side check in
+ * utils/requesty.ts, so the client bundle stays free of server code.
+ */
+function looksLikeRequestyKey(key: string): boolean {
+  return /^rqsty-[A-Za-z0-9]/.test((key ?? "").trim());
 }
 
 /** The three transport modes we expose, mapped onto the two boolean flags. */
@@ -85,6 +96,9 @@ export default function Settings({
     /** Per-task overrides, only used when the key is an OpenRouter key. */
     orLlmModel: string;
     orVlmModel: string;
+    /** Per-task overrides, only used when the key is a Requesty key. */
+    rqLlmModel: string;
+    rqVlmModel: string;
     orAsrModel: string;
     orTtsModel: string;
     orImageModel: string;
@@ -432,6 +446,26 @@ export default function Settings({
                 tts: "orTtsModel",
                 image: "orImageModel",
                 music: "orMusicModel",
+              }[role];
+              updateSettings(field, id);
+            }}
+          />
+        )}
+
+        {/* Only shown for a Requesty key - for every other key the whole
+            section would be meaningless. */}
+        {looksLikeRequestyKey(newSettings.universalApiKey) && (
+          <RequestyModels
+            apiKey={newSettings.universalApiKey}
+            lang={lang}
+            values={{
+              llm: newSettings.rqLlmModel ?? "",
+              vlm: newSettings.rqVlmModel ?? "",
+            }}
+            onChange={(role: RqRole, id: string) => {
+              const field = {
+                llm: "rqLlmModel",
+                vlm: "rqVlmModel",
               }[role];
               updateSettings(field, id);
             }}

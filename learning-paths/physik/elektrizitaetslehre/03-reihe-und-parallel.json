@@ -10,7 +10,7 @@
   },
   "icon": "💡",
   "accent": "amber",
-  "minutes": 12,
+  "minutes": 14,
   "screens": [
     {
       "key": "reihe",
@@ -94,6 +94,13 @@
           "text": {
             "de": "Auch heutige LED-Ketten sind oft in Reihe geschaltet - aber jede LED hat ein winziges Bauteil parallel dazu, das leitend wird, sobald die LED ausfällt. Der Strom bekommt eine Umleitung, und der Rest brennt weiter. Ein kleiner Trick, der ein altes Ärgernis beendet hat.",
             "en": "Today's LED strings are often still wired in series - but each LED has a tiny component in parallel with it that starts conducting the moment the LED fails. The current gets a bypass and the rest stays lit. A small trick that ended an old annoyance."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Alte Lichterketten waren Reihenschaltung live: Eine Birne raus – alle dunkel, Weihnachten vorbei. Wer die kaputte suchte, prüfte Birne für Birne – Suchspiel im Dunkeln. Moderne Ketten sind parallel oder Gruppenschaltung: Eine aus, Rest an. Fortschritt heißt manchmal: anders verdrahten.",
+            "en": "Old fairy lights were series circuits live: one bulb out – all dark, Christmas over. Whoever sought the broken one tested bulb by bulb – search game in the dark. Modern chains are parallel or grouped: one out, rest on. Progress sometimes means: wiring differently."
           }
         }
       ]
@@ -259,6 +266,26 @@
               "url": "https://www.vde.com"
             }
           ]
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Schau dich zu Hause um und sortiere: Kühlschrank, Lampe, Handy-Ladegerät – alles parallel an 230 Volt, jedes nimmt, was es braucht. Die Sicherung davor zählt alles zusammen – wird es zu viel, fliegt sie. Parallel heißt Freiheit für Geräte, Verantwortung für die Sicherung. Und die pflegt der Elektriker, nicht du.",
+            "en": "Look around at home sorting: fridge, lamp, phone charger – all parallel at 230 volts, each taking what it needs. The fuse before counts everything together – too much, it trips. Parallel means freedom for devices, responsibility for the fuse. Which the electrician tends, not you."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "warn",
+          "icon": "⚡",
+          "title": {
+            "de": "Finger weg",
+            "en": "Hands off"
+          },
+          "text": {
+            "de": "Steckdosen sind tabu für Experimente – 230 Volt verzeihen keine Neugier. Alles hier gilt für Batterie und Schwachstrom. Starkstrom gehört Profis mit Ausbildung und Werkzeug.",
+            "en": "Sockets are taboo for experiments – 230 volts forgive no curiosity. Everything here counts for battery and weak current. Mains belongs to pros with training and tools."
+          }
         }
       ]
     }

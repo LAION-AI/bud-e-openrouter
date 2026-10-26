@@ -1,3 +1,5 @@
+// deno-lint-ignore-file react-no-danger
+// The terms are trusted, bundled HTML from agreement-content.ts.
 // islands/ChatAgreement.tsx
 //
 // The terms a visitor has to accept before the chat appears.
@@ -26,6 +28,11 @@
 //
 //  4. The page reloaded itself to show the chat, which meant a second
 //     opportunity for all of the above. It now tells its parent directly.
+//
+//  The native form is a fallback for a page whose island script has not
+//  loaded (for example an old tab after a deployment). The server records a
+//  consent cookie and redirects to a fresh page instead of leaving an inert
+//  button on screen.
 
 import { useEffect, useRef, useState } from "preact/hooks";
 import { agreementContent } from "../internalization/content.ts";
@@ -54,11 +61,13 @@ export function storeAgreement(): boolean {
 
 interface Props {
   lang: string;
+  /** Local destination after the no-JavaScript form fallback. */
+  returnTo?: string;
   /** Called once the visitor has accepted. */
   onAgree?: () => void;
 }
 
-export default function ChatAgreement({ lang, onAgree }: Props) {
+export default function ChatAgreement({ lang, returnTo = "/", onAgree }: Props) {
   const t = (key: string): string =>
     (agreementContent[lang]?.[key] ?? agreementContent.en?.[key] ?? "") as string;
 
@@ -76,7 +85,8 @@ export default function ChatAgreement({ lang, onAgree }: Props) {
   /** The truth about the checkbox, taken from the element itself. */
   const isTicked = () => boxRef.current?.checked ?? agreed;
 
-  const handleAgree = () => {
+  const handleAgree = (event: Event) => {
+    event.preventDefault();
     if (!isTicked()) {
       setHint(true);
       boxRef.current?.focus();
@@ -95,7 +105,13 @@ export default function ChatAgreement({ lang, onAgree }: Props) {
   };
 
   return (
-    <div class="w-full max-w-xl p-6 bg-white/50 rounded-lg shadow-md">
+    <form
+      method="post"
+      action="/api/agreement"
+      onSubmit={handleAgree}
+      class="w-full max-w-xl p-6 bg-white/50 rounded-lg shadow-md"
+    >
+      <input type="hidden" name="returnTo" value={returnTo} />
       <h2 class="text-2xl font-bold mb-4">{t("title")}</h2>
       <p class="mb-4">{t("content")}</p>
       <p class="mb-4">
@@ -120,6 +136,9 @@ export default function ChatAgreement({ lang, onAgree }: Props) {
             ref={boxRef}
             id="agree-box"
             type="checkbox"
+            name="agree"
+            value="yes"
+            required
             checked={agreed}
             // Both events: a label click reaches one or the other depending
             // on the browser, and either is enough to keep the two in step.
@@ -129,6 +148,11 @@ export default function ChatAgreement({ lang, onAgree }: Props) {
           />
           <span>{t("agree")}</span>
         </label>
+        <p class="mt-2 text-sm text-slate-600">
+          {lang === "de"
+            ? "Setze das Häkchen und klicke dann unten auf „Akzeptieren“, um den Chat zu öffnen."
+            : "Tick the box, then click Accept below to open the chat."}
+        </p>
       </div>
 
       {hint && (
@@ -144,8 +168,7 @@ export default function ChatAgreement({ lang, onAgree }: Props) {
         this screen had. It asks for the tick instead.
       */}
       <button
-        type="button"
-        onClick={handleAgree}
+        type="submit"
         class={`w-full p-2 rounded font-semibold transition-colors ${
           agreed
             ? "bg-blue-500 text-white hover:bg-blue-600"
@@ -154,6 +177,6 @@ export default function ChatAgreement({ lang, onAgree }: Props) {
       >
         {t("accept")}
       </button>
-    </div>
+    </form>
   );
 }

@@ -10,7 +10,7 @@
   },
   "icon": "🕸️",
   "accent": "violet",
-  "minutes": 15,
+  "minutes": 21,
   "screens": [
     {
       "key": "ein-neuron",
@@ -211,6 +211,13 @@
             "de": "„Tief“ heißt: viele Schichten hintereinander. Nichts Geheimnisvolles. In den Neunzigern hatte man zwei oder drei, heute manchmal hundert. Möglich wurde das nicht durch eine neue Idee, sondern durch schnellere Rechner und sehr viel mehr Beispiele.",
             "en": "\"Deep\" means: many layers one after another. Nothing mysterious. In the nineties there were two or three, today sometimes a hundred. What made that possible was not a new idea but faster machines and vastly more examples."
           }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Stell dir ein Netz aus Weihnachtslichtern vor: tausend Birnchen in Reihen, jede leuchtet je nach Strom – manche hell, manche dunkel. Genau so liegt ein Netz im Rechner: Schichten hintereinander, Werte als Helligkeiten. Lernen heißt: Helligkeiten drehen, bis das Bild stimmt. Wer Lichterketten aufhängt, versteht Netze besser als mancher Vortrag.",
+            "en": "Picture a net from Christmas lights: a thousand bulbs in rows, each glowing by current – some bright, some dark. Exactly so a net lies in the computer: layers behind layers, values as brightness. Learning means: turning brightness until the picture fits. Whoever hangs fairy lights grasps nets better than many a lecture."
+          }
         }
       ]
     },
@@ -304,6 +311,76 @@
               "url": "https://www.inf-schule.de/ki"
             }
           ]
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Woher kommen die Startwerte? Am Anfang rät das Netz: zufällige Helligkeiten überall. Dann das erste Bild, erster Fehler, erste Korrektur – Millionen Male. Wie ein Kind, das Klavier lernt: erst Klimpern, dann Melodie. Niemand stellt Millionen Werte von Hand ein – das wäre, als stimmte einer jede Saite eines Orchesters einzeln. Unmöglich. Darum: lernen lassen.",
+            "en": "Where do start values come from? At first the net guesses: random brightness everywhere. Then the first picture, first mistake, first correction – millions of times. Like a child learning piano: first plinking, then melody. Nobody sets millions of values by hand – that would be tuning every string of an orchestra singly. Impossible. Hence: let learn."
+          }
+        }
+      ]
+    },
+    {
+      "key": "rechnen-wie-ein-neuron",
+      "title": {
+        "de": "Rechnen wie ein Neuron",
+        "en": "Computing like a neuron"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Ein Neuron rechnet nur eine einzige Sache: gewichtete Summe, Schwelle, weiter. Rechne einmal selbst wie eins – mit Pommes.",
+            "en": "A neuron computes exactly one thing: weighted sum, threshold, onward. Compute like one yourself for once – with fries."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Die Frage: Sind die Pommes gut? Zwei Hinweise: Knusprigkeit (Wichtigkeit 3) und Salz (Wichtigkeit 1). Heute: Knusprigkeit 8, Salz 4. Rechnung: 8 mal 3 plus 4 mal 1 gleich 28. Schwelle: ab 25 sind sie gut. 28 ist größer – weiteressen. Genau das macht ein Neuron, millionenfach, mit Zahlen statt Pommes.",
+            "en": "The question: are the fries good? Two hints: crispness (importance 3) and salt (importance 1). Today: crispness 8, salt 4. Computation: 8 times 3 plus 4 times 1 equals 28. Threshold: good from 25 up. 28 is bigger – keep eating. Exactly what a neuron does, millions of times, with numbers instead of fries."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "tip",
+          "icon": "🍟",
+          "title": {
+            "de": "Jetzt du",
+            "en": "Your turn"
+          },
+          "text": {
+            "de": "Nimm eine eigene Entscheidung – Film gut oder nicht? – mit zwei Hinweisen, zwei Wichtigkeiten und einer Schwelle. Rechne drei Fälle durch. Du hast gerade per Hand getan, was ein Netz im Schlaf kann.",
+            "en": "Take your own decision – film good or not? – with two hints, two importances and a threshold. Compute three cases. You just did by hand what a net does in its sleep."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Du rechnest längst wie ein Netz – beim Schätzen: Wie viele Gummibärchen im Glas? Du wiegst Hinweise: Glasgröße schwer, Bärchengröße leicht, Füllhöhe mittel. Gewichtete Summe im Kopf, Schwelle im Bauch. Wer schätzt, ist ein Perzeptron aus Fleisch. Der Unterschied: Du weißt, dass du rätst. Das Netz tut nur so.",
+            "en": "You long compute like a net – when estimating: how many gummy bears in the jar? You weigh hints: jar size heavy, bear size light, fill level medium. Weighted sum in the head, threshold in the gut. Whoever estimates is a perceptron from flesh. The difference: you know you guess. The net only pretends."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "tip",
+          "icon": "🫙",
+          "title": {
+            "de": "Schätz-Duell",
+            "en": "Guessing duel"
+          },
+          "text": {
+            "de": "Fordere Freunde zum Schätzen heraus: Gummibärchen, Treppenstufen, Seiten im Buch. Wer liegt am nächsten? Notiert eure „Gewichte“ – worauf habt ihr geachtet? Ihr trainiert gerade live, mit Süßigkeiten statt Servern.",
+            "en": "Challenge friends to estimating: gummy bears, stair steps, book pages. Who lands closest? Note your “weights” – what did you watch? You just train live, with sweets instead of servers."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Lichterketten übrigens lehren Elektrik nebenbei: Reihenschaltung – eine Birne raus, alle dunkel. Parallel – jede für sich. Wer als Kind Ketten flickte, versteht Schichten: Hintereinander schaltet weiter, nebeneinander verteilt. Netze sind Lichterketten mit Mathe – und du kennst sie vom Baum.",
+            "en": "Fairy lights incidentally teach electrics on the side: series – one bulb out, all dark. Parallel – each for itself. Whoever patched chains as a kid understands layers: behind each other passes on, beside each other spreads. Nets are fairy lights with maths – and you know them from the tree."
+          }
         }
       ]
     }

@@ -10,7 +10,7 @@
   },
   "icon": "🎲",
   "accent": "indigo",
-  "minutes": 14,
+  "minutes": 20,
   "screens": [
     {
       "key": "was-ist-eine-bibliothek",
@@ -36,30 +36,75 @@
         {
           "kind": "table",
           "head": [
-            { "de": "Bibliothek", "en": "Library" },
-            { "de": "Wofür", "en": "What for" },
-            { "de": "Ein Beispiel", "en": "One example" }
+            {
+              "de": "Bibliothek",
+              "en": "Library"
+            },
+            {
+              "de": "Wofür",
+              "en": "What for"
+            },
+            {
+              "de": "Ein Beispiel",
+              "en": "One example"
+            }
           ],
           "rows": [
             [
-              { "de": "random", "en": "random" },
-              { "de": "Zufall", "en": "Randomness" },
-              { "de": "random.randint(1, 6)", "en": "random.randint(1, 6)" }
+              {
+                "de": "random",
+                "en": "random"
+              },
+              {
+                "de": "Zufall",
+                "en": "Randomness"
+              },
+              {
+                "de": "random.randint(1, 6)",
+                "en": "random.randint(1, 6)"
+              }
             ],
             [
-              { "de": "math", "en": "math" },
-              { "de": "Wurzeln, Kreiszahl, Winkel", "en": "Roots, pi, angles" },
-              { "de": "math.sqrt(2)", "en": "math.sqrt(2)" }
+              {
+                "de": "math",
+                "en": "math"
+              },
+              {
+                "de": "Wurzeln, Kreiszahl, Winkel",
+                "en": "Roots, pi, angles"
+              },
+              {
+                "de": "math.sqrt(2)",
+                "en": "math.sqrt(2)"
+              }
             ],
             [
-              { "de": "time", "en": "time" },
-              { "de": "Warten und Zeit messen", "en": "Waiting and timing" },
-              { "de": "time.sleep(1)", "en": "time.sleep(1)" }
+              {
+                "de": "time",
+                "en": "time"
+              },
+              {
+                "de": "Warten und Zeit messen",
+                "en": "Waiting and timing"
+              },
+              {
+                "de": "time.sleep(1)",
+                "en": "time.sleep(1)"
+              }
             ],
             [
-              { "de": "statistics", "en": "statistics" },
-              { "de": "Mittelwert, Median", "en": "Mean, median" },
-              { "de": "statistics.mean(werte)", "en": "statistics.mean(values)" }
+              {
+                "de": "statistics",
+                "en": "statistics"
+              },
+              {
+                "de": "Mittelwert, Median",
+                "en": "Mean, median"
+              },
+              {
+                "de": "statistics.mean(werte)",
+                "en": "statistics.mean(values)"
+              }
             ]
           ]
         },
@@ -74,6 +119,13 @@
           "text": {
             "de": "Niemand schmiedet seine Schrauben selbst, bevor er ein Regal baut. Genauso schreibt niemand eine Wurzelfunktion neu. Eine Bibliothek zu benutzen heißt nicht, weniger zu können - es heißt, nicht neu zu erfinden, was es schon gibt, und die Zeit für das Eigentliche zu haben.",
             "en": "Nobody forges their own screws before building a shelf. In the same way nobody rewrites a square root function. Using a library does not mean you can do less - it means not reinventing what already exists, and having the time for what actually matters."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Denk an den Werkzeugkasten deines Vaters: Bohrer kauft man, man baut sie nicht. Module sind gekaufte Bohrer für Programme – `random` bohrt Löcher in die Langeweile. `import` heißt ausleihen: Du nimmst, was andere gebaut haben, und baust deins darauf. Kein Handwerker schämt sich für gekaufte Bohrer. Kein Programmierer für fremde Module.",
+            "en": "Think of your father's toolbox: drills get bought, not built. Modules are bought drills for programs – `random` drills holes into boredom. `import` means borrowing: you take what others built and build yours on top. No craftsman is ashamed of bought drills. No programmer of foreign modules."
           }
         }
       ]
@@ -123,6 +175,13 @@
           "text": {
             "de": "Das Zahlenraten: Der Rechner denkt sich eine Zahl, du rätst, er sagt zu klein oder zu groß. Alles, was du in diesem Modul gelernt hast, steckt in diesen fünfzehn Zeilen. In der Aufgabe darunter baust du „heiß“ und „kalt“ ein.",
             "en": "The number guessing game: the machine thinks of a number, you guess, it says too small or too big. Everything you learned in this module sits in these fifteen lines. In the task below you add \"hot\" and \"cold\"."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Kleine Wahrheit am Rand: Der Rechner würfelt nicht wirklich. Er rechnet Zufall aus einem Startwert – immer dieselbe Folge bei gleichem Start. Für Spiele egal, für Lotto und Geheimnisse ungeeignet: Echter Zufall braucht Rauschen aus der Welt – Mausklicks, Tippen, atmosphärisches Knistern. Pseudozufall reicht zum Spielen, nie zum Sichern.",
+            "en": "Small truth at the margin: the computer does not really roll dice. It computes chance from a starting value – always the same sequence for equal start. For games whatever, for lottery and secrets unfit: real chance needs noise from the world – mouse clicks, typing, atmospheric crackle. Pseudo-chance suffices playing, never securing."
           }
         }
       ]
@@ -191,14 +250,105 @@
           "kind": "sources",
           "items": [
             {
-              "label": { "de": "Python-Dokumentation: die mitgelieferten Bibliotheken", "en": "Python documentation: the standard library" },
+              "label": {
+                "de": "Python-Dokumentation: die mitgelieferten Bibliotheken",
+                "en": "Python documentation: the standard library"
+              },
               "url": "https://docs.python.org/3/library/"
             },
             {
-              "label": { "de": "PyPI - der Index, aus dem pip holt", "en": "PyPI - the index pip fetches from" },
+              "label": {
+                "de": "PyPI - der Index, aus dem pip holt",
+                "en": "PyPI - the index pip fetches from"
+              },
               "url": "https://pypi.org"
             }
           ]
+        }
+      ]
+    },
+    {
+      "key": "spielideen-mit-zufall",
+      "title": {
+        "de": "Spielideen mit Zufall",
+        "en": "Game ideas with chance"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Zufall plus Schleife plus Bedingung: Das ist fast jedes Würfelspiel der Welt. Drei zum Nachbauen:",
+            "en": "Chance plus loop plus condition: that is almost every dice game in the world. Three to rebuild:"
+          }
+        },
+        {
+          "kind": "steps",
+          "items": [
+            {
+              "title": {
+                "de": "Das Würfel-Duell",
+                "en": "The dice duel"
+              },
+              "text": {
+                "de": "Du gegen den Rechner, je ein `randint(1, 6)` pro Runde, höher gewinnt. Fünf Runden, wer mehr hat, ist Champion. Sieben Zeilen, unendlich Revanchen.",
+                "en": "You against the computer, one `randint(1, 6)` each per round, higher wins. Five rounds, most wins is champion. Seven lines, endless rematches."
+              }
+            },
+            {
+              "title": {
+                "de": "Die Münz-Statistik",
+                "en": "The coin statistics"
+              },
+              "text": {
+                "de": "Wirf 1000-mal eine Münze (`randint(0, 1)`) und zähle Kopf und Zahl. Bei 500 zu 500 nickt die Mathematik – bei 700 zu 300 hast du einen Fehler gefunden. So testet man Zufall.",
+                "en": "Toss a coin 1000 times (`randint(0, 1)`) and count heads and tails. At 500 to 500 mathematics nods – at 700 to 300 you found a bug. That is how chance is tested."
+              }
+            },
+            {
+              "title": {
+                "de": "Der Helden-Generator",
+                "en": "The hero generator"
+              },
+              "text": {
+                "de": "Zwei Listen – Vornamen und Tiertitel – und `random.choice` baut daraus „Mia Wolfskralle“. Jeder Klick ein neuer Held für dein nächstes Spiel.",
+                "en": "Two lists – first names and animal titles – and `random.choice` builds “Mia Wolfclaw” from them. Every click a new hero for your next game."
+              }
+            }
+          ]
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Alle drei laufen mit Modulen, die andere geschrieben haben – `random` heute, morgen vielleicht `datetime` für ein Tagebuch mit Datum. Programmieren heißt oft: fremde Bausteine zu eigenem Spiel stapeln.",
+            "en": "All three run on modules others wrote – `random` today, tomorrow maybe `datetime` for a diary with dates. Programming often means: stacking foreign blocks into your own game."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Baue einen Bandnamen-Generator: Liste mit Adjektiven, Liste mit Tieren, `random.choice` mischt – „Müde Antilopen“? Nächster Klick, nächster Hit. Jede Band der Schule braucht einen Namen, deiner kommt aus drei Zeilen. Bonus: Orakel draus machen – Ja-Nein-Fragen beantworten lassen. Partyspiel in fünf Zeilen.",
+            "en": "Build a band-name generator: list with adjectives, list with animals, `random.choice` mixes – “Tired Antelopes”? Next click, next hit. Every school band needs a name, yours comes from three lines. Bonus: make an oracle of it – answering yes-no questions. Party game in five lines."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "tip",
+          "icon": "🔮",
+          "title": {
+            "de": "Orakel",
+            "en": "Oracle"
+          },
+          "text": {
+            "de": "Lasse das Orakel erst würfeln, dann weisen Satz sagen: Bei Ja jubeln, bei Nein trösten – mit Bedingungen kombiniert. Zufall plus Urteil: Das ist fast schon Charakter.",
+            "en": "Let the oracle first roll, then say a wise sentence: cheer at yes, comfort at no – combined with conditions. Chance plus judgement: that is almost character."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Zufall steckt übrigens auch in deiner Musik: Shuffle ist gewolltes Durcheinander – mit dem Unterschied, dass gute Player merken, was sie spielten, und nichts wiederholen. Echter Zufall würde Lieblingssongs fünfmal hintereinander bringen. Guter Zufall ist gezähmter Zufall: zufällig genug für Überraschung, ordentlich genug für Genuss.",
+            "en": "Chance incidentally sits in your music too: shuffle is wanted mess – with the difference that good players remember what they played, repeating nothing. Real chance would bring favourite songs five times in a row. Good chance is tamed chance: random enough for surprise, tidy enough for pleasure."
+          }
         }
       ]
     }

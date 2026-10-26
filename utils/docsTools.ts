@@ -173,8 +173,18 @@ export function markdownish(text: string): string {
 }
 
 /** Finds a document by id, or by name, case-insensitively. */
-async function find(ref: string | undefined, currentId?: string): Promise<DocRecord | null> {
-  if (!ref) return currentId ? await loadDoc(currentId) : null;
+async function find(
+  ref: string | undefined,
+  currentId?: string,
+): Promise<DocRecord | null> {
+  if (!ref) {
+    if (currentId) {
+      const current = await loadDoc(currentId);
+      if (current) return current;
+    }
+    const newest = (await listDocs())[0];
+    return newest ? await loadDoc(newest.id) : null;
+  }
   const direct = await loadDoc(ref);
   if (direct) return direct;
   const wanted = ref.trim().toLowerCase().replace(/\.docx?$/, "");
@@ -234,7 +244,9 @@ export async function applyDocsAction(
         ok: true,
         message: `Dokument "${name}" angelegt.`,
         openId: id,
-        snapshot: `Angelegt: "${name}" (${htmlToPlainText(html).length} Zeichen)`,
+        snapshot: `Angelegt: "${name}" (${
+          htmlToPlainText(html).length
+        } Zeichen)`,
       };
     }
 
@@ -250,7 +262,8 @@ export async function applyDocsAction(
       if (!ok) {
         return {
           ok: false,
-          message: `"${doc.name}" ließ sich nicht speichern - der Speicher im ` +
+          message:
+            `"${doc.name}" ließ sich nicht speichern - der Speicher im ` +
             "Browser ist voll.",
         };
       }

@@ -10,7 +10,7 @@
   },
   "icon": "💬",
   "accent": "indigo",
-  "minutes": 13,
+  "minutes": 18,
   "screens": [
     {
       "key": "eine-frage-stellen",
@@ -36,17 +36,35 @@
         {
           "kind": "table",
           "head": [
-            { "de": "Zeile", "en": "Line" },
-            { "de": "Was der Rechner tut", "en": "What the machine does" }
+            {
+              "de": "Zeile",
+              "en": "Line"
+            },
+            {
+              "de": "Was der Rechner tut",
+              "en": "What the machine does"
+            }
           ],
           "rows": [
             [
-              { "de": "name = input(\"Wie heißt du? \")", "en": "name = input(\"What's your name? \")" },
-              { "de": "Fragt, wartet, legt die Antwort in die Kiste `name`", "en": "Asks, waits, puts the answer into the box `name`" }
+              {
+                "de": "name = input(\"Wie heißt du? \")",
+                "en": "name = input(\"What's your name? \")"
+              },
+              {
+                "de": "Fragt, wartet, legt die Antwort in die Kiste `name`",
+                "en": "Asks, waits, puts the answer into the box `name`"
+              }
             ],
             [
-              { "de": "print(\"Hallo \" + name)", "en": "print(\"Hello \" + name)" },
-              { "de": "Setzt Gruß und Antwort zusammen und gibt beides aus", "en": "Joins greeting and answer and prints both" }
+              {
+                "de": "print(\"Hallo \" + name)",
+                "en": "print(\"Hello \" + name)"
+              },
+              {
+                "de": "Setzt Gruß und Antwort zusammen und gibt beides aus",
+                "en": "Joins greeting and answer and prints both"
+              }
             ]
           ]
         },
@@ -61,6 +79,13 @@
           "text": {
             "de": "Zwei Zeilen im Notizbuch - lass sie laufen und tipp deinen Namen ein. Unter der Zelle erscheint ein Eingabefeld, genau wie in einem echten Programm. Die Aufgabe danach lässt dich zusätzlich nach dem Lieblingsessen fragen und beides in einem Satz unterbringen.",
             "en": "Two lines in the notebook - run them and type your name. An input field appears below the cell, just as in a real program. The task afterwards has you also ask for a favourite food and put both into one sentence."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Der Fahrkartenautomat ist ein Gespräch aus Blech: Wohin? – Hamburg. Wann? – Jetzt. Geld her, Ticket raus. Er fragt, du antwortest, er handelt – input, Verarbeitung, Ausgabe, nur ohne Tastatur. Jedes Mal, wenn du dort stehst, führst du ein Programm aus. Und jedes Mal merkst du: Gute Fragen in der richtigen Reihenfolge – das ist schon fast alles.",
+            "en": "The ticket machine is a conversation from tin: where to? – Hamburg. When? – Now. Money here, ticket out. It asks, you answer, it acts – input, processing, output, only without keyboard. Every time you stand there you execute a program. And every time you notice: good questions in the right order – that is almost everything."
           }
         }
       ]
@@ -89,25 +114,61 @@
         {
           "kind": "table",
           "head": [
-            { "de": "Umwandlung", "en": "Conversion" },
-            { "de": "Macht daraus", "en": "Turns it into" },
-            { "de": "Wofür", "en": "What for" }
+            {
+              "de": "Umwandlung",
+              "en": "Conversion"
+            },
+            {
+              "de": "Macht daraus",
+              "en": "Turns it into"
+            },
+            {
+              "de": "Wofür",
+              "en": "What for"
+            }
           ],
           "rows": [
             [
-              { "de": "int(\"12\")", "en": "int(\"12\")" },
-              { "de": "die Zahl 12", "en": "the number 12" },
-              { "de": "Alter, Anzahl, Punkte", "en": "Age, counts, score" }
+              {
+                "de": "int(\"12\")",
+                "en": "int(\"12\")"
+              },
+              {
+                "de": "die Zahl 12",
+                "en": "the number 12"
+              },
+              {
+                "de": "Alter, Anzahl, Punkte",
+                "en": "Age, counts, score"
+              }
             ],
             [
-              { "de": "float(\"1.5\")", "en": "float(\"1.5\")" },
-              { "de": "die Kommazahl 1,5", "en": "the decimal 1.5" },
-              { "de": "Messwerte, Gewichte", "en": "Measurements, weights" }
+              {
+                "de": "float(\"1.5\")",
+                "en": "float(\"1.5\")"
+              },
+              {
+                "de": "die Kommazahl 1,5",
+                "en": "the decimal 1.5"
+              },
+              {
+                "de": "Messwerte, Gewichte",
+                "en": "Measurements, weights"
+              }
             ],
             [
-              { "de": "str(12)", "en": "str(12)" },
-              { "de": "den Text \"12\"", "en": "the text \"12\"" },
-              { "de": "Zum Zusammenkleben mit +", "en": "For gluing together with +" }
+              {
+                "de": "str(12)",
+                "en": "str(12)"
+              },
+              {
+                "de": "den Text \"12\"",
+                "en": "the text \"12\""
+              },
+              {
+                "de": "Zum Zusammenkleben mit +",
+                "en": "For gluing together with +"
+              }
             ]
           ]
         },
@@ -198,14 +259,105 @@
           "kind": "sources",
           "items": [
             {
-              "label": { "de": "Python-Dokumentation: Eingabe und Ausgabe", "en": "Python documentation: input and output" },
+              "label": {
+                "de": "Python-Dokumentation: Eingabe und Ausgabe",
+                "en": "Python documentation: input and output"
+              },
               "url": "https://docs.python.org/3/tutorial/inputoutput.html"
             },
             {
-              "label": { "de": "inf-schule.de: Ein- und Ausgabe", "en": "inf-schule.de: input and output" },
+              "label": {
+                "de": "inf-schule.de: Ein- und Ausgabe",
+                "en": "inf-schule.de: input and output"
+              },
               "url": "https://www.inf-schule.de/imperative-programmierung"
             }
           ]
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "1966 schrieb Joseph Weizenbaum ELIZA – ein Programm, das Sätze einfach spiegelte: „Erzähl mir mehr über deine Mutter.“ Menschen vertrauten ihm Sorgen an, obwohl dahinter nur Textbausteine steckten. Die Lehre gilt bis heute: Programme wirken klüger, als sie sind – sobald sie fragen statt nur zu antworten. Lass dich nicht täuschen, weder von ELIZA noch von seinen Enkeln.",
+            "en": "In 1966 Joseph Weizenbaum wrote ELIZA – a program simply mirroring sentences: “Tell me more about your mother.” Humans entrusted it worries although only text blocks sat behind. The lesson counts until today: programs seem cleverer than they are – once they ask instead of only answering. Be fooled neither by ELIZA nor by its grandchildren."
+          }
+        }
+      ]
+    },
+    {
+      "key": "programme-die-zuhoeren",
+      "title": {
+        "de": "Programme, die zuhören",
+        "en": "Programs that listen"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Ein Programm mit `input` ist kein Plakat mehr, sondern ein Gespräch. Hier sind drei Gespräche, die du heute noch bauen kannst.",
+            "en": "A program with `input` is no longer a poster but a conversation. Here are three conversations you can build today."
+          }
+        },
+        {
+          "kind": "steps",
+          "items": [
+            {
+              "title": {
+                "de": "Der Vokabel-Trainer",
+                "en": "The vocabulary trainer"
+              },
+              "text": {
+                "de": "Frage ein deutsches Wort ab und prüfe die englische Antwort mit `==`. Bei drei Wörtern hast du einen Trainer, bei dreißig einen Lernautomaten.",
+                "en": "Ask a German word and check the English answer with `==`. With three words you have a trainer, with thirty a learning machine."
+              }
+            },
+            {
+              "title": {
+                "de": "Der Wunschzettel-Sammler",
+                "en": "The wish-list collector"
+              },
+              "text": {
+                "de": "Frage dreimal nach einem Wunsch und gib am Ende alles als Liste aus – mit Nummern davor. So entsteht aus drei Antworten ein Dokument.",
+                "en": "Ask three times for a wish and print everything as a list at the end – numbered. Three answers become a document."
+              }
+            },
+            {
+              "title": {
+                "de": "Der Entscheidungshelfer",
+                "en": "The decision helper"
+              },
+              "text": {
+                "de": "Frag nach zwei Möglichkeiten und lass `random` entscheiden – aber gib die Entscheidung als feierlichen Satz aus. Verantwortung abgeben war nie schöner.",
+                "en": "Ask for two options and let `random` decide – but announce the decision as a solemn sentence. Never was dodging responsibility prettier."
+              }
+            }
+          ]
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Alle drei brauchen nur, was du schon kennst: `input`, `print`, Variablen – und beim dritten ein `import random`. Der Unterschied zwischen Übung und Programm ist oft nur eine gute Frage.",
+            "en": "All three need only what you already know: `input`, `print`, variables – and for the third an `import random`. The difference between an exercise and a program is often just one good question."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Baue ein Tagebuch-Programm: Jeden Tag fragt es nach deiner Stimmung von 1 bis 10 und nach einem Satz dazu. Am Monatsende rechnet es den Durchschnitt und druckt alle Sätze – dein Monat in Zahlen und Worten. Ein Datenschatz über dich, von dir, für dich. Solche kleinen Werkzeuge sind der Grund, warum Menschen programmieren lernen: nicht für Konzerne, für sich.",
+            "en": "Build a diary program: daily it asks your mood from 1 to 10 and one sentence along. At month's end it computes the average and prints all sentences – your month in numbers and words. A data treasure about you, by you, for you. Such small tools are why humans learn programming: not for corporations, for themselves."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "note",
+          "icon": "💾",
+          "title": {
+            "de": "Noch nicht speichern",
+            "en": "No saving yet"
+          },
+          "text": {
+            "de": "Dateien kommen später – heute kopierst du die Ausgabe von Hand ins Heft. Fühlt sich altmodisch an, lehrt aber etwas Wichtiges: Was gespeichert wird, überlebt das Ausschalten. Was nicht, war nur zu Besuch.",
+            "en": "Files come later – today copy the output by hand into the notebook. Feels old-fashioned but teaches something important: what gets stored survives switching off. What not was only visiting."
+          }
         }
       ]
     }

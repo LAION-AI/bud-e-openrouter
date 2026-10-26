@@ -28,7 +28,9 @@ export interface ImageWithMetadata {
  */
 interface MessageWithContent {
   role: string;
-  content: string | Array<{ type?: string; id?: string; [key: string]: unknown }>;
+  content:
+    | string
+    | Array<{ type?: string; id?: string; [key: string]: unknown }>;
 }
 
 /**
@@ -198,6 +200,7 @@ function ImageUploadButton({
 
       <div class={`${pos}`}>
         <button
+          type="button"
           onClick={onButtonClick}
           disabled={!IS_BROWSER || isUploading}
           class="disabled:opacity-50 disabled:cursor-not-allowed rounded-md p-2 bg-gray-100 text-blue-600/50 hover:bg-gray-200 transition-colors"

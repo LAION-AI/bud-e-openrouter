@@ -21,7 +21,6 @@
 
 import type {
   Accent,
-  Module,
   Block,
   CalloutTone,
   Exercise,
@@ -65,6 +64,7 @@ const BLOCK_KINDS = [
   "lead",
   "heading",
   "paragraph",
+  "code",
   "list",
   "steps",
   "callout",
@@ -182,6 +182,12 @@ function parseBlock(raw: any, where: string, p: Problems): Block | null {
       return { kind, text };
     }
 
+    case "code": {
+      const text = localized(raw.text, `${where}.text`, p);
+      const caption = localized(raw.caption, `${where}.caption`, p, false);
+      return text ? { kind, text, ...(caption ? { caption } : {}) } : null;
+    }
+
     case "list": {
       const items = localizedList(raw.items, `${where}.items`, p);
       if (items.length === 0) {
@@ -204,7 +210,77 @@ function parseBlock(raw: any, where: string, p: Problems): Block | null {
         }
         const title = localized(it.title, `${w}.title`, p);
         const text = localized(it.text, `${w}.text`, p);
-        return title && text ? { title, text } : null;
+        let code: { text: Localized; caption?: Localized } | undefined;
+        if (it.code !== undefined) {
+          if (!isObject(it.code)) {
+            p.fail(`${w}.code`, 'must be {"text": ..., "caption": ...}');
+            return null;
+          }
+          const command = localized(it.code.text, `${w}.code.text`, p);
+          const caption = localized(
+            it.code.caption,
+            `${w}.code.caption`,
+            p,
+            false,
+          );
+          if (!command) return null;
+          code = { text: command, ...(caption ? { caption } : {}) };
+        }
+        let link: { label: Localized; url: string } | undefined;
+        if (it.link !== undefined) {
+          if (!isObject(it.link)) {
+            p.fail(`${w}.link`, "must contain label and URL");
+            return null;
+          }
+          const label = localized(it.link.label, `${w}.link.label`, p);
+          const url = str(it.link.url);
+          if (!/^https?:\/\//i.test(url)) {
+            p.fail(`${w}.link.url`, "must start with http:// or https://");
+            return null;
+          }
+          if (!label) return null;
+          link = { label, url };
+        }
+        let download:
+          | { label: Localized; url: string; filename: string }
+          | undefined;
+        if (it.download !== undefined) {
+          if (!isObject(it.download)) {
+            p.fail(`${w}.download`, "must contain label, URL and filename");
+            return null;
+          }
+          const label = localized(
+            it.download.label,
+            `${w}.download.label`,
+            p,
+          );
+          const url = str(it.download.url);
+          const filename = str(it.download.filename);
+          if (!/^\/api\/[a-z0-9/_-]+$/.test(url)) {
+            p.fail(`${w}.download.url`, "must be a same-origin /api/ path");
+          }
+          if (
+            !/^[A-Za-z0-9][A-Za-z0-9._-]{0,79}$/.test(filename) ||
+            filename.includes("..")
+          ) {
+            p.fail(`${w}.download.filename`, "must be a safe filename");
+          }
+          if (
+            !label || !/^\/api\/[a-z0-9/_-]+$/.test(url) ||
+            !/^[A-Za-z0-9][A-Za-z0-9._-]{0,79}$/.test(filename) ||
+            filename.includes("..")
+          ) return null;
+          download = { label, url, filename };
+        }
+        return title && text
+          ? {
+            title,
+            text,
+            ...(code ? { code } : {}),
+            ...(link ? { link } : {}),
+            ...(download ? { download } : {}),
+          }
+          : null;
       }).filter(Boolean);
       return items.length ? { kind, items } as Block : null;
     }
@@ -547,6 +623,7 @@ export interface ModuleMeta {
   icon: string;
   accent: Accent;
   badge?: string;
+  level?: string;
 }
 
 /** Reads the _module.json that describes a folder of paths. */
@@ -567,6 +644,18 @@ export function parseModuleMeta(
   if (accent && !ACCENTS.includes(accent)) {
     p.fail("accent", `unknown colour "${accent}" - allowed: ${ACCENTS.join(", ")}`);
   }
+  // The stage the module belongs to, e.g. "sek1" or "sek2". Unknown to the
+  // app is fine - the module view uses it as a tab key - but it has to be a
+  // clean key, otherwise two spellings of the same stage drift apart.
+  const levelRaw = str(raw.level);
+  let level: string | undefined;
+  if (levelRaw) {
+    if (!/^[a-z0-9][a-z0-9-]*$/.test(levelRaw)) {
+      p.warn("level", 'use lowercase letters, digits and hyphens, e.g. "sek2" - ignored');
+    } else {
+      level = levelRaw;
+    }
+  }
   if (!title || p.errors.length) {
     return { errors: p.errors, warnings: p.warnings };
   }
@@ -580,6 +669,7 @@ export function parseModuleMeta(
       // in a hurry still looks like it belongs.
       accent: accent && ACCENTS.includes(accent) ? accent : fallbackAccent,
       ...(str(raw.badge) ? { badge: str(raw.badge).slice(0, 12) } : {}),
+      ...(level ? { level } : {}),
     },
     errors: p.errors,
     warnings: p.warnings,

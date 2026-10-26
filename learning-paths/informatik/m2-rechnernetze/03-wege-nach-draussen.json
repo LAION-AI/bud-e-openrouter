@@ -10,7 +10,7 @@
   },
   "icon": "🔀",
   "accent": "sky",
-  "minutes": 14,
+  "minutes": 20,
   "screens": [
     {
       "key": "drei-aufgaben",
@@ -72,6 +72,13 @@
           "text": {
             "de": "Kein Postbote kennt den Weg von Hamburg nach Sydney. Er bringt den Brief zum Verteilzentrum, das schickt ihn zum Flughafen, dort weiß jemand, welches Flugzeug nach Australien geht. Jede Station kennt nur den nächsten Schritt. Genau so arbeiten Router - millionenfach pro Sekunde.",
             "en": "No postman knows the route from Hamburg to Sydney. They take the letter to the sorting centre, which sends it to the airport, where somebody knows which plane goes to Australia. Every station knows only the next step. Routers work in exactly that way - millions of times per second."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Dein Router ist der Hausmeister des Netzes: Er nimmt Pakete an der Tür entgegen, liest die Zimmernummer und verteilt nach drinnen – und sammelt die Antworten wieder ein. Wie ein Hausmeister kennt er jedes Gerät beim Namen, beschwert sich selten und wird nur bemerkt, wenn er streikt: kein Internet, Hausmeister krank.",
+            "en": "Your router is the net's caretaker: it takes packets at the door, reads the room number and distributes inside – collecting the answers again. Like a caretaker it knows every device by name, rarely complains and only gets noticed on strike: no internet, caretaker sick."
           }
         }
       ]
@@ -184,6 +191,13 @@
             "de": "Diese Liste ist der Moment, in dem das Thema konkret wird: Da stehen dein Handy, der Fernseher, die Konsole, vielleicht ein Gerät, das du nicht zuordnen kannst. Alles, was eine Adresse hat, ist Teil deines Netzes - auch der smarte Lautsprecher, an den man nicht denkt.",
             "en": "That list is where the topic becomes concrete: there is your phone, the TV, the console, perhaps a device you cannot place. Everything with an address is part of your network - including the smart speaker nobody thinks about."
           }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Glasfaser gegen Kupfer: Kupfer schickt Strom, Glas schickt Licht – mit Lichtgeschwindigkeit und ohne Übersprechen der Adern. Darum ist Glas schneller und unempfindlicher: Licht stört kein Blitz, Strom schon. Wenn bei dir Glasfaser verlegt wird, zieht Licht ins Haus – im wörtlichen Sinn.",
+            "en": "Fibre versus copper: copper sends power, glass sends light – at light speed and without crosstalk. Hence glass is faster and tougher: lightning disturbs no light, but power yes. When fibre gets laid at your place, light moves in – literally."
+          }
         }
       ]
     },
@@ -274,6 +288,63 @@
               "url": "https://www.rfc-editor.org/rfc/rfc2131"
             }
           ]
+        }
+      ]
+    },
+    {
+      "key": "ein-abend-streaming",
+      "title": {
+        "de": "Ein Abend Streaming",
+        "en": "An evening of streaming"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Freitag, 20:15 Uhr: Du startest einen Film. Was in den nächsten zwei Stunden durch deinen Router läuft, ist eine Völkerwanderung.",
+            "en": "Friday, 8:15 pm: you start a film. What runs through your router over the next two hours is a migration of peoples."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Der Film liegt nicht bei dir, sondern auf Servern – oft in mehreren Ländern gleichzeitig. Dein Router holt ihn in Paketen, Päckchen für Päckchen, und dein Fernseher baut daraus Bilder, knapp bevor du sie siehst. Ein Puffer von ein paar Sekunden fängt Schwankungen ab: unsichtbar, solange das Netz mithält.",
+            "en": "The film is not at your place but on servers – often in several countries at once. Your router fetches it in packets, parcel by parcel, and your TV builds pictures from them just before you see them. A buffer of a few seconds absorbs wobbles: invisible, as long as the net keeps up."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Ruckelt es in 4K, sobald alle zu Hause gucken? Dann teilen sich alle die Leitung zum Verteilerkasten – Bandbreite ist wie Wasser im Rohr: Was der Bruder zum Zocken abzweigt, fehlt deinem Film. Lösung: früher puffern, kleinere Auflösung – oder einer liest ein Buch.",
+            "en": "Does 4K stutter once everybody at home watches? Then everybody shares the line to the street cabinet – bandwidth is like water in a pipe: what your brother diverts for gaming is missing from your film. Fixes: buffer earlier, smaller resolution – or someone reads a book."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Gemeinsam gucken geht auch synchron: Teleparty und Co. lassen alle gleichzeitig starten – ein Countdown, alle drücken Play. Dahinter puffern alle dieselben Sekunden, damit niemand spoilert. Technik für Freundschaft: zusammen lachen, obwohl jeder auf seinem Sofa sitzt.",
+            "en": "Watching together also works synchronised: Teleparty and friends let everybody start simultaneously – one countdown, all press play. Behind it all buffer the same seconds so nobody spoils. Technology for friendship: laughing together although everybody sits on their own sofa."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "tip",
+          "icon": "🌙",
+          "title": {
+            "de": "Daten sparen",
+            "en": "Saving data"
+          },
+          "text": {
+            "de": "Serien über Nacht im WLAN laden statt tagsüber streamen: morgens fertig, Volumen gespart. Wer wenig Daten hat, plant wie ein Netzplaner – puffern statt jammern.",
+            "en": "Loading series overnight on Wi-Fi instead of streaming by day: done by morning, volume saved. Whoever holds little data plans like a network planner – buffering instead of moaning."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Dein Router telefoniert übrigens nach Hause: Firmware-Updates kommen nachts, unbemerkt, automatisch. Gut so – ungepatchte Router sind Einfallstore. Schau trotzdem einmal im Jahr ins Menü: Update-Stand, Passwort, Gastnetz. Fünf Minuten Pflege, und der treue Hausmeister bleibt gesund.",
+            "en": "Your router incidentally phones home: firmware updates arrive nightly, unnoticed, automatically. Good – unpatched routers are open gates. Still peek into the menu once a year: update state, password, guest net. Five minutes of care, and the faithful caretaker stays healthy."
+          }
         }
       ]
     }

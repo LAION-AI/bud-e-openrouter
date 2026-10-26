@@ -9,6 +9,7 @@
     "preview": "deno run -A main.ts",
     "update": "deno run -A -r https://fresh.deno.dev/update .",
     "pyodide": "deno run -A scripts/fetch-pyodide.ts",
+    "scratch": "deno run -A scripts/fetch-scratch.ts",
     "check-paths": "deno run -A scripts/check-learning-paths.ts"
   },
   "lint": {
@@ -20,7 +21,9 @@
     }
   },
   "exclude": [
-    "**/_fresh/*"
+    "**/_fresh/*",
+    "static/scratch/vendor/**",
+    "static/scratch/library-assets/**"
   ],
   "imports": {
     "$fresh/": "https://deno.land/x/fresh@1.7.2/",

@@ -7,6 +7,8 @@
 export const learningContent: InternalizationContent = {
   en: {
     chooseModuleHint: "Choose a module.",
+    levelSek1: "Lower secondary",
+    levelSek2: "Upper secondary",
     openNotebook: "Try it in the notebook",
     openNotebookHint: "Opens the notebook",
     backToModules: "Back to the modules",
@@ -23,6 +25,11 @@ export const learningContent: InternalizationContent = {
     printSheet: "Worksheet",
     printHint:
       'Opens a printable version of this path with the exercises. Choose "Save as PDF" in the print dialogue to keep it as a file.',
+    copyLink: "Copy link to this learning path",
+    linkCopied: "Link copied. It opens this learning path at page 1.",
+    copyLinkManually: "Copy this link manually:",
+    linkNotFound:
+      "This learning path could not be found. You can choose one from the overview below.",
     worksheet: "Worksheet",
     sheetName: "Name:",
     sheetDate: "Date:",
@@ -74,6 +81,8 @@ export const learningContent: InternalizationContent = {
   },
   de: {
     chooseModuleHint: "Wähle ein Modul.",
+    levelSek1: "Sekundarstufe 1",
+    levelSek2: "Sekundarstufe 2",
     openNotebook: "Probier es im Notizbuch",
     openNotebookHint: "Öffnet das Notizbuch",
     backToModules: "Zurück zu den Modulen",
@@ -90,6 +99,11 @@ export const learningContent: InternalizationContent = {
     printSheet: "Arbeitsblatt",
     printHint:
       'Öffnet eine druckbare Fassung dieses Lernpfads samt Aufgaben. Im Druckfenster "Als PDF speichern" wählen, dann hast du es als Datei.',
+    copyLink: "Link zu diesem Lernpfad kopieren",
+    linkCopied: "Link kopiert. Er öffnet diesen Lernpfad auf Seite 1.",
+    copyLinkManually: "Kopiere diesen Link von Hand:",
+    linkNotFound:
+      "Dieser Lernpfad wurde nicht gefunden. Du kannst unten einen anderen auswählen.",
     worksheet: "Arbeitsblatt",
     sheetName: "Name:",
     sheetDate: "Datum:",

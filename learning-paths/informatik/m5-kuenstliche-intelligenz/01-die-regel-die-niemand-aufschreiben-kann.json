@@ -10,7 +10,7 @@
   },
   "icon": "🐈",
   "accent": "violet",
-  "minutes": 13,
+  "minutes": 20,
   "screens": [
     {
       "key": "die-katze",
@@ -36,30 +36,75 @@
         {
           "kind": "table",
           "head": [
-            { "de": "Wer liefert was", "en": "Who supplies what" },
-            { "de": "Herkömmliches Programm", "en": "Conventional program" },
-            { "de": "Maschinelles Lernen", "en": "Machine learning" }
+            {
+              "de": "Wer liefert was",
+              "en": "Who supplies what"
+            },
+            {
+              "de": "Herkömmliches Programm",
+              "en": "Conventional program"
+            },
+            {
+              "de": "Maschinelles Lernen",
+              "en": "Machine learning"
+            }
           ],
           "rows": [
             [
-              { "de": "Der Mensch liefert", "en": "The human supplies" },
-              { "de": "die Regeln", "en": "the rules" },
-              { "de": "die Beispiele", "en": "the examples" }
+              {
+                "de": "Der Mensch liefert",
+                "en": "The human supplies"
+              },
+              {
+                "de": "die Regeln",
+                "en": "the rules"
+              },
+              {
+                "de": "die Beispiele",
+                "en": "the examples"
+              }
             ],
             [
-              { "de": "Der Rechner liefert", "en": "The machine supplies" },
-              { "de": "das Ergebnis", "en": "the result" },
-              { "de": "die Regeln und das Ergebnis", "en": "the rules and the result" }
+              {
+                "de": "Der Rechner liefert",
+                "en": "The machine supplies"
+              },
+              {
+                "de": "das Ergebnis",
+                "en": "the result"
+              },
+              {
+                "de": "die Regeln und das Ergebnis",
+                "en": "the rules and the result"
+              }
             ],
             [
-              { "de": "Gut für", "en": "Good for" },
-              { "de": "alles Genaue: rechnen, sortieren", "en": "anything exact: calculating, sorting" },
-              { "de": "alles Unscharfe: erkennen, einschätzen", "en": "anything fuzzy: recognising, estimating" }
+              {
+                "de": "Gut für",
+                "en": "Good for"
+              },
+              {
+                "de": "alles Genaue: rechnen, sortieren",
+                "en": "anything exact: calculating, sorting"
+              },
+              {
+                "de": "alles Unscharfe: erkennen, einschätzen",
+                "en": "anything fuzzy: recognising, estimating"
+              }
             ],
             [
-              { "de": "Nachvollziehbar?", "en": "Traceable?" },
-              { "de": "ja, Zeile für Zeile", "en": "yes, line by line" },
-              { "de": "oft nicht", "en": "often not" }
+              {
+                "de": "Nachvollziehbar?",
+                "en": "Traceable?"
+              },
+              {
+                "de": "ja, Zeile für Zeile",
+                "en": "yes, line by line"
+              },
+              {
+                "de": "oft nicht",
+                "en": "often not"
+              }
             ]
           ]
         },
@@ -74,6 +119,13 @@
           "text": {
             "de": "Bei einem herkömmlichen Programm schreibt ein Mensch die Regeln auf, und der Rechner führt sie aus. Beim maschinellen Lernen bekommt der Rechner Beispiele und sucht sich die Regeln selbst. Alles, was du in M1 und M3 gebaut hast, gehört zur ersten Sorte.",
             "en": "In a conventional program a human writes down the rules and the machine carries them out. In machine learning the machine gets examples and finds the rules itself. Everything you built in M1 and M3 belongs to the first kind."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Versuch es wirklich: Schreibe die Katzen-Regel auf einen Zettel. „Hat Schnurrhaare, miaut, jagt Mäuse“ – fertig? Dann kommt die Sphynx ohne Fell, der taube Kater, der nie miaut, und der Hund, der Mäuse jagt. Jede Regel findet ihr Gegenbeispiel. Genau das erleben Programmierer täglich: Die Welt passt in keine Wenn-Dann-Liste, so lang sie auch ist.",
+            "en": "Really try it: write the cat rule on a note. “Has whiskers, meows, hunts mice” – done? Then comes the hairless Sphynx, the deaf tomcat never meowing, and the dog hunting mice. Every rule finds its counterexample. Exactly that programmers experience daily: the world fits no if-then list, however long."
           }
         }
       ]
@@ -96,21 +148,30 @@
           "kind": "steps",
           "items": [
             {
-              "title": { "de": "KI ist der Oberbegriff", "en": "AI is the umbrella term" },
+              "title": {
+                "de": "KI ist der Oberbegriff",
+                "en": "AI is the umbrella term"
+              },
               "text": {
                 "de": "Alles, was klug wirkt. Auch ein Schachprogramm aus den Achtzigern, das aus fest programmierten Regeln bestand, zählte dazu. Das Wort sagt nichts darüber aus, wie etwas gebaut ist.",
                 "en": "Anything that seems clever. Even a chess program from the eighties, made purely of hard-coded rules, counted. The word says nothing about how something is built."
               }
             },
             {
-              "title": { "de": "Maschinelles Lernen ist ein Weg dorthin", "en": "Machine learning is one route to it" },
+              "title": {
+                "de": "Maschinelles Lernen ist ein Weg dorthin",
+                "en": "Machine learning is one route to it"
+              },
               "text": {
                 "de": "Nämlich der, bei dem aus Beispielen gelernt wird statt aus Regeln. Das meiste, worüber heute geredet wird, ist das.",
                 "en": "Namely the one where learning happens from examples rather than from rules. Most of what is talked about today is this."
               }
             },
             {
-              "title": { "de": "Deep Learning ist eine Sorte davon", "en": "Deep learning is one kind of that" },
+              "title": {
+                "de": "Deep Learning ist eine Sorte davon",
+                "en": "Deep learning is one kind of that"
+              },
               "text": {
                 "de": "Maschinelles Lernen mit vielen Schichten hintereinander. Genau darum geht es im nächsten Pfad - und dort wirst du sehen, dass „tief“ nichts Geheimnisvolles bedeutet, sondern schlicht: viele Schichten.",
                 "en": "Machine learning with many layers one after another. That is exactly what the next path is about - and there you will see that \"deep\" means nothing mysterious, simply: many layers."
@@ -129,6 +190,13 @@
           "text": {
             "de": "Ein System, das Katzen erkennt, weiß nicht, was eine Katze ist. Es hat kein Bild von der Welt, keine Absicht, kein Verständnis. Es hat Muster in Zahlen gefunden. Das ist erstaunlich genug - man muss es nicht mit Denken verwechseln. Die Werbung tut es trotzdem, weil „Mustererkennung“ sich schlechter verkauft.",
             "en": "A system that recognises cats does not know what a cat is. It has no picture of the world, no intention, no understanding. It found patterns in numbers. That is astonishing enough - there is no need to confuse it with thinking. Advertising does anyway, because \"pattern recognition\" sells worse."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Drei Wörter, drei Jobs: Daten sind das Futter (Bilder, Texte, Zahlen). Das Modell ist der Esser – es wächst daran und merkt sich Muster. Der Algorithmus ist das Rezept – er sagt, WIE gegessen wird. Wer die drei verwechselt, redet Unsinn: „Der Algorithmus ist voreingenommen“ heißt meist: Die Daten waren es. Rezept tadeln, wo das Futter faul war.",
+            "en": "Three words, three jobs: data is the fodder (pictures, texts, numbers). The model is the eater – growing on it, remembering patterns. The algorithm is the recipe – telling HOW to eat. Whoever mixes the three talks nonsense: “the algorithm is biased” mostly means: the data was. Blaming the recipe where the fodder was rotten."
           }
         }
       ]
@@ -189,14 +257,136 @@
           "kind": "sources",
           "items": [
             {
-              "label": { "de": "Teachable Machine - selbst ein Modell trainieren", "en": "Teachable Machine - train a model yourself" },
+              "label": {
+                "de": "Teachable Machine - selbst ein Modell trainieren",
+                "en": "Teachable Machine - train a model yourself"
+              },
               "url": "https://teachablemachine.withgoogle.com"
             },
             {
-              "label": { "de": "Bildungsplan Informatik Sek I, Hamburg", "en": "Hamburg curriculum for computer science, lower secondary" },
+              "label": {
+                "de": "Bildungsplan Informatik Sek I, Hamburg",
+                "en": "Hamburg curriculum for computer science, lower secondary"
+              },
               "url": "https://www.hamburg.de/resource/blob/798514/ad3c2fdfb3a32b9545a271dfceae5772/informatik-data.pdf"
             }
           ]
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Zähle heute deine KI-Begegnungen: Autokorrektur morgens, Spamfilter mittags, Empfehlung abends, Navi zwischendurch. Vier bis fünf, ohne dass du „KI“ gedacht hast. Sie steckt nicht in Robotern, sie steckt im Alltag – unsichtbar wie Strom. Wer sie sucht, findet sie überall. Wer sie versteht, nutzt sie besser.",
+            "en": "Count your AI encounters today: autocorrect in the morning, spam filter at noon, recommendation at night, navigation between. Four to five without ever thinking “AI”. It sits not in robots but in everyday life – invisible like power. Whoever seeks it finds it everywhere. Whoever grasps it uses it better."
+          }
+        }
+      ]
+    },
+    {
+      "key": "der-unterschied-auf-den-es-ankommt",
+      "title": {
+        "de": "Der Unterschied, auf den es ankommt",
+        "en": "The difference that matters"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Manche Programme folgen Regeln, die Menschen geschrieben haben. Andere folgen Mustern, die sie in Beispielen gefunden haben. Der Faustest verrät dir, welches welches ist:",
+            "en": "Some programs follow rules humans wrote. Others follow patterns they found in examples. The fist test tells you which is which:"
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "de": "Faust auf den Tisch: Woher kommt das Verhalten?",
+            "en": "Fist on the table: where does the behaviour come from?"
+          },
+          "head": [
+            {
+              "de": "Programm",
+              "en": "Program"
+            },
+            {
+              "de": "Geschrieben oder gefunden?",
+              "en": "Written or found?"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "de": "Rechtschreibprüfung",
+                "en": "Spell checker"
+              },
+              {
+                "de": "Geschrieben: Wörterbuch plus Regeln",
+                "en": "Written: dictionary plus rules"
+              }
+            ],
+            [
+              {
+                "de": "Handschrift-Erkennung",
+                "en": "Handwriting recognition"
+              },
+              {
+                "de": "Gefunden: Millionen Schriftbeispiele",
+                "en": "Found: millions of writing samples"
+              }
+            ],
+            [
+              {
+                "de": "Schachcomputer von 1997",
+                "en": "Chess computer from 1997"
+              },
+              {
+                "de": "Geschrieben: Stellungen bewerten, Varianten zählen",
+                "en": "Written: evaluate positions, count lines"
+              }
+            ],
+            [
+              {
+                "de": "Übersetzungs-App heute",
+                "en": "Translation app today"
+              },
+              {
+                "de": "Gefunden: Milliarden übersetzter Sätze",
+                "en": "Found: billions of translated sentences"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Die Faustregel: Kann ein Mensch die Regel aufschreiben und erklären – geschrieben. Wird es bei „irgendwie erkennt man es halt“ schwammig – gefunden, also gelernt. Und gelernt heißt immer: frag nach den Beispielen, denn darin steckt das ganze Programm.",
+            "en": "The rule of thumb: if a human can write the rule down and explain it – written. If it gets hazy at “you just somehow see it” – found, hence learned. And learned always means: ask for the examples, because the whole program sits in them."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Der Faustest funktioniert übrigens auch umgekehrt: Frag bei jedem „intelligenten“ Gerät, woher es sein Wissen hat – einprogrammiert oder antrainiert? Klingel mit Kamera: einprogrammierte Bewegungserkennung. Foto-Sortierung nach Gesichtern: antrainiert an Millionen Gesichtern. Zwei Herkünfte, zwei Stärken, zwei Schwächen. Wer fragt, sieht durch jedes Etikett.",
+            "en": "The fist test incidentally works reversed too: ask with every “intelligent” device where its knowledge comes from – programmed in or trained on? Doorbell with camera: programmed motion detection. Photo sorting by faces: trained on millions of faces. Two origins, two strengths, two weaknesses. Whoever asks sees through every label."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "✊",
+          "title": {
+            "de": "Faust-Test",
+            "en": "Fist test"
+          },
+          "text": {
+            "de": "Nimm drei Geräte zu Hause und sortiere: geschrieben oder gefunden? Diskutiert es beim Abendessen – Wetten, dass ihr euch bei mindestens einem streitet? Genau dort wird es spannend: Die Grenze verschwimmt längst.",
+            "en": "Take three devices at home and sort: written or found? Discuss it at dinner – bet you quarrel over at least one? Exactly there it gets exciting: the border blurs long since."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Der Faustest entlarvt übrigens auch Menschen: Wer auf „Warum?“ nur antwortet „Das war schon immer so“, hat keine Regel, sondern Gewohnheit. Echte Regeln lassen sich aufschreiben und prüfen – alles andere ist Bauchgefühl in Uniform. Frage nach, gerade bei Autoritäten: Wo steht das? Die Antwort verrät alles.",
+            "en": "The fist test incidentally exposes humans too: whoever answers “why?” only with “it was always so” holds no rule but habit. Real rules can be written and checked – everything else is gut feeling in uniform. Ask back, especially with authorities: where stands that? The answer betrays everything."
+          }
         }
       ]
     }

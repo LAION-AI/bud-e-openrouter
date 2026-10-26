@@ -432,5 +432,13 @@ function explain(error, usesInput) {
   if (/KeyboardInterrupt: Eingabe abgebrochen/.test(text)) {
     return "Eingabe abgebrochen.";
   }
+  if (usesInput && /'coroutine' object has no attribute/.test(text)) {
+    return (
+      "An input() darf nichts direkt angehängt werden.\n" +
+      "Schreibe es in die nächste Zeile:\n\n" +
+      '    antwort = input("Frage? ")\n' +
+      "    antwort = antwort.lower().strip()\n"
+    );
+  }
   return text;
 }

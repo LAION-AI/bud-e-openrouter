@@ -42,7 +42,10 @@ function unescapeXml(s: string): string {
     .replace(/&quot;/g, '"')
     .replace(/&apos;/g, "'")
     .replace(/&#(\d+);/g, (_, d) => String.fromCodePoint(Number(d)))
-    .replace(/&#x([0-9a-fA-F]+);/g, (_, h) => String.fromCodePoint(parseInt(h, 16)))
+    .replace(
+      /&#x([0-9a-fA-F]+);/g,
+      (_, h) => String.fromCodePoint(parseInt(h, 16)),
+    )
     .replace(/&amp;/g, "&");
 }
 
@@ -79,7 +82,10 @@ export function decodeText(bytes: Uint8Array): string {
 /** Paragraph text out of a WordprocessingML or ODF body. */
 function xmlToText(xml: string, paraTag: string, textTag: string): string {
   const paragraphs: string[] = [];
-  const rx = new RegExp(`<${textTag}(?:\\s[^>]*)?>([\\s\\S]*?)</${textTag}>|<[a-z:]*tab\\s*/>|<[a-z:]*(?:br|line-break)\\s*/>`, "g");
+  const rx = new RegExp(
+    `<${textTag}(?:\\s[^>]*)?>([\\s\\S]*?)</${textTag}>|<[a-z:]*tab\\s*/>|<[a-z:]*(?:br|line-break)\\s*/>`,
+    "g",
+  );
   for (const p of xml.split(new RegExp(`<${paraTag}[ >]`)).slice(1)) {
     let text = "";
     for (const m of p.matchAll(rx)) {
@@ -95,7 +101,9 @@ function xmlToText(xml: string, paraTag: string, textTag: string): string {
 async function fromDocx(bytes: Uint8Array): Promise<string> {
   const entries = await readZip(bytes);
   const doc = entries.find((e) => e.name === "word/document.xml");
-  if (!doc) throw new Error("keine word/document.xml - ist das wirklich eine .docx?");
+  if (!doc) {
+    throw new Error("keine word/document.xml - ist das wirklich eine .docx?");
+  }
   return xmlToText(new TextDecoder().decode(doc.data), "w:p", "w:t");
 }
 
@@ -107,16 +115,39 @@ async function fromOdt(bytes: Uint8Array): Promise<string> {
   // Headings and paragraphs both carry their words in <text:span> or directly.
   const body = xml.match(/<office:body>([\s\S]*)<\/office:body>/)?.[1] ?? xml;
   const paragraphs: string[] = [];
-  for (const m of body.matchAll(/<text:(p|h)(?:\s[^>]*)?>([\s\S]*?)<\/text:\1>/g)) {
+  for (
+    const m of body.matchAll(/<text:(p|h)(?:\s[^>]*)?>([\s\S]*?)<\/text:\1>/g)
+  ) {
     const inner = m[2]
       .replace(/<text:tab\s*\/>/g, "\t")
       .replace(/<text:line-break\s*\/>/g, "\n")
       .replace(/<text:s\s*\/>/g, " ")
-      .replace(/<text:s\s+text:c="(\d+)"\s*\/>/g, (_, n) => " ".repeat(Number(n)))
+      .replace(
+        /<text:s\s+text:c="(\d+)"\s*\/>/g,
+        (_, n) => " ".repeat(Number(n)),
+      )
       .replace(/<[^>]+>/g, "");
     paragraphs.push(unescapeXml(inner).trim());
   }
   return paragraphs.join("\n").replace(/\n{3,}/g, "\n\n").trim();
+}
+
+async function fromPptx(bytes: Uint8Array): Promise<string> {
+  const slides = (await readZip(bytes)).filter((entry) =>
+    /^ppt\/slides\/slide\d+\.xml$/.test(entry.name)
+  ).sort((a, b) =>
+    Number(a.name.match(/slide(\d+)\.xml$/)?.[1] ?? 0) -
+    Number(b.name.match(/slide(\d+)\.xml$/)?.[1] ?? 0)
+  );
+  if (!slides.length) {
+    throw new Error("keine Folien gefunden - ist das wirklich eine .pptx?");
+  }
+  return slides.map((entry, index) => {
+    const xml = new TextDecoder().decode(entry.data);
+    const words = [...xml.matchAll(/<a:t(?:\s[^>]*)?>([\s\S]*?)<\/a:t>/g)]
+      .map((match) => unescapeXml(match[1]).trim()).filter(Boolean);
+    return `Folie ${index + 1}:\n${words.join("\n")}`;
+  }).join("\n\n").trim();
 }
 
 /**
@@ -153,9 +184,18 @@ export function fromRtf(raw: string): string {
       let i = m.index;
       for (; i < input.length; i++) {
         const ch = input[i];
-        if (ch === "\\") { i++; continue; }   // an escaped brace is not one
+        if (ch === "\\") {
+          i++;
+          continue;
+        } // an escaped brace is not one
         if (ch === "{") depth++;
-        else if (ch === "}") { depth--; if (depth === 0) { i++; break; } }
+        else if (ch === "}") {
+          depth--;
+          if (depth === 0) {
+            i++;
+            break;
+          }
+        }
       }
       at = i;
       rx.lastIndex = i;
@@ -194,8 +234,20 @@ export function fromRtf(raw: string): string {
 
 /** Which extensions can be turned into text here. */
 export const TEXT_EXTENSIONS = [
-  ".txt", ".md", ".markdown", ".csv", ".tsv", ".log", ".json", ".xml",
-  ".html", ".htm", ".rtf", ".docx", ".odt",
+  ".txt",
+  ".md",
+  ".markdown",
+  ".csv",
+  ".tsv",
+  ".log",
+  ".json",
+  ".xml",
+  ".html",
+  ".htm",
+  ".rtf",
+  ".docx",
+  ".odt",
+  ".pptx",
 ];
 
 /** Everything the upload button offers, PDFs included. */
@@ -220,6 +272,9 @@ export async function extractDocumentText(
   if (ext === ".docx") {
     kind = "docx";
     text = await fromDocx(bytes);
+  } else if (ext === ".pptx") {
+    kind = "pptx";
+    text = await fromPptx(bytes);
   } else if (ext === ".odt") {
     kind = "odt";
     text = await fromOdt(bytes);
@@ -247,7 +302,10 @@ export async function extractDocumentText(
       .replace(/<br\s*\/?>/gi, "\n")
       .replace(/<\/(p|div|li|h[1-6]|tr)>/gi, "\n")
       .replace(/<[^>]+>/g, "");
-    text = unescapeXml(text).replace(/[ \t]+\n/g, "\n").replace(/\n{3,}/g, "\n\n").trim();
+    text = unescapeXml(text).replace(/[ \t]+\n/g, "\n").replace(
+      /\n{3,}/g,
+      "\n\n",
+    ).trim();
   } else {
     kind = "text";
     text = decodeText(bytes).replace(/\r\n?/g, "\n").trim();
