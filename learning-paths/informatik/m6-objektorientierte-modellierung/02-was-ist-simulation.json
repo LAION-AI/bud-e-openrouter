@@ -1,0 +1,459 @@
+{
+  "accent": "violet",
+  "exercises": [
+    {
+      "hint": {
+        "de": "Alle Antworten stehen auf den Bildschirmen davor – lies sie noch einmal von oben.",
+        "en": "All answers sit on the screens before – read them once more from the top."
+      },
+      "intro": {
+        "de": "Setze die fehlenden Wörter ein.",
+        "en": "Fill in the missing words."
+      },
+      "kind": "cloze",
+      "text": {
+        "de": "Eine ___ ist ein ___, das läuft. Feste ___ überführen es Schritt für Schritt von einem ___ in den nächsten. Was gerade gilt, heißt ___: Beim Tamagotchi sind das ___ und ___. Die Regel sagt, was sich wodurch ändert: Füttern ___ den Hunger um ___. Gerechnet wird in ___: Kleine Schritte sind genauer, aber auch ___. In der Physik ist die ___ die Regel, ___ und ___ sind der Zustand. Ist das ___ falsch, ist auch die ___ falsch. In Spielen wie Die ___ steuern ___ das Verhalten der Figuren.",
+        "en": "A ___ is a ___ that runs. Fixed ___ carry it step by step from one ___ to the next. What currently holds is called ___: in a Tamagotchi that means ___ and ___. The rule says what changes through what: feeding ___ hunger by ___. Computing happens in ___: small steps are more exact, but also more ___. In physics ___ is the rule, while ___ and ___ are the state. If the ___ is wrong, the ___ is wrong too. In games like The ___, ___ steer how the characters behave."
+      },
+      "title": {
+        "de": "1. Lückentext",
+        "en": "1. Fill in the blanks"
+      }
+    },
+    {
+      "hint": {
+        "de": "Was verpasst eine grobe Rechnung? Denk an eine Kurve, die du mit dem Lineal nachzeichnest.",
+        "en": "What does a coarse computation miss? Think of tracing a curve with a ruler."
+      },
+      "intro": {
+        "de": "Setze zwei Beobachtungen zueinander in Beziehung.",
+        "en": "Relate two observations to each other."
+      },
+      "kind": "compare",
+      "text": {
+        "de": "Ein Tamagotchi und eine Planeten-Simulation bestehen aus denselben drei Zutaten. Benenne für beide Zustand, Regel und Zeitschritt – und erkläre, was bei der Planeten-Simulation passiert, wenn der Zeitschritt einen Monat statt einer Stunde beträgt.",
+        "en": "A Tamagotchi and a planetary simulation consist of the same three ingredients. Name the state, the rule and the time step for both – and explain what happens in the planetary simulation if the time step is a month instead of an hour."
+      },
+      "title": {
+        "de": "2. Vergleiche",
+        "en": "2. Compare"
+      }
+    },
+    {
+      "intro": {
+        "de": "Auf diese Frage gibt es keine richtige Antwort.",
+        "en": "There is no right answer to this one."
+      },
+      "kind": "reflect",
+      "text": {
+        "de": "Plane eine Simulation für die Mensa-Schlange: Was ist der Zustand, was sind zwei Regeln, wie lang ist ein Zeitschritt – und was lässt du bewusst weg?",
+        "en": "Plan a simulation for the canteen queue: what is the state, what are two rules, how long is one step – and what do you deliberately leave out?"
+      },
+      "title": {
+        "de": "3. Zum Nachdenken",
+        "en": "3. Something to think about"
+      }
+    }
+  ],
+  "icon": "🎮",
+  "key": "was-ist-simulation",
+  "minutes": 24,
+  "screens": [
+    {
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Eine Simulation ist ein Modell, das läuft: Zusammen mit festen Regeln wird es Schritt für Schritt von einem Zustand in den nächsten überführt – und du schaust zu, wie sich etwas entwickelt.",
+            "en": "A simulation is a model that runs: together with fixed rules it is carried step by step from one state to the next – and you watch how something unfolds."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Denk an ein Tamagotchi: Hunger 80, Laune 60, ein Schritt pro Sekunde. Die Regel sagt: Jede Sekunde steigt der Hunger um 1, Füttern senkt ihn um 20. Nach einer Minute weißt du, ob dein Tier noch lebt – ohne eine echte Minute zu warten.",
+            "en": "Think of a Tamagotchi: hunger 80, mood 60, one step per second. The rule says: every second hunger rises by 1, feeding lowers it by 20. After a minute you know whether your pet survives – without waiting a real minute."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Pflegen heißt simulieren: Füttern senkt Hunger, Spielen hebt Laune, Schlafen lädt Energie – jede Aktion eine Regel, jede Sekunde ein Schritt. Stirbt das Tier, war eine Regel falsch verstanden: zu selten gefüttert, zu oft gespielt. Millionen Kinder haben 1996 an drei Pixeln Verantwortung gelernt – Zustand lesen, Regel anwenden, Folgen tragen. Das ist die ganze Simulation, nur niedlich.",
+            "en": "Nursing means simulating: feeding lowers hunger, playing lifts mood, sleeping charges energy – every action a rule, every second a step. If the pet dies, a rule was misunderstood: fed too rarely, played too often. In 1996 millions of children learned responsibility on three pixels – reading state, applying rules, bearing consequences. That is the whole simulation, only cute."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "fact",
+          "icon": "🥚",
+          "title": {
+            "de": "1996",
+            "en": "1996"
+          },
+          "text": {
+            "de": "Tamagotchis piepsten in jeder Hosentasche der Welt – und lehrten nebenbei, was Informatiker später Simulation nennen: Zustände, Regeln, Zeitschritte. Wer eins hatte, versteht diesen Pfad schon zur Hälfte.",
+            "en": "Tamagotchis beeped in every pocket of the world – teaching on the side what computer scientists later call simulation: states, rules, time steps. Whoever owned one already understands half this path."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Der Tod des Tamagotchis war übrigens Absicht der Erfinder: Nur wer verlieren kann, pflegt sorgfältig. Echte Simulationen nutzen denselben Trick: Flugsimulatoren lassen dich abstürzen – schmerzfrei, aber lehrreich. Piloten trainieren tausend Abstürze, bevor sie einmal wirklich fliegen. Fehler im Modell sind billig, Fehler in der Welt sind teuer.",
+            "en": "The Tamagotchi's death was the inventors' intention by the way: only whoever can lose nurses carefully. Real simulations use the same trick: flight simulators let you crash – painlessly but instructively. Pilots train a thousand crashes before really flying once. Mistakes in the model are cheap, mistakes in the world are expensive."
+          }
+        }
+      ],
+      "title": {
+        "de": "Modelle zum Laufen bringen",
+        "en": "Setting models in motion"
+      }
+    },
+    {
+      "blocks": [
+        {
+          "kind": "steps",
+          "items": [
+            {
+              "text": {
+                "de": "Alles, was gerade gilt: Hunger, Laune, Kontostand, Position. Der Zustand ist ein Schnappschuss.",
+                "en": "Everything that currently holds: hunger, mood, balance, position. The state is a snapshot."
+              },
+              "title": {
+                "de": "Der Zustand",
+                "en": "The state"
+              }
+            },
+            {
+              "text": {
+                "de": "Was ändert sich wodurch? Füttern senkt Hunger. Anziehung ändert Geschwindigkeit. Regeln überführen einen Zustand in den nächsten.",
+                "en": "What changes through what? Feeding lowers hunger. Gravity changes speed. Rules carry one state into the next."
+              },
+              "title": {
+                "de": "Die Regeln",
+                "en": "The rules"
+              }
+            },
+            {
+              "text": {
+                "de": "Wann wird gerechnet? Jede Sekunde, jede Stunde, jeder Tag. Kleine Schritte sind genauer – und teurer.",
+                "en": "When is it computed? Every second, every hour, every day. Small steps are more exact – and more expensive."
+              },
+              "title": {
+                "de": "Der Zeitschritt",
+                "en": "The time step"
+              }
+            }
+          ]
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Der Rechner macht nichts Magisches: Er wendet stumpf die Regeln an, Schritt für Schritt, tausendmal pro Sekunde wenn nötig. Das Modell liefert die Welt im Kleinen, die Regeln liefern die Bewegung.",
+            "en": "The computer does nothing magical: it bluntly applies the rules, step by step, a thousand times a second if needed. The model supplies the world in small, the rules supply the motion."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Kennst du Mensch ärgere dich nicht? Perfekte Simulation: Zustand sind alle Figurenpositionen, Regeln sind die Zugregeln, Zeitschritt ist ein Zug. Würfeln, ziehen, fluchen – jeder Abend auf dem Wohnzimmerteppich rechnet vor, was Server mit Millionen Zuständen tun. Der einzige Unterschied: Der Rechner würfelt tausendmal pro Sekunde und flucht nie.",
+            "en": "Know Ludo? Perfect simulation: state is all figure positions, rules are the move rules, time step is one move. Rolling, moving, cursing – every evening on the living-room carpet precomputes what servers do with millions of states. The only difference: the computer rolls a thousand times a second and never curses."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "note",
+          "icon": "🎞️",
+          "title": {
+            "de": "Daumenkino-Regel",
+            "en": "Flip-book rule"
+          },
+          "text": {
+            "de": "Male ein Daumenkino: zehn Bilder ruckeln, hundert fließen. Genauso der Zeitschritt: grobe Schritte sind billig und holprig, feine teuer und glatt. Jede Simulation wählt dazwischen – Genauigkeit kostet immer.",
+            "en": "Draw a flip book: ten pictures judder, a hundred flow. Same with the time step: coarse steps are cheap and bumpy, fine ones expensive and smooth. Every simulation picks between – exactness always costs."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Auch dein Körper simuliert ständig: Bevor du den Ball fängst, rechnet dein Gehirn voraus – wo wird er sein, wann sind meine Hände da? Zustand: Ballposition und -tempo. Regeln: Schwerkraft und Erfahrung. Zeitschritt: Millisekunden. Du bist eine laufende Simulation – mit Armen statt Servern.",
+            "en": "Your body simulates constantly too: before you catch the ball, your brain precomputes – where will it be, when are my hands there? State: ball position and pace. Rules: gravity and experience. Time step: milliseconds. You are a running simulation – with arms instead of servers."
+          }
+        }
+      ],
+      "title": {
+        "de": "Die drei Zutaten",
+        "en": "The three ingredients"
+      }
+    },
+    {
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "In Spielen wie Die Sims hat jede Figur Bedürfnisse: Hunger, Energie, Spaß. Sinkt die Energie, wird die Figur müde – genau wie dein Tamagotchi, nur mit mehr Regeln und hübscherer Grafik. Auch Wirtschaftsteile in Spielen sind Simulationen: Preise steigen, wenn alle dasselbe kaufen wollen.",
+            "en": "In games like The Sims every character has needs: hunger, energy, fun. When energy sinks, the character gets tired – just like your Tamagotchi, only with more rules and prettier graphics. The economy parts of games are simulations too: prices rise when everybody wants the same thing."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "In der Physik kreisen Planeten umeinander: Die Anziehung ist die Regel, Position und Geschwindigkeit sind der Zustand. Rechnet man in Stunden-Schritten voraus, sieht man, wo der Planet morgen steht – oder in hundert Jahren. So plant man Satellitenbahnen, ohne einen einzigen Raketenstart zu riskieren.",
+            "en": "In physics planets circle each other: attraction is the rule, position and speed are the state. Computing ahead in hour-sized steps shows where the planet stands tomorrow – or in a hundred years. That is how satellite paths are planned without risking a single rocket launch."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Auch Flüssigkeiten lassen sich simulieren – für Wetter, für Trickfilme, für Hochwasser. Und Städte simulieren ihren Verkehr: Wo staut es sich, wenn diese Ampel länger grün bleibt? Die Antwort kostet Strom statt Baustellen.",
+            "en": "Liquids can be simulated too – for weather, for cartoons, for floods. And cities simulate their traffic: where does it jam if this light stays green longer? The answer costs electricity instead of roadworks."
+          }
+        },
+        {
+          "icon": "🎮",
+          "kind": "callout",
+          "text": {
+            "de": "Jedes Computerspiel mit einer Welt darin ist eine Simulation: Zustand plus Regeln plus Zeitschritt.",
+            "en": "Every computer game with a world inside is a simulation: state plus rules plus time step."
+          },
+          "title": {
+            "de": "Zum Merken",
+            "en": "Worth remembering"
+          },
+          "tone": "fact"
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Noch näher: Deine Wetter-App zeigt Regenradar – wo die Wolke in einer Stunde steht. Dahinter rechnet ein Flüssigkeitsmodell die Luft in groben Klötzen, Schritt für Schritt. Grob genug, dass dein Handy es schafft. Fein genug, dass du den Schirm mitnimmst. Und wenn es doch trocken bleibt? Dann war ein Klotz zu grob – Simulation heißt auch: mit Irrtum leben.",
+            "en": "Even closer: your weather app shows rain radar – where the cloud stands in an hour. Behind it a fluid model computes the air in coarse blocks, step by step. Coarse enough for your phone to manage. Fine enough for you to take the umbrella. And if it stays dry anyway? Then one block was too coarse – simulation also means: living with error."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Frage in der Familie herum: Wer plant den Wocheneinkauf im Kopf durch – was fehlt, was wird knapp, was ist im Angebot? Das ist Simulation ohne Strom: Zustände im Kopf, Regeln aus Erfahrung, Zeitschritt eine Woche. Der Einkaufszettel ist das Ergebnis – ausgedruckt auf Papier statt Bildschirm.",
+            "en": "Ask around the family: who plans the weekly shopping in their head – what is missing, what runs low, what is on offer? That is simulation without power: states in the head, rules from experience, time step one week. The shopping list is the result – printed on paper instead of screen."
+          }
+        }
+      ],
+      "title": {
+        "de": "Vom Tamagotchi zu den Planeten",
+        "en": "From Tamagotchi to the planets"
+      }
+    },
+    {
+      "key": "wer-rechnet-fuer-dich",
+      "title": {
+        "de": "Wer rechnet heute für dich?",
+        "en": "Who computes for you today?"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Drei Simulationen hast du diese Woche schon benutzt – ohne je das Wort zu hören.",
+            "en": "You already used three simulations this week – without ever hearing the word."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Google Maps sagt „17 Minuten“. Niemand ist die Strecke abgefahren: Eine Verkehrssimulation kennt die Straßen als Netz, die Autos als Punkte und deine Abfahrt als Startzustand. Sie lässt tausende Punkte losfahren – und schaut, wann deiner ankäme. Darum ändert sich die Zahl, wenn du an der Ampel stehst: neuer Zustand, neue Rechnung.",
+            "en": "Google Maps says “17 minutes”. Nobody drove the route: a traffic simulation knows the streets as a net, the cars as dots and your departure as the starting state. It sends thousands of dots driving – and watches when yours would arrive. That is why the number changes while you wait at the lights: new state, new computation."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Das Regenradar zeigt, wo die Wolke in einer Stunde steht – Flüssigkeit, grob gerechnet, aber grob genug für deinen Schirm. Und Flugtickets werden teurer, je mehr Leute suchen: Dahinter simuliert die Airline, was du wohl zahlen würdest – mit dir als Zustand und deinem Klick als Regel.",
+            "en": "The rain radar shows where the cloud stands in an hour – liquid, coarsely computed, but coarse enough for your umbrella. And plane tickets get pricier the more people search: behind that, the airline simulates what you would probably pay – with you as the state and your click as the rule."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "note",
+          "icon": "💡",
+          "title": {
+            "de": "Preis des Weglassens",
+            "en": "Price of leaving out"
+          },
+          "text": {
+            "de": "Jede dieser Simulationen lässt etwas weg – die Abkürzung durch den Park, den Schirm in deiner Tasche, dein echtes Budget. Praktisch, solange du weißt, was fehlt.",
+            "en": "Each of these simulations leaves something out – the shortcut through the park, the umbrella in your bag, your real budget. Handy, as long as you know what is missing."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Noch eine, die Geld kostet: Supermärkte simulieren Erdbeeren. Wetter plus Ferien plus Wochentag – wie viele Schalen bestellen wir für Samstag? Zu viel fault, zu wenig verärgert. Die Simulation irrt sich täglich ein bisschen und spart trotzdem Millionen. Merke: Eine Simulation muss nicht recht haben, sie muss nur besser raten als der Bauch.",
+            "en": "One more that costs money: supermarkets simulate strawberries. Weather plus holidays plus weekday – how many punnets do we order for Saturday? Too much rots, too little annoys. The simulation errs a little daily yet saves millions. Note: a simulation need not be right, it only must guess better than the gut."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Börsen sind Simulationen mit Geld: Algorithmen kaufen und verkaufen tausendmal pro Sekunde – nach Regeln, die Menschen schrieben, in Zuständen, die niemand überblickt. Manchmal schaukeln sie sich hoch, dann kracht es in Minuten: Flash Crash. Die Lehre: Wer die Regeln nicht versteht, sollte ihnen kein Geld anvertrauen.",
+            "en": "Stock markets are simulations with money: algorithms buy and sell a thousand times a second – by rules humans wrote, in states nobody surveys. Sometimes they rock each other up, then it crashes in minutes: flash crash. The lesson: whoever does not understand the rules should entrust them no money."
+          }
+        }
+      ]
+    },
+    {
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Zwei Gefahren: Ist das Modell falsch, ist die Simulation falsch – ein Planet ohne Mond rechnet anders. Und sind die Zeitschritte zu grob, läuft alles aus dem Ruder: Das Wetter von morgen braucht feine Schritte, sonst erfindet der Rechner Stürme.",
+            "en": "Two dangers: if the model is wrong, the simulation is wrong – a planet without its moon computes differently. And if the time steps are too coarse, everything runs off the rails: tomorrow's weather needs fine steps, otherwise the computer invents storms."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Simulationen entscheiden heute mit: über Klima, Medizin, Verkehr. Darum gehört zu jeder Simulation, was zu jedem Modell gehört: testen, vergleichen, Grenzen nennen. Wer das tut, arbeitet im Modellierungskreislauf – analysieren, modellieren, implementieren, testen.",
+            "en": "Simulations co-decide today: on climate, medicine, traffic. So every simulation needs what every model needs: testing, comparing, naming limits. Whoever does that works inside the modelling cycle – analyse, model, implement, test."
+          }
+        },
+        {
+          "caption": {
+            "de": "Drei Simulationen, dreimal dieselben Zutaten.",
+            "en": "Three simulations, three times the same ingredients."
+          },
+          "head": [
+            {
+              "de": "Simulation",
+              "en": "Simulation"
+            },
+            {
+              "de": "Zustand",
+              "en": "State"
+            },
+            {
+              "de": "Regel",
+              "en": "Rule"
+            },
+            {
+              "de": "Zeitschritt",
+              "en": "Time step"
+            }
+          ],
+          "kind": "table",
+          "rows": [
+            [
+              {
+                "de": "Tamagotchi",
+                "en": "Tamagotchi"
+              },
+              {
+                "de": "Hunger, Laune",
+                "en": "Hunger, mood"
+              },
+              {
+                "de": "Füttern senkt Hunger um 20",
+                "en": "Feeding lowers hunger by 20"
+              },
+              {
+                "de": "1 Sekunde",
+                "en": "1 second"
+              }
+            ],
+            [
+              {
+                "de": "Planetensystem",
+                "en": "Planetary system"
+              },
+              {
+                "de": "Position, Geschwindigkeit",
+                "en": "Position, speed"
+              },
+              {
+                "de": "Anziehung krümmt die Bahn",
+                "en": "Attraction bends the path"
+              },
+              {
+                "de": "1 Stunde",
+                "en": "1 hour"
+              }
+            ],
+            [
+              {
+                "de": "Stau",
+                "en": "Traffic jam"
+              },
+              {
+                "de": "Autos pro Straße",
+                "en": "Cars per road"
+              },
+              {
+                "de": "Grün lässt Autos weiterfahren",
+                "en": "Green lets cars move on"
+              },
+              {
+                "de": "1 Minute",
+                "en": "1 minute"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "Hamburg: Bildungsplan Studienstufe (Informatik)",
+                "en": "Hamburg: syllabus for the upper stage (computing)"
+              },
+              "url": "https://www.hamburg.de/politik-und-verwaltung/behoerden/bsfb/veroeffentlichungen/bildungsplaene/start-sek2-2022-123118"
+            },
+            {
+              "label": {
+                "de": "GI: Bildungsstandards Informatik",
+                "en": "GI: computing education standards"
+              },
+              "url": "https://gi.de/meldung/bildungsstandards-gi-stellt-neue-empfehlungen-fuer-den-informatikunterricht-vor"
+            }
+          ]
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Wetter-Apps tricksen ehrlich: Sie rechnen nicht einmal, sondern zwanzigmal – mit leicht verändertem Start. Sagen 18 von 20 Regen, stehen 90 Prozent in der App. Das heißt Ensemble: Viele Läufe, Mehrheit gewinnt. Wenn deine App also „70 Prozent“ sagt, meint sie: In 70 von 100 Welten wurdest du nass.",
+            "en": "Weather apps cheat honestly: they compute not once but twenty times – with slightly changed starts. If 18 of 20 say rain, the app shows 90 percent. That is called an ensemble: many runs, majority wins. So when your app says “70 percent” it means: in 70 of 100 worlds you got wet."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "note",
+          "icon": "💬",
+          "title": {
+            "de": "George Box, Statistiker",
+            "en": "George Box, statistician"
+          },
+          "text": {
+            "de": "„Alle Modelle sind falsch, manche sind nützlich.“ Behalte den Satz: Er entschuldigt keine Fehler, aber er erklärt, warum man mit falschen Modellen trotzdem Wetter vorhersagt, Brücken baut und Tamagotchis am Leben hält.",
+            "en": "“All models are wrong, some are useful.” Keep the sentence: it excuses no mistakes, but it explains why false models still forecast weather, build bridges and keep Tamagotchis alive."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Nimm den Modellierungskreislauf als Checkliste für jede Schlagzeile über Simulationen: Wurde analysiert oder geraten? Ist das Modell offengelegt? Wurde getestet – und wo sind die Grenzen genannt? Wer alle vier Fragen beantworten kann, darf vertrauen. Wer schon bei der ersten stockt, verkauft Hoffnung statt Wissen.",
+            "en": "Take the modelling cycle as a checklist for every headline about simulations: was it analysed or guessed? Is the model disclosed? Was it tested – and where are limits named? Whoever can answer all four may trust. Whoever stalls at the first sells hope instead of knowledge."
+          }
+        }
+      ],
+      "title": {
+        "de": "Täuschend echt – und trotzdem falsch?",
+        "en": "Deceptively real – yet wrong?"
+      }
+    }
+  ],
+  "summary": {
+    "de": "Tamagotchi, Sims, Planeten, Stau: Überall stecken Zustand, Regeln und Zeitschritte drin.",
+    "en": "Tamagotchi, Sims, planets, traffic: state, rules and time steps hide everywhere."
+  },
+  "title": {
+    "de": "Was ist Simulation?",
+    "en": "What is simulation?"
+  }
+}

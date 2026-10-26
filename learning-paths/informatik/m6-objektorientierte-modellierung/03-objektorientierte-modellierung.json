@@ -1,0 +1,309 @@
+{
+  "accent": "amber",
+  "exercises": [
+    {
+      "hint": {
+        "de": "Alle Antworten stehen auf den Bildschirmen davor – lies sie noch einmal von oben.",
+        "en": "All answers sit on the screens before – read them once more from the top."
+      },
+      "intro": {
+        "de": "Setze die fehlenden Wörter ein.",
+        "en": "Fill in the missing words."
+      },
+      "kind": "cloze",
+      "text": {
+        "de": "Große Programme drohen im ___ zu versinken: Alles hängt mit allem ___. Die Antwort heißt ___ Modellierung: Die Welt wird als ___ beschrieben. Jedes Ding hat ___ – Eigenschaften wie Farbe und ___ – und kann etwas: Das sind seine ___. Der Bauplan heißt ___: Er legt fest, was alle haben, aber noch keine ___. Ein einzelnes Ding danach heißt ___ oder ___. Deines und meines sind zwei ___ derselben Klasse – mit denselben Attributen, aber eigenen ___. Modellieren heißt ___: Der Verleih braucht Rahmenhöhe und ___, den Klingelton ___. Was wichtig ist, entscheidet der ___.",
+        "en": "Big programs threaten to sink in ___: everything hangs together with ___. The answer is called ___ modelling: the world gets described as ___. Every thing holds ___ – properties like colour and ___ – and can do something: those are its ___. The blueprint is called ___: it fixes what all hold, but no ___ yet. A single thing built from it is called ___ or ___. Yours and mine are two ___ of the same class – with the same attributes but own ___. Modelling means ___: the rental needs frame height and ___, ignoring the ___. What matters is decided by the ___."
+      },
+      "title": {
+        "de": "1. Lückentext",
+        "en": "1. Fill in the blanks"
+      }
+    },
+    {
+      "hint": {
+        "de": "Was weiß der Plan – und was erst das Haus? Denke an Werte gegen Beschreibung.",
+        "en": "What does the plan know – and what only the house? Think values versus description."
+      },
+      "intro": {
+        "de": "Setze zwei Beobachtungen zueinander in Beziehung.",
+        "en": "Relate two observations to each other."
+      },
+      "kind": "compare",
+      "text": {
+        "de": "Ein Architekturbüro verkauft denselben Haus-Bauplan zwanzigmal – und kein Haus gleicht dem anderen. Vergleiche Bauplan und Haus – und erkläre, was Klasse und Objekt unterscheidet und was sie verbindet.",
+        "en": "An architects' office sells the same house blueprint twenty times – and no house equals another. Compare blueprint and house – explaining what tells class and object apart and what joins them."
+      },
+      "title": {
+        "de": "2. Vergleiche",
+        "en": "2. Compare"
+      }
+    },
+    {
+      "intro": {
+        "de": "Auf diese Frage gibt es keine richtige Antwort.",
+        "en": "There is no right answer to this one."
+      },
+      "kind": "reflect",
+      "text": {
+        "de": "Wenn du eine Schulhof-App bauen dürftest: Welche drei Klassen gäbe es – und welche Attribute und Methoden bekäme jede? Begründe, was du weglässt.",
+        "en": "If you were allowed to build a schoolyard app: which three classes would exist – and which attributes and methods would each get? Justify what you leave out."
+      },
+      "title": {
+        "de": "3. Zum Nachdenken",
+        "en": "3. Something to think about"
+      }
+    }
+  ],
+  "icon": "🧱",
+  "key": "objektorientierte-modellierung",
+  "minutes": 21,
+  "screens": [
+    {
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Stell dir ein Programm mit einer Million Zeilen vor – geschrieben von hundert Leuten in fünf Jahren. Ohne Ordnung versinkt es im Chaos: Alles hängt mit allem zusammen, keiner traut sich mehr, etwas zu ändern. Die Antwort auf dieses Chaos heißt objektorientierte Modellierung: Teile die Welt in Dinge, beschreibe jedes für sich, und setze sie zusammen.",
+            "en": "Picture a program with a million lines – written by a hundred people in five years. Without order it sinks into chaos: everything hangs together with everything, nobody dares changing anything anymore. The answer to this chaos is called object-oriented modelling: split the world into things, describe each for itself, assembling them together."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Die Idee ist alt wie das Bauen selbst: Kein Haus entsteht als ein Klumpen, sondern aus Bauteilen – Wände, Fenster, Türen, jedes für sich geplant, jedes ersetzbar. Genauso zerlegt man Software in Objekte: Jedes verwaltet sich selbst, kennt seine Nachbarn nur über Absprachen, und das Ganze funktioniert, weil die Teile funktionieren. Wer das einmal verstanden hat, versteht, warum große Programme überhaupt gelingen: nicht durch Genie, sondern durch Ordnung.",
+            "en": "The idea is old like building itself: no house emerges as one lump but from parts – walls, windows, doors, each planned for itself, each replaceable. Likewise software gets split into objects: each manages itself, knowing neighbours only through agreements, the whole working because the parts work. Whoever grasped that once grasps why big programs succeed at all: not through genius but through order."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Drei Gründe, warum das wichtig ist – für dich, nicht nur für Profis: Erstens bleibt alles änderbar (ein Bauteil tauschen statt alles neu). Zweitens können viele gleichzeitig bauen (du die Gegner, deine Freundin die Level). Drittens lässt sich Bewährtes wiederverwenden (was einmal läuft, läuft überall). Ordnung, Teamarbeit, Wiederverwendung: Darum geht es in diesem Pfad – und in den zwei danach.",
+            "en": "Three reasons why that matters – for you, not only professionals: first everything stays changeable (swapping one part instead of all anew). Second many can build at once (you the enemies, your friend the levels). Third the proven gets reused (what runs once runs everywhere). Order, teamwork, reuse: that is what this path – and the two after – is about."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Nimm die Fahrstunde: Fahrschüler, Auto, Verkehr – drei Dinge, ein Team. Der Schüler steuert über Pedale und Lenkrad (Methoden!), ohne zu wissen, wie Einspritzung oder ABS innen arbeiten (Attribute, verborgen). Der Fahrlehrer hat eigene Pedale – dieselbe Schnittstelle, zweite Instanz. Wer Auto fährt, lebt objektorientiert: Schnittstellen benutzen, Innenleben ignorieren, im Team ans Ziel.",
+            "en": "Take the driving lesson: learner, car, traffic – three things, one team. The learner steers through pedals and wheel (methods!) without knowing how injection or ABS work inside (attributes, hidden). The instructor owns own pedals – the same interface, second instance. Whoever drives lives object-oriented: using interfaces, ignoring insides, reaching the goal as a team."
+          }
+        }
+      ],
+      "title": {
+        "de": "Warum die Welt aus Dingen besteht",
+        "en": "Why the world consists of things"
+      }
+    },
+    {
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Jedes Objekt hat zwei Seiten: was es IST – und was es KANN. Das Erste heißen Attribute, das Zweite Methoden. Mehr Vokabeln braucht es für den Anfang nicht.",
+            "en": "Every object holds two sides: what it IS – and what it CAN. The first are called attributes, the second methods. No more vocabulary needed for a start."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Dein Fahrrad zum Beispiel: Farbe, Gänge und Reifendruck sind Attribute – sie sagen, wie es gerade ist, und sie ändern sich: Der Druck sinkt, die Farbe bleibt. Klingeln, bremsen und schalten sind Methoden – sie sagen, was es kann, und man ruft sie auf, wenn man sie braucht. Attribute beschreiben den Zustand, Methoden das Verhalten. Diese zwei Wörter tragen die ganze objektorientierte Welt.",
+            "en": "Your bicycle for instance: colour, gears and tyre pressure are attributes – telling how it currently is, and they change: pressure sinks, colour stays. Ringing, braking and shifting are methods – telling what it can do, called when needed. Attributes describe the state, methods the behaviour. These two words carry the whole object-oriented world."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Als Pseudocode – also Code zum Lesen, nicht zum Laufen – sieht eine Klasse so aus: `Klasse Fahrrad: Attribute: farbe, gaenge, reifendruck. Methoden: klingeln(), bremsen(), schalten(gang)`. Kein Computer versteht das, aber jeder Mensch: oben steht, was alle Fahrräder haben, unten, was alle können. Lies es laut vor – wenn es sich richtig anhört, ist das Modell gut.",
+            "en": "As pseudocode – code for reading, not running – a class looks so: `class Bicycle: attributes: colour, gears, tyre pressure. Methods: ring(), brake(), shift(gear)`. No computer grasps that, but every human: on top stands what all bicycles hold, below what all can do. Read it aloud – if it sounds right, the model is good."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "tip",
+          "icon": "🚲",
+          "title": {
+            "de": "Selbsttest",
+            "en": "Self test"
+          },
+          "text": {
+            "de": "Beschreibe dein Handy als Klasse: drei Attribute, zwei Methoden – auf einen Zettel, in Pseudocode. Tausche mit dem Nachbarn: Versteht er dein Modell, ohne dass du es erklärst? Dann sitzt es.",
+            "en": "Describe your phone as a class: three attributes, two methods – on a note, in pseudocode. Swap with your neighbour: do they grasp your model without you explaining? Then it sits."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Noch eins aus Papier: Die Bibliothek verwaltet Bücher – Titel, Autor, Seiten als Attribute; ausleihen und zurückgeben als Methoden. Jedes Buch ein Objekt derselben Klasse, jedes mit eigenen Werten. Der Ausleihzettel fragt nie, wie das Buch innen aussieht – nur seine Schnittstelle zählt. Wer das einmal sieht, sieht Klassen in jedem Regal, jedem Karteikasten, jeder Liste.",
+            "en": "One more from paper: the library manages books – title, author, pages as attributes; borrowing and returning as methods. Every book an object of the same class, each with own values. The loan slip never asks how the book looks inside – only its interface counts. Whoever sees that once sees classes in every shelf, every card box, every list."
+          }
+        }
+      ],
+      "title": {
+        "de": "Klasse, Attribut, Methode",
+        "en": "Class, attribute, method"
+      }
+    },
+    {
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Eine Klasse ist der Bauplan, ein Objekt das Haus danach. Deines und meines sind zwei Häuser nach demselben Plan – man sagt: zwei Instanzen derselben Klasse.",
+            "en": "A class is the blueprint, an object the house built from it. Yours and mine are two houses after the same plan – people say: two instances of the same class."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Der Unterschied steckt in den Werten: Die Klasse Tamagotchi legt fest, dass jedes Tamagotchi Hunger und Laune HAT und fressen und spielen KANN – ohne Zahlen. Deines hat Hunger 80, meines Hunger 30: dieselben Attribute, verschiedene Werte. Die Klasse beschreibt, was alle haben; das Objekt lebt mit eigenen Werten. Darum braucht ein Spiel mit tausend Gegnern nur eine Gegner-Klasse – aber tausend Instanzen, jede mit eigenem Leben.",
+            "en": "The difference sits in the values: the Tamagotchi class fixes that every Tamagotchi HAS hunger and mood and CAN eat and play – without numbers. Yours holds hunger 80, mine hunger 30: the same attributes, different values. The class describes what all hold; the object lives with own values. Hence a game with a thousand enemies needs only one enemy class – but a thousand instances, each with own life."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "In Pseudocode: `mein_tier = Tamagotchi(hunger=80, laune=60)` – ein Aufruf, und schon existiert ein Ding mit Geschichte. `dein_tier = Tamagotchi(hunger=30, laune=90)` – dasselbe Bauwerk, anderes Leben. Wer Instanzen versteht, versteht, warum Programme mit Millionen Dingen umgehen können: Sie bauen sie alle nach wenigen Plänen – und kümmern sich um jedes einzeln.",
+            "en": "In pseudocode: `my_pet = Tamagotchi(hunger=80, mood=60)` – one call, and a thing with history exists. `your_pet = Tamagotchi(hunger=30, mood=90)` – the same structure, other life. Whoever grasps instances grasps how programs handle millions of things: they build them all after few plans – tending each singly."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": " Computerspiele lassen dich Instanzen bauen, ohne dass du es merkst: Charaktererstellung – Name wählen, Klasse wählen (Krieger oder Magier?), Aussehen stellen. Klick auf Fertig, und das Spiel erzeugt ein Objekt mit deinen Werten: Krieger mit deinem Namen und deinen Punkten. Tausend Spieler, tausend Instanzen, eine Klasse. Das Menü ist die Fabrik, du der Kunde.",
+            "en": "Computer games let you build instances without you noticing: character creation – picking a name, picking a class (warrior or mage?), setting looks. Click done, and the game creates an object with your values: warrior with your name and your points. A thousand players, a thousand instances, one class. The menu is the factory, you the customer."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "tip",
+          "icon": "🎮",
+          "title": {
+            "de": "Menü-Detektiv",
+            "en": "Menu detective"
+          },
+          "text": {
+            "de": "Öffne heute irgendein Spielmenü und suche die Fabrik: Wo wählst du Werte für ein Objekt? Name, Aussehen, Stärke – jedes Menü erzeugt Instanzen. Ab heute siehst du Fabriken überall: Formulare, Konfiguratoren, Bestellungen. Überall entstehen Objekte aus Plänen – per Klick.",
+            "en": "Open any game menu today seeking the factory: where do you pick values for an object? Name, looks, strength – every menu creates instances. From today you see factories everywhere: forms, configurators, orders. Everywhere objects emerge from plans – per click."
+          }
+        }
+      ],
+      "title": {
+        "de": "Bauplan und Haus",
+        "en": "Blueprint and house"
+      }
+    },
+    {
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Modellieren heißt entscheiden: Was kommt in die Klasse – und was bleibt draußen? Dieselbe Sache bekommt je nach Zweck ein anderes Modell.",
+            "en": "Modelling means deciding: what enters the class – and what stays outside? The same thing gets another model per purpose."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Der Fahrradverleih braucht Rahmengröße und Preis pro Tag – den Klingelton braucht er nicht. Die Werkstatt braucht Bremsentyp und Verschleiß – den Preis nicht. Der Dieb – äh, die Polizei nach einem Diebstahl – braucht Rahmennummer und Farbe. Drei Modelle desselben Fahrrads, keines falsch, jedes zweckmäßig. Wer alles modelliert, modelliert nichts: Die Kunst ist das Weglassen, genau wie im Modell-Pfad gelernt.",
+            "en": "The bike rental needs frame height and price per day – not the bell sound. The workshop needs brake type and wear – not the price. The thief – er, the police after a theft – needs frame number and colour. Three models of the same bicycle, none wrong, each fit for purpose. Whoever models everything models nothing: the art is leaving out, exactly as learned in the model path."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Stelle dir darum bei jeder Klasse drei Fragen – sie sind die drei Fragen an jedes Modell, nur schärfer: Welche Attribute braucht DIESE Aufgabe wirklich? Welche Methoden ruft später wirklich jemand auf? Was lasse ich bewusst weg – und warum? Wer das beantworten kann, modelliert. Wer es nicht kann, sammelt nur Wörter. Der Unterschied zeigt sich spätestens beim Bauen: Gute Modelle bauen sich leicht, schlechte kämpfen zurück.",
+            "en": "Hence ask three questions with every class – the three questions for every model, only sharper: which attributes does THIS task truly need? Which methods will someone truly call later? What do I deliberately leave out – and why? Whoever can answer that models. Whoever cannot only collects words. The difference shows at building latest: good models build easily, bad ones fight back."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Das Navi entscheidet täglich, was wichtig ist: Straßen, Verkehr, Sperrungen – ja. Hausfarben, Vornamen, Lieblingslieder der Anwohner – nein. Jede Weglassung ist eine Entscheidung für Tempo und Klarheit. Stell dir das Gegenteil vor: ein Navi, das alles weiß und nichts findet, weil es im Wissen ertrinkt. Weniger ist mehr – die wichtigste Lektion des Modellierens, auf vier Rädern.",
+            "en": "Navigation daily decides what matters: streets, traffic, closures – yes. House colours, first names, residents' favourite songs – no. Every omission is a decision for tempo and clarity. Picture the opposite: navigation knowing everything finding nothing, drowning in knowledge. Less is more – modelling's most important lesson, on four wheels."
+          }
+        }
+      ],
+      "title": {
+        "de": "Modellieren heißt entscheiden",
+        "en": "Modelling means deciding"
+      }
+    },
+    {
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Zum Schluss ein Blick auf die Sprache der Pläne: Klassen zeichnet man als Kasten mit drei Fächern – Name oben, Attribute in der Mitte, Methoden unten. Die Sprache heißt UML und liest sich in Hamburg wie in Tokio.",
+            "en": "Finally a glance at the language of plans: classes get drawn as a box with three compartments – name on top, attributes middle, methods below. The language is called UML reading the same in Hamburg as in Tokyo."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Zeichne deine Fahrrad-Klasse so auf: oben „Fahrrad“, Mitte „farbe, gaenge, reifendruck“, unten „klingeln(), bremsen(), schalten(gang)“. Fertig ist dein erstes Klassendiagramm – dieselbe Sprache, in der Profis Millionenprojekte planen. Der Kasten passt auf einen Bierdeckel und trägt trotzdem alles: Was es gibt, was es kann, wie es heißt. Nimm ihn mit in die nächsten Pfade: Vererbung malt Pfeile zwischen Kästen, Kapselung schließt Fächer ab.",
+            "en": "Draw your bicycle class so: on top “bicycle”, middle “colour, gears, tyre pressure”, below “ring(), brake(), shift(gear)”. Done is your first class diagram – the same language professionals plan million projects in. The box fits a beer mat yet carries everything: what exists, what it can do, what it is called. Take it along to the next paths: inheritance paints arrows between boxes, encapsulation locks compartments."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "Hamburg: Bildungsplan Studienstufe (Informatik)",
+                "en": "Hamburg: syllabus for the upper stage (computing)"
+              },
+              "url": "https://www.hamburg.de/politik-und-verwaltung/behoerden/bsfb/veroeffentlichungen/bildungsplaene/start-sek2-2022-123118"
+            },
+            {
+              "label": {
+                "de": "GI: Bildungsstandards Informatik",
+                "en": "GI: computing education standards"
+              },
+              "url": "https://gi.de/meldung/bildungsstandards-gi-stellt-neue-empfehlungen-fuer-den-informatikunterricht-vor"
+            }
+          ]
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Pläne lesen kannst du übrigens schon: Wohnungsgrundrisse zeigen Zimmer als Kästen mit Namen und Maßen – genormt, in Hamburg wie in München. UML-Kästen funktionieren genauso: Name oben, Daten in der Mitte, Können unten. Wer Grundrisse liest, liest Klassendiagramme – nur steht statt „Bad 8 qm“ eben „hunger: Zahl“. Dieselbe Idee, andere Möbel.",
+            "en": "Reading plans you incidentally can already: flat layouts show rooms as boxes with names and measures – standardised, in Hamburg like Munich. UML boxes work the same: name on top, data middle, abilities below. Whoever reads layouts reads class diagrams – only instead of “bath 8 sqm” stands “hunger: number”. The same idea, other furniture."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "UML übrigens entstand, weil jeder anders malte: Drei Größen stritten um Kästen, bis 1997 ein Standard kam – Unified Modeling Language. Seitdem versteht ein Diagramm aus Tokio jeder in Hamburg. Standards sind langweilig und großartig zugleich: langweilig zu lernen, großartig zu benutzen. Wer UML kann, redet weltweit mit.",
+            "en": "UML incidentally emerged because everybody painted differently: three giants quarrelled over boxes until 1997 brought one standard – Unified Modeling Language. Since, a diagram from Tokyo is grasped by everybody in Hamburg. Standards are boring and brilliant at once: boring to learn, brilliant to use. Whoever masters UML talks worldwide."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "✏️",
+          "title": {
+            "de": "Bierdeckel-Diagramm",
+            "en": "Beer-mat diagram"
+          },
+          "text": {
+            "de": "Zeichne deine Fahrrad-Klasse auf einen Bierdeckel: Name oben, drei Attribute, drei Methoden. Passt alles drauf? Dann ist das Modell reif. Passt es nicht, ist es zu voll – streichen, bis es passt. Der Bierdeckel ist der ehrlichste Architekt.",
+            "en": "Draw your bicycle class on a beer mat: name on top, three attributes, three methods. Does everything fit? Then the model is ripe. If not, it is too full – strike until it fits. The beer mat is the most honest architect."
+          }
+        }
+      ],
+      "title": {
+        "de": "Die Sprache der Pläne",
+        "en": "The language of plans"
+      }
+    }
+  ],
+  "summary": {
+    "de": "Warum Ordnung stärker ist als Genie: Klasse, Attribute, Methoden, Instanzen – mit Pseudocode zum Selberlesen.",
+    "en": "Why order beats genius: class, attributes, methods, instances – with pseudocode to read yourself."
+  },
+  "title": {
+    "de": "Objektorientierte Modellierung",
+    "en": "Object-oriented modelling"
+  }
+}

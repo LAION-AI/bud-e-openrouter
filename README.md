@@ -1,208 +1,93 @@
-# School Bud-E 🎓🤖
+# Bud-E OpenRouter
 
-![School Bud-E Banner](banner.png)
+Bud-E is LAION's browser-based AI learning and productivity assistant. This
+repository combines the current Fresh/Preact web application with the existing
+Flutter application in [`school_bud_e_flutter/`](school_bud_e_flutter/).
 
-Welcome to School Bud-E, your AI-powered educational assistant!
+The web application includes:
 
-[![Join us on Discord](https://img.shields.io/discord/823813159592001537?color=5865F2&logo=discord&logoColor=white)](https://discord.gg/xBPBXfcFHd)
+- Streaming text and vision chat, microphone recording, transcription and speech
+  playback, document/image uploads, image references, and chat import/export.
+- OpenRouter and Requesty integrations, plus Google AI Studio support in
+  teacher-managed classrooms. Features depend on the provider, key, model and
+  administrator settings.
+- Teacher settings at `/my` and one student chat per pseudonym at `/<pseudonym>`,
+  with encrypted server-side provider keys, timed activation and usage budgets.
+- Shareable learning paths, a Python notebook, document and slide editors, and an
+  embedded Scratch editor. On request and with permission, Bud-E can read and
+  change the current editor contents.
+- Wikipedia and paper searches with expandable source results, Markdown rendering
+  and copyable code blocks.
 
-## Overview
+## Run the web application
 
-School Bud-E is an intelligent and empathetic learning assistant designed to revolutionize the educational experience. Developed by [LAION](https://laion.ai) in collaboration with the ELLIS Institute Tübingen, Collabora, the Tübingen AI Center and the German Research Center for Artificial Intelligence (DFKI), and Intel, School Bud-E focuses on empathy, natural interaction, and personalized learning. A working demo of the application is available at [school.bud-e.ai](https://school.bud-e.ai).
+Use Deno 2 with `node:sqlite` support (tested with Deno 2.4.5). Scratch setup also
+uses `tar` and `gzip`. The optional PDF fallback uses Poppler's `pdftoppm` and
+`pdftotext` executables.
 
-## Features
+```sh
+git clone https://github.com/LAION-AI/bud-e-openrouter.git
+cd bud-e-openrouter
+cp .example.env .env
 
-- **Real-time chat** with streaming responses
-- **Voice input** via Speech-to-Text (Whisper / Groq API)
-- **Text-to-Speech** playback for assistant responses
-- **Multi-language support** — English and German (internationalization)
-- **PDF upload and parsing** — send PDFs to the assistant for context
-- **Image upload** — share images with vision-capable models
-- **Experimental image generation** — generate and edit images via AI models (see below)
-- **Persistent chat history** — conversations saved to localStorage with images offloaded to IndexedDB
-- **Multi-chat management** — create, switch, rename, export, and import chat sessions
-- **Character consistency** — image generation supports character reference across turns
-- **Privacy-focused design** — local-first, no mandatory cloud dependency
+# Download the self-hosted browser runtimes before using the editors.
+deno task pyodide
+deno task scratch
 
-## Experimental Image Generation
-
-> **This branch includes experimental features for AI image generation and editing.**
-
-The frontend supports generating and editing images directly in the chat interface. Both users and the AI assistant can trigger image generation using simple commands.
-
-### Supported Models
-
-| Alias | Model | Description |
-|---|---|---|
-| `nano-banana` | `gemini-2.5-flash-image` | Fast Gemini image generation |
-| `nano-banana-pro` | `gemini-3-pro-image-preview` | Highest quality Gemini image generation |
-| `flux-2-klein` | `flux-2-klein-9b` | Fast FLUX.2 generation |
-| `flux-2-pro` | `flux-2-pro` | Balanced production quality |
-| `flux-2-max` | `flux-2-max` | Maximum quality |
-| `dall-e-3` | `dall-e-3` | OpenAI DALL-E 3 |
-
-### Quick Usage Examples
-
-**Generate an image:**
-```
-{"imagegen": "A serene mountain landscape at sunset"}
+deno task start
 ```
 
-**Generate with a specific model:**
-```
-{"imagegen": {"prompt": "A futuristic cityscape", "model": "nano-banana-pro", "aspectRatio": "16:9"}}
-```
+Open `http://localhost:8000`. Configure the main chat's provider in Settings or
+provide the server-side settings documented in `.example.env` and the API routes.
+Never commit `.env` or real provider keys.
 
-**Edit the last image:**
-```
-{"imageedit": "Make the sky purple and add stars"}
-```
+For a production build:
 
-**Hashtag format (user input):**
-```
-#imagegen:nano-banana-pro:A detailed portrait of a cat wearing a hat
-```
-
-For the full image generation guide including all parameters, models, and troubleshooting, see [image-generation-instructions.txt](image-generation-instructions.txt).
-
-### Image Persistence
-
-Images generated or uploaded in the chat are stored in IndexedDB (namespaced per chat session), preventing `QuotaExceededError` in localStorage. Conversations with images can be exported to JSON and re-imported with full image data intact.
-
-## Technology Stack
-
-- **Frontend**: [Fresh](https://fresh.deno.dev/) framework (Preact-based, Deno runtime)
-- **Styling**: Tailwind CSS
-- **Language Support**: English and German (internationalization)
-- **AI Models**:
-  - Speech-to-Text: Whisper Large V3 (via Groq API)
-  - LLM: GPT-4o or any OpenAI-compatible endpoint
-  - Image generation: Gemini Flash/Pro Image, FLUX.2 Klein/Pro/Max, Imagen 3/4, DALL-E 3
-- **Storage**: localStorage + IndexedDB for chat and image persistence
-
-## Project Structure
-
-```
-school-bud-e-frontend/
-├── routes/
-│   ├── api/
-│   │   ├── chat.ts          # LLM streaming endpoint
-│   │   ├── tts.ts           # Text-to-Speech endpoint
-│   │   ├── imagegen.ts      # Image generation endpoint
-│   │   ├── getClientId.ts   # Client session ID
-│   │   └── debug.ts         # Debug/health endpoint
-│   ├── index.tsx            # Main page
-│   ├── about.tsx            # About page
-│   └── _app.tsx             # App wrapper
-├── islands/
-│   ├── ChatIsland.tsx       # Main chat island (entry point)
-│   ├── ChatIsland/
-│   │   ├── hooks/           # State and persistence hooks
-│   │   ├── services/        # API calls, streaming, image store
-│   │   └── utils/           # Trigger parsing, helpers
-│   ├── Header.tsx
-│   └── Menu.tsx
-├── components/
-│   ├── ChatTemplate.tsx     # Chat UI rendering
-│   ├── Settings.tsx         # Settings panel
-│   ├── ImageUploadButton.tsx
-│   ├── PdfUploadButton.tsx
-│   ├── AudioUploadButton.tsx
-│   └── ...
-├── internalization/         # i18n content (EN/DE)
-├── static/                  # Static assets
-├── docker-compose/          # Docker deployment config
-└── image-generation-instructions.txt  # Full image gen guide
-```
-
-## Getting Started: Development
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/LAION-AI/school-bud-e-frontend.git
-   cd school-bud-e-frontend
-   git checkout experimental
-   ```
-
-2. Set up environment variables:
-   ```bash
-   cp .example.env .env
-   # Edit .env and fill in your API keys and endpoints
-   ```
-
-3. Run the development server:
-   ```bash
-   deno task start
-   ```
-
-4. Open `http://localhost:8000` in your browser.
-
-## Getting Started: Production
-
-**Without Docker:**
-```bash
+```sh
 deno task build
-deno task preview
+PORT=8000 deno task preview
 ```
 
-**With Docker:**
-```bash
-git clone https://github.com/LAION-AI/school-bud-e-frontend.git
-cd school-bud-e-frontend
-cd docker-compose
-nano .env   # Adjust environment variables
-docker-compose up
+Place production behind HTTPS. Teacher registration/login, classroom mutations
+and the agreement flow require HTTPS and secure cookies. A localhost preview can
+display the interface but does not replace an HTTPS classroom test.
+
+`deno task preview` uses the existing `_fresh/` build. Rebuild and restart after
+changing application code. Restart after replacing static runtime files too.
+Runtime downloads are excluded from Git; install them in each new checkout or
+deployment before using the corresponding editors.
+
+## Classroom storage
+
+Set `CLASSROOM_DATA_DIR` to an absolute, writable directory. The default is
+`/var/lib/bude-classrooms`. The server creates its database and encryption key
+there. Back up the database and `master.key` together and retain this directory
+across deployments. These private files do not belong in Git. Student Scratch
+projects stay in the browser tab and are saved locally as `.sb3` downloads.
+
+Details: [classrooms](KLASSENRAEUME.md), [Scratch](SCRATCH.md),
+[learning paths](LERNPFADE.md).
+
+## Checks
+
+```sh
+deno test -A tests
+deno task check-paths
+deno task build
 ```
 
-Then open `http://localhost:8000`.
+Automated tests replace provider calls with fixtures. Optional Playwright tests
+exercise the real browser editors; see `SCRATCH.md` for commands and the
+separate opt-in real-provider mode, which can incur usage costs.
 
-## Environment Variables
+## Flutter application
 
-Key variables (set in `.env`):
+The Flutter/Android application has separate setup and dependencies. See
+[`school_bud_e_flutter/README.md`](school_bud_e_flutter/README.md). Its existing
+source and history are retained alongside the web application.
 
-| Variable | Description |
-|---|---|
-| `MIDDLEWARE_URL` | Base URL for the Admin Bud-E middleware |
-| `OPENAI_API_KEY` | OpenAI-compatible API key for LLM |
-| `GROQ_API_KEY` | Groq API key for Whisper STT |
-| `TTS_API_URL` | Text-to-Speech endpoint |
+## Licensing
 
-See `.example.env` for the full list.
-
-## Middleware (Admin Bud-E)
-
-The frontend communicates with a separate middleware service (Admin Bud-E) that handles:
-- LLM routing to multiple providers
-- Image generation (Gemini, FLUX.2, Imagen, DALL-E)
-- TTS and STT proxying
-- Provider configuration and pricing
-
-The middleware is a separate repository and is not included here.
-
-## API Routes
-
-- **`/api/chat`** — Streaming LLM chat endpoint
-- **`/api/tts`** — Text-to-Speech conversion
-- **`/api/imagegen`** — Image generation (supports Gemini, FLUX.2, Imagen, DALL-E)
-- **`/api/getClientId`** — Unique session ID generation
-- **`/api/debug`** — Health/debug information
-
-## Contributing
-
-We welcome contributions! Please join our [Discord server](https://discord.com/invite/eq3cAMZtCC) or contact us at <contact@laion.ai>.
-
-## Disclaimer
-
-This is an experimental prototype application. It may produce inaccurate answers or generate content not suitable for all audiences. Use with caution and report issues via the [issue tracker](https://github.com/LAION-AI/school-bud-e-frontend/issues).
-
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
-## Acknowledgements
-
-Special thanks to LAION, ELLIS Institute Tübingen, Collabora, the Tübingen AI Center and the German Research Center for Artificial Intelligence (DFKI), and Intel for their contributions and support.
-
----
-
-Built with for the future of education.
+See [LICENSE](LICENSE) and [License.txt](License.txt) for the application license.
+Scratch has separate AGPL-3.0 and trademark notices in [`static/scratch/`](static/scratch/).
+Its reproducible setup and source archive are documented in `SCRATCH.md`.

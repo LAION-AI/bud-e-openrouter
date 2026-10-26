@@ -175,6 +175,7 @@ export const agreementContentRaw: InternalizationContent = {
 </section></div>`,
     agree: "I agree to the terms and conditions",
     accept: "Accept",
+    pleaseTick: "Please tick the box above to accept the terms.",
   },
   de: {
     title: "Willkommen bei School Bud-E!",
@@ -349,5 +350,6 @@ export const agreementContentRaw: InternalizationContent = {
 </section></div>`,
     agree: "Ich stimme den Nutzungsbedingungen zu",
     accept: "Akzeptieren",
+    pleaseTick: "Bitte setze oben das Häkchen, um die Bedingungen zu akzeptieren.",
   },
 };

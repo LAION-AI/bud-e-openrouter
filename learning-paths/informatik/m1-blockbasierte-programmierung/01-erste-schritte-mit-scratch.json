@@ -1,0 +1,351 @@
+{
+  "key": "erste-schritte-mit-scratch",
+  "title": {
+    "de": "Der dümmste Mitarbeiter der Welt",
+    "en": "The dumbest employee in the world"
+  },
+  "summary": {
+    "de": "Warum ein Computer Genauigkeit braucht und keine Intelligenz - und wie du ihm in Scratch den ersten Befehl gibst.",
+    "en": "Why a computer needs precision rather than intelligence - and how you give it its first command in Scratch."
+  },
+  "icon": "🧱",
+  "accent": "emerald",
+  "minutes": 13,
+  "screens": [
+    {
+      "key": "woertlich-genommen",
+      "title": {
+        "de": "Jemand, der alles wörtlich nimmt",
+        "en": "Someone who takes everything literally"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Stell dir jemanden vor, der genau das tut, was du sagst. Nicht ungefähr - genau. Du sagst „streich die Butter aufs Brot“, und er nimmt die Packung, ungeöffnet, und wischt damit über den Tisch. Er ist nicht frech. Er hat nur nie gelernt, mitzudenken.",
+            "en": "Imagine someone who does exactly what you say. Not roughly - exactly. You say \"spread the butter on the bread\", and they take the pack, unopened, and wipe it across the table. They are not being cheeky. They simply never learned to think along."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Genau so ist ein Computer. Er versteht nichts. Er hat keine Ahnung, was Butter ist, was ein Brot ist oder was du eigentlich vorhattest. Er führt aus, was dasteht, in der Reihenfolge, in der es dasteht, und wenn etwas fehlt, macht er es einfach nicht. Das klingt nach einem Nachteil und ist der Grund, warum man ihm überhaupt trauen kann: Er tut immer dasselbe, auch beim tausendsten Mal, auch nachts um drei.",
+            "en": "That is exactly what a computer is like. It understands nothing. It has no idea what butter is, what bread is, or what you actually had in mind. It carries out what is written, in the order it is written, and if something is missing it simply does not do it. That sounds like a drawback, and it is the reason you can trust it at all: it always does the same thing, even the thousandth time, even at three in the morning."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "🥪",
+          "title": {
+            "de": "Probiert es zu zweit",
+            "en": "Try it in pairs"
+          },
+          "text": {
+            "de": "Einer schreibt eine Anleitung fürs Butterbrot auf, Schritt für Schritt. Der andere spielt den Computer und tut ausschließlich, was dasteht - nichts dazu, nichts weg. Es endet zuverlässig in einer Sauerei, und alle lachen. Danach weiß jeder im Raum, was ein Befehl ist.",
+            "en": "One of you writes instructions for making a sandwich, step by step. The other plays the computer and does only what is written - nothing added, nothing left out. It reliably ends in a mess and everyone laughs. Afterwards everyone in the room knows what a command is."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Eine Folge solcher Befehle nennt man ein Programm. Programmieren heißt also nicht, dem Rechner etwas zu erklären. Es heißt, so genau zu sagen, was zu tun ist, dass selbst jemand ohne jedes Verständnis es richtig macht. Das ist schwerer, als es klingt - und du kannst es besser, als du denkst, denn du machst es dauernd: Ein Kochrezept ist ein Programm. Eine Wegbeschreibung ist eins. Der Ablauf beim Zähneputzen ist eins.",
+            "en": "A sequence of such commands is called a program. So programming does not mean explaining something to the machine. It means saying what to do so precisely that even someone with no understanding at all gets it right. That is harder than it sounds - and you are better at it than you think, because you do it constantly: a recipe is a program. Directions are one. The routine of brushing your teeth is one."
+          }
+        }
+      ]
+    },
+    {
+      "key": "warum-bloecke",
+      "title": {
+        "de": "Warum Bausteine und kein Text",
+        "en": "Why blocks and not text"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Es gibt einen Grund, warum du nicht mit Python anfängst. Ein vergessenes Semikolon hat mehr Menschen vom Programmieren abgebracht als jedes schwierige Konzept. Bausteine kann man nicht falsch schreiben.",
+            "en": "There is a reason you do not start with Python. A forgotten semicolon has put more people off programming than any difficult concept. Blocks cannot be misspelled."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "In Scratch besteht ein Programm aus bunten Bausteinen, die du zusammensteckst wie Legosteine. Sie passen nur dort zusammen, wo es sinnvoll ist. Ein Baustein, der eine Zahl erwartet, hat ein rundes Loch, und nur runde Bausteine passen hinein. Damit fällt eine ganze Sorte Fehler einfach weg - und du kannst dich um das kümmern, worauf es ankommt: um die Reihenfolge und um die Idee.",
+            "en": "In Scratch a program is made of coloured blocks that you click together like Lego bricks. They only fit where it makes sense. A block that expects a number has a round hole, and only round blocks go in. That removes a whole class of mistakes - and lets you deal with what matters: the order and the idea."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "🐱",
+          "title": {
+            "de": "Scratch öffnen - ohne Anmeldung, ohne Installation",
+            "en": "Open Scratch - no account, no installation"
+          },
+          "text": {
+            "de": "Geh auf scratch.mit.edu und klick auf „Entwickeln“. Mehr braucht es nicht: Es läuft im Browser, ist kostenlos, gibt es auf Deutsch, und du kannst ohne Konto loslegen. Ein Konto lohnt sich erst, wenn du deine Sachen speichern willst. Links stehen die Bausteine, in der Mitte baust du, rechts oben siehst du das Ergebnis.",
+            "en": "Go to scratch.mit.edu and click \"Create\". That is all it takes: it runs in the browser, it is free, it is available in many languages, and you can start without an account. An account only becomes worthwhile once you want to save your work. The blocks are on the left, you build in the middle, and you see the result at the top right."
+          }
+        },
+        {
+          "kind": "table",
+          "head": [
+            {
+              "de": "Farbe",
+              "en": "Colour"
+            },
+            {
+              "de": "Wofür die Bausteine da sind",
+              "en": "What those blocks are for"
+            },
+            {
+              "de": "Beispiel",
+              "en": "Example"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "de": "Gelb",
+                "en": "Yellow"
+              },
+              {
+                "de": "Wann soll etwas losgehen?",
+                "en": "When should something start?"
+              },
+              {
+                "de": "Wenn die grüne Flagge angeklickt",
+                "en": "When the green flag is clicked"
+              }
+            ],
+            [
+              {
+                "de": "Blau",
+                "en": "Blue"
+              },
+              {
+                "de": "Bewegen",
+                "en": "Moving"
+              },
+              {
+                "de": "gehe 10er-Schritt",
+                "en": "move 10 steps"
+              }
+            ],
+            [
+              {
+                "de": "Lila",
+                "en": "Purple"
+              },
+              {
+                "de": "Aussehen, Sprechblasen",
+                "en": "Looks, speech bubbles"
+              },
+              {
+                "de": "sage „Hallo!“ für 2 Sekunden",
+                "en": "say \"Hello!\" for 2 seconds"
+              }
+            ],
+            [
+              {
+                "de": "Orange",
+                "en": "Orange"
+              },
+              {
+                "de": "Wiederholen und entscheiden",
+                "en": "Repeating and deciding"
+              },
+              {
+                "de": "wiederhole 10-mal",
+                "en": "repeat 10 times"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "callout",
+          "tone": "fact",
+          "icon": "🌍",
+          "title": {
+            "de": "Was du hier lernst, gilt überall",
+            "en": "What you learn here applies everywhere"
+          },
+          "text": {
+            "de": "Die Bausteine heißen in Python, Java oder JavaScript nur anders. Aus „wiederhole 10-mal“ wird `for i in range(10):`, aus „falls … dann“ wird `if …:`. Es sind dieselben vier oder fünf Ideen, in einer anderen Schreibweise. Wer sie einmal verstanden hat, wechselt die Sprache später in wenigen Tagen.",
+            "en": "In Python, Java or JavaScript the blocks are simply called something else. \"repeat 10 times\" becomes `for i in range(10):`, \"if … then\" becomes `if …:`. They are the same four or five ideas in a different notation. Once you have understood them, switching language later takes days, not years."
+          }
+        }
+      ]
+    },
+    {
+      "key": "dein-erstes-programm",
+      "title": {
+        "de": "Dein erstes Programm in fünf Minuten",
+        "en": "Your first program in five minutes"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Es beginnt mit einer Katze, die auf einer weißen Fläche steht und nichts tut. In fünf Minuten läuft sie, dreht sich um und begrüßt dich mit Namen.",
+            "en": "It begins with a cat standing on a white surface doing nothing. In five minutes it walks, turns around and greets you by name."
+          }
+        },
+        {
+          "kind": "steps",
+          "items": [
+            {
+              "title": {
+                "de": "Startknopf setzen",
+                "en": "Set the start button"
+              },
+              "text": {
+                "de": "Zieh den gelben Baustein „Wenn die grüne Flagge angeklickt“ in die Mitte. Er ist der Startknopf - ohne ihn passiert beim Klick auf die Flagge nichts.",
+                "en": "Drag the yellow block \"when green flag clicked\" into the middle. It is the start button - without it nothing happens when you click the flag."
+              }
+            },
+            {
+              "title": {
+                "de": "Die Katze zum Reden bringen",
+                "en": "Make the cat talk"
+              },
+              "text": {
+                "de": "Häng „sage Hallo! für 2 Sekunden“ darunter. Klick auf die grüne Flagge. Die Katze redet.",
+                "en": "Attach \"say Hello! for 2 seconds\" underneath. Click the green flag. The cat talks."
+              }
+            },
+            {
+              "title": {
+                "de": "Deinen eigenen Satz einsetzen",
+                "en": "Put in your own sentence"
+              },
+              "text": {
+                "de": "Ändere den Text in der weißen Ecke des Bausteins auf deinen eigenen Satz. Klick wieder. Das ist die ganze Schleife des Programmierens: ändern, ausprobieren, sehen.",
+                "en": "Change the text in the white corner of the block to your own sentence. Click again. That is the whole loop of programming: change it, run it, look."
+              }
+            },
+            {
+              "title": {
+                "de": "Sie laufen lassen",
+                "en": "Make it walk"
+              },
+              "text": {
+                "de": "Häng „gehe 10er-Schritt“ an und klick zehnmal auf die Flagge. Die Katze wandert nach rechts, bis sie am Rand hängen bleibt.",
+                "en": "Attach \"move 10 steps\" and click the flag ten times. The cat wanders right until it gets stuck at the edge."
+              }
+            },
+            {
+              "title": {
+                "de": "Eine Drehung dazwischen",
+                "en": "A turn in between"
+              },
+              "text": {
+                "de": "Setz „drehe dich um 15 Grad“ dazwischen. Jetzt läuft sie im Bogen. Du hast gerade ohne eine Formel eine Kreisbewegung gebaut.",
+                "en": "Put \"turn 15 degrees\" in between. Now it moves in an arc. You have just built circular motion without a single formula."
+              }
+            }
+          ]
+        },
+        {
+          "kind": "callout",
+          "tone": "tip",
+          "icon": "🔁",
+          "title": {
+            "de": "Die wichtigste Gewohnheit überhaupt",
+            "en": "The single most important habit"
+          },
+          "text": {
+            "de": "Ändere eine Sache, dann probier es aus. Nicht fünf Sachen. Wenn danach etwas kaputt ist, weißt du sofort, woran es lag. Profis machen das genauso - sie sind nur schneller dabei.",
+            "en": "Change one thing, then run it. Not five things. If something breaks afterwards, you know at once what caused it. Professionals work exactly the same way - they are just quicker at it."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Was du eben gemacht hast, ist kein Spielzeug. Die Reihenfolge der Bausteine bestimmt, was passiert - genauso, wie die Reihenfolge der Zeilen bestimmt, was ein Programm in einem Auto, einem Krankenhaus oder einer Bank tut. Der Unterschied liegt im Umfang, nicht in der Sache.",
+            "en": "What you just did is not a toy. The order of the blocks decides what happens - exactly as the order of the lines decides what a program does in a car, a hospital or a bank. The difference is one of scale, not of kind."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "Scratch - im Browser programmieren",
+                "en": "Scratch - program in your browser"
+              },
+              "url": "https://scratch.mit.edu"
+            },
+            {
+              "label": {
+                "de": "Scratch: Ideen und Anleitungen zum Loslegen",
+                "en": "Scratch: ideas and starter tutorials"
+              },
+              "url": "https://scratch.mit.edu/ideas"
+            },
+            {
+              "label": {
+                "de": "Bildungsplan Informatik Sek I, Hamburg",
+                "en": "Hamburg curriculum for computer science, lower secondary"
+              },
+              "url": "https://www.hamburg.de/resource/blob/798514/ad3c2fdfb3a32b9545a271dfceae5772/informatik-data.pdf"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": {
+        "de": "1. Lückentext: Befehl, Programm, Baustein",
+        "en": "1. Fill in the blanks: command, program, block"
+      },
+      "intro": {
+        "de": "Setze die fehlenden Wörter ein.",
+        "en": "Fill in the missing words."
+      },
+      "text": {
+        "de": "Ein Computer versteht nichts von selbst; er führt genau das aus, was dasteht - eine einzelne solche Anweisung heißt ___. Mehrere davon hintereinander ergeben ein ___. Entscheidend ist dabei die ___, denn dieselben Anweisungen in anderer Abfolge ergeben etwas anderes. In Scratch schreibt man diese Anweisungen nicht, sondern steckt sie als ___ zusammen; deshalb kann man sie nicht falsch ___. Ein Programm startet dort, wo der gelbe Baustein mit der grünen ___ sitzt. Die Katze redet mit dem Baustein ___ und bewegt sich mit dem Baustein ___. Wer etwas verändert, sollte danach sofort wieder ___, denn dann weiß man, woran eine Änderung lag.",
+        "en": "A computer understands nothing by itself; it carries out exactly what is written - a single such instruction is called a ___. Several of them in a row make up a ___. What matters is the ___, because the same instructions in a different sequence produce something else. In Scratch you do not write these instructions but click them together as ___; this is why you cannot ___ them wrongly. A program starts where the yellow block with the green ___ sits. The cat talks using the block ___ and moves using the block ___. Whoever changes something should immediately ___ it again, because then you know what a change did."
+      }
+    },
+    {
+      "kind": "compare",
+      "title": {
+        "de": "2. Ausprobieren und vergleichen: dieselben Bausteine, andere Reihenfolge",
+        "en": "2. Try it and compare: same blocks, different order"
+      },
+      "intro": {
+        "de": "Erst bauen, dann erklären. Öffne dafür scratch.mit.edu.",
+        "en": "Build it first, then explain. Open scratch.mit.edu to do so."
+      },
+      "text": {
+        "de": "Bau zwei kurze Programme, die aus genau denselben drei Bausteinen bestehen: „gehe 100er-Schritt“, „drehe dich um 90 Grad“ und „sage Fertig! für 2 Sekunden“. Steck sie einmal in dieser Reihenfolge zusammen und einmal in einer anderen. Lass beide laufen und halte fest, was die Katze jeweils tut. Erkläre danach mit eigenen Worten, warum ein Computer aus denselben Anweisungen ein anderes Ergebnis macht, sobald sich die Reihenfolge ändert - und nenne ein Beispiel aus deinem Alltag, bei dem die Reihenfolge genauso wichtig ist.",
+        "en": "Build two short programs made of exactly the same three blocks: \"move 100 steps\", \"turn 90 degrees\" and \"say Done! for 2 seconds\". Assemble them once in that order and once in a different one. Run both and note what the cat does in each case. Then explain in your own words why a computer produces a different result from the same instructions as soon as the order changes - and name an example from your own day where order matters just as much."
+      },
+      "hint": {
+        "de": "Denk an Anziehen: Socken und Schuhe sind dieselben zwei Dinge, aber nicht in jeder Reihenfolge.",
+        "en": "Think about getting dressed: socks and shoes are the same two things, but not in every order."
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": {
+        "de": "3. Zum Nachdenken: zu ungenau erklärt",
+        "en": "3. Something to think about: explained too vaguely"
+      },
+      "intro": {
+        "de": "Auf diese Frage gibt es keine richtige Antwort.",
+        "en": "There is no right answer to this one."
+      },
+      "text": {
+        "de": "Menschen ergänzen ständig, was nicht gesagt wurde. „Mach die Tür zu“ heißt nie „reiß sie aus den Angeln“, obwohl es das wörtlich könnte. Diese Fähigkeit spart uns täglich Stunden - und macht uns blind dafür, wie viel wir eigentlich voraussetzen. Denk an eine Situation, in der dir jemand etwas erklärt hat und du es trotzdem falsch verstanden hast. Was genau fehlte in der Erklärung? Und was würde passieren, wenn jeder Mensch dich so wörtlich nähme wie ein Computer - wäre das Zusammenleben leichter oder unerträglich?",
+        "en": "People constantly fill in what was not said. \"Close the door\" never means \"tear it off its hinges\", although literally it could. That ability saves us hours every day - and blinds us to how much we actually take for granted. Think of a situation where someone explained something to you and you still got it wrong. What exactly was missing from the explanation? And what would happen if every person took you as literally as a computer does - would living together be easier, or unbearable?"
+      }
+    }
+  ]
+}

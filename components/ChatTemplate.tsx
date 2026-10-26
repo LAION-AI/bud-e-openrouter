@@ -1,14 +1,8 @@
-/**
- * @file ChatTemplate.tsx
- * @description Chat message display component with support for multimodal content
- *              (text, images with unique IDs, PDFs), audio playback, message editing,
- *              and auto-scroll functionality.
- * @importantFunctions ChatTemplate, MessageToolbar, renderContentPart
- */
-
-import { useEffect } from "preact/hooks";
+import { useEffect, useState } from "preact/hooks";
 import { chatTemplateContent } from "../internalization/content.ts";
-
+import { joinAudio } from "../utils/audioJoin.ts";
+import SongPlayer from "./SongPlayer.tsx";
+import ClassroomCodeContent from "./ClassroomCodeContent.tsx";
 
 /* ---------- helpers ---------- */
 function downloadAudioFiles(
@@ -16,70 +10,206 @@ function downloadAudioFiles(
 ) {
   const ts = new Date().toISOString().slice(0, 19).replace(/[-:]/g, "-");
 
-  if (Object.keys(items).length === 1) {
-    const single = Object.values(items)[0].audio;
-    fetch(single.src).then((r) => r.blob()).then((blob) => {
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = `audio-${ts}.mp3`;
-      a.click();
-      URL.revokeObjectURL(url);
-    });
-    return;
-  }
+  // Placeholder slots for chunks that produced no audio carry no src.
+  const real = Object.fromEntries(
+    Object.entries(items ?? {}).filter(([, i]) => !!i?.audio?.src),
+  );
+  if (Object.keys(real).length === 0) return;
+  items = real;
+
+  // The chunks must be joined in the order they are spoken. Numeric keys
+  // usually enumerate in order, but sorting says so explicitly rather than
+  // relying on it.
+  const ordered = Object.keys(items)
+    .map(Number)
+    .sort((a, b) => a - b)
+    .map((idx) => items[String(idx)].audio.src);
 
   Promise.all(
-    Object.values(items).map((i) => fetch(i.audio.src).then((r) => r.blob())),
-  ).then((blobs) => {
-    const url = URL.createObjectURL(new Blob(blobs, { type: "audio/mp3" }));
+    ordered.map((src) =>
+      fetch(src).then((r) => r.arrayBuffer()).then((b) => new Uint8Array(b))
+    ),
+  )
+    .then((parts) => {
+      // WAV parts cannot simply be laid end to end - see utils/audioJoin.ts.
+      const joined = joinAudio(parts);
+      if (!joined) return;
+      const url = URL.createObjectURL(
+        new Blob([joined.bytes], { type: joined.mime }),
+      );
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `audio-${ts}.${joined.ext}`;
+      a.click();
+      URL.revokeObjectURL(url);
+    })
+    .catch((err) => console.warn("Could not assemble the audio:", err));
+}
+
+/** Shared safe Markdown renderer, including one-click code copying. */
+function renderRichText(text: string) {
+  return typeof text === "string" ? <ClassroomCodeContent content={text} /> : null;
+}
+
+/**
+ * The agent's steps, collapsed by default.
+ *
+ * Correcting a class set takes a minute or two, and a spinner that long looks
+ * like a hang. This shows what is happening now, and expands into the full
+ * list for anyone who wants to see how the answer came about.
+ */
+function AgentSteps(
+  { title, steps, running, failed, lang }: {
+    title: string;
+    steps: { step: string; detail?: string }[];
+    running?: boolean;
+    failed?: boolean;
+    lang: string;
+  },
+) {
+  const [open, setOpen] = useState(false);
+  const last = steps[steps.length - 1];
+  const t = (k: string) =>
+    (chatTemplateContent[lang]?.[k] ?? chatTemplateContent.en[k]) as string;
+
+  return (
+    <div class="my-2 rounded-lg border border-slate-200 bg-slate-50 text-sm">
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        class="w-full flex items-center gap-2 px-3 py-2 text-left hover:bg-slate-100 rounded-lg"
+      >
+        <span class="shrink-0">
+          {failed
+            ? <span class="text-red-600">✕</span>
+            : running
+            ? <span class="inline-block w-2.5 h-2.5 rounded-full bg-blue-500 animate-pulse" />
+            : <span class="text-green-700">✓</span>}
+        </span>
+        <span class="font-medium text-slate-700 truncate">{title}</span>
+        <span class="text-slate-500 text-xs truncate flex-1">
+          {!open && last ? last.step : ""}
+        </span>
+        <span class="text-slate-400 text-xs shrink-0">
+          {steps.length} {t("agentSteps")} {open ? "▴" : "▾"}
+        </span>
+      </button>
+      {open && (
+        <ol class="px-3 pb-2 space-y-1">
+          {steps.map((s, i) => (
+            <li key={i} class="flex gap-2 text-xs text-slate-600">
+              <span class="text-slate-400 tabular-nums shrink-0">{i + 1}.</span>
+              <span>
+                {s.step}
+                {s.detail && <span class="block text-slate-400">{s.detail}</span>}
+              </span>
+            </li>
+          ))}
+        </ol>
+      )}
+    </div>
+  );
+}
+
+/** A file the assistant produced, offered for download. */
+function FileDownload(
+  { name, mime, data, lang, onOpenInEditor }: {
+    name: string;
+    mime: string;
+    data: string;
+    lang: string;
+    /** Opens a .docx in the word processor instead of downloading it. */
+    onOpenInEditor?: (name: string, base64: string) => void;
+  },
+) {
+  const t = (k: string) =>
+    (chatTemplateContent[lang]?.[k] ?? chatTemplateContent.en[k]) as string;
+
+  const save = () => {
+    // Rebuilt into a Blob rather than linked as a data: URL - browsers refuse
+    // to download very large data: URLs, and a class set easily gets there.
+    const bin = atob(data);
+    const bytes = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+    const url = URL.createObjectURL(new Blob([bytes], { type: mime }));
     const a = document.createElement("a");
     a.href = url;
-    a.download = `audio-${ts}.mp3`;
+    a.download = name;
     a.click();
     URL.revokeObjectURL(url);
-  });
+  };
+
+  const kb = Math.max(1, Math.round((data.length * 3 / 4) / 1024));
+  // A .docx or .pptx can be opened in its editor; anything else can only be saved.
+  const editable = /wordprocessingml|presentationml/.test(mime) || /\.(docx?|pptx)$/i.test(name);
+  return (
+    <span class="my-2 inline-flex flex-wrap items-stretch gap-1.5">
+      <button
+        type="button"
+        onClick={save}
+        class="flex items-center gap-2 px-3 py-2 rounded-lg border border-blue-200 bg-blue-50 hover:bg-blue-100 text-sm text-blue-900"
+      >
+        <span class="text-lg leading-none">📄</span>
+        <span class="font-medium">{name}</span>
+        <span class="text-blue-700/70 text-xs">{kb} KB · {t("download")}</span>
+      </button>
+      {editable && onOpenInEditor && (
+        <button
+          type="button"
+          onClick={() => onOpenInEditor(name, data)}
+          title={t("openInEditorHint")}
+          class="flex items-center gap-1.5 px-3 py-2 rounded-lg border border-emerald-200 bg-emerald-50 hover:bg-emerald-100 text-sm text-emerald-900"
+        >
+          <span class="text-lg leading-none">✏️</span>
+          <span class="font-medium">{t("openInEditor")}</span>
+        </button>
+      )}
+    </span>
+  );
 }
 
-function convertDoiToUrl(doi: string): string {
-  const clean = doi.replace(/^DOI:\s*/, "");
-  return clean === "null" ? "#" : `https://doi.org/${clean}`;
-}
-
-// **Bold** + Links + DOI minimal robust
-function renderTextWithLinksAndBold(text: string) {
-  const re =
-    /(https?:\/\/[^\s]+|www\.[^\s]+|DOI:\s*(?:null|[\d.]+\/[^\s]+)|\*\*.*?\*\*)/g;
-
-  const parts = text.split(re).filter((p) => p !== "");
-  return parts.map((part, i) => {
-    // bold
-    if (part.startsWith("**") && part.endsWith("**")) {
-      return <strong key={i}>{part.slice(2, -2)}</strong>;
-    }
-
-    // DOI
-    if (/^DOI:\s*/.test(part)) {
-      const href = convertDoiToUrl(part);
-      return (
-        <a key={i} href={href} class="text-blue-600 underline" target="_blank">
-          {part}
-        </a>
-      );
-    }
-
-    // Links
-    if (/^https?:\/\//.test(part) || /^www\./.test(part)) {
-      const href = part.startsWith("http") ? part : `https://${part}`;
-      return (
-        <a key={i} href={href} class="text-blue-600 underline" target="_blank">
-          {part}
-        </a>
-      );
-    }
-
-    return <span key={i}>{part}</span>;
-  });
+/**
+ * A presentation the assistant built, offered to open or download.
+ *
+ * It carries no bytes - the deck lives in the browser's store and the .pptx
+ * is produced on the way out. That keeps the chat history small however
+ * many pictures the slides hold, and a download always gives the latest
+ * saved version, edits included.
+ */
+function DeckChip(
+  { deckId, name, slides, lang, onOpen, onDownload }: {
+    deckId: string;
+    name: string;
+    slides: number;
+    lang: string;
+    onOpen?: (deckId: string) => void;
+    onDownload?: (deckId: string, name: string) => void;
+  },
+) {
+  const t = (k: string) =>
+    (chatTemplateContent[lang]?.[k] ?? chatTemplateContent.en[k]) as string;
+  return (
+    <span class="my-2 inline-flex flex-wrap items-stretch gap-1.5">
+      <button
+        type="button"
+        onClick={() => onOpen?.(deckId)}
+        title={t("openSlidesHint")}
+        class="flex items-center gap-2 px-3 py-2 rounded-lg border border-violet-200 bg-violet-50 hover:bg-violet-100 text-sm text-violet-900"
+      >
+        <span class="text-lg leading-none">📊</span>
+        <span class="font-medium">{name}</span>
+        <span class="text-violet-700/70 text-xs">{slides} {t("slidesLabel")} · {t("openSlides")}</span>
+      </button>
+      <button
+        type="button"
+        onClick={() => onDownload?.(deckId, name)}
+        class="flex items-center gap-1.5 px-3 py-2 rounded-lg border border-blue-200 bg-blue-50 hover:bg-blue-100 text-sm text-blue-900"
+      >
+        <span class="text-lg leading-none">⬇</span>
+        <span class="font-medium">{t("downloadPptx")}</span>
+      </button>
+    </span>
+  );
 }
 
 /* ---------- message toolbar (Edit/Refresh/Speak/Download) ---------- */
@@ -221,11 +351,13 @@ export default function ChatTemplate(props: {
   onCancelAction: () => void;
   readAlways: boolean;
   autoScroll: boolean;
+  skipCurlyBraces: boolean;
   currentEditIndex: number;
   audioFileDict: AnyAudio;
 
   onToggleAutoScrollAction: () => void;
   onToggleReadAlwaysAction: () => void;
+  onToggleSkipCurlyBracesAction: () => void;
 
   onSpeakAtGroupIndexAction: (groupIndex: number) => void;
   onRefreshAction: (groupIndex: number) => void;
@@ -235,9 +367,34 @@ export default function ChatTemplate(props: {
   onImageChange: (images: AnyImg[]) => void;
   onPdfChange?: (pdfs: AnyPdf[]) => void;
   onTrashAction: () => void;
+  /** Whether a finished song starts by itself. Off means the user presses play. */
+  songAutoplay?: boolean;
+  /** Opens a .docx from the chat in the word processor. */
+  onOpenInEditor?: (name: string, base64: string) => void;
+  /** Opens a presentation the assistant built, by its id in the store. */
+  onOpenDeck?: (deckId: string) => void;
+  /** Hands such a presentation over as a .pptx download. */
+  onDownloadDeck?: (deckId: string, name: string) => void;
+  /** When a reasoning model started thinking, in ms since the epoch. */
+  thinkingSince?: number | null;
+  /** Documents read into text in the browser, waiting to be sent. */
+  parentDocTexts?: { name: string; kind: string; chars: number }[];
+  onDocTextsChange?: (docs: { name: string; kind: string; chars: number }[]) => void;
+  /** Files that could not be read, one sentence each. */
+  uploadProblems?: string[];
+  onDismissProblems?: () => void;
 }) {
   const {
     lang,
+    songAutoplay = false,
+    onOpenInEditor,
+    onOpenDeck,
+    onDownloadDeck,
+    thinkingSince = null,
+    parentDocTexts = [],
+    onDocTextsChange,
+    uploadProblems = [],
+    onDismissProblems,
     parentImages,
     parentPdfs,
     messages,
@@ -245,10 +402,12 @@ export default function ChatTemplate(props: {
     onCancelAction,
     readAlways,
     autoScroll,
+    skipCurlyBraces,
     audioFileDict,
     currentEditIndex,
     onToggleAutoScrollAction,
     onToggleReadAlwaysAction,
+    onToggleSkipCurlyBracesAction,
     onImageChange,
     onPdfChange,
     onSpeakAtGroupIndexAction,
@@ -268,7 +427,60 @@ export default function ChatTemplate(props: {
 
   const renderContentPart = (content: any, idx: number) => {
     if (content?.type === "text") {
-      return <span key={idx}>{renderTextWithLinksAndBold(content.text)}</span>;
+      return <div key={idx}>{renderRichText(content.text)}</div>;
+    }
+    if (content?.type === "agent_steps") {
+      return (
+        <AgentSteps
+          key={idx}
+          lang={lang}
+          title={content.title ?? ""}
+          steps={content.steps ?? []}
+          running={content.running === true}
+          failed={content.failed === true}
+        />
+      );
+    }
+    if (content?.type === "slides_ref") {
+      return (
+        <DeckChip
+          key={idx}
+          lang={lang}
+          deckId={String(content.deckId ?? "")}
+          name={content.name ?? ""}
+          slides={Number(content.slides ?? 0)}
+          onOpen={onOpenDeck}
+          onDownload={onDownloadDeck}
+        />
+      );
+    }
+    if (content?.type === "file_download") {
+      return (
+        <FileDownload
+          key={idx}
+          lang={lang}
+          name={content.name ?? "datei"}
+          mime={content.mime ?? "application/octet-stream"}
+          data={content.data ?? ""}
+          onOpenInEditor={onOpenInEditor}
+        />
+      );
+    }
+    if (content?.type === "audio_url") {
+      return (
+        <SongPlayer
+          key={idx}
+          lang={lang}
+          autoplay={songAutoplay}
+          song={{
+            url: content.audio_url?.url ?? "",
+            lyrics: content.lyrics,
+            title: content.title,
+            model: content.model,
+            pending: content.pending === true,
+          }}
+        />
+      );
     }
     if (content?.type === "image_url") {
       const imageId = content.id || null;
@@ -282,14 +494,18 @@ export default function ChatTemplate(props: {
           imageSource = "uploaded";
         }
       }
-      // Fallback: assume generated if it's a data URL with no other indicators
       if (!imageSource) {
-        imageSource = content.image_url?.url?.startsWith("data:image") ? "generated" : "uploaded";
+        imageSource = content.image_url?.url?.startsWith("data:image")
+          ? "generated"
+          : "uploaded";
       }
 
-      // Format display name for the badge
-      const displayLabel = imageSource === "generated" ? "Generated" : "Uploaded";
-      const badgeColor = imageSource === "generated" ? "bg-purple-500/70" : "bg-blue-500/70";
+      const displayLabel = imageSource === "generated"
+        ? "Generated"
+        : "Uploaded";
+      const badgeColor = imageSource === "generated"
+        ? "bg-purple-500/70"
+        : "bg-blue-500/70";
 
       return (
         <div key={idx} class="relative inline-block">
@@ -298,34 +514,41 @@ export default function ChatTemplate(props: {
             alt={`${displayLabel} image${imageId ? ` (${imageId})` : ""}`}
             class="max-w-[400px] w-full h-auto rounded-lg shadow-md cursor-pointer hover:shadow-lg transition-shadow"
             onClick={() => {
-              // Open image in new tab for full view
-              const win = window.open();
+              // Open image in a new tab for full view
+              const win = globalThis.open();
               if (win) {
-                win.document.write(`<img src="${content.image_url.url}" style="max-width:100%;height:auto;" />`);
-                win.document.title = imageId || displayLabel + " Image";
+                win.document.write(
+                  `<img src="${content.image_url.url}" style="max-width:100%;height:auto;" />`,
+                );
+                win.document.title = imageId || `${displayLabel} Image`;
               }
             }}
           />
-          {/* Image ID Badge - shown in corner for reference */}
+
+          {/* Image ID badge – click to copy the ID for imageedit references */}
           {imageId && (
             <div
               class="absolute bottom-2 left-2 bg-black/60 text-white text-xs px-2 py-1 rounded font-mono cursor-pointer hover:bg-black/80"
               title={`Image ID: ${imageId} (click to copy)`}
               onClick={(e) => {
                 e.stopPropagation();
-                navigator.clipboard.writeText(imageId);
-                // Visual feedback
-                const el = e.target as HTMLElement;
+                navigator.clipboard?.writeText(imageId);
+                const el = e.currentTarget as HTMLElement;
                 const original = el.textContent;
                 el.textContent = "Copied!";
-                setTimeout(() => { el.textContent = original; }, 1000);
+                setTimeout(() => {
+                  el.textContent = original;
+                }, 1000);
               }}
             >
               {imageId}
             </div>
           )}
+
           {/* Source indicator */}
-          <div class={`absolute top-2 right-2 text-xs px-2 py-0.5 rounded ${badgeColor} text-white`}>
+          <div
+            class={`absolute top-2 right-2 text-xs px-2 py-0.5 rounded ${badgeColor} text-white`}
+          >
             {displayLabel}
           </div>
         </div>
@@ -362,23 +585,23 @@ export default function ChatTemplate(props: {
       );
     }
     if (typeof content === "string") {
-      return <span key={idx}>{renderTextWithLinksAndBold(content)}</span>;
+      return <div key={idx}>{renderRichText(content)}</div>;
     }
     return null;
   };
 
   useEffect(() => {}, []);
 
-  return (
-    <div class="relative">
-      {/* Fixed toolbar: on desktop absolute top-right; on mobile stacked above chat */}
-      <div
-        class="
-          z-20 w-full flex flex-wrap items-center gap-2 justify-center mb-2
-          md:w-auto md:absolute md:-top-12 md:right-0 md:justify-end md:mb-0
-        "
-      >
+  // Language-aware defaults for the {}-button
+  const defaultSkipOn =
+    lang === "de" ? "In {} stehenden Text überspringen" : "Skip contents in {}";
+  const defaultSkipOff =
+    lang === "de" ? "Text in {} mit vorlesen" : "Read contents in {}";
 
+  return (
+    <div class="relative w-full">
+      {/* CENTERED toolbar row: sits directly above the chat history */}
+      <div class="w-full flex flex-wrap items-center justify-center gap-2 mb-2">
         {!isComplete && (
           <button
             type="button"
@@ -388,6 +611,15 @@ export default function ChatTemplate(props: {
           >
             Cancel
           </button>
+        )}
+
+        {/*
+          Some models think for a long time before writing anything - a minute
+          is normal on a long prompt. Without this the screen looked frozen,
+          which is what it was mistaken for.
+        */}
+        {!isComplete && thinkingSince !== null && (
+          <ThinkingBadge since={thinkingSince} lang={lang} />
         )}
 
         <button
@@ -402,8 +634,34 @@ export default function ChatTemplate(props: {
           title={chatTemplateContent[lang]?.readOutText ?? "Vorlesen"}
         >
           {readAlways
-            ? (chatTemplateContent[lang]?.silent ?? "Stumm")
-            : (chatTemplateContent[lang]?.readOutText ?? "Vorlesen")}
+            ? (chatTemplateContent[lang]?.silent ?? (
+              lang === "de" ? "Stumm" : "Silent"
+            ))
+            : (chatTemplateContent[lang]?.readOutText ?? (
+              lang === "de" ? "Vorlesen" : "Read out text"
+            ))}
+        </button>
+
+        {/* Skip JSON / { ... } blocks button */}
+        <button
+          type="button"
+          onClick={onToggleSkipCurlyBracesAction}
+          class={`px-3 py-1 rounded text-sm border transition
+            ${
+              skipCurlyBraces
+                ? "bg-purple-600 text-white border-purple-600"
+                : "bg-white text-gray-700 border-gray-300 hover:bg-gray-50"
+            }`}
+          title={
+            chatTemplateContent[lang]?.skipJsonTooltip ??
+            (lang === "de"
+              ? "Text in geschweiften Klammern { ... } beim Vorlesen überspringen."
+              : "Skip JSON / text inside { ... } when reading aloud.")
+          }
+        >
+          {skipCurlyBraces
+            ? (chatTemplateContent[lang]?.skipJsonOn ?? defaultSkipOn)
+            : (chatTemplateContent[lang]?.skipJsonOff ?? defaultSkipOff)}
         </button>
 
         <button
@@ -418,25 +676,26 @@ export default function ChatTemplate(props: {
           title={
             autoScroll
               ? (chatTemplateContent[lang]?.autoScrollOn ??
-                "Automatisch scrollen: AN")
+                (lang === "de" ? "Automatisch scrollen: AN" : "Auto-scroll: ON"))
               : (chatTemplateContent[lang]?.autoScrollOff ??
-                "Automatisch scrollen: AUS")
+                (lang === "de" ? "Automatisch scrollen: AUS" : "Auto-scroll: OFF"))
           }
         >
           {autoScroll
             ? (chatTemplateContent[lang]?.autoScrollOn ??
-              "Automatisch scrollen")
-            : (chatTemplateContent[lang]?.autoScrollOff ?? "Manuell scrollen")}
+              (lang === "de" ? "Automatisch scrollen" : "Auto-scroll"))
+            : (chatTemplateContent[lang]?.autoScrollOff ??
+              (lang === "de" ? "Manuell scrollen" : "Manual scroll"))}
         </button>
       </div>
 
+      {/* Chat history window */}
       <div
         class={
           messages?.length === 0
             ? `bg-transparent`
             : `chat-history w-full flex flex-col space-y-4 p-4 mx-auto rounded-lg shadow bg-white/75 max-h-[55vh] sm:max-h-[60vh] overflow-y-auto`
         }
-
       >
         {messages?.map((item: AnyMsg, groupIndex: number) => {
           const isUser = item.role === "user";
@@ -451,13 +710,11 @@ export default function ChatTemplate(props: {
                 isUser ? "items-end" : "items-start"
               }`}
             >
-              {/* Per-message toolbar:
-                 - Mobile: relativ & unter der Bubble, gestapelt
-                 - ≥ md: wie zuvor absolut links/rechts über der Bubble */}
+              {/* Per-message toolbar */}
               <div
                 class={`
                   z-20 flex flex-wrap gap-2 justify-end mb-1
-                  md:absolute md:-top-3 ${isUser ? "md:right-1" : "md:left-1"}
+                  ${isUser ? "md:self-end" : "md:self-start"}
                 `}
               >
                 <MessageToolbar
@@ -486,7 +743,7 @@ export default function ChatTemplate(props: {
                 }`}
               >
                 {typeof item.content === "string"
-                  ? <span>{renderTextWithLinksAndBold(item.content)}</span>
+                  ? <div>{renderRichText(item.content)}</div>
                   : (
                     <div class="flex flex-col gap-2">
                       {(item.content as any[]).map((content, idx) =>
@@ -499,7 +756,29 @@ export default function ChatTemplate(props: {
           );
         })}
 
-        {(parentImages?.length > 0 || parentPdfs?.length > 0) && (
+        {uploadProblems.length > 0 && (
+          <div class="w-full flex justify-center">
+            <div class="max-w-xl w-full m-2 px-3 py-2 rounded-lg border border-amber-300
+                        bg-amber-50 text-amber-900 text-sm flex items-start gap-2">
+              <span class="text-lg leading-none shrink-0">📎</span>
+              <div class="min-w-0 flex-1">
+                {uploadProblems.map((p, i) => <p key={i} class="leading-snug">{p}</p>)}
+              </div>
+              {onDismissProblems && (
+                <button
+                  onClick={onDismissProblems}
+                  class="shrink-0 px-1.5 text-amber-700 hover:text-amber-900"
+                  title="Ausblenden"
+                >
+                  ✕
+                </button>
+              )}
+            </div>
+          </div>
+        )}
+
+        {(parentImages?.length > 0 || parentPdfs?.length > 0 ||
+          parentDocTexts.length > 0) && (
           <div class="w-full flex justify-center">
             <div class="p-2 flex flex-wrap max-w-xs gap-4">
               {parentImages.map((image: AnyImg, index: number) => (
@@ -573,10 +852,77 @@ export default function ChatTemplate(props: {
                   </button>
                 </div>
               ))}
+
+              {/* Documents that were read here: the character count says the
+                  text actually arrived, which a file name alone does not. */}
+              {parentDocTexts.map((doc, index: number) => (
+                <div
+                  key={`doc-${index}`}
+                  class="relative group w-32 h-32 flex flex-col items-center justify-center
+                         bg-sky-100 rounded-lg shadow-xl p-2 text-center"
+                >
+                  <span class="text-3xl leading-none mb-1">📄</span>
+                  <span class="text-xs font-mono break-all overflow-hidden leading-tight">
+                    {doc.name}
+                  </span>
+                  <span class="text-[10px] text-sky-800 mt-1">
+                    {doc.chars.toLocaleString("de-DE")} Zeichen
+                  </span>
+                  {onDocTextsChange && (
+                    <button
+                      onClick={() =>
+                        onDocTextsChange(parentDocTexts.filter((_, i) => i !== index))}
+                      class="absolute top-1 right-1 bg-red-500 text-white rounded-full p-1
+                             opacity-0 group-hover:opacity-100 transition-opacity"
+                      title="Entfernen"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                      >
+                        <path d="M18 6l-12 12" />
+                        <path d="M6 6l12 12" />
+                      </svg>
+                    </button>
+                  )}
+                </div>
+              ))}
             </div>
           </div>
         )}
       </div>
     </div>
+  );
+}
+
+/**
+ * "Thinking, 12 s" while a reasoning model works.
+ *
+ * The seconds matter: a spinner says "wait", a counter says "this is normal
+ * and it is getting on with it", and it is the difference between waiting and
+ * reloading the page.
+ */
+function ThinkingBadge({ since, lang }: { since: number; lang: string }) {
+  const [now, setNow] = useState(Date.now());
+  useEffect(() => {
+    const t = setInterval(() => setNow(Date.now()), 1000);
+    return () => clearInterval(t);
+  }, []);
+  const seconds = Math.max(0, Math.round((now - since) / 1000));
+  const t = (k: string) =>
+    (chatTemplateContent[lang]?.[k] ?? chatTemplateContent.en[k]) as string;
+  return (
+    <span
+      class="px-3 py-1 rounded text-sm border bg-amber-50 border-amber-300
+             text-amber-900 flex items-center gap-1.5"
+      title={t("thinkingHint")}
+    >
+      <span class="inline-block w-2 h-2 rounded-full bg-amber-500 animate-pulse" />
+      {t("thinking")} · {seconds}s
+    </span>
   );
 }

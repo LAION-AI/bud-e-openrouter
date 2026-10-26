@@ -5,3 +5,85 @@
 html, body {
   background-color: #f4eecf;
 }
+
+/*
+ * The page inside the word processor.
+ *
+ * Tailwind's reset strips the browser's own styling from headings, lists and
+ * tables. That is right everywhere else and wrong here: what a person types
+ * into a document has to look like a document, and it has to look the way it
+ * will look in Word afterwards. So the styling comes back for this one area,
+ * matching what docxRich.ts writes into the file.
+ */
+.docs-page {
+  font-family: Calibri, Carlito, "Segoe UI", system-ui, sans-serif;
+  font-size: 16px;
+}
+.docs-page h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1f3864;
+  margin: 1.4rem 0 0.7rem;
+  line-height: 1.2;
+}
+.docs-page h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2e5496;
+  margin: 1.2rem 0 0.5rem;
+  line-height: 1.25;
+}
+.docs-page h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #44546a;
+  margin: 1rem 0 0.4rem;
+}
+.docs-page p {
+  margin: 0 0 0.6rem;
+}
+.docs-page ul,
+.docs-page ol {
+  margin: 0 0 0.7rem;
+  padding-left: 1.9rem;
+}
+.docs-page ul { list-style: disc outside; }
+.docs-page ol { list-style: decimal outside; }
+.docs-page ul ul { list-style: circle outside; }
+.docs-page ol ol { list-style: lower-alpha outside; }
+.docs-page li { margin: 0.15rem 0; }
+.docs-page blockquote {
+  margin: 0.6rem 0;
+  padding-left: 0.9rem;
+  border-left: 3px solid #a6a6a6;
+  color: #404040;
+  font-style: italic;
+}
+.docs-page table {
+  border-collapse: collapse;
+  margin: 0.8rem 0;
+  width: 100%;
+}
+.docs-page th,
+.docs-page td {
+  border: 1px solid #cbd5e0;
+  padding: 0.35rem 0.6rem;
+  vertical-align: top;
+}
+.docs-page th {
+  background: #edf2f7;
+  font-weight: 600;
+  text-align: left;
+}
+.docs-page img {
+  max-width: 100%;
+  height: auto;
+}
+/* A horizontal rule stands for a page break, and says so when printed. */
+.docs-page hr {
+  border: none;
+  border-top: 2px dashed #cbd5e0;
+  margin: 1.4rem 0;
+}
+.docs-page a { color: #1d4ed8; text-decoration: underline; }
+.docs-page:focus { outline: none; }

@@ -1,0 +1,11 @@
+{
+  "key": "m5-kuenstliche-intelligenz",
+  "title": { "de": "Künstliche Intelligenz und Maschinelles Lernen", "en": "Artificial intelligence and machine learning" },
+  "description": {
+    "de": "Warum ein Programm, dem niemand Regeln beigebracht hat, trotzdem Katzen erkennt - und was es dabei nicht weiß.",
+    "en": "Why a program nobody gave rules to still recognises cats - and what it does not know while doing so."
+  },
+  "icon": "🧠",
+  "accent": "violet",
+  "badge": "M5"
+}

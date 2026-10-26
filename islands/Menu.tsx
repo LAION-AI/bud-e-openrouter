@@ -8,6 +8,7 @@ import { menuContent } from "../internalization/content.ts";
  */
 export default function Menu({ lang }: { lang: string }): JSX.Element {
   const menuItems = [
+    { name: lang === "de" ? "Klassenraum" : "Classroom", href: "/my" },
     { name: menuContent[lang]["about"], href: "/about?lang=" + lang },
     { name: menuContent[lang]["imprint"], href: "https://laion.ai/impressum" },
   ];

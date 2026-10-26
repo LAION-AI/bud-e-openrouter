@@ -1,0 +1,13 @@
+{
+  "key": "physik",
+  "title": {
+    "de": "Physik",
+    "en": "Physics"
+  },
+  "description": {
+    "de": "Wie die Welt funktioniert, wenn man genau hinsieht - und nachrechnet.",
+    "en": "How the world works when you look closely - and do the sums."
+  },
+  "icon": "🔭",
+  "accent": "violet"
+}

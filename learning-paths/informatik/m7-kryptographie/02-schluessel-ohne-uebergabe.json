@@ -1,0 +1,423 @@
+{
+  "accent": "sky",
+  "exercises": [
+    {
+      "hint": {
+        "de": "Alle Antworten stehen auf den Bildschirmen davor – lies sie noch einmal von oben.",
+        "en": "All answers sit on the screens before – read them once more from the top."
+      },
+      "intro": {
+        "de": "Setze die fehlenden Wörter ein.",
+        "en": "Fill in the missing words."
+      },
+      "kind": "cloze",
+      "text": {
+        "de": "Bei ___ Verfahren teilen sich beide denselben ___. Bei ___ Verfahren hat jeder zwei: einen ___ und einen ___ Schlüssel. In den offenen ___ darf jeder etwas einwerfen, öffnen kann ihn nur der ___. Bei ___-Hellman mischen beide eine ___ Farbe dazu – zurückmischen geht praktisch ___. Mit p=23 und g=5 rechnen beide Seiten das ___ Geheimnis ___ aus. Bei ___ multipliziert man zwei geheime ___ – das Ergebnis n ist öffentlich. Zurückrechnen heißt ___, und das dauert bei 600 Stellen länger, als das ___ alt ist. Eine ___ unterschreibt mit dem ___ Schlüssel, prüfen kann jeder mit dem ___. Der schnelle Datentransport bleibt ___.",
+        "en": "With ___ methods both share the same ___. With ___ methods everybody has two: a ___ one and a ___ one. Anyone may drop something into the open ___, but only the ___ can open it. In ___-Hellman both mix in a ___ colour – unmixing is practically ___. With p=23 and g=5 both sides compute the ___ secret ___. In ___ two secret ___ are multiplied – the result n stays public. Computing backwards is called ___, and with 600 digits it takes longer than the ___ is old. A ___ signs with the ___ key, anyone can check with the ___. Fast data transport stays ___."
+      },
+      "title": {
+        "de": "1. Lückentext",
+        "en": "1. Fill in the blanks"
+      }
+    },
+    {
+      "hint": {
+        "de": "Zähle die Schlüsselübergaben: Wie viele Paare gibt es bei 30 Leuten?",
+        "en": "Count the key handovers: how many pairs are there with 30 people?"
+      },
+      "intro": {
+        "de": "Setze zwei Beobachtungen zueinander in Beziehung.",
+        "en": "Relate two observations to each other."
+      },
+      "kind": "compare",
+      "text": {
+        "de": "Ein Klassenchat mit 30 Leuten soll abhörsicher werden. Vergleiche: Wie viele geheime Schlüssel müssen bei symmetrischer Verschlüsselung übergeben werden – und wie viele bei asymmetrischer? Erkläre, wo jeweils die Arbeit steckt.",
+        "en": "A class chat with 30 people is to become tap-proof. Compare: how many secret keys must be handed over with symmetric encryption – and how many with asymmetric? Explain where the work sits in each case."
+      },
+      "title": {
+        "de": "2. Vergleiche",
+        "en": "2. Compare"
+      }
+    },
+    {
+      "intro": {
+        "de": "Auf diese Frage gibt es keine richtige Antwort.",
+        "en": "There is no right answer to this one."
+      },
+      "kind": "reflect",
+      "text": {
+        "de": "Dein öffentlicher Schlüssel darf jeder haben – aber woher weißt du, dass die Bank-App wirklich den Schlüssel der Bank benutzt und nicht den eines Betrügers? Wem vertraust du dabei, und warum?",
+        "en": "Everybody may have your public key – but how do you know the banking app really uses the bank's key and not a fraudster's? Whom do you trust here, and why?"
+      },
+      "title": {
+        "de": "3. Zum Nachdenken",
+        "en": "3. Something to think about"
+      }
+    }
+  ],
+  "icon": "🔑",
+  "key": "schluessel-ohne-uebergabe",
+  "minutes": 21,
+  "screens": [
+    {
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Symmetrisch heißt: Ein Schlüssel schließt zu und auf – schnell, aber er muss zum Partner. Asymmetrisch heißt: Zwei Schlüssel, ein Trick – und das Übergabe-Problem löst sich auf.",
+            "en": "Symmetric means: one key locks and unlocks – fast, but it must reach the partner. Asymmetric means: two keys, one trick – and the handover problem dissolves."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Stell dir einen Briefkasten vor: Jeder darf etwas einwerfen – das ist der öffentliche Schlüssel, er liegt offen aus. Öffnen kann ihn nur, wer den privaten Schlüssel hat – und der verlässt deine Tasche nie. Wer dir schreiben will, nimmt deinen offenen Kasten. Abhören nützt nichts: Der Brief ist schon drin, und nur du öffnest.",
+            "en": "Picture a mailbox: anyone may drop something in – that is the public key, lying out in the open. Only whoever holds the private key can open it – and it never leaves your pocket. Whoever wants to write to you takes your open box. Eavesdropping helps nothing: the letter is already inside, and only you open."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Der Preis: Asymmetrisch ist langsam – tausendmal langsamer als symmetrisch, grob gesagt. Darum nimmt man es nur für Kleines: Schlüssel, Unterschriften. Für den Rest bleibt der schnelle alte Schlüssel. Wie beides zusammenarbeitet, steht auf dem letzten Bildschirm.",
+            "en": "The price: asymmetric is slow – roughly a thousand times slower than symmetric. Hence it is only used for small things: keys, signatures. For the rest the fast old key stays. How both work together sits on the last screen."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Dein Hausflur kennt den Trick schon: Paketfächer mit Zahlencode. Der Bote legt hinein – das ist der öffentliche Teil, jeder darf. Öffnen kannst nur du mit deinem Code – das ist der private Teil, er verlässt deinen Kopf nie. Der Unterschied zum Briefkasten: Hier siehst du ihn jeden Tag. Asymmetrie ist keine Theorie, sie steht im Treppenhaus.",
+            "en": "Your hallway already knows the trick: parcel lockers with number codes. The courier puts in – that is the public part, anyone may. Only you open with your code – the private part, it never leaves your head. Unlike the mailbox: here you see it daily. Asymmetry is no theory, it stands in the stairwell."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "note",
+          "icon": "📦",
+          "title": {
+            "de": "Schau hin",
+            "en": "Look closely"
+          },
+          "text": {
+            "de": "Bleib morgen einmal stehen: Wer legt ein, wer holt ab, wer kennt den Code? Erkläre es jemandem mit den Worten öffentlich und privat – du hast gerade asymmetrische Kryptographie erklärt, vor einem Paketfach.",
+            "en": "Stop once tomorrow: who puts in, who picks up, who knows the code? Explain it to someone with the words public and private – you just explained asymmetric cryptography, before a parcel locker."
+          }
+        }
+      ],
+      "title": {
+        "de": "Zwei Schlüssel statt einem",
+        "en": "Two keys instead of one"
+      }
+    },
+    {
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Zwei Menschen wollen ein Geheimnis teilen, der Feind hört alles mit. Mit Farben geht das – und mit Zahlen genauso.",
+            "en": "Two people want to share a secret while the enemy hears everything. With colours it works – and with numbers exactly the same."
+          }
+        },
+        {
+          "kind": "steps",
+          "items": [
+            {
+              "text": {
+                "de": "Alle einigen sich öffentlich auf Gelb – der Feind hört mit, das darf er.",
+                "en": "Everybody publicly agrees on yellow – the enemy listens in, and may."
+              },
+              "title": {
+                "de": "Start: Gelb",
+                "en": "Start: yellow"
+              }
+            },
+            {
+              "text": {
+                "de": "Alice mischt heimlich Rot dazu: Orange. Bob mischt heimlich Blau dazu: Grün. Geheim bleibt nur die eigene Farbe.",
+                "en": "Alice secretly mixes in red: orange. Bob secretly mixes in blue: green. Only one's own colour stays secret."
+              },
+              "title": {
+                "de": "Geheim mischen",
+                "en": "Mix secretly"
+              }
+            },
+            {
+              "text": {
+                "de": "Orange und Grün werden getauscht – vor den Augen des Feindes. Er sieht alles und kann nichts damit anfangen.",
+                "en": "Orange and green are swapped – before the enemy's eyes. They see everything and can do nothing with it."
+              },
+              "title": {
+                "de": "Tauschen",
+                "en": "Swap"
+              }
+            },
+            {
+              "text": {
+                "de": "Alice mischt Rot in Grün, Bob mischt Blau in Orange: Beide erhalten dasselbe Braun – das Geheimnis. Entmischen kann niemand.",
+                "en": "Alice mixes red into green, Bob mixes blue into orange: both get the same brown – the secret. Nobody can unmix."
+              },
+              "title": {
+                "de": "Fertig: Braun",
+                "en": "Done: brown"
+              }
+            }
+          ]
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Ersetze Gelb durch die Zahl g, Rot und Blau durch geheime Zahlen, Mischen durch Potenzieren mit Rest – und du hast den Diffie-Hellman-Schlüsselaustausch von 1976. Der Feind sieht alle Zwischenergebnisse und scheitert trotzdem: Zurückrechnen dauert bei großen Zahlen länger als das Universum alt ist.",
+            "en": "Replace yellow with the number g, red and blue with secret numbers, mixing with raising to a power and taking the remainder – and you hold the Diffie-Hellman key exchange of 1976. The enemy sees every intermediate result and fails anyway: computing backwards with large numbers takes longer than the universe is old."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Warum Entmischen unmöglich ist? Denk an Milch im Kaffee: Einrühren – eine Sekunde. Trennen – nie wieder, selbst mit Labor nicht. Mischen vernichtet Information über die Reihenfolge, unwiederbringlich. Potenzieren mit Rest macht dasselbe mit Zahlen: vorwärts glatt, rückwärts ein Rätsel. Die Natur mischt ständig – Kryptographen haben nur zugeschaut und abgeschrieben.",
+            "en": "Why is unmixing impossible? Think milk in coffee: stirring in – one second. Separating – never again, not even with a lab. Mixing destroys information about the order, irretrievably. Raising to powers with remainder does the same to numbers: forward smooth, backward a riddle. Nature mixes constantly – cryptographers only watched and copied."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Köche kennen das Prinzip: Rezept verraten, Handgriff behalten. Das Kuchenrezept steht im Buch – aber wie der Teig sich anfühlen muss, weiß nur, wer ihn hundertmal knetete. Mischen ist überall Einweg: Teig, Kaffee, Zement. Die Kryptographie hat das Älteste der Welt kopiert – das Kochen – und nennt es Einwegfunktion.",
+            "en": "Cooks know the principle: reveal the recipe, keep the touch. The cake recipe sits in the book – but how the dough must feel, only whoever kneaded it a hundred times knows. Mixing is one-way everywhere: dough, coffee, cement. Cryptography copied the oldest thing in the world – cooking – and calls it a one-way function."
+          }
+        }
+      ],
+      "title": {
+        "de": "Farben mischen",
+        "en": "Mixing colours"
+      }
+    },
+    {
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Dasselbe mit Zahlen – klein genug zum Nachrechnen, groß genug zum Staunen. Öffentlich: p=23 und g=5.",
+            "en": "The same with numbers – small enough to recalculate, big enough to marvel. Public: p=23 and g=5."
+          }
+        },
+        {
+          "kind": "steps",
+          "items": [
+            {
+              "text": {
+                "de": "Alice wählt geheim a=6 und sendet A = 5 hoch 6 Rest 23 = 8. (5 hoch 6 = 15625, 23 mal 679 = 15617, Rest 8.)",
+                "en": "Alice secretly picks a=6 and sends A = 5 to the 6th remainder 23 = 8. (5 to the 6th = 15625, 23 times 679 = 15617, remainder 8.)"
+              },
+              "title": {
+                "de": "Alice: 8",
+                "en": "Alice: 8"
+              }
+            },
+            {
+              "text": {
+                "de": "Bob wählt geheim b=15 und sendet B = 5 hoch 15 Rest 23 = 19.",
+                "en": "Bob secretly picks b=15 and sends B = 5 to the 15th remainder 23 = 19."
+              },
+              "title": {
+                "de": "Bob: 19",
+                "en": "Bob: 19"
+              }
+            },
+            {
+              "text": {
+                "de": "Alice rechnet 19 hoch 6 Rest 23 = 2. Bob rechnet 8 hoch 15 Rest 23 = 2. Beide halten dasselbe Geheimnis in Händen: die 2.",
+                "en": "Alice computes 19 to the 6th remainder 23 = 2. Bob computes 8 to the 15th remainder 23 = 2. Both hold the same secret: the number 2."
+              },
+              "title": {
+                "de": "Beide: 2",
+                "en": "Both: 2"
+              }
+            }
+          ]
+        },
+        {
+          "kind": "callout",
+          "tone": "fact",
+          "icon": "🔢",
+          "title": {
+            "de": "Zum Merken",
+            "en": "Worth remembering"
+          },
+          "text": {
+            "de": "Der Feind kennt p, g, 8 und 19 – und steht trotzdem vor verschlossener Tür. Mit echten Zahlen (300 Stellen statt zwei) wäre schon der erste Schritt Arbeit für Supercomputer.",
+            "en": "The enemy knows p, g, 8 and 19 – and still faces a locked door. With real numbers (300 digits instead of two) even the first step would be supercomputer work."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Rechne mit dem Handy-Rechner nach – es geht wirklich: Tippe 5 hoch 6 (15625), ziehe 23 so oft ab, bis es nicht mehr geht (679-mal), Rest 8. Das ist Alices Zahl. Für Bob: 5 hoch 15 ist groß (30517578125) – trickse wie die Profis: immer gleich den Rest nehmen (5 hoch 2 Rest 23 ist 2, hoch 4 ist 4, hoch 8 ist 16), dann multiplizieren: 16 mal 4 mal 2 mal 5 gleich 640, Rest 19. Taschenrechner schlägt Supercomputer – bei kleinen Zahlen.",
+            "en": "Recalculate with the phone calculator – it really works: type 5 to the 6th (15625), subtract 23 as often as possible (679 times), remainder 8. That is Alice's number. For Bob: 5 to the 15th is big (30517578125) – trick like the pros: always take the remainder at once (5 squared remainder 23 is 2, to the 4th is 4, to the 8th is 16), then multiply: 16 times 4 times 2 times 5 equals 640, remainder 19. Pocket calculator beats supercomputer – with small numbers."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "tip",
+          "icon": "🧮",
+          "title": {
+            "de": "Der Profi-Trick",
+            "en": "The pro trick"
+          },
+          "text": {
+            "de": "Nie riesige Potenzen ausrechnen, immer zwischendurch den Rest nehmen – das Ergebnis bleibt gleich, die Zahlen bleiben klein. So rechnen auch echte Rechner: bescheiden, Schritt für Schritt.",
+            "en": "Never compute giant powers, always take the remainder in between – the result stays equal, the numbers stay small. Real computers compute the same way: modestly, step by step."
+          }
+        }
+      ],
+      "title": {
+        "de": "Nachgerechnet",
+        "en": "Recalculated"
+      }
+    },
+    {
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Manche Rechnungen gehen leicht vorwärts und fast nie zurück: Name ins Telefonbuch schreiben – leicht. Nummer suchen und raten, wem sie gehört – blättern bis Weihnachten. Solche Einweg-Rechnungen sind das Herz von RSA.",
+            "en": "Some computations run easily forward and almost never back: writing a name into the phone book – easy. Searching a number and guessing whose it is – leafing until Christmas. Such one-way computations are the heart of RSA."
+          }
+        },
+        {
+          "kind": "steps",
+          "items": [
+            {
+              "text": {
+                "de": "Nimm zwei Primzahlen, klein: p=3 und q=11. Multiplizieren: n = 33. Das n darf jeder wissen.",
+                "en": "Take two primes, small: p=3 and q=11. Multiply: n = 33. Everybody may know n."
+              },
+              "title": {
+                "de": "Schloss bauen",
+                "en": "Build the lock"
+              }
+            },
+            {
+              "text": {
+                "de": "Rechne phi = (3-1) mal (11-1) = 20. Wähle e=3 – teilerfremd zu 20. Finde d=7, denn 3 mal 7 = 21, und 21 Rest 20 = 1. Öffentlich: n=33 und e=3. Geheim: d=7.",
+                "en": "Compute phi = (3-1) times (11-1) = 20. Pick e=3 – sharing no divisor with 20. Find d=7, since 3 times 7 = 21, and 21 remainder 20 = 1. Public: n=33 and e=3. Secret: d=7."
+              },
+              "title": {
+                "de": "Schlüssel teilen",
+                "en": "Split the keys"
+              }
+            },
+            {
+              "text": {
+                "de": "Nachricht m=4: c = 4 hoch 3 Rest 33 = 64 Rest 33 = 31. Zurück: 31 hoch 7 Rest 33 = 4. Die 4 ist wieder da.",
+                "en": "Message m=4: c = 4 to the 3rd remainder 33 = 64 remainder 33 = 31. Back: 31 to the 7th remainder 33 = 4. The 4 is back."
+              },
+              "title": {
+                "de": "Auf und zu",
+                "en": "Lock and unlock"
+              }
+            }
+          ]
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Warum das sicher ist: n=33 faktorisierst du im Kopf – 3 mal 11. Bei einem n mit 600 Stellen schafft das kein Rechner der Welt in deiner Lebenszeit. Vorwärts multiplizieren kann jeder, zurückrechnen praktisch niemand: Einwegstraße mit Mathe-Schildern.",
+            "en": "Why that is safe: you factor n=33 in your head – 3 times 11. With an n of 600 digits no computer in the world manages it in your lifetime. Multiplying forward, anyone can; computing back, practically nobody: a one-way street with maths signs."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Rückwärtssuche kennst du vielleicht: unbekannte Nummer eintippen, Name erscheint. In manchen Ländern ist genau das verboten – weil es die Einwegstraße umdreht: Aus verstreuten Nummern werden wieder Personen. Kryptographie lebt davon, dass manche Straßen Einweg bleiben: Telefonbuch ja, Rückwärtssuche nein. Wo der Gesetzgeber Einweg vorschreibt, hat er – ohne es zu wissen – für RSA gestimmt.",
+            "en": "Reverse search you may know: type an unknown number, a name appears. In some countries exactly that is forbidden – because it reverses the one-way street: from scattered numbers come persons again. Cryptography lives on some streets staying one-way: phone book yes, reverse search no. Where the legislator prescribes one-way, they voted – unknowingly – for RSA."
+          }
+        }
+      ],
+      "title": {
+        "de": "Multiplizieren ist leicht, Teilen schwer",
+        "en": "Multiplying is easy, dividing is hard"
+      }
+    },
+    {
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Drei Dinge fehlen noch zum Alltag: Unterschrift, Ausweis und der Umschlag, in dem alles steckt.",
+            "en": "Three things still missing for everyday life: signature, ID card, and the envelope holding everything."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Die digitale Signatur ist ein Wachs-Siegel: Du unterschreibst mit deinem privaten Schlüssel, jeder prüft mit deinem öffentlichen. Stimmt die Prüfung, kommen Nachricht und Absender wirklich von dir – unverändert. Darum unterschreiben Updates und Überweisungen digital, nicht mit Tinte.",
+            "en": "The digital signature is a wax seal: you sign with your private key, anyone checks with your public one. If the check holds, message and sender truly come from you – unchanged. Hence updates and bank transfers sign digitally, not in ink."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Das digitale Zertifikat ist der Personalausweis dazu: Eine Stelle, der alle vertrauen, bestätigt schriftlich, dass dieser öffentliche Schlüssel wirklich zur Bank gehört. Dein Browser prüft den Ausweis bei jedem Schloss-Symbol – merkst du nichts von, passiert trotzdem.",
+            "en": "The digital certificate is the ID card for it: an office everybody trusts confirms in writing that this public key truly belongs to the bank. Your browser checks the ID at every padlock symbol – you notice nothing, it happens anyway."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Und SSL – genauer TLS – ist der Umschlag: Die langsame asymmetrische Post trägt nur den kleinen symmetrischen Schlüssel zum Partner, danach rauschen die Daten schnell symmetrisch hinterher. Hybrid heißt das: das Beste aus beiden Welten, bei jedem Schloss-Symbol im Browser.",
+            "en": "And SSL – precisely TLS – is the envelope: the slow asymmetric post carries only the small symmetric key to the partner, afterwards the data rushes behind symmetrically and fast. That is called hybrid: the best of both worlds, at every padlock symbol in the browser."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "tip",
+          "icon": "🔒",
+          "title": {
+            "de": "Schau hin",
+            "en": "Look closely"
+          },
+          "text": {
+            "de": "Öffne eine Bankseite und klicke das Schloss an: Zertifikat anzeigen – Aussteller, Gültigkeit, für wen. Was du dort siehst, ist genau dieser Bildschirm in echt.",
+            "en": "Open a bank page and click the padlock: show certificate – issuer, validity, issued to whom. What you see there is exactly this screen, for real."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "Hamburg: Bildungsplan Studienstufe (Informatik)",
+                "en": "Hamburg: syllabus for the upper stage (computing)"
+              },
+              "url": "https://www.hamburg.de/politik-und-verwaltung/behoerden/bsfb/veroeffentlichungen/bildungsplaene/start-sek2-2022-123118"
+            },
+            {
+              "label": {
+                "de": "GI: Bildungsstandards Informatik",
+                "en": "GI: computing education standards"
+              },
+              "url": "https://gi.de/meldung/bildungsstandards-gi-stellt-neue-empfehlungen-fuer-den-informatikunterricht-vor"
+            }
+          ]
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Noch näher als die Bank: Dein Personalausweis mit Online-Funktion plus AusweisApp ist eine qualifizierte Signatur – die stärkste Sorte, vom Staat geprüft. „Qualifiziert“ heißt: Anbieter zertifiziert, Karte sicher, PIN geheim. Damit unterschreibst du Verträge vom Sofa – rechtsgültig wie mit Tinte. Der Staat, sonst eher langsam, war hier früh dran: Er wusste, dass Vertrauen Infrastruktur braucht.",
+            "en": "Even closer than the bank: your ID card with online function plus AusweisApp is a qualified signature – the strongest kind, state-checked. “Qualified” means: provider certified, card safe, PIN secret. With it you sign contracts from the sofa – legally valid like in ink. The state, otherwise rather slow, was early here: it knew trust needs infrastructure."
+          }
+        }
+      ],
+      "title": {
+        "de": "Unterschrift, Ausweis, Umschlag",
+        "en": "Signature, ID card, envelope"
+      }
+    }
+  ],
+  "summary": {
+    "de": "Briefkasten, Farben, Einwegstraßen: asymmetrisch verstehen, Diffie-Hellman und RSA nachrechnen, mit Signatur und SSL in den Alltag.",
+    "en": "Mailbox, colours, one-way streets: grasp asymmetric crypto, recalculate Diffie-Hellman and RSA, into everyday life with signatures and SSL."
+  },
+  "title": {
+    "de": "Schlüssel ohne Übergabe",
+    "en": "Keys without handover"
+  }
+}

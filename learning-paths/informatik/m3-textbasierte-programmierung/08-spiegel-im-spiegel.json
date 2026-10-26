@@ -1,0 +1,394 @@
+{
+  "accent": "teal",
+  "exercises": [
+    {
+      "hint": {
+        "de": "Alle Antworten stehen auf den Bildschirmen davor – lies sie noch einmal von oben.",
+        "en": "All answers sit on the screens before – read them once more from the top."
+      },
+      "intro": {
+        "de": "Setze die fehlenden Wörter ein.",
+        "en": "Fill in the missing words."
+      },
+      "kind": "cloze",
+      "text": {
+        "de": "Eine Funktion, die sich selbst ___, heißt ___. Ohne ___ läuft sie ewig – wie ein Spiegel im ___. Der Countdown ruft sich mit n minus ___ wieder auf und stoppt bei ___. Bei den Türmen von Hanoi lautet die Regel: Lege n minus 1 Scheiben ___, dann die größte ___, dann den Rest ___. Drei Scheiben brauchen ___ Züge, vier schon ___. Jede Schleife lässt sich auch rekursiv schreiben – aber nicht jede Rekursion ist eine gute ___. Der Stapel der wartenden Aufrufe heißt ___: Wird er zu voll, gibt es einen ___.",
+        "en": "A function calling ___ is called ___. Without ___ it runs forever – like a mirror in a ___. The countdown calls itself again with n minus ___ stopping at ___. With the Towers of Hanoi the rule reads: lay n minus 1 discs ___, then the biggest ___, then the rest ___. Three discs need ___ moves, four already ___. Every loop can also be written recursively – but not every recursion is a good ___. The pile of waiting calls is called ___: growing too full, it gives an ___."
+      },
+      "title": {
+        "de": "1. Lückentext",
+        "en": "1. Fill in the blanks"
+      }
+    },
+    {
+      "hint": {
+        "de": "Was wiederholt sich – und was wird jeweils kleiner? Denke an Zähler gegen Verkleinerung.",
+        "en": "What repeats – and what grows smaller in each case? Think counter versus shrinking."
+      },
+      "intro": {
+        "de": "Setze zwei Beobachtungen zueinander in Beziehung.",
+        "en": "Relate two observations to each other."
+      },
+      "kind": "compare",
+      "text": {
+        "de": "Eine Zählschleife und eine rekursive Funktion zählen beide von 10 bis 0. Vergleiche, wie beide vorgehen – und erkläre, in welchem Fall du welche nimmst.",
+        "en": "A counting loop and a recursive function both count from 10 to 0. Compare how both proceed – and explain in which case you take which."
+      },
+      "title": {
+        "de": "2. Vergleiche",
+        "en": "2. Compare"
+      }
+    },
+    {
+      "intro": {
+        "de": "Auf diese Frage gibt es keine richtige Antwort.",
+        "en": "There is no right answer to this one."
+      },
+      "kind": "reflect",
+      "text": {
+        "de": "Wo in deinem Leben steckt Rekursion – Geschichten in Geschichten, Träume in Träumen, Regeln mit Ausnahme der Ausnahme? Sammle drei Beispiele und erkläre jeweils, wo der Abbruch steht.",
+        "en": "Where in your life sits recursion – stories in stories, dreams in dreams, rules with exceptions of exceptions? Collect three examples explaining in each case where the stop sits."
+      },
+      "title": {
+        "de": "3. Zum Nachdenken",
+        "en": "3. Something to think about"
+      }
+    }
+  ],
+  "icon": "🪞",
+  "key": "spiegel-im-spiegel",
+  "minutes": 19,
+  "screens": [
+    {
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Stelle zwei Spiegel gegenüber: Spiegel im Spiegel im Spiegel – bis ins Unendliche. Genau das tut eine Funktion, die sich selbst aufruft: Sie heißt rekursiv. Faszinierend – und ohne Bremse eine Katastrophe.",
+            "en": "Place two mirrors opposite: mirror in mirror in mirror – into infinity. Exactly that does a function calling itself: it is called recursive. Fascinating – and without brakes a catastrophe."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Der Countdown als Funktion: countdown(n) druckt n und ruft countdown(n minus 1) – außer bei 0, da druckt sie nur „Start!“ und ruft nichts mehr. Der Abbruch – Fachwort Basisfall – ist alles: Ohne ihn ruft sie sich ewig weiter, wie die Spiegel ohne Wand dahinter. Mit ihm zählt sie brav von 10 bis 0. Zwei Zeilen Logik, eine Zeile Bremse.",
+            "en": "The countdown as a function: countdown(n) prints n calling countdown(n minus 1) – except at 0, there it only prints “Go!” calling nothing more. The stop – technical term base case – is everything: without it calls itself forever onward, like mirrors without wall behind. With it counts bravely from 10 to 0. Two lines of logic, one line of brake."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Beobachte, was passiert: countdown(3) wartet auf countdown(2), der auf countdown(1), der auf countdown(0). Erst ganz unten wird gedruckt, dann löst sich alles von hinten auf – 0, 1, 2, 3 erscheinen in Reihenfolge, obwohl jeder erst einmal wartete. Warten in Schichten: Das ist Rekursion zum Anfassen.",
+            "en": "Watch what happens: countdown(3) waits for countdown(2), that for countdown(1), that for countdown(0). Only at the very bottom printing starts, then everything dissolves from behind – 0, 1, 2, 3 appear in order although everybody first waited. Waiting in layers: that is recursion to touch."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Spiegel im Spiegel kennst du übrigens aus dem Aufzug: Zwei Wände, dazwischen du – hundertmal gestaffelt, immer kleiner. Oder aus Videos, die ein Video zeigen, das ein Video zeigt. Überall steckt dasselbe Muster: etwas enthält sich selbst, eine Stufe kleiner. Informatiker nennen das Selbstähnlichkeit – und sie ist der Fingerabdruck der Rekursion. Wo du sie siehst, passt fast immer eine Funktion, die sich selbst ruft.",
+            "en": "Mirror in mirror you incidentally know from the elevator: two walls, you between – a hundred times staggered, ever smaller. Or from videos showing a video showing a video. Everywhere sits the same pattern: something containing itself, one level smaller. Computer scientists call that self-similarity – the fingerprint of recursion. Where you see it, a function calling itself almost always fits."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Spiegelspiele gibt es übrigens überall: Friseursalons mit Wänden voller Spiegel, Kaufhäuser mit Ecken aus Glas. Überall Staffelungen bis ins Kleine – und überall derselbe Spaß beim Hineinschauen. Rekursion zum Anschauen, gratis beim Einkaufen.",
+            "en": "Mirror games incidentally live everywhere: hair salons with walls full of mirrors, stores with corners from glass. Everywhere staggerings into smallness – and everywhere the same fun looking in. Recursion to watch, gratis while shopping."
+          }
+        }
+      ],
+      "title": {
+        "de": "Spiegel im Spiegel",
+        "en": "Mirror in mirror"
+      }
+    },
+    {
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Das berühmteste Spiel der Rekursion: drei Stäbe, drei Scheiben, groß unten, klein oben. Ziel: alles nach rechts – nie eine große auf eine kleine. Die Lösung passt in einen Satz – mit Rekursion darin.",
+            "en": "The most famous game of recursion: three rods, three discs, big below, small above. Goal: everything to the right – never a big onto a small one. The fix fits one sentence – with recursion inside."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Die Regel: Lege n minus 1 Scheiben beiseite (wohin, sagt derselbe Satz wieder), dann die größte um, dann den Rest hinterher. Für eine Scheibe trivial, für zwei leicht, für drei sieben Züge. Baue es mit Münzen nach – 1-Cent, 2-Cent, 5-Cent: sieben Züge Minimum. Wer es schafft, hat Rekursion in den Fingern.",
+            "en": "The rule: lay n minus 1 discs aside (where, the same sentence tells again), then the biggest over, then the rest behind. For one disc trivial, for two easy, for three seven moves. Rebuild it with coins – 1, 2, 5 cents: seven moves minimum. Whoever manages holds recursion in their fingers."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Die Zahlen explodieren: 3 Scheiben 7 Züge, 4 schon 15, 10 über 1000. Formel: 2 hoch n minus 1. Die Legende erzählt von 64 goldenen Scheiben und dem Weltende bei Fertigstellung – rechne aus, wie lange das dauert, und lache über Mönche mit viel Zeit. Exponentiell heißt: erst harmlos, dann Weltende.",
+            "en": "The numbers explode: 3 discs 7 moves, 4 already 15, 10 over 1000. Formula: 2 to the n minus 1. Legend tells of 64 golden discs with world's end at completion – calculate how long that takes, laughing about monks with much time. Exponential means: first harmless, then world's end."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "🪙",
+          "title": {
+            "de": "Sieben Züge",
+            "en": "Seven moves"
+          },
+          "text": {
+            "de": "Lege drei Münzen übereinander und schaffe den Umzug in genau sieben Zügen – notiere jeden. Gelingt es in sechs? Beweise, warum nicht: Die größte Scheibe muss einmal um, und vorher muss der Turm aus zwei Scheiben weg – mindestens dreimal zwei plus eins.",
+            "en": "Lay three coins atop each other mastering the move in exactly seven moves – noting each. Manageable in six? Prove why not: the biggest disc must move once, and before the two-disc tower must away – at least three times two plus one."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Die Sage dazu ist übrigens fast so schön wie das Spiel: 64 goldene Scheiben im Tempel von Benares – und wenn die letzte liegt, endet die Welt. Rechne nach: 2 hoch 64 minus 1 Züge, bei einer Sekunde pro Zug über 580 Milliarden Jahre. Das Universum ist 14 Milliarden alt. Die Mönche – falls es sie je gab – haben gerade erst angefangen. Mathematik als Weltuntergangs-Beruhigung.",
+            "en": "The legend along is incidentally almost as beautiful as the game: 64 golden discs in the temple of Benares – and when the last lies, the world ends. Calculate along: 2 to the 64th minus 1 moves, at one second per move over 580 billion years. The universe is 14 billion old. The monks – if they ever existed – only just started. Mathematics as end-of-world reassurance."
+          }
+        }
+      ],
+      "title": {
+        "de": "Türme von Hanoi",
+        "en": "Towers of Hanoi"
+      }
+    },
+    {
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Schleife oder Rekursion – was nehmen? Die ehrliche Antwort: Meist die Schleife. Aber manchmal passt nur die Rekursion – und dann erkennt man sie an der Form des Problems.",
+            "en": "Loop or recursion – which to take? The honest answer: mostly the loop. But sometimes only recursion fits – recognised by the problem's shape."
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "de": "Zwei Wege, ein Ziel.",
+            "en": "Two ways, one goal."
+          },
+          "head": [
+            {
+              "de": "Frage",
+              "en": "Question"
+            },
+            {
+              "de": "Schleife",
+              "en": "Loop"
+            },
+            {
+              "de": "Rekursion",
+              "en": "Recursion"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "de": "Wie geht es?",
+                "en": "How does it go?"
+              },
+              {
+                "de": "Zähler hochzählen",
+                "en": "Counting up a counter"
+              },
+              {
+                "de": "Kleineres Ich rufen",
+                "en": "Calling a smaller self"
+              }
+            ],
+            [
+              {
+                "de": "Wo steht der Stopp?",
+                "en": "Where stands the stop?"
+              },
+              {
+                "de": "In der Bedingung oben",
+                "en": "In the condition on top"
+              },
+              {
+                "de": "Im Basisfall unten",
+                "en": "In the base case below"
+              }
+            ],
+            [
+              {
+                "de": "Wofür gut?",
+                "en": "Good for what?"
+              },
+              {
+                "de": "Wiederholen, zählen",
+                "en": "Repeating, counting"
+              },
+              {
+                "de": "Bäume, Teilen, Rätsel",
+                "en": "Trees, splitting, riddles"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Rekursion glänzt, wo sich Probleme selbst enthalten: Ordner mit Ordnern darin (durchsuchen!), Labyrinthe (ein Schritt, dann Rest-Labyrinth), das eigene Spiegelbild. Faustregel: Sieht das Problem aus wie eine kleine Version seiner selbst – Rekursion. Ist es nur oft dasselbe – Schleife. Beide können alles, was die andere kann. Aber elegant ist jeweils nur eine.",
+            "en": "Recursion shines where problems contain themselves: folders with folders inside (searching!), mazes (one step, then rest-maze), the own mirror image. Rule of thumb: if the problem looks like a small version of itself – recursion. If it is only often the same – loop. Both can do everything the other can. But elegant is only one in each case."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Noch ein Spiegel aus deinem Leben: Matroschka-Puppen. Öffnen, kleinere Puppe, öffnen, kleinere Puppe – bis zur winzigen letzten, die sich nicht mehr öffnen lässt. Jede Puppe enthält eine kleinere Version ihrer selbst, die letzte ist der Basisfall. Wer Matroschkas versteht, versteht Rekursion: Selbstähnlichkeit plus Stopp. Der Rest ist Python.",
+            "en": "One more mirror from your life: matryoshka dolls. Open, smaller doll, open, smaller doll – down to the tiny last one opening no more. Every doll holds a smaller version of itself, the last is the base case. Whoever grasps matryoshkas grasps recursion: self-similarity plus stop. The rest is Python."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "tip",
+          "icon": "🪆",
+          "title": {
+            "de": "Puppen-Test",
+            "en": "Doll test"
+          },
+          "text": {
+            "de": "Erkläre Rekursion einmal mit Matroschkas statt mit Code: Aufmachen, kleinere finden, weitermachen, bei der kleinsten aufhören. Wer dabei nickt, hat es verstanden – ganz ohne Computer. Manchmal erklärt Holz besser als Bildschirm.",
+            "en": "Explain recursion once with dolls instead of code: opening, finding smaller, continuing, stopping at the smallest. Whoever nods along understood – quite without computer. Sometimes wood explains better than screen."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Noch ein Spiegel aus Papier: Falte ein Blatt, schneide Muster in den Falz, falte auf – symmetrische Scherenschnitte. Was du links schneidest, erscheint rechts: Selbstähnlichkeit mit der Schere. Scherenschnitte sind Rekursion für Bastler.",
+            "en": "One more mirror from paper: fold a sheet, cut patterns into the fold, unfold – symmetric silhouettes. What you cut left appears right: self-similarity with scissors. Silhouettes are recursion for crafters."
+          }
+        }
+      ],
+      "title": {
+        "de": "Schleife oder Spiegel",
+        "en": "Loop or mirror"
+      }
+    },
+    {
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Jeder wartende Aufruf belegt einen Teller auf einem Stapel – Fachwort Stack. Tausend wartende Aufrufe, tausend Teller: Irgendwann ist der Stapel voll, und das Programm stürzt mit Stapelüberlauf ab. Darum: Rekursion mit Maß – und Basisfall immer zuerst schreiben.",
+            "en": "Every waiting call occupies a plate on a pile – technical term stack. A thousand waiting calls, a thousand plates: sometime the pile is full, and the program crashes with stack overflow. Hence: recursion with measure – writing the base case always first."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Python meldet sich übrigens ehrlich: RecursionError bei zu tiefer Stapelung – zu tief gestapelt, Kollege. Kein Drama, sondern Schutz: Lieber sauber abbrechen als den Rechner einfrieren. Wer den Fehler einmal absichtlich provoziert (Funktion ohne Basisfall, laufen lassen), erschrickt nie wieder – und schreibt den Basisfall ab sofort zuerst. Versprochen?",
+            "en": "Python incidentally reports honestly: RecursionError at too deep piling – piled too deep, colleague. No drama but guard: rather aborting cleanly than freezing the computer. Whoever provokes the mistake once on purpose (function without base case, running it) never startles again – writing the base case from now on first. Promised?"
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Der Stapel lauert übrigens überall im Alltag: ungelesene Nachrichten (jede wartet auf Antwort), Hausaufgaben vor den Ferien (jede wartet auf dich), Teller in der Spülmaschine (jeder wartet auf den darunter). Stapel arbeiten nach LIFO – Last In, First Out: Zuletzt gekommen, zuerst dran. Wer Stapel versteht, versteht, warum manches ewig wartet: Es liegt zuunterst.",
+            "en": "The pile incidentally lurks everywhere in everyday life: unread messages (each waits for reply), homework before holidays (each waits for you), plates in the dishwasher (each waits for the one below). Piles work by LIFO – last in, first out: last arrived, first served. Whoever grasps piles grasps why some things wait forever: they lie at the bottom."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "note",
+          "icon": "🍽️",
+          "title": {
+            "de": "Spülmaschinen-Regel",
+            "en": "Dishwasher rule"
+          },
+          "text": {
+            "de": "Räume einmal die Spülmaschine von oben nach unten aus und zähle: So viele Teller, so viele wartende Aufrufe. Überläuft der Stapel – Teller auf der Arbeitsplatte –, hast du einen Stack Overflow in der Küche. Informatik zum Anfassen, mit Geschirr.",
+            "en": "Empty the dishwasher once top to bottom counting: so many plates, so many waiting calls. If the pile overflows – plates on the counter –, you hold a stack overflow in the kitchen. Computing to touch, with dishes."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Stapel kennst du übrigens vom Frühstückstisch: Teller stapeln sich von allein – unten die großen, oben die kleinen, jeder wartet auf den darunter. Abräumen heißt Stapel abbauen: von oben nach unten, Teller für Teller. Wer abräumt, programmiert Stapel – mit Porzellan statt Pointern.",
+            "en": "Piles you incidentally know from the breakfast table: plates pile by themselves – big below, small above, each waiting for the one beneath. Clearing means dismantling piles: top to bottom, plate by plate. Whoever clears programs piles – with porcelain instead of pointers."
+          }
+        }
+      ],
+      "title": {
+        "de": "Der Stapel",
+        "en": "The pile"
+      }
+    },
+    {
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Zum Schluss die Preisfrage: Kann Rekursion alles, was Schleifen können – und umgekehrt? Ja, beides. Die Wahl ist Stil, nicht Macht. Nimm die Schleife für Zählen und Wiederholen, die Rekursion für Selbstähnliches: Bäume, Labyrinthe, Hanoi. Und wenn du beides kannst, bist du kein Anfänger mehr.",
+            "en": "Finally the prize question: can recursion do everything loops can – and reversed? Yes, both. The choice is style, not power. Take the loop for counting and repeating, recursion for self-similar: trees, mazes, Hanoi. And once you master both, you are no beginner anymore."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Dein nächstes Projekt: Durchsuche einen Ordner mit Unterordnern nach der größten Datei – rekursiv, versteht sich. Jeder Ordner: Dateien messen, Unterordner fragen. Was zurückkommt, ist die Antwort – von ganz unten nach ganz oben, wie beim Countdown. Spiegel im Spiegel, Dateien statt Zahlen.",
+            "en": "Your next project: search a folder with subfolders for the biggest file – recursively, of course. Every folder: measuring files, asking subfolders. What returns is the answer – from very bottom to very top, like with the countdown. Mirror in mirror, files instead of numbers."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "Hamburg: Bildungsplan Studienstufe (Informatik)",
+                "en": "Hamburg: syllabus for the upper stage (computing)"
+              },
+              "url": "https://www.hamburg.de/politik-und-verwaltung/behoerden/bsfb/veroeffentlichungen/bildungsplaene/start-sek2-2022-123118"
+            },
+            {
+              "label": {
+                "de": "GI: Bildungsstandards Informatik",
+                "en": "GI: computing education standards"
+              },
+              "url": "https://gi.de/meldung/bildungsstandards-gi-stellt-neue-empfehlungen-fuer-den-informatikunterricht-vor"
+            }
+          ]
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Spiegel findest du übrigens auch in Sprache: „Dieser Satz ist falsch“ – wahr oder gelogen? Sagt er die Wahrheit, lügt er; lügt er, sagt er die Wahrheit. Selbstbezug frisst Logik zum Frühstück, seit 2000 Jahren. Rekursion ist die brave Schwester davon: Sie ruft sich selbst – aber kleiner werdend, mit Stopp. Selbstbezug mit Bremse: Das ist der ganze Unterschied zwischen Paradox und Programm.",
+            "en": "Mirrors you incidentally find in language too: “This sentence is false” – true or lying? If it tells the truth, it lies; if it lies, it tells the truth. Self-reference eats logic for breakfast, for 2000 years. Recursion is its well-behaved sister: it calls itself – but shrinking, with a stop. Self-reference with brakes: that is the whole difference between paradox and program."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "🪞",
+          "title": {
+            "de": "Spiegel-Safari",
+            "en": "Mirror safari"
+          },
+          "text": {
+            "de": "Sammle eine Woche lang Selbstbezüge: Songs über Songs, Filme über Filme, Witze über Witze. Notiere je drei – und markiere, wo der Abbruch steht. Überall, wo einer steht, steckt Rekursion drin. Überall, wo keiner steht, ein Paradox. Safari statt Hausaufgaben.",
+            "en": "Collect self-references for a week: songs about songs, films about films, jokes about jokes. Note three each – marking where the stop sits. Everywhere one sits, recursion sits inside. Everywhere none sits, a paradox. Safari instead of homework."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Paradoxe lieben übrigens Bühnen: Comedians bauen Witze über Witze, Rapper reimen über Reime, Filme zeigen Filme im Film. Selbstbezug unterhält – solange ein Boden drunter ist. Fällt der Boden, fällt der Witz: ins Bodenlose. Auch Humor braucht einen Basisfall.",
+            "en": "Paradoxes incidentally love stages: comedians build jokes about jokes, rappers rhyme about rhymes, films show films in film. Self-reference entertains – as long as a floor sits beneath. If the floor falls, the joke falls: into the bottomless. Humour too needs a base case."
+          }
+        }
+      ],
+      "title": {
+        "de": "Spiegel überall",
+        "en": "Mirrors everywhere"
+      }
+    }
+  ],
+  "summary": {
+    "de": "Funktionen, die sich selbst rufen: Countdown, Hanoi, Stapel – und wann man lieber schleift.",
+    "en": "Functions calling themselves: countdown, Hanoi, pile – and when to better loop."
+  },
+  "title": {
+    "de": "Spiegel im Spiegel",
+    "en": "Mirror in mirror"
+  }
+}

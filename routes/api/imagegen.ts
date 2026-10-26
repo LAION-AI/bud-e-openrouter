@@ -6,53 +6,65 @@
  */
 
 import { Handlers } from "$fresh/server.ts";
+import {
+  getCatalog,
+  isOpenRouterKey,
+  orFetch,
+  routeHeader,
+  withAttempts,
+} from "../../utils/openrouter.ts";
 
 const MIDDLEWARE_BASE_URL = Deno.env.get("MIDDLEWARE_URL") || "";
 
-// Default image generation model (FLUX.2 Klein - fast, sub-second generation)
-const DEFAULT_MODEL = "flux-2-klein-9b";
+// There is deliberately NO global default model: when the caller does not name
+// one, the middleware request omits the field so the API applies whatever image
+// model it has configured. The constants below are only fallbacks for the
+// *direct* provider APIs, which require a concrete model name.
+const DEFAULT_GOOGLE_MODEL = "gemini-3.1-flash-lite-image";
+const DEFAULT_OPENAI_MODEL = "dall-e-3";
 
 /**
  * Model aliases for user convenience
  *
  * Available image generation models:
- * - gemini-2.5-flash-image: Fast, good quality (default)
- * - gemini-3-pro-image-preview: Best quality, supports text+images input/output
- * - imagen-3.0-generate-002: Google Imagen 3 (text-to-image only)
+ * - gemini-3.1-flash-lite-image: middleware default, fast
+ * - gemini-3.1-flash-image: alternative, higher quality
+ * - gemini-2.5-flash-image: previous flash generation ("nano-banana")
+ * - gemini-3-pro-image-preview: Gemini 3 Pro Image ("nano-banana-pro")
+ * - imagen-3.0-generate-002 / imagen-4.0-generate-001: Google Imagen
+ * - dall-e-3 / dall-e-2: OpenAI
  *
- * Black Forest Labs FLUX.2 models:
- * - flux-2-klein-4b: Fastest, sub-second generation (~$0.014/image)
- * - flux-2-klein-9b: Better prompt understanding (~$0.014/image)
- * - flux-2-pro: Production-grade, balanced (~$0.03-0.05/image)
- * - flux-2-max: Maximum quality, complex instructions (~$0.07/image)
- *
- * Gemini 3 Pro Image specs (from Google docs):
- * - Max input tokens: 65,536 | Max output tokens: 32,768
+ * Gemini image model specs (from Google docs):
  * - Max images per prompt: 14
  * - Supported aspect ratios: 1:1, 3:2, 2:3, 3:4, 4:3, 4:5, 5:4, 9:16, 16:9, 21:9
  */
 const MODEL_ALIASES: Record<string, string> = {
-  // Primary aliases (most used)
-  "nano-banana": "gemini-2.5-flash-image",
-  "nano-banana-pro": "gemini-3-pro-image-preview", // Gemini 3 Pro Image - best quality
+  // Preserve FLUX aliases from the existing main branch.
+  "flux-2": "flux-2-pro",
+  "flux-2-klein": "flux-2-klein-9b",
+  "flux-klein": "flux-2-klein-9b",
+  "flux-pro": "flux-2-pro",
+  "flux-max": "flux-2-max",
+  "flux": "flux-2-pro",
 
-  // Gemini aliases
+  // Gemini 3.1 image models
+  "gemini-3.1-flash-lite": "gemini-3.1-flash-lite-image",
+  "flash-lite-image": "gemini-3.1-flash-lite-image",
+  "gemini-3.1-flash": "gemini-3.1-flash-image",
+  "gemini-3.1": "gemini-3.1-flash-image",
+  "flash-image": "gemini-3.1-flash-image",
+
+  // Previous generation aliases (most used)
+  "nano-banana": "gemini-2.5-flash-image",
+  "nano-banana-pro": "gemini-3-pro-image-preview", // Gemini 3 Pro Image
   "gemini-flash-image": "gemini-2.5-flash-image",
-  "gemini-pro-image": "gemini-3-pro-image-preview", // Gemini 3 Pro Image - best quality
+  "gemini-pro-image": "gemini-3-pro-image-preview",
   "gemini-2.5-flash": "gemini-2.5-flash-image",
 
   // Imagen aliases
   "imagen": "imagen-3.0-generate-002",
   "imagen-3": "imagen-3.0-generate-002",
   "imagen-4": "imagen-4.0-generate-001",
-
-  // Black Forest Labs FLUX.2 aliases
-  "flux-2": "flux-2-pro",
-  "flux-2-klein": "flux-2-klein-9b",
-  "flux-klein": "flux-2-klein-9b",
-  "flux-pro": "flux-2-pro",
-  "flux-max": "flux-2-max",
-  "flux": "flux-2-pro",  // Default to pro variant
 
   // OpenAI aliases (for compatibility)
   "dall-e-3": "dall-e-3",
@@ -176,19 +188,21 @@ async function generateWithMiddleware(
   options: { n?: number; size?: string; aspectRatio?: string; inputImages?: string[] },
   timeoutMs: number = 120000
 ): Promise<{ images: string[]; model?: string; error?: string }> {
-  const actualModel = resolveModel(model);
+  // An empty model means "no explicit request" – the field is then omitted so
+  // the middleware picks whichever image model it has configured as default.
+  const actualModel = model ? resolveModel(model) : "";
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
 
   // Build request body
   // deno-lint-ignore no-explicit-any
   const requestBody: Record<string, any> = {
-    model: actualModel,
     prompt,
     n: options.n || 1,
     size: options.size || "1024x1024",
     response_format: "b64_json",
   };
+  if (actualModel) requestBody.model = actualModel;
 
   // Add aspect_ratio if provided (used by FLUX.2 and other providers)
   if (options.aspectRatio) {
@@ -233,7 +247,8 @@ async function generateWithMiddleware(
       }
     }
 
-    return { images, model: actualModel };
+    // Report the model the middleware actually used when we didn't pin one.
+    return { images, model: actualModel || data.model || undefined };
   } catch (error) {
     clearTimeout(timeoutId);
     if (error instanceof Error && error.name === "AbortError") {
@@ -417,17 +432,79 @@ async function generateWithOpenAICompatible(
   }
 }
 
+/* ==================== OpenRouter image generation ==================== */
+
+/**
+ * Generates (or edits) an image through OpenRouter.
+ *
+ * There is no /images/generations endpoint: image models are driven through
+ * chat completions with `modalities: ["image", "text"]`, and the result comes
+ * back on `message.images[]` as a data URL - which is exactly the shape the
+ * rest of this route already produces, so nothing downstream changes.
+ * Reference images ride along as ordinary image_url parts, which is what makes
+ * editing work.
+ */
+async function generateWithOpenRouter(
+  prompt: string,
+  key: string,
+  overrideModel: string,
+  inputImages: string[],
+  referer: string,
+): Promise<{ images: string[]; model: string; route: string }> {
+  const cat = await getCatalog();
+
+  const content: unknown[] = [{ type: "text", text: prompt }];
+  for (const url of inputImages) {
+    content.push({ type: "image_url", image_url: { url } });
+  }
+
+  const outcome = await withAttempts(cat, "image", overrideModel, async (model, policy, level) => {
+    const { resp } = await orFetch(key, "/chat/completions", {
+      model: model.id,
+      modalities: ["image", "text"],
+      ...(policy ? { provider: policy } : {}),
+      messages: [{
+        role: "user",
+        content: content.length === 1 ? prompt : content,
+      }],
+    }, { model, level, referer });
+
+    const body = await resp.json().catch(() => null);
+    if (!resp.ok || body?.error) {
+      const msg = body?.error?.message ?? `HTTP ${resp.status}`;
+      throw new Error(`OpenRouter image: ${msg}`);
+    }
+
+    const images: string[] = [];
+    for (const img of body?.choices?.[0]?.message?.images ?? []) {
+      const url = img?.image_url?.url;
+      if (typeof url === "string" && url) images.push(url);
+    }
+    if (images.length === 0) throw new Error("OpenRouter image: no image returned");
+    return images;
+  });
+
+  return {
+    images: outcome.value,
+    model: outcome.model,
+    route: routeHeader(outcome),
+  };
+}
+
 export const handler: Handlers = {
   async POST(req) {
     try {
       const body = await req.json();
       const {
         prompt,
-        model = DEFAULT_MODEL,
+        // Empty by default: without an explicit request the model field is not
+        // forwarded, so the middleware/API applies its own default model.
+        model = "",
         n = 1,
         size = "1024x1024",
         aspectRatio = "1:1",
         universalApiKey = "",
+        orModel = "",
         imagegenApiKey = "",
         imagegenApiUrl = "",
         input_images = [], // Reference images for editing
@@ -446,7 +523,39 @@ export const handler: Handlers = {
       }
 
       let result: { images: string[]; model?: string; error?: string };
-      const resolvedModel = resolveModel(model);
+      const resolvedModel = model ? resolveModel(model) : "";
+
+      // Priority 0: an OpenRouter key talks to OpenRouter directly.
+      if (isOpenRouterKey(universalApiKey)) {
+        const origin = (() => {
+          try { return new URL(req.url).origin; } catch { return ""; }
+        })();
+        try {
+          const out = await generateWithOpenRouter(
+            prompt,
+            universalApiKey,
+            String(orModel || ""),
+            inputImages,
+            origin,
+          );
+          return new Response(
+            JSON.stringify({ images: out.images, model: out.model }),
+            {
+              status: 200,
+              headers: {
+                "Content-Type": "application/json",
+                "X-OpenRouter-Route": out.route,
+              },
+            },
+          );
+        } catch (err) {
+          console.error("[OR] image generation failed:", err);
+          return new Response(
+            JSON.stringify({ error: `Image generation failed: ${err}` }),
+            { status: 502, headers: { "Content-Type": "application/json" } },
+          );
+        }
+      }
 
       // Priority 1: Universal API key - try middleware first, then direct Google API
       if (universalApiKey) {
@@ -469,7 +578,7 @@ export const handler: Handlers = {
 
           if (result.images.length > 0) {
             return new Response(
-              JSON.stringify({ images: result.images, model: result.model || resolvedModel }),
+              JSON.stringify({ images: result.images, model: result.model || resolvedModel || undefined }),
               { status: 200, headers: { "Content-Type": "application/json" } }
             );
           }
@@ -487,7 +596,7 @@ export const handler: Handlers = {
             result = await generateWithGemini(prompt, model, actualApiKey, { n, aspectRatio });
             if (result.images.length > 0) {
               return new Response(
-                JSON.stringify({ images: result.images, model: result.model || resolvedModel }),
+                JSON.stringify({ images: result.images, model: result.model || resolvedModel || undefined }),
                 { status: 200, headers: { "Content-Type": "application/json" } }
               );
             }
@@ -498,18 +607,18 @@ export const handler: Handlers = {
             result = await generateWithImagen(prompt, model, actualApiKey, { n, aspectRatio });
             if (result.images.length > 0) {
               return new Response(
-                JSON.stringify({ images: result.images, model: result.model || resolvedModel }),
+                JSON.stringify({ images: result.images, model: result.model || resolvedModel || undefined }),
                 { status: 200, headers: { "Content-Type": "application/json" } }
               );
             }
           }
-          // Default: try Gemini with default model
+          // Default: no model requested (or a non-Google one) → Gemini fallback
           else {
-            console.log("Using Gemini API with default model:", DEFAULT_MODEL);
-            result = await generateWithGemini(prompt, DEFAULT_MODEL, actualApiKey, { n, aspectRatio });
+            console.log("Using Gemini API with fallback model:", DEFAULT_GOOGLE_MODEL);
+            result = await generateWithGemini(prompt, DEFAULT_GOOGLE_MODEL, actualApiKey, { n, aspectRatio });
             if (result.images.length > 0) {
               return new Response(
-                JSON.stringify({ images: result.images, model: result.model || DEFAULT_MODEL }),
+                JSON.stringify({ images: result.images, model: result.model || DEFAULT_GOOGLE_MODEL }),
                 { status: 200, headers: { "Content-Type": "application/json" } }
               );
             }
@@ -534,17 +643,17 @@ export const handler: Handlers = {
           } else if (isImagenModel(model)) {
             result = await generateWithImagen(prompt, model, imagegenApiKey, { n, aspectRatio });
           } else {
-            result = await generateWithGemini(prompt, DEFAULT_MODEL, imagegenApiKey, { n, aspectRatio });
+            result = await generateWithGemini(prompt, DEFAULT_GOOGLE_MODEL, imagegenApiKey, { n, aspectRatio });
           }
         }
         // OpenAI key
         else if (imagegenApiKey.startsWith("sk-")) {
           const url = imagegenApiUrl || "https://api.openai.com/v1/images/generations";
-          result = await generateWithOpenAICompatible(prompt, model, url, imagegenApiKey, { n, size });
+          result = await generateWithOpenAICompatible(prompt, model || DEFAULT_OPENAI_MODEL, url, imagegenApiKey, { n, size });
         }
         // Custom API
         else if (imagegenApiUrl) {
-          result = await generateWithOpenAICompatible(prompt, model, imagegenApiUrl, imagegenApiKey, { n, size });
+          result = await generateWithOpenAICompatible(prompt, model || DEFAULT_OPENAI_MODEL, imagegenApiUrl, imagegenApiKey, { n, size });
         }
         else {
           return new Response(
@@ -555,7 +664,7 @@ export const handler: Handlers = {
 
         if (result.images.length > 0) {
           return new Response(
-            JSON.stringify({ images: result.images, model: result.model || resolvedModel }),
+            JSON.stringify({ images: result.images, model: result.model || resolvedModel || undefined }),
             { status: 200, headers: { "Content-Type": "application/json" } }
           );
         }

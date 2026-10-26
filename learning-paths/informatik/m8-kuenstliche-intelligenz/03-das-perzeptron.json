@@ -1,0 +1,313 @@
+{
+  "accent": "emerald",
+  "exercises": [
+    {
+      "hint": {
+        "de": "Alle Antworten stehen auf den Bildschirmen davor – lies sie noch einmal von oben.",
+        "en": "All answers sit on the screens before – read them once more from the top."
+      },
+      "intro": {
+        "de": "Setze die fehlenden Wörter ein.",
+        "en": "Fill in the missing words."
+      },
+      "kind": "cloze",
+      "text": {
+        "de": "Eine Nervenzelle sammelt Signale über die ___ und gibt sie über das ___ weiter – aber nur, wenn die ___ überschritten ist. Das ___ von 1958 rechnet genauso: Eingänge mal ___, alles ___, Schwelle prüfen. Lernen heißt ___ drehen: Nach jedem ___ werden die Wichtigkeiten ein Stück ___. 1969 zeigten Minsky und Papert die ___: Ein einzelnes Perzeptron schafft kein ___, weil keine ___ die Punkte trennt. Die Antwort hieß mehr ___ und ein Verfahren namens ___.",
+        "en": "A nerve cell collects signals through the ___ and passes them on through the ___ – but only if the ___ is exceeded. The ___ of 1958 computes exactly so: inputs times ___, everything ___, check the threshold. Learning means turning ___: after every ___ the importances shift a little ___. In 1969 Minsky and Papert showed the ___: a single perceptron cannot do ___ because no ___ separates the dots. The answer was more ___ and a method called ___."
+      },
+      "title": {
+        "de": "1. Lückentext",
+        "en": "1. Fill in the blanks"
+      }
+    },
+    {
+      "hint": {
+        "de": "Was passiert bei einer neuen Obstsorte – wer fasst was an?",
+        "en": "What happens with a new fruit – who touches what?"
+      },
+      "intro": {
+        "de": "Setze zwei Beobachtungen zueinander in Beziehung.",
+        "en": "Relate two observations to each other."
+      },
+      "kind": "compare",
+      "text": {
+        "de": "Zum Apfel-Erkennen gibt es zwei Wege: eine If-Kette („wenn rot und rund, dann Apfel“) und ein Perzeptron mit Gewichten. Vergleiche beide, wenn eine neue Obstsorte auftaucht – und erkläre, wo jeweils die Arbeit steckt.",
+        "en": "There are two ways to recognise apples: an if-chain (“if red and round, then apple”) and a perceptron with weights. Compare both when a new fruit appears – and explain where the work sits in each case."
+      },
+      "title": {
+        "de": "2. Vergleiche",
+        "en": "2. Compare"
+      }
+    },
+    {
+      "intro": {
+        "de": "Auf diese Frage gibt es keine richtige Antwort.",
+        "en": "There is no right answer to this one."
+      },
+      "kind": "reflect",
+      "text": {
+        "de": "Wo ziehst du im Kopf eine „Gerade“ – eine Schwelle, ab der du entscheidest? Und wo geht genau das schief, weil die Welt kein Entweder-oder ist?",
+        "en": "Where do you draw a “line” in your head – a threshold from which you decide? And where does exactly that go wrong, because the world is no either-or?"
+      },
+      "title": {
+        "de": "3. Zum Nachdenken",
+        "en": "3. Something to think about"
+      }
+    }
+  ],
+  "icon": "⚡",
+  "key": "das-perzeptron",
+  "minutes": 17,
+  "screens": [
+    {
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Dein Gehirn hat 86 Milliarden Nervenzellen. Jede einzelne macht fast nichts – zusammen machen sie dich. Bauen wir eine nach, stark vereinfacht.",
+            "en": "Your brain holds 86 billion nerve cells. Each single one does almost nothing – together they make you. Let us rebuild one, heavily simplified."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Echte Zelle, kurz: Über die Dendriten kommen Signale herein – viele, gleichzeitig, mal stark, mal schwach. Der Zellkörper addiert. Überschreitet die Summe eine Schwelle, feuert die Zelle über das Axon weiter. Unterschritten: Stille. Mehr passiert nicht – und mehr braucht das Perzeptron auch nicht.",
+            "en": "Real cell, briefly: signals arrive through the dendrites – many, simultaneous, sometimes strong, sometimes weak. The cell body adds up. If the sum exceeds a threshold, the cell fires onward through the axon. Below: silence. Nothing more happens – and the perceptron needs no more either."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Dein Körper kennt die Schwelle längst: Hand auf die heiße Platte – zurückgezogen, bevor du nachdenkst. Das Rückenmark entscheidet vor dem Gehirn: Reiz groß genug, Reaktion raus. Ein Perzeptron aus Fleisch: Eingang, Schwelle, Feuer. Die Natur hat das Prinzip milliardenfach verbaut, bevor Rosenblatt es nachbaute.",
+            "en": "Your body knows the threshold long since: hand on the hot plate – withdrawn before you think. The spinal cord decides ahead of the brain: stimulus big enough, reaction out. A perceptron from flesh: input, threshold, fire. Nature installed the principle billions of times before Rosenblatt rebuilt it."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "fact",
+          "icon": "💡",
+          "title": {
+            "de": "20 Watt",
+            "en": "20 watts"
+          },
+          "text": {
+            "de": "Dein Gehirn läuft mit etwa 20 Watt – eine schwache Glühbirne. Ein Laptop braucht ein Vielfaches für einen Bruchteil der Leistung. Wer über KI staunt, staune zuerst über den Kopf: sparsamer, schneller, ungeschlagen im Stromsparen.",
+            "en": "Your brain runs on about 20 watts – a weak light bulb. A laptop needs multiples for a fraction of the performance. Whoever marvels at AI, marvel first at the head: thriftier, faster, unbeaten in saving power."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Dein Gehirn verzeiht übrigens Fehler, die kein Rechner verzeiht: Ein Glas zu viel, eine Nacht zu wenig – und es läuft trotzdem, nur langsamer. Neuronen sterben täglich tausendfach, und du merkst nichts: Das Netz fängt es auf. Robustheit durch Masse statt Perfektion im Einzelnen – das Gegenmodell zu jedem Chip, der an einem Bit scheitert.",
+            "en": "Your brain incidentally forgives mistakes no computer forgives: one glass too many, one night too few – yet it runs, only slower. Neurons die daily by the thousands, and you notice nothing: the net absorbs it. Robustness through mass instead of perfection in the single – the counter-model to every chip failing on one bit."
+          }
+        }
+      ],
+      "title": {
+        "de": "Die Zelle, die rechnet",
+        "en": "The cell that computes"
+      }
+    },
+    {
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "1958 baut Frank Rosenblatt das Perzeptron: eine künstliche Nervenzelle aus Draht und Mathematik. So rechnet sie – am Beispiel Obst:",
+            "en": "In 1958 Frank Rosenblatt builds the perceptron: an artificial nerve cell from wire and mathematics. It computes like this – fruit as an example:"
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Eingänge: Gewicht 180 Gramm, Rot-Anteil 90 Prozent. Wichtigkeiten: Gewicht zählt einfach, Rot zählt doppelt. Rechnung: 180 mal 1 plus 90 mal 2 gleich 360. Schwelle: ab 200 ist es ein Apfel. 360 ist größer – Apfel! Die Zitrone daneben: 120 Gramm, 5 Prozent Rot – 120 plus 10 gleich 130, unter der Schwelle, kein Apfel.",
+            "en": "Inputs: weight 180 grams, red share 90 percent. Importances: weight counts single, red counts double. Computation: 180 times 1 plus 90 times 2 equals 360. Threshold: apple from 200 up. 360 is bigger – apple! The lemon beside: 120 grams, 5 percent red – 120 plus 10 equals 130, below the threshold, no apple."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "tip",
+          "icon": "🍎",
+          "title": {
+            "de": "Jetzt du",
+            "en": "Your turn"
+          },
+          "text": {
+            "de": "Nimm eine Birne (170 Gramm, 10 Prozent Rot) und rechne mit denselben Wichtigkeiten. Apfel oder nicht? Und welche Wichtigkeit würdest du drehen, damit es stimmt? Genau dieses Drehen ist das Lernen – nächster Bildschirm.",
+            "en": "Take a pear (170 grams, 10 percent red) and compute with the same importances. Apple or not? And which importance would you turn to make it right? Exactly that turning is the learning – next screen."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Noch eins aus dem Flur: Das Thermostat ist ein Perzeptron. Eingang: Temperatur. Wichtigkeit: 1. Schwelle: 21 Grad. Darunter: Heizen an. Darüber: aus. Keine Intelligenz, nur Schwelle – und trotzdem wohnt es angenehm. Die meisten „intelligenten“ Geräte sind Thermostate mit besserem Marketing.",
+            "en": "One more from the hall: the thermostat is a perceptron. Input: temperature. Importance: 1. Threshold: 21 degrees. Below: heating on. Above: off. No intelligence, only threshold – yet living stays pleasant. Most “intelligent” devices are thermostats with better marketing."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "note",
+          "icon": "🌡️",
+          "title": {
+            "de": "Entzaubert",
+            "en": "Disenchanted"
+          },
+          "text": {
+            "de": "Wenn dir das nächste Mal jemand „KI-gesteuert“ verkauft – Heizung, Zahnbürste, Katzentoilette –, frag nach Schwelle und Eingang. Oft steckt ein Thermostat drin. Gute Nachricht: Dann verstehst du es schon.",
+            "en": "When someone next sells you “AI-driven” – heating, toothbrush, litter box –, ask for threshold and input. Often a thermostat sits inside. Good news: then you already understand it."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Noch ein Thermostat aus deinem Leben: Die Dusche. Kalt aufdrehen, warten, nachregeln – du bist der Regler, die Haut der Sensor, die Armatur der Schalter. Jedes Duschen ist ein Regelkreis: messen, vergleichen, stellen. Wer das einmal sieht, sieht überall Regler: Heizung, Hunger, Taschengeld am Monatsende.",
+            "en": "One more thermostat from your life: the shower. Turn cold up, wait, readjust – you are the controller, the skin the sensor, the tap the switch. Every shower is a control loop: measure, compare, adjust. Whoever sees that once sees controllers everywhere: heating, hunger, pocket money at month's end."
+          }
+        }
+      ],
+      "title": {
+        "de": "Das Perzeptron",
+        "en": "The perceptron"
+      }
+    },
+    {
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Lernen heißt Gewichte drehen: Nach jedem Fehler werden die Wichtigkeiten ein Stück verschoben – so lange, bis es sitzt.",
+            "en": "Learning means turning weights: after every mistake the importances shift a little – until it sits."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Zu oft Apfel gerufen? Das Rot-Gewicht sinkt ein bisschen. Echte Äpfel verpasst? Es steigt. Tausend Beispiele, tausend kleine Drehungen – am Ende trennt die Schwelle, was zusammengehört. Die Zeitungen staunten 1958: eine Maschine, die läuft, sieht und lernt.",
+            "en": "Cried apple too often? The red weight sinks a little. Missed real apples? It rises. A thousand examples, a thousand small turns – at the end the threshold separates what belongs together. The newspapers marvelled in 1958: a machine that walks, sees and learns."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Dann kam 1969 der Dämpfer: Minsky und Papert bewiesen, dass ein einzelnes Perzeptron manches nie lernt – etwa XOR, wo keine einzige Gerade die Punkte trennt. Die Gelder versiegten, der Winter begann. Erst in den 80ern kam die Antwort: mehr Schichten hintereinander und ein Verfahren namens Backpropagation, das den Fehler von hinten nach vorne verteilt.",
+            "en": "Then came the damper in 1969: Minsky and Papert proved that a single perceptron never learns some things – like XOR, where no single line separates the dots. The money dried up, winter began. Only in the 80s came the answer: more layers in a row and a method called backpropagation, which shares the blame from back to front."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Du lernst längst wie ein Perzeptron: Der Karteikasten für Vokabeln schiebt gewusste Karten nach hinten, vergessene nach vorn – Wichtigkeiten drehen per Hand. Fünf Durchgänge, und die Schwelle sitzt: Was du kannst, bleibt liegen, was nicht, kommt wieder. Wer Karteikarten schreibt, programmiert sein Gedächtnis – mit Gewichten aus Pappe.",
+            "en": "You long learn like a perceptron: the vocabulary box pushes known cards back, forgotten ones forward – turning importances by hand. Five rounds, and the threshold sits: what you can stays put, what not returns. Whoever writes index cards programs their memory – with weights from cardboard."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "tip",
+          "icon": "🗂️",
+          "title": {
+            "de": "Heute anfangen",
+            "en": "Start today"
+          },
+          "text": {
+            "de": "Lege einen Karteikasten für das nächste Fach an – zwanzig Karten genügen. Beobachte dabei dich selbst beim Lernen: Du bist Perzeptron und Trainer in einer Person. Das ist kein Bild, das bist du.",
+            "en": "Start an index-card box for the next subject – twenty cards suffice. Watch yourself learning: you are perceptron and trainer in one person. That is no metaphor, that is you."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Der Karteikasten hat übrigens einen Erfinder: Sebastian Leitner, 1972, ein deutscher Wissenschaftsjournalist. Fünf Fächer, einfache Regel: gewusst wandert vor, vergessen zurück. Millionen Schüler lernen seither nach Leitner – Perzeptron-Training aus Pappe, älter als mancher Rechner. Manchmal steckt die beste KI in einer Schuhschachtel.",
+            "en": "The index-card box incidentally has an inventor: Sebastian Leitner, 1972, a German science journalist. Five compartments, simple rule: known moves forward, forgotten back. Millions of pupils learn by Leitner since – perceptron training from cardboard, older than many a computer. Sometimes the best AI sits in a shoebox."
+          }
+        }
+      ],
+      "title": {
+        "de": "Lernen heißt drehen",
+        "en": "Learning means turning"
+      }
+    },
+    {
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Die Grenze des Perzeptrons passt auf einen Bierdeckel: Es kann nur trennen, was eine Gerade trennt.",
+            "en": "The perceptron's limit fits a beer mat: it can only separate what a line separates."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Male vier Punkte: unten links und oben rechts grün (aus), oben links und unten rechts rot (an) – das ist XOR. Keine Gerade der Welt legt Grün auf die eine und Rot auf die andere Seite. Ein einzelnes Perzeptron scheitert hier immer – nicht aus Dummheit, sondern aus Geometrie. Zwei Schichten dagegen schaffen es mühelos: Die erste baut Ecken, die zweite entscheidet.",
+            "en": "Draw four dots: bottom left and top right green (off), top left and bottom right red (on) – that is XOR. No line in the world puts green on one side and red on the other. A single perceptron always fails here – not from stupidity but from geometry. Two layers manage it effortlessly: the first builds corners, the second decides."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Merke dir das Bild für den letzten Pfad: Tiefe Netze stapeln viele solcher Geraden – und irgendwo in dem Stapel entsteht das, was wir gleich bei GPT bestaunen. Aus Geraden wird Weltwissen, Schicht für Schicht.",
+            "en": "Keep this picture for the last path: deep nets stack many such lines – and somewhere in the stack emerges what we marvel at with GPT. From lines becomes world knowledge, layer by layer."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "Hamburg: Bildungsplan Studienstufe (Informatik)",
+                "en": "Hamburg: syllabus for the upper stage (computing)"
+              },
+              "url": "https://www.hamburg.de/politik-und-verwaltung/behoerden/bsfb/veroeffentlichungen/bildungsplaene/start-sek2-2022-123118"
+            },
+            {
+              "label": {
+                "de": "GI: Bildungsstandards Informatik",
+                "en": "GI: computing education standards"
+              },
+              "url": "https://gi.de/meldung/bildungsstandards-gi-stellt-neue-empfehlungen-fuer-den-informatikunterricht-vor"
+            }
+          ]
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Male die vier Punkte wirklich – Stift beweist mehr als Lesen: zwei grüne diagonal, zwei rote diagonal, und suche die Gerade. Nach zwei Minuten gibst du auf, und genau das ist der Beweis zum Anfassen: Geht nicht, gibt's. XOR ist der Friedhof aller Einzel-Perzeptronen – und der Geburtsort aller Netze.",
+            "en": "Really draw the four dots – pen proves more than reading: two greens diagonal, two reds diagonal, and seek the line. After two minutes you give up, and exactly that is proof to touch: impossible exists. XOR is the graveyard of all single perceptrons – and the birthplace of all nets."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "note",
+          "icon": "✏️",
+          "title": {
+            "de": "Bierdeckel-Test",
+            "en": "Beer-mat test"
+          },
+          "text": {
+            "de": "Erkläre XOR und die Gerade jemandem auf einem Bierdeckel: vier Punkte, ein Strichversuch, ein Satz. Wer das kann, hat mehr verstanden als mancher Vortrag – und einen guten Abend obendrein.",
+            "en": "Explain XOR and the line to someone on a beer mat: four dots, one line attempt, one sentence. Whoever manages that understood more than many a lecture – and a good evening on top."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "XOR begegnet dir übrigens täglich – als Entweder-oder-Falle: „Bist du dafür oder dagegen?“ Die Welt antwortet meist: weder noch, beides, kommt darauf an. Wer nur Geraden ziehen kann, versteht keine Zwischentöne – Mensch wie Maschine. Die klügste Antwort auf Entweder-oder ist oft: falsche Frage.",
+            "en": "XOR meets you incidentally daily – as an either-or trap: “Are you for or against?” The world mostly answers: neither, both, it depends. Whoever can only draw lines understands no shades – human like machine. The cleverest answer to either-or is often: wrong question."
+          }
+        }
+      ],
+      "title": {
+        "de": "Eine Gerade als Grenze",
+        "en": "One line as the limit"
+      }
+    }
+  ],
+  "summary": {
+    "de": "Eine Zelle, die addiert, Gewichte, die lernen, und eine Gerade als Grenze: das Perzeptron von 1958 bis heute.",
+    "en": "One cell that adds, weights that learn, and a line as the limit: the perceptron from 1958 until today."
+  },
+  "title": {
+    "de": "Das Perzeptron",
+    "en": "The perceptron"
+  }
+}

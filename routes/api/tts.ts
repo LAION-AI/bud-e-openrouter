@@ -1,18 +1,41 @@
+// routes/api/tts.ts
 import { Handlers } from "$fresh/server.ts";
 import { Buffer } from "npm:buffer";
+import {
+  buildSpeechPrompt,
+  DEFAULT_TTS_PROMPT,
+  getCatalog,
+  isOpenRouterKey,
+  orFetch,
+  parsePcmContentType,
+  parseTtsDirectives,
+  pcmToWav,
+  preferredAudioFormat,
+  routeHeader,
+  styleChannelFor,
+  voiceFor,
+  withAttempts,
+} from "../../utils/openrouter.ts";
+import { countWords } from "../../utils/ttsChunks.ts";
 
-const TTS_KEY = Deno.env.get("TTS_KEY") || "";
-const TTS_URL = Deno.env.get("TTS_URL") || "";
-const TTS_MODEL = Deno.env.get("TTS_MODEL") || "";
-const MIDDLEWARE_BASE_URL = Deno.env.get("MIDDLEWARE_URL") || "";
+/* ========================= ENV CONFIG ========================= */
+const TTS_KEY   = (Deno.env.get("TTS_KEY")   || "").trim();
+const TTS_URL   = (Deno.env.get("TTS_URL")   || "").trim();
+const TTS_MODEL = (Deno.env.get("TTS_MODEL") || "").trim();
+/** Optional: bevorzugte Middleware-Basis (wenn kein Key-Suffix) */
+const MIDDLEWARE_BASE_URL = (Deno.env.get("MIDDLEWARE_URL") || "").trim();
 
-/* ===================== Universal-key suffix decoding =======================
-   Backend encodes "<host>:<port>" as:
-     token = "v1" + Base32( bytes(host:port) XOR 0x5A ), without '=' padding
-   We decode it, then build "http://<host>:<port>" (IPv6 hosts get brackets).
-============================================================================= */
+/* ================================================================
+   Universal-Key-Suffix
+   Backend kodiert "<host>:<port>" als:
+     token = "v1" + Base32( bytes(host:port) XOR 0x5A )   (ohne '=' Padding)
+   Wir unterstützen zusätzlich:
+     - http(s)://<host>[:port]
+     - <host>:<port> (bare)
+   und bauen daraus "http(s)://host[:port]" (IPv6 bekommt Klammern).
+================================================================ */
 
-/** RFC4648 Base32 decode (no padding required). Throws on bad chars. */
+/** RFC 4648 Base32 decode, Padding optional. Wirft bei ungültigen Zeichen. */
 function base32DecodeNoPadding(s: string): Uint8Array {
   const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ234567";
   const clean = s.trim().toUpperCase().replace(/=+$/g, "");
@@ -33,9 +56,9 @@ function base32DecodeNoPadding(s: string): Uint8Array {
   return new Uint8Array(out);
 }
 
-/** Convert "host:port" → "http://host:port" with IPv6 bracket handling */
+/** Wandelt "host:port" in "http://host:port" (IPv6 → [host]) */
 function hostPortToHttpBase(hostPort: string): string {
-  // Split at last ":" to separate port; IPv6 contains multiple ":"s.
+  // letztes ":" trennt Port; IPv6 hat mehrere ":"
   const last = hostPort.lastIndexOf(":");
   let host = hostPort;
   let port = "";
@@ -49,36 +72,108 @@ function hostPortToHttpBase(hostPort: string): string {
   return `http://${bracketHost}${portPart}`;
 }
 
-/** Decode middleware base URL from the composite universal key (or return null). */
-function decodeMiddlewareBaseFromUniversalKey(universalApiKey: string | undefined | null): string | null {
+/** Entfernt alle überzähligen Slashes am Ende. */
+function stripTrailingSlashes(u: string): string {
+  return u.replace(/\/+$/g, "");
+}
+
+/** Decode Middleware-Base aus universalApiKey (oder null). */
+function decodeMiddlewareBaseFromUniversalKey(
+  universalApiKey: string | undefined | null,
+): string | null {
   const raw = (universalApiKey || "").trim();
   const hash = raw.indexOf("#");
   if (hash < 0) return null;
-  const suffix = raw.slice(hash + 1);
+  const suffixRaw = raw.slice(hash + 1).trim();
+  if (!suffixRaw) return null;
 
-  // Backward compatibility: accept raw http(s) suffixes if they ever existed.
-  if (/^https?:\/\/.+/i.test(suffix)) {
-    return suffix.replace(/\/+$/g, "");
+  // 1) http(s)://...
+  if (/^https?:\/\/.+/i.test(suffixRaw)) {
+    try {
+      const u = new URL(suffixRaw);
+      return stripTrailingSlashes(`${u.protocol}//${u.host}`);
+    } catch {
+      return null;
+    }
   }
 
-  // Expected scheme: 'v1' + Base32(no padding) of XOR'd bytes
-  if (!suffix.startsWith("v1")) return null;
+  // 2) Bare host:port (z. B. 138.199.174.173:8787 oder myhost.local:8787)
+  if (/^[A-Za-z0-9.\-]+:\d+$/.test(suffixRaw)) {
+    return stripTrailingSlashes(hostPortToHttpBase(suffixRaw));
+  }
+
+  // 3) Kodiertes Schema "v1" + Base32(no padding) der XOR-Bytes
+  if (!suffixRaw.startsWith("v1")) return null;
   try {
-    const b32 = suffix.slice(2);
+    const b32 = suffixRaw.slice(2);
     const bytes = base32DecodeNoPadding(b32);
-    // XOR with 0x5A to recover original "host:port" ascii
-    for (let i = 0; i < bytes.length; i++) bytes[i] = bytes[i] ^ 0x5a;
-    const hostPort = new TextDecoder().decode(bytes);
-    if (!hostPort || hostPort.indexOf(":") === -1) return null;
-    return hostPortToHttpBase(hostPort).replace(/\/+$/g, "");
+    for (let i = 0; i < bytes.length; i++) bytes[i] = bytes[i] ^ 0x5a; // un-XOR
+    const hostPort = new TextDecoder().decode(bytes).trim();
+    if (!/^[A-Za-z0-9.\-]+:\d+$/.test(hostPort)) return null;
+    return stripTrailingSlashes(hostPortToHttpBase(hostPort));
   } catch {
     return null;
   }
 }
 
+/* ========================= JSON-BLOCK STRIPPER ========================= */
+/** Entfernt alle Inhalte innerhalb von geschweiften Klammern (inkl. verschachtelt). */
+function stripJsonLikeBlocks(text: string): string {
+  let result = "";
+  let depth = 0;
+  for (let i = 0; i < text.length; i++) {
+    const ch = text[i];
+    if (ch === "{") {
+      depth++;
+      continue;
+    }
+    if (ch === "}") {
+      if (depth > 0) depth--;
+      continue;
+    }
+    if (depth === 0) result += ch;
+  }
+  return result;
+}
+
 /**
- * MARS6 helper
+ * Bereitet Text für die Sprachausgabe auf: JSON-Blöcke raus, Fettmarkierung
+ * weg, und "bud-e" wird zu "buddy", weil es sonst buchstabiert klingt.
+ * Gilt für jeden Anbieter gleichermaßen, auch für OpenRouter.
  */
+function cleanForSpeech(text: string): string {
+  return stripJsonLikeBlocks(String(text))
+    .replace(/\*\*(.*?)\*\*/g, "$1")
+    .replace(/bud-e/gi, "buddy");
+}
+
+/* ========================= RETRY-HELPER ========================= */
+async function withRetries<T>(
+  label: string,
+  fn: () => Promise<T>,
+  maxAttempts = 3,
+  backoffMs = 500,
+): Promise<T> {
+  let lastErr: unknown = null;
+  for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+    try {
+      const res = await fn();
+      if (attempt > 1) {
+        console.log(`[TTS] ${label} succeeded on attempt ${attempt}`);
+      }
+      return res;
+    } catch (err) {
+      lastErr = err;
+      console.error(`[TTS] ${label} attempt ${attempt} failed:`, err);
+      if (attempt < maxAttempts) {
+        await new Promise((r) => setTimeout(r, backoffMs * attempt));
+      }
+    }
+  }
+  throw lastErr ?? new Error(`[TTS] ${label} failed after ${maxAttempts} attempts`);
+}
+
+/* ========================= MARS6 Client ========================= */
 async function callMARS6API(
   text: string,
   ttsUrl: string,
@@ -90,98 +185,77 @@ async function callMARS6API(
     voiceID: number = 20299,
     language: number = 1,
   ) {
-    try {
-      const response = await fetch(`${url}/tts`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "x-api-key": key,
-        },
-        body: JSON.stringify({
-          text,
-          voice_id: voiceID,
-          language,
-        }),
-      });
-      const responseJSON = await response.json();
-      console.log(`Status code for creating TTS: ${response.status}`);
-      if (response.ok) {
-        return responseJSON.task_id as string;
-      } else {
-        console.error(
-          `Failed to create TTS task for MARS6. Status code: ${response.status}: ${response.statusText}`,
-        );
-      }
-    } catch (error) {
-      console.error(`Error in createTTSTask: ${error}`);
+    const resp = await fetch(`${stripTrailingSlashes(url)}/tts`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "x-api-key": key,
+      },
+      body: JSON.stringify({ text, voice_id: voiceID, language }),
+    });
+    const js = await resp.json().catch(() => ({}));
+    if (!resp.ok) {
+      console.error(`MARS6 create error: ${resp.status} ${resp.statusText}`, js);
+      throw new Error(`MARS6 create error: ${resp.status} ${resp.statusText}`);
     }
+    return js.task_id as string;
   }
+
+  // Bounded polling: the old `for(;;)` loop only ever exited on SUCCESS, so a
+  // failed or stuck task kept the HTTP request (and a client pool slot) open
+  // forever.
+  const POLL_TIMEOUT_MS = 60_000;
+  const POLL_INTERVAL_MS = 1500;
 
   async function pollTTSTask(url: string, key: string, taskID: string): Promise<number> {
-    const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
-    try {
-      const response = await fetch(`${url}/tts/${taskID}`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          "x-api-key": key,
-        },
-      });
+    const delay = (ms: number) => new Promise((r) => setTimeout(r, ms));
+    const deadline = Date.now() + POLL_TIMEOUT_MS;
 
-      const responseJSON = await response.json();
-      const status = responseJSON.status;
-      console.log(`Polling: ${status}`);
+    while (Date.now() < deadline) {
+      const resp = await fetch(`${stripTrailingSlashes(url)}/tts/${taskID}`, {
+        method: "GET",
+        headers: { "Content-Type": "application/json", "x-api-key": key },
+      });
+      const js = await resp.json().catch(() => ({}));
+      const status = String(js?.status ?? "").toUpperCase();
+      console.log(`MARS6 polling: ${status || "?"}`);
 
       if (status === "SUCCESS") {
-        return responseJSON.run_id as number;
+        return js.run_id as number;
       }
-      await delay(1500);
-      return pollTTSTask(url, key, taskID);
-    } catch (error) {
-      console.error("Error polling TTS task:", error);
-      throw error;
+      // Terminal failure states must abort instead of polling on forever.
+      if (["FAILED", "FAILURE", "ERROR", "CANCELLED", "CANCELED", "REVOKED"].includes(status)) {
+        throw new Error(`MARS6 task ${taskID} ended with status ${status}`);
+      }
+      if (!resp.ok && resp.status >= 400 && resp.status !== 429) {
+        throw new Error(`MARS6 polling error: ${resp.status} ${resp.statusText}`);
+      }
+      await delay(POLL_INTERVAL_MS);
     }
+
+    throw new Error(`MARS6 task ${taskID} timed out after ${POLL_TIMEOUT_MS}ms`);
   }
 
-  async function getTTSAudioResult(
-    url: string,
-    key: string,
-    runID: number,
-  ) {
-    try {
-      const response = await fetch(`${url}/tts-result/${runID}`, {
-        method: "GET",
-        headers: {
-          "x-api-key": key,
-        },
-      });
-      if (response.ok) {
-        return await response.arrayBuffer();
-      } else {
-        console.error(
-          `Failed to fetch TTS audio file from MARS6. Status code: ${response.status}: ${response.statusText}`,
-        );
-      }
-    } catch (error) {
-      console.error(`Error in fetching TTS audio file from MARS6: ${error}`);
+  async function getTTSAudioResult(url: string, key: string, runID: number) {
+    const resp = await fetch(`${stripTrailingSlashes(url)}/tts-result/${runID}`, {
+      method: "GET",
+      headers: { "x-api-key": key },
+    });
+    if (!resp.ok) {
+      console.error(`MARS6 result error: ${resp.status} ${resp.statusText}`);
+      throw new Error(`MARS6 result error: ${resp.status} ${resp.statusText}`);
     }
+    return await resp.arrayBuffer();
   }
 
-  try {
-    const taskID = await createTTSTask(ttsUrl, ttsKey);
-    if (!taskID) throw new Error("No task_id from MARS6");
-    const runID = await pollTTSTask(ttsUrl, ttsKey, taskID);
-    return await getTTSAudioResult(ttsUrl, ttsKey, runID);
-  } catch (error) {
-    console.error(`Failed to call MARS6: ${error}`);
-    throw error;
-  }
+  const taskID = await createTTSTask(ttsUrl, ttsKey);
+  const runID = await pollTTSTask(ttsUrl, ttsKey, taskID);
+  const data = await getTTSAudioResult(ttsUrl, ttsKey, runID);
+  if (!data) throw new Error("MARS6: no audio result");
+  return data;
 }
 
-/**
- * Text-to-Speech dispatcher
- * Returns binary audio as Buffer (we respond with audio/mpeg).
- */
+/* ========================= TTS Dispatcher ========================= */
 async function textToSpeech(
   text: string,
   textPosition: string,
@@ -189,173 +263,287 @@ async function textToSpeech(
   ttsKey: string,
   ttsModel: string,
 ): Promise<Buffer | null> {
-  // clean markup
-  const boldTextRegex = /\*\*(.*?)\*\*/g;
-  text = String(text).replace(boldTextRegex, "$1");
-  text = text.replace(/bud-e/gi, "buddy");
+  text = cleanForSpeech(text);
 
-  console.log("textToSpeech", text);
-  console.log("textPosition", textPosition);
-  console.log("ttsUrl", ttsUrl || TTS_URL);
-  console.log("ttsKey", ttsKey ? "[provided]" : "[env/default]");
-  console.log("ttsModel", ttsModel || TTS_MODEL);
+  const useThisTtsUrl   = (ttsUrl   || TTS_URL);
+  const useThisTtsKey   = (ttsKey   || TTS_KEY);
+  const useThisTtsModel = (ttsModel || TTS_MODEL);
 
-  const useThisTtsUrl = ttsUrl !== "" ? ttsUrl : TTS_URL;
-  const useThisTtsKey = ttsKey !== "" ? ttsKey : TTS_KEY;
-  const useThisTtsModel = ttsModel !== "" ? ttsModel : TTS_MODEL;
+  console.log("[TTS] textPos=", textPosition);
+  console.log("[TTS] url=", useThisTtsUrl);
+  console.log("[TTS] model=", useThisTtsModel || "(none)");
 
   try {
-    // Fish Audio heuristic (32-hex ID → uses "reference_id" & returns MP3)
+    // Fish-Audio Heuristik: 32-Hex → behandelt als Referenz-ID
     if (useThisTtsModel && /^[a-fA-F0-9]{32}$/.test(useThisTtsModel)) {
-      const startTime = Date.now();
-      const response = await fetch(useThisTtsUrl, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${useThisTtsKey}`,
-        },
-        body: JSON.stringify({
-          text,
-          normalize: true,
-          format: "mp3",
-          reference_id: useThisTtsModel,
-          mp3_bitrate: 64,
-          opus_bitrate: -1000,
-          latency: "normal",
-        }),
+      const audioBuf = await withRetries<ArrayBuffer>("Fish", async () => {
+        const t0 = Date.now();
+        const resp = await fetch(useThisTtsUrl, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${useThisTtsKey}`,
+          },
+          body: JSON.stringify({
+            text,
+            normalize: true,
+            format: "mp3",
+            reference_id: useThisTtsModel,
+            mp3_bitrate: 64,
+            opus_bitrate: -1000,
+            latency: "normal",
+          }),
+        });
+        if (!resp.ok) {
+          const body = await resp.text().catch(() => "");
+          throw new Error(`Fish TTS failed: ${resp.status} ${resp.statusText} ${body}`);
+        }
+        const audio = await resp.arrayBuffer();
+        console.log(`[TTS] Fish OK, latency=${Date.now() - t0}ms`);
+        return audio;
       });
-
-      if (response.ok) {
-        const audioData = await response.arrayBuffer();
-        console.log(`Audio file received for ${textPosition}, Latency:`, Date.now() - startTime);
-        return Buffer.from(audioData);
-      } else {
-        console.error(
-          `Fish TTS failed. Status code: ${response.status}: ${response.statusText}`,
-        );
-        return null;
-      }
+      return Buffer.from(audioBuf);
     }
 
-    // Provider switch (simple normalization)
+    // Provider-Switch
     switch (useThisTtsModel) {
       case "MARS6": {
-        const audioData = await callMARS6API(text, useThisTtsUrl, useThisTtsKey);
-        if (audioData) return Buffer.from(audioData);
-        console.error(`MARS6 synthesis failed.`);
-        break;
+        const audio = await withRetries<ArrayBuffer>("MARS6", async () =>
+          callMARS6API(text, useThisTtsUrl, useThisTtsKey)
+        );
+        return Buffer.from(audio);
       }
 
       case "aura-helios-en": {
-        // Fallback: treat like OpenAI-compatible / simple JSON API returning binary audio
-        const startTime = Date.now();
-        const response = await fetch(useThisTtsUrl, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${useThisTtsKey}`,
-          },
-          body: JSON.stringify({
-            model: useThisTtsModel,
-            input: text,
-            // voice can be optional here depending on backend; add if required.
-          }),
+        const audio = await withRetries<ArrayBuffer>("aura-helios-en", async () => {
+          const t0 = Date.now();
+          const resp = await fetch(useThisTtsUrl, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "Authorization": `Bearer ${useThisTtsKey}`,
+            },
+            body: JSON.stringify({
+              model: useThisTtsModel,
+              input: text,
+            }),
+          });
+          if (!resp.ok) {
+            const body = await resp.text().catch(() => "");
+            throw new Error(`aura-helios-en failed: ${resp.status} ${resp.statusText} ${body}`);
+          }
+          const audio = await resp.arrayBuffer();
+          console.log(`[TTS] aura-helios-en OK, latency=${Date.now() - t0}ms`);
+          return audio;
         });
-        if (response.ok) {
-          const audioData = await response.arrayBuffer();
-          console.log(`Audio [aura-helios-en] received for ${textPosition}, Latency:`, Date.now() - startTime);
-          return Buffer.from(audioData);
-        } else {
-          console.error(`aura-helios-en failed. Status code: ${response.status} ${response.statusText}`);
-        }
-        break;
+        return Buffer.from(audio);
       }
 
       default: {
-        // Default: OpenAI-compatible audio/speech endpoint: returns binary audio (mp3)
-        const startTime = Date.now();
-        const response = await fetch(useThisTtsUrl, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${useThisTtsKey}`,
-          },
-          body: JSON.stringify({
-            model: useThisTtsModel,
-            input: text,
-            // If your middleware requires "voice" or "format", add here.
-            // format: "mp3",
-          }),
+        // OpenAI-kompatibles /v1/audio/speech (Binary-MP3)
+        const audio = await withRetries<ArrayBuffer>("default", async () => {
+          const t0 = Date.now();
+          const resp = await fetch(useThisTtsUrl, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "Authorization": `Bearer ${useThisTtsKey}`,
+            },
+            body: JSON.stringify({
+              model: useThisTtsModel || "tts-1",
+              input: text,
+            }),
+          });
+          if (!resp.ok) {
+            const body = await resp.text().catch(() => "");
+            throw new Error(`TTS default failed: ${resp.status} ${resp.statusText} ${body}`);
+          }
+          const audioBuf = await resp.arrayBuffer();
+          console.log(`[TTS] default OK, latency=${Date.now() - t0}ms`);
+          return audioBuf;
         });
-
-        if (response.ok) {
-          const audioData = await response.arrayBuffer();
-          console.log(
-            `Audio file received for ${textPosition}, Latency:`,
-            Date.now() - startTime,
-          );
-          return Buffer.from(audioData);
-        } else {
-          console.error(
-            `Failed to synthesize speech. Status code: ${response.status}: ${response.statusText}`,
-          );
-        }
+        return Buffer.from(audio);
       }
     }
-  } catch (error) {
-    console.error(`Error in textToSpeech: ${error}`);
+  } catch (err) {
+    console.error("textToSpeech error:", err);
+    return null;
   }
-  return null;
+}
+
+/* ==================== OpenRouter Sprachausgabe ==================== */
+
+/**
+ * Synthetisiert über OpenRouters /audio/speech.
+ *
+ * Die beiden Modelle liefern unterschiedliche Formate: Gemini gibt
+ * ausschließlich rohes PCM heraus und lehnt mp3 ausdrücklich ab, Grok liefert
+ * fertiges MP3. Rohes PCM spielt kein Browser ab, deshalb bekommt es hier
+ * einen WAV-Kopf. Der Content-Type der Antwort sagt dem Client, was er hat.
+ */
+async function speakWithOpenRouter(
+  text: string,
+  key: string,
+  overrideModel: string,
+  prompt: string,
+  referer: string,
+): Promise<{ audio: Uint8Array; contentType: string; route: string }> {
+  const cat = await getCatalog();
+  // "voice=Zephyr;format=mp3;style=..." - one editable field carries all three.
+  const directives = parseTtsDirectives(prompt || DEFAULT_TTS_PROMPT);
+
+  const outcome = await withAttempts(cat, "tts", overrideModel, async (model, policy, level) => {
+    const t0 = Date.now();
+    const { resp } = await orFetch(key, "/audio/speech", {
+      model: model.id,
+      // Der Stil geht je nach Hersteller anders hinein - siehe styleChannelFor().
+      input: styleChannelFor(model.id) === "prompt"
+        ? buildSpeechPrompt(text, directives.style)
+        : text,
+      ...(styleChannelFor(model.id) === "instructions" && directives.style
+        ? { instructions: directives.style }
+        : {}),
+      // Pflichtfeld - ohne Stimme antwortet OpenRouter mit 400.
+      // Stimmennamen gehoeren zu einem Hersteller - siehe voiceFor().
+      voice: voiceFor(model.id, directives.voice),
+      ...(() => {
+        const fmt = preferredAudioFormat(model.id, directives.format);
+        return fmt ? { response_format: fmt } : {};
+      })(),
+      ...(policy ? { provider: policy } : {}),
+    }, { model, level, referer });
+
+    if (!resp.ok) {
+      const body = await resp.text().catch(() => "");
+      throw new Error(`OpenRouter TTS ${resp.status}: ${body.slice(0, 300)}`);
+    }
+    // Logged so the round-trip time per chunk can be read off the server log.
+    console.log(
+      `[TTS] ${model.id} ok in ${Date.now() - t0}ms for ${countWords(text)} words`,
+    );
+
+    const ct = (resp.headers.get("Content-Type") || "").toLowerCase();
+    const raw = new Uint8Array(await resp.arrayBuffer());
+    if (raw.byteLength === 0) throw new Error("OpenRouter TTS: empty audio");
+
+    if (ct.includes("pcm")) {
+      const { rate, channels } = parsePcmContentType(ct);
+      return {
+        audio: pcmToWav(raw, rate, channels),
+        contentType: "audio/wav",
+      };
+    }
+    // Alles andere (mp3, ogg) kann der Browser direkt abspielen.
+    return { audio: raw, contentType: ct || "audio/mpeg" };
+  });
+
+  return { ...outcome.value, route: routeHeader(outcome) };
 }
 
 export const handler: Handlers = {
   async POST(req) {
-    const payload = await req.json();
-    const { text, textPosition, ttsUrl, ttsKey, ttsModel, universalApiKey } = payload;
+    // Payload: { text, textPosition?, ttsUrl?, ttsKey?, ttsModel?, universalApiKey? }
+    let payload: any;
+    try {
+      payload = await req.json();
+    } catch {
+      return new Response("Bad JSON", { status: 400 });
+    }
 
-    // Final URL/Key (universal key overrides)
-    let useThisTtsUrl: string = ttsUrl;
-    let useThisTtsKey: string = ttsKey;
+    let {
+      text,
+      textPosition = "",
+      ttsUrl = "",
+      ttsKey = "",
+      ttsModel = "",
+      ttsVoice = "",
+      ttsPrompt = "",
+      orModel = "",
+      universalApiKey = "",
+    } = payload || {};
+
+    if (!text || typeof text !== "string") {
+      return new Response("No text provided", { status: 400 });
+    }
+
+    // Ein OpenRouter-Schlüssel geht direkt zu OpenRouter, nicht zur Middleware.
+    if (isOpenRouterKey(universalApiKey)) {
+      const spoken = cleanForSpeech(text);
+      if (!spoken.trim()) {
+        return new Response("Nothing to speak", { status: 400 });
+      }
+      const origin = (() => {
+        try { return new URL(req.url).origin; } catch { return ""; }
+      })();
+      try {
+        const { audio, contentType, route } = await speakWithOpenRouter(
+          spoken,
+          universalApiKey,
+          String(orModel || ""),
+          // Ein Feld traegt Stimme, Format und Stil; ttsVoice ist der Altweg.
+          String(ttsPrompt || ttsVoice || ""),
+          origin,
+        );
+        return new Response(audio, {
+          status: 200,
+          headers: {
+            "Content-Type": contentType,
+            "Cache-Control": "no-store",
+            "X-OpenRouter-Route": route,
+          },
+        });
+      } catch (err) {
+        console.error("[OR] TTS failed for textPosition=", textPosition, err);
+        return new Response("Failed to synthesize speech", { status: 502 });
+      }
+    }
+
+    // Ziel-URL/-Key bestimmen
+    let useThisTtsUrl = (ttsUrl || TTS_URL);
+    let useThisTtsKey = (ttsKey || TTS_KEY);
+    const envBase = MIDDLEWARE_BASE_URL; // optional ENV-Basis
+    const originBase = (() => {
+      try { return new URL(req.url).origin; } catch { return ""; }
+    })();
 
     if (universalApiKey) {
       const base =
         decodeMiddlewareBaseFromUniversalKey(universalApiKey) ||
-        (MIDDLEWARE_BASE_URL || "").trim();
+        envBase ||
+        originBase;
 
       if (!base) {
         return new Response("Middleware base unavailable", { status: 400 });
       }
 
-      useThisTtsUrl = `${base.replace(/\/+$/,"")}/v1/audio/speech`;
+      useThisTtsUrl = `${stripTrailingSlashes(base)}/v1/audio/speech`;
       useThisTtsKey = universalApiKey;
     }
 
-    if (!text) {
-      return new Response("No text provided", { status: 400 });
-    }
+    // Model finalisieren (ENV-Default erlaubt)
+    const finalModel = (ttsModel || TTS_MODEL || "tts-1");
 
     const audioData = await textToSpeech(
       text,
       textPosition,
       useThisTtsUrl,
       useThisTtsKey,
-      ttsModel,
+      finalModel,
     );
 
-    if (audioData) {
-      // Use audio/mpeg consistently (front-end reads header & sets Blob type accordingly)
-      const response = new Response(audioData, {
-        status: 200,
-        headers: {
-          "Content-Type": "audio/mpeg",
-          "Cache-Control": "no-store",
-        },
-      });
-      return response;
-    } else {
-      return new Response("Failed to synthesize speech", {
-        status: 500,
-      });
+    // An empty buffer is still a truthy object – checking the length matters,
+    // otherwise a 0-byte "success" reaches the client as an unplayable clip.
+    if (!audioData || audioData.byteLength === 0) {
+      console.error("[TTS] no audio produced for textPosition=", textPosition);
+      return new Response("Failed to synthesize speech", { status: 500 });
     }
+
+    return new Response(audioData, {
+      status: 200,
+      headers: {
+        "Content-Type": "audio/mpeg",
+        "Cache-Control": "no-store",
+      },
+    });
   },
 };

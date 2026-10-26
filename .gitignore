@@ -18,6 +18,27 @@ docker-compose/caddy/data/*
 docker-compose/caddy/config
 docker-compose/caddy/config/*
 docker-compose/app/*
-# Exclude nested repos and Claude config
+
+# Python runtime for the notebook, fetched with: deno task pyodide
+static/pyodide/
+
+# Scratch runtime and assets are installed by deno task scratch.
+static/scratch/vendor/
+static/scratch/library-assets/
+static/scratch/integration-source.tar.gz
+
+# Private runtime state and local working files.
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm
+master.key
+__pycache__/
+*.pyc
+backups/
+BESTANDSAUFNAHME.md
+handshake-*.md
+/x
+
+# Nested checkouts and local agent configuration.
 Admin_Bud-E/
 .claude/

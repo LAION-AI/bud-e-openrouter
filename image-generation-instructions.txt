@@ -35,46 +35,41 @@ features using JSON-style commands.
 
 The following models are available for image generation:
 
-GOOGLE VERTEX AI MODELS:
+GOOGLE GEMINI IMAGE MODELS:
 MODEL ALIAS             | ACTUAL MODEL                    | DESCRIPTION
-------------------------|----------------------------------|---------------------------
-nano-banana             | gemini-2.5-flash-image          | Fast, good quality (default)
-nano-banana-pro         | gemini-3-pro-image-preview      | Best quality, supports editing
+------------------------|---------------------------------|---------------------------
+(none / omit "model")   | middleware default              | Recommended. Server decides.
+gemini-3.1-flash-lite   | gemini-3.1-flash-lite-image     | Middleware default, fast
+flash-lite-image        | gemini-3.1-flash-lite-image     | Same as above
+gemini-3.1-flash        | gemini-3.1-flash-image          | Alternative, higher quality
+gemini-3.1              | gemini-3.1-flash-image          | Same as above
+flash-image             | gemini-3.1-flash-image          | Same as above
+nano-banana             | gemini-2.5-flash-image          | Previous flash generation
+nano-banana-pro         | gemini-3-pro-image-preview      | Gemini 3 Pro Image
 gemini-flash-image      | gemini-2.5-flash-image          | Same as nano-banana
 gemini-pro-image        | gemini-3-pro-image-preview      | Same as nano-banana-pro
 imagen                  | imagen-3.0-generate-002         | Google Imagen 3
 imagen-3                | imagen-3.0-generate-002         | Same as imagen
 imagen-4                | imagen-4.0-generate-001         | Google Imagen 4
 
-BLACK FOREST LABS FLUX.2 MODELS:
-MODEL ALIAS             | ACTUAL MODEL                    | DESCRIPTION
-------------------------|----------------------------------|---------------------------
-flux-2-klein-4b         | flux-2-klein-4b                 | Fastest, sub-second (~$0.014/img)
-flux-2-klein-9b         | flux-2-klein-9b                 | Better prompts (~$0.014/img)
-flux-2-pro              | flux-2-pro                      | Production-grade (~$0.03-0.05/img)
-flux-2-max              | flux-2-max                      | Max quality (~$0.07/img)
-flux                    | flux-2-pro                      | Alias for flux-2-pro
-flux-klein              | flux-2-klein-9b                 | Alias for flux-2-klein-9b
-flux-pro                | flux-2-pro                      | Alias for flux-2-pro
-flux-max                | flux-2-max                      | Alias for flux-2-max
-
 OPENAI MODELS:
 MODEL ALIAS             | ACTUAL MODEL                    | DESCRIPTION
-------------------------|----------------------------------|---------------------------
+------------------------|---------------------------------|---------------------------
 dall-e-3                | dall-e-3                        | OpenAI DALL-E 3
 dall-e-2                | dall-e-2                        | OpenAI DALL-E 2
 
-RECOMMENDED MODELS:
-- For fast generation: nano-banana (gemini-2.5-flash-image) or flux-2-klein
-- For best quality: flux-2-max or nano-banana-pro (gemini-3-pro-image-preview)
-- For production use: flux-2-pro (balanced speed/quality)
-- For image editing: nano-banana, nano-banana-pro, or flux-2-* (all support references)
+CHOOSING A MODEL:
+- Default (recommended): omit the "model" field entirely. The request then
+  carries no model and the middleware applies its configured default,
+  currently gemini-3.1-flash-lite-image.
+- Higher quality: gemini-3.1-flash-image
+- Only name a model when the user explicitly asks for one.
 
-FLUX.2 FEATURES:
-- flux-2-klein: Up to 4 reference images, sub-second generation
-- flux-2-pro/max: Up to 8 reference images, higher quality
-- All FLUX.2 models support image editing via input_images parameter
-- Max resolution: 4 megapixels (e.g., 2048x2048), multiples of 16
+IMAGE EDITING / REFERENCE IMAGES:
+All Gemini image models accept reference images via input_images, which is what
+powers image editing and character consistency. Up to 14 reference images per
+prompt. Supported aspect ratios: 1:1, 3:2, 2:3, 3:4, 4:3, 4:5, 5:4, 9:16, 16:9,
+21:9.
 
 NOTE: Model availability depends on your middleware configuration. If a model
 returns 404, it may not be enabled in your provider configuration.
@@ -90,7 +85,8 @@ Simple format - just provide a prompt:
 
     {"imagegen": "A serene mountain landscape at sunset"}
 
-The system will use the default model (nano-banana) and generate one image.
+No "model" field is sent, so the middleware uses its configured default
+(currently gemini-3.1-flash-lite-image) and generates one image.
 
 
 2.2 FULL OPTIONS
@@ -108,7 +104,8 @@ Full format with all options:
 
 Parameters explained:
 - prompt: (required) Description of the image to generate
-- model: (optional) Which model to use (default: nano-banana)
+- model: (optional) Which model to use. OMIT IT unless a specific model is
+          requested - then the middleware default applies.
 - n: (optional) Number of images to generate, 1-4 (default: 1)
 - size: (optional) Image dimensions (default: 1024x1024)
 - aspectRatio: (optional) Aspect ratio like "16:9", "1:1", "4:3" (default: 1:1)
@@ -133,13 +130,11 @@ Image editing allows you to modify existing images. Many models support
 image-to-image generation:
 
 MODELS THAT SUPPORT IMAGE EDITING:
-- nano-banana (gemini-2.5-flash-image) - Fast, good quality
-- nano-banana-pro (gemini-3-pro-image-preview) - Best quality
-- flux-2-klein-4b - Fastest (up to 4 reference images)
-- flux-2-klein-9b - Fast with better prompts (up to 4 refs)
-- flux-2-pro - Production quality (up to 8 reference images)
-- flux-2-max - Maximum quality (up to 8 reference images)
-
+- Omitting "model" (uses the middleware default) - recommended
+- gemini-3.1-flash-lite-image - fast, middleware default
+- gemini-3.1-flash-image - higher quality alternative
+- nano-banana (gemini-2.5-flash-image) - previous flash generation
+- nano-banana-pro (gemini-3-pro-image-preview) - Gemini 3 Pro Image
 
 3.1 USING THE LAST IMAGE
 ------------------------
@@ -157,12 +152,12 @@ Simple format (automatically uses the last image and default model):
 
     {"imageedit": {
         "prompt": "Make the sky purple and add stars",
-        "model": "flux-2-pro"
+        "model": "gemini-3.1-flash-image"
     }}
 
     {"imageedit": {
         "prompt": "Transform to oil painting style",
-        "model": "flux-2-max"
+        "model": "nano-banana-pro"
     }}
 
     {"imageedit": {
@@ -178,7 +173,7 @@ With explicit flag:
 
     {"imageedit": {
         "prompt": "Add butterflies flying around",
-        "model": "flux-2-pro",
+        "model": "gemini-3.1-flash-image",
         "use_last_image": true
     }}
 
@@ -229,37 +224,31 @@ Alternative key names for input_images:
 **IMPORTANT**: You can use ANY supported model for image editing! Just add the
 "model" parameter. Here are examples with all available models:
 
-GOOGLE GEMINI MODELS:
+DEFAULT (no model field - the middleware picks its own default):
     {"imageedit": {
-        "prompt": "Transform to watercolor style",
-        "model": "nano-banana"
+        "prompt": "Transform to watercolor style"
     }}
 
+EXPLICIT GEMINI MODELS:
     {"imageedit": {
         "prompt": "Add dramatic lighting",
-        "model": "nano-banana-pro"
+        "model": "gemini-3.1-flash-image"
     }}
 
-BLACK FOREST LABS FLUX.2 MODELS:
     {"imageedit": {
         "prompt": "Make it look cyberpunk with neon lights",
-        "model": "flux-2-klein"
-    }}
-
-    {"imageedit": {
-        "prompt": "Transform to cinematic style",
-        "model": "flux-2-pro"
+        "model": "gemini-3.1-flash-lite-image"
     }}
 
     {"imageedit": {
         "prompt": "Create maximum quality artistic rendering",
-        "model": "flux-2-max"
+        "model": "nano-banana-pro"
     }}
 
 COMPLETE EXAMPLE WITH ALL PARAMETERS:
     {"imageedit": {
         "prompt": "Add flying minions with rocket backpacks",
-        "model": "flux-2-max",
+        "model": "nano-banana-pro",
         "use_last_image": true,
         "n": 2
     }}
@@ -267,14 +256,14 @@ COMPLETE EXAMPLE WITH ALL PARAMETERS:
 EDITING SPECIFIC IMAGE WITH MODEL:
     {"imageedit": {
         "prompt": "Transform to Van Gogh painting style",
-        "model": "flux-2-pro",
+        "model": "gemini-3.1-flash-image",
         "image_id": "gen_00001"
     }}
 
 COMBINING MULTIPLE IMAGES WITH MODEL:
     {"imageedit": {
         "prompt": "Blend the person from first image into second background",
-        "model": "flux-2-max",
+        "model": "nano-banana-pro",
         "image_ids": ["gen_00001", "upl_00002"]
     }}
 
@@ -364,7 +353,7 @@ IMAGEGEN PARAMETERS:
 | Parameter    | Type     | Required | Default        | Description           |
 |--------------|----------|----------|----------------|----------------------|
 | prompt       | string   | YES      | -              | Image description    |
-| model        | string   | no       | nano-banana    | Model to use         |
+| model        | string   | no       | (omitted)      | Model to use         |
 | n            | number   | no       | 1              | Number of images 1-4 |
 | size         | string   | no       | 1024x1024      | Image dimensions     |
 | aspectRatio  | string   | no       | 1:1            | Aspect ratio         |
@@ -375,7 +364,7 @@ IMAGEEDIT PARAMETERS:
 | Parameter      | Type     | Required | Default      | Description           |
 |----------------|----------|----------|--------------|----------------------|
 | prompt         | string   | YES*     | "Edit image" | Edit instructions    |
-| model          | string   | no       | nano-banana  | Model to use         |
+| model          | string   | no       | (omitted)    | Model to use         |
 | input_images   | string[] | no       | []           | Base64 images        |
 | use_last_image | boolean  | no       | auto**       | Use last image       |
 | image_id       | string   | no       | -            | Reference by ID      |
@@ -507,58 +496,49 @@ User types directly:
 #imagegen:nano-banana-pro:A mystical forest with glowing mushrooms and fireflies
 
 
-EXAMPLE 8: Using FLUX.2 for high-quality generation
-----------------------------------------------------
-User: Generate a photorealistic portrait using FLUX
+EXAMPLE 8: Default model (recommended)
+--------------------------------
+User: Generate a photorealistic portrait
+
+Agent response:
+{"imagegen": "A photorealistic portrait of a young woman with curly red hair, soft natural lighting, shallow depth of field, professional photography"}
+
+Note: no "model" field - the middleware uses gemini-3.1-flash-lite-image.
+
+
+EXAMPLE 9: Explicitly requesting the higher-quality model
+---------------------------------------------------------
+User: Generate that portrait with Gemini 3.1 Flash Image
 
 Agent response:
 {"imagegen": {
-    "prompt": "A photorealistic portrait of a young woman with curly red hair, soft natural lighting, shallow depth of field, professional photography",
-    "model": "flux-2-max"
+    "prompt": "A photorealistic portrait of a young woman with curly red hair, soft natural lighting",
+    "model": "gemini-3.1-flash-image"
 }}
 
-Result: Creates gen_00001 with highest quality
 
-
-EXAMPLE 9: FLUX.2 style transfer with reference images
-------------------------------------------------------
-User: Transform this photo into cyberpunk style using FLUX
+EXAMPLE 10: Style transfer using the last image
+------------------------------------------------
+User: Transform this photo into cyberpunk style
 
 Agent response:
 {"imageedit": {
     "prompt": "Transform this scene into a cyberpunk aesthetic with neon lights, rain, and futuristic elements",
-    "model": "flux-2-pro",
     "use_last_image": true
 }}
 
-Result: Creates gen_00002 with style transfer applied
 
-
-EXAMPLE 10: FLUX.2 multi-reference image editing
-------------------------------------------------
+EXAMPLE 11: Multi-reference image editing
+------------------------------------------
 User: Combine the person from gen_00001 with the background from upl_00002
 
 Agent response:
 {"imageedit": {
     "prompt": "Place the person from the first image into the background of the second image, maintaining natural lighting and perspective",
-    "model": "flux-2-max",
     "image_ids": ["gen_00001", "upl_00002"]
 }}
 
 Result: Creates gen_00003 combining both references
-
-
-EXAMPLE 11: Fast FLUX.2 generation with Klein model
----------------------------------------------------
-User: Quickly generate a simple logo concept
-
-Agent response:
-{"imagegen": {
-    "prompt": "Minimalist logo design for a coffee shop, simple geometric shapes, modern, clean",
-    "model": "flux-2-klein"
-}}
-
-Result: Creates gen_00001 in sub-second time
 
 ================================================================================
                         8. TROUBLESHOOTING
@@ -712,34 +692,16 @@ Provider Name: vertex
 Base URL: http://127.0.0.1:8001/v1  (local Vertex proxy)
 API Key: (optional for local proxy, or your service account)
 
-Required Routes (Admin → Routes):
+Required Routes (Admin -> Routes):
+- Kind: IMAGE, Provider: vertex, Model: gemini-3.1-flash-lite-image  (default)
+- Kind: IMAGE, Provider: vertex, Model: gemini-3.1-flash-image
 - Kind: IMAGE, Provider: vertex, Model: gemini-3-pro-image-preview
 - Kind: IMAGE, Provider: vertex, Model: gemini-2.5-flash-image
 - Kind: IMAGE, Provider: vertex, Model: imagen-4.0-generate-001
 
-
-BLACK FOREST LABS (FLUX.2):
----------------------------
-Provider Name: bfl
-Base URL: https://api.bfl.ai
-API Key: Your BFL API key (get it from https://api.bfl.ai)
-
-To obtain a BFL API key:
-1. Go to https://api.bfl.ai
-2. Sign up or log in to your account
-3. Navigate to the API Keys section in your dashboard
-4. Create a new API key and copy it
-
-Required Routes (Admin → Routes):
-- Kind: IMAGE, Provider: bfl, Model: flux-2-pro
-- Kind: IMAGE, Provider: bfl, Model: flux-2-max
-- Kind: IMAGE, Provider: bfl, Model: flux-2-klein-9b
-- Kind: IMAGE, Provider: bfl, Model: flux-2-klein-4b
-
-Pricing (approximate):
-- flux-2-klein: ~$0.014/image (fastest)
-- flux-2-pro: ~$0.03-0.05/image (balanced)
-- flux-2-max: ~$0.07/image (highest quality)
+The route the middleware serves when a request carries NO model field is the
+one that decides the system default. Keep gemini-3.1-flash-lite-image at the
+lowest priority number so it wins by default.
 
 
 HYPRLAB (Alternative providers):
@@ -749,9 +711,8 @@ Base URL: https://api.hyprlab.io/v1
 API Key: Your HyprLab API key
 
 Required Routes:
-- Kind: IMAGE, Provider: hyprlab, Model: flux-2-dev
 - Kind: IMAGE, Provider: hyprlab, Model: seedream-4.5
-
+- Kind: IMAGE, Provider: hyprlab, Model: (any model your account exposes)
 
 ROUTE PRIORITY:
 ---------------
@@ -759,17 +720,15 @@ Routes are tried in order of priority (lowest number first). If one provider
 fails, the system automatically falls back to the next available provider.
 
 Example priority setup:
-1. flux-2-pro (priority 1) - Primary, high quality
-2. gemini-2.5-flash-image (priority 2) - Fast fallback
+1. gemini-3.1-flash-lite-image (priority 1) - Primary, system default
+2. gemini-3.1-flash-image (priority 2) - Higher quality alternative
 3. dall-e-3 (priority 10) - Emergency fallback
-
 
 MODEL PRICING (Admin → Pricing):
 --------------------------------
 Configure pricing per model for billing purposes:
-- Model: flux-2-pro, Type: IMAGE, Price/Image: 0.04
-- Model: flux-2-max, Type: IMAGE, Price/Image: 0.07
-- Model: flux-2-klein-9b, Type: IMAGE, Price/Image: 0.014
+- Model: gemini-3.1-flash-lite-image, Type: IMAGE, Price/Image: 0.01
+- Model: gemini-3.1-flash-image, Type: IMAGE, Price/Image: 0.02
 - Model: gemini-3-pro-image-preview, Type: IMAGE, Price/Image: 0.02
 
 ================================================================================
@@ -782,14 +741,12 @@ Configure pricing per model for billing purposes:
 
 HASHTAG FORMAT (#imagegen):
 ---------------------------
-#imagegen: A beautiful sunset                           → Default model
-#imagegen:nano-banana: A colorful butterfly             → Gemini 2.5 Flash
-#imagegen:nano-banana-pro: A photorealistic portrait    → Gemini 3 Pro
-#imagegen:flux-2-klein: A simple logo                   → FLUX.2 Klein (fast)
-#imagegen:flux-2-pro: A cinematic landscape             → FLUX.2 Pro
-#imagegen:flux-2-max: A detailed oil painting           → FLUX.2 Max (best)
-#imagegen:dall-e-3: A creative illustration             → DALL-E 3
-
+#imagegen: A beautiful sunset                              -> Default model
+#imagegen:gemini-3.1-flash-lite-image: A colorful butterfly -> Default, explicit
+#imagegen:gemini-3.1-flash-image: A photorealistic portrait -> Higher quality
+#imagegen:nano-banana: A quick sketch                       -> Gemini 2.5 Flash
+#imagegen:nano-banana-pro: A detailed illustration          -> Gemini 3 Pro
+#imagegen:dall-e-3: A creative illustration                 -> DALL-E 3
 
 JSON FORMAT (imagegen):
 -----------------------
@@ -797,16 +754,15 @@ Simple:
 {"imagegen": "A beautiful sunset"}
 
 With model:
-{"imagegen": {"prompt": "A beautiful sunset", "model": "nano-banana"}}
-{"imagegen": {"prompt": "A photorealistic portrait", "model": "nano-banana-pro"}}
-{"imagegen": {"prompt": "A simple logo", "model": "flux-2-klein"}}
-{"imagegen": {"prompt": "A cinematic landscape", "model": "flux-2-pro"}}
-{"imagegen": {"prompt": "A detailed oil painting", "model": "flux-2-max"}}
+{"imagegen": {"prompt": "A colorful butterfly", "model": "gemini-3.1-flash-lite-image"}}
+{"imagegen": {"prompt": "A photorealistic portrait", "model": "gemini-3.1-flash-image"}}
+{"imagegen": {"prompt": "A quick sketch", "model": "nano-banana"}}
+{"imagegen": {"prompt": "A detailed illustration", "model": "nano-banana-pro"}}
 
 Full parameters:
 {"imagegen": {
     "prompt": "A mountain at sunset",
-    "model": "flux-2-pro",
+    "model": "gemini-3.1-flash-image",
     "n": 2,
     "size": "1024x1024",
     "aspectRatio": "16:9"
@@ -821,30 +777,29 @@ SIMPLE EDIT (uses last image, default model):
 {"imageedit": "Add flying birds to the sky"}
 
 EDIT WITH SPECIFIC MODEL:
-{"imageedit": {"prompt": "Add flying birds", "model": "nano-banana"}}
-{"imageedit": {"prompt": "Transform to oil painting", "model": "nano-banana-pro"}}
-{"imageedit": {"prompt": "Add neon cyberpunk effects", "model": "flux-2-klein"}}
-{"imageedit": {"prompt": "Add cinematic lighting", "model": "flux-2-pro"}}
-{"imageedit": {"prompt": "Create artistic masterpiece", "model": "flux-2-max"}}
+{"imageedit": {"prompt": "Add flying birds"}}                     <- default model
+{"imageedit": {"prompt": "Transform to oil painting", "model": "gemini-3.1-flash-image"}}
+{"imageedit": {"prompt": "Add neon cyberpunk effects", "model": "gemini-3.1-flash-lite-image"}}
+{"imageedit": {"prompt": "Create artistic masterpiece", "model": "nano-banana-pro"}}
 
 EDIT SPECIFIC IMAGE BY ID:
 {"imageedit": {
     "prompt": "Add butterflies flying around",
-    "model": "flux-2-pro",
+    "model": "gemini-3.1-flash-image",
     "image_id": "gen_00001"
 }}
 
 COMBINE MULTIPLE IMAGES:
 {"imageedit": {
     "prompt": "Blend person from first into background of second",
-    "model": "flux-2-max",
+    "model": "nano-banana-pro",
     "image_ids": ["gen_00001", "upl_00002"]
 }}
 
 COMPLETE EXAMPLE WITH ALL PARAMETERS:
 {"imageedit": {
     "prompt": "Add flying minions with rocket backpacks",
-    "model": "flux-2-max",
+    "model": "nano-banana-pro",
     "use_last_image": true,
     "n": 2
 }}
@@ -855,14 +810,13 @@ COMPLETE EXAMPLE WITH ALL PARAMETERS:
 ╚══════════════════════════════════════════════════════════════════════════════╝
 
 MODEL              │ SPEED    │ QUALITY │ REFS │ PRICE      │ BEST FOR
-───────────────────┼──────────┼─────────┼──────┼────────────┼─────────────────
-nano-banana        │ Fast     │ Good    │ 14   │ ~$0.01     │ Quick generation
-nano-banana-pro    │ Medium   │ Best    │ 14   │ ~$0.02     │ High quality
-flux-2-klein-4b    │ Fastest  │ Good    │ 4    │ ~$0.014    │ Real-time apps
-flux-2-klein-9b    │ Fast     │ Better  │ 4    │ ~$0.014    │ Fast + quality
-flux-2-pro         │ Medium   │ High    │ 8    │ ~$0.04     │ Production use
-flux-2-max         │ Slower   │ Best    │ 8    │ ~$0.07     │ Maximum quality
-dall-e-3           │ Medium   │ High    │ 0    │ ~$0.04     │ Creative images
+───────────────────────────┼──────────┼─────────┼──────┼──────────┼──────────────────
+gemini-3.1-flash-lite-image│ Fast     │ Good    │ 14   │ ~$0.01   │ Default, everyday
+gemini-3.1-flash-image     │ Medium   │ Higher  │ 14   │ ~$0.02   │ Quality requests
+nano-banana                │ Fast     │ Good    │ 14   │ ~$0.01   │ Previous flash gen
+nano-banana-pro            │ Medium   │ Best    │ 14   │ ~$0.02   │ Maximum detail
+imagen-4                   │ Medium   │ High    │ 0    │ ~$0.04   │ Text-to-image only
+dall-e-3                   │ Medium   │ High    │ 0    │ ~$0.04   │ Creative images
 
 REFS = Maximum reference images for editing
 
@@ -873,14 +827,14 @@ REFS = Maximum reference images for editing
 
 IMAGEGEN PARAMETERS:
 - prompt          : (required) Text description of the image
-- model           : Model name (see table above)
+- model           : Model name (see table above); omit for the default
 - n               : Number of images (1-4)
 - size            : "1024x1024", "1792x1024", "1024x1792"
 - aspectRatio     : "1:1", "16:9", "9:16", "4:3", "3:2"
 
 IMAGEEDIT PARAMETERS:
 - prompt          : (required) What changes to make
-- model           : Model name (see table above)
+- model           : Model name (see table above); omit for the default
 - use_last_image  : true/false - edit the most recent image
 - image_id        : "gen_00001" - edit specific image
 - image_ids       : ["id1", "id2"] - combine multiple images

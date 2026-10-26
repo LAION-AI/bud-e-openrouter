@@ -1,0 +1,223 @@
+{
+  "accent": "rose",
+  "exercises": [
+    {
+      "hint": {
+        "de": "Alle Antworten stehen auf den Bildschirmen davor – lies sie noch einmal von oben.",
+        "en": "All answers sit on the screens before – read them once more from the top."
+      },
+      "intro": {
+        "de": "Setze die fehlenden Wörter ein.",
+        "en": "Fill in the missing words."
+      },
+      "kind": "cloze",
+      "text": {
+        "de": "Ein Tresor mit drei ___ öffnet sich erst, wenn ___ davon im Schloss stecken. Dahinter steckt eine ___, die durch zwei ___ festgelegt ist: Das Geheimnis ist ihr ___ bei x gleich ___. Wer zwei Anteile hat, legt die ___ hindurch und liest unten ab. Ein einzelner Anteil verrät ___ – jeder Punkt passt zu jeder ___. Darum verliert ein Bestechlicher ___ und gewinnt ___. Geteilt heißt nicht ___ – geteilt heißt ___.",
+        "en": "A safe with three ___ opens only once ___ of them sit in the lock. Behind it sits a ___ fixed by two ___: the secret is its ___ at x equals ___. Whoever holds two shares lays the ___ through and reads off below. A single share betrays ___ – every dot fits every ___. Hence a bribed person loses ___ and wins ___. Shared does not mean ___ – shared means ___."
+      },
+      "title": {
+        "de": "1. Lückentext",
+        "en": "1. Fill in the blanks"
+      }
+    },
+    {
+      "hint": {
+        "de": "Was weiß der Dieb jeweils – und was fehlt ihm zum Öffnen?",
+        "en": "What does the thief know in each case – and what misses them to open?"
+      },
+      "intro": {
+        "de": "Setze zwei Beobachtungen zueinander in Beziehung.",
+        "en": "Relate two observations to each other."
+      },
+      "kind": "compare",
+      "text": {
+        "de": "Drei Freunde teilen einen Tresorcode: einmal als drei Kopien, einmal als drei Anteile, von denen zwei genügen. Vergleiche beide Varianten, wenn einer bestochen wird – und erkläre, warum Teilen stärker ist als Kopieren.",
+        "en": "Three friends share a safe code: once as three copies, once as three shares of which two suffice. Compare both variants when one gets bribed – and explain why sharing beats copying."
+      },
+      "title": {
+        "de": "2. Vergleiche",
+        "en": "2. Compare"
+      }
+    },
+    {
+      "intro": {
+        "de": "Auf diese Frage gibt es keine richtige Antwort.",
+        "en": "There is no right answer to this one."
+      },
+      "kind": "reflect",
+      "text": {
+        "de": "Was würdest du so aufteilen, dass kein Einzelner es allein öffnen kann – Tagebuch, Ersparnisse, ein Geheimnis? Und wem gäbest du die Anteile – und warum genau diesen?",
+        "en": "What would you split so no single person can open it alone – diary, savings, a secret? And to whom would you give the shares – and why exactly them?"
+      },
+      "title": {
+        "de": "3. Zum Nachdenken",
+        "en": "3. Something to think about"
+      }
+    }
+  ],
+  "icon": "🔐",
+  "key": "geheimnisse-teilen",
+  "minutes": 16,
+  "screens": [
+    {
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Drei Freunde, ein Tresor, ein Problem: Jeder soll öffnen können, aber keiner allein. Kopien verteilen? Dann öffnet der Bestechliche allein. Die Lösung heißt teilen – und funktioniert mit einer Geraden.",
+            "en": "Three friends, one safe, one problem: everybody shall open, but nobody alone. Handing out copies? Then the bribed one opens alone. The fix is called sharing – working with a straight line."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Stell dir den Tresorcode als Punkt auf der y-Achse vor: Geheimnis 7, also Punkt (0|7). Lege eine Gerade hindurch – zum Beispiel mit Steigung 3: y gleich 3x plus 7. Gib jedem Freund einen anderen Punkt darauf: Anna (1|10), Ben (2|13), Cleo (4|19). Jeder Zettel allein ist wertlos: Durch einen Punkt passen unendlich viele Geraden, das Geheimnis kann alles sein. Zwei Zettel aber legen die Gerade fest – ablesen bei x gleich 0, Geheimnis 7. Zwei genügen, einer weiß nichts.",
+            "en": "Picture the safe code as a dot on the y-axis: secret 7, hence dot (0|7). Lay a line through – say with slope 3: y equals 3x plus 7. Give each friend another dot on it: Anna (1|10), Ben (2|13), Cleo (4|19). Each note alone is worthless: through one dot fit infinitely many lines, the secret can be anything. Two notes however fix the line – read off at x equals 0, secret 7. Two suffice, one knows nothing."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Rechne mit: Anna und Ben legen ihre Punkte (1|10) und (2|13) aneinander – Steigung 3, bei 0 also 7. Ben und Cleo: (2|13) und (4|19) – Steigung wieder 3, bei 0 wieder 7. Immer 7, egal welche zwei. Genau das ist Secret Sharing, erfunden 1979 von Adi Shamir: Mathematik statt Vertrauen – keiner muss ehrlich sein, die Gerade schon.",
+            "en": "Calculate along: Anna and Ben lay their dots (1|10) and (2|13) together – slope 3, at 0 hence 7. Ben and Cleo: (2|13) and (4|19) – slope again 3, at 0 again 7. Always 7, whichever two. Exactly that is secret sharing, invented 1979 by Adi Shamir: mathematics instead of trust – nobody must be honest, the line is."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Spiele es mit Murmeln: Lege 7 Murmeln als Geheimnis fest (y-Achse), wähle Steigung 3, verteile Punkte (1|10), (2|13), (4|19) auf Zettel. Gib zwei Zettel weg, behalte keinen – und lasse die anderen rechnen: Steigung aus zwei Punkten, zurück zu x gleich 0. Wer 7 findet, hat verstanden. Mathe zum Anfassen, mit Murmeln als Belohnung für die Rechner.",
+            "en": "Play it with marbles: fix 7 marbles as the secret (y-axis), pick slope 3, hand dots (1|10), (2|13), (4|19) on notes. Give two notes away, keep none – letting the others compute: slope from two dots, back to x equals 0. Whoever finds 7 understood. Maths to touch, with marbles rewarding the computers."
+          }
+        }
+      ],
+      "title": {
+        "de": "Drei Schlüssel, zwei genügen",
+        "en": "Three keys, two suffice"
+      }
+    },
+    {
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Wo braucht man so etwas? Überall, wo einer allein zu mächtig wäre: Der Raketenstart braucht zwei Schlüssel gleichzeitig, die Firmenkasse vier Augen, das Testament den Notar plus Erben. Teilen schützt vor Bestechung, Erpressung und Verlust – ein Anteil geht verloren, das Geheimnis überlebt.",
+            "en": "Where is that needed? Everywhere one alone would be too mighty: the rocket launch needs two keys at once, the company safe four eyes, the will notary plus heirs. Sharing guards against bribery, blackmail and loss – one share gets lost, the secret survives."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Baue es zu Hause nach: Wähle ein Geheimnis (eure Handynummer ohne Vorwahl?) und eine Gerade dazu – Steigung zufällig, geheim wie das Geheimnis selbst. Nur die x-Stellen (1, 2, 4) dürfen alle wissen. Verteile drei Punkte an drei Freunde. Dann spielt Bestechung: Einer verrät seinen Punkt – und ihr zeigt: Er weiß nichts. Mathematik schlägt Erpressung.",
+            "en": "Rebuild it at home: pick a secret (your mobile number without prefix?) and a line for it – slope random, secret like the secret itself. Only the x-places (1, 2, 4) may all know. Hand three dots to three friends. Then play bribery: one betrays their dot – showing: they know nothing. Mathematics beats blackmail."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "fact",
+          "icon": "🧮",
+          "title": {
+            "de": "Echt benutzt",
+            "en": "Really used"
+          },
+          "text": {
+            "de": "Tresore mit zwei Schlüsseln in Banken, Raketen mit zwei Offizieren, Kryptowährungen mit mehreren Geräten: Überall steckt dieselbe Idee – Macht teilen, damit keiner allein alles kann. Shamirs Gerade sichert heute Milliarden.",
+            "en": "Safes with two keys in banks, rockets with two officers, cryptocurrencies with several devices: everywhere sits the same idea – sharing power so nobody alone can do everything. Shamir's line secures billions today."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Banken leben das täglich: Kein Angestellter allein öffnet den Tresorraum – immer zwei, immer gleichzeitig, immer protokolliert. Fällt einer aus (krank, bestochen, im Urlaub), springt ein anderer ein: Teilen schützt vor Ausfall UND vor Betrug zugleich. Ein Schlüssel für einen ist Macht, geteilte Schlüssel sind Verfahren. Darum filmen Banken ihre Tresorräume: Vertrauen ist gut, Teilen ist besser.",
+            "en": "Banks live that daily: no employee alone opens the vault – always two, always together, always logged. If one drops out (sick, bribed, on holiday), another jumps in: sharing guards against outage AND fraud at once. One key for one is power, shared keys are procedure. Hence banks film their vaults: trust is good, sharing is better."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "note",
+          "icon": "🏦",
+          "title": {
+            "de": "Vier Augen",
+            "en": "Four eyes"
+          },
+          "text": {
+            "de": "Das Vier-Augen-Prinzip kennst du aus der Schule: Klassenarbeiten zählt die Lehrkraft, die Aufsicht eine andere. Überall, wo viel auf dem Spiel steht, schauen zwei hin. Shamir hat das Prinzip in Mathematik gegossen – unvergänglich.",
+            "en": "The four-eyes principle you know from school: the teacher counts class tests, another supervises. Everywhere much is at stake, two look. Shamir cast the principle in mathematics – imperishable."
+          }
+        }
+      ],
+      "title": {
+        "de": "Macht teilen",
+        "en": "Sharing power"
+      }
+    },
+    {
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Und wenn zwei nicht genügen sollen? Nimm eine Kurve statt einer Geraden: Durch drei Punkte liegt genau eine Parabel – drei Anteile nötig, zwei verraten nichts. Allgemein: Je gekrümmter die Kurve, desto mehr Anteile braucht es. Drei von fünf Vorständen, sieben von elf Richtern – die Mathematik liefert jede Regel, die ihr bestellt.",
+            "en": "And if two shall not suffice? Take a curve instead of a line: through three dots lies exactly one parabola – three shares needed, two betray nothing. Generally: the more curved, the more shares it takes. Three of five directors, seven of eleven judges – mathematics delivers every rule you order."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Der Clou zum Schluss: Niemand muss je das ganze Geheimnis sehen – nicht einmal beim Öffnen. Die Anteile treffen sich nur in der Rechnung, nie auf einem Zettel. Teilen heißt nicht verteilen: Kopien vermehren das Risiko, Anteile teilen die Macht. Wer den Unterschied versteht, versteht, warum Banken keine Kopien machen.",
+            "en": "The point to finish: nobody must ever see the whole secret – not even when opening. The shares meet only in the computation, never on a note. Sharing does not mean copying: copies multiply the risk, shares split the power. Whoever grasps the difference grasps why banks make no copies."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "Hamburg: Bildungsplan Studienstufe (Informatik)",
+                "en": "Hamburg: syllabus for the upper stage (computing)"
+              },
+              "url": "https://www.hamburg.de/politik-und-verwaltung/behoerden/bsfb/veroeffentlichungen/bildungsplaene/start-sek2-2022-123118"
+            },
+            {
+              "label": {
+                "de": "GI: Bildungsstandards Informatik",
+                "en": "GI: computing education standards"
+              },
+              "url": "https://gi.de/meldung/bildungsstandards-gi-stellt-neue-empfehlungen-fuer-den-informatikunterricht-vor"
+            }
+          ]
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Denke weiter: Was wäre bei einer Geraden durch drei Punkte nötig? Nichts – zwei genügen immer, der dritte ist Bonus für Ausfälle. Erst die Parabel braucht drei: Sie hat zwei freie Zahlen (Krümmung plus Lage), also braucht sie drei Punkte. Allgemein: Kurve mit k freien Zahlen braucht k plus 1 Anteile. Die Mathematik liefert dir jede Regel, die du bestellst – 3 von 5, 7 von 11, alles machbar.",
+            "en": "Think onward: what would a line through three dots need? Nothing – two always suffice, the third is bonus for outages. Only the parabola needs three: it holds two free numbers (curve plus place), hence needs three dots. Generally: curve with k free numbers needs k plus 1 shares. Mathematics delivers every rule you order – 3 of 5, 7 of 11, all doable."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "tip",
+          "icon": "📈",
+          "title": {
+            "de": "Selbst zählen",
+            "en": "Count yourself"
+          },
+          "text": {
+            "de": "Zeichne Gerade und Parabel durch je drei deiner Punkte: Die Gerade passt immer (wähle zwei), die Parabel nur bei den richtigen dreien. Fühle den Unterschied zwischen 2-von-n und 3-von-n – mit Lineal statt Formeln.",
+            "en": "Draw line and parabola through three of your dots each: the line always fits (pick two), the parabola only at the right three. Feel the difference between 2-of-n and 3-of-n – with ruler instead of formulas."
+          }
+        }
+      ],
+      "title": {
+        "de": "Krumme Kurven, krumme Regeln",
+        "en": "Curved lines, curved rules"
+      }
+    }
+  ],
+  "summary": {
+    "de": "Ein Geheimnis, drei Zettel, zwei genügen: Wie man Macht teilt, ohne zu vertrauen.",
+    "en": "One secret, three notes, two suffice: how to split power without trusting."
+  },
+  "title": {
+    "de": "Geheimnisse teilen",
+    "en": "Sharing secrets"
+  }
+}

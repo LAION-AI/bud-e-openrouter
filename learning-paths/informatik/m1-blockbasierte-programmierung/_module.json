@@ -1,0 +1,14 @@
+{
+  "key": "m1-blockbasierte-programmierung",
+  "title": {
+    "de": "Blockbasierte Programmierung",
+    "en": "Block-based programming"
+  },
+  "description": {
+    "de": "Mit Scratch einer Maschine etwas beibringen, die nichts von selbst versteht - mit Bausteinen, die man nicht falsch schreiben kann.",
+    "en": "Teaching a machine that understands nothing on its own, using Scratch - with blocks you cannot misspell."
+  },
+  "icon": "🧩",
+  "accent": "emerald",
+  "badge": "M1"
+}

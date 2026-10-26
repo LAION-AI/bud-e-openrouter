@@ -1,0 +1,222 @@
+================================================================================
+WIE DIE BUD-E REPOS AUSEINANDERGELAUFEN SIND
+Stand: 18.08.2026
+================================================================================
+
+KURZFASSUNG
+-----------
+Der Unterschied ist deutlich kleiner, als er auf den ersten Blick aussieht.
+Von den 61 Commits, die uns fehlen, betreffen 56 eine Flutter-App, die gar
+nicht Teil des Deno-Frontends ist. Nur 5 Commits fassen das Frontend an - und
+die machen alle dasselbe wie unser erster Commit: Bildgenerierung.
+
+Das eigentliche Problem ist nicht die Menge, sondern die Form: dort wurde der
+Monolith islands/ChatIsland.tsx in Module zerlegt, wir haben ihn erweitert.
+
+
+================================================================================
+1. WELCHE REPOS ES GIBT UND WO SIE STEHEN
+================================================================================
+
+  Repo                                        main-Commit   Verhaeltnis zu uns
+  ------------------------------------------  ------------  ------------------
+  LAION-AI/bud-e                              7a9f086       61 voraus, 2 zurueck
+  LAION-AI/school-bud-e-frontend              7a9f086       61 voraus, 2 zurueck
+  christophschuhmann/school-bud-e-frontend    16fe137        1 voraus, 2 zurueck
+  lokal /mnt/md3/spirit/bud-e-frontend        0729c20       (unsere Arbeit)
+  lokal /mnt/md3/spirit/school-bud-e-frontend+ 16fe137      laeuft auf Port 8000
+
+Die beiden LAION-Repos sind bitgleich - identischer Commit 7a9f086. Es sind
+technisch zwei Forks, inhaltlich derselbe Stand.
+
+Gemeinsamer Vorfahre aller Staende: 78617d4 "Beschreibe hier kurz deine
+Aenderung". Ab dort trennen sich die Wege.
+
+Alle 61 Commits stammen von dir selbst - es gibt keinen fremden Beitrag, der
+verloren gehen koennte. Das aendert die Lage erheblich: es ist keine
+Koordination mit anderen noetig, nur eine Entscheidung von dir.
+
+
+================================================================================
+2. WAS IN DEN 61 COMMITS STECKT
+================================================================================
+
+Aufgeteilt nach betroffenen Dateien (234 geaenderte Dateien insgesamt):
+
+  207 Dateien   school_bud_e_flutter/     eine komplette Flutter-App
+   23 Dateien   Deno-Frontend             das, was uns betrifft
+    4 Dateien   README, CLAUDE.md, .gitignore
+
+Die Flutter-App ist ein eigenstaendiger Desktop-/Android-Client im selben
+Repository. Sie teilt keinen Code mit dem Deno-Frontend. Themen dort, grob:
+
+  - Wake-Word-Erkennung mit ONNX on-device, Mikrofonauswahl, Debug-Screen
+  - Android-Stabilitaet (minSdk, NDK, Permissions, Foreground-Crashes)
+  - PPTX-/DOCX-/PDF-Generierung samt Bildeinbettung und Umlaut-Fixes
+  - Agenten-Werkzeuge, Skill Explorer, Memory Explorer, Persona-Export
+  - Bildungsplan-Suche als gebuendelter APK-Index
+  - Lyria-3-Pro-Musik-Workflow
+  - PYTHON-AUSFUEHRUNG IN CODE-BLOECKEN (siehe Abschnitt 5)
+
+Fuer eine Zusammenfuehrung des Frontends ist all das irrelevant. Es kollidiert
+mit nichts, weil wir keine einzige Datei darunter angefasst haben.
+
+
+================================================================================
+3. DIE 5 COMMITS, DIE DAS FRONTEND BETREFFEN
+================================================================================
+
+  16fe137  Work in progress before switching to main
+           chat.ts, stt.ts, tts.ts
+  9c84798  Add image generation with FLUX.2 and improved documentation
+           20 Dateien - hier passiert die Aufteilung von ChatIsland
+  6450bf2  Add FLUX.2 image generation, image editing, and aspect ratio support
+  f5d9149  Add character consistency, image persistence via IndexedDB
+  09f1f95  Fix image store namespacing by chat suffix + update README
+
+Das ist inhaltlich exakt die Funktion, die ich fuer dich portiert habe -
+gleiche Quelle (der experimentelle Fork), unabhaengig zweimal eingebaut.
+Konkret:
+
+  routes/api/imagegen.ts              dort 582 Zeilen, bei uns 584
+  image-generation-instructions.txt   dort 892 Zeilen, bei uns 892 (umgeschrieben)
+  Charakterkonsistenz ueber image_id  beide vorhanden
+  IndexedDB-Auslagerung der Bilder    beide vorhanden
+
+Der einzige inhaltliche Unterschied: dort steht noch FLUX, bei uns ist FLUX
+entfernt und durch gemini-3.1-flash-lite-image als Standard ersetzt, und das
+Modellfeld wird weggelassen, damit die Middleware ihr eigenes Default zieht.
+
+
+================================================================================
+4. DER EIGENTLICHE KONFLIKT: ARCHITEKTUR
+================================================================================
+
+Beim Commit 9c84798 wurde islands/ChatIsland.tsx zerlegt. Zeilenzahlen:
+
+  Basis 78617d4        2217 Zeilen   Monolith
+  LAION main             631 Zeilen   duenne Huelle
+  unser Stand           3797 Zeilen   Monolith, gewachsen
+
+Auf LAION main liegt daneben:
+
+  islands/ChatIsland/index.ts                    74
+  islands/ChatIsland/types.ts                   122
+  islands/ChatIsland/components/ChatHeader.tsx  191
+  islands/ChatIsland/hooks/useChatState.ts      221
+  islands/ChatIsland/hooks/useChatPersistence.ts 305
+  islands/ChatIsland/hooks/useAudioPlayback.ts  576
+  islands/ChatIsland/services/apiService.ts     352
+  islands/ChatIsland/services/streamService.ts 1014
+  islands/ChatIsland/services/imageStore.ts     233
+  islands/ChatIsland/utils/textProcessing.ts    179
+  islands/ChatIsland/utils/triggerParsing.ts    472
+
+Wir haben stattdessen den Monolithen erweitert. Das war damals die richtige
+Entscheidung - im Arbeitsverzeichnis lagen rund 950 unversionierte Zeilen von
+dir, und ein Umbau auf die geteilte Struktur haette sie mit hoher
+Wahrscheinlichkeit zerrieben. Der Preis dafuer faellt jetzt an.
+
+Ein git merge oder rebase kann das nicht sinnvoll aufloesen: Git sieht auf der
+einen Seite eine geloeschte Datei mit 2000 Zeilen und auf der anderen dieselbe
+Datei mit 1500 neuen Zeilen. Das Ergebnis waere Handarbeit an jeder Zeile.
+
+Ueberschneidende Dateien:
+
+  islands/ChatIsland.tsx              schwer   Architekturbruch
+  internalization/content.ts          mittel   beide Seiten neue Schluessel
+  components/ChatTemplate.tsx         mittel   dort Markdown, bei uns Codebloecke
+  components/ImageUploadButton.tsx    mittel   beide umgebaut
+  routes/api/imagegen.ts              leicht   fast identisch, Modellwahl anders
+  routes/api/chat.ts                  leicht   getrennte Stellen
+  routes/api/stt.ts                   leicht   getrennte Stellen
+  routes/api/tts.ts                   leicht   getrennte Stellen
+  fresh.gen.ts                        trivial  generiert, neu bauen
+  image-generation-instructions.txt   trivial  reine Doku, eine Fassung waehlen
+
+
+================================================================================
+5. WAS AUF DER ANDEREN SEITE SCHON EXISTIERT UND UNS FEHLT
+================================================================================
+
+  components/AudioUploadButton.tsx      213 Zeilen, komplett neu
+  Markdown-Rendering im Chat            in ChatTemplate
+  PdfUploadButton                       ueberarbeitet
+  Aufgeteilte ChatIsland-Struktur       siehe oben
+
+Und - fuer deine Notebook-Idee interessant - in der Flutter-App gibt es bereits
+Python-Ausfuehrung in Code-Bloecken:
+
+  7fd4d4d  Add direct Python execution in main chat with code block display
+  14feee2  Add Run button and interactive input to Python code blocks
+  34d6d3d  Fix Python on Android (server-side first), render IMG_xxx inline
+
+Dort laeuft Python "server-first", also nicht im Client. Fuer das Web-Frontend
+schlage ich einen anderen Weg vor; das steht in PYTHON-NOTEBOOK-MACHBARKEIT.txt.
+
+
+================================================================================
+6. WAS BEI UNS LIEGT UND NIRGENDWO SONST
+================================================================================
+
+  utils/mailsync/wire.ts          Verbindungsschicht
+  utils/mailsync/imap.ts          IMAP-Client
+  utils/mailsync/smtp.ts          SMTP-Client
+  utils/mailsync/mime.ts          MIME bauen und zerlegen
+  utils/mailsync/protocol.ts      Snapshot-Format
+  routes/api/mailsync.ts          die API-Route
+  utils/mailsyncClient.ts         Browser-Seite
+  components/MailSyncModal.tsx    Snapshot-Verwaltung
+
+Diese acht Dateien sind vollstaendig eigenstaendig. Sie haengen nur an vier
+Stellen im Rest der Anwendung:
+
+  1. fresh.gen.ts          eine Zeile Route (wird ohnehin generiert)
+  2. Settings.tsx          ein Abschnitt fuer die Zugangsdaten
+  3. ChatIsland            Zustand, zwei Effekte, zwei Buttons
+  4. content.ts            ein Uebersetzungsblock
+
+Auf die geteilte Architektur portiert heisst das: der Zustand wandert nach
+useChatState, die Effekte nach einem neuen useMailSync, der Rest bleibt
+unveraendert. Das ist ueberschaubar, nicht trivial, aber weit entfernt von der
+Konfliktschlacht, die ein Merge des Monolithen waere.
+
+
+================================================================================
+7. MOEGLICHE WEGE
+================================================================================
+
+A) MAIL-SYNC AUF laion/main NEU AUFSETZEN                       -- empfohlen
+   Die acht eigenstaendigen Dateien uebernehmen, die vier Anbindungspunkte auf
+   die geteilte Struktur anpassen, unseren Bildgenerierungs-Commit fallen
+   lassen (dort schon vorhanden). Ergebnis: ein sauber mergebarer PR.
+   Aufwand: ueberschaubar. Risiko: gering. Verlust: die FLUX-Entfernung und die
+   Modell-Aktualisierung muessten separat nachgezogen werden.
+
+B) UNSEREN STAND ALS BRANCH LIEGEN LASSEN                       -- Ist-Zustand
+   Der Branch mailbox-sync liegt bereits auf beiden LAION-Repos. Nichts geht
+   verloren, nichts wird zusammengefuehrt. Als Zwischenschritt in Ordnung, als
+   Dauerloesung driftet es weiter auseinander.
+
+C) MERGE ODER REBASE                                            -- abzuraten
+   Handarbeit an jeder Zeile von ChatIsland.tsx. Hoher Aufwand, hohes Risiko,
+   und am Ende steht wieder eine der beiden Architekturen - man haette sich die
+   Muehe sparen und gleich A nehmen koennen.
+
+D) FORCE-PUSH AUF main                                          -- Datenverlust
+   Wuerde 61 Commits loeschen, darunter die komplette Flutter-App. Nur sinnvoll,
+   wenn du diese Arbeit bewusst aufgeben willst. Nicht ohne Bundle-Sicherung.
+
+
+================================================================================
+8. NEBENBEFUND
+================================================================================
+
+Das lokale Verzeichnis /mnt/md3/spirit/school-bud-e-frontend+ (laeuft auf Port
+8000) steht auf 16fe137 und traegt origin = LAION-AI/school-bud-e-frontend, hat
+aber nie gefetcht - sein origin/main-Zeiger ist 61 Commits veraltet. Das
+Arbeitsverzeichnis ist sauber, es geht dort nichts verloren.
+
+Ausserdem liegt auf christophschuhmann/school-bud-e-frontend der Commit 16fe137
+("Work in progress before switching to main", betrifft chat.ts/stt.ts/tts.ts),
+den wir lokal nicht haben. Er ist in laion/main bereits enthalten.

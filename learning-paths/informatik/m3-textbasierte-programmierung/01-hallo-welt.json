@@ -1,0 +1,335 @@
+{
+  "key": "hallo-welt",
+  "title": {
+    "de": "Hallo Welt",
+    "en": "Hello world"
+  },
+  "summary": {
+    "de": "Dein erstes getipptes Programm - eine Zeile, und der Rechner antwortet dir.",
+    "en": "Your first typed program - one line, and the machine answers you."
+  },
+  "icon": "👋",
+  "accent": "indigo",
+  "minutes": 12,
+  "screens": [
+    {
+      "key": "eine-zeile",
+      "title": {
+        "de": "Eine Zeile, und es passiert etwas",
+        "en": "One line, and something happens"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Fast jeder Mensch, der programmieren kann, hat einmal genau damit angefangen: einer einzigen Zeile, die einen Text auf den Bildschirm schreibt. Sie heißt seit Jahrzehnten „Hallo Welt“, und du schreibst sie gleich.",
+            "en": "Almost everyone who can program once started with exactly this: a single line that writes some text to the screen. For decades it has been called \"Hello world\", and you are about to write it."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Die Sprache heißt Python. Sie wurde absichtlich so gebaut, dass man sie fast lesen kann wie Englisch, und sie ist heute die Sprache, mit der die meisten Menschen anfangen - in der Schule, an der Universität und im Beruf. Was du hier lernst, ist kein Übungsspielzeug: Genau damit werten Forscherinnen Messdaten aus und bauen Firmen ihre Programme.",
+            "en": "The language is called Python. It was deliberately built so you can almost read it like English, and today it is the language most people begin with - at school, at university and at work. What you learn here is not a practice toy: this is exactly what researchers use to evaluate measurements and companies use to build their programs."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "note",
+          "icon": "🧩",
+          "title": {
+            "de": "Falls du Scratch schon kennst",
+            "en": "If you already know Scratch"
+          },
+          "text": {
+            "de": "Manche haben schon mit bunten Bausteinen programmiert, andere noch nie. Beides ist völlig in Ordnung. Wer Scratch kennt, wird vieles wiedererkennen und muss vor allem eine neue Schreibweise lernen. Wer nicht, lernt hier alles von vorn - dieser Pfad setzt nichts voraus.",
+            "en": "Some people have already programmed with coloured blocks, others never have. Both are perfectly fine. If you know Scratch you will recognise a lot and mainly have to learn a new notation. If you do not, you will learn everything from scratch here - this path assumes nothing."
+          }
+        },
+        {
+          "kind": "notebook",
+          "example": "hello",
+          "cell": 1,
+          "title": {
+            "de": "Schreib deine erste Zeile",
+            "en": "Write your first line"
+          },
+          "text": {
+            "de": "Im Notizbuch steht sie schon da: `print(\"Hallo Welt\")`. Klick in die Zelle und drück Strg+Enter. Unter der Zelle erscheint der Text. Danach die eigentliche Aufgabe: Ändere ihn so, dass das Programm dich mit deinem Namen begrüßt.",
+            "en": "In the notebook it is already there: `print(\"Hello world\")`. Click into the cell and press Ctrl+Enter. The text appears below the cell. Then the real task: change it so the program greets you by your name."
+          }
+        }
+      ]
+    },
+    {
+      "key": "was-print-macht",
+      "title": {
+        "de": "Was dabei eigentlich passiert",
+        "en": "What is actually going on"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "`print` ist ein Befehl - eine Anweisung, die der Rechner ausführt. Was in den Klammern steht, wird ausgegeben. Die Anführungszeichen sagen: Das hier ist Text, nimm ihn genau so, wie er dasteht.",
+            "en": "`print` is a command - an instruction the machine carries out. Whatever is in the brackets gets printed. The quotation marks say: this is text, take it exactly as it stands."
+          }
+        },
+        {
+          "kind": "table",
+          "head": [
+            {
+              "de": "Was du tippst",
+              "en": "What you type"
+            },
+            {
+              "de": "Was erscheint",
+              "en": "What appears"
+            },
+            {
+              "de": "Warum",
+              "en": "Why"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "de": "print(\"Hallo\")",
+                "en": "print(\"Hello\")"
+              },
+              {
+                "de": "Hallo",
+                "en": "Hello"
+              },
+              {
+                "de": "In Anführungszeichen: Text",
+                "en": "In quotes: text"
+              }
+            ],
+            [
+              {
+                "de": "print(3 + 7)",
+                "en": "print(3 + 7)"
+              },
+              {
+                "de": "10",
+                "en": "10"
+              },
+              {
+                "de": "Ohne Anführungszeichen: gerechnet",
+                "en": "Without quotes: calculated"
+              }
+            ],
+            [
+              {
+                "de": "print(\"3\" + \"7\")",
+                "en": "print(\"3\" + \"7\")"
+              },
+              {
+                "de": "37",
+                "en": "37"
+              },
+              {
+                "de": "Zwei Texte werden aneinandergehängt",
+                "en": "Two texts get stuck together"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "callout",
+          "tone": "warn",
+          "icon": "❗",
+          "title": {
+            "de": "Die letzte Zeile überrascht jeden",
+            "en": "The last line surprises everyone"
+          },
+          "text": {
+            "de": "`\"3\" + \"7\"` ergibt nicht 10, sondern 37. Das ist kein Fehler des Rechners, sondern eine Folge davon, welche Sorte Wert dasteht: Bei Zahlen bedeutet das Pluszeichen rechnen, bei Texten aneinanderhängen. Merk dir das - es erklärt später die Hälfte aller Fehler, die dir begegnen.",
+            "en": "`\"3\" + \"7\"` does not give 10, it gives 37. That is not a machine error but a consequence of which kind of value is there: with numbers the plus sign means calculate, with texts it means stick together. Remember this - it later explains half the errors you will meet."
+          }
+        },
+        {
+          "kind": "notebook",
+          "example": "hello",
+          "cell": 2,
+          "title": {
+            "de": "Probier den Unterschied selbst",
+            "en": "Try the difference yourself"
+          },
+          "text": {
+            "de": "Beide Zeilen stehen im Notizbuch untereinander - lass sie laufen und sieh dir die zwei Ergebnisse an. Die Aufgabe darunter lässt dich ausrechnen, wie viele Minuten du in einer Schulwoche im Unterricht sitzt. Und dann setzt du absichtlich Anführungszeichen um die Zahlen, damit du den Fehler einmal selbst gesehen hast.",
+            "en": "Both lines sit one below the other in the notebook - run them and look at the two results. The task below has you work out how many minutes you spend in lessons in a school week. And then you deliberately put quotes around the numbers so that you have seen the mistake once yourself."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "tip",
+          "icon": "🔁",
+          "title": {
+            "de": "Die wichtigste Gewohnheit überhaupt",
+            "en": "The single most important habit"
+          },
+          "text": {
+            "de": "Ändere eine Sache, dann lass es laufen. Nicht fünf Sachen. Wenn danach etwas nicht stimmt, weißt du sofort, woran es lag. Profis arbeiten genauso - sie sind nur schneller dabei. Und ein Programm kaputtzumachen kostet nichts: Es läuft in deinem Browser, du kannst nichts beschädigen.",
+            "en": "Change one thing, then run it. Not five things. If something is then wrong, you know at once what caused it. Professionals work the same way - they are just faster at it. And breaking a program costs nothing: it runs in your browser, you cannot damage anything."
+          }
+        }
+      ]
+    },
+    {
+      "key": "wozu-das-alles",
+      "title": {
+        "de": "Wozu man das überhaupt lernt",
+        "en": "Why learn this at all"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Eine Zeile, die „Hallo“ sagt, ist noch kein Grund, ein halbes Jahr Unterricht darauf zu verwenden. Der Grund kommt in den nächsten Pfaden - und er ist ziemlich praktisch.",
+            "en": "One line saying \"hello\" is not yet a reason to spend half a school year on this. The reason comes in the next paths - and it is quite practical."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Mit fünf Bausteinen kann man erstaunlich viel: sich etwas merken, etwas wiederholen, sich für einen von zwei Wegen entscheiden, jemanden nach etwas fragen und eigene Bausteine bauen. Diese fünf reichen für ein Spiel, für eine Auswertung deiner Messwerte im Physikunterricht und für das Programm, das hundert Dateien auf einmal umbenennt.",
+            "en": "With five building blocks you can do a surprising amount: remember something, repeat something, choose one of two paths, ask somebody something and build blocks of your own. Those five are enough for a game, for evaluating your measurements in physics, and for the program that renames a hundred files at once."
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "de": "**Ausgabe** - `print`, damit du siehst, was passiert. Das kannst du jetzt schon.",
+              "en": "**Output** - `print`, so you see what is happening. You can already do this."
+            },
+            {
+              "de": "**Variablen** - damit sich das Programm etwas merkt: einen Namen, einen Punktestand.",
+              "en": "**Variables** - so the program remembers something: a name, a score."
+            },
+            {
+              "de": "**Eingabe** - damit das Programm dich etwas fragen kann und auf die Antwort reagiert.",
+              "en": "**Input** - so the program can ask you something and react to the answer."
+            },
+            {
+              "de": "**Wenn-dann** - damit es sich unterschiedlich verhält, je nachdem was passiert ist.",
+              "en": "**If-then** - so it behaves differently depending on what happened."
+            },
+            {
+              "de": "**Schleifen** - damit du nicht zehnmal dasselbe tippen musst.",
+              "en": "**Loops** - so you do not have to type the same thing ten times."
+            },
+            {
+              "de": "**Funktionen und Bibliotheken** - eigene Bausteine, und fertige von anderen Leuten.",
+              "en": "**Functions and libraries** - blocks of your own, and ready-made ones from other people."
+            }
+          ]
+        },
+        {
+          "kind": "callout",
+          "tone": "fact",
+          "icon": "🌍",
+          "title": {
+            "de": "Und es läuft überall",
+            "en": "And it runs everywhere"
+          },
+          "text": {
+            "de": "Python steckt in Wetterberichten, in der Auswertung von Teleskopdaten, in Empfehlungen von Onlineshops und in den Programmen, mit denen Biologinnen Gene vergleichen. Es ist dieselbe Sprache - nur mit mehr Zeilen. Was du hier tippst, unterscheidet sich davon im Umfang, nicht in der Art.",
+            "en": "Python sits inside weather forecasts, the evaluation of telescope data, online shop recommendations and the programs biologists use to compare genes. It is the same language - just with more lines. What you type here differs from that in scale, not in kind."
+          }
+        },
+        {
+          "kind": "notebook",
+          "example": "hello",
+          "title": {
+            "de": "Das Notizbuch ist schon da",
+            "en": "The notebook is already here"
+          },
+          "text": {
+            "de": "Kein Konto, keine Installation, kein Server: Python läuft direkt in deinem Browser. Das erste Notizbuch heißt „1 - Hallo Welt“ und führt dich durch Ausgabe, Zahlen gegen Text und die ersten Variablen. Sechs Codezellen, jede mit einer kleinen Aufgabe danach.",
+            "en": "No account, no installation, no server: Python runs right in your browser. The first notebook is called \"1 - Hello world\" and takes you through output, numbers versus text and your first variables. Six code cells, each with a small task after it."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "Python-Dokumentation: der offizielle Einstieg",
+                "en": "Python documentation: the official tutorial"
+              },
+              "url": "https://docs.python.org/3/tutorial/"
+            },
+            {
+              "label": {
+                "de": "inf-schule.de: Programmieren mit Python",
+                "en": "inf-schule.de: programming with Python"
+              },
+              "url": "https://www.inf-schule.de/imperative-programmierung"
+            },
+            {
+              "label": {
+                "de": "Bildungsplan Informatik Sek I, Hamburg",
+                "en": "Hamburg curriculum for computer science, lower secondary"
+              },
+              "url": "https://www.hamburg.de/resource/blob/798514/ad3c2fdfb3a32b9545a271dfceae5772/informatik-data.pdf"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": {
+        "de": "1. Lückentext: die erste Zeile",
+        "en": "1. Fill in the blanks: the first line"
+      },
+      "intro": {
+        "de": "Setze die fehlenden Wörter ein.",
+        "en": "Fill in the missing words."
+      },
+      "text": {
+        "de": "Die Sprache, die wir hier lernen, heißt ___. Etwas auf den Bildschirm zu schreiben, geht mit dem Befehl ___. Was ausgegeben werden soll, steht dabei in ___. Soll es Text sein, setzt man ihn zusätzlich in ___. Ohne diese rechnet Python: `print(3 + 7)` ergibt ___. Mit ihnen hängt das Pluszeichen die beiden dagegen ___, so wird aus `\"3\" + \"7\"` die Ausgabe ___. Ausgeführt wird eine Zelle im Notizbuch mit ___ und Enter. Wer etwas ändert, sollte danach immer sofort wieder ___, weil man dann weiß, woran eine Änderung lag. Kaputtmachen kann man dabei nichts, denn alles läuft in deinem ___.",
+        "en": "The language we learn here is called ___. Writing something to the screen is done with the command ___. What should be printed goes in ___. If it is meant to be text, you also put it in ___. Without those Python calculates: `print(3 + 7)` gives ___. With them the plus sign instead ___ the two together, so `\"3\" + \"7\"` prints ___. A cell in the notebook is run with ___ and Enter. Whoever changes something should always immediately ___ it again, because then you know what a change did. You cannot break anything, since everything runs in your ___."
+      }
+    },
+    {
+      "kind": "compare",
+      "title": {
+        "de": "2. Ausprobieren und vergleichen: mit und ohne Anführungszeichen",
+        "en": "2. Try it and compare: with and without quotation marks"
+      },
+      "intro": {
+        "de": "Öffne dafür das Notizbuch „1 - Hallo Welt“.",
+        "en": "Open the notebook \"1 - Hello world\" for this."
+      },
+      "text": {
+        "de": "Rechne mit Python aus, wie viele Minuten du in einer normalen Schulwoche im Unterricht sitzt - Stunden pro Tag mal 45 mal fünf Schultage. Notiere das Ergebnis. Setz danach um jede Zahl Anführungszeichen und lass dieselbe Zelle noch einmal laufen. Schreib beide Ausgaben auf und erkläre, warum das Pluszeichen zweimal etwas völlig anderes bedeutet hat. Nenne zum Schluss eine Situation, in der du dir wünschen würdest, dass Python zwei Zahlen aneinanderhängt statt sie zu addieren.",
+        "en": "Use Python to work out how many minutes you spend in lessons in a normal school week - hours per day times 45 times five school days. Note the result. Then put quotation marks around every number and run the same cell again. Write down both outputs and explain why the plus sign meant two completely different things. Finally name a situation in which you would want Python to stick two numbers together rather than add them."
+      },
+      "hint": {
+        "de": "Denk an eine Postleitzahl oder eine Hausnummer - rechnet man damit jemals?",
+        "en": "Think of a postcode or a house number - does anyone ever do arithmetic with those?"
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": {
+        "de": "3. Zum Nachdenken: warum das so wörtlich ist",
+        "en": "3. Something to think about: why it is so literal"
+      },
+      "intro": {
+        "de": "Auf diese Frage gibt es keine richtige Antwort.",
+        "en": "There is no right answer to this one."
+      },
+      "text": {
+        "de": "Ein Mensch, dem du „drei plus sieben“ sagst, antwortet zehn - egal, ob du die Zahlen schreibst oder sprichst. Python besteht auf dem Unterschied und liefert sonst kommentarlos 37. Das wirkt kleinlich. Es hat aber einen Grund: Ein Rechner darf nichts raten, sonst wüsste man nie, ob ein Ergebnis stimmt oder nur plausibel aussieht. Überlege, wo dir Genauigkeit im Alltag schon einmal geholfen hat, obwohl sie anstrengend war - und wo sie eher im Weg stand.",
+        "en": "Tell a person \"three plus seven\" and they answer ten - whether you write the numbers or say them. Python insists on the difference and otherwise silently delivers 37. That seems pedantic. But there is a reason: a machine must never guess, otherwise you could never tell whether a result is right or merely plausible. Think about where precision has helped you in daily life even though it was tiring - and where it got in the way."
+      }
+    }
+  ]
+}
