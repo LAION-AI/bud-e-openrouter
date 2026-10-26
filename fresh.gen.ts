@@ -32,6 +32,17 @@ import * as $scratch_editor from "./routes/scratch-editor.ts";
 import * as $ChatAgreement from "./islands/ChatAgreement.tsx";
 import * as $ChatAgreementOrIsland from "./islands/ChatAgreementOrIsland.tsx";
 import * as $ChatIsland from "./islands/ChatIsland.tsx";
+import * as $ChatIsland_components_ChatHeader from "./islands/ChatIsland/components/ChatHeader.tsx";
+import * as $ChatIsland_hooks_useAudioPlayback from "./islands/ChatIsland/hooks/useAudioPlayback.ts";
+import * as $ChatIsland_hooks_useChatPersistence from "./islands/ChatIsland/hooks/useChatPersistence.ts";
+import * as $ChatIsland_hooks_useChatState from "./islands/ChatIsland/hooks/useChatState.ts";
+import * as $ChatIsland_index from "./islands/ChatIsland/index.ts";
+import * as $ChatIsland_services_apiService from "./islands/ChatIsland/services/apiService.ts";
+import * as $ChatIsland_services_imageStore from "./islands/ChatIsland/services/imageStore.ts";
+import * as $ChatIsland_services_streamService from "./islands/ChatIsland/services/streamService.ts";
+import * as $ChatIsland_types from "./islands/ChatIsland/types.ts";
+import * as $ChatIsland_utils_textProcessing from "./islands/ChatIsland/utils/textProcessing.ts";
+import * as $ChatIsland_utils_triggerParsing from "./islands/ChatIsland/utils/triggerParsing.ts";
 import * as $ClassroomAdmin from "./islands/ClassroomAdmin.tsx";
 import * as $ClassroomChat from "./islands/ClassroomChat.tsx";
 import * as $ClassroomRecorder from "./islands/ClassroomRecorder.tsx";
@@ -73,6 +84,26 @@ const manifest = {
     "./islands/ChatAgreement.tsx": $ChatAgreement,
     "./islands/ChatAgreementOrIsland.tsx": $ChatAgreementOrIsland,
     "./islands/ChatIsland.tsx": $ChatIsland,
+    "./islands/ChatIsland/components/ChatHeader.tsx":
+      $ChatIsland_components_ChatHeader,
+    "./islands/ChatIsland/hooks/useAudioPlayback.ts":
+      $ChatIsland_hooks_useAudioPlayback,
+    "./islands/ChatIsland/hooks/useChatPersistence.ts":
+      $ChatIsland_hooks_useChatPersistence,
+    "./islands/ChatIsland/hooks/useChatState.ts":
+      $ChatIsland_hooks_useChatState,
+    "./islands/ChatIsland/index.ts": $ChatIsland_index,
+    "./islands/ChatIsland/services/apiService.ts":
+      $ChatIsland_services_apiService,
+    "./islands/ChatIsland/services/imageStore.ts":
+      $ChatIsland_services_imageStore,
+    "./islands/ChatIsland/services/streamService.ts":
+      $ChatIsland_services_streamService,
+    "./islands/ChatIsland/types.ts": $ChatIsland_types,
+    "./islands/ChatIsland/utils/textProcessing.ts":
+      $ChatIsland_utils_textProcessing,
+    "./islands/ChatIsland/utils/triggerParsing.ts":
+      $ChatIsland_utils_triggerParsing,
     "./islands/ClassroomAdmin.tsx": $ClassroomAdmin,
     "./islands/ClassroomChat.tsx": $ClassroomChat,
     "./islands/ClassroomRecorder.tsx": $ClassroomRecorder,
