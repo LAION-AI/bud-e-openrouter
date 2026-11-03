@@ -1,0 +1,14 @@
+{
+  "key": "s2-quanten",
+  "title": {
+    "de": "Quanten und Materie",
+    "en": "Quantum physics and matter"
+  },
+  "description": {
+    "de": "Licht, Elektronen und Atome verlangen neue Modelle – und ermöglichen erstaunliche Technik.",
+    "en": "Light, electrons and atoms need new models and make remarkable technologies possible."
+  },
+  "icon": "⚛️",
+  "accent": "violet",
+  "level": "sek2"
+}

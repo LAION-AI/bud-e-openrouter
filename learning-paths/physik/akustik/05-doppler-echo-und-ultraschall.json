@@ -1,0 +1,253 @@
+{
+  "key": "doppler-echo-und-ultraschall",
+  "title": {
+    "de": "Was verrät dir ein vorbeifahrendes Martinshorn?",
+    "en": "What can a passing siren tell you?"
+  },
+  "summary": {
+    "de": "Unterscheide veränderte Tonhöhe und Echo – und entdecke, wie Schall Bewegung und verborgene Grenzen sichtbar machen kann.",
+    "en": "Distinguish changing pitch from echoes, and discover how sound can reveal motion and hidden boundaries."
+  },
+  "icon": "🦇",
+  "accent": "violet",
+  "minutes": 20,
+  "screens": [
+    {
+      "key": "schritt-1",
+      "title": {
+        "de": "Das Muster reist, nicht das ganze Material",
+        "en": "The pattern travels, not the whole material"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Bei einer Stadionwelle stehen Menschen nacheinander auf und setzen sich wieder. Das Muster läuft durch die Reihen, die Menschen reisen nicht um das Stadion. Eine mechanische Welle funktioniert ähnlich: Eine Störung wird über Wechselwirkungen weitergegeben, während Teilchen oder kleine Bereiche um ihre Gleichgewichtslage schwingen. Mit der Welle können Energie und Informationen übertragen werden.",
+            "en": "During a stadium wave, people stand up and sit down in sequence. The pattern travels around the stands, but the people do not. A mechanical wave works similarly: interactions pass on a disturbance while particles or small regions oscillate around an equilibrium position. The wave can transfer energy and information."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Bei Schall in Luft entstehen abwechselnd Verdichtungen und Verdünnungen. Die Teilchen schwingen dabei im Wesentlichen entlang der Ausbreitungsrichtung: Schall ist dort eine Longitudinalwelle. Bei einer idealisierten Seilwelle kann die Schwingung quer zur Ausbreitung liegen; das heißt transversal. Mit dieser Vorstellung kannst du Schall und eine Welle im Stadion vergleichen: Die Störung wandert, obwohl die einzelnen Beteiligten ungefähr an ihrem Platz bleiben. Das Modell erklärt viel, aber nicht jede Einzelheit einer Welle. Für eine sichere Darstellung verwendest du eine Animation oder Skizze. Niemand muss an gespannten Seilen ziehen, Menschen für eine Vorführung anfassen oder laute Töne erzeugen. Die Idee ist die Weitergabe einer Störung, nicht möglichst viel Bewegung im Raum.",
+            "en": "Sound in air produces alternating compressions and rarefactions. Particles move mainly along the direction of propagation, making it a longitudinal wave. In an idealised string wave, motion can instead be perpendicular to propagation: a transverse wave. This picture lets you compare sound with a stadium wave: the disturbance travels while the individual participants remain roughly in place. It explains a great deal, but not every detail of wave behaviour. Use an animation or sketch for a safe representation. There is no need to pull on tensioned ropes, touch people during a demonstration or produce loud tones. The important idea is the transmission of a disturbance, not creating the greatest possible movement in a room."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Welche Beobachtung an einer Stadionwelle hilft dir zu erklären, warum Welle und Materialbewegung nicht dasselbe sind? Markiere in der Animation ein einzelnes Teilchen. Wenn das Wellenmuster vorbeiläuft, bleibt seine Bewegung um einen örtlichen Bereich begrenzt. Die markierte Verdichtung wandert dagegen weiter. Zwei verschiedenfarbige Markierungen machen die beiden Bedeutungen von „Bewegung“ sichtbar. Das Stadionbild erklärt diesen Unterschied gut, bildet aber weder Luftteilchen noch ihre elastischen Wechselwirkungen vollständig ab.",
+            "en": "Which observation of a stadium wave helps explain why wave movement and material movement are different? Mark one particle in the animation. As the wave pattern passes, its motion remains near a local region, while a marked compression travels onwards. Two differently coloured markers distinguish the meanings of “motion”. The stadium analogy explains that difference well but does not fully represent air particles or their elastic interactions."
+          }
+        }
+      ]
+    },
+    {
+      "key": "schritt-2",
+      "title": {
+        "de": "Die Abstände zwischen den Wellen ändern sich",
+        "en": "The spacing between waves changes"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Warum klingt eine gleichmäßig tönende Sirene beim Vorbeifahren plötzlich anders? Bewegt sich die Schallquelle auf dich zu, sendet sie jeden neuen Schwingungsabschnitt von einem etwas näheren Ort aus. Vor ihr liegen die Wellenfronten deshalb enger zusammen. An deinem Ohr treffen mehr Schwingungen pro Zeit ein: Die empfangene Frequenz ist höher. Entfernt sich die Quelle, kommen die Schwingungen weiter auseinander an und der Ton klingt tiefer.",
+            "en": "Why does a steadily sounding siren sound different as it passes? When a sound source approaches, it emits each successive part of its vibration from a slightly closer position. Wavefronts are therefore closer together in front of it. More vibrations reach your ear per unit time, giving a higher received frequency. As the source moves away, the arriving vibrations are spaced farther apart and the pitch is lower."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Das heißt Doppler-Effekt. Die Quelle muss ihre eigene Schwingungsfrequenz dafür nicht ändern. Für die Erklärung unterscheidest du erzeugte und empfangene Frequenz. Auch ein bewegter Empfänger kann eine veränderte Frequenz wahrnehmen, weil er den Wellenfronten entgegenkommt oder mit ihnen mitläuft. Bei Schall ist die Bewegung gegenüber dem Medium wichtig; bewegte Quelle und bewegter Empfänger sind deshalb nicht in jeder Hinsicht derselbe Fall.",
+            "en": "This is the Doppler effect. The source need not change its own vibration frequency. Distinguish emitted from received frequency. A moving receiver can also detect a change by moving towards wavefronts or along with them. For sound, motion relative to the medium matters; a moving source and a moving receiver are therefore not identical in every respect."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Die Lautstärke kann sich wegen des Abstands ebenfalls ändern, ist aber nicht die Ursache des Doppler-Effekts. Höher bedeutet nicht einfach näher und lauter. Ebenso wird Schall im gleichen ruhenden Medium nicht dadurch schneller, dass die Quelle schneller fährt. Eine Animation mit gleichmäßig ausgesendeten Kreisen macht den Unterschied sichtbar. Beobachte Verkehr dafür niemals von der Fahrbahn und versuche keine fahrenden Geräte mit lauten Signalen selbst zu bauen.",
+            "en": "Loudness may change with distance too, but this does not cause the Doppler effect. Higher pitch does not simply mean closer and louder. Nor does sound travel faster through the same stationary medium just because the source moves faster. An animation with regularly emitted circles makes the difference visible. Never observe traffic from the roadway or build moving devices with loud signals for this task."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "💡",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Eine Person fährt mit der gleichmäßig tönenden Quelle mit, eine andere bleibt stehen. Warum können beide verschiedene Tonhöhen hören? Zeichne Wellenfronten vor und hinter der bewegten Quelle. Markiere ausdrücklich, was gleich bleibt und was sich für den stehenden Empfänger ändert.",
+            "en": "One person moves with a steadily sounding source while another stands still. Why might they hear different pitches? Draw wavefronts ahead of and behind the moving source. Mark what stays the same and what changes for the stationary receiver."
+          }
+        }
+      ]
+    },
+    {
+      "key": "schritt-3",
+      "title": {
+        "de": "Ein Echo liefert Zeit, nicht sofort ein fertiges Bild",
+        "en": "An echo gives timing, not a ready-made picture"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Wie kann ein Parksensor einen Abstand erkennen, ohne ein Foto zu machen? Er sendet einen kurzen Schallimpuls und empfängt einen zurückkehrenden Anteil. Zwischen Aussenden und Empfang liegt eine Laufzeit. Zusammen mit einem Modell der Schallgeschwindigkeit lässt sich daraus eine Entfernung erschließen. Der Schall war hin und zurück unterwegs. Die gesamte Strecke ist deshalb nicht einfach der Abstand zwischen Sensor und Hindernis.",
+            "en": "How can a parking sensor detect distance without taking a photograph? It sends a brief sound pulse and receives a returning component. The interval between transmission and reception is the travel time. Combined with a model of sound speed, it allows a distance to be inferred. Sound travelled out and back; its full journey is therefore not simply the gap between sensor and obstacle."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Das Prinzip steckt auch in Sonar und in der Echoortung von Tieren. Aus einer Verzögerung folgt aber nur mit Annahmen ein sinnvoller Abstand. Das Medium und seine Bedingungen beeinflussen die Geschwindigkeit. Eine schräge Fläche kann Schall am Empfänger vorbeireflektieren. Mehrere Flächen können mehrere Echos erzeugen. Ein schwaches oder fehlendes Echo bedeutet daher nicht sicher: „Dort ist nichts.“",
+            "en": "This principle also appears in sonar and animal echolocation. But a delay gives a useful distance only under assumptions. The medium and its conditions affect sound speed. A tilted surface can reflect sound away from the receiver, and several surfaces can produce several echoes. A weak or missing echo does not therefore prove nothing is there."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Eine Messung ist eine Schlussfolgerung aus Signalen und einem Modell. Der Sensor muss auswählen, welches Echo zu welchem Weg gehört. Darum ist eine App-Anzeige keine unfehlbare Sicht auf die Umgebung. Laufzeit und Doppler-Verschiebung beantworten außerdem verschiedene Fragen: Die eine hilft bei Entfernungen, die andere bei Bewegung entlang der Verbindung von Quelle und Empfänger. Wir vergleichen Diagramme und Beispielsituationen, statt uns auf einen selbstgebauten Sensor zur sicheren Orientierung zu verlassen.",
+            "en": "A measurement is an inference from signals and a model. The sensor must identify which echo corresponds to which path, so an app display is not an infallible view of the surroundings. Travel time and Doppler shift also answer different questions: one helps determine distance; the other reveals motion along the source–receiver direction. We compare diagrams and situations rather than relying on a homemade sensor for safe navigation."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "💡",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Ein Hindernis bleibt gleich weit entfernt, bewegt sich aber seitlich. Welche Information könnte die Laufzeit geben, und warum beweist eine unveränderte Doppler-Verschiebung nicht vollständigen Stillstand? Erkläre mit der Richtung der Bewegung, ohne eine Zahl auszurechnen.",
+            "en": "An obstacle stays equally far away but moves sideways. What might travel time tell you, and why would no Doppler shift not prove complete stillness? Explain using the direction of motion without calculating a number."
+          }
+        }
+      ]
+    },
+    {
+      "key": "schritt-4",
+      "title": {
+        "de": "Unsichtbares hören – ohne Zauberei",
+        "en": "Sensing the unseen without magic"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Was unterscheidet Ultraschall von hörbarem Schall? Vor allem die Frequenz. Als Ultraschall bezeichnet man Schall oberhalb des üblichen menschlichen Hörbereichs, ungefähr oberhalb von 20 Kilohertz. Die persönliche Hörgrenze ist jedoch unterschiedlich. Ultraschall ist weiterhin eine mechanische Welle, die ein Medium braucht. Er ist keine Röntgenstrahlung. Dass Menschen ihn nicht hören, macht ihn weder unwirksam noch grundsätzlich ungefährlich.",
+            "en": "What distinguishes ultrasound from audible sound? Mainly frequency. Ultrasound is sound above the usual human hearing range, roughly above 20 kilohertz. Individual hearing limits vary. It remains a mechanical wave requiring a medium, not X-ray radiation. Being inaudible does not make it ineffective or automatically harmless."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Bei bildgebenden Verfahren werden kurze Ultraschallimpulse ausgesendet. An Grenzen zwischen unterschiedlichen Materialien wird ein Teil reflektiert. Aus vielen gemessenen Signalen kann ein Gerät ein Bild rekonstruieren. Es fotografiert nicht einfach durch den Körper hindurch. Laufzeiten, Schallrichtung und Annahmen über das Material beeinflussen die Zuordnung.",
+            "en": "Imaging systems emit short ultrasound pulses. Boundaries between different materials reflect part of the sound. An instrument reconstructs an image from many measured signals; it does not simply photograph through a body. Travel times, beam direction and assumptions about the material affect the reconstruction."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Doppler-Verfahren können zusätzlich Hinweise auf Bewegung liefern, etwa bei strömenden Flüssigkeiten. Richtung und Messanordnung gehören zur Interpretation. Eine einzelne farbige Darstellung erklärt nicht von selbst, was im Inneren passiert. Medizinische Anwendungen und die Bewertung solcher Bilder gehören zu ausgebildeten Fachpersonen. Hier geht es nur um physikalische Prinzipien; du sollst keine Diagnosen stellen, Geräte an Menschen ausprobieren oder Hörgrenzen testen. Die gemeinsame Idee bleibt spannend: Schall kann Informationen liefern, die nicht direkt sichtbar sind. Gute Technik zeigt zugleich, welche Unsicherheiten und Modellannahmen hinter einem scheinbar klaren Bild liegen.",
+            "en": "Doppler methods can also provide clues about motion, including flowing liquids. Direction and measurement geometry matter when interpreting them. A coloured display does not explain itself. Medical applications and interpretation belong to qualified professionals. This path concerns physical principles only: do not diagnose, test equipment on people or probe hearing limits. The shared idea is still fascinating: sound can provide information that is not directly visible. Good technology also makes clear which uncertainties and model assumptions sit behind an apparently sharp image."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "💡",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Entwirf eine Erklärung für ein Technikmuseum: „Dieses Gerät sieht nicht direkt – es wertet Echos aus.“ Welche zwei Informationen misst es, welche Annahme benötigt es und welche Grenze sollte Besuchenden erklärt werden? Verwende ein erfundenes Sachbeispiel, keine persönliche Untersuchung.",
+            "en": "Design a museum explanation: “This device does not see directly; it analyses echoes.” Which two pieces of information does it measure, what assumption does it need, and what limitation should visitors know? Use an imaginary example, not a personal examination."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "PhET: Wellen sicher in einer Simulation erkunden",
+                "en": "PhET: explore waves safely in a simulation"
+              },
+              "url": "https://phet.colorado.edu/de/simulations/waves-intro"
+            },
+            {
+              "label": {
+                "de": "NASA: Doppler-Effekt",
+                "en": "NASA: the Doppler effect"
+              },
+              "url": "https://www.grc.nasa.gov/WWW/k-12/airplane/doppler.html"
+            },
+            {
+              "label": {
+                "de": "Fachverband für Strahlenschutz: Ultraschall und andere Bildverfahren",
+                "en": "Radiation protection association: ultrasound and other imaging methods"
+              },
+              "url": "https://www.fs-ev.org/fileadmin/user_upload/80_FAQs/anwendung_medizin/faq_frage_503.html"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": {
+        "de": "Die wichtigsten Zusammenhänge",
+        "en": "The key connections"
+      },
+      "intro": {
+        "de": "Ergänze passende Begriffe aus diesem Pfad. Nachschauen ist erlaubt.",
+        "en": "Complete the gaps using terms from this path. You may look back."
+      },
+      "text": {
+        "de": "Bei einer Annäherung der Schallquelle kann die empfangene ___ steigen. Diese Änderung heißt ___. Die erzeugte Frequenz kann dabei ___ bleiben. Ein Echo liefert eine ___. Der Schall legt den Weg hin und ___ zurück. Seine Geschwindigkeit hängt vom ___ ab. Schall oberhalb des üblichen Hörbereichs heißt ___. Ein Ultraschallbild wird aus vielen Signalen ___.",
+        "en": "When a sound source approaches, received ___ can increase. This change is the ___ effect. Emitted frequency can remain ___. An echo provides a travel ___. Sound travels out and ___. Its speed depends on the ___. Sound above the usual hearing range is ___. An ultrasound image is ___ from many signals."
+      }
+    },
+    {
+      "kind": "compare",
+      "title": {
+        "de": "Erklären statt nur aufzählen",
+        "en": "Explain rather than just list"
+      },
+      "intro": {
+        "de": "Verbinde die Ideen in drei bis vier Sätzen. Eine Rechnung brauchst du nicht.",
+        "en": "Connect the ideas in three or four sentences. No calculation is needed."
+      },
+      "text": {
+        "de": "Ein Sensor misst längere Echolaufzeit, aber keine Doppler-Verschiebung. Welche verschiedenen Informationen liefern diese Merkmale? Warum darfst du aus einem einzelnen Merkmal keine vollständige Bewegungsgeschichte behaupten?",
+        "en": "A sensor records a longer echo travel time but no Doppler shift. What different information do these features provide? Why should you not infer a complete motion history from just one feature?"
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": {
+        "de": "Deine Idee für den Alltag",
+        "en": "Your everyday idea"
+      },
+      "intro": {
+        "de": "Entwickle eine eigene Idee und begründe sie mit Physik.",
+        "en": "Develop your own idea and support it with physics."
+      },
+      "text": {
+        "de": "Erfinde eine Alltagshilfe, die Schall nutzt, um Informationen über ihre Umgebung zu gewinnen. Beschreibe den Nutzen, eine notwendige Modellannahme und eine Möglichkeit, Fehlinterpretationen sichtbar zu machen.",
+        "en": "Invent an everyday helper that uses sound to learn about its surroundings. Describe its benefit, one necessary model assumption and a way to make possible misinterpretations visible."
+      }
+    }
+  ]
+}

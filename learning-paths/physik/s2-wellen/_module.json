@@ -1,0 +1,14 @@
+{
+  "key": "s2-wellen",
+  "title": {
+    "de": "Schwingungen, Wellen und Signale",
+    "en": "Oscillations, waves and signals"
+  },
+  "description": {
+    "de": "Vom Energieaustausch im Schwingkreis bis zu Lichtmustern und übertragenen Informationen.",
+    "en": "From energy exchange in oscillating circuits to light patterns and transmitted information."
+  },
+  "icon": "〰️",
+  "accent": "sky",
+  "level": "sek2"
+}

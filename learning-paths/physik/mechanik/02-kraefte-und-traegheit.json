@@ -5,8 +5,8 @@
     "en": "Why braking sends you forwards"
   },
   "summary": {
-    "de": "Kraftpfeile, Masse und Gewicht helfen dir, Sport, Rucksack und Bewegung ohne Denkfallen zu verstehen.",
-    "en": "Force arrows, mass and weight help you understand sport, backpacks and motion without common misconceptions."
+    "de": "Warum bewegst du dich beim Bremsen weiter? Entdecke, wie Kräfte Bewegungen verändern und warum Masse und Gewicht nicht dasselbe sind.",
+    "en": "Why do you keep moving when a vehicle brakes? Discover how forces change motion and why mass and weight differ."
   },
   "icon": "🛹",
   "accent": "sky",
@@ -190,15 +190,15 @@
           "items": [
             {
               "label": {
-                "de": "Hamburg: Physik Gymnasium (2024)",
-                "en": "Hamburg: Gymnasium physics (2024)"
+                "de": "Hamburg: Physik – fachlicher Hintergrund",
+                "en": "Hamburg: physics background"
               },
               "url": "https://www.hamburg.de/resource/blob/798534/4cf0047ad61effacd1ff7e6ad819fa41/physik-data.pdf"
             },
             {
               "label": {
-                "de": "Hamburg: Physik Stadtteilschule (2024)",
-                "en": "Hamburg: Stadtteilschule physics (2024)"
+                "de": "Hamburg: Physik – weitere fachliche Grundlagen",
+                "en": "Hamburg: further physics background"
               },
               "url": "https://www.hamburg.de/resource/blob/798426/ba414a0ace36d17b7813a855db625c42/physik-data.pdf"
             },

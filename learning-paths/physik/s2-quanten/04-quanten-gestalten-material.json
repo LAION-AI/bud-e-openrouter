@@ -1,0 +1,229 @@
+{
+  "key": "phys2-quanten-gestalten-material",
+  "title": {
+    "de": "Warum kann ein winziges Bauteil seine Farbe ändern?",
+    "en": "Why can a tiny component change its colour?"
+  },
+  "summary": {
+    "de": "Begrenzte Quantenzustände, das Pauli-Prinzip und Energiebänder verbinden Grundlagen mit moderner Materialtechnik.",
+    "en": "Confined quantum states, the Pauli principle and energy bands connect fundamentals to modern materials."
+  },
+  "icon": "💎",
+  "accent": "violet",
+  "minutes": 20,
+  "screens": [
+    {
+      "key": "topf",
+      "title": {
+        "de": "Eine Begrenzung wählt Zustände aus",
+        "en": "A boundary selects states"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Eine Saite zwischen festen Enden unterstützt bestimmte stehende Muster. Für ein eingeschlossenes Quantenobjekt gibt es eine verwandte mathematische Idee: Im einfachen eindimensionalen Potenzialtopf begrenzen gedachte Wände den zugänglichen Bereich. Nur passende Zustandsfunktionen erfüllen die Randbedingungen. Daraus entstehen ausgewählte Energiewerte statt einer beliebigen kontinuierlichen Reihe. Der Name „Topf“ beschreibt eine Energieumgebung, kein mikroskopisches Gefäß mit gewöhnlichen Steinwänden. Auch die Zustandswelle ist keine seitliche Bewegung einer winzigen Schnur. Das Modell verbindet räumliche Begrenzung und Energie, ohne einen durchgehend bekannten klassischen Hin-und-her-Weg des Teilchens vorzugeben. Diese Grenze der Analogie ist ebenso wichtig wie ihre Anschaulichkeit.",
+            "en": "A string fixed at both ends supports selected standing patterns. A related mathematical idea applies to confined quantum objects: an ideal one-dimensional potential well uses imagined boundaries to restrict the accessible region. Only suitable state functions satisfy the boundary conditions, producing selected energies rather than an arbitrary continuum. “Well” describes an energy environment, not a tiny container with ordinary stone walls. The state wave is not sideways motion of a miniature string either. The model links confinement and energy without assigning a continuously known classical back-and-forth trajectory. Its limitations matter as much as its visual usefulness."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Verändert sich die räumliche Begrenzung, verändern sich die möglichen Zustände und ihre Energieabstände. Damit können sich auch die Lichtübergänge eines geeigneten Materials ändern. Das macht die Modellidee für sehr kleine Strukturen interessant, etwa Quantenpunkte. Ein wirklicher Quantenpunkt ist jedoch komplexer als ein Topf in nur einer Raumrichtung mit unendlich hohen Wänden. Reale Begrenzungen können endlich sein. Dann kann eine Zustandsfunktion auch in klassisch unerlaubte Bereiche hineinreichen und ein Tunneleffekt möglich sein. Dabei wird nicht kurz Energie aus dem Nichts geliehen. Die quantenmechanische Zustandsbeschreibung ist anders als die klassische Bahnvorstellung. Für einen verständlichen Entwurf genügt: Randbedingungen beeinflussen erlaubte Zustände und deren Wechselwirkung mit Licht. Ein einzelnes idealisiertes Bild erklärt trotzdem noch nicht jedes Material und jede Herstellungsfrage.",
+            "en": "Changing confinement changes possible states and energy spacings, which can alter light transitions in a suitable material. This makes the idea relevant to small structures such as quantum dots. A real dot is more complex than a one-dimensional well with infinitely high walls. Real barriers can be finite, allowing a state function to extend into classically forbidden regions and permit tunnelling. This does not involve briefly borrowing energy from nowhere; the quantum state differs from a classical trajectory. For an understandable design, retain the principle that boundaries affect states and light interaction, while recognising that one ideal picture cannot explain every material or manufacturing issue."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Weiterdenken",
+            "en": "Think it through"
+          },
+          "text": {
+            "de": "Entwirf zwei unterschiedlich begrenzte Modellwelten. Wie würdest du erklären, dass sich ihre Lichtantwort ändern kann, ohne zu behaupten, ein Elektron fahre wie ein Ball zwischen echten Wänden hin und her?",
+            "en": "Design two differently confined model worlds. Explain why their light responses may differ without portraying an electron as a ball bouncing between literal walls."
+          }
+        }
+      ]
+    },
+    {
+      "key": "pauli",
+      "title": {
+        "de": "Viele Elektronen können nicht alle denselben Platz im Modell wählen",
+        "en": "Many electrons cannot all occupy the same state"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Ein Material enthält viele Elektronen, deren Zustände nicht unabhängig beliebig besetzt werden können. Das Pauli-Prinzip besagt, dass identische Elektronen nicht denselben vollständigen Quantenzustand einnehmen. Zum vollständigen Zustand gehört auch der Spin, eine intrinsische Quanteneigenschaft. Spin bedeutet nicht einfach, dass eine kleine Kugel klassisch um ihre Achse rotiert. In einem räumlichen Orbital können Elektronen mit verschiedenen passenden Spinzuständen vorkommen; gleiche räumliche Form allein bedeutet daher noch nicht gleichen vollständigen Zustand. Diese Unterscheidung hilft, ohne eine echte Sitzordnung kleiner Menschen im Atom zu erfinden. Das Prinzip beschreibt Zustände, keine persönlichen Abneigungen zwischen Teilchen.",
+            "en": "A material contains many electrons whose states cannot be filled arbitrarily and independently. The Pauli principle says identical electrons cannot occupy the same complete quantum state. That state includes spin, an intrinsic quantum property, not simply a little ball rotating around its axis. Electrons with suitable different spin states can share a spatial orbital, so equal spatial shape does not mean equal complete state. This helps without inventing a literal seating arrangement of miniature people inside an atom. The principle concerns states, not particles disliking one another."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Wenn niedrigere Zustände entsprechend besetzt sind, müssen weitere Elektronen andere erlaubte Zustände einnehmen. Ihre Wechselwirkungen verändern die einfache Geschichte zusätzlich. So ergibt sich ein strukturierter Aufbau von Atomen und ein Zugang zu den Eigenschaften vieler Stoffe. Das ist mehr als eine elektrische Abstoßung: Auch ohne dieselbe klassische Kraftgeschichte bleibt die Quantenzustandsregel wesentlich. Ein gutes Bild könnte erlaubte Zustände durch beschriftete Felder darstellen und zusätzliche Zustandsmerkmale sichtbar machen. Es sollte ausdrücklich zeigen, dass diese Felder keine festen Orte sind. Die Verbindung zur Materialtechnik liegt darin, dass Besetzung und verfügbare Übergänge darüber mitentscheiden, wie Licht absorbiert und Ladung transportiert werden kann. Du musst keine Elektronenkonfiguration auswendig füllen; wichtig ist, warum ein Mehrelektronensystem nicht einfach eine beliebige Sammlung unabhängiger Kopien eines einzelnen Elektrons ist.",
+            "en": "Once lower states are appropriately occupied, further electrons must occupy other allowed states. Interactions add further complexity. This produces structured atoms and helps explain material properties. It is more than electrical repulsion: the quantum state rule remains essential beyond a classical force story. A useful image might show labelled state boxes and additional state features while clearly saying the boxes are not fixed spatial locations. For materials, occupation and available transitions help determine light absorption and charge transport. No memorised configuration filling is needed here. The key is why a multi-electron system is not just an arbitrary collection of independent copies of one electron, each free to choose the same state."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Weiterdenken",
+            "en": "Think it through"
+          },
+          "text": {
+            "de": "Eine Grafik zeigt „volle Plätze“. Welche Beschriftung verhindert, dass Menschen sie als wirkliche Orte missverstehen? Erkläre außerdem, warum Spin nicht mit einem gefilmten Drehen einer kleinen Kugel gleichgesetzt werden sollte.",
+            "en": "A diagram shows “occupied places”. Which label prevents treating them as physical locations? Also explain why spin should not be equated with filmed rotation of a tiny ball."
+          }
+        }
+      ]
+    },
+    {
+      "key": "roentgen",
+      "title": {
+        "de": "Ein Röntgenspektrum erzählt zwei Energiegeschichten",
+        "en": "An X-ray spectrum tells two energy stories"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Werden schnelle Elektronen in einem Material stark abgebremst, kann elektromagnetische Strahlung entstehen. Diese Bremsstrahlung bildet unter passenden Bedingungen einen kontinuierlichen Spektralbereich. Unterschiedliche Abbremsvorgänge übertragen verschiedene Energieanteile auf Photonen. Die Quelle der Strahlungsenergie ist die zuvor zugeführte Elektronenenergie, nicht das Material als grenzenloser Vorrat. Die obere mögliche Photonenenergie ist daher durch die Energiezufuhr begrenzt. Für das Verständnis brauchst du keinen Zahlenwert und keine Grenzwellenlänge auszurechnen. Entscheidend ist, warum viele mögliche Energieübertragungen zu einem breiten Bereich führen, statt nur eine einzige scharfe Spektrallinie hervorzubringen.",
+            "en": "When fast electrons are strongly slowed in a material, electromagnetic radiation can be emitted. Bremsstrahlung forms a continuous spectral region under suitable conditions. Different slowing events transfer different energy amounts to photons. The source is the electron energy supplied earlier, not an unlimited store in the material. Maximum photon energy is therefore limited by the input. No numerical value or cutoff wavelength needs calculating. The important point is why a range of possible transfers produces a broad spectrum rather than only one sharp line."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Zusätzlich können auftreffende Elektronen innere Atomzustände verändern. Werden entstandene Lücken durch andere Elektronenübergänge ausgeglichen, entstehen charakteristische Röntgenlinien. Deren Energien hängen von den Zustandsabständen des Materials ab. In einer Messung können kontinuierlicher Untergrund und ausgewählte Linien deshalb nebeneinander vorkommen. Sie haben nicht automatisch dieselbe mikroskopische Entstehung. Das unterscheidet Materialsignatur von der Energieverteilung der abbremsenden Elektronen. Ein Ausstellungsspektrum könnte beide Anteile unterschiedlich markieren und die Energiekette daneben zeigen. Röntgenstrahlung ist ionisierend und gehört ausschließlich in fachgerecht betriebene Einrichtungen. Eigene Quellen, ausgebaute Röhren und medizinische Selbstversuche sind ausgeschlossen. Die interessante Frage ist nicht, wie man Strahlung selbst herstellt, sondern wie sich aus einem vorgegebenen Spektrum zwei unterschiedliche Vorgänge begründet erschließen lassen. Eine Messkurve wird so zum lesbaren Modellhinweis.",
+            "en": "Incoming electrons can also alter inner atomic states. Other electron transitions can fill the resulting vacancies and produce characteristic X-ray lines whose energies depend on the material's state spacings. Continuous background and selected lines can therefore coexist without sharing the same microscopic origin. This distinguishes material signature from the energy distribution of slowing electrons. An exhibit could colour the two contributions differently and show their energy chain. X-rays are ionising and belong only in professionally operated facilities. Homemade sources, removed tubes and medical self-experiments are excluded. The question is how to infer two processes from a supplied spectrum, not how to generate radiation. A curve becomes readable evidence for a model."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Weiterdenken",
+            "en": "Think it through"
+          },
+          "text": {
+            "de": "Vergleiche eine breite Spektralfläche mit scharfen Linien darüber. Welche zwei Entstehungsgeschichten würdest du zeigen, und warum wäre „alles sind dieselben Atomübergänge“ eine zu einfache Erklärung?",
+            "en": "Compare a broad spectral background with sharp lines above it. Which two origin stories would you show, and why is “all are the same atomic transitions” too simple?"
+          }
+        }
+      ]
+    },
+    {
+      "key": "halbleiter",
+      "title": {
+        "de": "Erlaubte Bänder machen Technik steuerbar",
+        "en": "Allowed bands make technology controllable"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "In einem Festkörper beeinflussen viele nahe Atome gemeinsam die Elektronenzustände. Statt nur isolierter Atomniveaus werden erlaubte Energiebänder und dazwischen verbotene Bereiche wichtig. Eine Bandlücke trennt bestimmte Zustandsbereiche. Ein Elektron kann passende Energie aufnehmen und in einen für den Transport geeigneten Zustand gelangen. Die zurückbleibende unbesetzte Stelle kann als Loch beschrieben werden, das zum elektrischen Verhalten beiträgt. Ein Loch ist kein kleines Stück positive Materie, das neu aus dem Nichts entsteht. Es ist eine wirksame Beschreibung fehlender Besetzung in einer gemeinsamen Zustandsstruktur. Dadurch lassen sich Vorgänge im Material übersichtlicher behandeln.",
+            "en": "In a solid, many nearby atoms jointly influence electron states. Allowed energy bands and gaps become important instead of only isolated atomic levels. An electron can absorb suitable energy and enter a state useful for transport. The unoccupied state left behind can be described as a hole contributing to electrical behaviour. A hole is not a new little piece of positive matter appearing from nowhere; it effectively describes missing occupation in a shared structure. This makes material behaviour easier to organise."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Gezielt eingebrachte geeignete Fremdatome können die verfügbaren Ladungsträger und Zustände beeinflussen. Das nennt man Dotierung. Aus passend verbundenen Bereichen entstehen Bauteile, die Ladungstransport steuern oder Licht in elektrische Signale umsetzen. Bei einer Leuchtdiode kann ein geeigneter Rekombinationsvorgang Energie als Licht abgeben. Bei einer Solarzelle hilft die Struktur, durch Licht angeregte Ladungen nutzbar zu trennen. Das ist kein unmittelbarer Miniaturablauf aus gewöhnlichen Kugeln und Löchern. Die Bandvorstellung erklärt Auswahl und mögliche Übergänge, nicht jedes Fertigungsdetail. Eine verständliche Materialidee würde deshalb fragen: Welche Energie soll aufgenommen werden, welche Träger sollen sich bewegen, und welche Abgabe ist gewünscht? Zuverlässigkeit, Rohstoffe und Reparierbarkeit kommen als weitere Ziele hinzu. Der Pfad verlangt weder Chemikalien noch das Öffnen elektronischer Geräte.",
+            "en": "Controlled addition of suitable impurity atoms can change available carriers and states: doping. Appropriately joined regions form devices controlling charge transport or converting light into electrical signals. In an LED, suitable recombination can release light. In a solar cell, structure helps separate photoexcited charges usefully. This is not a miniature classical process of balls and holes. The band model explains selection and transitions, not every fabrication detail. A clear design asks which energy is absorbed, which carriers should move and which output is wanted. Reliability, resources and repairability add further goals. No chemicals or opened electronic devices are required. The purpose is understanding how quantum structure enables control."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Weiterdenken",
+            "en": "Think it through"
+          },
+          "text": {
+            "de": "Entwirf eine Karte für LED oder Solarzelle. Zeige Energiequelle, geeigneten Übergang und gewünschte Ausgabe. Welche Grenze des Bandbilds würdest du nennen, damit die Grafik nicht wie eine vollständige Bauanleitung wirkt?",
+            "en": "Design a card for an LED or solar cell. Show energy source, suitable transition and desired output. Which limit keeps the band picture from looking like complete construction instructions?"
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "PhET: interaktive Modellwelt",
+                "en": "PhET: interactive model"
+              },
+              "url": "https://phet.colorado.edu/de/simulations/bound-states"
+            },
+            {
+              "label": {
+                "de": "OpenStax: Halbleiter und Dotierung",
+                "en": "OpenStax: semiconductors and doping"
+              },
+              "url": "https://openstax.org/books/university-physics-volume-3/pages/9-6-semiconductors-and-doping"
+            },
+            {
+              "label": {
+                "de": "OpenStax: Röntgenstrahlung",
+                "en": "OpenStax: X-rays"
+              },
+              "url": "https://openstax.org/books/university-physics-volume-3/pages/8-5-atomic-spectra-and-x-rays"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": {
+        "de": "1. Lückentext",
+        "en": "1. Fill in the blanks"
+      },
+      "intro": {
+        "de": "Ergänze acht Fachwörter aus dem Gelesenen.",
+        "en": "Complete eight technical terms from the reading."
+      },
+      "text": {
+        "de": "Räumliche Begrenzungen wirken im Potenzialtopf als ___. Dadurch entstehen ausgewählte ___. Für identische Elektronen gilt das ___. Zum vollständigen Quantenzustand gehört der ___. Abgebremste Elektronen können ___ erzeugen. Innere Atomübergänge liefern charakteristische ___. Ein Festkörper besitzt erlaubte ___. Die gezielte Veränderung durch geeignete Fremdatome heißt ___.",
+        "en": "Spatial boundaries provide ___ conditions in a potential well. They produce selected energy ___. Identical electrons obey the ___ principle. A complete quantum state includes ___. Slowing electrons can produce ___. Inner atomic transitions generate characteristic ___. A solid has allowed energy ___. Controlled modification using suitable impurity atoms is ___."
+      }
+    },
+    {
+      "kind": "compare",
+      "title": {
+        "de": "2. Erklären und vergleichen",
+        "en": "2. Explain and compare"
+      },
+      "intro": {
+        "de": "Antworte mit drei bis vier kurzen Sätzen. Begründe mit dem Gelesenen; du brauchst nichts auszurechnen.",
+        "en": "Answer in three or four short sentences. Use the reading to explain your reasoning; no calculation is needed."
+      },
+      "text": {
+        "de": "Vergleiche einzelne Atomniveaus mit Energiebändern eines Festkörpers. Erkläre, welche gemeinsame Idee ausgewählter Zustände dahintersteht. Warum brauchen Bremsstrahlungsuntergrund und charakteristische Röntgenlinien verschiedene Erklärungen?",
+        "en": "Compare atomic levels with energy bands in a solid. Explain their shared idea of selected states. Why do a bremsstrahlung background and characteristic X-ray lines need different explanations?"
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": {
+        "de": "3. Deine Idee",
+        "en": "3. Your idea"
+      },
+      "intro": {
+        "de": "Entwickle in drei bis vier kurzen Sätzen eine eigene begründete Idee. Mehrere Antworten sind möglich.",
+        "en": "Develop your own reasoned idea in three or four short sentences. Several answers are possible."
+      },
+      "text": {
+        "de": "Gestalte eine verständliche Materialidee für Lichtaufnahme oder Lichtabgabe. Verbinde Begrenzung oder Bandstruktur mit einem Nutzen und einem Zielkonflikt wie Rohstoffbedarf oder Reparierbarkeit.",
+        "en": "Design an understandable material idea for absorbing or emitting light. Connect confinement or band structure with a benefit and a trade-off such as resources or repairability."
+      }
+    }
+  ]
+}

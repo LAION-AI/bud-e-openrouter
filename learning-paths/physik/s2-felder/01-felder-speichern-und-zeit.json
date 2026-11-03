@@ -1,0 +1,222 @@
+{
+  "key": "phys2-felder-speichern-und-zeit",
+  "title": {
+    "de": "Kann ein leerer Zwischenraum Energie speichern?",
+    "en": "Can an empty gap store energy?"
+  },
+  "summary": {
+    "de": "Felder, Potenzial und Kondensatoren erklären Berührungssensoren, Energiespeicher und verzögerte elektrische Reaktionen.",
+    "en": "Fields, potential and capacitors explain touch sensors, stored energy and delayed electrical responses."
+  },
+  "icon": "🔋",
+  "accent": "amber",
+  "minutes": 20,
+  "screens": [
+    {
+      "key": "feldkarte",
+      "title": {
+        "de": "Eine Karte für unsichtbare Kräfte",
+        "en": "A map of invisible forces"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Ein kleiner geladener Körper kann sich bewegen, obwohl ihn niemand berührt. Die elektrische Wechselwirkung lässt sich mit einem Feld beschreiben: Jedem Ort wird eine Richtung und Stärke zugeordnet. Diese Angabe sagt, welche Kraft eine kleine positive Probeladung dort erfahren würde. Für eine negative Ladung zeigt die Kraft entgegengesetzt. Das Feld ist also nicht einfach ein Pfeil für die Flugrichtung. Ein Teilchen kann anfangs seitwärts fliegen und trotzdem eine Kraft in eine andere Richtung erfahren. Seine weitere Bahn ergibt sich erst aus beidem zusammen. Eine große Ladung würde dagegen die Quellenverteilung womöglich selbst verändern.",
+            "en": "A small charged object can move without anyone touching it. An electric field describes the interaction by assigning a direction and strength to each location. This tells us what force a small positive test charge would experience there. A negative charge experiences the opposite direction. A field arrow is therefore not simply an arrow showing a flight path. A particle can initially travel sideways while a force acts in another direction. Its later path depends on both motion and force. A large test charge could otherwise change the source arrangement and distort the intended comparison."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Eine Feldlinienzeichnung ordnet diese Information räumlich. Linien sind keine Drähte; sie zeigen die Richtung der Kraft auf positive Probeladung. Verschiedene Quellen können gemeinsam ein Feld erzeugen. Ihre Beiträge werden als gerichtete Größen überlagert und können sich an einem Ort verstärken oder aufheben. Zwischen großen parallelen geladenen Platten ist das Feld im Inneren näherungsweise gleichmäßig, an den Rändern jedoch nicht. Dieses Modell hilft, ohne die gesamte Umgebung nachzuzeichnen. Es ist besonders nützlich, weil es verschiedene geladene Körper mit derselben Ortskarte verbindet. Die Wahl der Probeladung darf die untersuchte Anordnung dabei möglichst wenig verändern.",
+            "en": "Field lines organise that information spatially. They are not wires; they indicate force direction for positive test charge. Several sources can contribute to one field. Their directional contributions combine, reinforcing or cancelling locally. Between large parallel charged plates the field is approximately uniform away from the edges, but not near the edges. This model is useful without drawing every surrounding object. It links different charged particles to the same spatial map. The chosen test charge must disturb the arrangement as little as possible, otherwise it would change the very field being investigated."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Weiterdenken",
+            "en": "Think it through"
+          },
+          "text": {
+            "de": "Zeichne am selben Ort einen Feldpfeil und zwei Kraftpfeile für entgegengesetzte Ladungen. Welcher Pfeil darf nicht einfach als Bahn gelesen werden?",
+            "en": "At one location, draw a field arrow and force arrows for opposite charges. Which arrow must not simply be read as a trajectory?"
+          }
+        }
+      ]
+    },
+    {
+      "key": "potenzial",
+      "title": {
+        "de": "Höhenlinien ohne wirkliche Höhe",
+        "en": "Contours without physical height"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Eine Landkarte kann Höhenlinien zeigen, statt jeden Hang als Pfeil zu zeichnen. Für elektrische Energie hilft eine verwandte Vorstellung: Das elektrische Potenzial beschreibt die potenzielle Energie pro Ladung an einem Ort. Es ist keine echte räumliche Höhe. Die Spannung zwischen zwei Orten ist ihre Potenzialdifferenz. Entscheidend ist der Unterschied, nicht ein absolut vorgeschriebener Nullpunkt. Du kannst einen Bezug wählen, solange du ihn konsequent verwendest. Ein Höhenvergleich bleibt ebenfalls gleich, wenn eine Karte von Meereshöhe oder einem anderen gemeinsamen Bezug ausgeht.",
+            "en": "A map can show contour lines instead of drawing an arrow on every slope. A related idea helps describe electrical energy: electric potential is potential energy per unit charge at a location. It is not actual spatial height. Voltage between two locations is their potential difference. The difference matters, not an absolutely prescribed zero. You may choose a reference as long as you use it consistently. Height differences likewise remain unchanged whether a map uses sea level or another shared reference."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Orte mit gleichem Potenzial bilden Äquipotenzialflächen. Eine kleine Bewegung entlang einer solchen Fläche verändert die elektrische potenzielle Energie einer unveränderten Probeladung nicht. In einem elektrostatischen Feld stehen Feldlinien senkrecht auf diesen Flächen. Ein dicht gedrängter Potenzialverlauf kann auf eine starke örtliche Änderung hinweisen. Trotzdem ersetzt eine bunte Potenzialkarte keine Legende: Farben sind eine Darstellung, keine selbst leuchtenden Schichten im Raum. Außerdem ist das Bild für positive Ladungen leichter als „bergab“ zu erzählen. Bei negativen Ladungen musst du das Ladungsvorzeichen berücksichtigen. Potenzial und Feld beantworten somit verschiedene Fragen: Die eine Darstellung ordnet Energieunterschiede, die andere beschreibt örtliche Kräfte. Ein gemeinsamer Bezug verhindert, dass verschiedene Farblegenden scheinbare Widersprüche erzeugen.",
+            "en": "Equal-potential locations form equipotential surfaces. Moving an unchanged test charge a short distance along one does not change its electrical potential energy. In an electrostatic field, field lines are perpendicular to these surfaces. Closely spaced potential contours can indicate a strong local change. A coloured map still needs a legend: colours represent values, not glowing layers in space. Also, the “downhill” analogy is easiest for positive charges. Negative charges require accounting for their sign. Potential and field therefore answer different questions: one organises energy differences; the other describes local forces. Neither should be mistaken for an actual terrain hidden inside the device. A shared reference also prevents different colour legends from creating an apparent contradiction."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Weiterdenken",
+            "en": "Think it through"
+          },
+          "text": {
+            "de": "Erkläre einer jüngeren Person, warum zwei Orte dieselbe Spannung zueinander behalten, wenn du nur den gemeinsamen Potenzialnullpunkt verschiebst.",
+            "en": "Explain why the voltage between two locations stays unchanged when only the common zero of potential is shifted."
+          }
+        }
+      ]
+    },
+    {
+      "key": "kondensator",
+      "title": {
+        "de": "Zwei Platten und ein veränderter Raum",
+        "en": "Two plates and a changed space"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Ein Kondensator besitzt getrennte leitende Bereiche, zwischen denen sich ein elektrisches Feld aufbauen kann. Beim Laden werden Ladungen getrennt; der gesamte Bauteilkörper muss dadurch nicht insgesamt zusätzliche Nettoladung erhalten. Die Kapazität beschreibt, wie viel Ladungstrennung zu einer bestimmten Spannung gehört. Größere gegenüberliegende Flächen und ein kleinerer Abstand können sie erhöhen. Ein geeignetes isolierendes Material dazwischen verändert sie ebenfalls. Dieses Dielektrikum kann im Feld polarisiert werden. Es lässt Ladungsanteile geringfügig ausrichten oder verschieben, ohne einfach einen leitenden Kurzschluss zwischen den Platten zu bilden.",
+            "en": "A capacitor has separated conducting regions with an electric field between them. Charging separates charge; the entire component need not acquire additional net charge overall. Capacitance describes how much separated charge corresponds to a given voltage. Larger facing surfaces and a smaller gap can increase it. A suitable insulating material between them also changes capacitance. This dielectric can become polarised: its charge distribution shifts or aligns slightly without simply providing a conducting short circuit between the plates."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Die Energie eines geladenen Kondensators gehört zur Anordnung und ihrem Feld, nicht zu einem kleinen Vorrat an „Strom“ im Zwischenraum. Zum Trennen weiterer Ladung gegen die bereits aufgebaute elektrische Wirkung muss die Quelle Energie aufbringen. Beim Entladen kann ein anderer Empfänger diese Energie aufnehmen. Berührungssensoren nutzen oft veränderte Kapazität: Eine Hand beeinflusst die elektrische Anordnung, und die Elektronik erkennt die Änderung. Das bedeutet nicht, dass der Finger jedes Mal die beiden Kondensatorflächen verbinden müsste. Ein hilfreiches Modell zeigt deshalb Quelle, getrennte Ladungen, Feldraum und Empfänger. Reale Kondensatoren können nach dem Ausschalten geladen bleiben. Öffne daher keine Geräte und versuche nicht, unbekannte Bauteile selbst zu entladen. Eine Simulation reicht für diese Fragen vollständig aus.",
+            "en": "Stored energy belongs to the arrangement and its field, not a little supply of “current” in the gap. Separating more charge against the electrical effect already established requires energy from the source. Discharging transfers energy to another recipient. Touch sensors often detect a capacitance change: a hand alters the electrical arrangement and the electronics recognises it. The finger need not connect the two capacitor surfaces. A useful model therefore shows the source, separated charges, field region and recipient. Real capacitors can remain charged after power is switched off. Do not open devices or try to discharge unknown components yourself. A simulation is entirely sufficient for understanding these relationships."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Weiterdenken",
+            "en": "Think it through"
+          },
+          "text": {
+            "de": "Entwirf ein Bild für eine berührungsempfindliche Taste. Zeige, was sich an der Anordnung ändert, ohne den Finger als einfachen Kabelersatz zu zeichnen.",
+            "en": "Sketch a touch-sensitive button. Show how the arrangement changes without drawing the finger merely as a replacement wire."
+          }
+        }
+      ]
+    },
+    {
+      "key": "zeitverlauf",
+      "title": {
+        "de": "Warum elektrisches Reagieren Zeit braucht",
+        "en": "Why an electrical response can take time"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Ein Kondensator lädt sich über einen Widerstand nicht auf einen Schlag bis zur Quellenspannung. Anfangs ist der elektrische Unterschied zur Quelle groß, entsprechend kann ein größerer Ladestrom fließen. Mit zunehmender Aufladung wächst die Gegenspannung des Kondensators. Der antreibende Unterschied am Widerstand wird kleiner, der Ladestrom nimmt ab. Die Kondensatorspannung nähert sich ihrem Endwert deshalb erst schnell und dann immer langsamer. Das ist keine gleichmäßige Zunahme in identischen Schritten. Beim Entladen zeigt sich ein verwandter Verlauf: Mit sinkender Spannung wird auch der Strom kleiner.",
+            "en": "A capacitor charging through a resistor does not jump instantly to the source voltage. Initially the electrical difference is large, allowing a greater charging current. As charge separation grows, the capacitor's opposing voltage rises. The difference driving current through the resistor shrinks, so charging current decreases. Capacitor voltage approaches its final value quickly at first and increasingly slowly afterwards. It does not rise in equal steps. Discharging has a related pattern: as voltage decreases, the current also becomes smaller."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Ein größerer Widerstand bremst die Ladungsbewegung bei vergleichbarer Anordnung stärker. Eine größere Kapazität benötigt für denselben Spannungsanstieg mehr getrennte Ladung. Beides kann den zeitlichen Verlauf langsamer machen. Solche RC-Anordnungen helfen, kurze Schwankungen zu glätten oder verzögerte Reaktionen zu gestalten. Sie sind aber keine perfekten Zeitschalter für jede Umgebung; Bauteiltoleranzen, Temperatur und angeschlossene Empfänger spielen mit. Eine sinnvolle Anzeige könnte deshalb nicht nur „an“ und „aus“ zeigen, sondern den noch vorhandenen Energiezustand sichtbar machen. Das verbindet Gestaltung mit Sicherheit. Für einen Vergleich brauchst du keine Uhrwerte auszurechnen: Beschreibe, welcher Verlauf steiler beginnt, welcher sich langsamer ändert und welche Ursache du jeweils gezielt verändert hast.",
+            "en": "Greater resistance restricts charge movement more strongly in a comparable arrangement. Greater capacitance needs more separated charge for the same voltage rise. Both can slow the response. RC arrangements can smooth brief fluctuations or create delayed responses, but they are not perfect timers for every environment. Component tolerances, temperature and connected recipients matter. A useful indicator might show remaining stored energy rather than only “on” and “off”, linking design with safety. No numerical timing is needed for comparison: describe which curve begins more steeply, which changes more slowly and which cause you deliberately altered. That keeps the reasoning focused on the mechanism rather than a number without context."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Weiterdenken",
+            "en": "Think it through"
+          },
+          "text": {
+            "de": "Eine Anzeige erlischt langsam statt sofort. Entwickle zwei mögliche Erklärungen und benenne, welche Beobachtung den Kondensatorgedanken besonders stützen würde.",
+            "en": "An indicator fades rather than switching off immediately. Suggest two explanations and identify an observation that would particularly support the capacitor explanation."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "PhET: interaktive Modellwelt",
+                "en": "PhET: interactive model"
+              },
+              "url": "https://phet.colorado.edu/de/simulations/charges-and-fields"
+            },
+            {
+              "label": {
+                "de": "PhET: interaktive Modellwelt",
+                "en": "PhET: interactive model"
+              },
+              "url": "https://phet.colorado.edu/de/simulations/capacitor-lab-basics"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": {
+        "de": "1. Lückentext",
+        "en": "1. Fill in the blanks"
+      },
+      "intro": {
+        "de": "Ergänze acht Fachwörter aus dem Gelesenen.",
+        "en": "Complete eight technical terms from the reading."
+      },
+      "text": {
+        "de": "Eine Ortsbeschreibung elektrischer Kräfte liefert das ___. Seine Richtung bezieht sich auf eine positive ___. Energie pro Ladung beschreibt das ___. Der Unterschied zwischen zwei Orten heißt ___. Getrennte leitende Flächen bilden einen ___. Die Ladungstrennung pro Spannung beschreibt die ___. Ein isolierender Zwischenstoff heißt ___. Beim Laden über einen Widerstand nimmt der ___ allmählich ab.",
+        "en": "A spatial description of electric forces is a ___. Its direction refers to a positive ___. Energy per charge is described by ___. The difference between locations is ___. Separated conducting surfaces form a ___. Charge separation per voltage is described by ___. An insulating material between them is a ___. During charging through a resistor, ___ gradually decreases."
+      }
+    },
+    {
+      "kind": "compare",
+      "title": {
+        "de": "2. Erklären und vergleichen",
+        "en": "2. Explain and compare"
+      },
+      "intro": {
+        "de": "Antworte mit drei bis vier kurzen Sätzen. Begründe mit dem Gelesenen; du brauchst nichts auszurechnen.",
+        "en": "Answer in three or four short sentences. Use the reading to explain your reasoning; no calculation is needed."
+      },
+      "text": {
+        "de": "Vergleiche eine Feldkarte mit einer Potenzialkarte: Welche Frage beantwortet jede? Erkläre anschließend, warum ein Kondensator über einen Widerstand zuerst schneller und später langsamer lädt.",
+        "en": "Compare field and potential maps: which question does each answer? Then explain why a capacitor charges through a resistor faster initially and more slowly later."
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": {
+        "de": "3. Deine Idee",
+        "en": "3. Your idea"
+      },
+      "intro": {
+        "de": "Entwickle in drei bis vier kurzen Sätzen eine eigene begründete Idee. Mehrere Antworten sind möglich.",
+        "en": "Develop your own reasoned idea in three or four short sentences. Several answers are possible."
+      },
+      "text": {
+        "de": "Entwirf eine verständliche Zustandsanzeige für ein erfundenes Gerät mit Energiespeicher. Begründe, warum ein bloßes Ein-Aus-Zeichen irreführen könnte. Keine reale Elektronik öffnen.",
+        "en": "Design a clear state indicator for an imagined device containing an energy store. Explain why a simple on/off sign could mislead. Do not open real electronics."
+      }
+    }
+  ]
+}

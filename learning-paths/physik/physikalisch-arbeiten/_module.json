@@ -5,11 +5,10 @@
     "en": "Working scientifically"
   },
   "description": {
-    "de": "Fragen, sicher untersuchen, messen, auswerten und Modelle beurteilen. Querschnitt für die Sekundarstufe I.",
-    "en": "Questions, safe investigations, measurements, analysis and evaluating models. Cross-cutting secondary skills."
+    "de": "Wie aus einer neugierigen Frage eine nachvollziehbare Untersuchung wird.",
+    "en": "How a curious question becomes an investigation others can understand."
   },
   "icon": "📏",
   "accent": "teal",
-  "badge": "Sek I",
   "level": "sek1"
 }

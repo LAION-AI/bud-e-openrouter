@@ -1,0 +1,229 @@
+{
+  "key": "phys2-muster-aus-ueberlagerung",
+  "title": {
+    "de": "Wie können zwei helle Wege einen dunklen Ort ergeben?",
+    "en": "How can two bright paths make a dark place?"
+  },
+  "summary": {
+    "de": "Interferenz verwandelt Wellen in Muster – und kleinste Wegänderungen in messbare Hinweise.",
+    "en": "Interference turns waves into patterns and tiny path changes into measurable evidence."
+  },
+  "icon": "🌊",
+  "accent": "sky",
+  "minutes": 20,
+  "screens": [
+    {
+      "key": "phase",
+      "title": {
+        "de": "Wellen treffen sich mit einer Vorgeschichte",
+        "en": "Waves meet with a history"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Zwei Wellen können denselben Ort erreichen und dort gemeinsam eine größere, kleinere oder verschwindende Auslenkung erzeugen. Im linearen Modell werden ihre momentanen Auslenkungen addiert. Dabei zählt nicht nur ihre Stärke, sondern auch ihre Phase: Treffen entsprechende Bewegungszustände zusammen oder gegensätzliche? Ein Umweg kann die Phase beim Eintreffen verändern. Deshalb kann ein räumlicher Wegunterschied entscheiden, ob Verstärkung oder Abschwächung entsteht. Die Wellen brauchen dafür keine Absicht und müssen einander nicht dauerhaft zerstören. Nach der Überlagerung kann sich jede im Modell weiter ausbreiten. Das beobachtete Muster hängt vom gesamten Ablauf ab.",
+            "en": "Two waves reaching one location can produce a larger, smaller or vanishing combined displacement. The linear model adds their instantaneous displacements. Strength matters, but so does phase: do matching or opposite stages meet? A longer route can change arrival phase. A path difference can therefore determine reinforcement or reduction. The waves need no intention and do not permanently destroy one another. Each can continue after overlapping in the model. The observed pattern depends on the complete process, not merely on saying two sources are present."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Damit ein Interferenzmuster stabil bleibt, muss der Phasenbezug ausreichend geordnet sein. Solche Wellen nennt man kohärent. Zwei beliebige Zimmerlampen erzeugen deshalb nicht automatisch ein gut sichtbares Streifenbild. Für eine anschauliche Konstruktion helfen Wellenfronten: Sie verbinden Orte gleichen Schwingungszustands. Das Huygenssche Modell betrachtet jeden Punkt einer Front als Ausgang kleiner weiterlaufender Wellen. So lassen sich Ausbreitung und Ablenkung an Öffnungen verstehen. Es ist keine Behauptung, dass an jeder Stelle ein winziger zusätzlicher Lautsprecher sitzt. Wie jedes Modell hebt es einen Zusammenhang hervor. Es ermöglicht, Schattenränder und neue Wellenrichtungen zu erklären, die das einfache Strahlenbild allein nicht erfasst. Animationen liefern dafür sichere Bilder, ohne starke Lichtquellen aufzubauen.",
+            "en": "A stable interference pattern requires a sufficiently orderly phase relationship: coherence. Two ordinary room lamps do not automatically create clear stripes. Wavefronts connect places at the same oscillation stage. Huygens' model treats each front point as a source of small advancing waves, helping explain propagation and spreading through openings. It does not claim tiny extra loudspeakers physically occupy every point. Like any model, it highlights a relationship. It explains shadow-edge effects and new propagation directions that simple rays alone miss. Animations provide safe representations without constructing intense light sources. Knowing which representation answers the question is part of understanding interference."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Weiterdenken",
+            "en": "Think it through"
+          },
+          "text": {
+            "de": "Zwei Quellen sind vorhanden, aber das Streifenbild wandert ständig und mittelt sich weg. Welche Information über den Phasenbezug fehlt der Behauptung „zwei Quellen genügen“?",
+            "en": "Two sources are present, but stripes continually shift and average out. What missing information about phase challenges the claim that two sources alone are enough?"
+          }
+        }
+      ]
+    },
+    {
+      "key": "spalte",
+      "title": {
+        "de": "Auch eine einzige Öffnung kann Muster erzeugen",
+        "en": "Even one opening can create a pattern"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Hinter einem Doppelspalt überlagern sich Wellen aus zwei schmalen Öffnungen. Auf einem Schirm entstehen helle und dunkle Bereiche, weil der Wegunterschied vom Ort auf dem Schirm abhängt. Eine dunkle Stelle bedeutet nicht, dass eine undurchsichtige Linie dort Licht blockiert. Das Muster entsteht aus Überlagerung. Verändert sich die Wellenlänge oder die Geometrie, ändern sich die Streifen. Einfarbiges Licht liefert ein anderes Bild als weißes Licht mit vielen Wellenlängen. Deren verschiedene Muster können sich teilweise überdecken und farbige Bereiche bilden. Die Quellenbeschreibung gehört deshalb unbedingt zur Deutung des Schirmbilds.",
+            "en": "Behind a double slit, waves from two narrow openings overlap. Bright and dark regions appear because path difference varies across the screen. A dark location is not an opaque line blocking light; it results from superposition. Changing wavelength or geometry changes the stripes. Single-colour light differs from white light containing many wavelengths, whose patterns can overlap partly and form coloured regions. Understanding the source is therefore essential to interpreting the screen image rather than treating stripes as a fixed property of the apparatus."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Auch ein Einzelspalt erzeugt ein Beugungsbild. Dazu können Beiträge aus verschiedenen Bereichen derselben Öffnung miteinander interferieren. Das widerlegt die Vorstellung, Interferenz brauche immer zwei getrennte Löcher. In einem wirklichen Doppelspaltbild wirken die Aufteilung zwischen den Öffnungen und die endliche Breite jeder Öffnung zusammen. Ein sehr vereinfachtes Modell kann deshalb nicht jedes Detail vorhersagen. Wichtig ist die Unterscheidung: Beugung beschreibt das Ausbreiten hinter Begrenzungen, Interferenz die Überlagerung der Beiträge. Beide gehören bei vielen Beobachtungen zusammen. Du musst hier keine Streifenabstände berechnen. Vergleiche gedanklich, welche Anordnung verändert wurde und welches Merkmal des Musters davon betroffen sein könnte. Eigene Laser-, Sonnenlicht- oder Hochleistungslichtversuche sind ausdrücklich nicht Teil der Aufgabe; eine virtuelle Öffnung ist ausreichend.",
+            "en": "A single slit also produces diffraction. Contributions from different parts of the same opening interfere, disproving the idea that interference always needs two separate holes. A real double-slit pattern combines separation between openings with each opening's finite width, so an oversimplified model misses details. Distinguish diffraction, spreading around boundaries, from interference, superposition of contributions. They work together in many observations. No stripe spacing needs calculating here. Compare which part of the arrangement changed and which pattern feature it might affect. Laser, sunlight and high-power light experiments are explicitly excluded; a virtual opening is sufficient. The goal is interpreting structure, not building a bright beam."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Weiterdenken",
+            "en": "Think it through"
+          },
+          "text": {
+            "de": "Eine Animation zeigt beim Schließen eines Spalts weiterhin ein Muster. Wie würdest du erklären, warum das keine Widerlegung der Wellenbeschreibung ist? Unterscheide Öffnungszahl und Beiträge innerhalb einer Öffnung.",
+            "en": "A simulation still shows a pattern after one slit closes. Why does this not disprove the wave description? Distinguish the number of openings from contributions within one opening."
+          }
+        }
+      ]
+    },
+    {
+      "key": "stehend",
+      "title": {
+        "de": "Ein Muster kann stehen, obwohl Bewegung darin steckt",
+        "en": "A pattern can stand while motion remains within it"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Eine hinlaufende Welle und eine passende zurücklaufende reflektierte Welle können eine stehende Welle bilden. Ihr Muster wandert nicht als Ganzes durch den Raum. Bestimmte Orte bleiben stets ohne Auslenkung: Knoten. Dazwischen liegen Schwingungsbäuche mit großer Bewegungsamplitude. Das heißt nicht, dass überall derselbe Bewegungszustand herrscht. Einige Punkte bewegen sich stark, andere bleiben ruhig. Zwei entgegengesetzte Ausbreitungen erzeugen gemeinsam diese räumliche Ordnung. Die sichtbare Ruhe des Musters darf daher nicht mit vollständigem Stillstand des Systems verwechselt werden. Energie kann weiterhin zwischen verschiedenen Formen wechseln.",
+            "en": "An outgoing wave and a suitable reflected wave can form a standing wave. Its overall pattern does not travel through space. Some locations remain undisplaced, called nodes; between them are antinodes with large motion amplitude. This does not mean every location shares the same state. Some move strongly while others remain still. Opposite propagations jointly create this spatial order. A stationary pattern must therefore not be confused with a motionless system. Energy can continue exchanging between forms even though the pattern itself stays in place."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Randbedingungen entscheiden, welche Muster möglich sind. Ein festes Ende kann nicht beliebig mitschwingen, ein freies Ende verhält sich anders. Zwischen zwei festen Enden passen nur bestimmte räumliche Schwingungsformen. Das erklärt, warum eine Saite bevorzugte Eigenfrequenzen besitzt. Die Begrenzungen wählen erlaubte Muster aus; sie müssen nicht jede Frequenz gleich gut unterstützen. Diese Vorstellung wird später auch für Quantenmodelle wichtig, obwohl eine Elektronen-Wellenfunktion keine gewöhnliche Seilauslenkung ist. Die Ähnlichkeit betrifft die Rolle von Randbedingungen, nicht die vollständige Bedeutung der Welle. Für ein Musikinstrument ist die Auswahl erwünscht; bei einer technischen Leitung kann sie stören. Eine Simulation mit sichtbaren Knoten hilft, diese beiden Anwendungen auseinanderzuhalten, ohne gespannte Seile oder laute Dauertöne zu benötigen.",
+            "en": "Boundary conditions determine the possible patterns. A fixed end cannot move freely; a free end behaves differently. Between fixed ends, only particular spatial modes fit. This explains a string's preferred natural frequencies: boundaries select allowed patterns rather than support every frequency equally. The idea later helps with quantum models, although an electron wavefunction is not an ordinary string displacement. The resemblance concerns boundaries, not the wave's complete meaning. In an instrument such selection is useful; in a technical line it may be unwanted. A simulation showing nodes helps distinguish applications without tensioned strings or loud continuous tones. The same visible pattern can therefore serve different engineering purposes."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Weiterdenken",
+            "en": "Think it through"
+          },
+          "text": {
+            "de": "Gestalte zwei beschriftete Bilder: laufende Welle und stehendes Muster. Woran würde jemand trotz ähnlicher Wellenform erkennen, ob der gesamte Verlauf weiterwandert? Zeige zusätzlich einen Knoten.",
+            "en": "Create labelled pictures of a travelling wave and standing pattern. Despite similar shapes, how could someone tell whether the whole pattern moves? Also mark a node."
+          }
+        }
+      ]
+    },
+    {
+      "key": "interferometer",
+      "title": {
+        "de": "Ein Wegunterschied wird zur Nachricht",
+        "en": "A path difference becomes information"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Ein Interferometer teilt eine Welle auf verschiedene Wege auf und führt die Beiträge wieder zusammen. Ihre relative Phase beeinflusst die beobachtete Helligkeit. Eine kleine Veränderung eines Wegs kann dadurch ein deutliches Signal erzeugen. Das Gerät macht etwas sichtbar, das mit einem gewöhnlichen Lineal schwer zugänglich wäre. Dabei wird nicht einfach eine winzige Strecke fotografiert. Ein gemessenes Muster wird mithilfe eines Modells mit der Wegänderung verbunden. Quelle, Spiegel, Stabilität und Auswertung gehören gemeinsam zur Messidee. Eine einzelne helle oder dunkle Anzeige erzählt ohne diese Angaben noch nicht, was sich verändert hat.",
+            "en": "An interferometer splits a wave into different paths and recombines them. Relative phase affects measured brightness, so a small path change can produce a clear signal. This reveals changes difficult to access with an ordinary ruler. The device does not simply photograph a tiny distance. A model links a measured pattern to a path change. Source, mirrors, stability and analysis all belong to the measurement idea. One bright or dark reading does not by itself establish what changed."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Auch Störungen können den Phasenbezug verändern, etwa mechanische Erschütterungen oder wechselnde optische Eigenschaften eines Materials. Präzision verlangt deshalb Kontrolle, nicht nur empfindliche Sensoren. In der Forschung nutzen große Interferometer dieses Prinzip unter aufwendigen Bedingungen, beispielsweise bei der Untersuchung von Gravitationswellen. Die Grundidee bleibt verständlich: Wege werden verglichen, und Überlagerung übersetzt Unterschiede in ein Signal. Für eine eigene Ausstellungsidee könntest du zwei animierte Wege zeigen und eine einzige Stellgröße virtuell verändern. Ergänze ausdrücklich, welche andere Ursache dasselbe Signal vortäuschen könnte. Damit erklärst du gleichzeitig Messprinzip und Quellenkritik. Ein beeindruckendes Streifenbild ist weder eine unmittelbare Abbildung des ganzen Raums noch eine unfehlbare Diagnose. Es wird erst durch kontrollierte Bedingungen zu belastbarer Evidenz.",
+            "en": "Disturbances can also change phase relationships, including mechanical vibration or altered optical properties. Precision therefore requires control, not merely sensitive detectors. Large research interferometers use this principle under demanding conditions, for example in gravitational-wave observations. The basic idea remains accessible: compare paths and let superposition translate differences into a signal. For an exhibition, show two animated routes and vary one virtual control. State another cause that could imitate the signal. This explains both measurement and critical interpretation. An impressive pattern is neither a direct picture of all space nor an infallible diagnosis. Controlled conditions turn it into reliable evidence about a particular change."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Weiterdenken",
+            "en": "Think it through"
+          },
+          "text": {
+            "de": "Entwirf einen virtuellen Messplatz, an dem ein einziges verändertes Element das Muster verschiebt. Welche zweite Ursache müsstest du ausschließen, bevor du den Effekt eindeutig deutest?",
+            "en": "Design a virtual measurement station where one changed element shifts the pattern. Which second cause must be excluded before interpreting the effect unambiguously?"
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "PhET: interaktive Modellwelt",
+                "en": "PhET: interactive model"
+              },
+              "url": "https://phet.colorado.edu/de/simulations/wave-interference"
+            },
+            {
+              "label": {
+                "de": "PhET: interaktive Modellwelt",
+                "en": "PhET: interactive model"
+              },
+              "url": "https://phet.colorado.edu/de/simulations/wave-on-a-string"
+            },
+            {
+              "label": {
+                "de": "LIGO: Interferometrie",
+                "en": "LIGO: interferometry"
+              },
+              "url": "https://www.ligo.caltech.edu/page/what-is-interferometer"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": {
+        "de": "1. Lückentext",
+        "en": "1. Fill in the blanks"
+      },
+      "intro": {
+        "de": "Ergänze acht Fachwörter aus dem Gelesenen.",
+        "en": "Complete eight technical terms from the reading."
+      },
+      "text": {
+        "de": "Der zeitliche Schwingungszustand wird durch die ___ beschrieben. Ein geordneter Phasenbezug heißt ___. Der Unterschied zweier Wege ist der ___. Überlagerung erzeugt ___. Ausbreitung hinter Begrenzungen heißt ___. Ruhige Orte einer stehenden Welle sind ___. Besonders stark schwingende Orte heißen ___. Ein Messgerät mit geteilten und wieder vereinigten Wegen heißt ___.",
+        "en": "The stage of an oscillation is described by ___. An orderly phase relationship is ___. The difference between routes is ___. Superposition produces ___. Spreading beyond boundaries is ___. Unmoving locations in a standing wave are ___. Locations with strongest oscillation are ___. A device splitting and recombining paths is an ___."
+      }
+    },
+    {
+      "kind": "compare",
+      "title": {
+        "de": "2. Erklären und vergleichen",
+        "en": "2. Explain and compare"
+      },
+      "intro": {
+        "de": "Antworte mit drei bis vier kurzen Sätzen. Begründe mit dem Gelesenen; du brauchst nichts auszurechnen.",
+        "en": "Answer in three or four short sentences. Use the reading to explain your reasoning; no calculation is needed."
+      },
+      "text": {
+        "de": "Vergleiche Doppelspalt, Einzelspalt und stehende Welle: Welche Beiträge überlagern sich jeweils? Erkläre, warum eine dunkle Stelle oder ein Knoten keine allgemeine Vernichtung aller Energie bedeutet.",
+        "en": "Compare a double slit, single slit and standing wave: which contributions overlap in each? Explain why a dark location or node does not mean all energy is destroyed."
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": {
+        "de": "3. Deine Idee",
+        "en": "3. Your idea"
+      },
+      "intro": {
+        "de": "Entwickle in drei bis vier kurzen Sätzen eine eigene begründete Idee. Mehrere Antworten sind möglich.",
+        "en": "Develop your own reasoned idea in three or four short sentences. Several answers are possible."
+      },
+      "text": {
+        "de": "Entwirf eine virtuelle Ausstellung, die einen Wegunterschied in ein sichtbares Muster übersetzt. Benenne eine gezielte Veränderung und eine Störung, die zu einer falschen Deutung führen könnte.",
+        "en": "Design a virtual exhibit translating a path difference into a visible pattern. Identify a deliberate change and a disturbance that could cause misinterpretation."
+      }
+    }
+  ]
+}

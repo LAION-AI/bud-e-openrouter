@@ -1,0 +1,229 @@
+{
+  "key": "phys2-sternlicht-und-ferne-welten",
+  "title": {
+    "de": "Wie liest man eine Welt, die niemand besucht hat?",
+    "en": "How do you read a world nobody has visited?"
+  },
+  "summary": {
+    "de": "Sternlicht verrät Temperatur, Entwicklung und ferne Planeten – wenn man Messung, Modell und Wunschvorstellung auseinanderhält.",
+    "en": "Starlight reveals temperature, evolution and distant planets when measurement, model and wishful thinking remain distinct."
+  },
+  "icon": "🌠",
+  "accent": "indigo",
+  "minutes": 20,
+  "screens": [
+    {
+      "key": "lichtlesen",
+      "title": {
+        "de": "Ein Teleskop sammelt Hinweise, nicht nur größere Bilder",
+        "en": "A telescope gathers evidence, not just bigger pictures"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Ein ferner Lichtpunkt kann viele Fragen beantworten, obwohl kein Raumschiff dort war. Seine scheinbare Helligkeit hängt nicht nur von der eigenen Strahlungsleistung ab, sondern auch von Entfernung und dazwischenliegendem Material. Ein schwächerer Punkt muss deshalb kein kleinerer oder kühlerer Stern sein. Ein Spektrum liefert zusätzliche Hinweise: Die Verteilung der Strahlung hängt mit Temperatur zusammen, ausgewählte Linien können auf Stoffe und Zustände hinweisen. Erst verschiedene Beobachtungen gemeinsam machen eine überzeugende Deutung möglich. Ein schönes Farbbild allein ist noch keine vollständige physikalische Beschreibung. Besonders bei Falschfarben muss die Zuordnung zwischen Farbe und Messsignal erklärt werden.",
+            "en": "A distant point of light can answer questions without a spacecraft visiting. Apparent brightness depends on intrinsic radiation, distance and intervening material, so a fainter point need not be a smaller or cooler star. A spectrum adds clues: radiation distribution relates to temperature, while lines can indicate materials and states. Combining observations supports a convincing interpretation. An attractive colour image alone is not a full physical description. False-colour images especially need an explanation linking displayed colour with measured signals rather than implying a human observer would see exactly those colours."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Teleskope sammeln Licht und trennen möglichst feine Richtungsunterschiede. Vergrößerung und Auflösung sind verschieden: Ein unscharfes Bild größer zu zeigen erzeugt keine neuen Einzelheiten. Beugung begrenzt, was eine gegebene Öffnung bei einer bestimmten Wellenlänge unterscheiden kann. Deshalb helfen geeignete größere Öffnungen oder abgestimmte Verbünde, nicht bloß längere digitale Vergrößerung. Verschiedene Instrumente untersuchen sichtbares Licht, Radio-, Infrarot- oder Röntgenbereiche. Manche Beobachtungen brauchen den Weltraum, weil die Erdatmosphäre bestimmte Bereiche stark beeinflusst. Die Wahl des Instruments folgt somit der Frage. Für deine eigene Deutung reicht es, ein Bild mit Spektrum und Messbereich zu verbinden. Sonnenbeobachtung und der Blick durch unbekannte optische Geräte sind ausdrücklich keine Aufgabe; bereitgestellte Himmelsdaten liefern sichere Zugänge zu derselben Neugier.",
+            "en": "Telescopes collect light and separate small directional differences. Magnification differs from resolution: enlarging blur creates no new detail. Diffraction limits what a given aperture can distinguish at a particular wavelength. Suitable larger apertures or coordinated arrays help, not merely more digital zoom. Instruments investigate visible, radio, infrared or X-ray ranges. Some observations require space because Earth's atmosphere strongly affects particular ranges. Instrument choice follows the question. For interpretation, link an image with its spectrum and measurement range. Solar viewing and looking through unfamiliar optical devices are expressly excluded; supplied sky data provide a safe route to the same curiosity."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Weiterdenken",
+            "en": "Think it through"
+          },
+          "text": {
+            "de": "Du erhältst zwei gleich große Sternbilder: eines wurde nur digital vergrößert, eines mit besserer Auflösung aufgenommen. Welche Beobachtung würde echte zusätzliche Information zeigen, und welche Quellenangabe fehlt einem bloßen Farbbild?",
+            "en": "You receive equally large star images: one digitally enlarged, one recorded with better resolution. What would reveal genuinely added information, and what source detail is missing from colour alone?"
+          }
+        }
+      ]
+    },
+    {
+      "key": "sterne",
+      "title": {
+        "de": "Ein Stern lebt nicht von einem kosmischen Lagerfeuer",
+        "en": "A star is not a cosmic campfire"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Sterne entstehen in geeigneten Gas- und Staubregionen, wenn sich Materie unter Gravitation verdichtet. Beim Zusammenziehen wird Energie umgesetzt und das entstehende Objekt erwärmt sich. Unter passenden Bedingungen beginnen im Inneren Fusionsprozesse, bei denen leichte Kerne in stärker gebundene Zusammensetzungen übergehen und Energie freisetzen. Das ist kein chemisches Verbrennen mit Sauerstoff wie bei Holz. Die Energieübertragung im Stern und der Druck seiner Materie helfen, dem gravitativen Zusammenziehen entgegenzuwirken. Ein länger bestehender Stern kann so ein annäherndes Gleichgewicht besitzen, obwohl mikroskopisch und im Energietransport ständig etwas geschieht. Gleichgewicht bedeutet hier weder völlige Ruhe noch einen unveränderlichen Stoffvorrat.",
+            "en": "Stars form in suitable gas and dust regions when gravity concentrates matter. Contraction converts energy and heats the developing object. Suitable inner conditions allow fusion, combining light nuclei into more tightly bound arrangements and releasing energy. This is not chemical combustion using oxygen like burning wood. Energy transfer and pressure help oppose gravitational contraction. A long-lived star can maintain approximate balance while microscopic processes and energy transport continue. Equilibrium means neither complete inactivity nor an unchanged supply of material. Understanding the energy source matters more than interpreting the star as a gigantic flame."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Die Anfangsmasse prägt Entwicklung und Lebensdauer. Ein massereicher Stern kann seinen nutzbaren Vorrat besonders rasch umsetzen und trotz größerer Stoffmenge kürzer leben. Die Sonne und wesentlich massereichere Sterne enden daher nicht einfach gleich. Ein sonnenähnlicher Stern kann nach ausgedehnten späteren Phasen äußere Schichten abgeben und einen weißen Zwerg zurücklassen. Bei bestimmten massereichen Entwicklungen können Supernovae und kompakte Reste wie Neutronensterne oder Schwarze Löcher entstehen. Nicht jeder Stern wird zum Schwarzen Loch. Ausgestoßenes Material bereichert spätere Gaswolken; unsere Stoffwelt hat dadurch eine kosmische Vorgeschichte. Eine Darstellung sollte verschiedene mögliche Wege zeigen statt einer einzigen universellen Lebenslinie. Beobachtete Sterne verschiedener Zustände ergänzen dabei Entwicklungsmodelle, weil wir nicht den ganzen Lebenslauf eines einzelnen Sterns in menschlicher Zeit filmen können.",
+            "en": "Initial mass shapes evolution and lifetime. A massive star can process usable fuel especially rapidly and live less long despite containing more material. The Sun and far more massive stars do not simply share one ending. A Sun-like star can shed outer layers and leave a white dwarf; some massive developments produce supernovae and compact remnants such as neutron stars or black holes. Not every star becomes a black hole. Ejected material enriches later clouds, giving our materials a cosmic history. A diagram should show possible branches rather than one universal life line. Observations of stars in different states complement models because one entire stellar lifetime cannot be filmed on human timescales."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Weiterdenken",
+            "en": "Think it through"
+          },
+          "text": {
+            "de": "Gestalte einen verzweigten Sternlebensweg. Welche Rolle spielt die Anfangsmasse, und warum wäre „mehr Brennstoff bedeutet immer längeres Leben“ eine irreführende Schlussfolgerung? Unterscheide Beobachtung und Entwicklungsmodell.",
+            "en": "Design a branching stellar life story. How does initial mass matter, and why is “more fuel always means longer life” misleading? Distinguish observations from evolutionary modelling."
+          }
+        }
+      ]
+    },
+    {
+      "key": "exoplaneten",
+      "title": {
+        "de": "Ein Planetensignal ist noch kein Lebensnachweis",
+        "en": "A planet signal is not proof of life"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Ein Planet um einen fremden Stern ist oft nicht als klar getrennte kleine Scheibe sichtbar. Ein Transit kann sich als wiederkehrende Abschwächung des Sternlichts zeigen, wenn der Planet aus unserer Blickrichtung vorbeizieht. Auch die gemeinsame Bewegung von Stern und Planet um ihren Schwerpunkt kann sich in Spektren bemerkbar machen. Beim Radialgeschwindigkeitsverfahren werden solche regelmäßigen Verschiebungen untersucht. Jede Methode besitzt Auswahlwirkungen: Nicht jede Bahn zeigt einen Transit, und andere Ursachen können Messsignale beeinflussen. Ein starker Hinweis wird deshalb durch weitere Beobachtungen geprüft. Der scheinbar einfache Lichtpunkt kann Hinweise auf einen Begleiter enthalten, ohne eine direkte Fotografie seiner Oberfläche zu liefern.",
+            "en": "A planet around another star often cannot be seen as a separate little disc. A transit can appear as repeated dimming when it passes in front from our viewpoint. Shared motion of star and planet around their centre of mass can also shift spectral features, studied through radial-velocity measurements. Each method has selection effects: not every orbit transits, and other causes can affect signals. Strong clues are checked through further observations. A simple-looking light point may reveal a companion without directly photographing its surface."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Die klassische habitable Zone beschreibt einen Bereich, in dem unter geeigneten Bedingungen flüssiges Wasser an einer Planetenoberfläche möglich sein könnte. Das ist weder ein Wasserfund noch ein Lebensnachweis. Atmosphäre, Albedo, Treibhauseffekt, Rotation und Entwicklung des Sterns beeinflussen das Klima zusätzlich. Ein passender Abstand allein legt keine angenehme Oberfläche fest. Auch eine mögliche atmosphärische Spektralsignatur braucht sorgfältige Auswertung und alternative Erklärungen. Die interessante Frage ist daher nicht nur „wie erdähnlich sieht das Bild aus?“, sondern „welche Eigenschaft wurde tatsächlich gemessen?“. Du könntest eine Entdeckungskarte mit drei getrennten Feldern gestalten: beobachtet, aus einem Modell erschlossen und noch unbekannt. Diese Trennung macht eine ferne Welt nicht weniger spannend. Sie zeigt, an welcher Stelle neue Beobachtungen wirklich etwas verändern würden und welche Hoffnungen noch keine Messdaten sind.",
+            "en": "The classical habitable zone marks where surface liquid water might be possible under suitable conditions. It is neither a water detection nor proof of life. Atmosphere, albedo, greenhouse effects, rotation and stellar evolution also influence climate. Distance alone does not determine a pleasant surface. Possible atmospheric signatures likewise need careful interpretation and alternative explanations. Ask not simply how Earth-like an illustration looks but what was actually measured. A discovery card could separate observed, model-inferred and unknown properties. This makes a distant world no less exciting; it shows which new observations would change understanding and which hopes remain unsupported by measurements."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Weiterdenken",
+            "en": "Think it through"
+          },
+          "text": {
+            "de": "Entwirf eine sachliche Entdeckungsschlagzeile zu einem Planeten in einer habitablen Zone. Welche Formulierung bewahrt die spannende Möglichkeit, ohne Wasser oder Leben als bereits gefunden auszugeben?",
+            "en": "Write a factual discovery headline about a planet in a habitable zone. How would you preserve the exciting possibility without presenting water or life as already detected?"
+          }
+        }
+      ]
+    },
+    {
+      "key": "kosmos",
+      "title": {
+        "de": "Altes Licht zeigt eine Geschichte, keinen Mittelpunkt",
+        "en": "Old light reveals a history, not a centre"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Je länger Licht unterwegs war, desto weiter zurück liegende Zustände können wir beobachten. Ein Blick ins All ist daher zugleich ein Blick in unterschiedliche Vergangenheiten. Für sehr große Skalen beschreibt das kosmologische Modell einen sich entwickelnden Raum. Die kosmologische Rotverschiebung wird dabei mit der Ausdehnung des Raums während der Lichtausbreitung verbunden. Sie ist nicht einfach derselbe Vorgang wie der Schall-Dopplereffekt eines vorbeifahrenden Fahrzeugs. Auch Bewegungs- und Gravitationseinflüsse können Lichtfrequenzen verändern; deshalb muss der Zusammenhang einer Beobachtung berücksichtigt werden. Ein roter Lichtfleck allein beweist weder eine bestimmte Entfernung noch eine bestimmte kosmische Geschichte.",
+            "en": "Longer-travelling light lets us observe earlier states, so looking into space means looking into different pasts. On very large scales, cosmological models describe evolving space. Cosmological redshift is related to expansion during light propagation, not simply the sound Doppler effect of a passing vehicle. Motion and gravity can also change light frequency, making context essential. A red-looking patch alone proves neither a particular distance nor a particular cosmic history. Spectral patterns and independent observations are needed to establish what the shift means."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Die Expansion ist nicht die Explosion aus einem ausgezeichneten Mittelpunkt in einen schon vorhandenen leeren Außenraum. Das Modell beschreibt großräumige Beziehungen; gebundene Systeme wie Atome oder ein Planetensystem müssen nicht im selben Sinn mitwachsen. Verschiedene Belege, darunter Hintergrundstrahlung und die Entwicklung großer Strukturen, stützen eine gemeinsame kosmische Geschichte. Dunkle Materie bezeichnet im Standardmodell einen zusätzlich angenommenen Materieanteil zur Erklärung gravitativer Beobachtungen. Dunkle Energie benennt einen Modellbeitrag zur beschleunigten kosmischen Expansion. Das sind unterschiedliche offene Fragen, keine Synonyme für unbekannte Magie. Eine gute Zeitleiste trennt Beobachtungen, gut gestützte Zusammenhänge und aktuelle Fragen. Sie muss nicht so tun, als sei jede Einzelheit abgeschlossen, um wissenschaftlich stark zu sein. Für deine eigene Kosmosgeschichte könntest du eine einzige Lichtmessung mit einer zweiten unabhängigen Beobachtung verbinden und markieren, welcher Schluss erst aus ihrem Zusammenspiel entsteht. Neugier und Zurückhaltung gehören hier zusammen.",
+            "en": "Expansion is not an explosion from a privileged centre into pre-existing empty surroundings. The model concerns large-scale relationships; bound systems such as atoms or planetary systems need not expand in the same way. Evidence including background radiation and large-structure evolution supports a shared cosmic history. In the standard model, dark matter is additional matter inferred to explain gravitational observations. Dark energy names a model contribution associated with accelerated cosmic expansion. These are different open questions, not interchangeable words for magic. A good timeline separates observations, supported relationships and open questions. Science need not have every detail completed to be strong. Link one light measurement with a second independent observation and identify which conclusion requires both. Curiosity and restraint reinforce one another here."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Weiterdenken",
+            "en": "Think it through"
+          },
+          "text": {
+            "de": "Gestalte eine Kosmosgrafik ohne explodierenden Mittelpunkt. Zeige, was eine Rotverschiebung im Modell aussagt, und nenne eine zusätzliche Beobachtung. Warum wäre eine bloße Farbdarstellung kein ausreichender Beleg?",
+            "en": "Design a cosmic graphic without an exploding centre. Show what redshift means in the model and add another observation. Why is a colour display alone insufficient evidence?"
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "NASA: Sterne und ihre Entwicklung",
+                "en": "NASA: stars and their evolution"
+              },
+              "url": "https://science.nasa.gov/universe/stars/"
+            },
+            {
+              "label": {
+                "de": "NASA: Die habitable Zone",
+                "en": "NASA: the habitable zone"
+              },
+              "url": "https://science.nasa.gov/exoplanets/habitable-zone/"
+            },
+            {
+              "label": {
+                "de": "NASA: Geschichte des Kosmos",
+                "en": "NASA: cosmic history"
+              },
+              "url": "https://science.nasa.gov/universe/overview/"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": {
+        "de": "1. Lückentext",
+        "en": "1. Fill in the blanks"
+      },
+      "intro": {
+        "de": "Ergänze acht Fachwörter aus dem Gelesenen.",
+        "en": "Complete eight technical terms from the reading."
+      },
+      "text": {
+        "de": "Ein Teleskop sammelt Licht und verbessert die ___. Die Strahlungsverteilung kann auf die ___ hinweisen. Ein Stern wird durch geeignete ___ mit Energie versorgt. Sein Entwicklungsweg hängt stark von der ___ beim Entstehen ab. Das Vorbeiziehen eines Planeten kann einen ___ erzeugen. Mögliches Oberflächenwasser beschreibt die klassische habitable ___. Großräumige Ausdehnung wird mit kosmologischer ___ verbunden. Verschiedene Belege zusammen stützen eine kosmische ___.",
+        "en": "A telescope gathers light and improves ___. Radiation distribution can indicate ___. Suitable ___ supplies a star with energy. Its development depends strongly on initial ___. A planet passing in front can produce a ___. Possible surface water is described by the classical habitable ___. Large-scale expansion is linked to cosmological ___. Combined evidence supports a cosmic ___."
+      }
+    },
+    {
+      "kind": "compare",
+      "title": {
+        "de": "2. Erklären und vergleichen",
+        "en": "2. Explain and compare"
+      },
+      "intro": {
+        "de": "Antworte mit drei bis vier kurzen Sätzen. Begründe mit dem Gelesenen; du brauchst nichts auszurechnen.",
+        "en": "Answer in three or four short sentences. Use the reading to explain your reasoning; no calculation is needed."
+      },
+      "text": {
+        "de": "Vergleiche einen Stern als scheinbar schwachen Lichtpunkt mit seinem Spektrum: Welche verschiedenen Informationen liefern sie? Erkläre anschließend, warum ein Planetensignal in einer habitablen Zone noch kein Lebensnachweis ist.",
+        "en": "Compare a star's faint apparent light with its spectrum: what different information do they provide? Then explain why a planet signal in a habitable zone is not proof of life."
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": {
+        "de": "3. Deine Idee",
+        "en": "3. Your idea"
+      },
+      "intro": {
+        "de": "Entwickle in drei bis vier kurzen Sätzen eine eigene begründete Idee. Mehrere Antworten sind möglich.",
+        "en": "Develop your own reasoned idea in three or four short sentences. Several answers are possible."
+      },
+      "text": {
+        "de": "Entwirf eine glaubwürdige Nachricht über eine ferne Welt. Trenne beobachtete Eigenschaft, modellgestützten Schluss und offene Frage. Zeige, welche neue Beobachtung besonders hilfreich wäre.",
+        "en": "Design a credible report about a distant world. Separate observation, model-supported inference and an open question. Identify a particularly useful new observation."
+      }
+    }
+  ]
+}

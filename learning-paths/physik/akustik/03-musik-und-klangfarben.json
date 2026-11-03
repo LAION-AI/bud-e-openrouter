@@ -1,0 +1,254 @@
+{
+  "key": "musik-und-klangfarben",
+  "title": {
+    "de": "Warum klingt dieselbe Note auf jedem Instrument anders?",
+    "en": "Why does the same note sound different on each instrument?"
+  },
+  "summary": {
+    "de": "Entdecke Grundton, Obertöne und Resonanz – und warum eine Stimme mehr ist als ein einzelner Ton.",
+    "en": "Explore fundamentals, overtones and resonance, and why a voice is more than one pure tone."
+  },
+  "icon": "🎸",
+  "accent": "violet",
+  "minutes": 20,
+  "screens": [
+    {
+      "key": "schritt-1",
+      "title": {
+        "de": "Was ein Ton über seine Schwingung verrät",
+        "en": "What a tone reveals about its vibration"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Warum klingt eine große Trommel oft anders als eine kleine Pfeife? Wenn du Schall beschreiben möchtest, hilft es, mehrere Eigenschaften auseinanderzuhalten. Die Frequenz beschreibt, wie viele vollständige Schwingungen pro Sekunde stattfinden. Die Einheit heißt Hertz. Eine höhere Frequenz hängt gewöhnlich mit einer höheren wahrgenommenen Tonhöhe zusammen. Die Amplitude beschreibt dagegen die Stärke der Auslenkung im gewählten Modell. Sie ist nicht dasselbe wie die Frequenz.",
+            "en": "Why does a large drum often sound different from a small whistle? Describing sound requires separating several properties. Frequency is the number of complete vibrations per second, measured in hertz. Greater frequency usually corresponds to a higher perceived pitch. Amplitude instead describes the size of the displacement in the chosen model. It is not the same as frequency."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Ein Ton kann hoch und leise sein oder tief und laut. Ein größerer Ausschlag in einer Kurve bedeutet daher nicht automatisch eine höhere Tonhöhe. Prüfe immer die Achsen: Eine Darstellung über der Zeit zeigt, wie lange ein Schwingungsdurchlauf dauert. Eine Momentaufnahme entlang des Raums zeigt dagegen den Abstand wiederkehrender Stellen. Dieser Abstand heißt Wellenlänge.",
+            "en": "A tone can be high and quiet or low and loud. A taller curve therefore does not automatically mean a higher pitch. Always inspect the axes: a graph over time shows how long a vibration cycle takes. A snapshot along space instead shows the separation of repeating features. That separation is wavelength."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Frequenz, Wellenlänge und Ausbreitungsgeschwindigkeit hängen zusammen. Im selben gleichmäßigen Medium bedeutet eine höhere Frequenz normalerweise eine kürzere Wellenlänge. Das Material muss deshalb nicht schneller schwingen, indem es als Ganzes bis zu deinem Ohr wandert. Seine Teilchen geben eine Störung weiter. Für deine Erklärung genügen Skizzen: regelmäßige enge oder weite Abstände und unterschiedlich große Ausschläge. Du brauchst weder eigene Hörtests noch einen Lautstärkewettbewerb. Wir wollen Muster verstehen, nicht die Belastbarkeit unserer Ohren ausprobieren.",
+            "en": "Frequency, wavelength and propagation speed are related. In the same uniform medium, higher frequency normally means shorter wavelength. The material does not travel as a whole all the way to your ear; its particles pass on a disturbance. Sketches are enough for your explanation: draw regular closely or widely spaced features and different-sized variations. You need neither personal hearing tests nor a volume contest. The aim is understanding patterns, not finding out how much noise your ears can tolerate. A clear drawing also lets someone compare the ideas without needing to hear the sound personally."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "💡",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Skizziere zwei Töne mit gleicher Frequenz und unterschiedlicher Amplitude. Ergänze danach einen dritten mit höherer Frequenz. Beschrifte die Zeitachse und erkläre, welche wahrgenommene Eigenschaft du jeweils verändern möchtest. Was bleibt an jeder Skizze nur ein Modell?",
+            "en": "Sketch two tones with equal frequency but different amplitudes. Add a third with higher frequency. Label the time axis and explain which perceived property you intend to change in each case. What remains only a model in each drawing?"
+          }
+        }
+      ]
+    },
+    {
+      "key": "schritt-2",
+      "title": {
+        "de": "Eine Note ist noch keine Klangfarbe",
+        "en": "A note is not yet a timbre"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Du hörst dieselbe Melodie auf einer Flöte und einer Gitarre. Auch ohne hinzusehen erkennst du oft das Instrument. Die Tonhöhe allein erklärt das nicht. Ein nahezu reiner Ton hat im idealisierten Modell eine sinusförmige Schwingung. Ein musikalischer Klang enthält dagegen meist mehrere Frequenzanteile gleichzeitig. Der tiefste gemeinsame Bezug heißt Grundton. Weitere Anteile nennt man Obertöne. Zusammen prägen sie die Klangfarbe.",
+            "en": "You hear the same melody played on a flute and a guitar. Even without looking, you can often identify the instrument. Pitch alone does not explain this. An almost pure tone has an approximately sinusoidal vibration in an ideal model. A musical sound usually contains several frequency components at once. The lowest shared reference is called the fundamental. Further components are overtones. Together they help shape timbre."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Bei vielen Saiteninstrumenten liegen wichtige Obertöne näherungsweise bei ganzzahligen Vielfachen der Grundfrequenz. Bei Glocken können die Verhältnisse deutlich anders sein. „Jeder Klang ist eine perfekte Obertonreihe“ wäre deshalb falsch. Auch der Beginn zählt: Ein gezupfter Ton setzt anders ein als ein gestrichener. Die Lautstärke kann rasch abfallen oder lange anhalten. Dieser zeitliche Verlauf ist die Hüllkurve.",
+            "en": "For many string instruments, important overtones lie approximately at whole-number multiples of the fundamental frequency. Bells can have quite different relationships. It would therefore be wrong to say every sound follows a perfect harmonic series. The beginning matters too: a plucked note starts differently from a bowed one. Its loudness may fade quickly or continue for a long time. This time-dependent outline is its envelope."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Ein Frequenzspektrum zeigt, welche Frequenzanteile wie stark vertreten sind. Die Wellenform zeigt dagegen den zeitlichen Verlauf. Beide Darstellungen beschreiben denselben Klang aus unterschiedlichen Blickwinkeln. Ein hoher Ausschlag im Spektrum bedeutet einen starken Anteil, nicht automatisch einen besonders hohen Ton. In einer Lernanimation kannst du einzelne Anteile ergänzen und beobachten, wie sich die zusammengesetzte Kurve verändert. Dafür musst du keine lauten Töne erzeugen.",
+            "en": "A frequency spectrum shows which components are present and how strong they are. A waveform instead shows change over time. These representations describe the same sound from different perspectives. A tall spectral peak indicates a strong component, not necessarily a high-pitched note. In an animation, add individual components and watch the resulting waveform change. There is no need to produce loud sounds."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "💡",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Vergleiche zwei gezeichnete Spektren mit gleichem Grundton, aber verschieden starken Obertönen. Was würdest du über Tonhöhe und Klangfarbe vermuten? Nenne außerdem eine Klangeigenschaft, die ein einzelnes Spektrum ohne Zeitverlauf noch nicht vollständig zeigt.",
+            "en": "Compare two drawn spectra with the same fundamental but different overtone strengths. What would you predict about pitch and timbre? Also name one sound property that a single spectrum without time information does not fully reveal."
+          }
+        }
+      ]
+    },
+    {
+      "key": "schritt-3",
+      "title": {
+        "de": "Die Saite spielt nicht allein",
+        "en": "The string does not play alone"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Warum klingt eine akustische Gitarre anders als eine lose gespannte Saite? Eine schwingende Saite allein überträgt relativ wenig Energie auf die Luft. Über den Steg regt sie Teile des Instruments an. Die Decke und die Luft im Korpus schwingen mit. So gelangt mehr Schall in den Raum. Der Korpus erzeugt dabei keine Energie aus dem Nichts: Deine Hand hat beim Anschlagen Energie zugeführt.",
+            "en": "Why does an acoustic guitar sound different from a string by itself? A vibrating string alone transfers relatively little energy to the air. Through the bridge, it excites parts of the instrument. The soundboard and air inside the body vibrate too, allowing more sound into the room. The body does not create energy from nothing: your hand supplied it when you plucked the string."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Jedes Instrument reagiert auf manche Frequenzen stärker als auf andere. Seine Eigenformen und Resonanzen verändern deshalb, welche Anteile gut abgestrahlt werden. Bei einer Flöte schwingt vor allem eine Luftsäule. Öffnungen und deren Lage beeinflussen die möglichen Schwingungsmuster. Die Flöte ist nicht einfach ein Behälter, in dem Luft nur im Kreis herumwandert.",
+            "en": "An instrument responds more strongly to some frequencies than others. Its vibration modes and resonances therefore affect which components radiate effectively. In a flute, an air column is especially important. Openings and their positions influence possible vibration patterns. A flute is not simply a container in which air travels around in circles."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Auch Dämpfung gehört zum Klang. Sie beschreibt, wie Schwingungsenergie an andere Vorgänge abgegeben wird, etwa als Wärme oder abgestrahlter Schall. Mehr Dämpfung kann einen Ton kürzer machen. Das ist nicht grundsätzlich schlechter: Bei manchen Instrumenten ist ein kurzer, klarer Anschlag erwünscht. Bauformen sind also Entscheidungen über Energieübertragung, Frequenzen und gewünschte Wirkung. Du kannst solche Unterschiede mit Aufnahmen oder Animationen vergleichen, ohne Saiten straff zu spannen oder Instrumente zu zerlegen.",
+            "en": "Damping also contributes to sound. It describes vibration energy being transferred into other processes, including heat or emitted sound. Greater damping can shorten a note. That is not automatically worse: some instruments need a short, clear attack. Design involves choices about energy transfer, frequencies and the intended effect. Compare recordings or animations without stretching strings tightly or taking instruments apart."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "💡",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Erkläre, warum „Der Gitarrenkorpus macht zusätzliche Energie“ nicht passt. Verfolge die Energie vom Anschlagen bis zum Schall. Überlege dann, warum eine lange nachklingende Gitarre nicht automatisch für jede Musik die beste Wahl wäre.",
+            "en": "Explain why “The guitar body makes extra energy” is misleading. Follow energy from plucking to sound. Then consider why a guitar that rings for a long time would not automatically be best for every kind of music."
+          }
+        }
+      ]
+    },
+    {
+      "key": "schritt-4",
+      "title": {
+        "de": "Deine Stimme ist ein veränderliches Instrument",
+        "en": "Your voice is a changing instrument"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Warum kannst du mit derselben Stimme verschiedene Vokale sprechen? Beim stimmhaften Sprechen schwingen die Stimmlippen. Mundraum, Zunge und Lippen verändern, welche Frequenzbereiche besonders hervortreten. Solche verstärkten Bereiche heißen Formanten. Sie helfen uns, Laute zu unterscheiden. Die Grundfrequenz kann dabei ungefähr gleich bleiben. Tonhöhe und Vokal sind also verschiedene Eigenschaften, obwohl beides im selben Sprachsignal steckt.",
+            "en": "Why can the same voice produce different vowels? During voiced speech, the vocal folds vibrate. The mouth, tongue and lips change which frequency regions stand out. These enhanced regions are called formants. They help us distinguish speech sounds. The fundamental frequency can remain approximately unchanged. Pitch and vowel identity are therefore different properties within the same speech signal."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Nicht jeder Sprachlaut entsteht auf dieselbe Weise. Bei einem „s“ spielt zum Beispiel turbulente Luftströmung eine wichtige Rolle. Sprache enthält zeitliche Muster, Klanganteile und Pausen. Ein Mikrofon wandelt Druckschwankungen in ein elektrisches Signal um; eine Aufnahme ist deshalb nicht unmittelbar „die Stimme im Raum“. Mikrofon, Raum und Datenverarbeitung beeinflussen das Ergebnis.",
+            "en": "Not all speech sounds arise in the same way. An “s”, for example, involves turbulent airflow. Speech contains timing patterns, frequency components and pauses. A microphone converts pressure changes into an electrical signal; a recording is not simply “the voice in the room”. The microphone, room and processing affect the result."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Ein Computer kann in solchen Mustern Hinweise auf Wörter suchen, aber Hintergrundgeräusche und undeutliche Aufnahmen erschweren das. Aus einer Stimme darfst du nicht zuverlässig auf Charakter, Intelligenz oder Gesundheit schließen. Für gemeinsames Lernen helfen Untertitel, klare Gesprächsregeln und verschiedene Zugänge zu Informationen. Du musst weder eine persönliche Stimmprobe hochladen noch die Stimmen anderer ohne Erlaubnis aufnehmen. Physik erklärt hier Eigenschaften eines Signals, nicht den Wert eines Menschen.",
+            "en": "A computer can search these patterns for clues to words, but background noise and unclear recordings make that harder. A voice does not reliably reveal someone's character, intelligence or health. Captions, clear conversational rules and several ways to access information help learning. You need not upload a personal voice sample or record others without permission. Physics explains properties of a signal here, not the value of a person."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "💡",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Du planst eine kurze Hörgeschichte. Welche Rolle spielen Tonhöhe, Klangfarbe, Pausen und Raum? Begründe zwei Gestaltungsentscheidungen. Ergänze eine Möglichkeit, wie die Geschichte auch für Menschen zugänglich bleibt, die sie nicht oder nicht gut hören.",
+            "en": "You are planning a short audio story. What roles do pitch, timbre, pauses and room acoustics play? Explain two design choices. Add one way to make the story accessible to people who cannot hear it clearly or at all."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "PhET: Wellen sicher in einer Simulation erkunden",
+                "en": "PhET: explore waves safely in a simulation"
+              },
+              "url": "https://phet.colorado.edu/de/simulations/waves-intro"
+            },
+            {
+              "label": {
+                "de": "LMU München: Sprache, Vokale und Formanten",
+                "en": "LMU Munich: speech, vowels and formants"
+              },
+              "url": "https://www.phonetik.uni-muenchen.de/studium/skripten/SGL/SGLKap2.html"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": {
+        "de": "Die wichtigsten Zusammenhänge",
+        "en": "The key connections"
+      },
+      "intro": {
+        "de": "Ergänze passende Begriffe aus diesem Pfad. Nachschauen ist erlaubt.",
+        "en": "Complete the gaps using terms from this path. You may look back."
+      },
+      "text": {
+        "de": "Die Schwingungen pro Sekunde beschreibt die ___. Der tiefste Bezug eines Klangs heißt ___. Weitere Frequenzanteile sind ___. Ihre Mischung prägt die ___. Den zeitlichen Lautstärkeverlauf beschreibt die ___. Ein Instrument kann durch ___ auf bestimmte Frequenzen stärker reagieren. Energieverlust der Schwingung heißt ___. Verstärkte Frequenzbereiche der Stimme heißen ___.",
+        "en": "Vibrations per second are described by ___. A sound's lowest reference is the ___. Further components are ___. Their mixture shapes ___. The loudness outline over time is the ___. An instrument can respond strongly at some frequencies through ___. Loss of vibration energy is ___. Enhanced frequency regions in a voice are ___."
+      }
+    },
+    {
+      "kind": "compare",
+      "title": {
+        "de": "Erklären statt nur aufzählen",
+        "en": "Explain rather than just list"
+      },
+      "intro": {
+        "de": "Verbinde die Ideen in drei bis vier Sätzen. Eine Rechnung brauchst du nicht.",
+        "en": "Connect the ideas in three or four sentences. No calculation is needed."
+      },
+      "text": {
+        "de": "Zwei Instrumente spielen denselben Grundton gleich laut. Trotzdem erkennst du sie. Erkläre mit Spektrum und zeitlichem Verlauf, warum das möglich ist.",
+        "en": "Two instruments play the same fundamental at equal loudness, yet you recognise them. Explain using the spectrum and change over time."
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": {
+        "de": "Deine Idee für den Alltag",
+        "en": "Your everyday idea"
+      },
+      "intro": {
+        "de": "Entwickle eine eigene Idee und begründe sie mit Physik.",
+        "en": "Develop your own idea and support it with physics."
+      },
+      "text": {
+        "de": "Entwirf den Klang einer kurzen Nachricht für ein Spiel oder eine Hörgeschichte. Welche Wirkung möchtest du, und welche zwei physikalischen Eigenschaften würdest du dafür verändern?",
+        "en": "Design a short notification sound for a game or audio story. What effect do you want, and which two physical properties would you change?"
+      }
+    }
+  ]
+}

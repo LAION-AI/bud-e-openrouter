@@ -5,8 +5,8 @@
     "en": "How a tone crosses a room"
   },
   "summary": {
-    "de": "NWT-Auffrischung zu Wellen, mit gekennzeichneter Erweiterung zu harmonischen Schwingungen (Gym10/STS11).",
-    "en": "NWT wave refresher, with a clearly marked harmonic-oscillation extension for Gymnasium10/Stadtteilschule11."
+    "de": "Wie aus regelmäßigem Hin und Her eine Welle wird – und was das mit Musik, Nachrichten und ruhigen Räumen zu tun hat.",
+    "en": "How repeated motion becomes a wave, and what that has to do with music, messages and quieter rooms."
   },
   "icon": "〰️",
   "accent": "violet",
@@ -29,8 +29,8 @@
         {
           "kind": "paragraph",
           "text": {
-            "de": "Bei Schall in Luft entstehen abwechselnd Verdichtungen und Verdünnungen. Die Teilchen schwingen dabei im Wesentlichen entlang der Ausbreitungsrichtung: Schall ist dort eine Longitudinalwelle. Bei einer idealisierten Seilwelle kann die Schwingung quer zur Ausbreitung liegen; das heißt transversal. Diese Grundvorstellung frischt NWT-Wissen auf und ergänzt den vorhandenen Schallpfad. Sie ist keine vollständige Wellentheorie. Für eine sichere Darstellung verwendest du eine Animation oder Skizze. Niemand muss an gespannten Seilen ziehen, Menschen für eine Vorführung anfassen oder laute Töne erzeugen. Die Idee ist die Weitergabe einer Störung, nicht möglichst viel Bewegung im Raum.",
-            "en": "Sound in air produces alternating compressions and rarefactions. Particles move mainly along the direction of propagation, making it a longitudinal wave. In an idealised string wave, motion can instead be perpendicular to propagation: a transverse wave. This basic picture revisits NWT knowledge and complements the existing sound path. It is not a complete theory of waves. Use an animation or sketch for a safe representation. There is no need to pull on tensioned ropes, touch people during a demonstration or produce loud tones. The important idea is the transmission of a disturbance, not creating the greatest possible movement in a room."
+            "de": "Bei Schall in Luft entstehen abwechselnd Verdichtungen und Verdünnungen. Die Teilchen schwingen dabei im Wesentlichen entlang der Ausbreitungsrichtung: Schall ist dort eine Longitudinalwelle. Bei einer idealisierten Seilwelle kann die Schwingung quer zur Ausbreitung liegen; das heißt transversal. Mit dieser Vorstellung kannst du Schall und eine Welle im Stadion vergleichen: Die Störung wandert, obwohl die einzelnen Beteiligten ungefähr an ihrem Platz bleiben. Das Modell erklärt viel, aber nicht jede Einzelheit einer Welle. Für eine sichere Darstellung verwendest du eine Animation oder Skizze. Niemand muss an gespannten Seilen ziehen, Menschen für eine Vorführung anfassen oder laute Töne erzeugen. Die Idee ist die Weitergabe einer Störung, nicht möglichst viel Bewegung im Raum.",
+            "en": "Sound in air produces alternating compressions and rarefactions. Particles move mainly along the direction of propagation, making it a longitudinal wave. In an idealised string wave, motion can instead be perpendicular to propagation: a transverse wave. This picture lets you compare sound with a stadium wave: the disturbance travels while the individual participants remain roughly in place. It explains a great deal, but not every detail of wave behaviour. Use an animation or sketch for a safe representation. There is no need to pull on tensioned ropes, touch people during a demonstration or produce loud tones. The important idea is the transmission of a disturbance, not creating the greatest possible movement in a room."
           }
         },
         {
@@ -162,15 +162,15 @@
         {
           "kind": "lead",
           "text": {
-            "de": "Für Gymnasium 10 beziehungsweise Stadtteilschule 11 kommt ein genaueres Modell hinzu: die harmonische Schwingung. Ihre rücktreibende Kraft ist proportional zur Auslenkung und entgegengesetzt gerichtet. Eine ideale Feder folgt F = −D · x. D ist die Federkonstante in N/m. Das Minuszeichen zeigt die Rückrichtung, nicht eine „negative Stärke“.",
-            "en": "Gymnasium year 10 and Stadtteilschule year 11 introduce a more precise model: harmonic oscillation. Its restoring force is proportional to displacement and points in the opposite direction. An ideal spring follows F = −D · x, where D is the spring constant in N/m. The minus sign indicates the restoring direction, not a “negative strength”."
+            "de": "Wie lässt sich regelmäßiges Hin und Her genauer beschreiben? Ein besonders übersichtliches Modell ist die harmonische Schwingung. Ihre rücktreibende Kraft ist proportional zur Auslenkung und entgegengesetzt gerichtet. Eine ideale Feder folgt F = −D · x. D ist die Federkonstante in N/m. Das Minuszeichen zeigt die Rückrichtung, nicht eine „negative Stärke“.",
+            "en": "How can regular back-and-forth motion be described more precisely? One especially clear model is harmonic oscillation. Its restoring force is proportional to displacement and points in the opposite direction. An ideal spring follows F = −D · x, where D is the spring constant in N/m. The minus sign indicates the restoring direction, not a “negative strength”."
           }
         },
         {
           "kind": "paragraph",
           "text": {
-            "de": "Die Auslenkung kann mit x(t) = A · cos(2π · t / T) beschrieben werden, wenn die Schwingung bei maximaler Auslenkung beginnt. Ein Start in der Gleichgewichtslage lässt sich passend mit Sinus beschreiben. A ist die Amplitude, T die Periodendauer. Für das ideale Federpendel gilt T = 2π · √(m / D): Größere Masse verlängert die Periodendauer, größere Federkonstante verkürzt sie. Während der Bewegung wechseln Spannenergie und Bewegungsenergie. Ohne Dämpfung bleibt ihre Summe erhalten. Reale Federn und große Auslenkungen können vom Modell abweichen. Diese mathematische Erweiterung ist nicht gemeinsamer Stadtteilschul-Pflichtstoff bis Klasse 10. Eine Animation reicht zum Vergleichen.",
-            "en": "For a motion beginning at maximum displacement, x(t) = A · cos(2π · t / T) describes the displacement. A suitable sine function describes a start at equilibrium. A is amplitude and T is period. An ideal spring oscillator has T = 2π · √(m / D): a larger mass lengthens the period, while a larger spring constant shortens it. Elastic potential energy and kinetic energy alternate during motion. Without damping, their sum remains constant. Real springs and large displacements can depart from this model. This mathematical extension is not shared compulsory Stadtteilschule content through year 10. An animation is sufficient for comparison."
+            "de": "Die Auslenkung kann mit x(t) = A · cos(2π · t / T) beschrieben werden, wenn die Schwingung bei maximaler Auslenkung beginnt. Ein Start in der Gleichgewichtslage lässt sich passend mit Sinus beschreiben. A ist die Amplitude, T die Periodendauer. Für das ideale Federpendel gilt T = 2π · √(m / D): Größere Masse verlängert die Periodendauer, größere Federkonstante verkürzt sie. Während der Bewegung wechseln Spannenergie und Bewegungsenergie. Ohne Dämpfung bleibt ihre Summe erhalten. Reale Federn und große Auslenkungen können vom Modell abweichen. Du musst die Formeln hier nicht ausrechnen: Vergleiche in einer Animation, wie sich eine schwerere Masse und eine steifere Feder auf das Hin und Her auswirken. So wird sichtbar, was die Symbole über Bewegung aussagen.",
+            "en": "For a motion beginning at maximum displacement, x(t) = A · cos(2π · t / T) describes the displacement. A suitable sine function describes a start at equilibrium. A is amplitude and T is period. An ideal spring oscillator has T = 2π · √(m / D): a larger mass lengthens the period, while a larger spring constant shortens it. Elastic potential energy and kinetic energy alternate during motion. Without damping, their sum remains constant. Real springs and large displacements can depart from this model. You do not need to calculate with these formulas here. Compare how a heavier mass and a stiffer spring change the motion in an animation. This makes visible what the symbols say about the movement."
           }
         },
         {
@@ -225,22 +225,22 @@
           "items": [
             {
               "label": {
-                "de": "Hamburg: NWT 5/6 (2024), Schall und Sinne",
-                "en": "Hamburg: NWT years 5/6 (2024), sound and senses"
+                "de": "Hamburg: Naturphänomene – fachlicher Hintergrund",
+                "en": "Hamburg: natural phenomena background"
               },
               "url": "https://www.hamburg.de/resource/blob/798520/700d66232c2d07bad97d72b6e107e083/naturwissenschaften-technik-data.pdf"
             },
             {
               "label": {
-                "de": "Hamburg: Physik Gymnasium (2024)",
-                "en": "Hamburg: Gymnasium physics (2024)"
+                "de": "Hamburg: Physik – fachlicher Hintergrund",
+                "en": "Hamburg: physics background"
               },
               "url": "https://www.hamburg.de/resource/blob/798534/4cf0047ad61effacd1ff7e6ad819fa41/physik-data.pdf"
             },
             {
               "label": {
-                "de": "Hamburg: Physik Stadtteilschule (2024)",
-                "en": "Hamburg: Stadtteilschule physics (2024)"
+                "de": "Hamburg: Physik – weitere fachliche Grundlagen",
+                "en": "Hamburg: further physics background"
               },
               "url": "https://www.hamburg.de/resource/blob/798426/ba414a0ace36d17b7813a855db625c42/physik-data.pdf"
             },

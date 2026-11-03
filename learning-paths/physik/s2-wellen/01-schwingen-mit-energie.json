@@ -1,0 +1,222 @@
+{
+  "key": "phys2-schwingen-mit-energie",
+  "title": {
+    "de": "Was verbindet eine Schaukel mit einem Funkempfänger?",
+    "en": "What links a swing to a radio receiver?"
+  },
+  "summary": {
+    "de": "Schwingungen entstehen aus Rückwirkung und Energieaustausch. Dämpfung, Resonanz und der elektrische Schwingkreis zeigen denselben roten Faden.",
+    "en": "Oscillations arise from restoring effects and energy exchange. Damping, resonance and electrical oscillators reveal a shared pattern."
+  },
+  "icon": "🎵",
+  "accent": "sky",
+  "minutes": 20,
+  "screens": [
+    {
+      "key": "rueckwirkung",
+      "title": {
+        "de": "Zurück zur Mitte – und darüber hinaus",
+        "en": "Back towards the middle—and beyond"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Eine ausgelenkte Feder drängt eine Masse zur Gleichgewichtslage zurück. An der Mitte verschwindet die resultierende rücktreibende Kraft im einfachen Modell, aber die Masse ist dort gerade in Bewegung. Wegen ihrer Trägheit läuft sie weiter und spannt die Feder zur anderen Seite. Aus Rückwirkung und Trägheit entsteht ein wiederkehrender Energieaustausch. Am Rand steckt mehr Energie in der Verformung, nahe der Mitte mehr in der Bewegung. Ohne Dämpfung kann dieser Austausch fortbestehen. Die Masse braucht nicht an jeder Stelle eine Kraft in Bewegungsrichtung, um weiterzulaufen. Gerade diese Vorstellung würde die Dynamik missverstehen.",
+            "en": "A displaced spring pulls a mass towards equilibrium. At the centre the net restoring force vanishes in the simple model, but the mass is moving. Inertia carries it beyond the centre, stretching the spring the other way. Restoring action and inertia create a repeating energy exchange. Near the extremes, more energy is stored in deformation; near the centre, more is kinetic. Without damping, this exchange can continue. The mass does not need a force along its motion everywhere to keep travelling; that idea would misunderstand the dynamics."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Eine harmonische Schwingung besitzt eine besonders einfache Rückwirkung: Die rücktreibende Kraft wächst proportional zur Auslenkung. Ihr Verlauf lässt sich als Sinus- oder Kosinuskurve darstellen. Das bedeutet nicht, dass jedes Pendel unter allen Bedingungen genau so schwingt. Bei einem Fadenpendel ist die harmonische Beschreibung für kleine Auslenkungen eine Näherung. Neben Amplitude und Frequenz ist die Phase wichtig. Sie beschreibt, an welcher Stelle des wiederkehrenden Ablaufs ein System gerade ist. Zwei Schwingungen können gleiche Amplitude und Frequenz haben, aber gegeneinander zeitlich versetzt sein. Das erkennst du beispielsweise daran, dass eine Masse die Mitte passiert, während die andere nahe einem Umkehrpunkt ist. Eine Momentaufnahme allein genügt daher nicht, um den ganzen Bewegungszustand gleichzusetzen.",
+            "en": "A harmonic oscillator has a particularly simple restoring action: force grows in proportion to displacement. Its motion can be represented by a sine or cosine curve. This does not mean every pendulum behaves exactly that way under every condition; a swinging pendulum is approximately harmonic for small displacements. Besides amplitude and frequency, phase matters. It identifies the current stage of the repeating cycle. Two oscillations may have equal amplitude and frequency but be shifted in time. One mass might pass through the centre while another approaches a turning point. A single picture therefore does not automatically establish that two systems have the same motion state."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Weiterdenken",
+            "en": "Think it through"
+          },
+          "text": {
+            "de": "Zeichne zwei gleich schnelle Schwingungsabläufe, die zeitlich versetzt sind. Warum beschreibt „beide schwingen gleich oft“ noch nicht, ob ihre Bewegungen zusammenpassen?",
+            "en": "Draw two equally frequent oscillations shifted in time. Why does “both oscillate equally often” not establish whether their motions match?"
+          }
+        }
+      ]
+    },
+    {
+      "key": "anregung",
+      "title": {
+        "de": "Wann kleine Impulse große Wirkung haben",
+        "en": "When small inputs have a large effect"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Eine echte Schwingung verliert Energie an ihre Umgebung, etwa durch Reibung und Luftbewegung. Die Amplitude nimmt ab; das heißt Dämpfung. Die Energie ist nicht vernichtet, sondern weniger geordnet verteilt. Möchtest du eine Schwingung erhalten, musst du passend Energie nachliefern. Eine periodische Anregung kann besonders wirksam sein, wenn ihre Frequenz nahe einer Eigenfrequenz des Systems liegt. Dann kann Resonanz auftreten. Der richtige zeitliche Zusammenhang ist entscheidend: Ein unpassender Schubs kann Bewegung auch bremsen. Viele Wiederholungen allein garantieren keine große Amplitude.",
+            "en": "A real oscillation transfers energy to its surroundings through friction or air movement. Amplitude decreases: this is damping. Energy is not destroyed but becomes less organised. Maintaining oscillation requires appropriately supplied energy. Periodic driving can be especially effective near a system's natural frequency, producing resonance. Timing matters: an unsuitable push can slow motion. Repetition alone does not guarantee a large amplitude, and a large response does not reveal an energy source without input."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Dämpfung beeinflusst, wie scharf die Resonanz ausgeprägt ist und wie stark die Antwort werden kann. Ein technisches Bauteil soll manchmal gezielt mitschwingen, manchmal gerade nicht. Ein Musikinstrument nutzt verstärkte Schwingungsantwort; ein ruhiger Maschinenträger soll störende Schwingungen möglichst wenig weitergeben. Dieselbe Physik kann also erwünschte Verstärkung oder unerwünschte Belastung bedeuten. Eine gute Simulation zeigt Eingangsbewegung und Antwort getrennt. Sonst verwechselst du die Frequenz des Antriebs mit der freien Eigenbewegung. Auch ein Resonanzdiagramm ist kein vollständiger Sicherheitsnachweis für ein Bauwerk. Wir untersuchen keine Brücken, Gläser oder Geräte durch absichtlich starke Anregung. Der gedankliche Vergleich genügt: Was liefert Energie, wohin geht sie, und welche Änderung verschiebt die Antwort?",
+            "en": "Damping affects how sharply resonance is expressed and how large the response can become. Some devices should respond strongly; others should avoid transmitting vibration. Musical instruments use enhanced response, while quiet machine supports should limit unwanted motion. The same physics can mean useful amplification or undesirable loading. A good simulation separates the input motion from the system's response, preventing confusion between driving frequency and natural motion. A resonance curve is not a complete structural safety certificate. Do not deliberately excite bridges, glass or devices strongly. A thought comparison is sufficient: what supplies energy, where does it go and which change alters the response? The useful conclusion depends on the purpose, not on maximising amplitude."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Weiterdenken",
+            "en": "Think it through"
+          },
+          "text": {
+            "de": "Wähle Instrument oder Maschinenhalterung. Erkläre, ob eine starke Antwort erwünscht ist, und warum dieselbe Dämpfungsänderung bei der anderen Aufgabe anders bewertet werden könnte.",
+            "en": "Choose an instrument or machine support. Explain whether a strong response is desirable and why the same damping change could be judged differently for the other task."
+          }
+        }
+      ]
+    },
+    {
+      "key": "schwingkreis",
+      "title": {
+        "de": "Energie pendelt zwischen zwei Feldern",
+        "en": "Energy oscillates between two fields"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Ein geladener Kondensator kann sich über eine Spule entladen. Dabei nimmt seine elektrische Feldenergie ab, während der zunehmende Strom ein Magnetfeld der Spule aufbaut. Ist der Kondensator vorübergehend entladen, muss der Strom nicht sofort enden. Die Spule wirkt einer abrupten Stromänderung entgegen und kann Energie weiter übertragen. Dadurch lädt sich der Kondensator mit umgekehrter Polung wieder auf. Anschließend kehrt sich die Entwicklung um. So entsteht im idealen LC-Schwingkreis ein Wechsel zwischen elektrischer und magnetischer Feldenergie. Die Energie wandert nicht als aufgebrauchter Vorrat an Elektronen durch den Draht.",
+            "en": "A charged capacitor can discharge through a coil. Its electric field energy decreases while increasing current builds the coil's magnetic field. When the capacitor is momentarily discharged, current need not stop instantly. The coil opposes abrupt current change and continues transferring energy, charging the capacitor with opposite polarity. The development then reverses. An ideal LC circuit oscillates between electric and magnetic field energy. This is not a supply of electrons being consumed while travelling through the wire."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Der Kondensator übernimmt im Vergleich zur Feder eine energieaufnehmende Rolle, die Spule entspricht in wichtigen Hinsichten der Trägheit. Die Analogie vergleicht mathematische und energetische Beziehungen, nicht identische Gegenstände. Kapazität und Induktivität beeinflussen, wie rasch der Austausch erfolgt. Reale Widerstände entziehen der geordneten Schwingung Energie; die Amplitude klingt ab. Für eine dauernde Antwort braucht es wieder eine Energiequelle. Die elektrische Spannung und die Stromstärke erreichen ihre größten Beträge nicht gleichzeitig. Wenn das eine Feld besonders viel Energie trägt, befindet sich das andere in einem anderen Teil des Austauschs. Genau dieser zeitliche Zusammenhang verbindet Schwingkreis und mechanische Schwingung. Wir betrachten ihn ausschließlich in einer Animation oder Simulation. Reale Kondensatoren, Spulen und Netzgeräte werden weder geöffnet noch kurzgeschlossen.",
+            "en": "Compared with a spring system, the capacitor provides a related energy-storage role, while the coil resembles inertia in important ways. The analogy concerns mathematical and energetic relationships, not identical objects. Capacitance and inductance affect how quickly exchange occurs. Real resistance removes energy from organised oscillation, reducing amplitude. A continuing response again needs an energy source. Voltage and current do not reach their largest magnitudes simultaneously. When one field stores especially much energy, the other occupies a different stage of exchange. That timing connects electrical and mechanical oscillation. We investigate through animation or simulation only. Real capacitors, coils and supplies are neither opened nor short-circuited."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Weiterdenken",
+            "en": "Think it through"
+          },
+          "text": {
+            "de": "Gestalte vier aufeinanderfolgende Bilder des Energieaustauschs. Zeige getrennt Ladungstrennung, Strom und beide Felder, damit niemand größte Spannung mit größtem Strom gleichsetzt.",
+            "en": "Create four successive pictures of energy exchange. Show charge separation, current and both fields separately so maximum voltage is not confused with maximum current."
+          }
+        }
+      ]
+    },
+    {
+      "key": "auswahl",
+      "title": {
+        "de": "Ein Empfänger muss nicht auf alles gleich reagieren",
+        "en": "A receiver need not respond equally to everything"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Ein Funkempfänger soll ein gewünschtes Signal aus vielen zeitlichen Feldänderungen auswählen. Ein geeignet abgestimmter Schwingkreis reagiert auf bestimmte Frequenzbereiche stärker als auf andere. Resonanz wird dadurch zum Auswahlprinzip. Das bedeutet nicht, dass der Empfänger die Nachricht schon allein durch Schwingen versteht. Weitere Schaltungen verarbeiten das Signal und trennen die übertragene Information von ihrer Trägerbewegung. Auch Energieversorgung und Verstärkung sind zusätzliche Aufgaben. Eine starke Schwingungsantwort kann den Anfang einer technischen Verarbeitung bilden, ersetzt aber nicht deren gesamten Ablauf. Diese Unterscheidung schützt vor dem Bild eines Schwingkreises als universeller Zauberkiste.",
+            "en": "A radio receiver should select a desired signal from many changing fields. A suitably tuned oscillating circuit responds more strongly to some frequency ranges than others, making resonance a selection principle. Oscillating alone does not mean it understands the message. Further circuits process the signal and separate information from its carrier. Power supply and amplification are additional tasks. A strong oscillatory response can begin technical processing without replacing the whole process. This distinction prevents treating an oscillating circuit as a universal magic box."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Dasselbe Gestaltungsproblem taucht bei Sensoren und Schallsystemen auf: Gewünschte Reaktionen sollen deutlich, störende möglichst klein sein. Zu scharfe Auswahl kann aber auch Änderungen übersehen, die eigentlich noch zum Nutzsignal gehören. Dämpfung, Empfindlichkeit und Reaktionsdauer stehen deshalb oft in einem Zielkonflikt. Eine gedachte Wetterstation könnte langsame Änderungen sicher verfolgen, aber kurze Stöße nicht als neuen Dauerzustand melden. Ein Musikinstrument verfolgt andere Ziele. Dein Entwurf muss diese Zwecke benennen, statt nur „möglichst stark“ zu verlangen. Zeichne Eingabe, ausgewählten Bereich und gewünschte Ausgabe. Dabei kannst du die bekannte Energiegeschichte nutzen: Ohne Zufuhr und unter Verlusten entsteht keine endlos verstärkte Bewegung. Ein gutes technisches Konzept passt seine Antwort an eine Aufgabe an, nicht an einen Rekordwert.",
+            "en": "The same problem appears in sensors and sound systems: wanted responses should be clear and disturbances small. Extremely narrow selection can also miss changes that belong to the useful signal. Damping, sensitivity and response time therefore often compete. An imagined weather station might track slow changes reliably without interpreting brief shocks as a new permanent state. A musical instrument serves different goals. Name the purpose rather than asking only for “the strongest possible response”. Draw input, selected range and desired output. The energy account remains relevant: losses and absent input do not allow endless amplified motion. Good engineering fits a response to a task rather than a record-setting peak."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Weiterdenken",
+            "en": "Think it through"
+          },
+          "text": {
+            "de": "Entwirf einen empfindlichen Sensor, der nicht auf jede kurze Störung anspringt. Welche Antwort möchtest du erhalten, welche unterdrücken, und welcher Nachteil könnte daraus entstehen?",
+            "en": "Design a sensitive sensor that does not react to every brief disturbance. Which response should remain, which should be suppressed and what drawback might follow?"
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "PhET: interaktive Modellwelt",
+                "en": "PhET: interactive model"
+              },
+              "url": "https://phet.colorado.edu/de/simulations/masses-and-springs"
+            },
+            {
+              "label": {
+                "de": "PhET: interaktive Modellwelt",
+                "en": "PhET: interactive model"
+              },
+              "url": "https://phet.colorado.edu/de/simulations/resonance"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": {
+        "de": "1. Lückentext",
+        "en": "1. Fill in the blanks"
+      },
+      "intro": {
+        "de": "Ergänze acht Fachwörter aus dem Gelesenen.",
+        "en": "Complete eight technical terms from the reading."
+      },
+      "text": {
+        "de": "Eine Schwingung braucht eine rücktreibende ___. Ihre größte Auslenkung heißt ___. Die Stelle im wiederkehrenden Ablauf beschreibt die ___. Energieübertragung an die Umgebung verursacht ___. Passende periodische Anregung kann ___ erzeugen. Im LC-Kreis speichert der Kondensator elektrische ___. Die Spule besitzt dazu ein magnetisches ___. Die Auswahl eines Frequenzbereichs nutzt die passende ___.",
+        "en": "An oscillation needs a restoring ___. Its greatest displacement is ___. The stage in its repeating cycle is ___. Energy transfer to surroundings causes ___. Suitable periodic driving can produce ___. In an LC circuit, the capacitor stores electric field ___. The coil provides a magnetic ___. Frequency selection uses suitable ___."
+      }
+    },
+    {
+      "kind": "compare",
+      "title": {
+        "de": "2. Erklären und vergleichen",
+        "en": "2. Explain and compare"
+      },
+      "intro": {
+        "de": "Antworte mit drei bis vier kurzen Sätzen. Begründe mit dem Gelesenen; du brauchst nichts auszurechnen.",
+        "en": "Answer in three or four short sentences. Use the reading to explain your reasoning; no calculation is needed."
+      },
+      "text": {
+        "de": "Vergleiche Feder-Masse-System und LC-Schwingkreis als Energieaustausch. Erkläre, warum Bewegung oder Strom in der Mitte des Austauschs nicht sofort enden. Welche Rolle spielt Dämpfung bei einer dauerhaft gewünschten Antwort?",
+        "en": "Compare a spring–mass system and an LC circuit as energy exchanges. Explain why motion or current does not stop immediately halfway through exchange. What role does damping play in a sustained desired response?"
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": {
+        "de": "3. Deine Idee",
+        "en": "3. Your idea"
+      },
+      "intro": {
+        "de": "Entwickle in drei bis vier kurzen Sätzen eine eigene begründete Idee. Mehrere Antworten sind möglich.",
+        "en": "Develop your own reasoned idea in three or four short sentences. Several answers are possible."
+      },
+      "text": {
+        "de": "Entwirf eine Ausstellung über erwünschte und unerwünschte Resonanz. Wähle zwei Anwendungen und begründe einen Zielkonflikt bei der Gestaltung ihrer Antwort.",
+        "en": "Design an exhibition about wanted and unwanted resonance. Choose two applications and explain a trade-off in shaping their responses."
+      }
+    }
+  ]
+}

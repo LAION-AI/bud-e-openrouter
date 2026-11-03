@@ -1,0 +1,222 @@
+{
+  "key": "phys2-teilchen-auf-kurs",
+  "title": {
+    "de": "Wie lenkt man etwas, das kein Lenkrad hat?",
+    "en": "How do you steer something with no steering wheel?"
+  },
+  "summary": {
+    "de": "Elektrische und magnetische Felder machen Teilchenbahnen, Hall-Sensoren und Massenspektrometer verständlich.",
+    "en": "Electric and magnetic fields make particle paths, Hall sensors and mass spectrometers understandable."
+  },
+  "icon": "🧭",
+  "accent": "amber",
+  "minutes": 20,
+  "screens": [
+    {
+      "key": "elektrisch",
+      "title": {
+        "de": "Ein Feld kann Tempo oder Richtung verändern",
+        "en": "A field can change speed or direction"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Ein geladenes Teilchen braucht keinen mechanischen Schubs, wenn ein elektrisches Feld auf es wirkt. Bei positiver Ladung zeigt die Kraft in Feldrichtung, bei negativer dagegen. Zeigt die Kraft entlang der Bewegung, kann sie das Tempo erhöhen; zeigt sie entgegen, bremst sie. Wirkt sie seitlich, verändert sich die Richtung. Ob daraus eine gerade oder gekrümmte Bahn entsteht, hängt also nicht nur von den Feldpfeilen ab. Auch die anfängliche Geschwindigkeit und die Ladung müssen bekannt sein. Dasselbe Feld kann verschiedene Teilchen deshalb sehr unterschiedlich beeinflussen.",
+            "en": "A charged particle needs no mechanical push when an electric field acts on it. For positive charge the force follows the field; for negative charge it points oppositely. Along the motion it can increase speed, opposite the motion it can slow it, and sideways it changes direction. A straight or curved path therefore depends on more than field arrows. Initial velocity and charge also matter. The same field can consequently affect different particles in very different ways."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Eine Beschleunigungsspannung beschreibt einen Energieunterschied pro Ladung. Die Feldanordnung kann elektrische potenzielle Energie in Bewegungsenergie überführen. Für die Teilchenphysik ist das wichtiger als das Alltagsbild vom „stärkeren Strom“. Stromstärke zählt transportierte Ladung pro Zeit; die Energie eines einzelnen beschleunigten Teilchens ist eine andere Frage. In einem Querfeld beginnt ein Teilchen womöglich geradlinig, erhält aber fortlaufend eine seitliche Geschwindigkeitsänderung. Das erinnert an einen waagerechten Wurf, nur dass hier die elektrische Kraft statt der Gewichtskraft die Querwirkung liefert. Die Analogie hat Grenzen: Andere Ladungen erfahren andere Kräfte, und reale Felder sind nicht überall homogen. Beschleunigerröhren und Hochspannung bleiben ausschließlich Modelle auf dem Bildschirm, keine Bau- oder Reparaturaufgabe.",
+            "en": "An accelerating voltage describes an energy difference per charge. The arrangement can convert electric potential energy into kinetic energy. That matters more for particle physics than an everyday picture of “stronger current”. Current measures charge transported per time; an individual particle's energy is another question. In a transverse field, a particle may start straight but continually acquire sideways velocity. This resembles a horizontal projectile, except electrical force supplies the sideways effect instead of gravity. The analogy has limits: different charges feel different forces, and real fields are not uniform everywhere. Accelerator tubes and high voltages remain screen models only, never construction or repair projects."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Weiterdenken",
+            "en": "Think it through"
+          },
+          "text": {
+            "de": "Zeichne zwei Teilchen mit gleicher Anfangsrichtung, aber entgegengesetzter Ladung im selben Querfeld. Warum genügt ein gemeinsamer Bahnpfeil nicht?",
+            "en": "Draw particles with equal initial direction but opposite charges in one transverse field. Why is one shared trajectory arrow insufficient?"
+          }
+        }
+      ]
+    },
+    {
+      "key": "magnetisch",
+      "title": {
+        "de": "Eine Kraft, die im idealen Fall nicht schneller macht",
+        "en": "A force that does not speed things up"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Ein bewegtes geladenes Teilchen kann in einem Magnetfeld eine Lorentzkraft erfahren. Sie steht senkrecht zur Bewegungsrichtung und zum Magnetfeld. Bei entgegengesetztem Ladungsvorzeichen kehrt sich die Kraftrichtung um. Eine Bewegung parallel zum Feld erzeugt dagegen keine solche seitliche Kraft. Darum ist „Magnet zieht Elektronen an“ eine irreführende Kurzbeschreibung. Das Verhalten unterscheidet sich grundlegend von der Anziehung eines Eisenstücks durch einen Permanentmagneten. Ein Teilchen muss für die hier betrachtete magnetische Kraft bewegt sein, und seine Richtung ist für die Wirkung entscheidend.",
+            "en": "A moving charged particle can experience a magnetic Lorentz force. It is perpendicular to both motion and magnetic field. Reversing charge reverses the force direction. Motion parallel to the field produces no such sideways force. “A magnet attracts electrons” is therefore misleading. This differs fundamentally from a permanent magnet attracting iron. For the magnetic force considered here, the particle must be moving, and its direction determines the effect."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Steht die Geschwindigkeit quer zu einem gleichmäßigen Magnetfeld, kann eine Kreisbahn entstehen. Die Kraft lenkt fortwährend nach innen, während der Betrag der Geschwindigkeit im idealen Fall gleich bleibt. Eine rein magnetische Kraft verrichtet dabei keine Arbeit am Teilchen: Sie ändert die Richtung, nicht seine Bewegungsenergie. Eine zusätzliche Bewegung entlang der Feldrichtung kann aus dem Kreis eine Schraubenbahn machen. In einem wirklichen Teilchenbeschleuniger übernehmen deshalb elektrische und magnetische Anordnungen verschiedene Aufgaben. Elektrische Felder liefern gezielt Energie, Magnete lenken oder bündeln den Strahl. Dieses Zusammenspiel erklärt, warum ein großes Magnetfeld nicht automatisch ein besonders energiereiches Teilchen erzeugt. Es braucht eine vollständige Energiekette. Eine Bahnzeichnung sollte daher Feldrichtung, Geschwindigkeit, Kraft und Energieänderung nicht als austauschbare Pfeile behandeln. Eine gekrümmte Bahn beweist daher für sich genommen noch keinen Energiegewinn.",
+            "en": "With velocity perpendicular to a uniform magnetic field, circular motion is possible. The force continually points inward while speed remains unchanged in the ideal model. A purely magnetic force does no work on the particle: it changes direction rather than kinetic energy. Additional motion along the field can create a helical path. Real accelerators therefore give electric and magnetic arrangements different roles. Electric fields supply energy; magnets steer or focus the beam. Their cooperation explains why a large magnetic field does not automatically produce a high-energy particle. A complete energy chain is needed. A trajectory diagram must distinguish field direction, velocity, force and energy change rather than treat their arrows as interchangeable. Curvature alone therefore cannot establish an energy gain; the direction of force relative to motion matters."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Weiterdenken",
+            "en": "Think it through"
+          },
+          "text": {
+            "de": "Ein Magnet lenkt einen Strahl sichtbar ab. Welche zusätzliche Information bräuchtest du, bevor du behauptest, die Teilchen seien dadurch schneller geworden?",
+            "en": "A magnet visibly deflects a beam. What additional information is needed before claiming the particles became faster?"
+          }
+        }
+      ]
+    },
+    {
+      "key": "hall",
+      "title": {
+        "de": "Ein seitlicher Ladungsstau wird zum Signal",
+        "en": "A sideways charge imbalance becomes a signal"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "In einem stromdurchflossenen leitenden Material bewegen sich Ladungsträger gerichtet. Ein passend ausgerichtetes Magnetfeld lenkt sie seitlich ab. Dadurch sammelt sich an einer Seite etwas mehr Ladung, an der anderen fehlt entsprechend Ladung. Zwischen den Seiten entsteht ein elektrisches Feld mit einer messbaren Hall-Spannung. Die Ladungstrennung wächst nicht beliebig weiter. Ihre elektrische Wirkung kann die magnetische seitliche Kraft schließlich ausgleichen. Das Material erreicht einen Zustand, in dem die Ladungsträger nicht immer weiter an den Rand gedrückt werden. Die Wirkung ist damit ein Beispiel für ein selbst aufgebautes Gleichgewicht.",
+            "en": "Charge carriers move in an organised way through a current-carrying conductor. A suitably oriented magnetic field deflects them sideways. Charge accumulates slightly on one side, with a corresponding deficit on the other. This creates an electric field and a measurable Hall voltage across the material. Separation does not increase indefinitely: its electrical effect can eventually balance the sideways magnetic force. Carriers then stop being pushed continually towards the edge. The effect is an example of a self-established balance."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Hall-Sensoren können eine magnetische Wirkung in ein elektrisches Signal übersetzen. So lassen sich beispielsweise Positionen oder Drehbewegungen erfassen, ohne dass ein mechanischer Kontakt jedes Mal geschlossen werden muss. Die Spannung ist aber keine direkte Fotografie des Magneten. Ihre Deutung hängt von Stromrichtung, Material, Geometrie und Feldorientierung ab. Auch das Vorzeichen kann Informationen über die vorherrschenden Ladungsträger liefern. Ein bloßes „mehr Spannung bedeutet mehr Bewegung“ wäre zu ungenau. Für einen gedachten Fahrradsensor müsstest du sagen, welcher Magnet an welcher Stelle vorbeikommt und welche Signaländerung erwartet wird. Das ist eine Gestaltungsaufgabe auf Papier oder in einer Simulation. An realen Bremsen, Motorsteuerungen oder Sicherheitssensoren wird dafür nichts verändert. Eine Erklärung kann technisch interessant sein, ohne einen Eingriff zu verlangen.",
+            "en": "Hall sensors translate a magnetic effect into an electrical signal. They can detect position or rotation without repeatedly closing a mechanical contact. The voltage is not a direct photograph of the magnet, however. Interpretation depends on current direction, material, geometry and field orientation. Its sign can also reveal information about the dominant charge carriers. “More voltage means more motion” is too vague. For an imagined bicycle sensor, specify which magnet passes which point and what signal change should follow. This is a paper or simulation design task. Do not modify real brakes, motor controls or safety sensors. A technically interesting explanation does not require interfering with an actual device."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Weiterdenken",
+            "en": "Think it through"
+          },
+          "text": {
+            "de": "Wie könnte ein Hall-Sensor erkennen, dass ein Rad vorbeidreht, ohne seine Drehung selbst anzutreiben? Trenne Messsignal und Energiequelle.",
+            "en": "How could a Hall sensor detect a turning wheel without driving it? Distinguish the measurement signal from the energy source."
+          }
+        }
+      ]
+    },
+    {
+      "key": "sortieren",
+      "title": {
+        "de": "Teilchen sortieren, ohne sie anzufassen",
+        "en": "Sorting particles without touching them"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Elektrische und magnetische Kräfte können sich in einer geeigneten Anordnung entgegenwirken. Für eine bestimmte Geschwindigkeit sind sie gleich groß, und ein geladenes Teilchen fliegt gerade weiter. Andere Geschwindigkeiten führen zur Ablenkung. Ein solcher Geschwindigkeitsfilter sortiert nicht nach einer sichtbaren Farbe, sondern nach dem Verhalten der Teilchen in Feldern. Damit wird aus einer Bahn eine Information über Eigenschaften. Die Auswahl gilt nur für die vorgegebenen Feldrichtungen und Anfangsbedingungen. Ein schematisches gerades Teilchen bedeutet nicht, dass auf es überhaupt keine Kräfte wirken; die Kräfte können sich gerade ausgleichen.",
+            "en": "Electric and magnetic forces can oppose each other in a suitable arrangement. For a particular velocity they balance and a charged particle continues straight, while other velocities produce deflection. A velocity selector sorts particles by their response to fields rather than a visible colour. A path thus becomes information about properties. Selection depends on specified field directions and starting conditions. A straight path in the diagram does not necessarily mean no forces act; opposing forces may balance."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Ein Massenspektrometer verbindet mehrere Schritte: Stoffteilchen werden ionisiert, beschleunigt, getrennt und nachgewiesen. Bei geeigneter Vorbereitung führen unterschiedliche Verhältnisse von Masse zu Ladung zu unterscheidbaren Bahnen oder Ankunftssignalen. So können Isotope oder Bestandteile einer Probe untersucht werden. Der Name verführt dazu, es wie eine winzige Küchenwaage zu sehen. Tatsächlich braucht die Auswertung bekannte Ladungszustände, eine Kalibrierung und ein Modell des gesamten Messwegs. Verschiedene Gerätekonzepte trennen auf unterschiedliche Weise; nicht jedes verwendet dieselbe Kreisbahnskizze. Die spannende Idee bleibt: Unsichtbare Teilchen hinterlassen geordnete Spuren, die Materialfragen beantworten können. Wer solche Daten deutet, prüft auch alternative Ursachen für einen Peak. Ein Messbild ist starke Evidenz, aber erst mit Aufbau und Auswertungsannahmen verständlich.",
+            "en": "A mass spectrometer links several stages: particles are ionised, accelerated, separated and detected. With suitable preparation, different mass-to-charge ratios produce distinct paths or arrival signals, revealing isotopes or sample components. Despite its name, it is not simply a miniature kitchen scale. Interpretation requires known charge states, calibration and a model of the complete measurement route. Different instrument designs separate particles differently; not every device uses the same circular-path diagram. The central idea remains exciting: invisible particles leave ordered traces that answer questions about materials. Interpreting those data also means checking alternative causes of a peak. A measurement image is strong evidence, but understandable only alongside its setup and assumptions."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Weiterdenken",
+            "en": "Think it through"
+          },
+          "text": {
+            "de": "Entwirf eine Museumsbeschriftung: Warum verrät eine gekrümmte Teilchenbahn mehr als nur „da ist ein Magnet“? Nenne eine notwendige Annahme.",
+            "en": "Design a museum label explaining why a curved particle path reveals more than “there is a magnet”. Name one necessary assumption."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "PhET: interaktive Modellwelt",
+                "en": "PhET: interactive model"
+              },
+              "url": "https://phet.colorado.edu/de/simulations/charges-and-fields"
+            },
+            {
+              "label": {
+                "de": "CERN: Teilchenbeschleuniger",
+                "en": "CERN: particle accelerators"
+              },
+              "url": "https://home.cern/science/accelerators"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": {
+        "de": "1. Lückentext",
+        "en": "1. Fill in the blanks"
+      },
+      "intro": {
+        "de": "Ergänze acht Fachwörter aus dem Gelesenen.",
+        "en": "Complete eight technical terms from the reading."
+      },
+      "text": {
+        "de": "Ein elektrisches Feld übt auf eine Ladung eine ___ aus. Die Energieänderung pro Ladung beschreibt eine ___. Die seitliche magnetische Kraft heißt ___. Bei passender Ausrichtung kann sie eine ___ ermöglichen. Eine rein magnetische Kraft ändert dabei nicht die ___. Seitliche Ladungstrennung in einem Leiter erzeugt eine messbare ___. Gekreuzte Felder können als ___ wirken. Teilcheneigenschaften untersucht ein ___.",
+        "en": "An electric field exerts a ___ on a charge. Energy change per charge is described by ___. The sideways magnetic force is the ___. Suitable orientation can produce a ___. A purely magnetic force then does not change ___. Sideways charge separation creates a measurable ___. Crossed fields can form a ___. Particle properties can be studied with a ___."
+      }
+    },
+    {
+      "kind": "compare",
+      "title": {
+        "de": "2. Erklären und vergleichen",
+        "en": "2. Explain and compare"
+      },
+      "intro": {
+        "de": "Antworte mit drei bis vier kurzen Sätzen. Begründe mit dem Gelesenen; du brauchst nichts auszurechnen.",
+        "en": "Answer in three or four short sentences. Use the reading to explain your reasoning; no calculation is needed."
+      },
+      "text": {
+        "de": "Vergleiche die Aufgaben elektrischer und magnetischer Felder in einer Teilchenanlage. Erkläre, wie Ablenkung ohne zusätzliche Bewegungsenergie möglich ist. Warum kann eine gerade Bahn trotzdem das Ergebnis zweier Kräfte sein?",
+        "en": "Compare electric and magnetic fields in a particle instrument. Explain how deflection is possible without adding kinetic energy. Why can a straight path still result from two forces?"
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": {
+        "de": "3. Deine Idee",
+        "en": "3. Your idea"
+      },
+      "intro": {
+        "de": "Entwickle in drei bis vier kurzen Sätzen eine eigene begründete Idee. Mehrere Antworten sind möglich.",
+        "en": "Develop your own reasoned idea in three or four short sentences. Several answers are possible."
+      },
+      "text": {
+        "de": "Entwirf eine verständliche Ausstellungsidee zu Hall-Sensor oder Massenspektrometer. Verbinde beobachtetes Signal, unsichtbaren Vorgang und eine wichtige Grenze der Deutung.",
+        "en": "Design an exhibition idea about a Hall sensor or mass spectrometer. Connect the observed signal, invisible process and one important interpretive limit."
+      }
+    }
+  ]
+}

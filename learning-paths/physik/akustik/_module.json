@@ -5,11 +5,10 @@
     "en": "Acoustics"
   },
   "description": {
-    "de": "NWT-Auffrischung zu Schall, Wahrnehmung und Wellen; harmonische Schwingungen ausdrücklich als Erweiterung Gym10/STS11 gekennzeichnet.",
-    "en": "NWT refresher on sound, perception and waves; harmonic oscillations are explicitly marked as a Gymnasium10/Stadtteilschule11 extension."
+    "de": "Wie Musik, Stimmen und Geräusche entstehen – und wie du Räume und Technik besser klingen lässt.",
+    "en": "How music, voices and noise arise, and how rooms and technology can sound better."
   },
   "icon": "🔊",
   "accent": "violet",
-  "badge": "Basis+Überg.",
   "level": "sek1"
 }

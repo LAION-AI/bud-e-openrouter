@@ -1,0 +1,222 @@
+{
+  "key": "phys2-fallen-ohne-anzukommen",
+  "title": {
+    "de": "Warum fällt ein Satellit nicht einfach herunter?",
+    "en": "Why does a satellite not simply fall down?"
+  },
+  "summary": {
+    "de": "Gravitation, Umlaufbahnen und Energie zeigen, wie aus ständigem Fallen ein Weg um die Erde werden kann.",
+    "en": "Gravity, orbits and energy show how continual falling can become a path around Earth."
+  },
+  "icon": "🛰️",
+  "accent": "indigo",
+  "minutes": 20,
+  "screens": [
+    {
+      "key": "gravitation",
+      "title": {
+        "de": "Anziehung ist mehr als eine Kraft nach unten",
+        "en": "Attraction is more than a downward force"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Nahe deiner Wohnung zeigt die Gewichtskraft ungefähr nach unten. Für die Erde als Ganzes gibt es aber kein gemeinsames kosmisches Unten. Die gravitative Anziehung zeigt zwischen Körpern in Richtung ihrer Massenverteilung. Im einfachen Modell kugelsymmetrischer Körper lässt sich ihre Wirkung außerhalb wie die einer zentralen Masse beschreiben. Größere Masse bedeutet stärkere Wirkung, größerer Abstand eine schwächere. Das Gravitationsfeld ordnet jedem Ort die mögliche Beschleunigung eines kleinen frei fallenden Probekörpers zu. Es ist eine Karte der Wirkung, keine unsichtbare Schiene, auf der ein Satellit von selbst weiterfahren müsste. Die Anfangsbewegung bleibt für die Bahn entscheidend.",
+            "en": "Near your home, weight points approximately downwards. Earth as a whole has no shared cosmic “down”. Gravitational attraction relates to the distribution of mass between objects. Outside a spherically symmetric body, a simple model treats its effect as coming from a central mass. Greater mass strengthens the effect; greater distance weakens it. The gravitational field maps possible acceleration of a small freely falling test object at each location. It is a map of influence, not an invisible rail carrying a satellite. Initial motion still determines the path."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Die Analogie zum elektrischen Feld hilft, Unterschiede zu erkennen. Beide Modelle verbinden räumliche Wirkung und Energie. Im klassischen Gravitationsmodell gibt es jedoch keine gewöhnlichen positiven und negativen Massenladungen, die sich wie elektrische Ladungen anziehen und abstoßen. Ein Abschirmkasten beseitigt Gravitation daher nicht so wie eine leitende Hülle manche elektrischen Einwirkungen reduzieren kann. Auch der Begriff „Kraftfeld“ ist kein Schutzschild aus einem Film. Für mehrere Körper überlagern sich Wirkungen, und die einfache Zentralmassennäherung kann ungenau werden. Eine gute Weltraumsimulation sollte sagen, welche Körper enthalten und welche vernachlässigt sind. Das ist besonders wichtig, wenn aus einer schönen Umlaufanimation eine Vorhersage über einen wirklichen Flug werden soll. Anschaulichkeit ersetzt keine Prüfung der Modellgrenze.",
+            "en": "The electrical-field analogy helps reveal differences. Both link spatial effects with energy, but classical gravity has no ordinary positive and negative mass charges attracting and repelling like electrical charges. A shielding box therefore does not remove gravity as a conducting enclosure can reduce some electrical effects. A “force field” is not a cinematic protective barrier. Several bodies contribute jointly, making a central-mass approximation less accurate. A useful space simulation states which bodies are included and omitted, especially before a pleasing orbit animation is treated as a real flight prediction. Clear visualisation does not replace checking model limits."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Weiterdenken",
+            "en": "Think it through"
+          },
+          "text": {
+            "de": "Gestalte eine Feldkarte um die Erde. Wie unterscheidest du Feldrichtung von Satellitenbahn, und warum wäre ein gezeichneter Abschirmkasten gegen Gravitation keine passende Ergänzung des Modells?",
+            "en": "Design a field map around Earth. Distinguish field direction from orbit and explain why adding an imagined gravity-shielding box would not fit this model."
+          }
+        }
+      ]
+    },
+    {
+      "key": "orbit",
+      "title": {
+        "de": "Der Boden krümmt sich unter dem Fall weg",
+        "en": "The ground curves away beneath the fall"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Ein waagerecht bewegter Körper fällt unter Gravitation weiter zur Erde. Ist seine seitliche Bewegung unter passenden Bedingungen groß genug, kann die Erdoberfläche währenddessen gewissermaßen unter seiner Bahn wegkrümmen. Dann entsteht eine Umlaufbahn. Der Satellit fällt also nicht deshalb nicht, weil dort keine Gravitation wäre. Er ist im fortwährenden freien Fall, kommt aber nicht einfach am Boden an. Die anschauliche Idee erklärt eine Kreisbahn als Zusammenspiel von Anfangsbewegung und nach innen gerichteter Beschleunigung. Eine Zentripetalkraft ist hier keine zusätzliche Kraft neben der Gravitation: Die Gravitation übernimmt diese Rolle. Zwei verschieden benannte Begriffe dürfen nicht doppelt in die Kräftebilanz eingehen.",
+            "en": "A sideways-moving object continues falling under gravity. With suitable sideways motion, Earth's surface effectively curves away beneath its path, producing an orbit. The satellite does not stay up because gravity is absent; it is continually falling without simply reaching the ground. A circular orbit combines initial motion with inward acceleration. Centripetal force is not an extra force alongside gravity: gravity provides that role. Two names must not be counted as two separate forces in the same account."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Auch Menschen und Gegenstände in einer Raumstation fallen annähernd gemeinsam. Deshalb fehlt der normale dauernde Stützdruck eines Fußbodens und sie wirken schwerelos. Das ist von einem gravitationsfreien Ort zu unterscheiden. Kleine Restwirkungen, Luftwiderstand, Drehungen und Korrekturen können die wirkliche Situation verändern. Die ruhige schwebende Person beweist daher weder eine verschwundene Erdanziehung noch einen absoluten Stillstand. Für den Vergleich ist das Bezugssystem entscheidend: Relativ zur Station kann sie langsam schweben, relativ zur Erde schnell umlaufen. Ein gutes Ausstellungsbild zeigt deshalb Station, Person und Erde gemeinsam. Ein einziges Foto mit dem Wort „kein Gewicht“ lässt offen, ob damit fehlende Masse, fehlende Gravitation oder fehlende Stützkraft gemeint ist. Die Physik hilft gerade, diese drei sehr verschiedenen Bedeutungen auseinanderzuhalten.",
+            "en": "People and objects inside a station approximately fall together, removing the usual sustained support pressure from a floor and making them appear weightless. This differs from absence of gravity. Residual forces, drag, rotation and corrections can affect reality. A floating person proves neither vanished attraction nor absolute rest. Relative to the station the person may drift slowly while travelling rapidly around Earth. A clear exhibit therefore includes station, person and Earth. One photograph labelled “no weight” leaves unclear whether it means no mass, no gravity or no support force. Distinguishing those meanings is the important physical insight rather than treating the image as self-explanatory."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Weiterdenken",
+            "en": "Think it through"
+          },
+          "text": {
+            "de": "Erkläre ein Foto schwebender Menschen mit drei Begriffen: Masse, Gravitation, Stützkraft. Welcher Begriff bleibt vorhanden, obwohl das gewohnte Gefühl des Gewichts fehlt? Vermeide „im All gibt es keine Schwerkraft“.",
+            "en": "Explain a photograph of floating people using mass, gravity and support force. Which remain although the familiar feeling of weight is absent? Avoid “there is no gravity in space”."
+          }
+        }
+      ]
+    },
+    {
+      "key": "kepler",
+      "title": {
+        "de": "Eine Bahn erzählt von Energie und Bewegung",
+        "en": "An orbit tells a story of energy and motion"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Planetenbahnen lassen sich im einfachen Zweikörpermodell als Ellipsen beschreiben. Die zentrale Masse liegt dabei in einem Brennpunkt, nicht notwendig im Mittelpunkt der Ellipse. Genauer bewegen sich beide Körper um ihren gemeinsamen Schwerpunkt. Die Keplerschen Gesetze ordnen solche Bahnen. Die Verbindungslinie zwischen Zentralkörper und Planet überstreicht in gleichen Zeiten gleich große Flächen; näher am Zentralkörper bewegt sich der Planet deshalb schneller. Allgemein gilt: Die Bewegung ist entlang einer Ellipse nicht überall gleich schnell, und weiter ausgedehnte Bahnen gehören im passenden Vergleich zu längeren Umlaufzeiten. Diese Aussagen sind Zusammenhänge unter Modellbedingungen, keine willkürlichen Verkehrsvorschriften des Himmels. Eine Kreisbahn ist ein besonders einfacher Fall, aber nicht die einzig mögliche stabile gebundene Bewegung. Die Form allein erklärt noch nicht, wie der Körper dorthin gelangte.",
+            "en": "In a simple two-body model, planetary paths can be ellipses with the central mass at one focus, not necessarily the geometric centre. More precisely, both bodies move around their shared centre of mass. Kepler's laws organise these paths. The line joining central body and planet sweeps equal areas in equal times, so the planet moves faster nearer the central body. More generally, speed varies along an ellipse, and more extended orbits correspond to longer periods in an appropriate comparison. These are model relationships, not arbitrary celestial traffic rules. A circle is a simple special case, not the only bound motion. Shape alone does not explain how an object reached that orbit."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Eine Energiebilanz verbindet Bewegungsenergie und gravitative potenzielle Energie. Für eine gebundene Bahn reicht die Gesamtenergie im gewählten Bezug nicht zum dauerhaften Entkommen. Bei ausreichend anderer Gesamtenergie kann eine ungebundene Bahn möglich werden. Der Nullpunkt potenzieller Energie muss dabei benannt sein, häufig wählt man sehr große Entfernung als Bezug. Ein negativer Energiewert ist dann kein negativer Vorrat an Bewegung, sondern eine Aussage über Bindung im Modell. Auch größere Höhe bedeutet nicht automatisch „mehr Geschwindigkeit“. Verschiedene Bahnen verteilen Energie unterschiedlich. Eine kurze Beschleunigung verändert nicht nur den Ort, sondern die zukünftige Bahn. Genau deshalb ist ein Orbitwechsel kein einfaches Fahren auf einer unsichtbaren Straße nach oben. Für den Überblick genügt, qualitativ zwischen mehr oder weniger gebundener Energie und zwischen verschiedenen Bahnformen zu unterscheiden.",
+            "en": "An energy account combines kinetic and gravitational potential energy. A bound orbit lacks sufficient total energy for permanent escape under the chosen reference; different total energy can allow an unbound path. The potential-energy zero must be stated, often using very large separation. Negative energy is then not negative motion but a statement about binding. Greater height also does not automatically mean greater speed: different orbits distribute energy differently. A brief acceleration changes the future path, not merely location. Changing orbit is therefore not driving upwards on an invisible road. For this overview, qualitatively distinguish binding, energy transfer and orbit shape without calculating a flight plan."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Weiterdenken",
+            "en": "Think it through"
+          },
+          "text": {
+            "de": "Eine Skizze zeigt eine Ellipse und ein Schild „überall gleich schnell“. Was würdest du korrigieren? Erkläre zusätzlich, warum eine Bahnänderung eine neue Energiebilanz braucht, nicht nur einen anderen gezeichneten Ort.",
+            "en": "An ellipse is labelled “same speed everywhere”. What would you correct? Also explain why changing orbit requires a new energy account rather than merely moving the drawn location."
+          }
+        }
+      ]
+    },
+    {
+      "key": "mission",
+      "title": {
+        "de": "Ein Umweg kann Teil eines guten Plans sein",
+        "en": "A detour can be part of a good plan"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Eine Raumsonde muss nicht immer auf dem kürzesten gezeichneten Weg zum Ziel gelangen. Geeignete Transferbahnen können Energiebedarf, Ankunftszeit und technische Bedingungen gegeneinander abwägen. Bei einem Swing-by-Manöver wird die Bewegung eines Planeten mitgenutzt. Im planetenbezogenen Bild wird die Sonde abgelenkt; relativ zur Sonne kann sich dabei ihre Energie ändern. Die Energie kommt nicht kostenlos aus einer stillstehenden gravitativen Zauberwand. Planet und Sonde gehören zu einem gemeinsamen Wechselwirkungssystem, und ihr Energie- und Impulsaustausch muss zusammen betrachtet werden. Die Geschwindigkeitsänderung ist deshalb ohne Bezugssystemangabe leicht missverständlich. Eine anschauliche Zeichnung sollte den bewegten Planeten nicht ausblenden.",
+            "en": "A space probe need not follow the shortest drawn route. Transfer paths trade energy demand, arrival time and engineering constraints. A gravity assist uses a planet's motion: the probe is deflected in the planet's frame and can change energy relative to the Sun. That energy does not come free from a stationary gravitational magic wall. Planet and probe interact, requiring a joint energy and momentum account. A velocity change is therefore ambiguous without a reference frame. The planet's motion belongs in the diagram rather than being hidden."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Auch ein scheinbar einfacher Satellit erfüllt verschiedene Ziele: Er soll messen oder kommunizieren, zuverlässig versorgt sein und andere Flugobjekte nicht gefährden. Lebensende und Weltraumschrott gehören deshalb zu einem verantwortlichen Entwurf. Eine höhere oder längere Bahn ist nicht automatisch die beste für jede Aufgabe. Erdbeobachtung, schnelle Signalwege und langfristige Abdeckung stellen unterschiedliche Anforderungen. Du könntest eine erfundene Mission für Umweltbeobachtung skizzieren und zwei Ziele ausdrücklich gewichten. Nenne außerdem, welche Information über Erde, Atmosphäre oder vorhandene Objekte deinem Modell fehlt. Das ist kein Auftrag, reale Bahndaten zu ändern oder Flugtechnik zu bauen. Es ist eine Übung darin, physikalische Möglichkeiten mit einer gesellschaftlichen Aufgabe zu verbinden. Ein guter Missionsplan erklärt nicht nur, wie etwas oben bleibt, sondern auch, warum es dort sein soll.",
+            "en": "Even a simple satellite serves several goals: measurement or communication, reliable power and avoiding harm to other objects. End-of-life planning and debris therefore belong in responsible design. A higher or longer orbit is not automatically best. Earth observation, short signal travel and long-term coverage have different needs. Sketch an imagined environmental mission and explicitly prioritise two goals. Name missing information about Earth, atmosphere or other objects. This does not ask you to alter real trajectories or build flight hardware. It connects physical possibilities with a social task. A good mission explains not just how something stays above Earth but why it should be there and what happens afterwards."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Weiterdenken",
+            "en": "Think it through"
+          },
+          "text": {
+            "de": "Entwirf eine Satellitenmission mit einem klaren Nutzen und einer Grenze. Welche zwei Anforderungen könnten sich widersprechen, und warum wäre die kürzeste oder höchste Bahn nicht automatisch die beste Wahl?",
+            "en": "Design a satellite mission with a clear benefit and limitation. Which requirements might conflict, and why is the shortest or highest orbit not automatically best?"
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "PhET: interaktive Modellwelt",
+                "en": "PhET: interactive model"
+              },
+              "url": "https://phet.colorado.edu/de/simulations/gravity-and-orbits"
+            },
+            {
+              "label": {
+                "de": "NASA: Grundlagen von Bahnen und Gravitation",
+                "en": "NASA: foundations of orbits and gravity"
+              },
+              "url": "https://science.nasa.gov/learn/basics-of-space-flight/chapter3-1/"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": {
+        "de": "1. Lückentext",
+        "en": "1. Fill in the blanks"
+      },
+      "intro": {
+        "de": "Ergänze acht Fachwörter aus dem Gelesenen.",
+        "en": "Complete eight technical terms from the reading."
+      },
+      "text": {
+        "de": "Die räumliche Gravitationswirkung beschreibt ein ___. Ein Satellit im Orbit befindet sich annähernd im freien ___. Die Gravitation übernimmt bei Kreisbewegung die Rolle der ___. Menschen in einer Raumstation fehlt der gewohnte ___. Eine gebundene Planetenbahn kann eine ___ sein. Beide Körper bewegen sich um den gemeinsamen ___. Bewegung und Lage verbindet eine ___. Ein geeignetes Vorbeiflugmanöver heißt ___.",
+        "en": "Spatial gravitational influence is described by a ___. An orbiting satellite is approximately in free ___. In circular motion gravity provides the ___ force. People in a station lack the familiar support ___. A bound planetary path can be an ___. Both objects move around their common centre of ___. Motion and position are linked by an energy ___. A suitable fly-by manoeuvre is a gravity ___."
+      }
+    },
+    {
+      "kind": "compare",
+      "title": {
+        "de": "2. Erklären und vergleichen",
+        "en": "2. Explain and compare"
+      },
+      "intro": {
+        "de": "Antworte mit drei bis vier kurzen Sätzen. Begründe mit dem Gelesenen; du brauchst nichts auszurechnen.",
+        "en": "Answer in three or four short sentences. Use the reading to explain your reasoning; no calculation is needed."
+      },
+      "text": {
+        "de": "Vergleiche einen ruhenden Gegenstand auf dem Boden mit einem Gegenstand in einer Raumstation. Erkläre Gravitation und Stützkraft. Warum ist eine Umlaufbahn kein Beweis dafür, dass keine Kraft wirkt?",
+        "en": "Compare an object resting on the ground with one inside a space station. Explain gravity and support force. Why does an orbit not prove the absence of force?"
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": {
+        "de": "3. Deine Idee",
+        "en": "3. Your idea"
+      },
+      "intro": {
+        "de": "Entwickle in drei bis vier kurzen Sätzen eine eigene begründete Idee. Mehrere Antworten sind möglich.",
+        "en": "Develop your own reasoned idea in three or four short sentences. Several answers are possible."
+      },
+      "text": {
+        "de": "Entwirf eine verantwortliche Mission zur Umweltbeobachtung. Verbinde Bahnidee, Nutzen und einen Zielkonflikt. Nenne auch, welche Bedingung vor einer wirklichen Umsetzung genauer geprüft werden müsste.",
+        "en": "Design a responsible environmental-observation mission. Link orbit concept, benefit and a trade-off. Name a condition needing closer study before real implementation."
+      }
+    }
+  ]
+}

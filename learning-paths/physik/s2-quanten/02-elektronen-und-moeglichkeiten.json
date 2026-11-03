@@ -1,0 +1,229 @@
+{
+  "key": "phys2-elektronen-und-moeglichkeiten",
+  "title": {
+    "de": "Wie entsteht ein Muster aus einzelnen Treffern?",
+    "en": "How does a pattern emerge from individual hits?"
+  },
+  "summary": {
+    "de": "Elektronen verlangen mehr als Kügelchen und Wasserwellen: Superposition, Weginformation und Quanteninformation öffnen eine neue Sicht.",
+    "en": "Electrons need more than little balls and water waves: superposition, path information and quantum information open a different view."
+  },
+  "icon": "🔬",
+  "accent": "violet",
+  "minutes": 20,
+  "screens": [
+    {
+      "key": "einzelereignis",
+      "title": {
+        "de": "Jeder Treffer ist lokal, die Verteilung ist geordnet",
+        "en": "Each detection is local; the distribution is structured"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Schickst du Elektronen einzeln durch eine geeignete Doppelspaltanordnung, entstehen auf dem Detektor einzelne örtliche Nachweise. Mit vielen Wiederholungen kann trotzdem ein Interferenzmuster wachsen. Die Elektronen müssen dafür nicht als Schwarm gleichzeitig miteinander zusammenstoßen. Das Muster beschreibt die geordnete Verteilung vieler möglicher Ereignisse. Welcher einzelne Ort als Nächstes getroffen wird, lässt sich nicht genauso vorhersagen wie die Bahn eines geworfenen Balls. Die statistische Verteilung ist jedoch keineswegs beliebig. Ein gut vorbereitetes Experiment liefert reproduzierbare Häufigkeiten. Zufall beim Einzelereignis und Gesetzmäßigkeit im Gesamtbild gehören hier zusammen, statt sich gegenseitig auszuschließen.",
+            "en": "Send electrons individually through a suitable double slit and the detector records local events. After many repetitions an interference pattern can still build up. The electrons need not collide as a simultaneous crowd. The pattern is a structured distribution of possible events. The next individual location cannot be predicted like a thrown ball's trajectory, yet the distribution is not arbitrary. A well-prepared experiment produces reproducible frequencies. Individual randomness and a regular overall pattern belong together rather than contradicting one another."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Die De-Broglie-Idee verbindet den Impuls eines Materiequants mit einer Wellenlänge. Größerer Impuls bedeutet kürzere zugeordnete Wellenlänge. Das ist kein Hinweis auf ein verborgenes Wassertröpfchen, das ein Elektron begleitet. Die Wellenbeschreibung gehört zum Quantenzustand und hilft, Nachweisverteilungen vorherzusagen. Auch das Kugelbild ist begrenzt: Es erklärt den örtlichen Treffer anschaulich, aber nicht ohne Weiteres das Interferenzmuster. Du solltest daher nicht zwischen einer vollständig klassischen Welle und einem vollständig klassischen Kügelchen umschalten, als wäre eines davon die ganze Wahrheit. Beide Alltagsbilder beleuchten nur Teile des Verhaltens. Eine gute Animation zeigt deshalb einzelne Detektorpunkte und die langsam entstehende Verteilung getrennt. Der sichtbare Punkt ist eine Messwirkung, keine Filmaufnahme eines durchgehend bekannten Wegs durch die gesamte Anordnung. Der historische Begriff Welle-Teilchen-Dualismus benennt diese begrenzten Alltagsbilder, nicht ein beliebiges Umschalten zwischen zwei klassischen Gestalten.",
+            "en": "De Broglie's idea links a matter quantum's momentum with a wavelength: greater momentum means a shorter associated wavelength. This does not imply a hidden water droplet accompanies the electron. The wave description belongs to the quantum state and predicts detection distributions. The ball picture is limited too: it makes local detection intuitive but not the interference pattern. Do not alternate between a completely classical wave and a completely classical ball as though either were the whole truth. Each everyday analogy captures only part. A good animation separately shows individual detector spots and their gradually emerging distribution. A spot is a measurement effect, not a film of one continuously known route through the apparatus. The historical term wave–particle duality names these limited everyday pictures, not arbitrary switching between two classical forms."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Weiterdenken",
+            "en": "Think it through"
+          },
+          "text": {
+            "de": "Eine Animation zeigt nur Trefferpunkte. Welche zusätzliche Ansicht würde den Unterschied zwischen unvorhersagbarem Einzelereignis und verlässlicher Verteilung erklären, ohne erfundene klassische Flugbahnen einzuzeichnen?",
+            "en": "An animation shows only detection spots. What additional view would distinguish unpredictable events from a reliable distribution without inventing classical flight paths?"
+          }
+        }
+      ]
+    },
+    {
+      "key": "superposition",
+      "title": {
+        "de": "Zwei Möglichkeiten sind nicht immer ein Gemisch",
+        "en": "Two alternatives are not always a mixture"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Eine Superposition ist nicht einfach eine gewöhnliche Unsicherheit darüber, welches fertige klassische Ereignis schon stattgefunden hat. Die Beiträge möglicher Alternativen besitzen einen Phasenbezug und können sich in der Vorhersage verstärken oder abschwächen. Darum entsteht mit beiden offenen Spalten unter geeigneten Bedingungen ein anderes Muster, als wenn man nur zwei getrennt aufgenommene Einzelspaltbilder addiert. Ein Gemisch würde genau solche gewöhnlichen Alternativen ohne passenden gemeinsamen Phasenbezug beschreiben. Die Unterscheidung ist experimentell bedeutsam, nicht bloß eine philosophische Wortwahl. Sie erklärt, warum die Anordnung mehr Information benötigt als die Aussage, dass links oder rechts offen ist.",
+            "en": "A superposition is not merely ordinary uncertainty about which completed classical event already happened. Contributions from alternatives retain a phase relationship and can reinforce or reduce predictions. With both slits open, suitable conditions therefore produce a pattern different from simply adding separately recorded single-slit patterns. A mixture describes alternatives without the relevant shared phase relationship. The distinction is experimental, not merely philosophical vocabulary. The apparatus needs more information than the statement that left or right is open."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Eine Wellenfunktion beschreibt den Zustand mathematisch. Ihr Betragsquadrat liefert die Nachweiswahrscheinlichkeitsdichte. Diese Aussage macht aus der Wellenfunktion keine sichtbare Materialwolke, deren kleine Stücke der Detektor aufsammelt. Ein einzelnes Elektronenereignis wird weiterhin lokal nachgewiesen. Ebenso ist die Wahrscheinlichkeit nicht bloß eine subjektive Laune der beobachtenden Person. Sie ist durch Vorbereitung und Messanordnung eingeschränkt. Manche bildhaften Deutungen gehen unterschiedlich damit um, was zwischen Vorbereitung und Nachweis gesagt werden darf. Für die überprüfbare Erklärung brauchst du diese Deutungsfrage nicht endgültig zu entscheiden. Entscheidend ist, welche Verteilung das Modell vorhersagt und ob kontrollierte Veränderungen dazu passen. So bleibt die Quantenidee präzise, ohne geheimnisvolle Wörter wie „alles ist möglich“ oder „Gedanken formen die Materie“ einzuführen.",
+            "en": "A wavefunction mathematically describes the state; its squared magnitude gives detection probability density. That does not make it a visible material cloud whose pieces a detector collects. Each electron event is still local. Probability is also not an observer's subjective whim: preparation and measurement arrangement constrain it. Interpretations differ about what may be said between preparation and detection. An experimentally useful explanation need not settle every interpretation. It identifies the distribution predicted and checks whether controlled changes agree. This keeps the quantum idea precise without slogans such as “anything is possible” or “thoughts shape matter”. The difference between superposition and mixture remains testable even while broader interpretation is discussed."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Weiterdenken",
+            "en": "Think it through"
+          },
+          "text": {
+            "de": "Warum ist das gemeinsame Doppelspaltmuster mehr als das bloße Übereinanderlegen zweier getrennter Trefferbilder? Erkläre den entscheidenden Unterschied mit dem Phasenbezug statt mit „magischen Elektronen“.",
+            "en": "Why is a joint double-slit pattern more than overlaying two separate detection pictures? Explain the crucial phase relationship rather than invoking “magical electrons”."
+          }
+        }
+      ]
+    },
+    {
+      "key": "weg-und-impuls",
+      "title": {
+        "de": "Eine Messung ist eine Wechselwirkung, kein Blickzauber",
+        "en": "Measurement is interaction, not magical looking"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Wird unterscheidbare Information darüber verfügbar, welchen Spalt ein Elektron durchlaufen hat, ändert sich die Interferenzfähigkeit der Alternativen. Eine passende Messwechselwirkung kann das Teilchen mit einem Detektor oder seiner Umgebung korrelieren. Dafür muss kein Mensch die Anzeige bewusst anschauen. Auch gespeicherte, ungelesene Weginformation kann entscheidend sein. Die Aussage „Elektronen merken, ob jemand hinsieht“ führt deshalb in die Irre. Beobachtung bedeutet hier eine physikalisch festgelegte Wechselwirkung, nicht menschliches Bewusstsein. Ein ruhiger Versuchsraum ohne betrachtende Person stellt verlorene Kohärenz nicht automatisch wieder her, wenn die unterscheidenden Korrelationen bestehen bleiben.",
+            "en": "If distinguishable information becomes available about which slit an electron used, interference between alternatives changes. A suitable interaction can correlate the particle with a detector or environment. No human must consciously inspect the display; stored unread path information can matter too. “Electrons notice someone looking” is therefore misleading. Observation here means a specified physical interaction, not consciousness. Leaving the room does not automatically restore lost coherence while distinguishing correlations remain."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Auch die Unbestimmtheitsbeziehung zwischen Ort und Impuls ist mehr als ein Mangel schlechter Messgeräte. Sie beschreibt, dass ein Quantenzustand nicht zugleich beliebig enge Verteilungen dieser beiden Größen besitzen kann. Eine sehr enge Ortspräparation geht mit entsprechender Impulsstreuung einher. Das ist keine bloße zusätzliche Unkenntnis eines eigentlich vollständig scharfen klassischen Zustands. Messstörungen können in wirklichen Apparaturen vorkommen, sind aber nicht die ganze Erklärung dieser Beziehung. Wichtig ist die Trennung zwischen Präparation, Zustandsverteilung und technischem Messfehler. Eine gute Grafik zeigt diese Ebenen getrennt. Du musst keine Unschärfe ausrechnen: Beschreibe stattdessen, weshalb „wir bauen einfach ein perfekteres Gerät“ das grundsätzliche Zustandsproblem nicht beseitigt. So wird eine ungewöhnliche Aussage verständlich, ohne Genauigkeit generell für sinnlos zu erklären.",
+            "en": "Position–momentum uncertainty is likewise more than poor instruments. A quantum state cannot have arbitrarily narrow distributions of both simultaneously. Strong position localisation entails corresponding momentum spread. This is not merely extra ignorance about an otherwise perfectly sharp classical state. Real measurement disturbances exist, but do not fully explain the relation. Separate preparation, state distributions and technical measurement error in a diagram. No uncertainty calculation is needed: explain why building a better instrument cannot remove the underlying state constraint. This makes an unfamiliar statement understandable without claiming accurate measurement is generally pointless or that every observed spread must have the same cause. A detector can improve technically while this state-based restriction remains; those are different kinds of limitation."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Weiterdenken",
+            "en": "Think it through"
+          },
+          "text": {
+            "de": "Eine Person erklärt verschwundene Interferenz mit Bewusstsein und Unbestimmtheit mit schlechtem Werkzeug. Formuliere zwei kurze Korrekturen und benenne jeweils die physikalische Ebene, auf die es ankommt.",
+            "en": "Someone explains lost interference through consciousness and uncertainty through poor tools. Give two corrections and identify the physical level that matters in each."
+          }
+        }
+      ]
+    },
+    {
+      "key": "quanteninformation",
+      "title": {
+        "de": "Neue Möglichkeiten, aber keine Gedankenpost",
+        "en": "New possibilities, not telepathic messaging"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Ein Qubit ist ein Quantensystem, dessen Zustand in einer gewählten Messbasis durch zwei grundlegende Alternativen beschrieben werden kann. Superposition erweitert die möglichen Zustandsvorbereitungen, liefert aber beim Auslesen nicht einfach beliebig viele klassische Antworten auf einmal. Welche Verteilung erscheint, hängt von Vorbereitung und Messbasis ab. Eine geschickte Verarbeitung nutzt diese Struktur, statt alle denkbaren Ergebnisse als fertige kleine Textdateien abzuspeichern. „Gleichzeitig null und eins“ kann als Merkhilfe dienen, ist aber ohne diese Unterscheidung leicht irreführend. Ein Qubit ist kein gewöhnlicher Schalter, den man bloß noch nicht richtig angesehen hat.",
+            "en": "A qubit is a quantum system described using two basic alternatives in a chosen measurement basis. Superposition extends possible state preparation, but reading it does not reveal unlimited classical answers simultaneously. The observed distribution depends on preparation and basis. Useful processing exploits that structure rather than storing every possible answer as a completed little file. “Zero and one at once” can be a mnemonic but misleads without this distinction. A qubit is not an ordinary switch that has simply not been inspected properly."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Verschränkte Systeme besitzen gemeinsame Zustände, deren Zusammenhänge nicht durch getrennte Einzelbeschreibungen vollständig erfasst werden. Ihre Messergebnisse können besondere Korrelationen zeigen. Das ermöglicht aber keine frei wählbare Nachricht schneller als Licht. Einzelne lokale Ergebnisse bleiben für die Beteiligten nicht nach Wunsch steuerbar; zum Vergleich der Daten ist gewöhnliche Kommunikation nötig. Ebenso ist „alles ist irgendwie verbunden“ keine überprüfbare Erklärung. Eine verständliche Ausstellung könnte zwei getrennte Ergebnislisten erst später zusammenführen und die überraschende gemeinsame Ordnung zeigen. Sie sollte zugleich erklären, welche Information vor dem Austausch tatsächlich lokal verfügbar war. Damit wird Quanteninformation weder zu einem Allheilmittel noch zu einem Trick, der Naturgesetze beliebig ausschaltet. Sie ist eine präzise neue Art, Zustände und Korrelationen für bestimmte Aufgaben zu nutzen. Gleichartige Ergebnislisten allein beweisen allerdings noch keine Verschränkung; auch klassische Ursachen können Korrelationen erzeugen. Dafür braucht es geeignete überprüfbare Messvergleiche.",
+            "en": "Entangled systems have joint states whose correlations are not fully captured by separate individual descriptions. Their measurements can show distinctive relationships, but cannot send freely chosen messages faster than light. Local outcomes cannot be controlled at will, and comparing records needs ordinary communication. “Everything is somehow connected” is not a testable explanation. An exhibit could combine two separated records later and reveal their surprising joint order, while showing what information was locally available before exchange. Quantum information is neither a universal cure nor a trick suspending physical laws. It is a precise way of using states and correlations for particular tasks, with limits as important as its possibilities. Similar result lists alone do not establish entanglement: classical causes can also produce correlations. Suitable testable measurement comparisons are needed."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Weiterdenken",
+            "en": "Think it through"
+          },
+          "text": {
+            "de": "Entwirf eine Ausstellung mit zwei zunächst getrennten Ergebnislisten. Wie zeigst du besondere Korrelationen, ohne vorzugeben, eine Person könne das lokale Ergebnis der anderen als Nachricht steuern?",
+            "en": "Design an exhibit with initially separated result lists. How would you show unusual correlations without pretending one person can control the other's local result as a message?"
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "Caltech: Quantenverhalten",
+                "en": "Caltech: quantum behaviour"
+              },
+              "url": "https://www.feynmanlectures.caltech.edu/III_01.html"
+            },
+            {
+              "label": {
+                "de": "PhET: interaktive Modellwelt",
+                "en": "PhET: interactive model"
+              },
+              "url": "https://phet.colorado.edu/de/simulations/quantum-wave-interference"
+            },
+            {
+              "label": {
+                "de": "NIST: Grundlagen der Quanteninformation",
+                "en": "NIST: quantum information fundamentals"
+              },
+              "url": "https://www.nist.gov/quantum-information-science"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": {
+        "de": "1. Lückentext",
+        "en": "1. Fill in the blanks"
+      },
+      "intro": {
+        "de": "Ergänze acht Fachwörter aus dem Gelesenen.",
+        "en": "Complete eight technical terms from the reading."
+      },
+      "text": {
+        "de": "Ein Detektor registriert ein örtliches ___. Viele Wiederholungen ergeben eine geordnete ___. Zum Materieimpuls gehört eine De-Broglie-___. Alternativen mit Phasenbezug bilden eine ___. Ohne diesen Bezug beschreibt man ein ___. Unterscheidbare Information über den Spalt heißt ___. Ort und Impuls unterliegen einer ___. Besondere gemeinsame Zustände können ___ besitzen.",
+        "en": "A detector records a local ___. Many repetitions build a structured ___. Matter momentum has an associated de Broglie ___. Alternatives with a phase relationship form a ___. Without that relationship they form a ___. Distinguishable information about the slit is ___ information. Position and momentum obey an ___ relation. Special joint states can possess ___."
+      }
+    },
+    {
+      "kind": "compare",
+      "title": {
+        "de": "2. Erklären und vergleichen",
+        "en": "2. Explain and compare"
+      },
+      "intro": {
+        "de": "Antworte mit drei bis vier kurzen Sätzen. Begründe mit dem Gelesenen; du brauchst nichts auszurechnen.",
+        "en": "Answer in three or four short sentences. Use the reading to explain your reasoning; no calculation is needed."
+      },
+      "text": {
+        "de": "Vergleiche Superposition und Gemisch am Doppelspalt. Erkläre, warum Weginformation die Interferenz verändern kann, ohne dass ein Mensch bewusst hinsieht. Warum ist Ort-Impuls-Unbestimmtheit nicht bloß Messgerätefehler?",
+        "en": "Compare superposition and mixture at a double slit. Explain why path information can change interference without conscious human observation. Why is position–momentum uncertainty not merely instrument error?"
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": {
+        "de": "3. Deine Idee",
+        "en": "3. Your idea"
+      },
+      "intro": {
+        "de": "Entwickle in drei bis vier kurzen Sätzen eine eigene begründete Idee. Mehrere Antworten sind möglich.",
+        "en": "Develop your own reasoned idea in three or four short sentences. Several answers are possible."
+      },
+      "text": {
+        "de": "Gestalte eine verständliche Antwort auf ein übertriebenes Quanten-Werbeversprechen. Erkläre eine wirkliche Besonderheit und eine klare Grenze, etwa bei schneller Kommunikation oder vermeintlich vollständigem Auslesen eines Qubits.",
+        "en": "Create an understandable response to an exaggerated quantum advertisement. Explain a real feature and a clear limit, such as faster communication or supposedly complete readout of a qubit."
+      }
+    }
+  ]
+}

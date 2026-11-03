@@ -5,8 +5,8 @@
     "en": "Why a straw appears to bend"
   },
   "summary": {
-    "de": "NWT-Auffrischung: Brechung, Linsen, Auge und Farben machen aus Lichtwegen ein Werkzeug für Bilder.",
-    "en": "NWT refresher: refraction, lenses, eyes and colours turn light paths into a tool for images."
+    "de": "Warum wirkt ein Strohhalm geknickt und wie entsteht ein scharfes Foto? Folge dem Weg des Lichts.",
+    "en": "Why does a straw look bent, and how does a sharp photo form? Follow the light."
   },
   "icon": "📷",
   "accent": "sky",
@@ -29,8 +29,8 @@
         {
           "kind": "paragraph",
           "text": {
-            "de": "In verschiedenen durchsichtigen Stoffen breitet sich Licht unterschiedlich schnell aus. Beim schrägen Übergang in ein optisch dichteres Medium wird ein Strahl gewöhnlich zum Lot hin gebrochen, beim umgekehrten Übergang vom Lot weg. Optisch dichter meint hier größere Brechzahl, nicht unbedingt größere Massendichte. Beim senkrechten Einfall bleibt die Richtung unverändert. Reflexion kann zugleich auftreten: Ein Teil des Lichts wird zurückgeworfen. Wir verwenden das Strahlenmodell als NWT-Auffrischung für spätere Anwendungen. Die tatsächliche Materialgrenze und der scheinbare Knick sind nicht dasselbe. Eine Simulation erlaubt, Winkel und Materialien zu vergleichen, ohne mit stark gebündelten Lichtquellen zu experimentieren.",
-            "en": "Light travels at different speeds in different transparent materials. At an oblique boundary into an optically denser medium, a ray usually bends towards the normal; in the reverse direction it bends away. Here “optically denser” means a greater refractive index, not necessarily greater mass density. For perpendicular incidence, direction remains unchanged. Reflection can occur at the same boundary too, sending some light back. We use the ray model as an NWT refresher for later applications. The real material boundary and the apparent bend are not the same thing. A simulation lets you compare angles and materials without experimenting with strongly concentrated light sources."
+            "de": "In verschiedenen durchsichtigen Stoffen breitet sich Licht unterschiedlich schnell aus. Beim schrägen Übergang in ein optisch dichteres Medium wird ein Strahl gewöhnlich zum Lot hin gebrochen, beim umgekehrten Übergang vom Lot weg. Optisch dichter meint hier größere Brechzahl, nicht unbedingt größere Massendichte. Beim senkrechten Einfall bleibt die Richtung unverändert. Reflexion kann zugleich auftreten: Ein Teil des Lichts wird zurückgeworfen. Mit dem Strahlenmodell kannst du nun verfolgen, welcher Lichtweg tatsächlich in dein Auge führt und welcher nur als rückwärtige Verlängerung eingezeichnet wird. Die tatsächliche Materialgrenze und der scheinbare Knick sind nicht dasselbe. Eine Simulation erlaubt, Winkel und Materialien zu vergleichen, ohne mit stark gebündelten Lichtquellen zu experimentieren.",
+            "en": "Light travels at different speeds in different transparent materials. At an oblique boundary into an optically denser medium, a ray usually bends towards the normal; in the reverse direction it bends away. Here “optically denser” means a greater refractive index, not necessarily greater mass density. For perpendicular incidence, direction remains unchanged. Reflection can occur at the same boundary too, sending some light back. Use the ray model to trace which path actually carries light into your eye and which line is merely drawn as a backward extension. The real material boundary and the apparent bend are not the same thing. A simulation lets you compare angles and materials without experimenting with strongly concentrated light sources."
           }
         },
         {
@@ -190,8 +190,8 @@
           "items": [
             {
               "label": {
-                "de": "Hamburg: NWT 5/6 (2024), optische Grundlagen",
-                "en": "Hamburg: NWT years 5/6 (2024), optics foundations"
+                "de": "Hamburg: Naturphänomene – fachlicher Hintergrund",
+                "en": "Hamburg: natural phenomena background"
               },
               "url": "https://www.hamburg.de/resource/blob/798520/700d66232c2d07bad97d72b6e107e083/naturwissenschaften-technik-data.pdf"
             },

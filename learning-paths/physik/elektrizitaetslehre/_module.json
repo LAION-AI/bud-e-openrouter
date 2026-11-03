@@ -5,11 +5,10 @@
     "en": "Electricity"
   },
   "description": {
-    "de": "Sek-I-Kern: Ladung, Stromkreise, Spannung, Widerstand, Energie, Schutz, Magnetismus und qualitative Induktion. Nur sichere Kleinspannungsmodelle oder Simulationen.",
-    "en": "Secondary core: charge, circuits, voltage, resistance, energy, protection, magnetism and qualitative induction. Safe low-voltage models or simulations only."
+    "de": "Warum ein Motor dreht, ein Akku Energie liefert und Strom einen geschlossenen Weg braucht.",
+    "en": "Why motors turn, batteries supply energy and current needs a complete circuit."
   },
   "icon": "⚡",
   "accent": "amber",
-  "badge": "Sek I",
   "level": "sek1"
 }

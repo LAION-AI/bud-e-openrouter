@@ -1,0 +1,222 @@
+{
+  "key": "phys2-licht-als-signal",
+  "title": {
+    "de": "Wie reist eine Nachricht ohne Kabel?",
+    "en": "How does a message travel without a cable?"
+  },
+  "summary": {
+    "de": "Elektromagnetische Wellen verbinden Licht, Polarisation und Funk – mit klaren Grenzen zwischen Energie und Information.",
+    "en": "Electromagnetic waves connect light, polarisation and radio, with clear distinctions between energy and information."
+  },
+  "icon": "📡",
+  "accent": "sky",
+  "minutes": 20,
+  "screens": [
+    {
+      "key": "feldwelle",
+      "title": {
+        "de": "Eine Welle ohne schwingende Luft",
+        "en": "A wave without vibrating air"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Eine Funknachricht kann leeren Weltraum durchqueren. Sie braucht keine Luftteilchen, die wie beim Schall nacheinander angestoßen werden. Elektromagnetische Wellen sind räumlich und zeitlich veränderliche elektrische und magnetische Felder. Bei einer ebenen Welle im Vakuum stehen beide Feldrichtungen quer zur Ausbreitungsrichtung und zueinander. Die Welle ist transversal. Ein geschwungener Linienzug in einer Zeichnung zeigt dabei eine Feldgröße, keine echte Schlange aus Material. Auch die elektrische Feldrichtung ist nicht einfach die Richtung, in die eine ganze Ladungswolke mit der Nachricht davonfliegt. Diese Trennung macht die Darstellung erst brauchbar.",
+            "en": "A radio message can cross empty space without air particles passing on pushes as in sound. Electromagnetic waves consist of electric and magnetic fields varying in space and time. In a plane vacuum wave, both fields are transverse to propagation and perpendicular to one another. A wavy line in a drawing represents a field quantity, not a material snake. Electric field direction also does not mean an entire cloud of charge flies away with the message. Keeping these meanings separate makes the representation useful."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Eine Antenne kann durch beschleunigte Ladungsbewegung Strahlung abgeben. Die Elektronen im Metall müssen deshalb nicht bis zum Empfänger reisen. Dort kann das ankommende Feld Ladungen zu einer neuen Bewegung anregen. Zwischen Sender und Empfänger werden Energie und ein geordnetes Signal übertragen. Die Sendeenergie stammt aus einer Quelle, nicht aus dem Nichts. Unmittelbar bei einer Antenne sind die Felder komplizierter als das einfache Bild einer frei laufenden ebenen Welle; dieses beschreibt vor allem einen passenden Fernbereich. Ein gutes Modell benennt diese Grenze. Die anschauliche Grundidee genügt, um zu verstehen, warum ein Empfänger ohne Kabel reagieren kann. Es ist nicht nötig, eigene Sender aufzubauen oder an Antennen und Funkanlagen zu arbeiten. Eine Animation zeigt Quelle, Ausbreitung und Empfang ohne solche Eingriffe.",
+            "en": "An antenna can radiate through accelerated charge motion. Its metal electrons do not need to travel to the receiver. There, the arriving field can drive other charges into motion. Energy and an organised signal pass between sender and receiver, with the transmitted energy coming from a source. Close to an antenna, fields are more complicated than the simple plane-wave picture, which describes a suitable far region. A good model states that boundary. The basic idea explains wireless reception without building transmitters or working on antennas. An animation can show source, propagation and reception without interfering with real radio equipment."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Weiterdenken",
+            "en": "Think it through"
+          },
+          "text": {
+            "de": "Zeichne Ladungsbewegung in der Antenne und die Ausbreitung des Signals verschieden. Welcher Pfeil endet nicht deshalb am Empfänger, weil dieselben Elektronen dort ankommen müssten?",
+            "en": "Draw antenna charge motion differently from signal propagation. Why need the signal arrow not mean that the same electrons arrive at the receiver?"
+          }
+        }
+      ]
+    },
+    {
+      "key": "polarisation",
+      "title": {
+        "de": "Licht hat eine zusätzliche Orientierung",
+        "en": "Light has an additional orientation"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Zwei Lichtwellen können dieselbe Farbe und dennoch verschiedene Polarisation besitzen. Bei linear polarisiertem Licht schwingt der elektrische Feldvektor in einer festen Richtung quer zur Ausbreitung. Ein Polarisationsfilter lässt einen dazu passenden Anteil bevorzugt durch. Drehst du die Filterrichtung, verändert sich die übertragene Intensität. Zwei gekreuzte ideale Filter können stark abdunkeln. Das bedeutet nicht, dass die Ausbreitungsrichtung plötzlich seitwärts zeigen müsste. Feldorientierung und Reiserichtung der Welle sind verschiedene Angaben. Auch ein Lichtstrahl, der geradlinig weiterläuft, kann daher eine veränderte Polarisation haben. Ein bloßer Farbpfeil zeigt nicht alle Eigenschaften.",
+            "en": "Two light waves can share a colour while having different polarisation. In linearly polarised light, the electric field oscillates along a fixed transverse direction. A polarising filter preferentially transmits the matching component. Rotating it changes transmitted intensity, and crossed ideal filters can greatly darken the view. This does not turn propagation sideways. Field orientation and travel direction are different properties. Light continuing straight can therefore have changed polarisation. A colour arrow alone cannot represent every relevant feature."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Unpolarisiertes Licht besitzt keinen solchen dauerhaften bevorzugten Schwingungsbezug. Reflexion an Oberflächen kann Teile des Lichts bevorzugt polarisieren. Geeignete Sonnenbrillen nutzen das gegen bestimmte Blendungen, während manche Bildschirmtechniken mit kontrollierter Polarisation arbeiten. Eine Brille kann deshalb einen Displaybereich beim Drehen anders erscheinen lassen. Diese Alltagswirkung erklärt ein Wellenmerkmal, nicht die pauschale Eignung irgendeiner Brille als Schutz vor jeder Lichtquelle. Insbesondere Sonne und Laser bleiben gefährlich. Für deine Skizze könntest du eine virtuelle Quelle, zwei Filter und einen Helligkeitsindikator verwenden. Zeige ausdrücklich die Filterachsen und den Lichtweg. So wird aus „der zweite Filter macht dunkler“ eine nachvollziehbare Aussage über Orientierung. Die Erklärung braucht weder helle Strahlen noch einen Blick in besondere Lichtquellen.",
+            "en": "Unpolarised light has no persistent preferred oscillation direction of that kind. Reflection can preferentially polarise part of the light. Suitable sunglasses exploit this against certain glare, and some display technologies control polarisation. Rotating a pair of glasses can therefore alter a display's appearance. This everyday effect reveals a wave property, not universal protection against light sources: the Sun and lasers remain hazardous. A virtual source, two filters and a brightness indicator make a useful sketch. Label filter axes and propagation separately, turning “the second filter darkens it” into an explanation about orientation. No bright beam or direct viewing of unusual sources is necessary."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Weiterdenken",
+            "en": "Think it through"
+          },
+          "text": {
+            "de": "Eine Brille dunkelt ein Display beim Drehen ab. Erkläre, warum weder eine andere Lichtfarbe noch eine geänderte Ausbreitungsrichtung dafür nötig ist. Welche verborgene Eigenschaft wurde sichtbar?",
+            "en": "Glasses darken a display when rotated. Explain why neither changed colour nor changed propagation direction is needed. Which hidden property became visible?"
+          }
+        }
+      ]
+    },
+    {
+      "key": "spektrum",
+      "title": {
+        "de": "Verwandte Wellen, verschiedene Wechselwirkungen",
+        "en": "Related waves with different interactions"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Radio, Mikrowellen, Infrarot, sichtbares Licht, Ultraviolett und Röntgenstrahlung gehören zu einer elektromagnetischen Familie. Sie unterscheiden sich durch Frequenz und Wellenlänge, nicht dadurch, dass manche „wirkliche Wellen“ und andere „nur Strahlung“ wären. Im Vakuum breiten sie sich mit derselben Lichtgeschwindigkeit aus. In Materie können Geschwindigkeit, Absorption und Streuung jedoch vom Material und Frequenzbereich abhängen. Darum ist eine Wand für sichtbares Licht vielleicht undurchsichtig, während bestimmte Funksignale hindurchgelangen. Das Material verschwindet nicht; seine Wechselwirkung mit verschiedenen Feldern ist unterschiedlich. Für eine technische Frage muss der betrachtete Bereich genannt werden.",
+            "en": "Radio, microwaves, infrared, visible light, ultraviolet and X-rays form one electromagnetic family. They differ in frequency and wavelength, not because some are “real waves” while others are “only radiation”. All propagate at the same speed in vacuum. In matter, speed, absorption and scattering can depend on material and frequency. A wall can block visible light yet allow some radio signals through. It has not disappeared; its interactions differ across the spectrum. A technical question must specify the relevant range."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Die Energie einzelner Photonen wächst mit der Frequenz. Diese Quantenbeschreibung ergänzt die Wellenbeschreibung und erklärt, warum Wechselwirkungen nicht allein aus einer großen Wellenamplitude folgen. Ionisation ist eine bestimmte Art der Energieübertragung. Nichtionisierend bedeutet dennoch nicht, dass beliebige Intensitäten folgenlos wären; starke Erwärmung oder Augenschäden können auch anders entstehen. Ebenso ist eine Darstellung in Falschfarben keine direkte Farbaufnahme unsichtbarer Strahlung. Eine Wärmebildkamera oder ein Radioteleskop übersetzt Messsignale in eine lesbare Anzeige. Für einen fairen Vergleich brauchst du deshalb Wellenbereich, Signalverarbeitung und Skala. Das Spektrum ist eine Landkarte unterschiedlicher Beobachtungsmöglichkeiten. Es sagt nicht, dass ein einziges Gerät jede Wellenart gleich gut erkennt oder dass alle Strahlungsquellen nach demselben Sicherheitsbild beurteilt werden dürfen.",
+            "en": "Individual photon energy increases with frequency. This quantum description complements the wave picture and explains why interactions are not determined solely by wave amplitude. Ionisation is one particular energy-transfer mechanism. Non-ionising does not make arbitrary intensity harmless; heating or eye damage can occur through other mechanisms. A false-colour image is likewise not a direct colour photograph of invisible radiation. Thermal cameras and radio telescopes translate signals into readable displays. Comparisons therefore need spectral range, processing and scale. The spectrum maps different observational possibilities, not a claim that one detector senses every wave equally or that every source can be assessed with the same safety picture."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Weiterdenken",
+            "en": "Think it through"
+          },
+          "text": {
+            "de": "Vergleiche ein normales Foto und ein Wärmebild derselben Szene. Welche drei Angaben würden verhindern, unsichtbare Strahlung einfach als andere sichtbare Farbe desselben Bildes zu missverstehen?",
+            "en": "Compare a photograph and thermal image of one scene. Which three details would prevent treating invisible radiation as merely a different visible colour in the same picture?"
+          }
+        }
+      ]
+    },
+    {
+      "key": "nachricht",
+      "title": {
+        "de": "Die Nachricht steckt in einer geordneten Veränderung",
+        "en": "The message lies in an organised change"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Eine gleichförmig wiederholte Trägerwelle allein erzählt noch keine beliebige Nachricht. Beim Modulieren wird eine Eigenschaft gezielt verändert, etwa Amplitude, Frequenz oder Phase. Der Empfänger erkennt diese Ordnung und gewinnt daraus Information. Die Welle überträgt zugleich Energie, aber Energie und Nachricht sind nicht dieselbe Größe. Ein stärker empfangenes Signal bedeutet nicht automatisch einen interessanteren Text oder mehr Bedeutung. Auch eine Störung kann viel Energie tragen. Entscheidend ist, ob die vorgesehenen Änderungen noch unterscheidbar bleiben und wie das Signal ausgewertet wird. Digitale Verarbeitung macht die Übertragung nicht frei von physikalischen Bedingungen.",
+            "en": "A uniformly repeating carrier alone does not convey any arbitrary message. Modulation deliberately changes a property such as amplitude, frequency or phase. A receiver detects that structure and recovers information. The wave also transfers energy, but energy and message are not the same quantity. A stronger signal does not automatically mean more meaningful content; interference can carry substantial energy too. What matters is whether intended changes remain distinguishable and how processing interprets them. Digital communication does not escape physical conditions."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Reflexionen können denselben Funkimpuls auf mehreren Wegen zum Empfänger bringen. Solche Mehrwegeausbreitung verändert die Überlagerung und kann Empfang verbessern oder verschlechtern. Mauern, Geräteorientierung und andere Quellen spielen ebenfalls mit. Das erklärt, warum ein kleiner Ortswechsel manchmal hilft, ohne dass die Nachricht im Sender verändert wurde. Technische Systeme nutzen geeignete Frequenzbereiche, Antennen und Auswerteverfahren gegen solche Probleme. Eine eigene Kommunikationsidee sollte deshalb Quelle, veränderte Eigenschaft, Übertragungsweg und Empfänger zeigen. Ergänze eine mögliche Störung und eine Grenze. Der Entwurf bleibt auf Papier oder in einer Simulation; du brauchst keine echten Frequenzen zu belegen und keine Funkanlage zu verändern. Die physikalische Frage lautet, welche geordnete Veränderung beim Empfänger noch ankommt, nicht wie man möglichst unkontrolliert Strahlung aussendet.",
+            "en": "Reflections can bring the same radio pulse to a receiver along several routes. This multipath propagation changes superposition and can improve or worsen reception. Walls, device orientation and other sources matter too. A small position change may therefore help without changing the message at the transmitter. Engineering uses suitable frequency ranges, antennas and processing to address these problems. Your communication concept should identify source, modulated property, route and receiver. Add a disturbance and a limitation. Keep it on paper or in a simulation; there is no need to occupy real frequencies or modify a radio system. The question is which organised change survives at reception, not how to emit uncontrolled radiation."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Weiterdenken",
+            "en": "Think it through"
+          },
+          "text": {
+            "de": "Entwirf ein sichtbares Modell für Funkübertragung: Was ist die Trägerbewegung, was die Nachricht und was eine Störung? Begründe, warum zusätzliche Energie allein das Problem nicht vollständig löst.",
+            "en": "Design a visible model of radio communication: identify carrier, message and disturbance. Explain why simply adding energy does not completely solve the problem."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "PhET: interaktive Modellwelt",
+                "en": "PhET: interactive model"
+              },
+              "url": "https://phet.colorado.edu/de/simulations/radio-waves"
+            },
+            {
+              "label": {
+                "de": "NASA: Das elektromagnetische Spektrum",
+                "en": "NASA: the electromagnetic spectrum"
+              },
+              "url": "https://science.nasa.gov/ems/"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": {
+        "de": "1. Lückentext",
+        "en": "1. Fill in the blanks"
+      },
+      "intro": {
+        "de": "Ergänze acht Fachwörter aus dem Gelesenen.",
+        "en": "Complete eight technical terms from the reading."
+      },
+      "text": {
+        "de": "Eine elektromagnetische Welle benötigt keine schwingende ___. Ihre Felder stehen im ebenen Modell quer zur ___. Die Orientierung der Schwingung beschreibt die ___. Ein Filter besitzt dafür eine bevorzugte ___. Verschiedene Wellenbereiche ordnet das elektromagnetische ___. Gezielte Veränderung einer Trägerwelle heißt ___. Der Empfänger gewinnt daraus ___. Reflektierte Wege können gemeinsam ___ erzeugen.",
+        "en": "An electromagnetic wave needs no vibrating ___. In the plane-wave model its fields are transverse to ___. Oscillation orientation is described by ___. A filter has a preferred ___. Different wave regions form the electromagnetic ___. Deliberately varying a carrier is ___. The receiver recovers ___. Reflected paths can jointly produce ___."
+      }
+    },
+    {
+      "kind": "compare",
+      "title": {
+        "de": "2. Erklären und vergleichen",
+        "en": "2. Explain and compare"
+      },
+      "intro": {
+        "de": "Antworte mit drei bis vier kurzen Sätzen. Begründe mit dem Gelesenen; du brauchst nichts auszurechnen.",
+        "en": "Answer in three or four short sentences. Use the reading to explain your reasoning; no calculation is needed."
+      },
+      "text": {
+        "de": "Vergleiche Schall und Funk bezüglich Medium und Ausbreitung. Erkläre anschließend den Unterschied zwischen Polarisation und Modulation. Warum sind übertragene Energie und Bedeutung einer Nachricht nicht gleichzusetzen?",
+        "en": "Compare sound and radio regarding medium and propagation. Then distinguish polarisation from modulation. Why are transmitted energy and a message's meaning not identical?"
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": {
+        "de": "3. Deine Idee",
+        "en": "3. Your idea"
+      },
+      "intro": {
+        "de": "Entwickle in drei bis vier kurzen Sätzen eine eigene begründete Idee. Mehrere Antworten sind möglich.",
+        "en": "Develop your own reasoned idea in three or four short sentences. Several answers are possible."
+      },
+      "text": {
+        "de": "Entwirf eine zugängliche Ausstellung über eine kabellose Nachricht. Zeige Quelle, Träger, codierte Veränderung und Empfänger. Ergänze eine Störung, ohne reale Funktechnik zu verändern.",
+        "en": "Design an accessible exhibit about a wireless message. Show source, carrier, encoded change and receiver. Add a disturbance without modifying real radio equipment."
+      }
+    }
+  ]
+}

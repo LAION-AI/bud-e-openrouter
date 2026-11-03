@@ -5,8 +5,8 @@
     "en": "Why a small hot drink need not contain more energy than a bath"
   },
   "summary": {
-    "de": "Temperatur, innere Energie und Zustandsänderungen: Du trennst Alltagssprache von einem brauchbaren Teilchenmodell.",
-    "en": "Temperature, internal energy and changes of state: distinguish everyday language from a useful particle model."
+    "de": "Ist heiß automatisch energiereich? Entdecke, was Temperatur über Teilchen verrät und was du zusätzlich wissen musst.",
+    "en": "Does hot automatically mean lots of energy? Discover what temperature reveals about particles and what else you need to know."
   },
   "icon": "🌡️",
   "accent": "rose",
@@ -29,8 +29,8 @@
         {
           "kind": "paragraph",
           "text": {
-            "de": "Temperatur beschreibt im einfachen Teilchenmodell den Bewegungszustand der Teilchen; bei einem idealen Gas hängt sie mit ihrer mittleren ungeordneten Bewegungsenergie zusammen. Innere Energie umfasst dagegen die Energie des gesamten Systems auf mikroskopischer Ebene, einschließlich Wechselwirkungen. Eine große Wassermenge kann bei niedrigerer Temperatur mehr innere Energie relativ zu einem gemeinsamen Bezug besitzen als eine kleine heiße Menge. Ohne Masse, Stoff und Bezug reicht die Temperatur allein für eine Energiebilanz nicht aus. Diese Grundlagen werden im Hamburger Klimaphysik-Themenfeld aufgegriffen und mit Wissen aus NWT und Chemie verbunden. Du brauchst keine Berührungsprobe an heißen oder sehr kalten Oberflächen.",
-            "en": "In a simple particle model, temperature describes the particles' state of motion; for an ideal gas it is related to their average disordered kinetic energy. Internal energy instead includes the microscopic energy of the entire system, including interactions. A large amount of water at a lower temperature can have more internal energy relative to a shared reference than a small hot amount. Temperature alone is therefore insufficient for an energy account without mass, material and reference conditions. Hamburg's climate-physics topic revisits these foundations and connects them with NWT and chemistry. You do not need to touch hot or extremely cold surfaces to investigate the distinction."
+            "de": "Temperatur beschreibt im einfachen Teilchenmodell den Bewegungszustand der Teilchen; bei einem idealen Gas hängt sie mit ihrer mittleren ungeordneten Bewegungsenergie zusammen. Innere Energie umfasst dagegen die Energie des gesamten Systems auf mikroskopischer Ebene, einschließlich Wechselwirkungen. Eine große Wassermenge kann bei niedrigerer Temperatur mehr innere Energie relativ zu einem gemeinsamen Bezug besitzen als eine kleine heiße Menge. Ohne Masse, Stoff und Bezug reicht die Temperatur allein für eine Energiebilanz nicht aus. Damit kannst du verstehen, warum ein heißer Tropfen und ein lauwarmes Schwimmbecken energetisch nicht dasselbe bedeuten. Die Frage nach der Temperatur ist eine andere als die Frage nach der gesamten gespeicherten Energie. Du brauchst keine Berührungsprobe an heißen oder sehr kalten Oberflächen.",
+            "en": "In a simple particle model, temperature describes the particles' state of motion; for an ideal gas it is related to their average disordered kinetic energy. Internal energy instead includes the microscopic energy of the entire system, including interactions. A large amount of water at a lower temperature can have more internal energy relative to a shared reference than a small hot amount. Temperature alone is therefore insufficient for an energy account without mass, material and reference conditions. This helps explain why a hot droplet and a lukewarm swimming pool are not equivalent in energy terms. Asking about temperature is different from asking about all the energy stored in the system. You do not need to touch hot or extremely cold surfaces to investigate the distinction."
           }
         },
         {
@@ -190,15 +190,15 @@
           "items": [
             {
               "label": {
-                "de": "Hamburg: Physik Gymnasium (2024)",
-                "en": "Hamburg: Gymnasium physics (2024)"
+                "de": "Hamburg: Physik – fachlicher Hintergrund",
+                "en": "Hamburg: physics background"
               },
               "url": "https://www.hamburg.de/resource/blob/798534/4cf0047ad61effacd1ff7e6ad819fa41/physik-data.pdf"
             },
             {
               "label": {
-                "de": "Hamburg: Physik Stadtteilschule (2024)",
-                "en": "Hamburg: Stadtteilschule physics (2024)"
+                "de": "Hamburg: Physik – weitere fachliche Grundlagen",
+                "en": "Hamburg: further physics background"
               },
               "url": "https://www.hamburg.de/resource/blob/798426/ba414a0ace36d17b7813a855db625c42/physik-data.pdf"
             },

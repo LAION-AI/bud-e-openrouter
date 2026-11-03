@@ -1,0 +1,178 @@
+Physik: neue begriffliche Lernpfade zu Feldern, Wellen, Quanten und Kosmos
+Recherche- und Abdeckungsbericht, Stand03.11.2026
+
+Auftrag und bewusste Grenze
+13 neue eigenständige Pfade in4 neuen Modulen, alle level:sek2.
+12 Pfade besitzen4 Screens; der Zeit-/Relativitätspfad besitzt5. Insgesamt53 Screens.
+Alle sichtbaren Texte sprechen Lernende direkt an und enthalten keine Schulform-,
+Klassen- oder Anforderungsniveaukürzel. Die curriculare Einordnung bleibt hier.
+Jeder Pfad endet mit8 gleich vielen Wortlücken auf Deutsch/Englisch, einer kurzen
+Erklären-/Vergleichen-Aufgabe und einer kreativen begründeten Gestaltungsidee.
+Es gibt keine Zahlenrechenbeispiele und keine Rechenaufträge. Die ausdrücklich
+qualitative Bedeutung von E₀=m·c² ist kein Rechentraining. Deshalb ersetzen diese
+Pfade weder mathematische Vertiefung noch praktische Kompetenznachweise oder
+vollständige Prüfungsvorbereitung. Keine pauschale Abiturvollständigkeit zugesagt.
+
+Verbindliche Orientierung und Datierung
+Hamburg: Bildungsplan Studienstufe Physik, Impressum Hamburg2022, aktuell offiziell
+verlinkter Plan für die seit2023 eingeführte Studienstufe. Besonders Abschnitt2.3,
+S.21–30 zu Feldern, Schwingungen/Wellen und Quanten/Materie sowie S.31–33 zu
+alternativen/zusätzlichen Gravitations- und Astrophysikinhalten.
+https://www.hamburg.de/resource/blob/123094/2691efabaaf2679cd7dd970a95a3c748/physik-gyo-2022-data.pdf
+
+Hamburg: Abitur-A-Heft2027, Impressum Hamburg2025, Physik S.106–112, als aktueller
+Konkretisierungs-Gegencheck gelesen. Es differenziert Anforderungen und nennt
+auch ausdrücklich nicht vorausgesetzte Kenntnisse. Nicht jedes Thema aus dem
+Bildungsplan ist deshalb automatisch Pflichtschwerpunkt jeder Prüfung2027.
+https://www.hamburg.de/resource/blob/1074128/5639bcb0de1254449e7afb1ff0b92cfc/abitur-a-heft-2027-data.pdf
+
+KMK: Bildungsstandards Physik Allgemeine Hochschulreife, Beschluss18.06.2020.
+Sachkompetenz, Erkenntnisgewinnung, Kommunikation und Bewertung sind eine
+übergeordnete Orientierung. Der gewünschte qualitative Überblick deckt deren
+quantitative und praktische Anforderungen ausdrücklich nicht vollständig ab.
+https://www.kmk.org/fileadmin/veroeffentlichungen_beschluesse/2020/2020_06_18-BildungsstandardsAHR_Physik.pdf
+
+Datei- und Themenmapping
+s2-felder/01-felder-speichern-und-zeit.json:
+Feld/Kraft/Bahn trennen; Superposition; elektrisches Potenzial und Spannung;
+Kondensator, Geometrie, Dielektrikum und Feldenergie; RC-Laden/Entladen qualitativ.
+Bezug zu1.1 des Plans. Potenzial und dielektrische Vertiefung gehen teilweise über
+die gemeinsame Grunddarstellung hinaus, werden aber verständlich und ohne
+sichtbare Kurskategorien eingeführt.
+
+s2-felder/02-teilchen-auf-kurs.json:
+Elektrische Energiezufuhr und Querablenkung; Lorentzkraft ohne magnetische
+Arbeitsleistung; Kreis-/Schraubenbahn; Hall-Signal, Geschwindigkeitsfilter und
+Massenspektrometrie. Bezug zu1.2, mit qualitativer Einbeziehung vertiefender
+Anwendungen. Keine Bahn-, Feld- oder Elektronenvolt-Rechenaufgabe.
+
+s2-felder/03-veraenderung-wird-spannung.json:
+Magnetische Flussdichte, Fluss/Fläche/Orientierung; Faraday, bewegter Leiter versus
+veränderliches Feld; Lenz, Wirbelströme, Selbstinduktion und magnetische Energie.
+Bezug zu1.3. Magnetische Flussdichte nicht mit magnetischer Feldstärke H verwechselt.
+
+s2-wellen/01-schwingen-mit-energie.json:
+Harmonische Rückwirkung, Phase, Dämpfung/Anregung/Resonanz; LC-Energieaustausch
+und Auswahl im Empfänger. Bezug zu2.1. Rücktreibende Gesamtkraft statt bloßer
+Federkraft am Gleichgewicht; LC und Selbstinduktion ohne Thomson-Rechentraining.
+
+s2-wellen/02-muster-aus-ueberlagerung.json:
+Phase/Kohärenz, Wellenfront/Huygens, Einzel-/Doppelspalt, ein-/mehrfarbiges Licht,
+stehende Wellen, Randbedingungen und Interferometer. Bezug zu2.2/2.3.
+Keine Winkel-, Wellenlängen- oder Streifenabstandsberechnung.
+
+s2-wellen/03-licht-als-signal.json:
+Elektromagnetische Transversalwelle, Sender/Empfänger, Polarisation, Spektrum,
+Modulation und Mehrwegeausbreitung. Bezug zu2.2 mit technischer Signalvertiefung.
+Feldrichtung, Ausbreitungsrichtung, Energie und Information ausdrücklich getrennt.
+
+s2-quanten/01-licht-in-paketen.json:
+Äußerer Photoeffekt im Einphotonenregime, Grenzfrequenz, Photonen/h,
+Austrittsenergie, Gegenfeldmessung und Abgrenzung zum Halbleitersensor.
+Bezug zu3.1; keine h-Bestimmung, Grenzspannungs- oder Photonenergie-Rechnung.
+
+s2-quanten/02-elektronen-und-moeglichkeiten.json:
+Einzelereignis/statistische Verteilung, deBroglie, Superposition/Gemisch,
+Wellenfunktion, Weginformation, zustandsbezogene Ort-Impuls-Unbestimmtheit,
+Qubit und Verschränkung. Bezug zu3.1. Quanteninformation/Verschränkung als
+empfohlene Vertiefung, nicht als pauschal überall gleicher Prüfungsumfang.
+Keine Bewusstseinsdeutung, keine klassischen Doppelspalt-Flugbahnen,
+keine überlichtschnelle Nachricht und keine bloßen gleichen Listen als Beweis.
+
+s2-quanten/03-atome-lesen-mit-licht.json:
+Innere Atomenergien, Absorption/Emission, Franck-Hertz als unabhängiger Zugang,
+Orbitale und Spektrendeutung. Bezug zu3.2. Orbitale ausdrücklich keine Bahnen;
+innere Energie nicht mit frei veränderlicher Bewegung des gesamten Atoms vermengt.
+Das elektrische Gegenfeld am Auffänger erklärt den Stromabfall nach Stößen.
+
+s2-quanten/04-quanten-gestalten-material.json:
+Potenzialtopf/Randbedingungen/Modellgrenzen, endliche Barrieren/Tunnelausblick,
+Pauli/Spin, kontinuierliche und charakteristische Röntgenanteile,
+Bänder/Dotierung/LED/Solarzelle. Bezug zu3.2 und Halbleiterkontexten aus3.1.
+Mehrere bewusst qualitative Vertiefungen, keine vollständige Festkörpertheorie.
+
+s2-kosmos/01-fallen-ohne-anzukommen.json:
+Gravitationsfeld, freier Fall/Umlauf, Schwerelosigkeit als fehlende Stützwirkung,
+Kepler einschließlich Flächensatz, Bindungsenergie, Transfer/Swing-by und
+verantwortliche Mission. Bezug zum Wahl-/Alternativbereich4.1 des Plans.
+
+s2-kosmos/02-sternlicht-und-ferne-welten.json:
+Instrument/Spektrum/Auflösung, verzweigte Sternentwicklung, Exoplanetenmethoden,
+Strahlung/Klima/habitable Zone, kosmologische Rotverschiebung und offene Modelle.
+Bezug zu4.2. Habitable Zone weder Wasser- noch Lebensnachweis; kosmologische
+Expansion weder gewöhnlicher Schall-Doppler noch Explosion aus einem Zentrum.
+
+s2-kosmos/03-zeit-ist-kein-welttakt.json:
+Gewünschter ergänzender Einstieg in spezielle Relativität: Inertialsysteme,
+Lichtuhr, Eigenzeit, Signalempfang versus Zeitdilatation, Gleichzeitigkeit,
+Längenmessung, Energie/Impuls/invariante Ruhemasse. Übergang zu allgemeiner
+Relativität, GPS, Ereignishorizont und Gravitationswellen greift4.2 auf.
+Spezielle Relativität wird hier NICHT als pauschaler gemeinsamer Pflichtblock
+aller Hamburger Abiturprüfungen dargestellt. Keine formalen Herleitungen.
+
+Fachquellen zusätzlich zur curricularen Orientierung
+Die folgenden wissenschaftlichen Institutionen und von den Autoren bereitgestellten
+Lehrressourcen wurden als Primärquellen geprüft. Keine Textpassagen kopiert;
+eigene deutsch-/englischsprachige Erklärungen und konkrete Denkfragen verfasst.
+Aktualitätsprüfung03.11.2026; bei undatierten Webseiten kein Datum erfunden.
+
+Caltech, Feynman Lectures: Induktionsgesetz und Quantenverhalten.
+https://www.feynmanlectures.caltech.edu/II_17.html
+https://www.feynmanlectures.caltech.edu/III_01.html
+
+CERN: Grundaufbau und unterschiedliche Aufgaben elektrischer/magnetischer
+Beschleunigerfelder. Keine zeitabhängigen Leistungs-, Termin- oder Betriebszahlen
+aus der Webseite übernommen.
+https://home.cern/science/accelerators
+
+OpenStax, University Physics Volume3: Photoeffekt, Wasserstoffzustände,
+Atomspektren/Röntgenstrahlung, Halbleiter/Dotierung.
+https://openstax.org/books/university-physics-volume-3/pages/6-2-photoelectric-effect
+https://openstax.org/books/university-physics-volume-3/pages/8-2-the-hydrogen-atom
+https://openstax.org/books/university-physics-volume-3/pages/8-5-atomic-spectra-and-x-rays
+https://openstax.org/books/university-physics-volume-3/pages/9-6-semiconductors-and-doping
+
+NIST: Quanteninformation als kontrollierte wissenschaftliche Anwendung.
+https://www.nist.gov/quantum-information-science
+
+Einstein Online, Albert-Einstein-Institut: Lichtuhr und Satellitennavigation.
+https://eo.aei.mpg.de/spotlight/LichtuhrZeitdilatation/
+https://www.einstein-online.info/spotlight/SatNav/
+
+LIGO/Caltech: Interferometrie und Gravitationswellen.
+https://www.ligo.caltech.edu/page/what-is-interferometer
+https://www.ligo.caltech.edu/page/what-are-gw
+
+NASA: elektromagnetisches Spektrum, Bahnen/Gravitation, Sterne,
+habitable Zone und Kosmosgeschichte. Keine aktuellen Entdeckungszahlen behauptet.
+https://science.nasa.gov/ems/
+https://science.nasa.gov/learn/basics-of-space-flight/chapter3-1/
+https://science.nasa.gov/universe/stars/
+https://science.nasa.gov/exoplanets/habitable-zone/
+https://science.nasa.gov/universe/overview/
+
+PhET, University of Colorado: Charges and Fields, Capacitor Lab Basics,
+Faraday's Law, Masses and Springs, Resonance, Wave Interference,
+Wave on a String, Radio Waves, Photoelectric, Quantum Wave Interference,
+Hydrogen Atom, Bound States und Gravity and Orbits.
+Die jeweiligen direkten HTTPS-Links stehen bei den betreffenden Pfaden.
+Einzelne ältere Simulationen können browser-/plattformabhängige Grenzen haben;
+die Texte und Denkaufgaben sind ohne externe Simulation vollständig lesbar.
+
+Umsetzung, Sicherheit und Verifikation
+Nur die neuen s2-Ordner und dieser Bericht wurden vom Sek2-Teilauftrag geändert.
+Keine Rückkopie oder Änderung bestehender Physik-/Akustik-/Informatikdateien,
+kein Core-/UI-Eingriff, kein Build, Neustart, Commit, Push oder kostenpflichtige API.
+Keine Hochspannungs-, Laser-, UV-, Röntgen-, Quell- oder Geräteöffnungsversuche.
+Alle Ideen sind Papierentwürfe, bereitgestellte Messbilder oder sichere Simulationen.
+
+13 globale neue Pfadkennungen beginnen mit phys2- und sind untereinander eindeutig.
+Keine wortgleichen fachlichen Screen-Textblöcke. Keine generischen Standardanhänge
+zum Erfüllen der Wortzahl; alle53 Denkstopps sind themenspezifisch.
+Wörter ausschließlich im eigentlichen Blocktext, ohne Quellenlabels/Titel gezählt:
+Deutsch mindestens205, höchstens271; Englisch mindestens201, höchstens247.
+Beide Gesamtvalidatoren:110 Dateien,0 Fehler,0 Hinweise. Neue Konzept-/Sprach-
+und Worttests bestanden. Die gesamten Physiktests nach dem parallelen
+Bestands-Cleanup beidseitig erneut geprüft:2 Tests bestanden,0 fehlgeschlagen.
+Bytegleiche Spiegelung der4 neuen Modulordner und dieses Berichts in Bud-E und
+dem aktiven School-Repository mit Pluszeichen; das alte School blieb unberührt.

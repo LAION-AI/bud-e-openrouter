@@ -5,11 +5,10 @@
     "en": "Heat and climate physics"
   },
   "description": {
-    "de": "Sek-I-Kern mit NWT-/Chemie-Anschluss: Temperatur, thermische Energie, Transport, Strahlungsbilanz, Treibhauseffekt und Rückkopplungen.",
-    "en": "Secondary core connected to NWT and chemistry: temperature, thermal energy, transfer, radiation balance, greenhouse effect and feedbacks."
+    "de": "Wie Wärme wandert und was Strahlung, Atmosphäre und Rückkopplungen für unser Klima bedeuten.",
+    "en": "How heat travels, and what radiation, the atmosphere and feedbacks mean for our climate."
   },
   "icon": "🌍",
   "accent": "rose",
-  "badge": "Sek I",
   "level": "sek1"
 }

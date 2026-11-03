@@ -1,0 +1,264 @@
+{
+  "key": "phys2-zeit-ist-kein-welttakt",
+  "title": {
+    "de": "Warum sind sich gute Uhren nicht immer einig?",
+    "en": "Why do good clocks not always agree?"
+  },
+  "summary": {
+    "de": "Lichtuhren, Gleichzeitigkeit und Energie zeigen, was Relativität wirklich verändert – bis zur Navigation im Alltag.",
+    "en": "Light clocks, simultaneity and energy reveal what relativity changes, all the way to everyday navigation."
+  },
+  "icon": "⏱️",
+  "accent": "indigo",
+  "minutes": 20,
+  "screens": [
+    {
+      "key": "bezug",
+      "title": {
+        "de": "Kein Experiment verrät eine absolute Ruhe",
+        "en": "No experiment reveals absolute rest"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Du sitzt in einem gleichmäßig geradlinig bewegten Zug mit geschlossenen Vorhängen. Viele mechanische Vorgänge laufen so ab wie in einem ruhenden Zimmer. Die spezielle Relativitätstheorie erweitert diesen Gedanken: Die grundlegenden Naturgesetze besitzen in allen solchen Inertialsystemen dieselbe Form. Kein ausgezeichnetes System liefert die einzig richtige absolute Ruhe. Bewegung wird relativ zu etwas beschrieben. Das bedeutet nicht, dass jede beliebige beschleunigte Bewegung derselbe Fall wäre. Eine anfahrende oder kurvenfahrende Kabine verlangt zusätzliche Unterscheidungen. Für den ersten Schritt betrachten wir bewusst gleichförmige Bewegung und vernachlässigen die örtliche Raumzeitkrümmung. Ein Modell wird verständlicher, wenn seine Voraussetzungen sichtbar bleiben.",
+            "en": "You sit in a train moving uniformly in a straight line with curtains closed. Many mechanical processes behave as in a stationary room. Special relativity extends this: fundamental laws have the same form in all such inertial frames. No preferred frame defines uniquely correct absolute rest. Motion is relative to something. This does not make arbitrary accelerated motion the same case; a starting or turning cabin needs further distinctions. We begin deliberately with uniform motion and negligible local spacetime curvature. Visible assumptions make the model understandable."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Dazu kommt eine ungewöhnliche Eigenschaft des Lichts: Alle Inertialbeobachter messen für Licht im Vakuum dieselbe Geschwindigkeit, unabhängig von der Bewegung der Quelle. Man kann nicht einfach wie bei einem geworfenen Ball die Quellengeschwindigkeit dazurechnen. Das ist keine Folge zu langsamer Augen oder ungenauer Uhren. Raum- und Zeitmessungen müssen so zusammenpassen, dass die Lichtaussage in verschiedenen Systemen gilt. Genau daraus entstehen Effekte, die im Alltag bei kleinen Relativgeschwindigkeiten kaum auffallen. Eine Zeichnung sollte daher nicht nur Lichtpfeile zeigen, sondern auch angeben, welche Uhren und Maßstäbe zu welchem Bezugssystem gehören. Ohne diese Kennzeichnung kann ein scheinbarer Widerspruch entstehen, der nur aus vermischten Beschreibungen stammt. Die Theorie verändert gemeinsame Vorstellungen von Messung, nicht die Forderung nach überprüfbaren Beobachtungen.",
+            "en": "Light adds an unfamiliar property: every inertial observer measures the same vacuum light speed, independent of source motion. One cannot simply add source speed as for a thrown ball. This is not caused by slow vision or inaccurate clocks. Space and time measurements must fit together so the light statement holds across frames. Effects follow that are tiny at ordinary low relative speeds. A drawing therefore needs to identify which clocks and rulers belong to each frame, not just show light arrows. Unlabelled mixing creates apparent contradictions. The theory changes common assumptions about measurement, not the requirement for testable observations."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Weiterdenken",
+            "en": "Think it through"
+          },
+          "text": {
+            "de": "Entwirf zwei beschriftete Beobachterbilder für denselben Lichtpuls. Welche gemeinsame Aussage muss gelten, obwohl beide die Quelle unterschiedlich bewegt sehen? Vermeide die Idee eines heimlichen absoluten Ruhepunkts.",
+            "en": "Draw two labelled observers describing one light pulse. Which statement must agree although they see the source moving differently? Avoid inventing a hidden absolute resting point."
+          }
+        }
+      ]
+    },
+    {
+      "key": "lichtuhr",
+      "title": {
+        "de": "Längere Lichtwege, anderer Uhrenvergleich",
+        "en": "Longer light paths, a different clock comparison"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Eine gedachte Lichtuhr besitzt zwei Spiegel, zwischen denen ein Lichtpuls hin- und herläuft. Im Ruhesystem der Uhr verläuft sein Weg senkrecht zwischen den Spiegeln. Für einen Beobachter, relativ zu dem sich die Uhr seitlich bewegt, zeichnet derselbe Puls einen schrägen Weg. Der ist zwischen den entsprechenden Ereignissen länger. Da auch dieser Beobachter dieselbe Lichtgeschwindigkeit misst, ordnet er dem Vorgang eine längere Zeitspanne zu. Die bewegte Uhr tickt in seinem Vergleich langsamer. Das ist nicht lediglich der spätere Empfang eines Signals. Lichtlaufzeiten müssen bei einem sauberen Uhrenvergleich berücksichtigt werden; danach bleibt die Zeitdilatation als physikalische Aussage bestehen.",
+            "en": "An imagined light clock has two mirrors with a pulse bouncing between them. In its own rest frame, the pulse travels straight between the mirrors. An observer seeing the clock move sideways describes a diagonal path between corresponding events. That path is longer. Because this observer also measures the same light speed, the process takes a longer time in that frame: the moving clock ticks more slowly in the comparison. This is not merely delayed signal reception. Correct clock comparisons account for light-travel delays, after which time dilation remains a physical effect."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Die von einer mitgeführten Uhr entlang ihres Weges gemessene Zeit heißt Eigenzeit. Sie ist keine schlechte Kopie einer verborgen überall identischen Weltzeit. Zwei Uhren können zwischen Begegnungen verschiedene Wege durch die Raumzeit nehmen und beim Wiedersehen unterschiedliche Eigenzeiten anzeigen. Dabei genügt nicht der Satz „jede sieht die andere langsamer“: Ein vollständiger Vergleich muss die ganzen Wege und eventuelle Wechsel der Bezugssysteme betrachten. Bei gleichförmigen wechselseitigen Beschreibungen gehört außerdem die unterschiedliche Gleichzeitigkeit dazu. Genau deshalb ist ein Gedankenexperiment mit einer Reise und Rückkehr nicht einfach durch Vertauschen zweier Namen erledigt. Die Lichtuhr erklärt einen Zusammenhang, ohne zu behaupten, dass nur besondere Lichtuhren betroffen seien. Geeignete andere physikalische Uhren müssen dieselbe Struktur der Zeitmessung respektieren. Das betrifft tatsächliche Messverfahren, nicht subjektives Langeweilegefühl.",
+            "en": "Time measured by a clock carried along its path is proper time, not an imperfect copy of a hidden universal world clock. Clocks following different spacetime paths between meetings can show different proper times when reunited. Saying “each sees the other slow” is insufficient: compare complete paths and any frame changes. Mutual uniform-motion descriptions also involve different simultaneity assignments. A journey with return therefore cannot be resolved simply by swapping names. The light-clock argument does not apply only to special optical clocks; other suitable physical clocks must respect the same time-measurement structure. It concerns real measurements, not subjective feelings about time passing slowly."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Weiterdenken",
+            "en": "Think it through"
+          },
+          "text": {
+            "de": "Zwei Uhren begegnen sich, werden getrennt und später wieder verglichen. Welche Informationen über ihre Wege brauchst du zusätzlich, bevor du aus dem Wort „bewegt“ allein auf ihre Anzeigen schließt?",
+            "en": "Two clocks meet, separate and later reunite. What information about their paths is needed before predicting their readings from the word “moving” alone?"
+          }
+        }
+      ]
+    },
+    {
+      "key": "gleichzeitigkeit",
+      "title": {
+        "de": "Gleichzeitig ist mehr als gleichzeitig gesehen",
+        "en": "Simultaneous is more than seen at the same moment"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Zwei entfernte Ereignisse können Licht aussenden, das bei dir zu verschiedenen Zeiten ankommt. Daraus folgt noch nicht, dass die Ereignisse zu verschiedenen Zeiten stattfanden. Zuerst müssen Entfernungen und Laufzeiten berücksichtigt werden. Die Relativität der Gleichzeitigkeit geht darüber hinaus: Auch nach sauberer Korrektur können relativ bewegte Inertialsysteme entfernten Ereignissen unterschiedliche Gleichzeitigkeit zuordnen. Ursache ist nicht das Versagen eines Beobachters, sondern die Struktur der Zeit- und Ortsmessung zwischen Systemen. Jedes System verwendet ein zusammenpassendes Netz synchronisierter Uhren. Diese Netze stimmen bei relativer Bewegung nicht überall in ihrer Einteilung des Jetzt überein.",
+            "en": "Two distant events can emit light that reaches you at different times without having occurred at different times. Distances and travel delays must first be accounted for. Relativity of simultaneity goes further: even after correct adjustment, relatively moving inertial frames can assign different simultaneity to distant events. This is not one observer failing but the structure connecting time and position measurements. Each frame uses a consistent network of synchronised clocks. Relative motion means those networks do not agree everywhere on their division into “now”."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Das erklärt, warum wechselseitige Aussagen über bewegte Uhren nicht automatisch widersprüchlich sind. Die verglichenen entfernten Zeitpunkte werden nicht in jedem System gleich ausgewählt. Auch Längenmessung braucht Gleichzeitigkeit: Die beiden Endpositionen eines bewegten Gegenstands müssen im messenden System gleichzeitig erfasst werden. Darum kann die Länge in Bewegungsrichtung vom Bezugssystem abhängen. Ein Foto allein ist dafür ungeeignet, weil seine Lichtanteile verschiedene Laufzeiten haben. Diese Unterschiede erlauben keine beliebige Umkehr von Ursache und Wirkung. Ereignisse, die durch ein zulässiges Licht- oder langsameres Signal ursächlich verbunden sein können, behalten eine entsprechende Ordnung. Die Theorie sagt also nicht „alles ist relativ und egal“. Sie beschreibt präzise, welche Größen beobachterabhängig sind und welche Beziehungen gemeinsam bleiben. Ein gutes Schaubild trennt Ereignis, Empfang und zugeordnete Zeit.",
+            "en": "This explains why reciprocal statements about moving clocks are not automatically contradictory: distant moments selected for comparison differ. Length measurement also requires simultaneity; both end positions of a moving object must be recorded simultaneously in the measuring frame. Length along motion can therefore depend on frame. A photograph alone is unsuitable because its light has different travel delays. None of this permits arbitrary reversal of cause and effect. Events causally connected by light or slower signals retain an appropriate order. The theory does not say “everything is relative and irrelevant”. It precisely distinguishes frame-dependent quantities from shared relationships. A good diagram separates event, reception and assigned time."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Weiterdenken",
+            "en": "Think it through"
+          },
+          "text": {
+            "de": "Eine Ausstellung zeigt zwei Blitze und ihre später empfangenen Signale. Wie würdest du drei Ebenen sichtbar trennen: Ereignisse, Ankunft der Informationen und Gleichzeitigkeit im gewählten Uhrnetz?",
+            "en": "An exhibit shows two flashes and their later received signals. How would you distinguish events, information arrival and simultaneity in the selected clock network?"
+          }
+        }
+      ]
+    },
+    {
+      "key": "energie",
+      "title": {
+        "de": "Mehr Energie ist nicht einfach mehr Tempo ohne Grenze",
+        "en": "More energy does not mean unlimited speed"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Ein Teilchen mit Ruhemasse kann durch Energiezufuhr immer energiereicher werden, ohne die Vakuumlichtgeschwindigkeit zu erreichen. Bei sehr hohen Geschwindigkeiten passt die gewöhnliche Bewegungsenergieregel nicht mehr. Die relativistische Verbindung zwischen Energie und Impuls muss berücksichtigt werden. Die Ruhemasse bleibt dabei eine Eigenschaft des Teilchens; wir brauchen nicht die missverständliche Behauptung, das Teilchen bekomme durch Bewegung ständig eine neue materielle Masse. Energie und Impuls hängen vom Bezugssystem ab, während die Ruhemasse unverändert bleibt. Diese Trennung erklärt, warum „mehr anschieben“ nicht einfach jede gewünschte zusätzliche Geschwindigkeit ermöglicht. Es ist eine andere Dynamik, keine kaputte Beschleunigungsanlage.",
+            "en": "A particle with rest mass can gain increasingly more energy without reaching vacuum light speed. At high speeds, the ordinary kinetic-energy expression is inadequate; the relativistic energy–momentum relationship matters. Rest mass remains a property of the particle. There is no need for the misleading claim that motion continually gives it a new material mass. Energy and momentum depend on frame, while rest mass remains unchanged. This explains why more acceleration cannot provide any arbitrarily desired speed increase. It reflects different dynamics, not a broken accelerator."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Auch ein ruhendes System besitzt Ruheenergie. Masse und Energie sind daher enger verknüpft, als ein bloßer Vergleich zwischen Gewicht und Bewegung vermuten lässt. Ein gebundenes System kann bei Energieabgabe eine andere Gesamtmasse besitzen als seine ungebundenen Bestandteile zusammen. Das ist für Kernreaktionen wichtig. „Masse wird zu Energie“ ist als Kurzsatz allerdings unvollständig, wenn dabei so getan wird, als wäre Energie ein neuer Stoff. Energieerhaltung und eine vollständige Systembilanz bleiben erforderlich. Photonen besitzen keine Ruhemasse und dennoch Energie und Impuls. Ihre Existenz widerspricht deshalb der Aussage über massive Teilchen nicht. Eine verständliche Erklärung kann diese Unterschiede qualitativ zeigen: Teilchenart, Systemgrenze, zugeführte oder abgegebene Energie und Bezugssystem gehören jeweils dazu. Hier ist keine Rechnung nötig, um die Grenzen vertrauter Alltagsbilder zu erkennen. Die bekannte Schreibweise E₀ = m·c² verknüpft Ruheenergie E₀ mit Ruhemasse m und Vakuumlichtgeschwindigkeit c. Hier zählt ihre Bedeutung, nicht das Einsetzen von Zahlen.",
+            "en": "A resting system also has rest energy. Mass and energy are more closely related than a simple contrast between weight and motion suggests. A bound system can have a different total mass after releasing energy than its separated constituents together. This matters for nuclear reactions. “Mass becomes energy” is incomplete if it treats energy as a new substance: conservation and a full system account remain necessary. Photons have no rest mass yet carry energy and momentum, so they do not contradict the statement about massive particles. A qualitative explanation identifies particle type, system boundary, energy transfer and frame. No calculation is required to recognise the limits of familiar everyday pictures. The familiar expression E₀ = m·c² links rest energy E₀ with rest mass m and vacuum light speed c. Its meaning matters here, not inserting numbers."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Weiterdenken",
+            "en": "Think it through"
+          },
+          "text": {
+            "de": "Formuliere eine Bildunterschrift für einen Teilchenbeschleuniger: Warum bedeutet zusätzliche Energie nicht unbegrenzt zusätzliches Tempo? Erkläre ohne „die Masse wird einfach größer“ und unterscheide massive Teilchen von Photonen.",
+            "en": "Write a caption for an accelerator explaining why added energy does not mean unlimited added speed. Avoid “mass simply increases” and distinguish massive particles from photons."
+          }
+        }
+      ]
+    },
+    {
+      "key": "raumzeit",
+      "title": {
+        "de": "Deine Navigation braucht mehr als eine Theorie",
+        "en": "Navigation needs more than one relativistic effect"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Die allgemeine Relativitätstheorie erweitert die Beschreibung um Gravitation. Masse und Energie beeinflussen die Geometrie der Raumzeit; frei fallende Körper folgen darin passenden Bahnen. Das Bild einer eingedellten Gummifläche kann eine Idee vermitteln, ist aber weder vollständiges Raumzeitmodell noch Erklärung jeder Krümmung. Auch Uhren an unterschiedlichen Gravitationspotenzialen können verschiedene Gangraten zeigen. Das ist von der bewegungsbedingten Zeitdilatation zu unterscheiden. Beide Effekte werden bei Satellitennavigation wichtig. Signallaufzeiten sollen Positionen erschließen, deshalb müssen Uhren und Bezugssysteme zuverlässig zusammenpassen. Eine genaue Anlage kann die Unterschiede nicht einfach durch eine bessere gewöhnliche Armbanduhr wegwünschen.",
+            "en": "General relativity extends the description to gravity. Mass and energy influence spacetime geometry, and freely falling bodies follow appropriate paths within it. A dented rubber sheet suggests an idea but is neither a full spacetime model nor an explanation of every curvature. Clocks at different gravitational potentials can run differently. This differs from motion-related time dilation. Both effects matter in satellite navigation, where signal travel times reveal positions and clocks must fit their reference systems consistently. Better ordinary wristwatches cannot make those differences disappear."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Bei GPS spielen also spezielle und allgemeine Relativität gemeinsam eine Rolle, neben weiteren technischen Einflüssen. „Bewegte Uhren gehen langsamer“ allein erklärt das System nicht. Die umfassendere Raumzeitbeschreibung eröffnet außerdem den Blick auf Lichtablenkung, Schwarze Löcher und Gravitationswellen. Ein Ereignishorizont ist eine Grenze, von deren Innerem zukünftige Lichtsignale die ferne Außenwelt nicht erreichen können; er ist keine gewöhnliche feste Oberfläche. Geeignet veränderliche Massenverteilungen können Gravitationswellen aussenden, die Interferometer anhand winziger relativer Änderungen untersuchen. Diese Wellen sind nicht Schall im leeren Raum. Eine eigene Ausstellung könnte den Weg von der Lichtuhr zur Navigation zeigen und anschließend offenlassen, welche zusätzlichen Raumzeiteffekte noch untersucht werden. So bleibt die Theorie inspirierend, ohne aus jeder ungewöhnlichen Weltraumgrafik eine bereits vollständig erklärte Wirklichkeit zu machen.",
+            "en": "GPS therefore uses special and general relativistic effects together, alongside other technical influences. “Moving clocks run slow” alone does not explain it. The broader spacetime description also introduces light deflection, black holes and gravitational waves. An event horizon is a boundary from whose interior future light signals cannot reach the distant outside; it is not an ordinary solid surface. Suitable changing mass distributions can emit gravitational waves, which interferometers investigate through tiny relative changes. They are not sound in empty space. An exhibit could connect light clocks to navigation and identify further spacetime questions, keeping the theory inspiring without pretending every unusual space graphic fully explains reality."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Weiterdenken",
+            "en": "Think it through"
+          },
+          "text": {
+            "de": "Entwirf eine Navigations-Ausstellung mit zwei Uhreneffekten und einer technischen Störquelle. Wie verhinderst du, dass „Relativität“ entweder alles erklärt oder als bedeutungsloser Alltagsferneffekt erscheint?",
+            "en": "Design a navigation exhibit with two clock effects and a technical disturbance. How would you avoid presenting relativity as either explaining everything or irrelevant to everyday life?"
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "Einstein Online: Lichtuhr und Zeitdilatation",
+                "en": "Einstein Online: light clocks and time dilation"
+              },
+              "url": "https://eo.aei.mpg.de/spotlight/LichtuhrZeitdilatation/"
+            },
+            {
+              "label": {
+                "de": "Einstein Online: Relativität und Satellitennavigation",
+                "en": "Einstein Online: relativity and satellite navigation"
+              },
+              "url": "https://www.einstein-online.info/spotlight/SatNav/"
+            },
+            {
+              "label": {
+                "de": "LIGO: Gravitationswellen verstehen",
+                "en": "LIGO: understanding gravitational waves"
+              },
+              "url": "https://www.ligo.caltech.edu/page/what-are-gw"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": {
+        "de": "1. Lückentext",
+        "en": "1. Fill in the blanks"
+      },
+      "intro": {
+        "de": "Ergänze acht Fachwörter aus dem Gelesenen.",
+        "en": "Complete eight technical terms from the reading."
+      },
+      "text": {
+        "de": "Eine gleichförmig geradlinige Bezugsbeschreibung heißt ___. Im Vakuum messen Inertialbeobachter dieselbe ___. Eine mitgeführte Uhr misst ihre ___. Verschiedene Uhrnetze können entfernte ___ unterschiedlich zuordnen. Ein Längenvergleich benötigt gleichzeitige ___. Trotz Energiezufuhr bleibt die ___ eines Teilchens unverändert. Gravitation wird mit der Geometrie der ___ verbunden. Eine Grenze ohne nach außen entkommende Lichtsignale heißt ___.",
+        "en": "A uniform straight-motion reference frame is an ___ frame. Observers share the vacuum speed of ___. A carried clock measures its ___. Different clock networks can assign distant ___ differently. Length comparison requires simultaneous ___. Added energy leaves a particle's ___ mass unchanged. Gravity is connected with ___ geometry. A boundary preventing outgoing light signals is an event ___."
+      }
+    },
+    {
+      "kind": "compare",
+      "title": {
+        "de": "2. Erklären und vergleichen",
+        "en": "2. Explain and compare"
+      },
+      "intro": {
+        "de": "Antworte mit drei bis vier kurzen Sätzen. Begründe mit dem Gelesenen; du brauchst nichts auszurechnen.",
+        "en": "Answer in three or four short sentences. Use the reading to explain your reasoning; no calculation is needed."
+      },
+      "text": {
+        "de": "Vergleiche späteren Signalempfang mit echter Zeitdilatation. Erkläre, warum unterschiedliche Gleichzeitigkeit für Uhrenvergleiche wichtig ist. Warum reicht bei GPS eine rein bewegungsbezogene Erklärung nicht aus?",
+        "en": "Compare delayed signal arrival with time dilation. Explain why differing simultaneity matters to clock comparisons. Why is motion alone insufficient to explain GPS?"
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": {
+        "de": "3. Deine Idee",
+        "en": "3. Your idea"
+      },
+      "intro": {
+        "de": "Entwickle in drei bis vier kurzen Sätzen eine eigene begründete Idee. Mehrere Antworten sind möglich.",
+        "en": "Develop your own reasoned idea in three or four short sentences. Several answers are possible."
+      },
+      "text": {
+        "de": "Gestalte eine verständliche Karte „Kein gemeinsamer Welttakt“. Verbinde ein Gedankenexperiment mit einer Alltagsanwendung und benenne eine Grenze der verwendeten Bildanalogie.",
+        "en": "Design a clear card titled “No shared universal clock”. Link a thought experiment to an everyday application and name a limit of its visual analogy."
+      }
+    }
+  ]
+}

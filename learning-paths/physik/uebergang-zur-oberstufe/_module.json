@@ -1,15 +1,14 @@
 {
   "key": "uebergang-zur-oberstufe",
   "title": {
-    "de": "Übergang: erweiterte Mechanik",
-    "en": "Transition: advanced mechanics"
+    "de": "Wenn Bewegungen zusammenwirken",
+    "en": "When motions combine"
   },
   "description": {
-    "de": "Hamburger Übergangsstoff Gymnasium10 / Stadtteilschule11: überlagerte Bewegung, Impuls und Kreisbewegung; kein gemeinsamer STS-Kern bis Klasse10.",
-    "en": "Hamburg transition material: Gymnasium10 / Stadtteilschule11. Superposed motion, momentum and circular motion; not common STS core through year10."
+    "de": "Warum Bälle Kurven fliegen, Körper im Kreis bleiben und Stöße Bewegungen verändern.",
+    "en": "Why balls follow curves, objects stay in circular motion and collisions change motion."
   },
   "icon": "🎡",
   "accent": "violet",
-  "badge": "Gym10/STS11",
   "level": "sek1"
 }

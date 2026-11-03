@@ -5,8 +5,8 @@
     "en": "What makes the nucleus different from the electron region"
   },
   "summary": {
-    "de": "Atommodell, Isotope und ionisierende Strahlung: Du lernst präzise Begriffe statt unsichtbarer Horrorbilder.",
-    "en": "Atomic models, isotopes and ionising radiation: precise ideas instead of invisible horror stories."
+    "de": "Was passiert im Inneren von Atomen, und was heißt radioaktiv? Entdecke Unterschiede, statt unsichtbare Strahlung mit Angstbildern zu verwechseln.",
+    "en": "What happens inside atoms, and what does radioactive mean? Discover distinctions instead of confusing invisible radiation with frightening images."
   },
   "icon": "⚛️",
   "accent": "violet",
@@ -251,15 +251,15 @@
           "items": [
             {
               "label": {
-                "de": "Hamburg: Physik Gymnasium (2024)",
-                "en": "Hamburg: Gymnasium physics (2024)"
+                "de": "Hamburg: Physik – fachlicher Hintergrund",
+                "en": "Hamburg: physics background"
               },
               "url": "https://www.hamburg.de/resource/blob/798534/4cf0047ad61effacd1ff7e6ad819fa41/physik-data.pdf"
             },
             {
               "label": {
-                "de": "Hamburg: Physik Stadtteilschule (2024)",
-                "en": "Hamburg: Stadtteilschule physics (2024)"
+                "de": "Hamburg: Physik – weitere fachliche Grundlagen",
+                "en": "Hamburg: further physics background"
               },
               "url": "https://www.hamburg.de/resource/blob/798426/ba414a0ace36d17b7813a855db625c42/physik-data.pdf"
             },

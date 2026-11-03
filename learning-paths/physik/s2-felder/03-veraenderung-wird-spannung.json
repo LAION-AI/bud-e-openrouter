@@ -1,0 +1,222 @@
+{
+  "key": "phys2-veraenderung-wird-spannung",
+  "title": {
+    "de": "Warum reagiert eine Spule auf Veränderung?",
+    "en": "Why does a coil respond to change?"
+  },
+  "summary": {
+    "de": "Magnetischer Fluss, Faradays Idee und Selbstinduktion erklären, warum elektrische Systeme ein Gedächtnis für Veränderungen haben.",
+    "en": "Magnetic flux, Faraday's idea and self-induction explain why electrical systems respond to their own changes."
+  },
+  "icon": "🌀",
+  "accent": "amber",
+  "minutes": 20,
+  "screens": [
+    {
+      "key": "fluss",
+      "title": {
+        "de": "Nicht nur das Feld, auch die Fläche zählt",
+        "en": "Area matters as well as field"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Ein Magnet neben einer Spule bedeutet nicht automatisch eine dauernde Induktionsspannung. Entscheidend ist, wie sich die magnetische Wirkung durch die von der Spule umschlossene Fläche verändert. Der magnetische Fluss bündelt diese Information: magnetische Flussdichte, wirksame Fläche und Orientierung gehören zusammen. Ein starkes Feld, das nur seitlich an der Fläche vorbeiverläuft, trägt anders bei als eines, das sie durchsetzt. Die Flussvorstellung ist deshalb kein bloßes Zählen gezeichneter Feldlinien. Diese Linien sind eine Darstellung und keine wirklichen Fäden, die man einsammeln könnte. Ihre Lage hilft aber, die Orientierung anschaulich zu verstehen.",
+            "en": "A magnet beside a coil does not automatically produce a continuous induced voltage. What matters is change in the magnetic effect through the area enclosed by the coil. Magnetic flux combines magnetic flux density, effective area and orientation. A strong field running along the surface contributes differently from one passing through it. Flux therefore is not literally a count of drawn field lines: those are representations, not threads to collect. Their orientation nevertheless helps visualise what the model describes."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Die magnetische Flussänderung kann verschiedene Ursachen haben. Das Feld kann stärker werden, die umschlossene Fläche kann wachsen oder die Schleife kann sich drehen. Auch eine bewegte Schleife, die in einen Feldbereich hinein- oder herausfährt, verändert ihren Fluss. Diese Fälle sollten nicht unbemerkt miteinander vermischt werden. Eine Simulation kann dieselbe Spule zeigen und jeweils nur eine Ursache ändern. Vergleiche dabei Zustände und Übergänge: Ein neuer konstanter Fluss ist nicht dasselbe wie eine fortdauernde Flussänderung. Das Messgerät kann nach dem Übergang wieder null anzeigen, obwohl der Endzustand ein deutliches Feld besitzt. Genau darin liegt der besondere Gedanke: Die zeitliche Veränderung einer räumlichen Anordnung wird selbst zur Ursache einer elektrischen Wirkung.",
+            "en": "Flux can change because the field strengthens, the enclosed area grows or the loop rotates. A loop entering or leaving a field region changes flux too. These cases should not be conflated. A simulation can retain the same coil while changing one cause at a time. Distinguish states from transitions: a new constant flux is not a continuing flux change. The meter can return to zero after the transition although a substantial field remains. This is the key idea: temporal change in a spatial arrangement itself becomes the cause of an electrical effect, rather than the mere presence of a magnet."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Weiterdenken",
+            "en": "Think it through"
+          },
+          "text": {
+            "de": "Ordne drei Skizzen: stärkeres Feld, größere Fläche, gedrehte Schleife. Was verändert sich jeweils, und welcher ruhende Endzustand liefert nicht dauerhaft Spannung?",
+            "en": "Compare sketches with a stronger field, larger area and rotated loop. What changes in each, and which stationary final state does not sustain voltage?"
+          }
+        }
+      ]
+    },
+    {
+      "key": "faraday",
+      "title": {
+        "de": "Ein elektrisches Feld kann im Kreis wirken",
+        "en": "An electric field can act around a loop"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Faradays Induktionsgesetz verbindet eine Flussänderung mit einer elektrischen Wirkung entlang einer geschlossenen Kurve. Eine Leiterschleife macht diese Wirkung messbar, aber der Draht erfindet das elektrische Feld nicht erst. Bei einem zeitlich veränderlichen Magnetfeld kann ein elektrisches Wirbelfeld entstehen. Seine Wirkung lässt sich nicht überall wie die einer elektrostatischen Ladungsanordnung allein durch Potenzialhöhen erzählen. Gehst du im Gedankenmodell einmal um die passende Schleife, kann eine antreibende Wirkung entlang des gesamten Wegs bleiben. Das unterscheidet Induktion vom einfachen Bild einer Batterie mit festen Polen.",
+            "en": "Faraday's induction law connects changing flux to an electrical effect around a closed curve. A conducting loop makes the effect measurable, but the wire does not invent the electric field. A changing magnetic field can create a circulating electric field. Its action cannot everywhere be told solely through electrostatic potential heights. Following the appropriate loop once in the model can leave a driving effect around the complete path. This differs from the simple image of a battery with fixed terminals."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Bei einer bewegten Leiterschleife in einem unveränderten Magnetfeld spielt dagegen die magnetische Kraft auf bewegte Ladungen eine wichtige Rolle. Beide Beschreibungen können zur gleichen Flussregel führen, erklären aber unterschiedliche örtliche Vorgänge. Eine sinnvolle Darstellung sagt deshalb, ob sich der Leiter, das Feld oder beides verändert. Bei einem Generator ermöglicht Rotation eine wiederkehrende Änderung und damit eine wechselnde Spannung. Die mechanische Energie muss trotzdem von außen kommen. Eine Zeichnung mit immer neu entstehender Spannung ist noch keine Energiebilanz. Auch die angeschlossene Last beeinflusst den wirklichen Betrieb. Wir verwenden hier nur Modelle und sichere Simulationen. Selbst gebaute Induktionsspulen, Netzgeräte oder Funkenstrecken sind ausdrücklich nicht nötig, um den Zusammenhang zu verstehen. Eine gemessene Spannung allein benennt noch nicht ihren örtlichen Entstehungsmechanismus.",
+            "en": "For a conducting loop moving in a steady magnetic field, magnetic force on moving charges is instead important. Both descriptions can lead to the same flux rule while explaining different local processes. State whether conductor, field or both are changing. Rotation in a generator allows repeated change and an alternating voltage, but mechanical energy must still arrive from outside. A drawing showing continually generated voltage is not yet an energy account. The connected load also affects real operation. We use models and safe simulations only; homemade induction coils, mains equipment and spark gaps are unnecessary for understanding the relationship. A voltage reading alone does not identify the local mechanism that created the electrical driving effect."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Weiterdenken",
+            "en": "Think it through"
+          },
+          "text": {
+            "de": "Warum sollte eine Erklärung unterscheiden, ob der Draht bewegt wird oder das Magnetfeld sich am ruhenden Draht ändert, obwohl beides Induktion heißen kann?",
+            "en": "Why distinguish moving wire from a changing field at stationary wire although both can produce induction?"
+          }
+        }
+      ]
+    },
+    {
+      "key": "lenz",
+      "title": {
+        "de": "Die Gegenwirkung bewahrt die Energiebilanz",
+        "en": "The opposing effect preserves the energy account"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Ein induzierter Strom erzeugt selbst ein Magnetfeld. Seine Richtung ist so, dass die Wirkung der verursachenden Flussänderung entgegenwirkt. Das ist die Lenzsche Regel. „Entgegenwirken“ bedeutet nicht, dass das neue Feld immer gegen das alte zeigt. Nimmt ein vorhandener Fluss ab, kann die induzierte Wirkung gerade helfen, ihn aufrechtzuerhalten. Nimmt er zu, kann sie die Zunahme abschwächen. Entscheidend ist die Änderung, nicht ein pauschales Gegeneinander zweier Magnete. Ein richtiger Richtungspfeil braucht deshalb immer auch die Angabe, was sich gerade verändert.",
+            "en": "An induced current produces its own magnetic field. Its direction opposes the flux change that caused it. This is Lenz's law. “Opposes” does not mean the new field always points against the old one. If an existing flux decreases, the induced effect can help maintain it; if it increases, the effect can reduce that increase. Change matters, not a blanket opposition between two magnets. A correct direction arrow therefore also needs a statement about what is changing."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Diese Gegenwirkung verknüpft Feldbeschreibung und Energieerhaltung. Wird ein Generator stärker elektrisch belastet, kann mehr mechanische Gegenwirkung auftreten. Die elektrische Abgabe kommt nicht kostenlos aus dem Magneten. In einer Wirbelstrombremse entstehen Ströme innerhalb eines leitenden Materials, die die Bewegung bremsen. Bewegungsenergie gelangt dabei überwiegend als innere Energie in Material und Umgebung. Das Bauteil kann warm werden, ohne dass ein Reibbelag ständig daran schleift. Das heißt nicht, dass Materialeigenschaften oder Temperatur unwichtig wären. Ein gutes Konzept für eine berührungsarme Bremse betrachtet deshalb auch die Wärmeabfuhr und die Geschwindigkeit, bei der sie wirken soll. Solche Bremsen werden hier nur als technische Idee untersucht, nicht an einem Fahrrad oder Fahrzeug verändert. Berührungsarm bedeutet nicht verlustfrei und auch nicht automatisch wartungsfrei.",
+            "en": "This opposition connects field behaviour with conservation of energy. Greater electrical loading of a generator can produce greater mechanical resistance. Electrical output does not come free from its magnet. An eddy-current brake creates currents inside a conductor that oppose motion. Kinetic energy mainly becomes internal energy in material and surroundings. The component can heat without a friction lining continuously rubbing against it. Material properties and temperature still matter. A good contact-reducing brake concept therefore considers cooling and the speeds at which it should work. These brakes are studied as design ideas only; no bicycle or vehicle system is modified. Contact-reducing does not mean lossless, and avoiding a rubbing surface does not automatically remove maintenance needs."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Weiterdenken",
+            "en": "Think it through"
+          },
+          "text": {
+            "de": "Vergleiche zunehmenden und abnehmenden Fluss. Warum wäre „das induzierte Feld zeigt immer entgegengesetzt“ in einem dieser Fälle die falsche Regel?",
+            "en": "Compare increasing and decreasing flux. Why is “the induced field always points oppositely” the wrong rule in one case?"
+          }
+        }
+      ]
+    },
+    {
+      "key": "selbstinduktion",
+      "title": {
+        "de": "Eine Spule reagiert auf ihren eigenen Strom",
+        "en": "A coil responds to its own current"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Wenn sich der Strom in einer Spule ändert, verändert sich ihr eigenes Magnetfeld. Dadurch wird in derselben Anordnung eine Spannung induziert, die der Stromänderung entgegenwirkt. Diese Selbstinduktion macht die Spule nicht zu einem Verhinderer jedes Stroms. Bei gleichbleibendem Strom verschwindet die induktive Gegenwirkung gegen die Änderung; der reale Drahtwiderstand bleibt. Die Induktivität beschreibt, wie stark eine Anordnung magnetisch mit ihrem eigenen Strom verknüpft ist. Wicklung, Form und geeignetes Kernmaterial beeinflussen sie. Es handelt sich um eine Eigenschaft des ganzen Aufbaus, nicht um eine geheimnisvolle zusätzliche Ladung.",
+            "en": "When current in a coil changes, its own magnetic field changes. This induces a voltage in the same arrangement opposing the current change. Self-induction does not prevent every current: with steady current, the inductive opposition to change disappears, while real wire resistance remains. Inductance describes how strongly an arrangement's magnetic state is linked to its own current. Winding, shape and suitable core material affect it. It belongs to the whole arrangement rather than a mysterious extra charge."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Zum Aufbau des Magnetfeldes muss Energie bereitgestellt werden. Beim Abbau kann das Feld wieder Energie übertragen. Darum kann abruptes Unterbrechen eines Stromwegs eine überraschend hohe Spannung erzeugen: Die bisherige Energie braucht einen neuen Übertragungsweg. Fachgerecht ausgelegte Schaltungen enthalten dafür passende Schutzkonzepte. Du sollst diese Wirkung nicht mit Funken ausprobieren. Interessant ist der Vergleich zum Kondensator: Dort kann die Spannung nicht ohne passenden Ladungstransport wechseln; bei der Spule ist die Stromänderung mit Feldenergie verknüpft. Gemeinsam können beide später einen Schwingkreis bilden. Ein verständliches Gerätesymbol könnte zeigen, dass „ausgeschaltet“ nicht immer „ohne gespeicherte Energie“ bedeutet. Diese Einsicht ist alltagsnah, ohne zum Öffnen oder Entladen irgendeines realen Geräts aufzufordern.",
+            "en": "Building the magnetic field requires energy, and its collapse can transfer energy back. Abruptly interrupting a current path can therefore create a surprisingly high voltage: previously stored energy needs another transfer route. Properly designed circuits include suitable protective arrangements. Do not investigate this by making sparks. The comparison with a capacitor is revealing: capacitor voltage cannot change without appropriate charge transport, while coil current change is linked to magnetic field energy. Together they can form an oscillating circuit. A clear device symbol might show that “switched off” does not always mean “no stored energy”. This is useful everyday understanding without opening or discharging any actual device."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Weiterdenken",
+            "en": "Think it through"
+          },
+          "text": {
+            "de": "Entwirf eine Erklärung für zwei Speicherbilder: elektrisches Feld im Kondensator und magnetisches Feld in der Spule. Welche Größe reagiert jeweils verzögert?",
+            "en": "Design an explanation comparing electric storage in a capacitor and magnetic storage in a coil. Which quantity has a delayed response in each?"
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "Caltech: Faradays Induktionsgesetz",
+                "en": "Caltech: laws of induction"
+              },
+              "url": "https://www.feynmanlectures.caltech.edu/II_17.html"
+            },
+            {
+              "label": {
+                "de": "PhET: interaktive Modellwelt",
+                "en": "PhET: interactive model"
+              },
+              "url": "https://phet.colorado.edu/de/simulations/faradays-law"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": {
+        "de": "1. Lückentext",
+        "en": "1. Fill in the blanks"
+      },
+      "intro": {
+        "de": "Ergänze acht Fachwörter aus dem Gelesenen.",
+        "en": "Complete eight technical terms from the reading."
+      },
+      "text": {
+        "de": "Die magnetische Wirkung durch eine Fläche beschreibt der ___. Seine Änderung kann eine ___ hervorrufen. Die Verknüpfung beschreibt das Induktionsgesetz von ___. Ein zeitlich veränderliches Magnetfeld kann ein elektrisches ___ erzeugen. Die Wirkungsrichtung ordnet die Regel von ___. Ströme innerhalb eines breiten Leiters heißen ___. Die Reaktion einer Spule auf ihren eigenen veränderlichen Strom heißt ___. Energie kann dabei im magnetischen ___ gespeichert sein.",
+        "en": "The magnetic effect through an area is described by ___. Its change can produce a ___. The relationship is expressed by ___'s induction law. A changing magnetic field can create a circulating electric ___. The effect's direction follows ___'s law. Currents inside an extended conductor are ___. A coil's response to its own changing current is ___. Energy can be stored in the magnetic ___."
+      }
+    },
+    {
+      "kind": "compare",
+      "title": {
+        "de": "2. Erklären und vergleichen",
+        "en": "2. Explain and compare"
+      },
+      "intro": {
+        "de": "Antworte mit drei bis vier kurzen Sätzen. Begründe mit dem Gelesenen; du brauchst nichts auszurechnen.",
+        "en": "Answer in three or four short sentences. Use the reading to explain your reasoning; no calculation is needed."
+      },
+      "text": {
+        "de": "Vergleiche eine ruhende Spule im unveränderten Magnetfeld mit einer Spule bei verändertem Fluss. Erkläre, worauf die Lenzsche Regel reagiert. Warum bedeutet Selbstinduktion nicht, dass eine Spule grundsätzlich keinen Strom zulässt?",
+        "en": "Compare a stationary coil in an unchanged field with a coil experiencing changing flux. Explain what Lenz's law responds to. Why does self-induction not mean a coil prevents all current?"
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": {
+        "de": "3. Deine Idee",
+        "en": "3. Your idea"
+      },
+      "intro": {
+        "de": "Entwickle in drei bis vier kurzen Sätzen eine eigene begründete Idee. Mehrere Antworten sind möglich.",
+        "en": "Develop your own reasoned idea in three or four short sentences. Several answers are possible."
+      },
+      "text": {
+        "de": "Gestalte eine Museumsstation über berührungsarmes Bremsen oder gespeicherte Feldenergie. Verbinde sichtbare Wirkung, Energiequelle und einen leicht übersehenen Sicherheitsaspekt. Nur als Entwurf.",
+        "en": "Design a museum station about contact-reducing braking or stored field energy. Connect visible effect, energy source and an easily missed safety point. This is a design only."
+      }
+    }
+  ]
+}

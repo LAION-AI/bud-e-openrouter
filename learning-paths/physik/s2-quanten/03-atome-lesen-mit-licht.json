@@ -1,0 +1,222 @@
+{
+  "key": "phys2-atome-lesen-mit-licht",
+  "title": {
+    "de": "Warum verrät Licht, aus welchem Stoff etwas besteht?",
+    "en": "Why does light reveal what something is made of?"
+  },
+  "summary": {
+    "de": "Energieniveaus, Spektren und Orbitale machen Atome lesbar, ohne sie als winzige Planetensysteme misszuverstehen.",
+    "en": "Energy levels, spectra and orbitals make atoms readable without mistaking them for tiny planetary systems."
+  },
+  "icon": "🌈",
+  "accent": "violet",
+  "minutes": 20,
+  "screens": [
+    {
+      "key": "niveaus",
+      "title": {
+        "de": "Ein Atom kann nicht jede Energie beliebig annehmen",
+        "en": "An atom cannot take every arbitrary energy"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Ein gebundenes Atom besitzt mögliche Zustände mit bestimmten inneren Energien; gemeint ist nicht seine frei veränderliche Bewegungsenergie als Ganzes. Diese Energieniveaus sind nicht einfach die räumlichen Stockwerke einer kleinen Treppe. Das Schema ordnet Zustandsenergien, keine gemessenen Abstände im Atom. Ein tieferer Zustand kann stabiler sein als ein angeregter höherer. Wird passende Energie aufgenommen, kann ein Übergang stattfinden. Wird Energie abgegeben, kann ein Photon entstehen, dessen Energie zur Differenz der Zustände passt. Nicht die gesamte Atomenergie muss dabei verschwinden. Ein einzelner Lichtblitz verrät also einen Unterschied zwischen Zuständen und nicht automatisch den absoluten Energieinhalt des ganzen Atoms.",
+            "en": "A bound atom has states with particular internal energies, not to be confused with its freely varying motion as a whole. These energy levels are not literal floors of a tiny staircase. The diagram orders state energies, not measured spatial distances inside the atom. A lower state may be more stable than an excited higher state. Suitable energy absorption can produce a transition; energy release can produce a photon matching the difference. The atom's entire energy does not disappear. A light event therefore reveals a state difference, not automatically the whole atom's absolute energy content."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Die Frequenz des Photons hängt mit dieser Übergangsenergie zusammen. Deshalb können manche Atome bestimmte Lichtanteile aufnehmen und andere weitgehend durchlassen. Ein Energieniveauschema macht die Auswahl anschaulich: Pfeile zwischen erlaubten Zuständen stehen für Übergänge, nicht für gefilmte Elektronenbahnen. Auch die Übergangswahrscheinlichkeit spielt eine Rolle; nicht jeder beliebige gezeichnete Pfeil entspricht einem gleich gut möglichen Vorgang. Für einen ersten Überblick genügt die Unterscheidung zwischen Zuständen, Energiedifferenz und Nachweis. Sie erklärt, warum kontinuierliches helles Licht nach dem Durchgang durch ein Gas dunkle Spektrallinien tragen kann. Das Gas hat nicht einfach mit winzigen schwarzen Streifen die Sicht verdeckt. Bestimmte Frequenzanteile sind im durchgehenden Strahl abgeschwächt; aufgenommene Energie kann anschließend auch in andere Richtungen abgegeben werden. Das untersuchte Spektrum ist dadurch ein Fenster in die innere Struktur des Stoffes.",
+            "en": "Photon frequency is related to transition energy, so atoms can absorb selected parts of light while largely transmitting others. An energy diagram visualises this selection: arrows denote transitions, not filmed electron trajectories. Transition probability also matters; not every drawn arrow represents an equally likely process. For an overview, distinguish states, energy differences and detection. This explains dark spectral lines when broad light passes through gas. Tiny black strips are not blocking the view; selected frequency components are reduced in the transmitted beam, with absorbed energy potentially emitted again in other directions. The spectrum thus provides a window into internal structure rather than a magnified photograph of atoms."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Weiterdenken",
+            "en": "Think it through"
+          },
+          "text": {
+            "de": "Gestalte ein Niveauschema mit einem Aufnahme- und einem Abgabepfeil. Wie machst du deutlich, dass die senkrechte Lage Energie und nicht den tatsächlichen Ort eines Elektrons zeigt?",
+            "en": "Design a level diagram with absorption and emission arrows. How would you show that vertical position represents energy rather than an electron's physical location?"
+          }
+        }
+      ]
+    },
+    {
+      "key": "stoss",
+      "title": {
+        "de": "Atome antworten auf gezielte Energieübertragung",
+        "en": "Atoms respond to selected energy transfers"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Licht ist nicht der einzige Weg, ein Atom anzuregen. Ein beschleunigtes Elektron kann bei einem Stoß Energie auf ein Atom übertragen. Der Franck-Hertz-Versuch untersucht solche Vorgänge. Durch veränderte Beschleunigung werden die Elektronen unterschiedlich energiereich. In der Messung kann der aufgefangene Strom wiederholt zurückgehen, obwohl die Beschleunigung grundsätzlich zunimmt. Das ist zunächst überraschend: Mehr Antrieb bedeutet nicht unter allen Bedingungen mehr erfolgreich ankommende Elektronen. Der Messweg enthält Atome und eine anschließende Auswahl, nicht nur eine freie beschleunigte Bahn. Eine Erklärung muss diese verschiedenen Bestandteile gemeinsam berücksichtigen.",
+            "en": "Light is not the only way to excite an atom. An accelerated electron can transfer energy in a collision. The Franck–Hertz experiment investigates this. Changing acceleration changes electron energy, yet collected current can repeatedly decrease while acceleration generally increases. More driving does not under every condition mean more electrons successfully arrive. The measurement includes atoms and subsequent selection, not just free acceleration. An explanation needs to connect those different parts rather than interpret the current as a direct energy reading."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Bei passenden Energien können Elektronen inelastisch stoßen und einen bestimmten Anregungsanteil abgeben. Ein kleines elektrisches Gegenfeld vor dem Auffänger hält langsam gewordene Elektronen zurück. Nach dem Energieverlust reicht ihre verbleibende Bewegungsenergie möglicherweise nicht, dieses Feld zu überwinden. So entsteht eine Stromänderung als indirekter Hinweis auf diskrete Anregungsenergien. Ein kleinerer Strom bedeutet also nicht, dass die Quelle plötzlich keine Ladung mehr bereitstellt. Die Elektronen können unterwegs Energie verloren haben und anders erfasst werden. Der Versuch ergänzt Spektren, weil er dieselbe Idee ausgewählter Atomenergien über einen anderen Zugang prüft. Das macht ihn stärker als eine bloße schöne Analogie. Die Deutung braucht allerdings Gas, Beschleunigungsbereich und Detektionsbedingungen. Wir verwenden dafür nur eine Animation oder fertige qualitative Kurven. Erhitzte Röhren, unbekannte Gase und Hochspannungen sind kein eigener Versuch und keine Bastelaufgabe.",
+            "en": "At suitable energies, electrons can collide inelastically and transfer a specific excitation energy. A small opposing electric field before the collector holds back slowed electrons. Their remaining kinetic energy may be insufficient to overcome it, producing a current change that indirectly reveals discrete atomic excitation. Lower current does not mean the source suddenly stopped supplying charge; electrons may have lost energy en route and be collected differently. This complements spectra by testing selected atomic energies through another method, making it more than an attractive analogy. Interpretation still requires gas and detection conditions. Use animations or supplied qualitative curves only. Heated tubes, unknown gases and high voltage are neither personal experiments nor construction tasks."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Weiterdenken",
+            "en": "Think it through"
+          },
+          "text": {
+            "de": "Eine Kurve zeigt weniger aufgefangene Elektronen trotz stärkerer Beschleunigung. Formuliere eine Erklärung, die Stoß, Energieübertragung und Auffänger trennt. Warum misst der Strom nicht unmittelbar die Atomenergie?",
+            "en": "A graph shows fewer collected electrons despite stronger acceleration. Explain collision, energy transfer and collection separately. Why does current not directly measure atomic energy?"
+          }
+        }
+      ]
+    },
+    {
+      "key": "orbital",
+      "title": {
+        "de": "Ein Orbital ist keine versteckte Kreisbahn",
+        "en": "An orbital is not a hidden circular track"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Das Bild von Elektronen als kleinen Planeten um einen Kern ist für manche Anfangsfragen anschaulich, aber kein vollständiges Atommodell. Ein Orbital beschreibt einen möglichen quantenmechanischen Zustand und seine räumliche Nachweiswahrscheinlichkeitsverteilung. Es ist keine Rille, auf der ein Elektron seine unbekannte Runde dreht. Eine oft gezeichnete Wolke zeigt deshalb weder gewöhnlichen Nebel noch eine über lange Zeit gefilmte klassische Flugbahn. Dichtere Bereiche stehen in einer passenden Darstellung für größere Nachweiswahrscheinlichkeit. Welche Kontur gezeichnet wird, hängt auch von der gewählten Darstellungsgrenze ab. Das Bild benötigt ebenso eine Legende wie eine Wetterkarte.",
+            "en": "Electrons as tiny planets can help with some introductory questions but do not provide a complete atomic model. An orbital describes an allowed quantum state and its spatial detection-probability distribution. It is not a groove followed on an unknown orbit. A drawn cloud is neither ordinary fog nor a long exposure of a classical trajectory. Denser regions represent greater detection probability in an appropriate display. The contour also depends on the chosen display boundary, so the picture needs a legend just like a weather map."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Verschiedene Zustände können unterschiedliche Formen und Knotenbereiche besitzen. Ein Knoten ist eine Stelle oder Fläche, an der die zugehörige Wahrscheinlichkeitsdichte verschwindet. Das bedeutet nicht, dass dort eine kleine feste Wand im Atom eingebaut wäre. Die räumliche Struktur und die möglichen Energien gehören zum selben Zustandsmodell. Für Wasserstoff lässt sich dieses vergleichsweise einfach darstellen; Atome mit mehreren Elektronen erfordern zusätzliche Berücksichtigung ihrer Wechselwirkungen. Nicht jedes dekorative Bild mit bunten Lappen ist daher bereits eine Erklärung eines Materials. Ein hilfreiches Modell sagt, welchen Zustand es zeigt und wofür die Farben stehen. Diese Präzision ist für Chemie, Spektren und moderne Materialtechnik wichtig. Sie erlaubt anschauliche Bilder, ohne unzulässigerweise eine vollständig bekannte Bewegung zwischen allen Messereignissen zu behaupten.",
+            "en": "Different states have different shapes and nodal regions where the corresponding probability density vanishes. This does not mean a small solid wall exists there. Spatial structure and allowed energies belong to the same state model. Hydrogen is comparatively simple to represent; multi-electron atoms require additional interactions. A decorative image with coloured lobes therefore is not yet an explanation of a material. A useful model identifies its state and colour meaning. This precision matters for chemistry, spectra and modern materials. It permits informative pictures without claiming a completely known motion between every measurement event or turning probability into a substance physically spread like mist."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Weiterdenken",
+            "en": "Think it through"
+          },
+          "text": {
+            "de": "Du sollst eine Orbitalgrafik beschriften. Welche zwei Missverständnisse verhinderst du mit den Sätzen „keine Bahn“ und „Farbe kennzeichnet eine Modellgröße“? Benenne, was das Bild tatsächlich vorhersagt.",
+            "en": "You are labelling an orbital image. Which misconceptions do “not a trajectory” and “colour represents a model quantity” prevent? State what the image actually predicts."
+          }
+        }
+      ]
+    },
+    {
+      "key": "spektren",
+      "title": {
+        "de": "Ein Fingerabdruck, der Bedingungen braucht",
+        "en": "A fingerprint that needs context"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Eine Spektrallinie kann eine mögliche Zustandsänderung eines Atoms erkennen lassen. Mehrere Linien zusammen liefern einen viel stärkeren Hinweis als eine einzelne passende Farbe. Ein Stoffgemisch kann überlagerte Signaturen besitzen. Temperatur, Druck, Bewegung und Messgerät beeinflussen zusätzlich, welche Linien sichtbar und wie breit sie sind. Das Licht eines Sterns erzählt daher nicht nur, welche Stoffe vorhanden sein könnten, sondern unter passenden Bedingungen auch etwas über Zustand und Bewegung. Die Metapher „Fingerabdruck“ hilft beim Wiedererkennen, darf aber diese Abhängigkeiten nicht verschweigen. Ein Spektrum ist eine begründungsbedürftige Messung und keine unfehlbare Namensanzeige.",
+            "en": "A spectral line can reveal an atomic state transition. Several matching lines provide stronger evidence than one coincident colour. Mixtures can superimpose signatures, while temperature, pressure, motion and instruments affect visibility and width. Starlight can therefore reveal not only possible composition but, under suitable conditions, state and motion. “Fingerprint” is useful for recognition but should not conceal these dependencies. A spectrum is a measurement requiring interpretation, not an infallible name label attached automatically to a substance."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Auch kontrollierte Lichtquellen nutzen ausgewählte Übergänge. Bei einem Laser ist neben den Zuständen die geordnete Verstärkung von Licht wichtig. Das ist nicht einfach eine besonders heiße Lampe. Für diese erste Vorstellung genügt, dass Energiezufuhr, Material und Übergangsbedingungen zusammenpassen müssen. Ein schmaler Lichtbereich allein beweist jedoch noch keine bestimmte Laserbauart und sagt nichts über sichere Anwendung. Wir bleiben deshalb bei Bildern und Simulationen. Eine eigene Ausstellung könnte anonyme Spektren zeigen und mehrere passende Merkmale gemeinsam vergleichen lassen. Ergänze jeweils eine mögliche alternative Erklärung für eine fehlende Linie. Damit wird aus einem Ratespiel eine wissenschaftliche Deutung. Dieselbe Sorgfalt ist hilfreich, wenn eine Nachricht aus einer einzigen auffälligen Farbe gleich eine sensationelle Entdeckung ableitet: Erst die zusammenpassende Beobachtungskette macht den Schluss überzeugend.",
+            "en": "Controlled light sources also use selected transitions. A laser additionally involves organised amplification; it is not simply an especially hot lamp. For this first view, energy input, material and transition conditions must match. Narrow-band light alone does not identify a laser design or establish safe use. Stay with pictures and simulations. An exhibit could compare anonymous spectra using several matching features and name an alternative explanation for a missing line. This turns guessing into scientific interpretation. The same care helps assess announcements inferring sensational discoveries from one striking colour. A coherent chain of observations, rather than one attractive match, makes the conclusion convincing."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Weiterdenken",
+            "en": "Think it through"
+          },
+          "text": {
+            "de": "Entwirf eine Spektren-Ausstellung mit zwei starken Hinweisen und einer offenen Frage. Warum wäre eine einzelne farbige Linie als Stoffnachweis zu wenig? Keine echten Laser oder Entladungslampen verwenden.",
+            "en": "Design a spectrum exhibit with two strong clues and one open question. Why is a single coloured line insufficient evidence of composition? Use no real lasers or discharge lamps."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "PhET: interaktive Modellwelt",
+                "en": "PhET: interactive model"
+              },
+              "url": "https://phet.colorado.edu/de/simulations/hydrogen-atom"
+            },
+            {
+              "label": {
+                "de": "OpenStax: Das Wasserstoffatom",
+                "en": "OpenStax: the hydrogen atom"
+              },
+              "url": "https://openstax.org/books/university-physics-volume-3/pages/8-2-the-hydrogen-atom"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": {
+        "de": "1. Lückentext",
+        "en": "1. Fill in the blanks"
+      },
+      "intro": {
+        "de": "Ergänze acht Fachwörter aus dem Gelesenen.",
+        "en": "Complete eight technical terms from the reading."
+      },
+      "text": {
+        "de": "Mögliche Zustandsenergien heißen ___. Aufnahme von Lichtenergie heißt ___. Die Abgabe eines Photons heißt ___. Passende Übergänge erzeugen ein ___. Eine inelastische Begegnung mit Energieübertragung auf das Atom heißt ___. Atomzustände mit räumlicher Wahrscheinlichkeitsverteilung beschreiben ___. Orte verschwindender Wahrscheinlichkeit sind ___. Eine Spektrendeutung braucht die passenden ___.",
+        "en": "Allowed state energies are energy ___. Taking in light energy is ___. Emitting a photon is ___. Suitable transitions produce a line ___. A collision transferring energy to an atom is an ___ collision. Atomic states with spatial probability distributions are described by ___. Locations of vanishing probability are ___. Interpreting spectra requires suitable ___."
+      }
+    },
+    {
+      "kind": "compare",
+      "title": {
+        "de": "2. Erklären und vergleichen",
+        "en": "2. Explain and compare"
+      },
+      "intro": {
+        "de": "Antworte mit drei bis vier kurzen Sätzen. Begründe mit dem Gelesenen; du brauchst nichts auszurechnen.",
+        "en": "Answer in three or four short sentences. Use the reading to explain your reasoning; no calculation is needed."
+      },
+      "text": {
+        "de": "Vergleiche einen Lichtübergang mit der Anregung durch Elektronenstoß. Erkläre die gemeinsame Rolle ausgewählter Energien. Warum beschreibt ein Orbital keine klassische Elektronenbahn, obwohl seine Grafik räumlich aussieht?",
+        "en": "Compare a light transition with excitation by electron collision. Explain the shared role of selected energies. Why is an orbital not a classical electron path although its image looks spatial?"
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": {
+        "de": "3. Deine Idee",
+        "en": "3. Your idea"
+      },
+      "intro": {
+        "de": "Entwickle in drei bis vier kurzen Sätzen eine eigene begründete Idee. Mehrere Antworten sind möglich.",
+        "en": "Develop your own reasoned idea in three or four short sentences. Several answers are possible."
+      },
+      "text": {
+        "de": "Gestalte eine verständliche Karte „Atome lesen mit Licht“. Verbinde eine Beobachtung mit einer Modellvorstellung und benenne eine Bedingung, die eine vorschnelle Stoffzuordnung verhindern soll.",
+        "en": "Design a clear card titled “Reading atoms with light”. Connect an observation to a model and name a condition preventing premature identification."
+      }
+    }
+  ]
+}

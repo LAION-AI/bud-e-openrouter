@@ -5,11 +5,10 @@
     "en": "Motion, force and energy"
   },
   "description": {
-    "de": "Gemeinsamer Sek-I-Kern: Tempo und Richtung, Beschleunigung, Kräfte, Energie und einfache Maschinen. Die schulische Reihenfolge kann abweichen.",
-    "en": "Shared secondary core: speed and direction, acceleration, forces, energy and simple machines. School sequences may differ."
+    "de": "Was Fahrradfahren, Bremsen und Heben über Bewegung, Kraft und Energie verraten.",
+    "en": "What cycling, braking and lifting reveal about motion, forces and energy."
   },
   "icon": "🚲",
   "accent": "sky",
-  "badge": "Sek I",
   "level": "sek1"
 }

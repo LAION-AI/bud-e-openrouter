@@ -5,11 +5,10 @@
     "en": "Density, pressure and buoyancy"
   },
   "description": {
-    "de": "NWT-Grundlagen auffrischen und schulisch ergänzen. Druck und Hydraulik sind hier keine behauptete gemeinsame Pflicht aller Kurse 7–10.",
-    "en": "Revisit NWT foundations with school-specific extensions. Pressure and hydraulics are not claimed as shared compulsory topics in every years7–10 course."
+    "de": "Warum Schiffe schwimmen, Rucksäcke drücken und Wasser Kräfte übertragen kann.",
+    "en": "Why ships float, backpacks press on shoulders and water can transmit forces."
   },
   "icon": "🚢",
   "accent": "teal",
-  "badge": "Ergänzung",
   "level": "sek1"
 }

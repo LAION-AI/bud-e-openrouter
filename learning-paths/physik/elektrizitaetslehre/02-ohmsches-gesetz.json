@@ -5,8 +5,8 @@
     "en": "The one formula that holds it together"
   },
   "summary": {
-    "de": "Drei Größen, ein Dreieck, und plötzlich kannst du ausrechnen, warum ein Kabel warm wird und ein Vorwiderstand die LED rettet.",
-    "en": "Three quantities, one triangle, and suddenly you can work out why a cable gets warm and how a resistor saves the LED."
+    "de": "Warum wird ein Kabel warm und was schützt eine LED? Verbinde Spannung, Stromstärke und Widerstand zu einer verständlichen Erklärung.",
+    "en": "Why does a wire warm up, and what protects an LED? Connect voltage, current and resistance in a clear explanation."
   },
   "icon": "🔺",
   "accent": "amber",
@@ -345,15 +345,15 @@
             },
             {
               "label": {
-                "de": "Hamburg: Physik Gymnasium (2024)",
-                "en": "Hamburg: Gymnasium physics (2024)"
+                "de": "Hamburg: Physik – fachlicher Hintergrund",
+                "en": "Hamburg: physics background"
               },
               "url": "https://www.hamburg.de/resource/blob/798534/4cf0047ad61effacd1ff7e6ad819fa41/physik-data.pdf"
             },
             {
               "label": {
-                "de": "Hamburg: Physik Stadtteilschule (2024)",
-                "en": "Hamburg: Stadtteilschule physics (2024)"
+                "de": "Hamburg: Physik – weitere fachliche Grundlagen",
+                "en": "Hamburg: further physics background"
               },
               "url": "https://www.hamburg.de/resource/blob/798426/ba414a0ace36d17b7813a855db625c42/physik-data.pdf"
             }

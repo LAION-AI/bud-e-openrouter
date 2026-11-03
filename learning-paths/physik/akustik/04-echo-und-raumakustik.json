@@ -1,0 +1,260 @@
+{
+  "key": "echo-und-raumakustik",
+  "title": {
+    "de": "Warum klingt dein Zimmer anders als eine Turnhalle?",
+    "en": "Why does your room sound different from a sports hall?"
+  },
+  "summary": {
+    "de": "Verfolge Echo und Nachhall – und entdecke, warum ein ruhiger Raum mehr braucht als einen Lautstärkeregler.",
+    "en": "Follow echoes and reverberation, and discover why a quieter room needs more than a volume control."
+  },
+  "icon": "🏛️",
+  "accent": "violet",
+  "minutes": 20,
+  "screens": [
+    {
+      "key": "schritt-1",
+      "title": {
+        "de": "Der Schall nimmt mehr als einen Weg",
+        "en": "Sound takes more than one route"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Warum hörst du einen Ruf manchmal noch einmal, obwohl niemand antwortet? Ein Teil des Schalls erreicht dich direkt. Andere Anteile treffen auf Wände, Boden oder Decke und werden reflektiert, also zurückgeworfen. Sie legen einen längeren Weg zurück und kommen später an. Ist die Verzögerung ausreichend groß und das zurückkehrende Signal deutlich genug, nimmst du es als getrenntes Echo wahr. Es entsteht keine neue Stimme.",
+            "en": "Why can you sometimes hear a call again when nobody answers? Some sound reaches you directly. Other parts hit walls, floors or ceilings and are reflected. They travel farther and arrive later. If the delay is large enough and the returning signal is clear enough, you hear it as a separate echo. No new voice has been created."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Bei einer großen glatten Fläche kannst du den Weg mit einer Skizze beschreiben: von der Quelle zur Fläche und dann zum Ohr. Bei kleineren Strukturen und unebenen Oberflächen verteilt sich reflektierter Schall unterschiedlich. Außerdem können Hindernisse Schall beugen. Ein Pfeilbild ist deshalb ein hilfreiches Modell, aber keine vollständige Beschreibung jedes Geräuschs im Raum.",
+            "en": "A large smooth surface can be represented in a sketch: from the source to the surface and then to the ear. Smaller structures and uneven surfaces distribute reflected sound differently. Obstacles can also diffract sound. A ray diagram is therefore useful, but does not describe every detail of a room's sound."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Ein fehlendes deutliches Echo beweist nicht, dass keine Reflexion stattfindet. Die zurückkehrenden Signale können zu früh, zu schwach oder zu stark überlagert ankommen, um einzeln erkannt zu werden. Der Raum verändert trotzdem den Klang. Deine Position zählt ebenfalls: Zwei Menschen können im selben Raum unterschiedliche Mischungen aus direktem und reflektiertem Schall empfangen. Wir untersuchen solche Wege mit Zeichnungen oder vorhandenen Aufnahmen. Ein lauter Ruf, ein Knall oder ein Experiment an gefährlichen Orten ist dafür weder nötig noch sinnvoll.",
+            "en": "Not hearing a distinct echo does not prove there are no reflections. Returning signals may arrive too early, too weakly or too mixed together to be heard separately. The room still changes the sound. Your position matters too: two people in the same room can receive different mixtures of direct and reflected sound. Investigate these paths using drawings or existing recordings. Loud calls, bangs or experiments in dangerous places are unnecessary."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "💡",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Zeichne zwei Schallwege vom Mund einer Person zum Ohr einer anderen: einen direkten und einen über eine Wand. Welcher kommt später? Begründe ohne Rechnung und erkläre, warum ein fehlendes hörbares Echo Reflexion nicht ausschließt.",
+            "en": "Draw two sound paths between one person's mouth and another person's ear: one direct and one via a wall. Which arrives later? Explain without calculating, and say why not hearing an echo does not rule out reflection."
+          }
+        }
+      ]
+    },
+    {
+      "key": "schritt-2",
+      "title": {
+        "de": "Viele Rückwürfe werden zu Nachhall",
+        "en": "Many reflections become reverberation"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Warum verschwimmen Wörter in einer leeren Turnhalle? Schall wird vielfach reflektiert und trifft aus unterschiedlichen Richtungen mit unterschiedlichen Verzögerungen ein. Viele dicht aufeinanderfolgende Rückwürfe verschmelzen zum Nachhall. Endet die Schallquelle, verschwindet der Schall im Raum nicht überall sofort. Er klingt ab, weil bei jedem Weg Energie verloren geht. Ein einzelnes Echo und ein langer Nachhall sind daher nicht dasselbe.",
+            "en": "Why do words blur together in an empty sports hall? Sound is reflected many times and arrives from different directions with different delays. Many closely spaced reflections merge into reverberation. When the source stops, sound does not vanish everywhere instantly. It decays as energy is lost along its paths. A single echo and long reverberation are therefore different things."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Für Sprache kann langer Nachhall stören: Ein früherer Laut überlagert den nächsten. Bei bestimmter Musik ist ein gewisser Nachklang dagegen Teil der gewünschten Wirkung. Gute Raumakustik hängt also davon ab, was Menschen dort tun möchten. Eine einzige Zahl für „guten Klang“ kann nicht jede Nutzung entscheiden.",
+            "en": "Long reverberation can interfere with speech because an earlier sound overlaps the next. For some music, a certain lingering sound is part of the intended effect. Good acoustics therefore depend on what people want to do in a space. No single number for “good sound” can decide every use."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Die Nachhallzeit beschreibt ein vereinbartes Maß des Abklingens. Sie ist keine Uhr dafür, wann absolut jedes Geräusch verschwunden ist. Außerdem hängt das Abklingen von der Frequenz ab. Tiefe und hohe Klanganteile können sich unterschiedlich verhalten. Menschen, Möbel, Vorhänge und geeignete Absorber verändern den Raum, weil sie Schallenergie aufnehmen oder verteilen. Das erklärt, warum eine möblierte Wohnung anders klingt als ein leerer Raum. Eine Aufnahme allein verrät aber nicht alle Raumdaten: Mikrofon, Standort und Aufnahmeverarbeitung beeinflussen das Ergebnis ebenfalls.",
+            "en": "Reverberation time is a standardised measure of decay, not a clock indicating when absolutely every sound has disappeared. Decay also depends on frequency: low and high components can behave differently. People, furniture, curtains and suitable absorbers change a room by absorbing or scattering sound energy. This helps explain why a furnished home sounds different from an empty room. A recording alone does not reveal all room properties: the microphone, its position and recording processing affect the result too."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "💡",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Ein Musikraum und ein Raum für ruhige Gespräche sollen umgestaltet werden. Warum könnten dieselben Maßnahmen unterschiedlich bewertet werden? Nenne für beide ein Ziel und erkläre, welche Rolle das Überlagern aufeinanderfolgender Laute dabei spielt.",
+            "en": "A music room and a room for quiet conversation are being redesigned. Why might the same measures be judged differently? Name a goal for each, and explain how overlapping successive sounds affects the choice."
+          }
+        }
+      ]
+    },
+    {
+      "key": "schritt-3",
+      "title": {
+        "de": "Warum Kopfhörer Gegenschall erzeugen",
+        "en": "Why headphones create anti-noise"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Wie können Kopfhörer mit einem zusätzlichen Schall sogar leiser wirken? Bei der aktiven Geräuschunterdrückung erfassen Mikrofone einen Teil der Umgebungssignale. Die Elektronik erzeugt ein dazu passendes Signal, das am Ohr möglichst gegenphasig ankommt. Gegenphasig bedeutet: Verdichtungen des einen Schalls treffen ungefähr auf Verdünnungen des anderen. Durch Überlagerung kann die Druckschwankung dort kleiner werden. Das ist ein Beispiel für destruktive Interferenz.",
+            "en": "How can headphones add sound and make things seem quieter? Active noise cancellation uses microphones to detect part of the surrounding sound. Electronics create a matching signal intended to arrive at the ear in opposite phase. Compressions from one wave approximately meet rarefactions from the other. Their superposition can reduce the pressure variation at that location. This is destructive interference."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Das funktioniert nicht für jedes Geräusch gleich gut. Tiefe, länger anhaltende und gut vorhersagbare Geräusche sind oft leichter zu verringern als plötzliche oder rasch veränderliche. Die räumliche Anordnung und Verzögerungen der Elektronik spielen mit. Weniger Schall an einem Ort bedeutet nicht, dass überall im Raum Stille entsteht.",
+            "en": "It does not work equally well for every sound. Low, sustained, predictable noise is often easier to reduce than sudden or rapidly changing sound. Geometry and electronic delays matter. Less sound at one location does not mean silence throughout the room."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Passive Abschirmung durch Ohrpolster ist eine andere Wirkung als aktive Interferenz. Beide können zusammenarbeiten. Ein Kopfhörer mit Geräuschunterdrückung ist trotzdem nicht automatisch ein geprüfter Gehörschutz für gefährlichen Lärm. Auch Umgebungssignale können wichtig sein, etwa Warnungen im Verkehr. Wir betrachten hier das Prinzip, nicht die Eignung eines bestimmten Produkts. Ein Gedankenbild mit zwei gezeichneten Druckkurven genügt: Treffen gleichartige Ausschläge zusammen, verstärken sie sich; treffen entgegengesetzte zusammen, können sie sich verringern. Die genaue Wirkung muss immer am Ort des Empfängers beurteilt werden.",
+            "en": "Passive blocking by ear cushions is different from active interference; both may work together. Noise-cancelling headphones are not automatically certified protection against hazardous noise. Environmental signals can also matter, including traffic warnings. We consider the principle, not a particular product's suitability. Two drawn pressure curves are enough for a thought experiment: matching variations reinforce one another, whereas opposite variations can reduce one another. The effect must always be assessed at the receiver's location."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "💡",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Jemand sagt: „Gegenschall saugt die gesamte Schallenergie aus dem Raum.“ Verbessere diese Aussage. Verwende Überlagerung, Ort und Phase. Erkläre anschließend, warum die Wirkung nicht für alle Geräusche und Positionen gleich sein muss.",
+            "en": "Someone says, “Anti-noise sucks all sound energy out of the room.” Improve the statement using superposition, location and phase. Then explain why the effect need not be the same for all sounds and positions."
+          }
+        }
+      ]
+    },
+    {
+      "key": "schritt-4",
+      "title": {
+        "de": "Einen Raum hörbar besser machen",
+        "en": "Making a room sound better"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Ein Raum kann Sprache verschlucken oder lange nachhallen lassen. Harte Flächen reflektieren Schall stark, während geeignete weiche oder poröse Materialien einen Teil der Schallenergie aufnehmen und in innere Energie umwandeln. Absorption ist nicht dasselbe wie vollständige Schalldämmung nach außen. Auch Materialdicke, Frequenz und Anordnung spielen eine Rolle.",
+            "en": "A room can make speech unclear or let sound reverberate for a long time. Hard surfaces strongly reflect sound, while suitable soft or porous materials absorb part of its energy and convert it to internal energy. Absorption is not the same as completely insulating sound from the outside. Material thickness, frequency and arrangement matter too."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Für einen Klassenraum könntest du auf Papier Maßnahmen gegen störenden Nachhall planen: große freie Reflexionsflächen verringern, Arbeitsbereiche passend anordnen und zugelassene absorbierende Elemente nutzen. Die konkrete Umsetzung muss Brandschutz, Reinigung und Barrierefreiheit berücksichtigen. Ein Sprachsignal sollte außerdem nicht nur akustisch erreichbar sein. Sichtbare Informationen können Menschen helfen, die unterschiedlich hören oder gerade Kopfhörer tragen. Dein Entwurf darf physikalische Wirkung und soziale Ziele gemeinsam benennen. Du brauchst keine persönlichen Hörtests und keine Messung mit lauten Signalen. Eine begründete Skizze kann bereits zeigen, wo Reflexion, Dämpfung und Verständlichkeit zusammenhängen und welche Fachprüfung vor einer echten Veränderung noch nötig wäre.",
+            "en": "On paper, plan ways to reduce unwanted reverberation in a classroom: reduce large bare reflecting areas, arrange work zones thoughtfully and use approved absorbing elements. Real implementation must consider fire safety, cleaning and accessibility. Information should also not depend entirely on hearing. Visible signals can help people with different hearing abilities or those currently wearing headphones. Your design can explicitly connect physical effects with social goals. You do not need personal hearing tests or loud measurement signals. A reasoned sketch can show how reflection, damping and intelligibility connect, and which professional checks would still be necessary before making real changes."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Entwirf eine Raumidee, die Sprachverständlichkeit verbessert und wichtige Informationen zusätzlich sichtbar macht. Ein schallabsorbierendes Element soll Energie aus störenden Reflexionen aufnehmen. Eine Wand gegen Schallübertragung nach außen erfüllt eine andere Aufgabe. Beide dürfen deshalb nicht allein nach dem Wort „Schallschutz“ gleichgesetzt werden. Beschrifte in deinem Raumplan gewünschte Sprachwege und unerwünschte Reflexionswege getrennt. Dann wird sichtbar, warum gute Verständlichkeit nicht einfach durch immer größere Lautsprecherleistung entsteht.",
+            "en": "Design a room improvement that makes speech clearer and also presents important information visually. An absorber takes energy from unwanted reflections; a wall limiting transmission outside serves a different purpose. They cannot be treated as identical merely because both concern sound protection. Label desired speech paths and unwanted reflection paths separately. This shows why clearer communication does not simply come from increasing loudspeaker power."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "PhET: Wellen sicher in einer Simulation erkunden",
+                "en": "PhET: explore waves safely in a simulation"
+              },
+              "url": "https://phet.colorado.edu/de/simulations/waves-intro"
+            },
+            {
+              "label": {
+                "de": "Landesamt für Umwelt: Raumakustik",
+                "en": "State environmental agency: room acoustics"
+              },
+              "url": "https://lfu.rlp.de/bevoelkerung/laerm/raumakustik"
+            },
+            {
+              "label": {
+                "de": "IFA: Raumakustik und Planung",
+                "en": "IFA: room acoustics and planning"
+              },
+              "url": "https://dguv.de/ifa/;/praxishilfen/praxishilfen-laerm/laermmessung-und-laermminderung/ifa-raumakustikrechner/index.jsp"
+            },
+            {
+              "label": {
+                "de": "Deutsche Bundesstiftung Umwelt: lokal wirksamer Gegenschall",
+                "en": "German Federal Environmental Foundation: local active noise control"
+              },
+              "url": "https://www.dbu.de/projektdatenbank/24483-01/"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": {
+        "de": "Die wichtigsten Zusammenhänge",
+        "en": "The key connections"
+      },
+      "intro": {
+        "de": "Ergänze passende Begriffe aus diesem Pfad. Nachschauen ist erlaubt.",
+        "en": "Complete the gaps using terms from this path. You may look back."
+      },
+      "text": {
+        "de": "Schall wird an einer Wand ___. Der längere Weg führt zu einer ___. Ein getrennt wahrgenommener Rückwurf heißt ___. Viele überlagerte Rückwürfe bilden ___. Materialien können Schallenergie durch ___ aufnehmen. Die gewünschte Akustik hängt von der ___ des Raums ab. Gegenschall nutzt destruktive ___. Dafür müssen die Signale am Ohr passend in der ___ liegen.",
+        "en": "A wall ___ sound. A longer path produces a ___. A separately heard reflection is an ___. Many overlapping reflections form ___. Materials can take up sound energy through ___. Suitable acoustics depend on the room's ___. Anti-noise uses destructive ___. The signals must have the right relative ___ at the ear."
+      }
+    },
+    {
+      "kind": "compare",
+      "title": {
+        "de": "Erklären statt nur aufzählen",
+        "en": "Explain rather than just list"
+      },
+      "intro": {
+        "de": "Verbinde die Ideen in drei bis vier Sätzen. Eine Rechnung brauchst du nicht.",
+        "en": "Connect the ideas in three or four sentences. No calculation is needed."
+      },
+      "text": {
+        "de": "Vergleiche Absorption, Schalldämmung und aktive Geräuschunterdrückung. Welcher Vorgang steht jeweils im Mittelpunkt, und warum sind die Begriffe nicht austauschbar?",
+        "en": "Compare absorption, sound insulation and active noise cancellation. What process is central to each, and why are the terms not interchangeable?"
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": {
+        "de": "Deine Idee für den Alltag",
+        "en": "Your everyday idea"
+      },
+      "intro": {
+        "de": "Entwickle eine eigene Idee und begründe sie mit Physik.",
+        "en": "Develop your own idea and support it with physics."
+      },
+      "text": {
+        "de": "Entwirf einen Raum, in dem Menschen mit unterschiedlichen Hörbedürfnissen gut zusammenarbeiten können. Verbinde zwei akustische Ideen mit einer sichtbaren Informationshilfe und begründe deine Auswahl.",
+        "en": "Design a room where people with different hearing needs can work together. Connect two acoustic ideas with one visual aid and explain your choices."
+      }
+    }
+  ]
+}

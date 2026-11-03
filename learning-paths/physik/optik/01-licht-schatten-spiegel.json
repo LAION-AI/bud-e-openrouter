@@ -5,8 +5,8 @@
     "en": "Why your shadow moves with you"
   },
   "summary": {
-    "de": "NWT-Auffrischung für die Sek I: Lichtwege helfen dir, Schatten, Spiegel und sichere Sichtbarkeit zu erklären.",
-    "en": "NWT refresher for secondary learning: light paths explain shadows, mirrors and safe visibility."
+    "de": "Erkläre mit Lichtwegen, warum Schatten entstehen und wie Spiegel deinen Blick umlenken.",
+    "en": "Use light paths to explain shadows and how mirrors redirect your view."
   },
   "icon": "🔦",
   "accent": "sky",
@@ -29,8 +29,8 @@
         {
           "kind": "paragraph",
           "text": {
-            "de": "Für viele Alltagsfragen reicht das Strahlenmodell: Lichtwege werden als Linien mit Pfeilen gezeichnet. In einem gleichmäßigen durchsichtigen Medium verläuft Licht näherungsweise geradlinig. Das Modell erklärt Sichtlinien und Schatten, aber nicht alle Lichtphänomene; für Beugung und Interferenz brauchst du später ein Wellenmodell. Der Pfad frischt vor allem Hamburger NWT-Inhalte aus 5/6 auf und ist keine Behauptung über ein identisches Optikprogramm aller Klassen 7–10. Als sichere Lichtquelle genügt eine gewöhnliche schwache Lampe in einer Zeichnung oder Simulation. Schaue niemals direkt in die Sonne, in Laser oder in besonders helle Leuchten. Auch optische Geräte können Licht gefährlich bündeln.",
-            "en": "For many everyday questions, the ray model is sufficient: light paths are represented by lines with arrows. In a uniform transparent medium, light travels approximately along straight paths. This model explains lines of sight and shadows, but not every optical effect; diffraction and interference later require a wave model. This path mainly revisits Hamburg NWT content from years 5/6, rather than claiming every class in years 7–10 follows an identical optics programme. A normal dim lamp in a drawing or simulation is sufficient. Never look directly at the Sun, lasers or especially bright lights. Optical equipment can also concentrate light dangerously."
+            "de": "Für viele Alltagsfragen reicht das Strahlenmodell: Lichtwege werden als Linien mit Pfeilen gezeichnet. In einem gleichmäßigen durchsichtigen Medium verläuft Licht näherungsweise geradlinig. Das Modell erklärt Sichtlinien und Schatten, aber nicht alle Lichtphänomene; für Beugung und Interferenz brauchst du später ein Wellenmodell. Du kannst damit prüfen, ob ein Gegenstand sichtbar ist, ein Hindernis Licht abhält oder ein Spiegel einen Blick um die Ecke ermöglicht. Entscheidend ist immer ein möglicher Lichtweg bis zum Auge. Als sichere Lichtquelle genügt eine gewöhnliche schwache Lampe in einer Zeichnung oder Simulation. Schaue niemals direkt in die Sonne, in Laser oder in besonders helle Leuchten. Auch optische Geräte können Licht gefährlich bündeln.",
+            "en": "For many everyday questions, the ray model is sufficient: light paths are represented by lines with arrows. In a uniform transparent medium, light travels approximately along straight paths. This model explains lines of sight and shadows, but not every optical effect; diffraction and interference later require a wave model. Use it to check whether an object is visible, an obstacle blocks light or a mirror makes a view around a corner possible. What matters is a possible path carrying light all the way to the eye. A normal dim lamp in a drawing or simulation is sufficient. Never look directly at the Sun, lasers or especially bright lights. Optical equipment can also concentrate light dangerously."
           }
         },
         {
@@ -190,8 +190,8 @@
           "items": [
             {
               "label": {
-                "de": "Hamburg: NWT 5/6 (2024), Licht und Sinne",
-                "en": "Hamburg: NWT years 5/6 (2024), light and senses"
+                "de": "Hamburg: Naturphänomene – fachlicher Hintergrund",
+                "en": "Hamburg: natural phenomena background"
               },
               "url": "https://www.hamburg.de/resource/blob/798520/700d66232c2d07bad97d72b6e107e083/naturwissenschaften-technik-data.pdf"
             },

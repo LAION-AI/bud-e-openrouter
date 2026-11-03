@@ -5,8 +5,8 @@
     "en": "How a steel ship can float"
   },
   "summary": {
-    "de": "NWT-Auffrischung und schulische Ergänzung: Masse, Volumen, Druck und Auftrieb erklären mehr als „schwer sinkt“.",
-    "en": "NWT refresher and school-specific extension: mass, volume, pressure and buoyancy explain more than “heavy things sink”."
+    "de": "Warum sinkt ein Stein, während ein schweres Schiff schwimmt? Verbinde Masse, Form und die Kräfte des Wassers.",
+    "en": "Why does a stone sink while a heavy ship floats? Connect mass, shape and forces from water."
   },
   "icon": "🚢",
   "accent": "teal",
@@ -29,8 +29,8 @@
         {
           "kind": "paragraph",
           "text": {
-            "de": "Ein Körper mit 60 g Masse und 20 cm³ Volumen besitzt eine mittlere Dichte von 3 g/cm³. Für einen Körper aus einheitlichem Stoff ist das eine Stoffeigenschaft unter bestimmten Bedingungen. Bei einem hohlen Gegenstand betrachten wir dagegen seine gesamte Masse und sein äußeres verdrängendes Volumen. Ein Schiff enthält sehr viel Luft und hat dadurch eine geringere mittlere Dichte als ein gleich großer massiver Stahlkörper. Der Pfad frischt NWT-Grundlagen auf und ergänzt sie um Druck. Diese Inhalte sind nicht als gleiches Pflichtprogramm aller Hamburger Physikkurse 7–10 zu verstehen; die Schule entscheidet über die Einbindung.",
-            "en": "An object with mass 60 g and volume 20 cm³ has an average density of 3 g/cm³. For a uniform material, density is a material property under specified conditions. For a hollow object, however, we consider its total mass and its outer displaced volume. A ship contains a great deal of air, giving it a lower average density than an equally large solid steel object. This path revisits NWT foundations and adds pressure. It is not presented as an identical compulsory programme for every Hamburg physics course in years 7–10; schools determine how it is used."
+            "de": "Ein Körper mit 60 g Masse und 20 cm³ Volumen besitzt eine mittlere Dichte von 3 g/cm³. Für einen Körper aus einheitlichem Stoff ist das eine Stoffeigenschaft unter bestimmten Bedingungen. Bei einem hohlen Gegenstand betrachten wir dagegen seine gesamte Masse und sein äußeres verdrängendes Volumen. Ein Schiff enthält sehr viel Luft und hat dadurch eine geringere mittlere Dichte als ein gleich großer massiver Stahlkörper. Für deine Erklärung müssen Masse und Form deshalb gemeinsam betrachtet werden. Verformst du denselben Stoff zu einer hohlen Schale, veränderst du nicht seine Masse, wohl aber das Volumen, das er im Wasser einnehmen kann.",
+            "en": "An object with mass 60 g and volume 20 cm³ has an average density of 3 g/cm³. For a uniform material, density is a material property under specified conditions. For a hollow object, however, we consider its total mass and its outer displaced volume. A ship contains a great deal of air, giving it a lower average density than an equally large solid steel object. Your explanation must therefore consider mass and shape together. Reshaping the same material into a hollow bowl does not change its mass, but can change the volume it occupies in water and the amount it displaces."
           }
         },
         {
@@ -190,7 +190,7 @@
           "items": [
             {
               "label": {
-                "de": "Hamburg: NWT Gymnasium (2024), Grundlagen 5/6",
+                "de": "Hamburg: Naturphänomene – fachlicher Hintergrund",
                 "en": "Hamburg: Gymnasium NWT (2024), years 5/6 foundations"
               },
               "url": "https://www.hamburg.de/resource/blob/798520/700d66232c2d07bad97d72b6e107e083/naturwissenschaften-technik-data.pdf"

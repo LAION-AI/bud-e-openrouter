@@ -5,8 +5,8 @@
     "en": "What the electricity bill really says"
   },
   "summary": {
-    "de": "Warum der Wasserkocher zweihundertmal so viel zieht wie das Ladegerät - und trotzdem weniger kostet als der Kühlschrank.",
-    "en": "Why a kettle draws two hundred times as much as a phone charger - and still costs less than the fridge."
+    "de": "Welches Gerät braucht wirklich viel Energie? Entdecke, warum Betriebsdauer und Leistung zusammen betrachtet werden müssen.",
+    "en": "Which appliance really uses lots of energy? Discover why running time and power must be considered together."
   },
   "icon": "🧾",
   "accent": "amber",
@@ -464,15 +464,15 @@
             },
             {
               "label": {
-                "de": "Hamburg: Physik Gymnasium (2024)",
-                "en": "Hamburg: Gymnasium physics (2024)"
+                "de": "Hamburg: Physik – fachlicher Hintergrund",
+                "en": "Hamburg: physics background"
               },
               "url": "https://www.hamburg.de/resource/blob/798534/4cf0047ad61effacd1ff7e6ad819fa41/physik-data.pdf"
             },
             {
               "label": {
-                "de": "Hamburg: Physik Stadtteilschule (2024)",
-                "en": "Hamburg: Stadtteilschule physics (2024)"
+                "de": "Hamburg: Physik – weitere fachliche Grundlagen",
+                "en": "Hamburg: further physics background"
               },
               "url": "https://www.hamburg.de/resource/blob/798426/ba414a0ace36d17b7813a855db625c42/physik-data.pdf"
             }

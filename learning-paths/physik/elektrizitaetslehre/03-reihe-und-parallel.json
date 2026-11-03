@@ -5,8 +5,8 @@
     "en": "Why the string of lights goes out completely"
   },
   "summary": {
-    "de": "Zwei Arten, Dinge zu verbinden - und warum in deiner Wohnung nur eine davon in Frage kommt.",
-    "en": "Two ways to connect things - and why only one of them will do in your flat."
+    "de": "Warum leuchten andere Lampen weiter, wenn eine ausfällt? Vergleiche zwei Arten, Stromkreise aufzubauen.",
+    "en": "Why do other lights stay on when one fails? Compare two ways of arranging circuits."
   },
   "icon": "💡",
   "accent": "amber",
@@ -357,15 +357,15 @@
             },
             {
               "label": {
-                "de": "Hamburg: Physik Gymnasium (2024)",
-                "en": "Hamburg: Gymnasium physics (2024)"
+                "de": "Hamburg: Physik – fachlicher Hintergrund",
+                "en": "Hamburg: physics background"
               },
               "url": "https://www.hamburg.de/resource/blob/798534/4cf0047ad61effacd1ff7e6ad819fa41/physik-data.pdf"
             },
             {
               "label": {
-                "de": "Hamburg: Physik Stadtteilschule (2024)",
-                "en": "Hamburg: Stadtteilschule physics (2024)"
+                "de": "Hamburg: Physik – weitere fachliche Grundlagen",
+                "en": "Hamburg: further physics background"
               },
               "url": "https://www.hamburg.de/resource/blob/798426/ba414a0ace36d17b7813a855db625c42/physik-data.pdf"
             }

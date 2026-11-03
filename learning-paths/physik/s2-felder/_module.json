@@ -1,0 +1,14 @@
+{
+  "key": "s2-felder",
+  "title": {
+    "de": "Felder und elektrische Dynamik",
+    "en": "Fields and electrical dynamics"
+  },
+  "description": {
+    "de": "Unsichtbare Kräfte, gespeicherte Energie und bewegte Ladungen als Werkzeuge zum Verstehen moderner Technik.",
+    "en": "Invisible forces, stored energy and moving charges as tools for understanding modern technology."
+  },
+  "icon": "🧭",
+  "accent": "amber",
+  "level": "sek2"
+}

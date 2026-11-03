@@ -5,8 +5,8 @@
     "en": "From a fridge magnet to an electric motor"
   },
   "summary": {
-    "de": "Wie unsichtbare Felder Kräfte erklären und warum eine stromdurchflossene Spule etwas bewegen kann.",
-    "en": "How invisible fields explain forces and why a coil carrying current can make things move."
+    "de": "Warum dreht sich ein Elektromotor? Entdecke, wie Magnete, Strom und bewegliche Teile zusammenwirken.",
+    "en": "Why does an electric motor turn? Discover how magnets, current and moving parts work together."
   },
   "icon": "🧲",
   "accent": "amber",
@@ -99,8 +99,8 @@
         {
           "kind": "paragraph",
           "text": {
-            "de": "Im einfachen Vergleich gilt: Mehr Strom oder mehr Windungen können die magnetische Wirkung erhöhen, wenn andere Bedingungen gleich bleiben. Die genaue Wirkung hängt zusätzlich von Länge, Form und Material ab. Vertiefte Feldmodelle gehören am Gymnasium zum Übergang in Klasse 10, an der Stadtteilschule zur Vorstufe 11; hier bleibt die Betrachtung qualitativ. Ein Elektromagnet lässt sich einschalten, ausschalten und durch Umkehren der Stromrichtung umpolen. Das unterscheidet ihn vom gewöhnlichen Permanentmagneten. Für einen Schulaufbau kommen nur vorgesehene, strombegrenzte Kleinspannungsgeräte unter Anleitung infrage. Eigenmächtige Spulen können heiß werden; auch Batterien dürfen niemals kurzgeschlossen werden. Eine Simulation braucht diese Risiken nicht.",
-            "en": "In a simple comparison, more current or more turns can increase the magnetic effect when other conditions stay unchanged. The detailed effect also depends on length, shape and material. More advanced field modelling belongs to the Gymnasium year 10 transition and Stadtteilschule preparatory year 11; our treatment stays qualitative. An electromagnet can be switched on, switched off and have its polarity reversed by reversing current. That distinguishes it from an ordinary permanent magnet. School setups use only designated current-limited low-voltage equipment under supervision. Improvised coils can become hot, and batteries must never be short-circuited. A simulation avoids those risks entirely."
+            "de": "Im einfachen Vergleich gilt: Mehr Strom oder mehr Windungen können die magnetische Wirkung erhöhen, wenn andere Bedingungen gleich bleiben. Die genaue Wirkung hängt zusätzlich von Länge, Form und Material ab. Für deinen Vergleich zählt zunächst die Frage, was du veränderst und was gleich bleibt. Ein stärkeres Feld bedeutet nicht automatisch einen besseren Motor, wenn dabei mehr Energie als Wärme verloren geht. Ein Elektromagnet lässt sich einschalten, ausschalten und durch Umkehren der Stromrichtung umpolen. Das unterscheidet ihn vom gewöhnlichen Permanentmagneten. Für einen Schulaufbau kommen nur vorgesehene, strombegrenzte Kleinspannungsgeräte unter Anleitung infrage. Eigenmächtige Spulen können heiß werden; auch Batterien dürfen niemals kurzgeschlossen werden. Eine Simulation braucht diese Risiken nicht.",
+            "en": "In a simple comparison, more current or more turns can increase the magnetic effect when other conditions stay unchanged. The detailed effect also depends on length, shape and material. Begin your comparison by identifying what changes and what stays the same. A stronger field does not automatically make a better motor if more energy is then lost as heat. An electromagnet can be switched on, switched off and have its polarity reversed by reversing current. That distinguishes it from an ordinary permanent magnet. School setups use only designated current-limited low-voltage equipment under supervision. Improvised coils can become hot, and batteries must never be short-circuited. A simulation avoids those risks entirely."
           }
         },
         {
@@ -190,15 +190,15 @@
           "items": [
             {
               "label": {
-                "de": "Hamburg: Physik Gymnasium (2024)",
-                "en": "Hamburg: Gymnasium physics (2024)"
+                "de": "Hamburg: Physik – fachlicher Hintergrund",
+                "en": "Hamburg: physics background"
               },
               "url": "https://www.hamburg.de/resource/blob/798534/4cf0047ad61effacd1ff7e6ad819fa41/physik-data.pdf"
             },
             {
               "label": {
-                "de": "Hamburg: Physik Stadtteilschule (2024)",
-                "en": "Hamburg: Stadtteilschule physics (2024)"
+                "de": "Hamburg: Physik – weitere fachliche Grundlagen",
+                "en": "Hamburg: further physics background"
               },
               "url": "https://www.hamburg.de/resource/blob/798426/ba414a0ace36d17b7813a855db625c42/physik-data.pdf"
             },

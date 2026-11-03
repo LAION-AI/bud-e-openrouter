@@ -5,11 +5,10 @@
     "en": "Energy for tomorrow"
   },
   "description": {
-    "de": "Sek-I-Verknüpfung: nachhaltige Quellen, Umwandlung, Speicherung, Wärmepumpe und nachvollziehbare Entscheidungen im Alltag.",
-    "en": "Secondary connections: sustainable sources, conversion, storage, heat pumps and reasoned everyday choices."
+    "de": "Wie Energie in dein Zuhause kommt – und welche Ideen Versorgung und Umwelt zusammenbringen.",
+    "en": "How energy reaches your home, and which ideas connect reliable supply with the environment."
   },
   "icon": "🏘️",
   "accent": "emerald",
-  "badge": "Sek I",
   "level": "sek1"
 }

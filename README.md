@@ -24,7 +24,7 @@ The web application includes:
 - Recoverable batch correction proposals with transcript review, pupil-oriented
   PDF/Word feedback and encrypted final-report storage in personal rooms.
 - A separate Years 5–6 tab with 18 short nature-and-technology paths, alongside
-  24 physics paths and the existing computing curriculum.
+  introductory and advanced physics paths and the existing computing curriculum.
 
 ## Run the web application
 

@@ -5,8 +5,8 @@
     "en": "Turning your journey to school into a graph"
   },
   "summary": {
-    "de": "Geschwindigkeit hat Tempo und Richtung. Mit Wegen, Zeiten und Diagrammen erkennst du mehr als eine Tachoanzeige.",
-    "en": "Velocity includes speed and direction. Distances, times and graphs reveal more than a speedometer."
+    "de": "Was verrät eine Tachoanzeige noch nicht? Entdecke Richtung, Beschleunigung und Bewegungsmuster in deinem Alltag.",
+    "en": "What does a speedometer not tell you? Discover direction, acceleration and everyday patterns of motion."
   },
   "icon": "🚲",
   "accent": "sky",
@@ -225,15 +225,15 @@
           "items": [
             {
               "label": {
-                "de": "Hamburg: Physik Gymnasium (2024)",
-                "en": "Hamburg: Gymnasium physics (2024)"
+                "de": "Hamburg: Physik – fachlicher Hintergrund",
+                "en": "Hamburg: physics background"
               },
               "url": "https://www.hamburg.de/resource/blob/798534/4cf0047ad61effacd1ff7e6ad819fa41/physik-data.pdf"
             },
             {
               "label": {
-                "de": "Hamburg: Physik Stadtteilschule (2024)",
-                "en": "Hamburg: Stadtteilschule physics (2024)"
+                "de": "Hamburg: Physik – weitere fachliche Grundlagen",
+                "en": "Hamburg: further physics background"
               },
               "url": "https://www.hamburg.de/resource/blob/798426/ba414a0ace36d17b7813a855db625c42/physik-data.pdf"
             },

@@ -5,8 +5,8 @@
     "en": "Why a ball does not keep turning by itself"
   },
   "summary": {
-    "de": "Übergang Gymnasium 10 / Stadtteilschule 11: Wurf, Kreisbewegung und Impuls erweitern dein Bewegungsmodell.",
-    "en": "Gymnasium year 10 / Stadtteilschule year 11 transition: projectiles, circular motion and momentum extend your model."
+    "de": "Entdecke, warum ein Ball eine Kurve fliegt und wie Kreisbewegungen und Zusammenstöße zusammenhängen.",
+    "en": "Discover why a ball follows a curve and how circular motion connects with collisions."
   },
   "icon": "🎡",
   "accent": "violet",
@@ -29,8 +29,8 @@
         {
           "kind": "paragraph",
           "text": {
-            "de": "Dieser Pfad ist ausdrücklich eine Erweiterung für den Übergang: Die aktuellen Hamburger Pläne ordnen die vertieften Inhalte am Gymnasium der Klasse 10, an der Stadtteilschule der Vorstufe 11 zu. Er ist also nicht gemeinsamer Pflichtstoff jeder Stadtteilschulklasse 7–10. Wir arbeiten mit einfachen Modellen und verzichten auf die vollständige mathematische Beschreibung harmonischer Schwingungen; diese erscheint in einem eigenen Schwingungspfad als gekennzeichnete Erweiterung. Wichtig bleibt der Perspektivwechsel: Eine Bewegung lässt sich durch Komponenten darstellen und durch Erhaltungsgrößen untersuchen. Zeichnungen und Simulationen sind dafür völlig ausreichend. Es gibt keinen Auftrag, schnelle Drehgeräte zu bauen oder Wurfversuche in Menschennähe durchzuführen.",
-            "en": "This path is explicitly a transition extension. Current Hamburg plans place these more advanced topics in Gymnasium year 10 and Stadtteilschule preparatory year 11. They are not common compulsory material for every Stadtteilschule class in years 7–10. We use simple models rather than the full mathematical description of harmonic oscillations; a separate oscillation path identifies that as an extension. The useful shift in perspective remains: motion can be represented by components and investigated using conserved quantities. Drawings and simulations are entirely sufficient. Nothing here asks you to build fast rotating equipment or throw objects near other people."
+            "de": "Stell dir vor, du filmst einen geworfenen Ball von der Seite. Seine Vorwärtsbewegung und sein Fallen laufen gleichzeitig ab. Du kannst beide getrennt beschreiben und anschließend wieder zusammensetzen. Beim Kreis kommt eine neue Frage hinzu: Warum ändert sich die Richtung, obwohl das Tempo gleich bleiben kann? Und bei einem Zusammenstoß möchtest du wissen, welche Größe vor und nach dem Stoß vergleichbar bleibt. Dafür hilft der Impuls. Diese drei Ideen verbinden scheinbar verschiedene Bewegungen. Wir arbeiten mit Zeichnungen und Simulationen, statt sofort jede Bahn auszurechnen. Ein Modell macht deutlich, welche Einflüsse wir berücksichtigen und welche wir zunächst weglassen. Es ist kein Auftrag, schnelle Drehgeräte zu bauen oder Gegenstände in Menschennähe zu werfen.",
+            "en": "Imagine filming a thrown ball from the side. Its forward motion and its fall happen together. You can describe both separately and then combine them. Circular motion adds a new question: why does direction change even when speed stays constant? In a collision, you want to know which quantity can be compared before and afterwards. Momentum helps with that. These three ideas connect apparently different movements. We use drawings and simulations rather than immediately calculating every trajectory. A model shows which influences we include and which we initially leave out. It is not an instruction to build fast rotating equipment or throw objects near other people."
           }
         },
         {
@@ -41,8 +41,8 @@
             "en": "Pause and think"
           },
           "text": {
-            "de": "Warum ist die Klassenangabe dieses Pfads eine Orientierung für zwei Schulformen und kein allgemeiner Stoffplan für jede Klasse 10? Wähle für die drei Situationen zuerst das Werkzeug: Beim Zusammenstoß kann Impuls helfen, bei einer Kreisfahrt die nach innen gerichtete Kraft und beim Wurf die Zerlegung der Bewegung. Die Auswahl ist bereits ein Teil der Lösung. Eine passende Formel ohne passende Voraussetzungen wäre dagegen irreführend. Die schulformspezifische Einordnung sagt dir zusätzlich, wann diese vertieften Werkzeuge vorgesehen sind.",
-            "en": "Why is this path's year label guidance for two school types rather than a universal programme for every year 10 class? First select a tool for each situation: momentum may help with collisions, inward force with circular motion and component analysis with projectiles. Choosing the tool is already part of the solution. A formula without its required assumptions would mislead. The school-specific classification also tells you when these more advanced tools are intended to be introduced."
+            "de": "Ein Fußball fliegt, ein Fahrrad fährt durch eine Kurve und zwei Billardkugeln stoßen zusammen. Welches Werkzeug hilft bei welcher Frage? Beim Zusammenstoß kann Impuls helfen, bei der Kreisfahrt die nach innen gerichtete Kraft und beim Wurf die Zerlegung der Bewegung. Wähle zuerst eine Situation und formuliere, was du erklären möchtest. Die Auswahl des Modells ist bereits ein Teil der Lösung. Eine passende Formel ohne passende Voraussetzungen wäre irreführend. Ergänze daher eine Annahme und eine Beobachtung, mit der du deine Erklärung überprüfen könntest. Eine beschriftete Skizze reicht; du musst nichts werfen oder im Verkehr ausprobieren.",
+            "en": "A football flies, a bicycle follows a curve and two billiard balls collide. Which tool helps answer which question? Momentum may help with a collision, inward force with circular motion and component analysis with a projectile. Start by choosing a situation and stating what you want to explain. Selecting the model is already part of the solution. A formula without its required assumptions would mislead. Add one assumption and one observation that could test your explanation. A labelled sketch is enough; there is no need to throw anything or experiment in traffic."
           }
         }
       ]
@@ -225,15 +225,15 @@
           "items": [
             {
               "label": {
-                "de": "Hamburg: Physik Gymnasium (2024)",
-                "en": "Hamburg: Gymnasium physics (2024)"
+                "de": "Hamburg: Physik – fachlicher Hintergrund",
+                "en": "Hamburg: physics background"
               },
               "url": "https://www.hamburg.de/resource/blob/798534/4cf0047ad61effacd1ff7e6ad819fa41/physik-data.pdf"
             },
             {
               "label": {
-                "de": "Hamburg: Physik Stadtteilschule (2024)",
-                "en": "Hamburg: Stadtteilschule physics (2024)"
+                "de": "Hamburg: Physik – weitere fachliche Grundlagen",
+                "en": "Hamburg: further physics background"
               },
               "url": "https://www.hamburg.de/resource/blob/798426/ba414a0ace36d17b7813a855db625c42/physik-data.pdf"
             },

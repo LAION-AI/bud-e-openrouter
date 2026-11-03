@@ -5,11 +5,10 @@
     "en": "Nuclei and radiation"
   },
   "description": {
-    "de": "Sek-I-Kern: Atommodelle, Isotope, Radioaktivität, Halbwertszeit, Schutz sowie Nutzen und Verantwortung. Nur Daten und Simulationen.",
-    "en": "Secondary core: atomic models, isotopes, radioactivity, half-life, protection, applications and responsibility. Data and simulations only."
+    "de": "Was in Atomkernen passiert und wie du Meldungen über Strahlung einordnen kannst.",
+    "en": "What happens inside nuclei and how to make sense of reports about radiation."
   },
   "icon": "⚛️",
   "accent": "violet",
-  "badge": "Sek I",
   "level": "sek1"
 }

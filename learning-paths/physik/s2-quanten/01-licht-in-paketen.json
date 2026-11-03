@@ -1,0 +1,222 @@
+{
+  "key": "phys2-licht-in-paketen",
+  "title": {
+    "de": "Warum hilft manchmal auch helleres Licht nicht?",
+    "en": "Why does brighter light sometimes fail to help?"
+  },
+  "summary": {
+    "de": "Der Photoeffekt zeigt, warum Lichtenergie nicht beliebig portioniert wird – und was Photonen für Sensoren bedeuten.",
+    "en": "The photoelectric effect reveals why light energy is not divided arbitrarily and what photons mean for sensors."
+  },
+  "icon": "✨",
+  "accent": "violet",
+  "minutes": 20,
+  "screens": [
+    {
+      "key": "ueberraschung",
+      "title": {
+        "de": "Ein Experiment widerspricht der einfachen Helligkeitsidee",
+        "en": "An experiment challenges a simple brightness idea"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Licht kann Elektronen aus einer geeigneten Metalloberfläche herauslösen. Beim äußeren Photoeffekt verlassen diese Elektronen das Material und können nachgewiesen werden. Überraschend ist, wovon ihre größte Bewegungsenergie abhängt: Nicht einfach von der Helligkeit, sondern wesentlich von der Frequenz des Lichts. Für ein bestimmtes Material gibt es eine Grenzfrequenz. Unterhalb dieser Grenze reicht im einfachen Einphotonenmodell auch länger einfallendes schwaches Licht nicht zum Herauslösen. Die Elektronen sammeln nicht beliebig langsam Energie an, bis irgendwann genug zusammengekommen wäre. Das passt nicht zur naiven Vorstellung einer kontinuierlichen Welle, die jedem Elektron nur lange genug Energie zuführen müsse.",
+            "en": "Light can release electrons from a suitable metal surface. In the external photoelectric effect, those electrons leave the material and can be detected. The surprising point is what determines their greatest kinetic energy: not simply brightness, but especially light frequency. Each material has a threshold frequency. Below it, longer exposure to weak light still cannot release electrons in the simple single-photon model. Electrons do not merely accumulate energy indefinitely until enough has arrived. This challenges a naive continuous-wave picture in which sufficient exposure should eventually supply any required energy."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Oberhalb der Grenze kann größere Intensität unter passenden Bedingungen mehr Elektronenereignisse ermöglichen, ohne die maximale Energie jedes Elektrons entsprechend zu erhöhen. Frequenz und Intensität sind also zwei verschiedene Stellgrößen. Auch das Material spielt mit, weil Elektronen unterschiedlich stark gebunden sind. Eine faire virtuelle Untersuchung verändert deshalb zuerst nur eine dieser Größen. Sie zeigt beispielsweise, dass bei gleichem Licht ein Material reagiert und ein anderes nicht. Daraus folgt nicht, das zweite Material könne Licht überhaupt nicht aufnehmen. Es kann Energie auf andere Weise übernehmen, etwa in innere Energie. Der Photoeffekt prüft einen bestimmten Übertragungsweg. Starke Lichtquellen, UV-Lampen und ausgebaute Röhren werden dafür nicht gebraucht; wir verwenden ausschließlich bereitgestellte Beobachtungen oder eine Simulation.",
+            "en": "Above threshold, greater intensity can under suitable conditions produce more electron events without similarly increasing each electron's maximum energy. Frequency and intensity are distinct controls. Material matters too, because electron binding differs. A fair virtual investigation changes one control first, perhaps showing two materials responding differently to the same light. This does not mean the unresponsive material cannot absorb light at all; energy may enter other channels, including internal energy. The photoelectric effect tests a particular transfer process. Powerful sources, ultraviolet lamps and removed tubes are unnecessary: use supplied observations or a simulation only."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Weiterdenken",
+            "en": "Think it through"
+          },
+          "text": {
+            "de": "Ein Sensor liefert trotz stärkerem Licht keine herausgelösten Elektronen. Welche zwei Erklärungen würdest du prüfen, bevor du pauschal „das Licht ist zu schwach“ sagst? Trenne Frequenz und Material.",
+            "en": "A sensor releases no electrons despite brighter light. Which two explanations would you test before saying simply “the light is too weak”? Distinguish frequency and material."
+          }
+        }
+      ]
+    },
+    {
+      "key": "photon",
+      "title": {
+        "de": "Mehr Pakete oder andere Pakete?",
+        "en": "More packets or different packets?"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Die Quantenbeschreibung spricht Licht eine Energieübertragung in einzelnen Quanten zu: Photonen. Die Energie eines Photons ist proportional zur Frequenz. Die Naturkonstante, die diese beiden Größen verknüpft, heißt Plancksches Wirkungsquantum und wird mit h bezeichnet. Du brauchst ihren Zahlenwert hier nicht. Entscheidend ist der Zusammenhang: Höhere Frequenz bedeutet größere Energie je Photon. Mehr Intensität bei unveränderter Frequenz kann dagegen mehr Photonen pro Zeit bedeuten. Das ist nicht dasselbe wie energiereichere einzelne Photonen. Der Unterschied zwischen Anzahl und Energie pro Ereignis löst einen großen Teil der scheinbaren Helligkeitsrätsel des Photoeffekts.",
+            "en": "The quantum description assigns discrete energy transfers to light quanta, called photons. Photon energy is proportional to frequency. The natural constant connecting them is Planck's constant, written h. Its numerical value is unnecessary here. The relationship matters: higher frequency means more energy per photon. Greater intensity at unchanged frequency can instead mean more photons per time, not more energetic individual photons. Distinguishing event number from energy per event resolves much of the apparent brightness puzzle in the photoelectric effect."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Ein Photon ist dabei kein winziger farbiger Tennisball mit einer verborgenen klassischen Oberfläche. Die Paketvorstellung beschreibt eine Eigenschaft der Energieübertragung, nicht alle Ausbreitungs- und Messphänomene. Interferenz und Polarisation bleiben ebenfalls wichtige Beobachtungen. Du solltest deshalb nicht jedes Wellenbild wegwerfen und durch Kugeln ersetzen. Die Physik braucht eine Beschreibung, die beides gemeinsam vorhersagt. Ein anschauliches Poster könnte zwei Veränderungen nebeneinanderstellen: gleicher Farbton mit verändertem Photonenstrom und veränderte Frequenz bei geeignet angepasster Intensität. Die Darstellung wäre ein Modell der Unterschiede, kein sichtbarer Film einzelner Photonen. Auch das Wort Farbe ist begrenzt, weil viele Photonen außerhalb des sichtbaren Bereichs liegen. Präzise ist die Frequenz, nicht die Vermutung, jedes Quant müsse einen für Menschen sichtbaren Farbklecks besitzen.",
+            "en": "A photon is not a tiny coloured tennis ball with a hidden classical surface. The packet picture describes energy transfer, not every propagation or measurement property. Interference and polarisation remain important observations, so wave pictures should not simply be replaced by little spheres. Physics needs a description predicting both. A poster could contrast two changes: fixed spectral colour with altered photon flux, and changed frequency with appropriately adjusted intensity. This models the distinction rather than filming individual photons. “Colour” is also limited because many photons are outside the visible range. Frequency is precise; assuming every quantum carries a human-visible coloured spot is not."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Weiterdenken",
+            "en": "Think it through"
+          },
+          "text": {
+            "de": "Entwirf zwei Symbole: eines für häufigere gleichartige Nachweise und eines für höhere Energie je Photon. Warum sollte dieselbe größere Kugel nicht beides gleichzeitig darstellen?",
+            "en": "Design separate symbols for more frequent equivalent detections and greater energy per photon. Why should one enlarged ball not represent both at once?"
+          }
+        }
+      ]
+    },
+    {
+      "key": "bilanz",
+      "title": {
+        "de": "Ein Elektron muss erst aus dem Material heraus",
+        "en": "An electron first has to leave the material"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Nicht die gesamte aufgenommene Photonenenergie wird zur Bewegungsenergie des ausgelösten Elektrons. Ein Teil ist nötig, um das Material zu verlassen: die Austrittsenergie oder Austrittsarbeit. Was unter geeigneten Bedingungen übrig bleibt, kann als Bewegungsenergie erscheinen. Die maximale Bewegungsenergie wächst deshalb oberhalb der Grenze mit der Lichtfrequenz. Unterschiedliche Oberflächen können unterschiedliche Austrittsenergien besitzen. Der Zusammenhang ist eine Energiebilanz, keine Erzeugung von Bewegung ohne Quelle. Das Licht liefert Energie, und das Material setzt Bedingungen dafür, welcher Anteil beim Nachweis in welcher Form auftaucht.",
+            "en": "Not all absorbed photon energy becomes the emitted electron's kinetic energy. Some is needed to escape the material: the work function. Under suitable conditions, the remainder can appear as motion. Maximum kinetic energy therefore grows with light frequency above threshold. Different surfaces can have different work functions. This is an energy account, not motion produced without a source. Light supplies energy, while the material determines how that transfer can appear in a detected electron."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Eine entgegenwirkende elektrische Spannung kann die Elektronen abbremsen. Die Grenze, bei der selbst die schnellsten nicht mehr ankommen, liefert einen Hinweis auf deren maximale Bewegungsenergie. Du musst hier keine Gegenspannung berechnen. Wichtig ist, welches Messsignal wofür steht: Ein größerer Photostrom kann mehr ankommende Elektronen bedeuten; eine andere notwendige Gegenspannung beschreibt einen Energieunterschied. Die beiden Anzeigen beantworten verschiedene Fragen. Auch nicht jedes Elektron verlässt die Oberfläche mit exakt derselben Energie. Materialzustand und Startbedingungen erzeugen eine Verteilung. Daher spricht man bewusst von einer maximalen Energie statt von einem einzigen allgemeinen Elektronentempo. Ein gutes Messschema zeigt Quelle, Oberfläche, Feld und Detektor getrennt. So bleibt erkennbar, welcher Teil der Beobachtung zur Wechselwirkung mit Licht und welcher zur anschließenden elektrischen Auswahl gehört.",
+            "en": "An opposing voltage can slow emitted electrons. The point where even the fastest no longer arrive indicates their maximum kinetic energy. No stopping voltage needs calculating here. The important distinction is what each signal represents: a larger photocurrent can indicate more arriving electrons, while a different stopping voltage indicates an energy difference. The displays answer different questions. Electrons also do not all leave with exactly the same energy; material state and starting conditions produce a distribution. That is why the explanation refers to maximum energy, not one universal electron speed. A clear measurement diagram separates source, surface, field and detector, distinguishing light interaction from subsequent electrical selection."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Weiterdenken",
+            "en": "Think it through"
+          },
+          "text": {
+            "de": "Zwei Messungen zeigen verschiedene Photoströme, aber dieselbe Grenz-Gegenspannung. Welche Aussage über Ereigniszahl und maximale Elektronenenergie ist plausibel? Welche Aussage wäre daraus noch nicht bewiesen?",
+            "en": "Two measurements show different photocurrents but the same stopping voltage. What is plausible about event number and maximum electron energy, and what would remain unproven?"
+          }
+        }
+      ]
+    },
+    {
+      "key": "sensoren",
+      "title": {
+        "de": "Wie werden aus Licht Bilder oder elektrische Energie?",
+        "en": "How does light become an image or electrical energy?"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Bildsensoren und Solarzellen nutzen Wechselwirkungen zwischen Licht und Materie, aber nicht einfach denselben äußeren Photoeffekt einer Metalloberfläche. In einem Halbleiter kann absorbiertes Licht bewegliche Ladungsträger anregen. Eine geeignete innere Struktur hilft, diese zu trennen und ein nutzbares Signal oder elektrische Energie zu gewinnen. Die Elektronen müssen dafür nicht in ein Vakuum aus dem ganzen Bauteil austreten. Die Gemeinsamkeit liegt in der gezielten Energieübertragung des Lichts, die Unterschiede in Material und Ladungswegen. Ein Gerätefoto allein verrät deshalb noch nicht, welches mikroskopische Modell für seine Funktion benötigt wird.",
+            "en": "Image sensors and solar cells use light–matter interactions, but not simply the same external photoelectric effect as a metal surface. Absorbed light in a semiconductor can excite mobile carriers. A suitable internal structure separates them, enabling a useful signal or electrical output. Electrons need not escape the whole component into vacuum. The common idea is controlled energy transfer from light; material and charge paths differ. A device photograph therefore does not identify the microscopic model needed to explain its function."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Ein guter Sensor soll gewünschte Ereignisse erkennen und unerwünschte Hintergrundsignale unterscheiden. Empfindlicher heißt nicht automatisch besser für jede Aufgabe. Eine Kamera kann beispielsweise durch Beleuchtung, Materialantwort und Auswertung begrenzt sein. Bei einer Solarzelle zählen zusätzlich Energieverluste und die zum Einsatz passende spektrale Antwort. Ein Fotodetektor ist keine unbegrenzte Energiequelle und kein perfektes Auge. Du könntest für eine Ausstellung eine unsichtbare Beleuchtung nur durch ein virtuelles Detektorsignal sichtbar machen. Dabei sollte die Beschriftung erklären, welche Frequenzen der gedachte Sensor überhaupt erkennt und warum ein ausbleibendes Signal nicht beweist, dass gar kein Licht vorhanden ist. Diese Unterscheidung verbindet Quantenideen mit Quellenkritik: Ein Messgerät zeigt seine Wechselwirkung mit der Welt, nicht jede Eigenschaft der Welt gleichzeitig.",
+            "en": "A good sensor distinguishes wanted events from background. Greater sensitivity is not automatically better for every task. Camera performance can be limited by illumination, material response and processing. Solar cells additionally involve losses and spectral suitability. A photodetector is neither an unlimited energy source nor a perfect eye. An exhibit could reveal invisible illumination through a virtual detector signal, with a label explaining which frequencies the imagined sensor detects. No signal would not prove no light exists. This connects quantum ideas with critical interpretation: an instrument reveals its interaction with the world, not every property of that world at once. A useful design makes its selection visible rather than pretending to observe everything."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Weiterdenken",
+            "en": "Think it through"
+          },
+          "text": {
+            "de": "Entwirf eine Anzeige für einen gedachten Lichtsensor. Wie erklärst du „kein Nachweis“, ohne daraus „keine Strahlung vorhanden“ zu machen? Nenne eine Material- oder Frequenzgrenze.",
+            "en": "Design an indicator for an imagined light sensor. How would you explain “no detection” without claiming “no radiation exists”? Name a material or frequency limit."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "PhET: interaktive Modellwelt",
+                "en": "PhET: interactive model"
+              },
+              "url": "https://phet.colorado.edu/de/simulations/photoelectric"
+            },
+            {
+              "label": {
+                "de": "OpenStax: Photoeffekt",
+                "en": "OpenStax: photoelectric effect"
+              },
+              "url": "https://openstax.org/books/university-physics-volume-3/pages/6-2-photoelectric-effect"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": {
+        "de": "1. Lückentext",
+        "en": "1. Fill in the blanks"
+      },
+      "intro": {
+        "de": "Ergänze acht Fachwörter aus dem Gelesenen.",
+        "en": "Complete eight technical terms from the reading."
+      },
+      "text": {
+        "de": "Herausgelöste Elektronen zeigen den äußeren ___. Seine Schwelle beschreibt die ___. Ein Energiequant des Lichts heißt ___. Energie und Frequenz verknüpft die Plancksche ___. Zum Verlassen des Materials braucht das Elektron eine ___. Eine Gegenspannung prüft die maximale ___. Die Zahl ankommender Elektronen beeinflusst den ___. Ein Halbleitersensor nutzt angeregte ___.",
+        "en": "Released electrons reveal the external ___. Its threshold is described by the threshold ___. A light quantum is a ___. Energy and frequency are linked by Planck's ___. An electron needs the ___ to escape the material. A stopping voltage tests maximum ___. The number of arriving electrons affects ___. A semiconductor sensor uses excited charge ___."
+      }
+    },
+    {
+      "kind": "compare",
+      "title": {
+        "de": "2. Erklären und vergleichen",
+        "en": "2. Explain and compare"
+      },
+      "intro": {
+        "de": "Antworte mit drei bis vier kurzen Sätzen. Begründe mit dem Gelesenen; du brauchst nichts auszurechnen.",
+        "en": "Answer in three or four short sentences. Use the reading to explain your reasoning; no calculation is needed."
+      },
+      "text": {
+        "de": "Vergleiche höhere Intensität bei gleicher Frequenz mit höherer Frequenz bei geeigneter Beleuchtung. Erkläre den Unterschied zwischen Photonenanzahl und Energie je Photon. Warum entscheidet die Materialoberfläche mit, ob Elektronen austreten?",
+        "en": "Compare greater intensity at fixed frequency with greater frequency under suitable illumination. Distinguish photon number from energy per photon. Why does the material surface help determine whether electrons escape?"
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": {
+        "de": "3. Deine Idee",
+        "en": "3. Your idea"
+      },
+      "intro": {
+        "de": "Entwickle in drei bis vier kurzen Sätzen eine eigene begründete Idee. Mehrere Antworten sind möglich.",
+        "en": "Develop your own reasoned idea in three or four short sentences. Several answers are possible."
+      },
+      "text": {
+        "de": "Gestalte eine Museumskarte mit der Leitfrage „Mehr Licht oder anderes Licht?“. Zeige eine überraschende Beobachtung, ihre Erklärung und eine Grenze des Paketbilds.",
+        "en": "Design a museum card asking “more light or different light?”. Show a surprising observation, its explanation and one limit of the packet picture."
+      }
+    }
+  ]
+}

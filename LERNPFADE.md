@@ -43,9 +43,9 @@ Ein Ordner ist ein Fach. Ein Unterordner ist ein Modul. Jede `.json`-Datei
 darin ist ein Lernpfad. Dateien, deren Name mit `_` beginnt, sind Beschreibungen
 und keine Pfade.
 
-Im Repository liegt unter `learning-paths/physik/` ein vollständiges Beispiel
-mit zwei Modulen und sechs Pfaden. Das ist der empfohlene Anfang: kopieren und
-umschreiben.
+Im Repository liegen unter `learning-paths/physik/` vollständige Beispiele
+mit mehreren Modulen und unterschiedlichen Themen. Das ist der empfohlene
+Anfang: einen passenden Pfad kopieren und umschreiben.
 
 **Reihenfolge:** Innerhalb eines Moduls werden die Dateien alphabetisch
 sortiert. Wer eine bestimmte Abfolge will, stellt Zahlen voran — `01-`, `02-`,
@@ -518,8 +518,10 @@ Pfade halten sich daran, und sie lesen sich deshalb wie aus einem Guss.
 
 * **Fang bei etwas an, das die Schülerin kennt.** Nicht „Schall ist eine
   longitudinale Welle", sondern „du zählst nach dem Blitz".
-* **Rechne vor, statt zu behaupten.** Eine Zahl, die man selbst nachrechnen
-  kann, bleibt hängen; eine, die man glauben muss, nicht.
+* **Mach Ideen überprüfbar.** Nutze ein anschauliches Modell, eine Beobachtung
+  oder einen begründeten Vergleich. Physik-Überblickspfade vermitteln vor allem
+  Zusammenhänge: keine Rechenserien oder durchgerechneten Aufgaben; das Üben
+  mathematischer Verfahren findet daneben statt.
 * **Sag auch, wo die Regel nicht gilt.** Die Faustregel „durch drei" ist gut
   genug — dass sie eine Näherung ist, gehört dazu.
 * **Duze und rede direkt.** Die Pfade sind für 12- bis 18-Jährige geschrieben.

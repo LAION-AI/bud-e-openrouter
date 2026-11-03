@@ -1,6 +1,17 @@
 Physik-Lernpfade: Recherche, Abgrenzung und Abdeckung
 Stand: 03.11.2026. Zielgruppe: ungefähr 13–16 Jahre, Nutzung in Jg.7–10.
 
+Aktualisierung: Die curriculare Zuordnung in diesem Bericht dient der Planung.
+Auf ausdrücklichen Nutzerwunsch stehen Schulformen, Klassenstufen und Kürzel
+nicht mehr in den Vorschauen oder Lesetexten. Diese sprechen Lernende direkt
+an und beginnen bei Fragen aus Alltag und Technik. Drei neue Akustikpfade
+ergänzen Musik/Klangfarbe, Echo/Raumakustik und Doppler/Ultraschall. Dadurch
+umfasst dieser grundlegende Bereich jetzt27Pfade und137Lesescreens; die
+ursprünglichen24Pfade und ihre thematischen Zuordnungen bleiben unten als
+Recherchegrundlage dokumentiert. Erweiterte Physikpfade sind separat unter
+Sekundarstufe2 eingeordnet. Es bleiben Überblicksangebote, keine Zusage einer
+vollständigen mathematischen oder praktischen Prüfungsvorbereitung.
+
 Umfang und Grenzen
 24 zweisprachige Pfade in 10 Modulen, insgesamt 125 Lesescreens.
 18 Pfade sind neu; die vorhandenen 6 Pfade wurden von 3 auf 5 Screens erweitert.

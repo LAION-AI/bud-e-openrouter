@@ -5,8 +5,8 @@
     "en": "Does a ramp really save you work?"
   },
   "summary": {
-    "de": "Hebel, Energie und Leistung erklären, warum ein längerer Weg leichter sein kann und Energie trotzdem erhalten bleibt.",
-    "en": "Levers, energy and power explain why a longer route can be easier while energy is still conserved."
+    "de": "Warum kann ein längerer Weg leichter sein? Entdecke, was Rampen, Hebel und Energieerhaltung verbindet.",
+    "en": "Why can a longer route be easier? Discover the connection between ramps, levers and energy conservation."
   },
   "icon": "🏗️",
   "accent": "emerald",
@@ -190,15 +190,15 @@
           "items": [
             {
               "label": {
-                "de": "Hamburg: Physik Gymnasium (2024)",
-                "en": "Hamburg: Gymnasium physics (2024)"
+                "de": "Hamburg: Physik – fachlicher Hintergrund",
+                "en": "Hamburg: physics background"
               },
               "url": "https://www.hamburg.de/resource/blob/798534/4cf0047ad61effacd1ff7e6ad819fa41/physik-data.pdf"
             },
             {
               "label": {
-                "de": "Hamburg: Physik Stadtteilschule (2024)",
-                "en": "Hamburg: Stadtteilschule physics (2024)"
+                "de": "Hamburg: Physik – weitere fachliche Grundlagen",
+                "en": "Hamburg: further physics background"
               },
               "url": "https://www.hamburg.de/resource/blob/798426/ba414a0ace36d17b7813a855db625c42/physik-data.pdf"
             },

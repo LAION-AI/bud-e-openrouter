@@ -5,8 +5,8 @@
     "en": "Why lightning and thunder do not arrive together"
   },
   "summary": {
-    "de": "Eine Messung, die du ohne jedes Gerät machen kannst - und was sie über Luft, Wasser und Stahl verrät.",
-    "en": "A measurement you can take without any instrument - and what it reveals about air, water and steel."
+    "de": "Warum kommt der Donner nach dem Blitz? Entdecke, wie Schall durch Luft, Wasser und feste Stoffe reist.",
+    "en": "Why does thunder follow lightning? Discover how sound travels through air, water and solids."
   },
   "icon": "🔊",
   "accent": "violet",
@@ -362,15 +362,15 @@
             },
             {
               "label": {
-                "de": "Hamburg: Physik Gymnasium (2024)",
-                "en": "Hamburg: Gymnasium physics (2024)"
+                "de": "Hamburg: Physik – fachlicher Hintergrund",
+                "en": "Hamburg: physics background"
               },
               "url": "https://www.hamburg.de/resource/blob/798534/4cf0047ad61effacd1ff7e6ad819fa41/physik-data.pdf"
             },
             {
               "label": {
-                "de": "Hamburg: Physik Stadtteilschule (2024)",
-                "en": "Hamburg: Stadtteilschule physics (2024)"
+                "de": "Hamburg: Physik – weitere fachliche Grundlagen",
+                "en": "Hamburg: further physics background"
               },
               "url": "https://www.hamburg.de/resource/blob/798426/ba414a0ace36d17b7813a855db625c42/physik-data.pdf"
             }

@@ -5,8 +5,8 @@
     "en": "Can you trust your measurement?"
   },
   "summary": {
-    "de": "Vom Schätzen am Sportplatz bis zur fairen Untersuchung: Du machst aus einer Behauptung eine prüfbare Frage.",
-    "en": "From estimates on the sports field to fair investigations: turn a claim into a testable question."
+    "de": "Woher weißt du, ob eine Behauptung stimmt? Mache aus einer Alltagsfrage eine faire Untersuchung mit nachvollziehbaren Ergebnissen.",
+    "en": "How do you know whether a claim is true? Turn an everyday question into a fair investigation with understandable results."
   },
   "icon": "📏",
   "accent": "teal",
@@ -190,15 +190,15 @@
           "items": [
             {
               "label": {
-                "de": "Hamburg: Physik Gymnasium (2024)",
-                "en": "Hamburg: Gymnasium physics (2024)"
+                "de": "Hamburg: Physik – fachlicher Hintergrund",
+                "en": "Hamburg: physics background"
               },
               "url": "https://www.hamburg.de/resource/blob/798534/4cf0047ad61effacd1ff7e6ad819fa41/physik-data.pdf"
             },
             {
               "label": {
-                "de": "Hamburg: Physik Stadtteilschule (2024)",
-                "en": "Hamburg: Stadtteilschule physics (2024)"
+                "de": "Hamburg: Physik – weitere fachliche Grundlagen",
+                "en": "Hamburg: further physics background"
               },
               "url": "https://www.hamburg.de/resource/blob/798426/ba414a0ace36d17b7813a855db625c42/physik-data.pdf"
             },

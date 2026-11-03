@@ -5,8 +5,8 @@
     "en": "Why Earth can warm while still radiating energy away"
   },
   "summary": {
-    "de": "Spektrum, Albedo, Strahlungsbilanz und Rückkopplungen erklären Klimaphysik ohne die Denkfalle einer dichten Wärmedecke.",
-    "en": "Spectrum, albedo, radiation balance and feedbacks explain climate physics beyond the misleading idea of an opaque blanket."
+    "de": "Warum verändert die Atmosphäre das Klima? Verbinde Sonnenlicht, Wärmestrahlung und Rückkopplungen zu einem nachvollziehbaren Bild.",
+    "en": "Why does the atmosphere change climate? Connect sunlight, thermal radiation and feedbacks into a clear picture."
   },
   "icon": "🌍",
   "accent": "emerald",
@@ -274,15 +274,15 @@
           "items": [
             {
               "label": {
-                "de": "Hamburg: Physik Gymnasium (2024)",
-                "en": "Hamburg: Gymnasium physics (2024)"
+                "de": "Hamburg: Physik – fachlicher Hintergrund",
+                "en": "Hamburg: physics background"
               },
               "url": "https://www.hamburg.de/resource/blob/798534/4cf0047ad61effacd1ff7e6ad819fa41/physik-data.pdf"
             },
             {
               "label": {
-                "de": "Hamburg: Physik Stadtteilschule (2024)",
-                "en": "Hamburg: Stadtteilschule physics (2024)"
+                "de": "Hamburg: Physik – weitere fachliche Grundlagen",
+                "en": "Hamburg: further physics background"
               },
               "url": "https://www.hamburg.de/resource/blob/798426/ba414a0ace36d17b7813a855db625c42/physik-data.pdf"
             },

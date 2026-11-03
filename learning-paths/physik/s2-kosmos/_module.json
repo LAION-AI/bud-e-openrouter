@@ -1,0 +1,14 @@
+{
+  "key": "s2-kosmos",
+  "title": {
+    "de": "Raum, Zeit und Kosmos",
+    "en": "Space, time and the cosmos"
+  },
+  "description": {
+    "de": "Fallende Satelliten, lesbares Sternlicht und Uhren, die nicht überall gleich gehen.",
+    "en": "Falling satellites, readable starlight and clocks that do not all tick alike."
+  },
+  "icon": "🌌",
+  "accent": "indigo",
+  "level": "sek2"
+}

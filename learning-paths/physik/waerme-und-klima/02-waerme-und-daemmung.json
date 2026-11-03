@@ -5,8 +5,8 @@
     "en": "Why your jacket does not generate heat"
   },
   "summary": {
-    "de": "Leitung, Strömung und Strahlung erklären Dämmung, Kühlung und die Grenzen eines Wärmebilds.",
-    "en": "Conduction, convection and radiation explain insulation, cooling and the limits of thermal images."
+    "de": "Warum hält eine Jacke warm, ohne selbst zu heizen? Folge der Energie und entdecke Leitung, Strömung und Strahlung.",
+    "en": "Why does a jacket keep you warm without heating itself? Follow energy through conduction, convection and radiation."
   },
   "icon": "🧥",
   "accent": "rose",
@@ -190,15 +190,15 @@
           "items": [
             {
               "label": {
-                "de": "Hamburg: Physik Gymnasium (2024)",
-                "en": "Hamburg: Gymnasium physics (2024)"
+                "de": "Hamburg: Physik – fachlicher Hintergrund",
+                "en": "Hamburg: physics background"
               },
               "url": "https://www.hamburg.de/resource/blob/798534/4cf0047ad61effacd1ff7e6ad819fa41/physik-data.pdf"
             },
             {
               "label": {
-                "de": "Hamburg: Physik Stadtteilschule (2024)",
-                "en": "Hamburg: Stadtteilschule physics (2024)"
+                "de": "Hamburg: Physik – weitere fachliche Grundlagen",
+                "en": "Hamburg: further physics background"
               },
               "url": "https://www.hamburg.de/resource/blob/798426/ba414a0ace36d17b7813a855db625c42/physik-data.pdf"
             },

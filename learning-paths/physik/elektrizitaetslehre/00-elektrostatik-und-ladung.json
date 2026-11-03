@@ -5,8 +5,8 @@
     "en": "Why your jumper crackles"
   },
   "summary": {
-    "de": "Elektronen, Ladung und Modelle erklären klebende Haare und den Übergang vom Aufladen zum Stromkreis.",
-    "en": "Electrons, charge and models explain clinging hair and the connection between charging and circuits."
+    "de": "Warum stehen Haare manchmal ab? Entdecke, was Elektronen mit Anziehung, Abstoßung und elektrischem Strom zu tun haben.",
+    "en": "Why does hair sometimes stand on end? Discover what electrons have to do with attraction, repulsion and electric current."
   },
   "icon": "✨",
   "accent": "amber",
@@ -190,15 +190,15 @@
           "items": [
             {
               "label": {
-                "de": "Hamburg: Physik Gymnasium (2024)",
-                "en": "Hamburg: Gymnasium physics (2024)"
+                "de": "Hamburg: Physik – fachlicher Hintergrund",
+                "en": "Hamburg: physics background"
               },
               "url": "https://www.hamburg.de/resource/blob/798534/4cf0047ad61effacd1ff7e6ad819fa41/physik-data.pdf"
             },
             {
               "label": {
-                "de": "Hamburg: Physik Stadtteilschule (2024)",
-                "en": "Hamburg: Stadtteilschule physics (2024)"
+                "de": "Hamburg: Physik – weitere fachliche Grundlagen",
+                "en": "Hamburg: further physics background"
               },
               "url": "https://www.hamburg.de/resource/blob/798426/ba414a0ace36d17b7813a855db625c42/physik-data.pdf"
             },
