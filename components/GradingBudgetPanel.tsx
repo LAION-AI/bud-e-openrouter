@@ -4,6 +4,7 @@ import {
   type GradingBudgetSnapshot,
   gradingMoney,
   roomBudgetState,
+  signInGradingTeacher,
 } from "../utils/gradingFeedback.ts";
 
 export default function GradingBudgetPanel(
@@ -15,8 +16,12 @@ export default function GradingBudgetPanel(
   },
 ) {
   const [value, setValue] = useState<GradingBudgetSnapshot | null>(null);
-  const [loading, setLoading] = useState(false),
+  const [loading, setLoading] = useState(!!load),
     [error, setError] = useState("");
+  const [providerLoading, setProviderLoading] = useState(false);
+  const [loginOpen, setLoginOpen] = useState(false),
+    [signingIn, setSigningIn] = useState(false),
+    [loginError, setLoginError] = useState("");
   const loader = useRef(load), request = useRef<AbortController | null>(null);
   const generation = useRef(0), alive = useRef(true);
   loader.current = load;
@@ -33,15 +38,27 @@ export default function GradingBudgetPanel(
     );
     request.current = abort;
     setLoading(true);
+    setError("");
+    let localLoaded = false;
     try {
-      const next = await loader.current(provider, abort.signal);
-      if (alive.current && at === generation.current) {
+      // Never hold the local room budget hostage to a slow external provider.
+      const local = await loader.current(false, abort.signal);
+      const show = (next: GradingBudgetSnapshot) => {
+        if (!alive.current || at !== generation.current) return;
         setValue((old) => ({
           ...next,
           balance: next.balance ??
             (old?.provider === next.provider ? old?.balance : undefined),
         }));
-        setError("");
+      };
+      show(local);
+      localLoaded = true;
+      if (alive.current && at === generation.current) setLoading(false);
+      if (provider && !local.permission && !abort.signal.aborted) {
+        if (alive.current && at === generation.current) {
+          setProviderLoading(true);
+        }
+        show(await loader.current(true, abort.signal));
       }
     } catch {
       if (
@@ -49,14 +66,19 @@ export default function GradingBudgetPanel(
         (!abort.signal.aborted || abort.signal.reason?.name === "TimeoutError")
       ) {
         setError(
-          "Budgetabfrage nicht erreichbar. Angezeigte ältere Werte sind keine Zusage, dass die nächste Anfrage bezahlt werden kann.",
+          localLoaded
+            ? "Das Raumbudget wurde geladen, aber die Anbieterabfrage ist gerade nicht erreichbar. Ältere Anbieterwerte können inzwischen überholt sein."
+            : "Die Verbindung zur Budgetabfrage ist fehlgeschlagen. Klicke auf „Budget aktualisieren“. Deine Korrektur und Zwischenstände bleiben unverändert.",
         );
       }
     } finally {
       clearTimeout(timeout);
       if (at === generation.current) {
         request.current = null;
-        if (alive.current) setLoading(false);
+        if (alive.current) {
+          setLoading(false);
+          setProviderLoading(false);
+        }
       }
     }
   }
@@ -80,6 +102,39 @@ export default function GradingBudgetPanel(
     }, 20000);
     return () => clearInterval(timer);
   }, [busy, privateRoom, !!load]);
+  useEffect(() => {
+    const focused = () => {
+      if (!request.current) void refresh(true);
+    };
+    globalThis.addEventListener("focus", focused);
+    return () => globalThis.removeEventListener("focus", focused);
+  }, []);
+  async function login(event: SubmitEvent) {
+    event.preventDefault();
+    if (signingIn || !value?.slug) return;
+    const form = event.currentTarget as HTMLFormElement;
+    const password = String(new FormData(form).get("teacherPassword") ?? "");
+    form.reset();
+    setSigningIn(true);
+    setLoginError("");
+    try {
+      await signInGradingTeacher(value.slug, password);
+      if (alive.current) {
+        setLoginOpen(false);
+        await refresh(true);
+      }
+    } catch (cause) {
+      if (alive.current) {
+        setLoginError(
+          cause instanceof Error && cause.name !== "TimeoutError"
+            ? cause.message
+            : "Die Anmeldung dauert zu lange. Bitte Internetverbindung prüfen und erneut versuchen.",
+        );
+      }
+    } finally {
+      if (alive.current) setSigningIn(false);
+    }
+  }
   const room = value?.room,
     state = room ? roomBudgetState(room) : null,
     balance = value?.balance;
@@ -105,159 +160,222 @@ export default function GradingBudgetPanel(
         Guthaben gekauft.
       </p>
       {value?.permission && (
-        <p class="mt-3 text-sm text-amber-900">
-          Genaue Budgetwerte sind nur für die angemeldete Lehrkraft sichtbar.
-          Öffne{" "}
-          <a
-            class="underline"
-            href="/my"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            /my in einem zweiten Tab
-          </a>{" "}
-          und melde dich für diesen Raum an. Danach hier „Budget aktualisieren“
-          klicken. Die Korrektur bleibt in diesem Tab.
-        </p>
+        <div class="mt-3 rounded-xl border border-indigo-200 bg-white p-4 text-sm text-slate-700">
+          <h3 class="font-semibold text-slate-900">
+            {value.authReason === "different-room"
+              ? "Bitte für diesen Raum anmelden"
+              : "Lehrkraft-Anmeldung fehlt oder ist abgelaufen"}
+          </h3>
+          <p class="mt-2">
+            Du kannst den Klassenchat ohne Passwort nutzen. Budget und Guthaben
+            sind dagegen nur für die Lehrkraft sichtbar. Das bedeutet nicht,
+            dass dein Budget aufgebraucht ist.
+          </p>
+          {value.slug && (
+            <button
+              type="button"
+              class="mt-3 rounded-xl bg-indigo-600 px-4 py-2 font-semibold text-white"
+              onClick={() => setLoginOpen(!loginOpen)}
+            >
+              Als Lehrkraft Budget anzeigen
+            </button>
+          )}
+          {loginOpen && value.slug && (
+            <form onSubmit={login} class="mt-3 space-y-3">
+              <p>
+                Raum:{" "}
+                <strong>{value.slug}</strong>. Verwende das Passwort, das du
+                unter /my für diesen Raum festgelegt hast – nicht dein Passwort
+                beim KI-Anbieter.
+              </p>
+              <label class="block font-semibold">
+                Raum-Passwort<input
+                  name="teacherPassword"
+                  aria-label="Raum-Passwort für Budgetanzeige"
+                  type="password"
+                  autoComplete="current-password"
+                  required
+                  maxLength={256}
+                  disabled={signingIn}
+                  class="mt-1 block w-full rounded-xl border border-slate-300 p-3"
+                />
+              </label>
+              <button
+                type="submit"
+                disabled={signingIn}
+                class="rounded-xl bg-indigo-600 px-4 py-2 font-semibold text-white disabled:opacity-50"
+              >
+                {signingIn ? "Anmeldung läuft …" : "Anmelden und Budget laden"}
+              </button>
+              <p class="text-xs">
+                Die laufende Korrektur wird nicht neu gestartet. Das Passwort
+                wird nicht in der Sicherungsdatei gespeichert. An gemeinsam
+                genutzten Rechnern nachher unter /my abmelden.
+              </p>
+            </form>
+          )}
+          {loginError && (
+            <p role="status" class="mt-2 text-red-800">{loginError}</p>
+          )}
+          <p class="mt-3 text-xs">
+            Alternativ kannst du{" "}
+            <a
+              class="underline"
+              href="/my"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              /my in einem zweiten Tab
+            </a>{" "}
+            öffnen und dich dort für diesen Raum anmelden. Bei der Rückkehr wird
+            die Anzeige aktualisiert. Die Korrektur bleibt in diesem Tab.
+          </p>
+        </div>
       )}
-      <div class="mt-3 grid gap-3 sm:grid-cols-2">
-        <div class="min-w-0 rounded-xl border border-slate-200 bg-white p-3 text-sm">
-          <h3 class="font-semibold">
-            {privateRoom ? "Privater Raum" : "1. Raumbudget"}
-          </h3>
-          {privateRoom
-            ? (
-              <p class="mt-1 text-slate-600">
-                Hier gilt kein Klassenraum-Budget. Bezahlt wird direkt über
-                deinen hinterlegten Anbieter-Key; dessen Limits gelten
-                weiterhin.
-              </p>
-            )
-            : room && state
-            ? (
-              <>
-                <p class="mt-2 text-lg font-bold">
-                  {gradingMoney(state.remaining)} frei verfügbar
-                </p>
-                <p class="mt-1 text-xs text-slate-600">
-                  Gesamtgrenze {gradingMoney(room.budgetUsd)} · verbraucht{" "}
-                  {gradingMoney(room.spentUsd)}{" "}
-                  · für laufende Anfragen vorgemerkt{" "}
-                  {gradingMoney(room.reservedUsd)}.
-                </p>
-                <p class="mt-1 text-xs text-slate-600">
-                  Vorgemerkt bedeutet nicht bereits ausgegeben. Auch andere
-                  Personen im Raum nutzen dieses Budget.
-                </p>
-                {!room.active && (
-                  <p class="mt-2 font-semibold text-red-800">
-                    {room.disabled || room.expiresAt <= Date.now()
-                      ? "Raum geschlossen oder Freigabe abgelaufen. Bitte unter /my wieder freigeben."
-                      : "Für den nächsten Schritt ist derzeit kein Budget frei."}
-                  </p>
-                )}
-                {state.low && (
-                  <p class="mt-2 font-semibold text-amber-900">
-                    {state.exhausted
-                      ? "Raumbudget aufgebraucht. Zwischenstand sichern und unter /my die Kostengrenze prüfen."
-                      : state.waiting
-                      ? "Wenig frei: Laufende Anfragen reservieren Budget. Bud-E wartet gegebenenfalls automatisch."
-                      : "Nur wenig Raumbudget übrig. Sichere den Zwischenstand; der nächste Schritt könnte pausieren."}
-                  </p>
-                )}
-              </>
-            )
-            : (
-              <p class="mt-2 text-slate-600">
-                {loading
-                  ? "Raumbudget wird geprüft …"
-                  : "Raumbudget nicht abrufbar – nicht mit 0 oder unbegrenzt gleichsetzen."}
-              </p>
-            )}
-        </div>
-        <div class="min-w-0 rounded-xl border border-slate-200 bg-white p-3 text-sm">
-          <h3 class="font-semibold">
+      {!value?.permission && (
+        <div class="mt-3 grid gap-3 sm:grid-cols-2">
+          <div class="min-w-0 rounded-xl border border-slate-200 bg-white p-3 text-sm">
+            <h3 class="font-semibold">
+              {privateRoom ? "Privater Raum" : "1. Raumbudget"}
+            </h3>
             {privateRoom
-              ? "Anbieterguthaben und Key-Limit"
-              : "2. Anbieterguthaben und Key-Limit"}
-          </h3>
-          {balance
-            ? (
-              <>
-                <p class="mt-2">
-                  Kontoguthaben:{" "}
-                  <strong>
-                    {balance.accountAvailable &&
-                        typeof balance.remainingCredits === "number"
-                      ? gradingMoney(balance.remainingCredits)
-                      : "nicht abrufbar"}
-                  </strong>
+              ? (
+                <p class="mt-1 text-slate-600">
+                  Hier gilt kein Klassenraum-Budget. Bezahlt wird direkt über
+                  deinen hinterlegten Anbieter-Key; dessen Limits gelten
+                  weiterhin.
                 </p>
-                {!balance.accountAvailable && (
+              )
+              : room && state
+              ? (
+                <>
+                  <p class="mt-2 text-lg font-bold">
+                    {gradingMoney(state.remaining)} frei verfügbar
+                  </p>
                   <p class="mt-1 text-xs text-slate-600">
-                    {balance.requiresManagementKey
-                      ? "Der hinterlegte Chat-Key darf das echte OpenRouter-Kontoguthaben nicht lesen. Prüfe es im Anbieterkonto. Ein Management-Key kann unter /my separat zur Abfrage verwendet werden; er wird hier nicht benötigt."
-                      : "Der Anbieter hat keinen verlässlichen Kontostand geliefert. Bitte direkt im Anbieterkonto prüfen."}
+                    Gesamtgrenze {gradingMoney(room.budgetUsd)} · verbraucht
+                    {" "}
+                    {gradingMoney(room.spentUsd)}{" "}
+                    · für laufende Anfragen vorgemerkt{" "}
+                    {gradingMoney(room.reservedUsd)}.
                   </p>
-                )}
-                <p class="mt-2">
-                  Key-Restlimit:{" "}
-                  <strong>
-                    {balance.keyLimitRemaining !== null
-                      ? gradingMoney(balance.keyLimitRemaining)
-                      : balance.keyLimitState === "unlimited"
-                      ? "kein eigenes Key-Limit"
-                      : "unbekannt"}
-                  </strong>
-                </p>
-                <p class="mt-1 text-xs text-slate-600">
-                  Das Key-Limit ist nur eine zusätzliche Ausgabengrenze, kein
-                  Guthaben. Auch ohne Key-Limit braucht das Konto bei
-                  Bezahlmodellen Guthaben.
-                </p>
-                {(balance.accountAvailable &&
-                    typeof balance.remainingCredits === "number" &&
-                    balance.remainingCredits <= 0 ||
-                  balance.keyLimitRemaining !== null &&
-                    balance.keyLimitRemaining <= 0) && (
-                  <p class="mt-2 font-semibold text-red-800">
-                    Anbieterguthaben oder Key-Limit ist aufgebraucht. Beim
-                    Anbieter prüfen – ein höheres Raumbudget allein hilft nicht.
+                  <p class="mt-1 text-xs text-slate-600">
+                    Vorgemerkt bedeutet nicht bereits ausgegeben. Auch andere
+                    Personen im Raum nutzen dieses Budget.
                   </p>
-                )}
-                {providerLow && (
-                  <p class="mt-2 font-semibold text-amber-900">
-                    Wenig Guthaben oder Key-Spielraum übrig. Sichere den
-                    Zwischenstand und prüfe beim Anbieter, ob der Rest für
-                    weitere Anfragen reicht.
-                  </p>
-                )}
-                <p class="mt-2 text-xs text-slate-500">
-                  Anbieterstand:{" "}
-                  {new Date(balance.checkedAt).toLocaleTimeString("de-DE")}.
-                  Keine Echtzeit-Garantie.
+                  {!room.active && (
+                    <p class="mt-2 font-semibold text-red-800">
+                      {room.disabled || room.expiresAt <= Date.now()
+                        ? "Raum geschlossen oder Freigabe abgelaufen. Bitte unter /my wieder freigeben."
+                        : "Für den nächsten Schritt ist derzeit kein Budget frei."}
+                    </p>
+                  )}
+                  {state.low && (
+                    <p class="mt-2 font-semibold text-amber-900">
+                      {state.exhausted
+                        ? "Raumbudget aufgebraucht. Zwischenstand sichern und unter /my die Kostengrenze prüfen."
+                        : state.waiting
+                        ? "Wenig frei: Laufende Anfragen reservieren Budget. Bud-E wartet gegebenenfalls automatisch."
+                        : "Nur wenig Raumbudget übrig. Sichere den Zwischenstand; der nächste Schritt könnte pausieren."}
+                    </p>
+                  )}
+                </>
+              )
+              : (
+                <p class="mt-2 text-slate-600">
+                  {loading
+                    ? "Raumbudget wird geprüft …"
+                    : "Raumbudget konnte nicht geladen werden. Bitte „Budget aktualisieren“ anklicken; deine Korrektur bleibt erhalten."}
                 </p>
-              </>
-            )
-            : (
-              <p class="mt-2 text-slate-600">
-                {loading
-                  ? "Anbieterstand wird geprüft …"
-                  : value?.provider && value.provider !== "openrouter"
-                  ? "Für diesen Anbieter ist hier keine verlässliche Guthabenabfrage verfügbar. Prüfe Guthaben, Abrechnung und Kontingente direkt im Anbieterkonto."
-                  : "Anbieterguthaben nicht abrufbar. Bitte direkt im Anbieterkonto prüfen; unbekannt bedeutet nicht kostenlos oder unbegrenzt."}
-              </p>
-            )}
+              )}
+          </div>
+          <div class="min-w-0 rounded-xl border border-slate-200 bg-white p-3 text-sm">
+            <h3 class="font-semibold">
+              {privateRoom
+                ? "Anbieterguthaben und Key-Limit"
+                : "2. Anbieterguthaben und Key-Limit"}
+            </h3>
+            {balance
+              ? (
+                <>
+                  <p class="mt-2">
+                    Kontoguthaben:{" "}
+                    <strong>
+                      {balance.accountAvailable &&
+                          typeof balance.remainingCredits === "number"
+                        ? gradingMoney(balance.remainingCredits)
+                        : "nicht abrufbar"}
+                    </strong>
+                  </p>
+                  {!balance.accountAvailable && (
+                    <p class="mt-1 text-xs text-slate-600">
+                      {balance.requiresManagementKey
+                        ? "Der hinterlegte Chat-Key darf das echte OpenRouter-Kontoguthaben nicht lesen. Prüfe es im Anbieterkonto. Ein Management-Key kann unter /my separat zur Abfrage verwendet werden; er wird hier nicht benötigt."
+                        : "Der Anbieter hat keinen verlässlichen Kontostand geliefert. Bitte direkt im Anbieterkonto prüfen."}
+                    </p>
+                  )}
+                  <p class="mt-2">
+                    Key-Restlimit:{" "}
+                    <strong>
+                      {balance.keyLimitRemaining !== null
+                        ? gradingMoney(balance.keyLimitRemaining)
+                        : balance.keyLimitState === "unlimited"
+                        ? "kein eigenes Key-Limit"
+                        : "unbekannt"}
+                    </strong>
+                  </p>
+                  <p class="mt-1 text-xs text-slate-600">
+                    Das Key-Limit ist nur eine zusätzliche Ausgabengrenze, kein
+                    Guthaben. Auch ohne Key-Limit braucht das Konto bei
+                    Bezahlmodellen Guthaben.
+                  </p>
+                  {(balance.accountAvailable &&
+                      typeof balance.remainingCredits === "number" &&
+                      balance.remainingCredits <= 0 ||
+                    balance.keyLimitRemaining !== null &&
+                      balance.keyLimitRemaining <= 0) && (
+                    <p class="mt-2 font-semibold text-red-800">
+                      Anbieterguthaben oder Key-Limit ist aufgebraucht. Beim
+                      Anbieter prüfen – ein höheres Raumbudget allein hilft
+                      nicht.
+                    </p>
+                  )}
+                  {providerLow && (
+                    <p class="mt-2 font-semibold text-amber-900">
+                      Wenig Guthaben oder Key-Spielraum übrig. Sichere den
+                      Zwischenstand und prüfe beim Anbieter, ob der Rest für
+                      weitere Anfragen reicht.
+                    </p>
+                  )}
+                  <p class="mt-2 text-xs text-slate-500">
+                    Anbieterstand:{" "}
+                    {new Date(balance.checkedAt).toLocaleTimeString("de-DE")}.
+                    Keine Echtzeit-Garantie.
+                  </p>
+                </>
+              )
+              : (
+                <p class="mt-2 text-slate-600">
+                  {loading || providerLoading
+                    ? "Anbieterstand wird geprüft …"
+                    : value?.provider && value.provider !== "openrouter"
+                    ? "Für diesen Anbieter ist hier keine verlässliche Guthabenabfrage verfügbar. Prüfe Guthaben, Abrechnung und Kontingente direkt im Anbieterkonto."
+                    : "Anbieterguthaben konnte nicht geladen werden. Bitte „Budget aktualisieren“ anklicken oder direkt im Anbieterkonto prüfen. Der tatsächliche Betrag ist unbekannt."}
+                </p>
+              )}
+          </div>
         </div>
-      </div>
+      )}
       <div class="mt-3 flex flex-wrap items-center gap-3 text-xs">
         <button
           type="button"
-          disabled={loading || !load}
+          disabled={loading || providerLoading || !load}
           onClick={() => void refresh(true)}
           class="rounded-xl border border-slate-300 bg-white px-3 py-2 font-semibold disabled:opacity-50"
         >
-          {loading ? "Budget wird geprüft …" : "Budget aktualisieren"}
+          {loading || providerLoading
+            ? "Budget wird geprüft …"
+            : "Budget aktualisieren"}
         </button>
         {!privateRoom && (
           <a

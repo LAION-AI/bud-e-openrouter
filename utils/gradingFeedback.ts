@@ -3,6 +3,8 @@ import type { OpenRouterBalance } from "./openrouterBalance.ts";
 export type GradingBudgetSnapshot = {
   scope: "classroom" | "personal";
   permission?: "teacher-login-required";
+  slug?: string;
+  authReason?: "missing" | "different-room";
   provider?: string;
   checkedAt: number;
   room?: {
@@ -159,9 +161,32 @@ export async function classroomGradingBudget(
     return {
       scope: "classroom",
       permission: "teacher-login-required",
+      slug,
+      authReason: response.status === 403 ? "different-room" : "missing",
       checkedAt: Date.now(),
     };
   }
   if (!response.ok) throw new Error("Budgetstand gerade nicht abrufbar.");
   return await response.json();
+}
+
+/** Same existing login, cookie protection and lockout as /my. No new session
+ * mechanism and no password storage in chat/checkpoints/localStorage. */
+export async function signInGradingTeacher(
+  slug: string,
+  password: string,
+): Promise<void> {
+  const response = await fetch("/api/classroom", {
+    method: "POST",
+    credentials: "same-origin",
+    headers: { "Content-Type": "application/json" },
+    signal: AbortSignal.timeout(12000),
+    body: JSON.stringify({ action: "login", slug, password }),
+  });
+  const data = await response.json();
+  if (!response.ok) {
+    throw new Error(
+      data.error || "Anmeldung nicht möglich. Bitte erneut versuchen.",
+    );
+  }
 }

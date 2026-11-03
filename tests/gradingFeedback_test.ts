@@ -1,8 +1,10 @@
 import { assert, assertEquals } from "$std/assert/mod.ts";
 import {
+  classroomGradingBudget,
   gradingErrorHelp,
   gradingFailureCode,
   roomBudgetState,
+  signInGradingTeacher,
 } from "../utils/gradingFeedback.ts";
 import {
   createClassroom,
@@ -15,6 +17,41 @@ import { handler } from "../routes/api/classroom.ts";
 import { classroomGradingCall } from "../utils/gradingBatch.ts";
 import { recoverGrading } from "../utils/gradingRecovery.ts";
 import { assertRejects } from "$std/assert/mod.ts";
+
+Deno.test("budget loader explains missing vs wrong-room login and uses the protected existing login without returning passwords", async () => {
+  const original = globalThis.fetch;
+  try {
+    for (const status of [401, 403]) {
+      globalThis.fetch = () =>
+        Promise.resolve(Response.json({ error: "Anmelden" }, { status }));
+      const result = await classroomGradingBudget(
+        "testklasse",
+        false,
+        new AbortController().signal,
+      );
+      assertEquals(result.slug, "testklasse");
+      assertEquals(
+        result.authReason,
+        status === 401 ? "missing" : "different-room",
+      );
+      assertEquals(result.room, undefined);
+    }
+    globalThis.fetch = (_url, init) => {
+      const body = JSON.parse(String(init?.body));
+      assertEquals(body.action, "login");
+      assertEquals(body.slug, "testklasse");
+      assertEquals(body.password, "OnlyTest!Password2026");
+      assertEquals(init?.credentials, "same-origin");
+      return Promise.resolve(Response.json({ ok: true }));
+    };
+    assertEquals(
+      await signInGradingTeacher("testklasse", "OnlyTest!Password2026"),
+      undefined,
+    );
+  } finally {
+    globalThis.fetch = original;
+  }
+});
 
 Deno.test("exhausted provider credit and local budgets pause immediately even when wrapped in HTTP 502", async () => {
   const original = globalThis.fetch;
