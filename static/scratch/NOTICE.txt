@@ -1,0 +1,15 @@
+Block-Editor auf Basis von Scratch
+
+Original: Scratch Foundation, @scratch/scratch-gui 15.2.0
+Offizieller Standalone-Build; zwei statische webpack-Pfade nach /scratch/vendor/ verlegt (siehe fetch-scratch.ts). Lizenz: AGPL-3.0-only (siehe LICENSE.txt).
+Scratch und seine Figuren sind Marken der Scratch Foundation. Keine Empfehlung oder Partnerschaft durch die Scratch Foundation.
+
+Upstream-Quellcode einschließlich Build-Konfiguration und Abhängigkeiten:
+https://github.com/scratchfoundation/scratch-editor/tree/970132883d63286762783448d4d487dcefedabf8
+https://github.com/scratchfoundation/scratch-editor/archive/970132883d63286762783448d4d487dcefedabf8.tar.gz
+
+Quellcode dieser Einbettung und Bauanleitung: /scratch/integration-source.tar.gz
+Browser-Brücke: /scratch/bootstrap.js
+
+Die Standardbibliothek wird unverändert von assets.scratch.mit.edu bezogen und lokal bereitgestellt. Alle Rechte und Hinweise der Originaldateien gelten weiter.
+Keine Scratch-Anmeldung, kein Cloud-Speichern und kein Projekt-Upload. Projektdateien bleiben im Browser. Nur nach Freigabe wird ein begrenzter Code-Ausschnitt an den konfigurierten KI-Anbieter geschickt.

@@ -1,0 +1,264 @@
+{
+  "key": "induktion-und-generator",
+  "title": {
+    "de": "Wie Bewegung dein Fahrradlicht versorgt",
+    "en": "How motion powers your bicycle light"
+  },
+  "summary": {
+    "de": "Von der veränderten magnetischen Wirkung zur Spannung: Generator und Transformator ohne Steckdosenversuche.",
+    "en": "From changing magnetic effects to voltage: generators and transformers without mains experiments."
+  },
+  "icon": "⚙️",
+  "accent": "amber",
+  "minutes": 22,
+  "screens": [
+    {
+      "key": "aenderung",
+      "title": {
+        "de": "Ein Magnet allein macht noch keinen Dauerstrom",
+        "en": "A magnet alone does not make a continuous current"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "In der Simulation bewegt sich ein Magnet auf eine Spule zu. Ein Messgerät zeigt eine Spannung. Bleibt der Magnet ruhig liegen, verschwindet die Anzeige wieder, obwohl weiterhin ein Magnetfeld vorhanden ist. Entfernst du ihn, kehrt sich das Vorzeichen um. Entscheidend ist nicht einfach „Magnet in der Nähe“, sondern eine Änderung der magnetischen Wirkung durch die Spulenfläche.",
+            "en": "In a simulation, a magnet moves towards a coil and a meter shows a voltage. When the magnet stops, the reading disappears even though the magnetic field remains. Moving it away reverses the sign. What matters is not simply “a magnet nearby”, but a change in the magnetic effect passing through the area of the coil."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Dieses Phänomen heißt elektromagnetische Induktion. Eine Spannung kann auch entstehen, wenn die Spule bewegt oder ein benachbartes Magnetfeld durch wechselnden Strom verändert wird. Für einen Strom braucht es zusätzlich einen geschlossenen leitenden Weg. Spannung und Strom bleiben also verschiedene Größen. Die Richtung der Spannung hängt von Bewegungsrichtung, Polung und Wicklungsrichtung ab. Eine ruhende Spule neben einem unveränderten Magneten ist keine Energiequelle. Wir untersuchen solche Vergleiche in einer Simulation. Eigenmächtige Versuche mit Steckdosen, ausgebauten Netzteilen oder selbst gewickelten Hochspannungsspulen gehören ausdrücklich nicht dazu. Das Grundprinzip braucht keine gefährliche Spannung, um sichtbar zu werden.",
+            "en": "This phenomenon is electromagnetic induction. Voltage can also appear when the coil moves, or when changing current alters a neighbouring magnetic field. Current additionally requires a closed conducting path, so voltage and current remain different quantities. Voltage direction depends on motion direction, magnet polarity and winding direction. A stationary coil beside an unchanged magnet is not an energy source. We investigate these comparisons in a simulation. Experiments with sockets, removed power supplies or homemade high-voltage coils are expressly excluded. The basic principle does not require dangerous voltage to become understandable."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Welche Beobachtung trennt die Behauptung „ein Magnet erzeugt immer Spannung“ vom tatsächlichen Induktionsprinzip? Die Messkurve kann beim Hineinbewegen einen Ausschlag und beim Herausbewegen einen entgegengesetzten Ausschlag zeigen. Dazwischen ist bei ruhendem Magneten eine Nullanzeige möglich. Verbinde diese drei Abschnitte mit drei Zeichnungen desselben Aufbaus. So erklärst du nicht nur, dass sich eine Anzeige ändert, sondern welche Änderung des magnetischen Einflusses jeweils dazu gehört. Der Magnet verschwindet bei der Nullanzeige keineswegs.",
+            "en": "Which observation distinguishes “a magnet always produces voltage” from the actual principle of induction? The meter can show one deflection while moving in and the opposite while moving out, with zero between when the magnet rests. Link these intervals to three drawings of the same setup. This explains which change in magnetic influence accompanies each reading. The magnet has not disappeared simply because the meter returns to zero."
+          }
+        }
+      ]
+    },
+    {
+      "key": "vergleich",
+      "title": {
+        "de": "Es kommt auf die Änderung an",
+        "en": "The rate of change matters"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Bewegst du denselben Magneten bei sonst gleichem Aufbau schneller durch eine Spule, wird die angezeigte Spannung typischerweise größer. Mehr Windungen können ebenfalls die Spannung erhöhen, weil sich die Beiträge der Windungen addieren. Entscheidend ist jeweils ein fairer Vergleich: Form, Ausrichtung und Magnetstärke dürfen nicht unbemerkt mitgeändert werden.",
+            "en": "Moving the same magnet through the same coil faster typically produces a larger voltage reading. More turns can also increase voltage because the contributions from different turns add together. Each claim needs a fair comparison: shape, alignment and magnet strength must not change unnoticed."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Ein Bild mit dichter gezeichneten Feldlinien allein reicht nicht zur Vorhersage. Du musst betrachten, wie sich die magnetische Wirkung durch die Spulenfläche zeitlich verändert. Selbst eine Drehung kann das verändern, obwohl die Feldstärke am Ort ähnlich bleibt. Die vertiefte mathematische Feldbeschreibung ist Übergangsstoff; hier genügt die qualitative Idee. In der Simulation kannst du langsam hinein, schnell hinein und ruhig innen vergleichen. Schreibe nicht nur „mehr Strom“, wenn das Messgerät Spannung anzeigt. Beobachtete Größe, Einheit und Erklärung gehören auseinandergehalten. So erkennst du den besonderen Gedanken: Nicht allein ein Zustand, sondern seine Änderung führt zu einer neuen Wirkung.",
+            "en": "A picture with more closely spaced field lines alone cannot predict the result. You must consider how the magnetic effect through the coil's area changes with time. Even rotation can change that effect while the local field strength remains similar. A more advanced mathematical field description belongs to transition study; the qualitative idea is enough here. In a simulation, compare moving in slowly, moving in quickly and remaining still inside. Do not write “more current” when the meter actually measures voltage. Keep the observed quantity, its unit and its explanation distinct. This reveals the special idea: a change, not merely a state, produces the new effect."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Wie sähe eine faire Simulation aus, die nur den Einfluss der Bewegungsgeschwindigkeit auf die Induktionsspannung prüft? Wenn ein stärkerer Magnet schneller bewegt wird, lässt sich eine größere Spannung nicht eindeutig der Geschwindigkeit zuordnen. Beide Einflussgrößen wurden verändert. Halte im virtuellen Vergleich Magnet, Ausrichtung und Spule fest und ändere nur die Bewegung. Ein zusätzlicher ruhender Zustand ist eine besonders hilfreiche Kontrolle, weil er das Vorhandensein des Feldes von seiner zeitlichen Änderung unterscheidet.",
+            "en": "What would a fair simulation look like if it tested only how movement speed affects induced voltage? If a stronger magnet is also moved faster, a larger voltage cannot be attributed uniquely to speed. Two factors changed. Keep magnet, alignment and coil fixed in the virtual comparison and vary only the motion. A stationary case is a particularly useful control because it distinguishes the presence of a field from change over time."
+          }
+        }
+      ]
+    },
+    {
+      "key": "generator",
+      "title": {
+        "de": "Woher kommt die elektrische Energie?",
+        "en": "Where does the electrical energy come from?"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Ein Generator verändert die magnetische Wirkung durch eine Spule fortlaufend, etwa durch eine Drehbewegung. Dadurch entsteht eine wechselnde Spannung. Im Fahrraddynamo stammt die dafür nötige mechanische Energie letztlich aus deiner Bewegung. Im Windkraftwerk liefert der Wind einen Teil seiner Bewegungsenergie. Ein Generator erzeugt keine Energie aus dem Nichts, sondern wandelt Energie um.",
+            "en": "A generator repeatedly changes the magnetic effect through a coil, often by rotation. This produces an alternating voltage. In a bicycle dynamo, the necessary mechanical energy ultimately comes from your motion. In a wind turbine, wind supplies part of its kinetic energy. A generator does not create energy from nothing; it converts energy."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Wenn der Generator Strom an eine Lampe liefert, wirkt eine bremsende Gegenwirkung. Du musst mechanisch nachliefern. Diese Richtung fasst die Lenzsche Regel zusammen: Die induzierte Wirkung ist so gerichtet, dass sie der verursachenden Änderung entgegenwirkt. Sonst könnte sich die Änderung selbst verstärken und Energie ohne Zufuhr entstehen. Reibung und Erwärmung sorgen zusätzlich dafür, dass nicht die gesamte zugeführte Energie als gewünschte elektrische Energie ankommt. Ein Modell mit 100 J mechanischer Zufuhr und 80 J nutzbarer elektrischer Abgabe hat 80 % Wirkungsgrad. Die übrigen 20 J fehlen nicht, sondern gelangen überwiegend in die innere Energie der Umgebung.",
+            "en": "When a generator supplies current to a lamp, a resisting effect occurs, so mechanical energy must be supplied. Lenz's law summarises the direction: the induced effect opposes the change that caused it. Otherwise the change could reinforce itself and produce energy without input. Friction and heating additionally prevent all input energy from emerging as the desired electrical energy. A model receiving 100 J mechanically and delivering 80 J of useful electrical energy has 80% efficiency. The remaining 20 J have not disappeared; they mostly increase the internal energy of the surroundings."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Ein Generator erhält 100 J und gibt 80 J elektrisch ab. Welche Energieangabe fehlt in einer vollständigen Bilanz? Die Bremswirkung unter Last liefert ein wichtiges Gegenargument gegen einen angeblichen Selbstläufer aus Magnet und Spule. Wenn elektrische Energie abgegeben wird, muss eine andere Quelle sie bereitstellen. Im Windrad ist das nicht die bloße Anwesenheit des Magneten, sondern der bewegte Wind. Zeichne deshalb die Eingangsenergie genauso deutlich wie die gewünschte elektrische Ausgangsenergie und die Verluste.",
+            "en": "A generator receives 100 J and delivers 80 J electrically. Which energy entry is missing from a complete account? Resistance to motion under load challenges claims of a magnet-and-coil device powering itself. Electrical output requires energy from another source. In a wind turbine, that source is moving wind, not simply the magnet's presence. Draw input energy as clearly as electrical output and losses; otherwise the most important part of the account is missing."
+          }
+        }
+      ]
+    },
+    {
+      "key": "transformator",
+      "title": {
+        "de": "Zwei Spulen können Energie übertragen",
+        "en": "Two coils can transfer energy"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Ein Transformator besitzt im einfachen Modell zwei Spulen an einem gemeinsamen Eisenkern. Ein veränderlicher Strom in der ersten Spule erzeugt eine veränderliche magnetische Wirkung. Dadurch wird in der zweiten Spule eine Spannung induziert. Zwischen den beiden Wicklungen muss dabei keine direkte leitende Verbindung bestehen. Genau deshalb kann ein geeignet konstruiertes Gerät elektrisch trennen.",
+            "en": "A simple transformer has two coils sharing an iron core. Changing current in the first coil produces a changing magnetic effect, which induces a voltage in the second coil. The windings need not have a direct conducting connection. A properly designed device can therefore provide electrical isolation."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Für den idealen unbelasteten Vergleich entspricht das Spannungsverhältnis ungefähr dem Windungsverhältnis: doppelt so viele Windungen können die doppelte Spannung ergeben. Dieser quantitative Zusatz ist eine Modellvertiefung; die gemeinsame Grundlage ist die Induktion durch Änderung. Ein idealer Transformator vermehrt keine Leistung. Höhere Spannung bedeutet bei gleicher übertragener Leistung entsprechend geringere Stromstärke. Mit gleichbleibender Gleichspannung funktioniert die fortlaufende Übertragung im einfachen Modell nicht: Nach dem Einschalten verändert sich das Feld nicht mehr. Reale Netzteile können elektronisch erzeugte Wechselvorgänge nutzen. Du sollst solche Geräte weder öffnen noch selbst nachbauen. Wir bleiben bei Schaubildern und sicheren Simulationen.",
+            "en": "In an ideal unloaded comparison, the voltage ratio approximately matches the turns ratio: twice as many turns can give twice the voltage. This numerical relationship is an extension of the model; the common foundation is induction through change. An ideal transformer does not multiply power. Higher voltage means lower current for the same transferred power. A steady direct voltage cannot sustain the transfer in this simple model, because after switching on, the field no longer changes. Real power supplies can use electronically generated switching processes. You should neither open such appliances nor build your own. We stay with diagrams and safe simulations."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Warum liefert eine unveränderte Gleichspannung im einfachen Transformator keine dauerhafte Induktionswirkung in der zweiten Spule? Eine veränderte Windungszahl kann im idealen Modell Spannung verändern, ohne eine zusätzliche Energiequelle einzubauen. Die gleichzeitige Stromänderung hält die Leistungsbilanz zusammen. Eine Werbezeichnung, die nur die höhere Ausgangsspannung zeigt, erzählt deshalb nicht die ganze Geschichte. Ergänze für beide Seiten Spannung, Stromrichtung als zeitlich veränderliches Signal und die gemeinsame Energieübertragung. Die Zeichnung bleibt ein Modell, keine Bauanleitung.",
+            "en": "Why does an unchanged direct voltage not produce a sustained induced effect in the second coil of a simple transformer? Changing turns can alter voltage in the ideal model without adding an energy source. The corresponding current change keeps the power account consistent. An advertisement showing only higher output voltage therefore omits part of the story. Include both sides and the shared energy transfer in the diagram. It remains a model, not construction instructions."
+          }
+        }
+      ]
+    },
+    {
+      "key": "netz",
+      "title": {
+        "de": "Warum das Stromnetz hohe Spannungen verwendet",
+        "en": "Why power grids use high voltages"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Für elektrische Leistung gilt P = U · I. Bei gleicher übertragener Leistung ermöglicht eine höhere Spannung eine kleinere Stromstärke. Die Erwärmung einer Leitung wächst für festen Leitungswiderstand mit I² · R. Wird die Stromstärke halbiert, sinkt diese Wärmeleistung auf ein Viertel. Deshalb können Transformatoren den Transport über weite Strecken effizienter machen.",
+            "en": "Electrical power is P = U · I. For the same transmitted power, a higher voltage permits a lower current. With fixed wire resistance, heating power grows as I² · R. Halving the current reduces this heating power to one quarter. Transformers can therefore make long-distance transmission more efficient."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Das bedeutet nicht, hohe Spannung sei sicher. Genau das Gegenteil verlangt aufwendige Isolation, Abstände und ausgebildetes Fachpersonal. Die technischen Vorteile rechtfertigen keine Experimente mit Netzspannung. Auch kabelloses Laden nutzt veränderliche magnetische Felder, aber die genaue Regelung und Verlustleistung hängen vom Gerät ab. Du kannst für eine gedachte Ladestation eine Energiekette zeichnen: elektrische Zufuhr, magnetische Übertragung, elektrische Energie im Empfänger und Erwärmung. Beurteile dann Komfort und Energieverluste getrennt. Eine innovative Idee muss nicht „verlustfrei“ versprechen. Sie kann ehrlich zeigen, welches Problem sie löst und welche neue Belastung sie dafür in Kauf nimmt.",
+            "en": "This does not mean high voltage is safe. It requires extensive insulation, separation distances and trained professionals. Its technical advantages do not justify mains-voltage experiments. Wireless charging also uses changing magnetic fields, although its exact control and losses depend on the device. For an imagined charging station, draw an energy chain: electrical input, magnetic transfer, electrical energy in the receiver and heating. Then assess convenience and energy losses separately. An innovative idea does not have to promise “zero losses”. It can honestly state which problem it solves and which new cost or burden it accepts in return."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Wie würdest du eine Ladestation bewerten, die bequemer ist, aber mehr unerwünschte Erwärmung verursacht? Bei gleichem Leitungswiderstand folgt aus halber Stromstärke nur ein Viertel der Erwärmungsleistung. Diese Aussage verlangt aber gerade den unveränderten Widerstand und dieselbe verglichene Übertragungsaufgabe. Sie begründet die technische Wahl hoher Transportspannung, nicht deren ungefährliche Nutzung. Für deine Ladestationsidee kannst du denselben Denkweg verwenden: gewünschte Energie beim Empfänger und unerwünschte Erwärmung werden getrennt verglichen.",
+            "en": "How would you assess a charging station that is more convenient but causes more unwanted heating? At fixed wire resistance, half the current means one quarter of heating power. That claim requires unchanged resistance and a comparable transmission task. It explains high-voltage transmission, not safe personal use. Apply the same reasoning to your charging-station idea: compare useful energy at the receiver separately from unwanted heating rather than treating convenience as proof of efficiency."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "Hamburg: Physik Gymnasium (2024)",
+                "en": "Hamburg: Gymnasium physics (2024)"
+              },
+              "url": "https://www.hamburg.de/resource/blob/798534/4cf0047ad61effacd1ff7e6ad819fa41/physik-data.pdf"
+            },
+            {
+              "label": {
+                "de": "Hamburg: Physik Stadtteilschule (2024)",
+                "en": "Hamburg: Stadtteilschule physics (2024)"
+              },
+              "url": "https://www.hamburg.de/resource/blob/798426/ba414a0ace36d17b7813a855db625c42/physik-data.pdf"
+            },
+            {
+              "label": {
+                "de": "PhET: sichere interaktive Simulation",
+                "en": "PhET: safe interactive simulation"
+              },
+              "url": "https://phet.colorado.edu/de/simulations/faradays-law"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": {
+        "de": "1. Lückentext",
+        "en": "1. Fill in the blanks"
+      },
+      "intro": {
+        "de": "Ergänze die fehlenden Fachwörter. Alle Begriffe findest du im Pfad.",
+        "en": "Complete the missing technical words. Every term appears in this path."
+      },
+      "text": {
+        "de": "Eine Änderung der magnetischen Wirkung erzeugt eine ___. Das Phänomen heißt ___. Für einen Strom braucht es zusätzlich einen geschlossenen ___. Ein Generator wandelt mechanische in elektrische ___ um. Der Energiezufuhr wirkt eine magnetische ___ entgegen. Zwei Spulen am gemeinsamen Kern bilden einen ___. Die induzierte Spannung hängt im Modell von der Zahl der ___ ab. Gleiche Leistung bei höherer Spannung bedeutet kleinere ___. In einer Leitung entsteht unerwünschte ___.",
+        "en": "A changing magnetic effect produces a ___. The phenomenon is called ___. Current additionally requires a closed ___. A generator converts mechanical into electrical ___. A magnetic ___ opposes the input motion. Two coils on a shared core form a ___. In the model, induced voltage depends on the number of ___. Equal power at higher voltage means lower ___. A wire produces unwanted ___."
+      }
+    },
+    {
+      "kind": "compare",
+      "title": {
+        "de": "2. Erklären und vergleichen (AB II)",
+        "en": "2. Explain and compare (level II)"
+      },
+      "intro": {
+        "de": "Antworte mit drei bis vier kurzen Sätzen. Nutze das Gelesene und begründe deinen Vergleich.",
+        "en": "Answer in three or four short sentences. Use what you have read and explain your comparison."
+      },
+      "text": {
+        "de": "Vergleiche einen ruhenden Magneten in einer Spule mit einem bewegten Magneten. Erkläre die jeweilige Spannungsanzeige. Übertrage dieselbe Idee auf die Frage, warum ein einfacher Transformator eine zeitliche Änderung braucht.",
+        "en": "Compare a magnet resting inside a coil with one moving through it. Explain the voltage reading in each case. Apply the same idea to explain why a simple transformer needs change over time."
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": {
+        "de": "3. Deine Idee im Alltag (AB III)",
+        "en": "3. Your idea for everyday life (level III)"
+      },
+      "intro": {
+        "de": "Entwickle eine eigene Idee in drei bis vier kurzen Sätzen. Begründe sie mit Physik; mehrere Lösungen sind möglich.",
+        "en": "Develop your own idea in three or four short sentences. Support it with physics; several answers are possible."
+      },
+      "text": {
+        "de": "Entwirf auf Papier eine mobile Energieversorgung, etwa für ein Fahrradlicht oder eine Wetterstation. Zeige Energiequelle, Generator oder Solarzelle, Speicher und Verluste. Begründe eine Entscheidung für deinen Alltag.",
+        "en": "On paper, design a mobile energy supply, perhaps for a bicycle light or weather station. Show its energy source, generator or solar cell, storage and losses. Justify one everyday design choice."
+      }
+    }
+  ]
+}

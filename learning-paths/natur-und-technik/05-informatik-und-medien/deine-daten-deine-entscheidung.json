@@ -1,0 +1,197 @@
+{
+  "key": "nwt-deine-daten-deine-entscheidung",
+  "title": {
+    "de": "Muss das Internet alles über dich wissen?",
+    "en": "Does the internet need to know everything about you?"
+  },
+  "summary": {
+    "de": "Persönliche Daten schützen, Nachrichten prüfen und respektvoll miteinander umgehen.",
+    "en": "Protect personal information, check messages and treat others respectfully."
+  },
+  "icon": "💻",
+  "accent": "indigo",
+  "minutes": 12,
+  "screens": [
+    {
+      "key": "entdecken-1",
+      "title": {
+        "de": "Ein Profil ist nicht dein ganzes Leben",
+        "en": "A profile is not your whole life"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Für ein Spiel wird ein Name verlangt. Muss das dein echter Name sein? Personenbezogene Daten sind Angaben, die zu dir oder einer anderen Person gehören, zum Beispiel Name, Adresse, Foto oder Standort.",
+            "en": "A game asks for a name. Must it be your real one? Personal information includes details linked to you or someone else, such as a name, address, photo or location."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Ein Pseudonym ist ein erfundener Anzeigename. Es kann helfen, weniger preiszugeben, macht dich aber nicht automatisch unerkennbar. Prüfe, welche Angaben wirklich nötig sind. Teile keine privaten Daten in öffentlichen Chats oder mit einer KI. Frage vor Fotos anderer Menschen nach Erlaubnis. Was einmal geteilt wurde, kann weiterkopiert werden.",
+            "en": "A pseudonym is a made-up display name. It can help you share less, but does not automatically make you unidentifiable. Check which details are really needed. Do not share private information in public chats or with AI. Ask permission before sharing other people's photos. Shared material can be copied onwards."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "💡",
+          "title": {
+            "de": "Dein Auftrag",
+            "en": "Your task"
+          },
+          "text": {
+            "de": "Erfinde ein Profil für eine Fantasiefigur. Welche zwei Angaben wären unnötig privat? Benutze keine echten Daten.",
+            "en": "Invent a profile for an imaginary character. Which two details would be unnecessarily private? Do not use real information."
+          }
+        }
+      ]
+    },
+    {
+      "key": "entdecken-2",
+      "title": {
+        "de": "Der Schlüssel bleibt bei dir",
+        "en": "Keep your key to yourself"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Warum ist der Name deines Haustiers kein gutes Geheimnis? Andere können ihn kennen oder erraten. Ein Passwort schützt den Zugang zu einem Konto. Es sollte lang, schwer zu erraten und für dieses Konto einzigartig sein.",
+            "en": "Why is your pet's name not a good secret? Other people may know or guess it. A password protects access to an account. It should be long, hard to guess and unique to that account."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Ein Passwortmanager kann unterschiedliche Passwörter sicher verwalten; nutze ihn nach Absprache mit Erwachsenen. Gib ein Passwort nicht im Klassenchat weiter. Unerwartete Links oder Gewinnnachrichten können täuschen. Prüfe gemeinsam mit einer vertrauten erwachsenen Person, bevor du Daten eingibst. Bei Problemen Hilfe holen ist klug, nicht peinlich.",
+            "en": "A password manager can store different passwords securely; use it with adult guidance. Do not share passwords in a class chat. Unexpected links or prize messages can be deceptive. Check with a trusted adult before entering information. Asking for help is sensible, not embarrassing."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "💡",
+          "title": {
+            "de": "Dein Auftrag",
+            "en": "Your task"
+          },
+          "text": {
+            "de": "Eine Nachricht verspricht einen Gewinn und verlangt dein Passwort. Nenne zwei sichere Reaktionen. Schreibe kein echtes Passwort auf.",
+            "en": "A message promises a prize and asks for your password. Name two safe responses. Do not write down a real password."
+          }
+        }
+      ]
+    },
+    {
+      "key": "entdecken-3",
+      "title": {
+        "de": "Klingt sicher – ist es auch belegt?",
+        "en": "It sounds certain, but is it supported?"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "„Dieses Tier braucht nie Wasser!“ steht in einem kurzen Video. Glaubst du es sofort? Eine Behauptung braucht Belege. Prüfe, wer etwas veröffentlicht hat, wie alt die Information ist und ob verlässliche Quellen sie bestätigen.",
+            "en": "“This animal never needs water!” says a short video. Do you believe it immediately? A claim needs evidence. Check who published it, when and whether reliable sources support it."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Werbung möchte etwas verkaufen. Eine KI kann überzeugend formulieren und trotzdem Fehler machen. Ein Foto zeigt nur einen Ausschnitt. Vergleiche wichtige Aussagen mit einer passenden Fachquelle und frage bei Unsicherheit nach. Im Chat bleibst du respektvoll: Niemand muss persönliche Geschichten oder Bilder teilen, um dazuzugehören.",
+            "en": "Advertising aims to sell. AI can sound convincing and still be wrong. A photograph shows only part of a situation. Compare important claims with a relevant expert source and ask when unsure. Remain respectful in chats: nobody must share personal stories or pictures to belong."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "💡",
+          "title": {
+            "de": "Dein Auftrag",
+            "en": "Your task"
+          },
+          "text": {
+            "de": "Wähle die erfundene Tierbehauptung von oben. Welche Quelle und welche zwei Prüffragen würden dir helfen?",
+            "en": "Take the imaginary animal claim above. Which source and which two checking questions would help?"
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "Hamburg: Naturwissenschaften/Technik 5–6, Gymnasium (2024)",
+                "en": "Hamburg: science and technology, years 5–6, Gymnasium (2024)"
+              },
+              "url": "https://www.hamburg.de/resource/blob/798520/700d66232c2d07bad97d72b6e107e083/naturwissenschaften-technik-data.pdf"
+            },
+            {
+              "label": {
+                "de": "Hamburg: Naturwissenschaften/Technik 5–6, Stadtteilschule (2024)",
+                "en": "Hamburg: science and technology, years 5–6, Stadtteilschule (2024)"
+              },
+              "url": "https://www.hamburg.de/resource/blob/798394/033190c61a9908ff10401a5b66cedae9/naturwissenschaften-technik-data.pdf"
+            },
+            {
+              "label": {
+                "de": "Datenschutzbehörde: sichere Passwörter",
+                "en": "Data protection authority: password security"
+              },
+              "url": "https://www.datenschutz-berlin.de/buergerinnen-und-buerger/selbstdatenschutz/it-sicherheit/passwortsicherheit/"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": {
+        "de": "Die wichtigsten Wörter",
+        "en": "The key words"
+      },
+      "intro": {
+        "de": "Setze passende Wörter aus den drei Seiten ein. Nachschauen ist erlaubt.",
+        "en": "Fill the gaps using words from the three pages. You may look back."
+      },
+      "text": {
+        "de": "Angaben über eine Person sind personenbezogene ___. Ein erfundener Anzeigename heißt ___. Fotos anderer teilst du nur mit ___. Den Kontozugang schützt ein ___. Es sollte lang und schwer zu ___ sein. Jedes Konto braucht ein ___ Passwort. Behauptungen prüfst du mithilfe von ___. Bei Unsicherheit holst du ___.",
+        "en": "Details about someone are personal ___. A made-up display name is a ___. Share other people's photos only with ___. Account access is protected by a ___. It should be long and hard to ___. Each account needs a ___ password. Check claims using ___. If unsure, ask for ___."
+      }
+    },
+    {
+      "kind": "compare",
+      "title": {
+        "de": "Erkläre den Zusammenhang",
+        "en": "Explain the connection"
+      },
+      "intro": {
+        "de": "Antworte in zwei bis drei Sätzen. Nutze ein Beispiel aus dem Lernpfad.",
+        "en": "Answer in two or three sentences. Use an example from the learning path."
+      },
+      "text": {
+        "de": "Eine KI klingt sehr sicher, ein Fachtext nennt überprüfbare Belege. Warum reicht sicheres Auftreten nicht als Beweis? Nenne außerdem eine Angabe, die du für eine Nachfrage nicht teilen solltest.",
+        "en": "An AI sounds very confident; an expert text gives checkable evidence. Why is confidence not proof? Also name one detail you should not share when asking a follow-up question."
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": {
+        "de": "Deine Idee für den Alltag",
+        "en": "Your everyday idea"
+      },
+      "intro": {
+        "de": "Hier zählt deine begründete Idee, nicht eine bestimmte Musterantwort.",
+        "en": "Your reasoned idea matters, not a particular model answer."
+      },
+      "text": {
+        "de": "Gestalte drei freundliche Regeln für euren Klassenchat: eine zu persönlichen Daten, eine zum Prüfen von Nachrichten und eine zum respektvollen Umgang.",
+        "en": "Create three friendly rules for your class chat: one about personal information, one about checking messages and one about respect."
+      }
+    }
+  ]
+}

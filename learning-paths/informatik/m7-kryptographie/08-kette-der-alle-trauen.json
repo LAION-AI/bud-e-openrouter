@@ -1,0 +1,231 @@
+{
+  "accent": "rose",
+  "exercises": [
+    {
+      "hint": {
+        "de": "Alle Antworten stehen auf den Bildschirmen davor – lies sie noch einmal von oben.",
+        "en": "All answers sit on the screens before – read them once more from the top."
+      },
+      "intro": {
+        "de": "Setze die fehlenden Wörter ein.",
+        "en": "Fill in the missing words."
+      },
+      "kind": "cloze",
+      "text": {
+        "de": "Eine Blockchain ist ein ___ für alle: Jeder darf ___, keiner darf ___. Jeder Block enthält Transaktionen und den ___ des Vorgängers – so hängt alles aneinander wie eine ___. Wer einen alten Block ___, bricht die Kette: Der neue Fingerabdruck passt nicht mehr zum ___. Sicherheit kommt aus der ___: Tausende ___ halten je eine Kopie. Bitcoin zeigt auch die Kehrseite: Sicherheit frisst ___ – so viel wie ganze ___. Genutzt wird die Idee, wo ___ herrscht ohne Mitte: Lieferketten, ___, Nachweise.",
+        "en": "A blockchain is a ___ for all: everybody may ___, nobody may ___. Every block holds transactions and the ___ of its predecessor – thus everything hangs together like a ___. Whoever ___ an old block breaks the chain: the new fingerprint no longer fits the ___. Safety comes from the ___: thousands of ___ each hold one copy. Bitcoin also shows the downside: safety devours ___ – as much as whole ___. The idea gets used where ___ rules without a centre: supply chains, ___, proofs."
+      },
+      "title": {
+        "de": "1. Lückentext",
+        "en": "1. Fill in the blanks"
+      }
+    },
+    {
+      "hint": {
+        "de": "Wer schreibt was auf – und wer könnte schummeln? Denke an Mitte gegen Alle.",
+        "en": "Who writes what down – and who could cheat? Think centre versus all."
+      },
+      "intro": {
+        "de": "Setze zwei Beobachtungen zueinander in Beziehung.",
+        "en": "Relate two observations to each other."
+      },
+      "kind": "compare",
+      "text": {
+        "de": "Eine Bank und eine Blockchain verwalten beide Geld. Vergleiche, wo jeweils die Wahrheit steht – und erkläre, was passiert, wenn dort jemand schummelt.",
+        "en": "A bank and a blockchain both manage money. Compare where the truth sits in each case – and explain what happens when someone cheats there."
+      },
+      "title": {
+        "de": "2. Vergleiche",
+        "en": "2. Compare"
+      }
+    },
+    {
+      "intro": {
+        "de": "Auf diese Frage gibt es keine richtige Antwort.",
+        "en": "There is no right answer to this one."
+      },
+      "kind": "reflect",
+      "text": {
+        "de": "Dein Zeugnis als Eintrag, den niemand fälschen kann – gut oder gruselig? Wer dürfte es lesen, wer nie – und wer entscheidet das?",
+        "en": "Your report as an entry nobody can forge – good or creepy? Who may read it, who never – and who decides that?"
+      },
+      "title": {
+        "de": "3. Zum Nachdenken",
+        "en": "3. Something to think about"
+      }
+    }
+  ],
+  "icon": "⛓️",
+  "key": "kette-der-alle-trauen",
+  "minutes": 16,
+  "screens": [
+    {
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Wer schreibt auf, wem was gehört – wenn keiner dem anderen traut? Die Bank löst es mit Mitte: Alle vertrauen ihr. Die Blockchain löst es ohne: Alle schreiben mit, keiner darf schummeln. Wie das geht, steht hier.",
+            "en": "Who writes down whom what belongs to – when nobody trusts the other? The bank solves it with a centre: all trust it. The blockchain solves it without: all write along, none may cheat. How that goes sits here."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Stell dir ein Kassenbuch vor, das jeder einsehen darf, aber keiner allein ändert: Jede Seite (Block) enthält Überweisungen plus den Fingerabdruck der vorigen Seite. Reißt du eine alte Seite heraus und schreibst sie neu, stimmt ihr Abdruck nicht mehr – und alle folgenden Seiten schreien auf. Fälschen hieße: alle Seiten neu schreiben, überall gleichzeitig, vor aller Augen. Genau das passiert nie.",
+            "en": "Picture a cashbook everybody may inspect but none alone alters: every page (block) holds transfers plus the fingerprint of the previous page. If you tear an old page out rewriting it, its print mismatches – and all following pages scream. Forging would mean: rewriting all pages, everywhere at once, before all eyes. Exactly that never happens."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Die Sicherheit kommt aus der Menge: Tausende Rechner halten je eine Kopie und vergleichen ständig. Wer schummeln will, muss die Mehrheit überzeugen – teurer als ehrlich sein. Vertrauen entsteht nicht aus Autorität, sondern aus Öffentlichkeit: Jeder darf prüfen, darum muss keiner vertrauen. Umgekehrte Welt zur Bank – gleiche Sicherheit, anderer Weg.",
+            "en": "Safety comes from the crowd: thousands of computers each hold one copy comparing constantly. Whoever wants to cheat must convince the majority – pricier than staying honest. Trust emerges not from authority but from publicity: everybody may check, hence nobody must trust. Reversed world to the bank – same safety, other way."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Spiele Kassenbuch in der Klasse: Jeder schreibt seine Ausgaben der Woche auf Zettel an die Tafel – offen für alle, Betrag plus Zweck. Am Freitag prüft ihr gemeinsam: Stimmt jede Zeile mit Quittung? Wer schummelt, fliegt beim Nachrechnen auf – vor aller Augen. Genau so fühlt sich eine Blockchain an: Öffentlichkeit als Prüfer, Scham als Strafe.",
+            "en": "Play cashbook in class: everybody writes the week's expenses on notes to the board – open for all, amount plus purpose. Friday you check together: does every line match receipts? Whoever cheats flies up at recalculating – before all eyes. Exactly so a blockchain feels: publicity as examiner, shame as penalty."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Kassenbücher kennst du übrigens vom Taschengeld: Einnahmen links, Ausgaben rechts, Rest unten. Ehrlich geführt, stimmt es immer – geschummelt fällt beim Nachrechnen auf. Die Blockchain ist ein Taschengeldheft für Misstrauische: offen, gemeinsam, unbestechlich. Manchmal steckt Zukunft in Kinderheften.",
+            "en": "Cashbooks you incidentally know from pocket money: income left, expenses right, rest below. Honestly kept, it always matches – cheated falls up at recalculating. The blockchain is a pocket-money booklet for the distrustful: open, joint, incorruptible. Sometimes future sits in children's booklets."
+          }
+        }
+      ],
+      "title": {
+        "de": "Das Kassenbuch für alle",
+        "en": "The cashbook for all"
+      }
+    },
+    {
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Ehrlich dazu: Die berühmteste Blockchain frisst Strom wie ein Land. Das gehört zur Wahrheit – und zum Nachdenken.",
+            "en": "Honestly added: the most famous blockchain devours power like a country. That belongs to the truth – and to thinking."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Bitcoin sichert seine Kette durch Rechnen: Wer einen Block anhängen will, muss erst ein sinnlos schweres Rätsel lösen – Millionen Rechner raten Tag und Nacht, einer gewinnt. Der Aufwand ist der Schutz: Angreifen kostet mehr Strom, als es einbringt. Nebenwirkung: Der Stromverbrauch eines mittleren Landes – für etwa sieben Überweisungen pro Sekunde. Deine Bank schafft Tausende, mit einem Bruchteil.",
+            "en": "Bitcoin secures its chain through computing: whoever wants to append a block must first solve a senselessly hard riddle – millions of computers guess day and night, one wins. The effort is the guard: attacking costs more power than it yields. Side effect: the power use of a medium country – for about seven transfers per second. Your bank manages thousands, with a fraction."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Darum streiten sich die Geister: Geniale Idee oder teurer Irrweg? Neuere Ketten brauchen kaum Strom – sie sichern anders ab, etwa über Pfande statt Rechnen. Die Lehre bleibt: Jede Sicherheit hat einen Preis. Wer ihn kennt, kann ehrlich vergleichen – Strom gegen Vertrauen, Aufwand gegen Mitte.",
+            "en": "Hence minds quarrel: brilliant idea or expensive dead end? Newer chains need hardly power – securing differently, say via stakes instead of computing. The lesson stays: every safety holds a price. Whoever knows it can honestly compare – power versus trust, effort versus centre."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "note",
+          "icon": "💡",
+          "title": {
+            "de": "Kein Rat",
+            "en": "No advice"
+          },
+          "text": {
+            "de": "Dieser Pfad ist Technik, keine Anlageberatung: Ob Coins steigen oder fallen, weiß niemand – am wenigsten die, die es am lautesten behaupten. Verstehe die Kette, ignoriere den Hype.",
+            "en": "This path is technology, no investment advice: whether coins rise or fall, nobody knows – least those claiming it loudest. Grasp the chain, ignore the hype."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Der Strom hat übrigens Geschichte: Anfangs reichte ein Laptop zum Mitrechnen – heute stehen Hallen voller Spezialrechner in Island und Texas, wo Strom und Kälte billig sind. Wer mitmacht, spielt Lotterie mit Stromkosten: einer gewinnt, alle zahlen. Darum stiegen viele auf Pfand-Verfahren um: Wer schummelt, verliert seinen Einsatz – Schutz durch Geld statt durch Hitze.",
+            "en": "The power incidentally holds history: at first one laptop sufficed joining in – today halls full of special computers stand in Iceland and Texas, where power and cold cost little. Whoever joins plays lottery with power bills: one wins, all pay. Hence many switched to stake methods: whoever cheats loses their stake – guard through money instead of heat."
+          }
+        }
+      ],
+      "title": {
+        "de": "Der Strompreis der Wahrheit",
+        "en": "The power price of truth"
+      }
+    },
+    {
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Wo braucht man Wahrheit ohne Mitte? Überall, wo sich Fremde misstrauen: Wer baute welches Teil ins Auto – Lieferkette mit Kette belegt. Wem gehört welches Grundstück – Kataster ohne Amt. Welches Zeugnis ist echt – Eintrag statt Stempel. Die Idee wandert längst aus der Geld-Ecke: überallhin, wo Beweise zählen.",
+            "en": "Where is truth without centre needed? Everywhere strangers distrust: who built which part into the car – supply chain proven by chain. Whom belongs which plot – cadastre without office. Which certificate is genuine – entry instead of stamp. The idea long wanders out of the money corner: everywhere proofs count."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Aber Vorsicht vor dem Etikettenschwindel: „Blockchain inside“ klebt heute auf manchem, was eine simple Datenbank täte – mit Mitte, mit Löschen, mit Ansprechpartner. Faustregel: Braucht es Misstrauen zwischen Fremden? Nein – dann reicht eine Tabelle. Ja – dann lohnt die Kette. Wer das fragt, durchschaut neun von zehn Heilsversprechen.",
+            "en": "But beware label fraud: “blockchain inside” sticks today on much a simple database would do – with centre, with deleting, with contact person. Rule of thumb: does it need distrust between strangers? No – then a table suffices. Yes – then the chain pays. Whoever asks that sees through nine of ten salvation promises."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "Hamburg: Bildungsplan Studienstufe (Informatik)",
+                "en": "Hamburg: syllabus for the upper stage (computing)"
+              },
+              "url": "https://www.hamburg.de/politik-und-verwaltung/behoerden/bsfb/veroeffentlichungen/bildungsplaene/start-sek2-2022-123118"
+            },
+            {
+              "label": {
+                "de": "GI: Bildungsstandards Informatik",
+                "en": "GI: computing education standards"
+              },
+              "url": "https://gi.de/meldung/bildungsstandards-gi-stellt-neue-empfehlungen-fuer-den-informatikunterricht-vor"
+            }
+          ]
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Dein Zeugnis auf Kette? Denk es durch: Fälschen unmöglich – gut für Bewerbungen. Löschen unmöglich – was, wenn die Schule irrt? Lesen für alle – oder nur für dich mit Schlüssel? Jede Antwort baut eine andere Zukunft: Bequemlichkeit gegen Vergessen, Wahrheit gegen Gnade. Technik stellt die Fragen, Menschen müssen antworten. Darum gehört dieser Pfad in die Schule: Ihr seid die Antwortenden.",
+            "en": "Your report on chain? Think it through: forging impossible – good for applications. Deleting impossible – what if the school errs? Reading for all – or only for you with key? Every answer builds another future: comfort versus forgetting, truth versus mercy. Technology poses the questions, humans must answer. Hence this path belongs to school: you are the answerers."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "note",
+          "icon": "🎓",
+          "title": {
+            "de": "Deine Stimme",
+            "en": "Your voice"
+          },
+          "text": {
+            "de": "Diskutiert in der Klasse: Zeugnisse unveränderbar – dafür oder dagegen? Sammelt je drei Gründe, stimmt ab. Ihr verhandelt gerade Zukunft – mit allem, was dieser Pfad euch gab.",
+            "en": "Discuss in class: reports unchangeable – for or against? Collect three reasons each, vote. You negotiate future right now – with everything this path gave you."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Abstimmen übrigens geht auch mit Kette: Stimme abgeben, Eintrag prüfen, nachzählen jederzeit. Kein Wahlbetrug möglich – jede Stimme sichtbar, keiner zuordenbar, wenn gut gebaut. Manche Länder testen genau das. Demokratie aus Blöcken: Die Urne war gestern, die Kette vielleicht morgen.",
+            "en": "Voting incidentally works with chain too: cast vote, check entry, recount anytime. No ballot fraud possible – every vote visible, none assignable, if well built. Some countries test exactly that. Democracy from blocks: the urn was yesterday, the chain maybe tomorrow."
+          }
+        }
+      ],
+      "title": {
+        "de": "Wahrheit ohne Mitte",
+        "en": "Truth without a centre"
+      }
+    }
+  ],
+  "summary": {
+    "de": "Kassenbuch für alle, Strom wie ein Land, Wahrheit ohne Mitte: Was Blockchains können – und was nicht.",
+    "en": "Cashbook for all, power like a country, truth without centre: what blockchains can – and cannot."
+  },
+  "title": {
+    "de": "Die Kette, der alle trauen",
+    "en": "The chain everybody trusts"
+  }
+}

@@ -10,7 +10,7 @@
   },
   "icon": "🪞",
   "accent": "violet",
-  "minutes": 14,
+  "minutes": 20,
   "screens": [
     {
       "key": "wie-bias-entsteht",
@@ -59,6 +59,13 @@
             "de": "Er heißt Rückkopplung: Das Modell beeinflusst die Welt, aus der es lernt, und bestätigt sich dadurch selbst. Was einmal in den Daten steht, erzeugt neue Daten derselben Sorte. Von innen sieht das aus wie eine immer bessere Vorhersage - dabei ist es eine sich verstärkende Schleife.",
             "en": "It is called feedback: the model influences the world it learns from, and thereby confirms itself. Whatever is once in the data produces new data of the same kind. From the inside it looks like an ever better prediction - while in fact it is a self-reinforcing loop."
           }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Schieflagen entstehen leise: Wer stellt die Kamera auf – und wen sieht sie? Frühe Fotoapparate waren auf helle Haut geeicht: Belichtung, Blitz, Film – alles für eine Hautfarbe optimiert. Dunklere Gesichter wurden Fleck. Kein Vorsatz, nur Norm – und trotzdem ungerecht. Technik erbt die Blindheit ihrer Erbauer, wenn keiner hinsieht.",
+            "en": "Tilts emerge quietly: who aims the camera – and whom does it see? Early cameras were calibrated to light skin: exposure, flash, film – all optimised for one skin colour. Darker faces became blotches. No intent, only norm – yet unjust. Technology inherits its builders' blindness when nobody looks."
+          }
         }
       ]
     },
@@ -80,21 +87,30 @@
           "kind": "steps",
           "items": [
             {
-              "title": { "de": "Jemand hat die Daten ausgewählt", "en": "Somebody chose the data" },
+              "title": {
+                "de": "Jemand hat die Daten ausgewählt",
+                "en": "Somebody chose the data"
+              },
               "text": {
                 "de": "Welche Beispiele wurden gesammelt, welche weggelassen? Diese Entscheidung fiel, bevor eine einzige Zahl trainiert wurde - und sie bestimmt alles Weitere.",
                 "en": "Which examples were collected, which left out? That decision came before a single number was trained - and it determines everything that follows."
               }
             },
             {
-              "title": { "de": "Jemand hat sie beschriftet", "en": "Somebody labelled them" },
+              "title": {
+                "de": "Jemand hat sie beschriftet",
+                "en": "Somebody labelled them"
+              },
               "text": {
                 "de": "Bei überwachtem Lernen musste ein Mensch bei jedem Beispiel hinschreiben, was es ist. Was für den einen „aggressiv“ ist, ist für den anderen „deutlich“. Diese Urteile stecken danach im Modell.",
                 "en": "In supervised learning a person had to write down for each example what it is. What is \"aggressive\" to one is \"forthright\" to another. Those judgements then sit inside the model."
               }
             },
             {
-              "title": { "de": "Jemand hat es eingesetzt", "en": "Somebody deployed it" },
+              "title": {
+                "de": "Jemand hat es eingesetzt",
+                "en": "Somebody deployed it"
+              },
               "text": {
                 "de": "Und zwar für einen bestimmten Zweck, mit einer bestimmten Schwelle. Ab wie viel Prozent gilt eine Bewerbung als aussortiert? Diese Zahl hat ein Mensch gewählt.",
                 "en": "For a particular purpose, with a particular threshold. From what percentage does an application count as filtered out? A person chose that number."
@@ -113,6 +129,13 @@
           "text": {
             "de": "Wer sagt „die KI hat entschieden“, verschiebt die Verantwortung auf etwas, das keine tragen kann. Entschieden haben die, die die Daten ausgewählt, sie beschriftet und das System eingesetzt haben. Genau deshalb schreibt die europäische KI-Verordnung inzwischen vor, dass bei wichtigen Entscheidungen ein Mensch beteiligt sein muss.",
             "en": "Whoever says \"the AI decided\" shifts responsibility onto something that can bear none. The decisions were made by those who chose the data, labelled it and deployed the system. Which is exactly why the European AI regulation now requires a human to be involved in important decisions."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "„Die KI hat entschieden, Einspruch zwecklos“ – diesen Satz hört man bei Bewerbungen, Krediten, sogar Strafzumessung. Dahinter sitzt immer ein Mensch, der sich hinter der Maschine versteckt: Er hat sie gekauft, gefüttert, losgelassen – und wäscht nun die Hände in Unschuld. Wer „die KI“ sagt, meint meist: Ich will nicht verantwortlich sein.",
+            "en": "“The AI decided, objection futile” – that sentence sounds at applications, credits, even sentencing. Behind always sits a human hiding behind the machine: they bought, fed, released it – now washing hands in innocence. Whoever says “the AI” mostly means: I refuse responsibility."
           }
         }
       ]
@@ -154,21 +177,45 @@
         {
           "kind": "table",
           "head": [
-            { "de": "Wofür so ein System taugt", "en": "What such a system is good for" },
-            { "de": "Wofür nicht", "en": "What it is not good for" }
+            {
+              "de": "Wofür so ein System taugt",
+              "en": "What such a system is good for"
+            },
+            {
+              "de": "Wofür nicht",
+              "en": "What it is not good for"
+            }
           ],
           "rows": [
             [
-              { "de": "Formulieren, umschreiben, zusammenfassen", "en": "Phrasing, rewriting, summarising" },
-              { "de": "Fakten, die du nicht prüfen kannst", "en": "Facts you cannot check" }
+              {
+                "de": "Formulieren, umschreiben, zusammenfassen",
+                "en": "Phrasing, rewriting, summarising"
+              },
+              {
+                "de": "Fakten, die du nicht prüfen kannst",
+                "en": "Facts you cannot check"
+              }
             ],
             [
-              { "de": "Ideen sammeln, Gegenargumente finden", "en": "Collecting ideas, finding counterarguments" },
-              { "de": "Rechnungen, auf die es ankommt", "en": "Calculations that matter" }
+              {
+                "de": "Ideen sammeln, Gegenargumente finden",
+                "en": "Collecting ideas, finding counterarguments"
+              },
+              {
+                "de": "Rechnungen, auf die es ankommt",
+                "en": "Calculations that matter"
+              }
             ],
             [
-              { "de": "Etwas erklärt bekommen, das du danach prüfst", "en": "Getting something explained that you then check" },
-              { "de": "Entscheidungen über Menschen", "en": "Decisions about people" }
+              {
+                "de": "Etwas erklärt bekommen, das du danach prüfst",
+                "en": "Getting something explained that you then check"
+              },
+              {
+                "de": "Entscheidungen über Menschen",
+                "en": "Decisions about people"
+              }
             ]
           ]
         },
@@ -176,14 +223,105 @@
           "kind": "sources",
           "items": [
             {
-              "label": { "de": "Der Hamburgische Beauftragte für Datenschutz und Informationsfreiheit", "en": "Hamburg Commissioner for Data Protection and Freedom of Information" },
+              "label": {
+                "de": "Der Hamburgische Beauftragte für Datenschutz und Informationsfreiheit",
+                "en": "Hamburg Commissioner for Data Protection and Freedom of Information"
+              },
               "url": "https://datenschutz-hamburg.de"
             },
             {
-              "label": { "de": "inf-schule.de: Künstliche Intelligenz", "en": "inf-schule.de: artificial intelligence" },
+              "label": {
+                "de": "inf-schule.de: Künstliche Intelligenz",
+                "en": "inf-schule.de: artificial intelligence"
+              },
               "url": "https://www.inf-schule.de/ki"
             }
           ]
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Flüssig lügt am besten: Ein erfundener Fakt im Plauderton – Geburtsjahr falsch, Quelle erfunden – klingt wahrer als jede stammelnde Wahrheit. Darum prüft man KI-Texte wie Schüleraufsätze mit Wikipedia daneben: Behauptung anstreichen, nachschlagen, abhaken. Wer flüssig schreibt, hat noch lange nicht recht – das gilt für Aufsätze wie für Ausgaben.",
+            "en": "Fluent lies best: an invented fact in chatty tone – birth year wrong, source invented – sounds truer than any stammering truth. Hence AI texts get checked like pupil essays with Wikipedia beside: mark claims, look up, tick off. Whoever writes fluently is far from right – counting for essays like for outputs."
+          }
+        }
+      ]
+    },
+    {
+      "key": "drei-saetze-die-alles-aendern",
+      "title": {
+        "de": "Drei Sätze, die alles ändern",
+        "en": "Three sentences that change everything"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Wie du über ein Modell redest, entscheidet, wer die Verantwortung trägt. Drei Sätze zum Austauschen:",
+            "en": "How you talk about a model decides who carries the responsibility. Three sentences to swap:"
+          }
+        },
+        {
+          "kind": "steps",
+          "items": [
+            {
+              "title": {
+                "de": "Statt „Die KI hat entschieden“",
+                "en": "Instead of “The AI decided”"
+              },
+              "text": {
+                "de": "Sage: „Das Modell schlägt vor.“ Vorschläge prüft man – Entscheidungen gehorcht man. Ein Wort, und die Verantwortung bleibt beim Menschen.",
+                "en": "Say: “The model suggests.” Suggestions get checked – decisions get obeyed. One word, and responsibility stays with the human."
+              }
+            },
+            {
+              "title": {
+                "de": "Statt „Der Computer sagt“",
+                "en": "Instead of “The computer says”"
+              },
+              "text": {
+                "de": "Frage: „Woher weiß es das?“ – also: Welche Beispiele, welche Daten? Wer keine Quelle nennen kann, hat keine Antwort, sondern eine Behauptung.",
+                "en": "Ask: “How does it know that?” – meaning: which examples, which data? Whoever cannot name a source has no answer, only a claim."
+              }
+            },
+            {
+              "title": {
+                "de": "Statt „Das wird schon stimmen“",
+                "en": "Instead of “That will be right”"
+              },
+              "text": {
+                "de": "Hole eine zweite Meinung – Mensch oder Modell, egal. Flüssige Sätze klingen wahr, auch wenn sie erfunden sind. Wahrheit braucht zwei Zeugen.",
+                "en": "Get a second opinion – human or model, no matter. Fluent sentences sound true even when invented. Truth needs two witnesses."
+              }
+            }
+          ]
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Sprache formt Verantwortung: Wer „Richter“ sagt, entmachtet sich. Wer „Spiegel mit Vorschlägen“ sagt, bleibt Chef. Ab heute hörst du den Unterschied überall – in Nachrichten, Werbung und im Klassenchat.",
+            "en": "Language shapes responsibility: whoever says “judge” disempowers themselves. Whoever says “mirror with suggestions” stays the boss. From today you hear the difference everywhere – in news, ads and the class chat."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Übe die drei Sätze eine Woche lang – laut, bei jeder Gelegenheit: „Das Modell schlägt vor.“ „Woher weiß es das?“ „Zweite Meinung?“ Nach sieben Tagen merkst du: Die Sätze färben ab. Du redest anders über Technik – genauer, misstrauischer, erwachsener. Sprache formt Denken, Denken formt Umgang. Drei Sätze, ein Upgrade.",
+            "en": "Practise the three sentences a week long – aloud, at every chance: “The model suggests.” “How does it know that?” “Second opinion?” After seven days you notice: the sentences rub off. You talk differently about technology – sharper, warier, more grown-up. Language shapes thinking, thinking shapes handling. Three sentences, one upgrade."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "🗣️",
+          "title": {
+            "de": "Selbstversuch",
+            "en": "Self trial"
+          },
+          "text": {
+            "de": "Zähle, wie oft du diese Woche „die KI hat“ sagst – und ersetze es jedes Mal. Strichliste führen! Am Ende weißt du, wie oft du Verantwortung abgegeben hättest. Erschreckend lehrreich.",
+            "en": "Count how often you say “the AI has” this week – replacing it every time. Keep tally! At the end you know how often you would have handed responsibility away. Frighteningly instructive."
+          }
         }
       ]
     }

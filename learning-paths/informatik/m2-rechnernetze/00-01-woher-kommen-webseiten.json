@@ -1,0 +1,606 @@
+{
+  "key": "woher-kommen-webseiten",
+  "title": {
+    "de": "Woher kommen Webseiten?",
+    "en": "Where do web pages come from?"
+  },
+  "summary": {
+    "de": "Finde heraus, wer Webseiten liefert, welche Adresse dein Rechner hat und wozu DNS da ist.",
+    "en": "Find out who delivers web pages, what address your computer has and what DNS does."
+  },
+  "icon": "🧭",
+  "accent": "sky",
+  "minutes": 25,
+  "screens": [
+    {
+      "key": "wer-liefert-die-seite",
+      "title": {
+        "de": "1. Wer fragt, wer liefert?",
+        "en": "1. Who asks, who delivers?"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Du tippst `wikipedia.org` ein, und kurz darauf ist die Seite da. Aber dein Browser hatte sie nicht schon fertig dabei. Woher kommen Text und Bilder? Überlegt zu zweit: Wer fragt nach der Seite, wer schickt sie zurück?",
+            "en": "You type `wikipedia.org`, and moments later the page appears. But your browser did not already have it ready. Where do the words and pictures come from? In pairs, decide who asks for the page and who sends it back."
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "de": "Zwei Rollen – wie bei Bestellen und Liefern",
+            "en": "Two roles – like ordering and delivering"
+          },
+          "head": [
+            {
+              "de": "Rolle",
+              "en": "Role"
+            },
+            {
+              "de": "Aufgabe",
+              "en": "Job"
+            },
+            {
+              "de": "Bei Wikipedia",
+              "en": "On Wikipedia"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "de": "Client",
+                "en": "Client"
+              },
+              {
+                "de": "fragt etwas an",
+                "en": "asks for something"
+              },
+              {
+                "de": "dein Browser",
+                "en": "your browser"
+              }
+            ],
+            [
+              {
+                "de": "Server",
+                "en": "Server"
+              },
+              {
+                "de": "liefert die Antwort",
+                "en": "sends the answer"
+              },
+              {
+                "de": "der Webserver",
+                "en": "the web server"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "callout",
+          "tone": "fact",
+          "icon": "💡",
+          "title": {
+            "de": "Ein Webserver ist ein Programm",
+            "en": "A web server is a program"
+          },
+          "text": {
+            "de": "Er liefert Dateien für Webseiten. Eine HTML-Datei beschreibt zum Beispiel Überschriften und Texte. Dein Laptop kann später selbst dieses Serverprogramm starten.",
+            "en": "It delivers files for web pages. An HTML file can describe headings and text. Later, your own laptop can run this server program."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Das ist auch bei eurer Schulplattform so: Wenn viele gleichzeitig dieselbe Seite öffnen, muss nicht jeder die Dateien vorher besitzen. Ein Server stellt sie bereit; die Browser holen sie sich bei Bedarf.",
+            "en": "The same happens with your school platform: when many people open the same page, they do not each need the files beforehand. A server provides them; browsers fetch them when needed."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "🗣️",
+          "title": {
+            "de": "Jetzt ihr",
+            "en": "Your turn"
+          },
+          "text": {
+            "de": "Erklärt euch gegenseitig den Weg: Browser fragt → Server liefert. Danach tauscht die Rollen: Wenn deine Mitschülerin deine Webseite öffnet, wer ist dann Client und wer Server?",
+            "en": "Explain the path to each other: browser asks → server delivers. Then change roles: if a classmate opens your page, who is the client and who is the server?"
+          }
+        }
+      ]
+    },
+    {
+      "key": "deine-adresse-finden",
+      "title": {
+        "de": "2. Finde deine Adresse",
+        "en": "2. Find your address"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "In eurem Computerraum stehen viele Rechner. Woher weiß das Netz, zu welchem Gerät eine Antwort zurücksoll? Dafür hat jeder verbundene Rechner eine IP-Adresse. Du suchst deine jetzt, weil dein Partner sie im nächsten Lernpfad braucht.",
+            "en": "There are many computers in your classroom. How does the network know which device should receive a reply? Each connected computer has an IP address. Find yours now, because your classmate will need it in the next path."
+          }
+        },
+        {
+          "kind": "steps",
+          "items": [
+            {
+              "title": {
+                "de": "CMD öffnen",
+                "en": "Open Command Prompt"
+              },
+              "text": {
+                "de": "Drücke die Windows-Taste. Tippe `cmd` und öffne „Eingabeaufforderung“. CMD ist ein Fenster für Befehle: Zeile eingeben, dann Enter drücken.",
+                "en": "Press the Windows key. Type `cmd` and open Command Prompt. It is a window for commands: type a line, then press Enter."
+              }
+            },
+            {
+              "title": {
+                "de": "Adresse anzeigen",
+                "en": "Show the address"
+              },
+              "text": {
+                "de": "Gib diesen Befehl in CMD ein. Er zeigt Daten an und ändert nichts.",
+                "en": "Enter this command in Command Prompt. It shows information and changes nothing."
+              },
+              "code": {
+                "caption": {
+                  "de": "Jetzt eingeben",
+                  "en": "Enter now"
+                },
+                "text": {
+                  "de": "ipconfig",
+                  "en": "ipconfig"
+                }
+              }
+            },
+            {
+              "title": {
+                "de": "Die richtige Zahl finden",
+                "en": "Find the right number"
+              },
+              "text": {
+                "de": "Suche beim verbundenen WLAN oder Netzwerkkabel nach „IPv4-Adresse“. Schreibe deine Zahl auf. Hier siehst du nur ein Beispiel – nicht eintippen.",
+                "en": "Under your connected Wi-Fi or network cable, find “IPv4 Address”. Write down your number. This is only an example – do not type it."
+              },
+              "code": {
+                "caption": {
+                  "de": "Beispielausgabe – nicht eingeben",
+                  "en": "Example output – do not enter"
+                },
+                "text": {
+                  "de": "IPv4-Adresse . . . : 192.168.1.34",
+                  "en": "IPv4 Address . . . : 192.168.1.34"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "kind": "callout",
+          "tone": "fact",
+          "icon": "🏷️",
+          "title": {
+            "de": "Was bedeutet die Zahl?",
+            "en": "What does the number mean?"
+          },
+          "text": {
+            "de": "`192.168.1.34` ist eine lokale IPv4-Adresse: eine Adresse im eigenen Netz. Viele beginnen mit `192.168`; in Schulen kommen auch `10.` und `172.` vor. „Medium getrennt“ bedeutet: Diese Verbindung wird gerade nicht benutzt.",
+            "en": "`192.168.1.34` is a local IPv4 address: an address on your own network. Many begin with `192.168`; schools may also use `10.` or `172.`. “Media disconnected” means that connection is not being used."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "👀",
+          "title": {
+            "de": "Vergleicht eure Ergebnisse",
+            "en": "Compare your results"
+          },
+          "text": {
+            "de": "Zeigt euch gegenseitig die Zeile „IPv4-Adresse“. Sind eure Zahlen genau gleich? Wahrscheinlich nicht: So kann das Netz die beiden Geräte unterscheiden. Hebe deine eigene Zahl für den Webserver-Versuch auf.",
+            "en": "Show each other the “IPv4 Address” line. Are your numbers exactly the same? Probably not: that is how the network can tell the devices apart. Keep your number for the web-server experiment."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "note",
+          "icon": "🐧",
+          "title": {
+            "de": "Ubuntu oder macOS?",
+            "en": "Ubuntu or macOS?"
+          },
+          "text": {
+            "de": "Ubuntu: Öffne „Terminal“ (das Befehlsfenster) und gib `hostname -I` ein; das `I` ist groß. macOS: „Systemeinstellungen“ → „Netzwerk“ → verbundenes WLAN oder Ethernet → IP-Adresse.",
+            "en": "Ubuntu: open Terminal (the command window) and enter `hostname -I`; the `I` is capital. macOS: System Settings → Network → connected Wi-Fi or Ethernet → IP address."
+          }
+        }
+      ]
+    },
+    {
+      "key": "privat-und-oeffentlich",
+      "title": {
+        "de": "3. Innen oder außen?",
+        "en": "3. Inside or outside?"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Dein Laptop ist im Schulnetz erreichbar. Aber warum kann jemand im Internet nicht einfach dieselbe Adresse verwenden? Wie bei einer Schule gibt es einen Unterschied zwischen einer Raumnummer drinnen und der Adresse des Gebäudes nach draußen. Vergleiche deshalb zwei IP-Adressen.",
+            "en": "Your laptop can be reached on the school network. But why can someone on the internet not simply use the same address? Like a school, there is a difference between a room number inside and the building's address outside. Compare two IP addresses."
+          }
+        },
+        {
+          "kind": "steps",
+          "items": [
+            {
+              "title": {
+                "de": "Öffentliche Adresse ansehen",
+                "en": "See the public address"
+              },
+              "text": {
+                "de": "Öffne die verlinkte Seite. Suche dort die angezeigte IP-Adresse. Du musst dich nicht anmelden und die Zahl nirgends eintragen.",
+                "en": "Open the linked page. Find the IP address it shows. You do not need to sign in or enter the number anywhere."
+              },
+              "link": {
+                "label": {
+                  "de": "wieistmeineip.de öffnen",
+                  "en": "Open wieistmeineip.de"
+                },
+                "url": "https://www.wieistmeineip.de/"
+              }
+            },
+            {
+              "title": {
+                "de": "Mit deiner Adresse vergleichen",
+                "en": "Compare it with your address"
+              },
+              "text": {
+                "de": "Ist sie gleich wie die IPv4-Adresse aus `ipconfig`? Vergleiche auch mit deinem Nachbarn.",
+                "en": "Is it the same as the IPv4 address from `ipconfig`? Compare with your neighbour too."
+              }
+            }
+          ]
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "de": "Welche Adresse brauchst du später?",
+            "en": "Which address will you need later?"
+          },
+          "head": [
+            {
+              "de": "Adresse",
+              "en": "Address"
+            },
+            {
+              "de": "Wofür?",
+              "en": "What is it for?"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "de": "lokal/privat aus `ipconfig`",
+                "en": "local/private from `ipconfig`"
+              },
+              {
+                "de": "Rechner im Schulnetz finden",
+                "en": "finding a computer on the school network"
+              }
+            ],
+            [
+              {
+                "de": "öffentlich von der Webseite",
+                "en": "public from the website"
+              },
+              {
+                "de": "Verbindung nach außen ins Internet",
+                "en": "the connection out to the internet"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "callout",
+          "tone": "fact",
+          "icon": "🏫",
+          "title": {
+            "de": "Das Bild mit der Schule",
+            "en": "Think of a school building"
+          },
+          "text": {
+            "de": "Die lokale Adresse ist wie eine Raumnummer: im Schulnetz nützlich. Die öffentliche Adresse ist die Adresse der Verbindung nach außen. Bei IPv4 teilen oft viele Schulgeräte diese Außenadresse. Der Router verbindet beide Netze.",
+            "en": "The local address is like a room number: useful inside the school network. The public address belongs to the connection going outside. With IPv4, many school devices often share that outside address. The router connects the two networks."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "fact",
+          "icon": "🔢",
+          "title": {
+            "de": "IPv4 und IPv6",
+            "en": "IPv4 and IPv6"
+          },
+          "text": {
+            "de": "Vier Zahlenblöcke mit Punkten, etwa `192.168.1.34`, heißen IPv4. Lange Gruppen mit Doppelpunkten, etwa `2a02:abcd::1`, heißen IPv6. Das ist die Schreibweise – „lokal oder öffentlich“ ist eine andere Frage.",
+            "en": "Four number groups with dots, such as `192.168.1.34`, are IPv4. Longer groups with colons, such as `2a02:abcd::1`, are IPv6. That describes the format; “local or public” is a different question."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "note",
+          "icon": "🔒",
+          "title": {
+            "de": "Für den Partner-Test",
+            "en": "For the partner test"
+          },
+          "text": {
+            "de": "Benutze später nur die lokale IPv4-Adresse. Die öffentliche Adresse führt im Schulnetz nicht direkt zu deinem Rechner. Veröffentliche keine deiner Adressen im Internet.",
+            "en": "Later, use only the local IPv4 address. The public address does not directly lead to your school computer. Do not post your addresses online."
+          }
+        }
+      ]
+    },
+    {
+      "key": "domain-und-dns",
+      "title": {
+        "de": "4. Wo ist wikipedia.org?",
+        "en": "4. Where is wikipedia.org?"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Du kennst den Namen `wikipedia.org`, nicht die Nummer des Rechners dahinter. Ein solcher Name heißt Domain. Bevor der Browser die Webseite holen kann, fragt dein Rechner einen DNS-Server: Das ist ein Auskunftscomputer, der passende IP-Adressen zu Namen nennt.",
+            "en": "You know the name `wikipedia.org`, not the number of the computer behind it. Such a name is a domain. Before the browser can fetch the page, your computer asks a DNS server: a directory computer that gives matching IP addresses for names."
+          }
+        },
+        {
+          "kind": "steps",
+          "items": [
+            {
+              "title": {
+                "de": "Frage stellen",
+                "en": "Ask the question"
+              },
+              "text": {
+                "de": "Öffne CMD wie auf Seite 2. Gib diesen Befehl ein und drücke Enter. `nslookup` heißt ungefähr „Namen nachschlagen“.",
+                "en": "Open Command Prompt as on page 2. Enter this command and press Enter. `nslookup` roughly means “look up a name”."
+              },
+              "code": {
+                "caption": {
+                  "de": "Jetzt eingeben",
+                  "en": "Enter now"
+                },
+                "text": {
+                  "de": "nslookup wikipedia.org",
+                  "en": "nslookup wikipedia.org"
+                }
+              }
+            },
+            {
+              "title": {
+                "de": "Antwort lesen",
+                "en": "Read the answer"
+              },
+              "text": {
+                "de": "Suche unten `Name: wikipedia.org`. Bei `Addresses` steht die gesuchte Adresse. Im Beispiel ist `185.15.59.224` eine IPv4-Adresse für Wikipedia. Deine Ausgabe kann anders aussehen.",
+                "en": "Find `Name: wikipedia.org` near the bottom. The requested address is under `Addresses`. In the example, `185.15.59.224` is an IPv4 address for Wikipedia. Your output may differ."
+              },
+              "code": {
+                "caption": {
+                  "de": "Beispielantwort – nicht eingeben",
+                  "en": "Example answer – do not enter"
+                },
+                "text": {
+                  "de": "Server:  router.schule\nAddress: 192.168.1.1\n\nNicht autorisierende Antwort:\nName:    wikipedia.org\nAddresses: 2a02:ec80:300:ed1a::1\n           185.15.59.224",
+                  "en": "Server:  router.school\nAddress: 192.168.1.1\n\nNon-authoritative answer:\nName:    wikipedia.org\nAddresses: 2a02:ec80:300:ed1a::1\n           185.15.59.224"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "kind": "callout",
+          "tone": "fact",
+          "icon": "🎯",
+          "title": {
+            "de": "Zuerst das gesuchte Ergebnis",
+            "en": "First, find the answer"
+          },
+          "text": {
+            "de": "`185.15.59.224` unten bei `Addresses` gehört zu Wikipedia. `192.168.1.1` oben bei `Address` gehört zum befragten DNS-Server. „Nicht autorisierende Antwort“ ist keine Fehlermeldung.",
+            "en": "`185.15.59.224` below `Addresses` belongs to Wikipedia. `192.168.1.1` above `Address` belongs to the DNS server you asked. “Non-authoritative answer” is not an error."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "fact",
+          "icon": "➡️",
+          "title": {
+            "de": "Was passiert danach?",
+            "en": "What happens next?"
+          },
+          "text": {
+            "de": "DNS liefert nur die Adresse, nicht die Webseite. Mit der gefundenen Adresse kann dein Browser den Webserver erreichen und die Seite anfragen. Darum stehen in der Antwort oben Angaben zum Auskunftscomputer und unten die gesuchten Wikipedia-Adressen.",
+            "en": "DNS supplies the address, not the web page. With that address, your browser can reach the web server and request the page. That is why the answer shows details about the directory computer at the top and Wikipedia's addresses below."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "note",
+          "icon": "🐧",
+          "title": {
+            "de": "Ubuntu oder macOS?",
+            "en": "Ubuntu or macOS?"
+          },
+          "text": {
+            "de": "Öffne dort „Terminal“ und gib denselben Befehl `nslookup wikipedia.org` ein. Findest du keine Antwort, arbeite mit der Beispielausgabe weiter.",
+            "en": "Open Terminal there and enter the same command, `nslookup wikipedia.org`. If you get no answer, use the example output."
+          }
+        }
+      ]
+    },
+    {
+      "key": "selbst-nachschlagen",
+      "title": {
+        "de": "5. Erkläre den Weg",
+        "en": "5. Explain the path"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Wenn du School Buddy, einen Shop oder eine Spieleseite öffnest, benutzt du meist einen Namen statt einer IP-Adresse. Passiert bei einem anderen Namen dasselbe wie bei Wikipedia? Probiere es aus und erkläre danach den ganzen Weg.",
+            "en": "When you open School Buddy, a shop or a game site, you usually use a name instead of an IP address. Does the same thing happen with another name as with Wikipedia? Try it, then explain the whole journey."
+          }
+        },
+        {
+          "kind": "steps",
+          "items": [
+            {
+              "title": {
+                "de": "Eine andere Domain prüfen",
+                "en": "Look up another domain"
+              },
+              "text": {
+                "de": "Wähle eine bekannte Domain, zum Beispiel eure Schulplattform. Im Beispielbefehl ersetzt du nur `example.org` durch deine Domain – ohne `https://`. Suche die Antwort unten bei `Addresses`.",
+                "en": "Choose a familiar domain, perhaps your school platform. Replace only `example.org` in the example command with your domain – without `https://`. Find the answer under `Addresses`."
+              },
+              "code": {
+                "caption": {
+                  "de": "Beispiel: Domain ersetzen, dann eingeben",
+                  "en": "Example: replace the domain, then enter"
+                },
+                "text": {
+                  "de": "nslookup example.org",
+                  "en": "nslookup example.org"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "🗣️",
+          "title": {
+            "de": "Zu zweit erklären",
+            "en": "Explain it together"
+          },
+          "text": {
+            "de": "Eine Person erklärt: Domain → DNS findet IP-Adresse → Browser (Client) fragt Webserver → Seite erscheint. Die andere Person zeigt auf ihre lokale IPv4-Adresse und sagt, warum ihr sie im nächsten Lernpfad statt einer Domain benutzt. Dann tauscht ihr.",
+            "en": "One person explains: domain → DNS finds IP address → browser (client) asks web server → page appears. The other points to their local IPv4 address and says why you will use it instead of a domain in the next path. Then swap."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "tip",
+          "icon": "🧩",
+          "title": {
+            "de": "Wenn der Name nicht gefunden wird",
+            "en": "If the name cannot be found"
+          },
+          "text": {
+            "de": "Ein Webserver kann laufen, obwohl die Namenssuche gerade nicht klappt. DNS und Webserver haben verschiedene Aufgaben: Das eine findet die Adresse, das andere liefert die Inhalte. Im nächsten Lernpfad gibst du die lokale IP deshalb direkt ein.",
+            "en": "A web server can be running even if name lookup fails. DNS and web server have different jobs: one finds the address, the other delivers the content. In the next path, you will enter the local IP directly."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "fact",
+          "icon": "✅",
+          "title": {
+            "de": "Merke",
+            "en": "Remember"
+          },
+          "text": {
+            "de": "DNS liefert nicht die Webseite. Es hilft nur, die Adresse des Servers zu finden. Die Webseite kommt danach vom Webserver.",
+            "en": "DNS does not deliver the web page. It only helps find the server address. The page then comes from the web server."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "RFC 1034: Domain Name System",
+                "en": "RFC 1034: Domain Name System"
+              },
+              "url": "https://www.rfc-editor.org/rfc/rfc1034"
+            },
+            {
+              "label": {
+                "de": "RFC 1918: private IPv4-Adressen",
+                "en": "RFC 1918: private IPv4 addresses"
+              },
+              "url": "https://www.rfc-editor.org/rfc/rfc1918"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": {
+        "de": "1. Die Wörter verbinden",
+        "en": "1. Connect the words"
+      },
+      "intro": {
+        "de": "Setze die passenden Wörter ein.",
+        "en": "Fill in the matching words."
+      },
+      "text": {
+        "de": "Mein Browser ist ein ___: Er fragt eine Webseite an. Ein ___ liefert sie. Eine ___ benennt ein Gerät im Netz. Die Adresse aus `ipconfig` ist meist ___. Die Suchseite zeigt die ___ Adresse der Verbindung. Vier Zahlenblöcke mit Punkten sind ___. `wikipedia.org` ist eine ___. Das ___ findet dazu passende IP-Adressen.",
+        "en": "My browser is a ___: it asks for a web page. A ___ delivers it. An ___ identifies a device on a network. The address from `ipconfig` is usually ___. The website shows the ___ address of the connection. Four number groups with dots are ___. `wikipedia.org` is a ___. ___ finds matching IP addresses."
+      },
+      "hint": {
+        "de": "Client, Server, IP-Adresse, privat, öffentliche, IPv4, Domain, DNS",
+        "en": "client, server, IP address, private, public, IPv4, domain, DNS"
+      }
+    },
+    {
+      "kind": "compare",
+      "title": {
+        "de": "2. Welche Adresse?",
+        "en": "2. Which address?"
+      },
+      "intro": {
+        "de": "Erkläre in zwei oder drei Sätzen.",
+        "en": "Explain in two or three sentences."
+      },
+      "text": {
+        "de": "Warum gibst du deinem Partner später die Adresse aus `ipconfig` und nicht die Adresse von wieistmeineip.de?",
+        "en": "Why will you give a classmate the address from `ipconfig`, not the address from wieistmeineip.de?"
+      },
+      "hint": {
+        "de": "Denke an „im Schulnetz“ und „nach außen“.",
+        "en": "Think of “on the school network” and “out to the internet”."
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": {
+        "de": "3. Ohne Namen?",
+        "en": "3. Without names?"
+      },
+      "intro": {
+        "de": "Eine Frage aus deinem Alltag.",
+        "en": "A question from everyday life."
+      },
+      "text": {
+        "de": "Stell dir vor, deine Lieblingsseiten hätten nur noch Zahlenadressen. Was wäre für dich schwieriger?",
+        "en": "Imagine your favourite websites had only number addresses. What would be harder for you?"
+      }
+    }
+  ]
+}

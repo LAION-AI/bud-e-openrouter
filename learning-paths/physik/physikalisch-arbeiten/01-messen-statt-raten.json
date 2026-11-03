@@ -1,0 +1,264 @@
+{
+  "key": "messen-statt-raten",
+  "title": {
+    "de": "Kannst du deinem Messergebnis trauen?",
+    "en": "Can you trust your measurement?"
+  },
+  "summary": {
+    "de": "Vom Schätzen am Sportplatz bis zur fairen Untersuchung: Du machst aus einer Behauptung eine prüfbare Frage.",
+    "en": "From estimates on the sports field to fair investigations: turn a claim into a testable question."
+  },
+  "icon": "📏",
+  "accent": "teal",
+  "minutes": 22,
+  "screens": [
+    {
+      "key": "frage",
+      "title": {
+        "de": "Aus Neugier wird eine Frage",
+        "en": "Curiosity becomes a question"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Zwei Personen messen dieselbe Tischlänge und erhalten 119,8 und 120,2 Zentimeter. Wer hat recht? Vielleicht beide innerhalb ihrer Messunsicherheit. Physik beginnt nicht mit einer perfekten Zahl, sondern mit einer Frage, einem geeigneten Verfahren und einer ehrlichen Angabe, wie genau das Ergebnis sein kann. Eine Beobachtung lautet: Der Messwert verändert sich. Die Erklärung, jemand habe falsch gemessen, ist bereits eine Schlussfolgerung.",
+            "en": "Two people measure the same table and obtain 119.8 and 120.2 centimetres. Who is right? Possibly both, within their measurement uncertainty. Physics starts not with a perfect number but with a question, a suitable method and an honest statement about how precise a result can be. “The reading changes” is an observation. “Someone measured incorrectly” is already an inference about its cause."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Aus „Diese Fahrradreifen rollen besser“ wird eine prüfbare Frage: Wie weit rollt derselbe unbeladene Modellwagen auf zwei Unterlagen nach demselben Start? Du brauchst eine messbare Größe und eine Vermutung, die auch scheitern könnte. „Besser“ allein sagt nicht, ob du Reichweite, Sicherheit oder Preis meinst. Solche Ziele müssen zuerst getrennt werden. Für das Rollbeispiel genügt eine Simulation oder ein kleines ungefährliches Tischmodell mit Auffangbegrenzung. Versuche im Straßenverkehr oder mit fahrenden Fahrrädern gehören nicht dazu.",
+            "en": "“These bicycle tyres roll better” can become a testable question: how far does the same unloaded model cart roll on two surfaces after an identical start? You need a measurable quantity and a prediction that could turn out to be wrong. “Better” alone does not tell us whether you mean range, safety or price. Those goals must be separated first. For this rolling example, a simulation or a small, safe table model with a stopping barrier is sufficient. Tests in traffic or on moving bicycles are not part of the investigation."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Welche Angabe fehlt der Behauptung, ein Reifen sei einfach besser als ein anderer? Bei dem Tischbeispiel wäre ein Unterschied von vier Millimetern mit einem groben Zollstock womöglich nicht sicher aufzulösen. Ein anderer Messpunkt an einer abgerundeten Tischkante könnte ebenfalls abweichende Werte erzeugen. Das Ergebnis „120 cm“ ist deshalb erst zusammen mit Messstelle und Verfahren aussagekräftig. Genau solche Angaben unterscheiden eine nachprüfbare Messung von einer bloßen Zahl auf einem Bildschirm.",
+            "en": "What information is missing from the claim that one tyre is simply better than another? In the table example, a four-millimetre difference might not be resolvable with a coarse ruler. Choosing a different point on a rounded table edge could also change the result. “120 cm” becomes informative only when the measurement location and method are specified. These details distinguish a checkable measurement from a number merely displayed on a screen."
+          }
+        }
+      ]
+    },
+    {
+      "key": "groessen",
+      "title": {
+        "de": "Eine Zahl braucht eine Einheit",
+        "en": "A number needs a unit"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "„Der Weg beträgt 12“ ist unvollständig. Zwölf Meter sind etwas anderes als zwölf Zentimeter. Eine physikalische Größe besteht aus Zahlenwert und Einheit, zum Beispiel s = 12 m. Das Formelzeichen bezeichnet die Größe, das Einheitenzeichen ihre Maßeinheit. Bei Zeit verwenden wir hier t und Sekunden, bei Masse m und Kilogramm. Dass m einmal ein Formelzeichen und einmal die Einheit Meter sein kann, erkennst du am Zusammenhang.",
+            "en": "“The distance is 12” is incomplete. Twelve metres is not the same as twelve centimetres. A physical quantity includes a numerical value and a unit, for example s = 12 m. The quantity symbol names what we measure; the unit symbol identifies its measurement unit. Here we use t and seconds for time, and m and kilograms for mass. The context tells you whether m is a symbol for mass or the unit metre."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Einheiten lassen sich umrechnen: 1 m sind 100 cm, 1 kg sind 1000 g und 1 min sind 60 s. Beim Vergleichen müssen die Einheiten zusammenpassen. Eine Strecke von 1,2 m ist genauso lang wie 120 cm. Ein Messgerät muss außerdem zur Aufgabe passen: Für eine Tischlänge ist ein Maßband sinnvoll, für eine Haarbreite nicht. Die kleinste angezeigte Stelle garantiert noch keine entsprechend hohe Genauigkeit. Auch ein digitales Gerät kann systematisch falsch anzeigen, etwa wenn sein Nullpunkt nicht stimmt.",
+            "en": "Units can be converted: 1 m equals 100 cm, 1 kg equals 1000 g and 1 minute equals 60 seconds. Units must match when you compare measurements. A distance of 1.2 m is exactly the same as 120 cm. The instrument must suit the task as well: a tape measure is useful for a table, but not for the width of a hair. The smallest displayed digit does not guarantee an equally accurate measurement. Even a digital instrument can have a systematic error, for instance if its zero point is incorrect."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Wie würdest du auf einer Skizze zeigen, dass 120 cm und 1,2 m dieselbe Tischlänge beschreiben? Für einen Sportvergleich kann dieselbe Strecke als 100 m oder 0,1 km notiert werden. Die Bewegung ändert sich dadurch nicht. Schwieriger wird es, wenn eine Person Sekunden und eine andere Minuten verwendet, ohne das anzugeben. Eine gemeinsame Einheit im Tabellenkopf verhindert genau diesen Fehler. Ein digitales Display macht die fehlende Beschriftung nicht weniger wichtig als ein handschriftliches Protokoll.",
+            "en": "How would your sketch show that 120 cm and 1.2 m describe the same table length? For a sporting comparison, the same distance can be recorded as 100 m or 0.1 km; the motion does not change. Problems arise when one person uses seconds and another minutes without saying so. A shared unit in the table heading prevents this mistake. A digital display makes correct labels no less important than they are in a handwritten record."
+          }
+        }
+      ]
+    },
+    {
+      "key": "streuung",
+      "title": {
+        "de": "Dreimal messen ist nicht dreimal recht haben",
+        "en": "Three readings do not make you automatically right"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Drei Zeitmessungen ergeben 4,8 s, 5,0 s und 5,2 s. Der Mittelwert beträgt (4,8 + 5,0 + 5,2) / 3 = 5,0 s. Die Streuung zeigt, dass das Verfahren nicht beliebig genau ist. Eine ehrliche Zusammenfassung nennt deshalb neben dem Mittelwert auch die einzelnen Werte oder ihre Spannweite. Viele Nachkommastellen würden hier nur Genauigkeit vortäuschen.",
+            "en": "Three time measurements give 4.8 s, 5.0 s and 5.2 s. Their mean is (4.8 + 5.0 + 5.2) / 3 = 5.0 s. Their spread shows that the method is not infinitely precise. An honest summary therefore includes not just the mean but the individual results or their range. Adding many decimal places would only create an illusion of accuracy."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Wiederholen hilft bei zufälligen Abweichungen, etwa unterschiedlicher Reaktionszeit. Ein falsch eingestellter Maßstab wird dadurch jedoch nicht richtig: Ein systematischer Fehler verschiebt alle Ergebnisse ähnlich. Deshalb kontrollierst du Nullpunkt, Aufbau und Ableserichtung. Bei einem Lineal schaust du möglichst senkrecht auf die Skala, sonst entsteht ein Ablesefehler durch den Blickwinkel. In einer Tabelle steht die Einheit im Spaltenkopf. In einem Diagramm stehen Größe und Einheit an jeder Achse. So kann jemand deine Ergebnisse verstehen, ohne dabei gewesen zu sein. Ein einzelner ungewöhnlicher Wert wird nicht heimlich gelöscht, sondern begründet untersucht.",
+            "en": "Repeating measurements helps with random variation, such as differences in reaction time. It does not fix an incorrectly set scale: a systematic error shifts every result in a similar way. Check the zero point, the arrangement and your viewing direction. When reading a ruler, look straight at the scale rather than from an angle; otherwise parallax can change the reading. A table includes units in its column headings. A graph labels each axis with both quantity and unit. This allows someone who was not present to understand your results. An unusual reading is investigated with reasons, not secretly deleted."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Welche Aussage ist ehrlicher: „exakt 5,000 s“ oder „Mittelwert 5,0 s, Werte zwischen 4,8 und 5,2 s“? Stell dir vor, alle drei Stoppzeiten stammen von derselben Uhr, die zu langsam läuft. Ein schöner Mittelwert würde diesen Fehler nicht aufdecken. Die Kontrolle mit einer zweiten geeigneten Zeitquelle prüft etwas anderes als die bloße Wiederholung. Vergleiche deshalb nicht nur Zahlen innerhalb einer Messreihe, sondern auch die Frage, ob das gesamte Verfahren einen gemeinsamen Fehler haben könnte.",
+            "en": "Which statement is more honest: “exactly 5.000 s” or “mean 5.0 s, readings from 4.8 to 5.2 s”? Imagine all three times came from the same slow-running clock. A neat average would not reveal that fault. Checking against another suitable time source tests something different from repetition. Compare not only the numbers within one series but also whether the entire method could share a common error. That distinction explains why more readings are not automatically better evidence."
+          }
+        }
+      ]
+    },
+    {
+      "key": "fair",
+      "title": {
+        "de": "Was darfst du verändern?",
+        "en": "What may you change?"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Du willst wissen, ob eine längere Pendelschnur die Schwingungsdauer verändert. Wenn du gleichzeitig die Länge, die Masse und die Auslenkung änderst, weißt du hinterher nicht, wodurch ein Unterschied entstand. Ein fairer Vergleich verändert gezielt einen Einflussfaktor und hält andere wichtige Bedingungen möglichst gleich. In einer Simulation lässt sich das besonders leicht kontrollieren.",
+            "en": "You want to know whether a longer pendulum string changes its period. If you change length, mass and release angle all at once, you cannot tell which change caused a difference. A fair comparison deliberately varies one factor while keeping other important conditions as similar as possible. A simulation makes these controls particularly easy to manage."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Auch die Messregel muss feststehen: Eine vollständige Schwingung führt vom Startpunkt über die andere Seite zurück zum gleichen Bewegungszustand. Die Zeit für zehn Schwingungen geteilt durch zehn ist oft verlässlicher als eine einzelne Stoppung. Eine Vermutung wird dadurch gestützt oder widerlegt, aber nicht für alle denkbaren Bedingungen endgültig bewiesen. Beobachte nur sichere Modelle: kleine Auslenkungen, keine schweren schwingenden Gegenstände über Menschen und keine eigenmächtigen Aufbauten. Vor jedem Schulversuch werden Gefährdungen, Schutzmaßnahmen und Abbruchregeln mit der Lehrkraft geklärt. Sicherheit ist keine lästige Ergänzung, sondern Teil einer guten Versuchsplanung.",
+            "en": "The measurement rule must be clear too: one complete oscillation returns from the starting point, through the other side, to the same state of motion. Timing ten oscillations and dividing by ten is often more reliable than timing only one. Such evidence can support or challenge a prediction, but it cannot prove it for every possible situation forever. Observe safe models only: small displacements, no heavy swinging objects above people and no improvised setups. Before any school experiment, hazards, protective measures and stopping rules are agreed with the teacher. Safety is part of good experimental planning, not an annoying extra."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Warum wäre ein Vergleich zweier Pendel unfair, wenn sowohl Schnurlänge als auch Auslenkung deutlich verschieden sind? Ein Pendelvergleich kann an einer unscheinbaren Startregel scheitern: Wird ein Pendel angeschubst und das andere nur losgelassen, wurde mehr als die Länge verändert. Notiere daher auch den Startvorgang. In einer Simulation könntest du dieselbe Anfangsauslenkung einstellen und anschließend nur die Länge ändern. Erst danach wäre eine Zeitdifferenz ein sinnvoller Hinweis auf den untersuchten Einfluss.",
+            "en": "Why would comparing two pendulums be unfair if both their string lengths and their release angles differed substantially? A pendulum comparison can fail because of a small difference in the start rule: pushing one but merely releasing the other changes more than length. Record how the motion starts too. In a simulation, set the same initial displacement and then change only length. A difference in timing then becomes useful evidence about the factor being investigated."
+          }
+        }
+      ]
+    },
+    {
+      "key": "modell",
+      "title": {
+        "de": "Ein Modell ist eine Denkmaschine",
+        "en": "A model is a thinking tool"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Eine Wetterkarte ist nicht das Wetter. Trotzdem hilft sie dir, eine Jacke auszuwählen. Physikalische Modelle funktionieren ähnlich: Sie heben wichtige Zusammenhänge hervor und lassen anderes bewusst weg. Im Teilchenmodell kannst du etwa Temperaturänderungen erklären, ohne jedes einzelne Molekül zu kennen. Eine Pfeilzeichnung kann Bewegungsrichtung und Tempo zeigen, ohne das ganze Fahrrad abzubilden.",
+            "en": "A weather map is not the weather itself. Yet it can help you decide which jacket to wear. Physical models work similarly: they highlight important relationships and deliberately leave other details out. A particle model can help explain temperature changes without tracking every molecule. An arrow diagram can show speed and direction without drawing an entire bicycle."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Ein gutes Modell liefert überprüfbare Vorhersagen. Stimmen diese wiederholt nicht mit Beobachtungen überein, musst du Annahmen prüfen oder das Modell erweitern. Dass Wissenschaft sich korrigiert, ist eine Stärke. Es bedeutet nicht, dass jede beliebige Behauptung gleich gut belegt ist. Achte bei einem erstaunlichen Netzvideo darauf, ob Aufbau, Messwerte und Bedingungen offenliegen und unabhängige Prüfungen möglich sind. Für eine belastbare Begründung verbindest du Behauptung, Beleg und Schlussfolgerung. Die Physik kann beispielsweise vergleichen, welche Dämmung Energie spart. Ob die Schule dafür Geld ausgeben soll, enthält zusätzlich soziale und wirtschaftliche Entscheidungen. Diese Ebenen gehören zusammen, sind aber nicht identisch.",
+            "en": "A useful model produces testable predictions. If these repeatedly disagree with observations, its assumptions must be checked or the model extended. Science correcting itself is a strength. It does not mean that every unsupported claim has equal evidence. When an online video makes an amazing claim, ask whether its setup, measurements and conditions are available and whether independent checks are possible. A convincing argument connects a claim, evidence and reasoning. Physics can compare how much energy different insulation saves, for example. Deciding whether a school should pay for it also involves social and economic choices. Those levels are connected, but they are not identical."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Entwirf eine einfache Prüfung für ein Werbeversprechen, das ein Produkt als besonders energiesparend bezeichnet. Bei einer Schulgeländekarte ist das Weglassen einzelner Pflastersteine hilfreich. Das Weglassen einer gesperrten Treppe wäre für eine Wegeplanung dagegen problematisch. Ob eine Vereinfachung gut ist, hängt also von der Frage ab. Übertrage diese Unterscheidung auf ein Energiesparversprechen: Für welche Nutzung soll es gelten, und welche ausgelassene Bedingung könnte das Ergebnis verändern? Ein Modell ist immer ein Werkzeug für einen Zweck.",
+            "en": "Design a simple check for an advertisement claiming that a product is especially energy-saving. Leaving individual paving stones out of a school map is useful. Leaving out a closed staircase would be a problem when planning a route. Whether a simplification is good depends on the question. Apply that distinction to an energy-saving claim: which use does it cover, and which omitted condition could change the result? A model is always a tool for a purpose."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "Hamburg: Physik Gymnasium (2024)",
+                "en": "Hamburg: Gymnasium physics (2024)"
+              },
+              "url": "https://www.hamburg.de/resource/blob/798534/4cf0047ad61effacd1ff7e6ad819fa41/physik-data.pdf"
+            },
+            {
+              "label": {
+                "de": "Hamburg: Physik Stadtteilschule (2024)",
+                "en": "Hamburg: Stadtteilschule physics (2024)"
+              },
+              "url": "https://www.hamburg.de/resource/blob/798426/ba414a0ace36d17b7813a855db625c42/physik-data.pdf"
+            },
+            {
+              "label": {
+                "de": "PhET: sichere interaktive Simulation",
+                "en": "PhET: safe interactive simulation"
+              },
+              "url": "https://phet.colorado.edu/de/simulations/pendulum-lab"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": {
+        "de": "1. Lückentext",
+        "en": "1. Fill in the blanks"
+      },
+      "intro": {
+        "de": "Ergänze die fehlenden Fachwörter. Alle Begriffe findest du im Pfad.",
+        "en": "Complete the missing technical words. Every term appears in this path."
+      },
+      "text": {
+        "de": "Eine messbare Frage führt zu einer überprüfbaren ___. Jede Messgröße braucht eine ___. Mehrere Messwerte zeigen eine ___. Ihr gemeinsamer Durchschnitt heißt ___. Wiederholen beseitigt nicht jeden systematischen ___. Ein fairer Vergleich verändert möglichst nur einen ___. Im Diagramm werden beide ___ beschriftet. Eine vereinfachte Darstellung nennen wir ___. Zum Begründen brauchst du neben der Behauptung einen ___. Vor einem Versuch gehört die Prüfung der ___ zur Planung.",
+        "en": "A measurable question leads to a testable ___. Every measured quantity needs a ___. Repeated readings show a ___. Their average is called the ___. Repetition does not remove every systematic ___. A fair comparison changes only one relevant ___. Both ___ of a graph need labels. A simplified representation is called a ___. To justify a claim you also need ___. Before an experiment, checking ___ is part of planning."
+      }
+    },
+    {
+      "kind": "compare",
+      "title": {
+        "de": "2. Erklären und vergleichen (AB II)",
+        "en": "2. Explain and compare (level II)"
+      },
+      "intro": {
+        "de": "Antworte mit drei bis vier kurzen Sätzen. Nutze das Gelesene und begründe deinen Vergleich.",
+        "en": "Answer in three or four short sentences. Use what you have read and explain your comparison."
+      },
+      "text": {
+        "de": "Zwei Gruppen messen dieselbe Strecke. Gruppe A veröffentlicht nur 5,000 s. Gruppe B veröffentlicht drei Zeiten von 4,8 bis 5,2 s und erklärt das Verfahren. Vergleiche, welche Aussage du besser beurteilen kannst. Erkläre außerdem, warum Wiederholen einen falschen Nullpunkt nicht repariert.",
+        "en": "Two groups measure the same journey. Group A publishes only 5.000 s. Group B publishes three times from 4.8 to 5.2 s and explains its method. Compare which report you can judge more reliably. Also explain why repetition cannot repair an incorrect zero point."
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": {
+        "de": "3. Deine Idee im Alltag (AB III)",
+        "en": "3. Your idea for everyday life (level III)"
+      },
+      "intro": {
+        "de": "Entwickle eine eigene Idee in drei bis vier kurzen Sätzen. Begründe sie mit Physik; mehrere Lösungen sind möglich.",
+        "en": "Develop your own idea in three or four short sentences. Support it with physics; several answers are possible."
+      },
+      "text": {
+        "de": "Wähle eine harmlose Alltagsbehauptung über Papier, Licht oder Bewegungen in einer Simulation. Entwirf eine prüfbare Frage, eine faire Vergleichsregel und eine Angabe, die andere zum Nachprüfen brauchen.",
+        "en": "Choose a harmless everyday claim about paper, light or motion in a simulation. Develop a testable question, a rule for a fair comparison and one detail others would need to check the result."
+      }
+    }
+  ]
+}

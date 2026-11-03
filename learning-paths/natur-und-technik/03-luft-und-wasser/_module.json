@@ -1,0 +1,15 @@
+{
+  "key": "luft-und-wasser",
+  "title": {
+    "de": "Luft und Wasser",
+    "en": "Air and water"
+  },
+  "description": {
+    "de": "Unsichtbare Luft, wanderndes Wasser und schwimmende Schiffe verstehen.",
+    "en": "Understand invisible air, travelling water and floating ships."
+  },
+  "icon": "💧",
+  "accent": "teal",
+  "badge": "Jg. 5",
+  "level": "klasse56"
+}

@@ -10,7 +10,7 @@
   },
   "icon": "📇",
   "accent": "rose",
-  "minutes": 13,
+  "minutes": 20,
   "screens": [
     {
       "key": "zeilen-und-spalten",
@@ -29,33 +29,93 @@
         {
           "kind": "table",
           "head": [
-            { "de": "id", "en": "id" },
-            { "de": "ort", "en": "place" },
-            { "de": "geboren", "en": "born" },
-            { "de": "letzter_login", "en": "last_login" },
-            { "de": "videos", "en": "videos" }
+            {
+              "de": "id",
+              "en": "id"
+            },
+            {
+              "de": "ort",
+              "en": "place"
+            },
+            {
+              "de": "geboren",
+              "en": "born"
+            },
+            {
+              "de": "letzter_login",
+              "en": "last_login"
+            },
+            {
+              "de": "videos",
+              "en": "videos"
+            }
           ],
           "rows": [
             [
-              { "de": "1", "en": "1" },
-              { "de": "22765", "en": "22765" },
-              { "de": "2010", "en": "2010" },
-              { "de": "22:14", "en": "22:14" },
-              { "de": "47", "en": "47" }
+              {
+                "de": "1",
+                "en": "1"
+              },
+              {
+                "de": "22765",
+                "en": "22765"
+              },
+              {
+                "de": "2010",
+                "en": "2010"
+              },
+              {
+                "de": "22:14",
+                "en": "22:14"
+              },
+              {
+                "de": "47",
+                "en": "47"
+              }
             ],
             [
-              { "de": "2", "en": "2" },
-              { "de": "20355", "en": "20355" },
-              { "de": "2009", "en": "2009" },
-              { "de": "07:02", "en": "07:02" },
-              { "de": "3", "en": "3" }
+              {
+                "de": "2",
+                "en": "2"
+              },
+              {
+                "de": "20355",
+                "en": "20355"
+              },
+              {
+                "de": "2009",
+                "en": "2009"
+              },
+              {
+                "de": "07:02",
+                "en": "07:02"
+              },
+              {
+                "de": "3",
+                "en": "3"
+              }
             ],
             [
-              { "de": "3", "en": "3" },
-              { "de": "22765", "en": "22765" },
-              { "de": "2010", "en": "2010" },
-              { "de": "23:51", "en": "23:51" },
-              { "de": "62", "en": "62" }
+              {
+                "de": "3",
+                "en": "3"
+              },
+              {
+                "de": "22765",
+                "en": "22765"
+              },
+              {
+                "de": "2010",
+                "en": "2010"
+              },
+              {
+                "de": "23:51",
+                "en": "23:51"
+              },
+              {
+                "de": "62",
+                "en": "62"
+              }
             ]
           ]
         },
@@ -77,6 +137,13 @@
           "text": {
             "de": "Ein Zettelkasten kann alles aufnehmen - genau deshalb kann man ihn nicht verlässlich durchsuchen. Eine Datenbank verlangt, dass man vorher festlegt, welche Angaben es gibt. Diese Einschränkung ist der ganze Trick: Nur was überall in derselben Form dasteht, lässt sich in Sekundenbruchteilen finden und vergleichen.",
             "en": "A card index can take anything - which is exactly why it cannot be searched reliably. A database demands that you decide in advance which details exist. That restriction is the whole trick: only what appears everywhere in the same form can be found and compared in fractions of a second."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Schon die Anwesenheitsliste ist eine Datenbank: Zeilen für Schüler, Spalten für Tage, Kreuze für da. Der Lehrer fragt sie ab wie ein Profi: Wer fehlte am Freitag? Drei Kreuze hintereinander – Gespräch. Du lebst längst in Tabellen, nur heißen sie Liste, Plan und Heft.",
+            "en": "Even the attendance list is a database: rows for pupils, columns for days, crosses for present. The teacher queries it like a pro: who missed Friday? Three crosses in a row – talk. You long live in tables, only they are called list, plan and booklet."
           }
         }
       ]
@@ -132,6 +199,26 @@
             "de": "Die Daten sind da, und sie müssen da sein. Die interessante Frage ist nicht, ob es sie gibt, sondern wer welche davon zusammen sehen darf. Ein Lehrer die Noten seiner Klasse - selbstverständlich. Die Noten aller Klassen? Die Fehlzeiten zusammen mit den Adressen? Genau darum geht es im nächsten Pfad.",
             "en": "The data are there, and they have to be. The interesting question is not whether they exist but who may see which of them together. A teacher the grades of their own class - of course. The grades of all classes? Absences together with addresses? That is exactly what the next path is about."
           }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Zähle mit: Schule (Noten, Fehlzeiten), Arzt (Impfungen, Brille), Verein (Beiträge, Position), Bibliothek (Ausleihen, Mahnungen), Stadt (Meldeadresse, Hundesteuer). Fünf Datenbanken, ein du – und jede ist sinnvoll. Gruselig wird es erst, wenn einer alle fünf zusammen sieht. Darum gibt es Zweckbindung: Jede Tabelle nur für ihren Zweck.",
+            "en": "Count along: school (grades, absences), doctor (vaccinations, glasses), club (fees, position), library (loans, reminders), city (registered address, dog tax). Five databases, one you – and each makes sense. Creepy starts only when one sees all five together. Hence purpose binding exists: every table only for its purpose."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "note",
+          "icon": "🗂️",
+          "title": {
+            "de": "Zweckbindung",
+            "en": "Purpose binding"
+          },
+          "text": {
+            "de": "Deine Noten gehören in die Schule, nicht in die Bewerbung beim Ferienjob – außer du gibst sie. Zweckbindung heißt: Daten bleiben, wo sie hingehören. Wer sie woandershin trägt, braucht einen Grund – oder deine Erlaubnis.",
+            "en": "Your grades belong to school, not to the holiday-job application – unless you give them. Purpose binding means: data stays where it belongs. Whoever carries it elsewhere needs a reason – or your permission."
+          }
         }
       ]
     },
@@ -153,21 +240,30 @@
           "kind": "steps",
           "items": [
             {
-              "title": { "de": "Etwas Gemeinsames finden", "en": "Find something in common" },
+              "title": {
+                "de": "Etwas Gemeinsames finden",
+                "en": "Find something in common"
+              },
               "text": {
                 "de": "Zwei Tabellen lassen sich verbinden, sobald sie eine Spalte teilen: eine Kundennummer, eine E-Mail-Adresse, eine Gerätenummer. Der gemeinsame Wert ist das Scharnier.",
                 "en": "Two tables can be joined as soon as they share a column: a customer number, an email address, a device identifier. The shared value is the hinge."
               }
             },
             {
-              "title": { "de": "Und plötzlich sieht man mehr", "en": "And suddenly you see more" },
+              "title": {
+                "de": "Und plötzlich sieht man mehr",
+                "en": "And suddenly you see more"
+              },
               "text": {
                 "de": "Die eine Tabelle weiß, wo du wohnst. Die andere, was du gekauft hast. Keine von beiden wusste beides - bis jemand sie über die Kundennummer verbunden hat.",
                 "en": "One table knows where you live. The other, what you bought. Neither knew both - until somebody joined them via the customer number."
               }
             },
             {
-              "title": { "de": "Ohne Namen geht es auch", "en": "It works without names too" },
+              "title": {
+                "de": "Ohne Namen geht es auch",
+                "en": "It works without names too"
+              },
               "text": {
                 "de": "Dafür braucht es keinen Namen. Eine Gerätenummer genügt, um dieselbe Person in zwanzig verschiedenen Tabellen wiederzuerkennen - und am Ende steht ein Bild, das genauer ist als jeder Steckbrief.",
                 "en": "No name is needed for this. A device identifier is enough to recognise the same person across twenty different tables - and at the end there is a picture more accurate than any description."
@@ -192,14 +288,112 @@
           "kind": "sources",
           "items": [
             {
-              "label": { "de": "inf-schule.de: Datenbanken", "en": "inf-schule.de: databases" },
+              "label": {
+                "de": "inf-schule.de: Datenbanken",
+                "en": "inf-schule.de: databases"
+              },
               "url": "https://www.inf-schule.de/datenbanken"
             },
             {
-              "label": { "de": "Datenschutz-Grundverordnung, amtlicher Text", "en": "General Data Protection Regulation, official text" },
+              "label": {
+                "de": "Datenschutz-Grundverordnung, amtlicher Text",
+                "en": "General Data Protection Regulation, official text"
+              },
               "url": "https://eur-lex.europa.eu/eli/reg/2016/679/oj"
             }
           ]
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Stell dir zwei Tabellen vor: eine mit Namen und Kundennummern, eine mit Nummern und Einkäufen – getrennt harmlos. Ein Schlüssel verbindet sie: die Nummer. Plötzlich weiß der Shop, WER was kaufte. So entstehen Personen aus Zeilen: nicht durch eine große Tabelle, sondern durch kleine Schlüssel dazwischen. Trennung schützt – Verbindung verrät.",
+            "en": "Picture two tables: one with names and customer numbers, one with numbers and purchases – separately harmless. One key joins them: the number. Suddenly the shop knows WHO bought what. Thus persons emerge from rows: not through one big table but small keys between. Separation guards – joining betrays."
+          }
+        }
+      ]
+    },
+    {
+      "key": "du-bist-die-zeile",
+      "title": {
+        "de": "Du bist die Zeile",
+        "en": "You are the row"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Irgendwo liegt eine Tabelle, in der DU die Zeile bist. Drei Beispiele aus deinem Alltag:",
+            "en": "Somewhere lies a table in which YOU are the row. Three examples from your everyday life:"
+          }
+        },
+        {
+          "kind": "steps",
+          "items": [
+            {
+              "title": {
+                "de": "Streaming",
+                "en": "Streaming"
+              },
+              "text": {
+                "de": "Was du gesehen, pausiert und abgebrochen hast – daraus rät die Tabelle, was du als Nächstes sehen willst. Jede Empfehlung verrät: Hier kennt dich jemand als Zeile.",
+                "en": "What you watched, paused and dropped – from that the table guesses what you want next. Every recommendation confesses: someone here knows you as a row."
+              }
+            },
+            {
+              "title": {
+                "de": "Kantine",
+                "en": "Canteen"
+              },
+              "text": {
+                "de": "Chipkarte ans Terminal: Datum, Gericht, Preis – deine Essenszeile wächst jeden Mittag. Praktisch für die Abrechnung, interessant für alle, die wissen wollen, was Schüler essen.",
+                "en": "Chip card to the terminal: date, dish, price – your food row grows every lunch. Handy for billing, interesting for anyone wanting to know what pupils eat."
+              }
+            },
+            {
+              "title": {
+                "de": "Bonus-App",
+                "en": "Bonus app"
+              },
+              "text": {
+                "de": "Punkte für jeden Einkauf – und im Gegenzug eine lückenlose Einkaufszeile: wann, wo, was, wie viel. Der Rabatt ist der Preis für deine Zeile.",
+                "en": "Points for every purchase – and in return a gapless shopping row: when, where, what, how much. The discount is the price of your row."
+              }
+            }
+          ]
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Tabellen sind nicht böse – ohne sie gäbe es keine Abrechnung und keine Empfehlung. Aber jede Zeile gehört jemandem. Frag dich bei jeder App: Was steht in meiner Zeile – und wer darf sie lesen?",
+            "en": "Tables are not evil – without them no billing and no recommendation. But every row belongs to someone. Ask with every app: what sits in my row – and who may read it?"
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Werde zum Tabellen-Detektiv: Frage in drei Läden oder Apps nach, was sie speichern – Kassenbon-App, Spiele-Account, Schul-Mensa. Notiere je drei Spalten, die sie sicher führen. Du wirst staunen, wie gut du Datenbanken voraussiehst: Wer versteht, was sich zu speichern lohnt, denkt wie ein Datenbank-Designer.",
+            "en": "Become a table detective: ask in three shops or apps what they store – receipt app, games account, school canteen. Note three columns each surely keeps. You will marvel how well you foresee databases: whoever grasps what pays storing thinks like a database designer."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "tip",
+          "icon": "🔍",
+          "title": {
+            "de": "Detektiv-Auftrag",
+            "en": "Detective job"
+          },
+          "text": {
+            "de": "Vergleicht in der Klasse: Welche Spalten tauchen überall auf? Name, Datum, Betrag – die ewigen Drei. Was überall steht, ist am wertvollsten. Und am schützenswertesten.",
+            "en": "Compare in class: which columns appear everywhere? Name, date, amount – the eternal three. What stands everywhere is most valuable. And most worth guarding."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Detektive erkennst du übrigens am Fragen: „Woher wissen Sie das?“ Gute Antwort: aus genau einer Tabelle, für genau einen Zweck. Das ist gelebte Zweckbindung – im Krimi wie im Gesetz. Wer seine Quellen nennen kann, arbeitet sauber. Wer nicht, hat etwas zu verbergen. Auch das ist eine Zeile wert.",
+            "en": "Detectives you spot incidentally by questioning: “How do you know that?” Good answer: from exactly one table, for exactly one purpose. That is lived purpose binding – in crime novels like in law. Whoever can name sources works cleanly. Whoever cannot hides something. That too is worth a row."
+          }
         }
       ]
     }

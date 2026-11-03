@@ -10,7 +10,7 @@
   },
   "icon": "📸",
   "accent": "violet",
-  "minutes": 14,
+  "minutes": 20,
   "screens": [
     {
       "key": "in-zehn-minuten",
@@ -30,28 +30,40 @@
           "kind": "steps",
           "items": [
             {
-              "title": { "de": "Teachable Machine öffnen", "en": "Open Teachable Machine" },
+              "title": {
+                "de": "Teachable Machine öffnen",
+                "en": "Open Teachable Machine"
+              },
               "text": {
                 "de": "Die Seite läuft im Browser, ohne Anmeldung. Wähle „Bild-Projekt“ und dann „Standard-Bildmodell“. Alles Weitere passiert auf deinem eigenen Rechner - die Bilder verlassen ihn nicht.",
                 "en": "The page runs in the browser without signing in. Choose \"Image Project\" and then \"Standard image model\". Everything else happens on your own machine - the pictures never leave it."
               }
             },
             {
-              "title": { "de": "Zwei Kategorien wählen", "en": "Pick two categories" },
+              "title": {
+                "de": "Zwei Kategorien wählen",
+                "en": "Pick two categories"
+              },
               "text": {
                 "de": "Etwas Einfaches: Hand offen gegen Hand zur Faust. Stift gegen Radiergummi. Brille auf gegen Brille ab. Zwei Dinge, die sich klar unterscheiden - fürs erste Mal reicht das völlig.",
                 "en": "Something simple: open hand versus fist. Pen versus eraser. Glasses on versus glasses off. Two things that clearly differ - for a first attempt that is quite enough."
               }
             },
             {
-              "title": { "de": "Je dreißig Bilder aufnehmen", "en": "Record thirty pictures each" },
+              "title": {
+                "de": "Je dreißig Bilder aufnehmen",
+                "en": "Record thirty pictures each"
+              },
               "text": {
                 "de": "Knopf gedrückt halten und die Hand dabei ein wenig bewegen. Dreißig Bilder sind in fünf Sekunden aufgenommen. Danach dasselbe für die zweite Kategorie.",
                 "en": "Hold the button and move your hand a little while doing so. Thirty pictures are recorded in five seconds. Then the same for the second category."
               }
             },
             {
-              "title": { "de": "Trainieren und ausprobieren", "en": "Train and try it out" },
+              "title": {
+                "de": "Trainieren und ausprobieren",
+                "en": "Train and try it out"
+              },
               "text": {
                 "de": "Ein Klick, ein paar Sekunden Warten, fertig. Rechts siehst du live, wie sicher sich das Modell ist - eine Prozentzahl, die sich bewegt, während du dich bewegst. Genau das, was im letzten Pfad hinten aus dem Netz herauskam.",
                 "en": "One click, a few seconds of waiting, done. On the right you see live how confident the model is - a percentage that moves as you move. Exactly what came out of the back of the network in the last path."
@@ -120,6 +132,13 @@
             "de": "Sie bauen eine dritte Kategorie ein: „nichts davon“, trainiert mit hundert zufälligen Bildern. Probier es aus - es verändert das Verhalten deines Modells schlagartig. Diese eine Idee ist in echten Systemen der Unterschied zwischen brauchbar und gefährlich.",
             "en": "They add a third category: \"none of these\", trained with a hundred random pictures. Try it - it changes your model's behaviour dramatically. In real systems this single idea is the difference between usable and dangerous."
           }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Der schmerzhafte Test hat einen Namen: Overfitting – Überanpassung. Das Modell lernt die Beispiele auswendig statt die Sache: Wie ein Schüler, der alte Klausuren paukt und an jeder neuen scheitert. Erkennungszeichen: Training top, Test Flop. Heilung: mehr verschiedene Beispiele, einfachere Netze, früher aufhören. Pauken hilft niemandem – Mensch wie Maschine.",
+            "en": "The painful test has a name: overfitting. The model memorises the examples instead of the matter: like a pupil cramming old exams failing every new one. Telltale: training top, test flop. Cure: more varied examples, simpler nets, stopping earlier. Cramming helps nobody – human like machine."
+          }
         }
       ]
     },
@@ -141,21 +160,30 @@
           "kind": "steps",
           "items": [
             {
-              "title": { "de": "Trainiere absichtlich einseitig", "en": "Train one-sidedly on purpose" },
+              "title": {
+                "de": "Trainiere absichtlich einseitig",
+                "en": "Train one-sidedly on purpose"
+              },
               "text": {
                 "de": "Nimm alle Bilder der einen Kategorie vor dem Fenster auf und alle der anderen vor der dunklen Tafel. Trainiere und probiere aus - es funktioniert scheinbar hervorragend.",
                 "en": "Record all pictures of one category in front of the window and all of the other in front of the dark board. Train it and try it out - it seems to work splendidly."
               }
             },
             {
-              "title": { "de": "Und jetzt tausche den Hintergrund", "en": "And now swap the background" },
+              "title": {
+                "de": "Und jetzt tausche den Hintergrund",
+                "en": "And now swap the background"
+              },
               "text": {
                 "de": "Zeig dieselbe Handhaltung vor dem jeweils anderen Hintergrund. Das Modell liegt daneben - und zwar zuverlässig. Es hat nie deine Hand gelernt, sondern die Helligkeit dahinter.",
                 "en": "Show the same hand position in front of the other background. The model gets it wrong - reliably. It never learned your hand, it learned the brightness behind it."
               }
             },
             {
-              "title": { "de": "Dann noch einmal, richtig", "en": "Then again, properly" },
+              "title": {
+                "de": "Dann noch einmal, richtig",
+                "en": "Then again, properly"
+              },
               "text": {
                 "de": "Nimm für beide Kategorien Bilder vor beiden Hintergründen auf, aus verschiedenen Winkeln, mit unterschiedlichem Licht. Jetzt lernt es das, was du eigentlich meintest.",
                 "en": "Record pictures of both categories in front of both backgrounds, from different angles, in different light. Now it learns what you actually meant."
@@ -187,14 +215,84 @@
           "kind": "sources",
           "items": [
             {
-              "label": { "de": "Teachable Machine (Google)", "en": "Teachable Machine (Google)" },
+              "label": {
+                "de": "Teachable Machine (Google)",
+                "en": "Teachable Machine (Google)"
+              },
               "url": "https://teachablemachine.withgoogle.com"
             },
             {
-              "label": { "de": "inf-schule.de: Künstliche Intelligenz", "en": "inf-schule.de: artificial intelligence" },
+              "label": {
+                "de": "inf-schule.de: Künstliche Intelligenz",
+                "en": "inf-schule.de: artificial intelligence"
+              },
               "url": "https://www.inf-schule.de/ki"
             }
           ]
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Gute Beispiele sind wie gute Lehrer: geduldig, vielfältig, ehrlich. Drei Regeln: Erstens mischen – nicht hundert Katzen, dann hundert Hunde, sondern durcheinander. Zweitens Randfälle dazu – Katze im Dunkeln, Hund im Kostüm. Drittens Fehler etikettieren – wer falsch Beschriftetes trainiert, trainiert Fehler. Daten pflegen ist Handwerk, kein Hexenwerk.",
+            "en": "Good examples resemble good teachers: patient, varied, honest. Three rules: first mix – not a hundred cats, then a hundred dogs, but jumbled. Second edge cases along – cat in the dark, dog in costume. Third label mistakes – whoever trains mislabelled trains mistakes. Tending data is craft, no witchcraft."
+          }
+        }
+      ]
+    },
+    {
+      "key": "dein-modell-deine-verantwortung",
+      "title": {
+        "de": "Dein Modell, deine Verantwortung",
+        "en": "Your model, your responsibility"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Wer trainiert, entscheidet – über Beispiele. Was du hineinsteckst, kommt als Verhalten wieder heraus.",
+            "en": "Whoever trains, decides – through examples. What you put in comes back out as behaviour."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Trainierst du „Hund erkennen“ nur mit Fotos deines Labradors, erkennt dein Modell genau einen Hund: deinen. Der Dackel der Nachbarin? Kein Hund. Das ist kein Fehler des Modells – es hat exakt gelernt, was du gezeigt hast. Gute Beispiele sind darum vielfältig: Rassen, Licht, Winkel, mal mit, mal ohne Mensch daneben.",
+            "en": "If you train “recognise dog” only with photos of your labrador, your model recognises exactly one dog: yours. The neighbour's dachshund? Not a dog. That is no fault of the model – it learned exactly what you showed. Good examples are therefore varied: breeds, light, angles, sometimes with a human beside, sometimes without."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Drei Pflichten für Trainer: Teste mit Fremdem – also mit Bildern, die das Modell nie gesehen hat. Schreibe auf, was es kann und was nicht – ein Beipackzettel für dein Modell. Und frage bei jedem Fehler zuerst: Welches Beispiel fehlt? Meistens fehlt genau eins.",
+            "en": "Three duties for trainers: test with strangers – pictures the model never saw. Write down what it can and cannot do – a leaflet for your model. And with every mistake ask first: which example is missing? Mostly exactly one is."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Trainiere doch mal Menschen: Bring jemandem in zehn Minuten einen Kartentrick bei – mit drei Beispielen, dann Test ohne Hilfe. Klappt es nicht, war es Overfitting (nur diese drei Karten) oder schlechte Beispiele (zu schnell gezeigt)? Wer lehrt, versteht Training von der anderen Seite: Geduld schlägt Datenmenge, immer.",
+            "en": "Train humans for once: teach someone a card trick in ten minutes – with three examples, then test unaided. If it fails, was it overfitting (only these three cards) or bad examples (shown too fast)? Whoever teaches grasps training from the other side: patience beats data volume, always."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "tip",
+          "icon": "🃏",
+          "title": {
+            "de": "Lehr-Test",
+            "en": "Teaching test"
+          },
+          "text": {
+            "de": "Bringe einer Person etwas in zehn Minuten bei und teste danach. Gelingt es, kannst du trainieren – Mensch wie Maschine. Misslingt es, frage wie ein Trainer: Welche Beispiele fehlten? Lehren ist Testen mit Herz.",
+            "en": "Teach a person something in ten minutes and test after. If it works, you can train – human like machine. If it fails, ask like a trainer: which examples were missing? Teaching is testing with heart."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Gute Trainer erkennt man übrigens am Lob: konkret, sofort, dosiert – „der Ansatz stimmte, der Rest wackelt noch“. Genauso trainieren Netze: Fehler zeigen, Richtung geben, wiederholen. Wer Menschen gut trainiert – Nachhilfe, Sport, Musik –, versteht Modelltraining intuitiv. Pädagogik ist Optimierung mit Herz.",
+            "en": "Good trainers you spot incidentally by praise: concrete, instant, dosed – “the approach was right, the rest still wobbles”. Thus nets train too: show mistakes, give direction, repeat. Whoever trains humans well – tutoring, sports, music –, grasps model training intuitively. Pedagogy is optimisation with heart."
+          }
         }
       ]
     }

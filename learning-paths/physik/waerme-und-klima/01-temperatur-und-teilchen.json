@@ -1,0 +1,271 @@
+{
+  "key": "temperatur-und-teilchen",
+  "title": {
+    "de": "Warum ein kleiner Tee nicht mehr Energie hat als die Badewanne",
+    "en": "Why a small hot drink need not contain more energy than a bath"
+  },
+  "summary": {
+    "de": "Temperatur, innere Energie und Zustandsänderungen: Du trennst Alltagssprache von einem brauchbaren Teilchenmodell.",
+    "en": "Temperature, internal energy and changes of state: distinguish everyday language from a useful particle model."
+  },
+  "icon": "🌡️",
+  "accent": "rose",
+  "minutes": 22,
+  "screens": [
+    {
+      "key": "gefuehl",
+      "title": {
+        "de": "Dein Wärmegefühl ist kein Thermometer",
+        "en": "Your sense of warmth is not a thermometer"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Ein Metallgeländer fühlt sich im kühlen Raum oft kälter an als Holz, obwohl beide dieselbe Temperatur haben können. Deine Haut nimmt den Energiefluss wahr, nicht nur die Temperatur des Gegenstands. Ein geeignetes Thermometer liefert dafür eine vergleichbare Messgröße. Auch das Thermometer braucht Zeit, um sich an die Umgebung anzupassen.",
+            "en": "A metal railing in a cool room often feels colder than wood, although both may have the same temperature. Your skin responds to energy flow, not just the object's temperature. A suitable thermometer provides a comparable measured quantity. The thermometer itself also needs time to adjust to its surroundings."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Temperatur beschreibt im einfachen Teilchenmodell den Bewegungszustand der Teilchen; bei einem idealen Gas hängt sie mit ihrer mittleren ungeordneten Bewegungsenergie zusammen. Innere Energie umfasst dagegen die Energie des gesamten Systems auf mikroskopischer Ebene, einschließlich Wechselwirkungen. Eine große Wassermenge kann bei niedrigerer Temperatur mehr innere Energie relativ zu einem gemeinsamen Bezug besitzen als eine kleine heiße Menge. Ohne Masse, Stoff und Bezug reicht die Temperatur allein für eine Energiebilanz nicht aus. Diese Grundlagen werden im Hamburger Klimaphysik-Themenfeld aufgegriffen und mit Wissen aus NWT und Chemie verbunden. Du brauchst keine Berührungsprobe an heißen oder sehr kalten Oberflächen.",
+            "en": "In a simple particle model, temperature describes the particles' state of motion; for an ideal gas it is related to their average disordered kinetic energy. Internal energy instead includes the microscopic energy of the entire system, including interactions. A large amount of water at a lower temperature can have more internal energy relative to a shared reference than a small hot amount. Temperature alone is therefore insufficient for an energy account without mass, material and reference conditions. Hamburg's climate-physics topic revisits these foundations and connects them with NWT and chemistry. You do not need to touch hot or extremely cold surfaces to investigate the distinction."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Warum kannst du aus „wärmer“ allein nicht schließen, welche Wassermenge insgesamt mehr Energie übertragen könnte? Zwei Wassermengen können dieselbe Temperatur besitzen, obwohl für dieselbe weitere Erwärmung sehr verschiedene Energiemengen nötig sind. Temperatur beschreibt nicht die Zahl der vorhandenen Teilchen. Eine Skizze mit gleich dargestellter mittlerer Bewegung, aber unterschiedlich vielen Teilchen kann diesen Unterschied zeigen. Sie ist ein Modell, keine tatsächliche Abbildung jedes Moleküls. So wird die Unterscheidung zwischen Zustand und Gesamtbilanz anschaulich.",
+            "en": "Why can “warmer” alone not tell you which amount of water could transfer more energy overall? Two water quantities can share a temperature while requiring very different energies for the same further warming. Temperature does not state the number of particles present. A sketch with similar average motion but different particle counts illustrates the distinction. It remains a model, not a picture of every molecule, making state and total energy account easier to separate."
+          }
+        }
+      ]
+    },
+    {
+      "key": "skala",
+      "title": {
+        "de": "Celsius und Kelvin beschreiben dieselbe Temperatur",
+        "en": "Celsius and kelvin describe the same temperature"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Bei der Celsius-Skala liegen Gefrieren und Sieden reinen Wassers unter festgelegten Druckbedingungen ungefähr bei 0 °C und 100 °C. Die Kelvin-Skala besitzt dieselbe Schrittgröße, aber einen anderen Nullpunkt. Es gilt T in K = Temperatur in °C + 273,15. Eine Temperatur von 20 °C entspricht 293,15 K. Einen Temperaturunterschied von 10 °C kannst du ebenso als 10 K angeben.",
+            "en": "On the Celsius scale, pure water freezes and boils at approximately 0 °C and 100 °C under specified pressure conditions. The kelvin scale uses the same step size but a different zero point. T in K equals temperature in °C plus 273.15. Thus 20 °C corresponds to 293.15 K. A temperature difference of 10 °C can equally be written as 10 K."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Der absolute Nullpunkt liegt bei 0 K, also −273,15 °C. Im einfachen klassischen Modell ist das die untere Temperaturgrenze. Die wirkliche Quantenphysik ist differenzierter; aus „0 K“ folgt nicht, dass jede denkbare mikroskopische Energie verschwinden müsste. Für deine Rechnungen ist wichtig: Bei absoluten Temperaturverhältnissen und Strahlungsgesetzen werden Kelvin verwendet. 40 °C sind nicht „doppelt so warm“ wie 20 °C im physikalischen Sinn. Der scheinbare Faktor hängt vom willkürlichen Celsius-Nullpunkt ab. Zwei Skalen sind also kein bloßer Schreibstil, sondern müssen zur jeweiligen Frage passen.",
+            "en": "Absolute zero is 0 K, or −273.15 °C. In the simple classical model, it is the lower temperature limit. Quantum physics is more subtle; “0 K” does not mean that every possible microscopic energy must disappear. For calculations, the important point is to use kelvin for absolute temperature ratios and radiation laws. In a physical sense, 40 °C is not “twice as hot” as 20 °C. That apparent factor depends on the chosen Celsius zero point. The two scales are not merely writing preferences; each must be used appropriately for the question."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Wie zeigt eine Skala mit beiden Beschriftungen, dass ein Temperaturunterschied gleich bleibt, obwohl die Zahlenwerte verschieden sind? Ein Temperaturanstieg von 20 auf 30 °C ist derselbe Anstieg wie von 293,15 auf 303,15 K. Die Differenz ist jeweils zehn Skalenschritte. Ein Verhältnis der absoluten Werte ist dagegen nicht gleich. Genau deshalb können Temperaturdifferenzen mit beiden Schrittgrößen beschrieben werden, während das Strahlungsgesetz den absoluten Nullpunkt braucht. Beschrifte diesen Unterschied ausdrücklich auf einer gemeinsamen Skala.",
+            "en": "How can a scale labelled both ways show an unchanged temperature difference despite different numerical values? A rise from 20 to 30 °C equals one from 293.15 to 303.15 K. Both differences are ten scale steps, but the ratios of absolute values differ. Temperature differences can therefore use either step size, while the radiation law requires absolute zero. Show that distinction explicitly on a jointly labelled scale."
+          }
+        }
+      ]
+    },
+    {
+      "key": "energiemenge",
+      "title": {
+        "de": "Gleiche Erwärmung braucht nicht immer gleich viel Energie",
+        "en": "The same temperature rise can require different energy"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Für eine Erwärmung ohne Zustandsänderung hilft das Modell E = m · c · ΔT. Die spezifische Wärmekapazität c beschreibt, wie viel Energie ein Kilogramm eines Stoffes für eine Temperaturänderung um ein Kelvin benötigt. Für Wasser verwenden wir näherungsweise 4,2 kJ/(kg · K). Dieser quantitative Zusammenhang vertieft das Grundmodell; die benötigten Angaben stehen hier im Text.",
+            "en": "For heating without a change of state, the model E = m · c · ΔT is useful. The specific heat capacity c describes the energy needed to raise one kilogram of a material by one kelvin. For water we use approximately 4.2 kJ/(kg · K). This quantitative relationship extends the basic model; all required information is provided here."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Für 0,5 kg Wasser und 10 K Erwärmung ergeben sich 0,5 · 4,2 · 10 = 21 kJ. Eine doppelte Wassermasse braucht bei derselben Temperaturänderung im Modell doppelt so viel Energie. Reale Erwärmung benötigt zusätzlich Energie für Gefäß und Umgebung. Das erklärt, warum ein Gerät mehr elektrische Energie aufnehmen kann als im Wasser allein ankommt. Die Formel gilt nicht unverändert während Schmelzen oder Sieden. Auch c kann von der Temperatur abhängen; für unseren kleinen Bereich behandeln wir sie als konstant. Ein Rechenmodell oder bereitgestellte Daten reichen, ohne dass du Wasser selbst erhitzen musst.",
+            "en": "For 0.5 kg of water warmed by 10 K, the result is 0.5 · 4.2 · 10 = 21 kJ. Twice the water mass requires twice the energy for the same temperature rise in this model. Real heating also transfers energy to the container and surroundings. This explains why an appliance can receive more electrical energy than the water alone gains. The equation does not apply unchanged during melting or boiling. Heat capacity can also depend on temperature; we treat it as constant over this small range. Calculations or supplied data are sufficient, without heating water yourself."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Vergleiche 0,5 kg und 1 kg Wasser bei derselben Erwärmung um 10 K. Welche zusätzliche Energie fehlt im einfachen Modell? Die Rechnung mit 21 kJ betrachtet nur das Wasser. Würde das Gefäß ebenfalls erwärmt, wäre zusätzliche Energie nötig. Eine größere elektrische Aufnahme ist deshalb kein Beweis für verschwundene Energie. Zeichne Wasser, Gefäß und Raum als getrennte Empfänger. Damit lässt sich auch prüfen, ob zwei scheinbar vergleichbare Erwärmungsversuche wirklich dieselben Systemgrenzen und Anfangsbedingungen verwenden.",
+            "en": "Compare 0.5 kg and 1 kg of water for the same 10 K rise. Which additional energy is missing from the simple model? The 21 kJ calculation includes only water. Heating the container too requires additional energy. Greater electrical input therefore does not prove energy has disappeared. Draw water, container and room as separate recipients. This also checks whether two supposedly comparable heating experiments actually use the same system boundaries and starting conditions."
+          }
+        }
+      ]
+    },
+    {
+      "key": "zustaende",
+      "title": {
+        "de": "Energie kann Bindungen verändern statt das Thermometer",
+        "en": "Energy can change arrangement instead of temperature"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Beim Erwärmen eines reinen Stoffes kann die Temperatur während eines Zustandswechsels ungefähr gleich bleiben. Schmelzendes Eis nimmt Energie auf, obwohl sich die Temperatur bei passenden Bedingungen zunächst kaum ändert. Die Energie verändert die Anordnung und Wechselwirkungen der Teilchen. Sie ist nicht verschwunden und muss beim Erstarren wieder abgegeben werden.",
+            "en": "When a pure substance is heated, its temperature may remain approximately constant during a change of state. Melting ice absorbs energy even though, under suitable conditions, its temperature initially changes very little. Energy changes particle arrangements and interactions. It has not disappeared and must be released again during freezing."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Im festen Zustand bleiben Teilchen im einfachen Modell an geordneten Plätzen gebunden und schwingen dort. In Flüssigkeiten können sie sich gegeneinander bewegen, in Gasen sind ihre Abstände meist viel größer. Schmelzen führt von fest zu flüssig, Verdampfen von flüssig zu gasförmig, Kondensieren zurück zu flüssig. Verdunstung kann auch unterhalb der Siedetemperatur an der Oberfläche stattfinden. Sie entzieht der verbleibenden Flüssigkeit Energie; das erklärt Kühlung durch Schwitzen. Die Teilchen selbst werden dabei nicht größer, nur weil sich ein Stoff ausdehnt. Das Modell ist bewusst vereinfacht. Für sichere Beobachtungen genügen vorhandene Kurven, Simulationen oder normales schmelzendes Eis ohne Kontakt zu Elektrik.",
+            "en": "In a solid, the simple model keeps particles bound around ordered positions where they vibrate. In a liquid they can move past one another; in a gas their separations are usually much larger. Melting changes solid to liquid, vaporisation changes liquid to gas and condensation reverses it. Evaporation can occur at the surface below the boiling temperature. It removes energy from the remaining liquid, helping explain cooling through sweating. Particles do not themselves become larger merely because a substance expands. This model is deliberately simplified. Existing graphs, simulations or ordinary melting ice away from electrical equipment provide sufficient safe observations."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Warum widerlegt eine gleichbleibende Temperatur beim Schmelzen nicht, dass Energie aufgenommen wird? Ein Temperaturplateau in einer Erwärmungskurve ist nicht dasselbe wie eine ausgeschaltete Energiequelle. Die zugeführte Energie kann gerade die Anordnung der Teilchen verändern. Markiere deshalb Zustandsbereiche und Übergangsbereiche getrennt. Auch ein Eis-Wasser-Gemisch enthält weiterhin thermische Bewegung. Ein vereinfachtes Diagramm sollte weder Teilchen als unbewegliche Würfel noch Energie als plötzlich verschwundene Größe darstellen.",
+            "en": "Why does constant temperature during melting not disprove that energy is being absorbed? A plateau in a heating curve does not necessarily mean the energy source is off. Input may be changing particle arrangement. Mark state regions and transition regions separately. An ice–water mixture still contains thermal motion. A simplified graph should show neither particles as motionless cubes nor energy as suddenly disappearing."
+          }
+        }
+      ]
+    },
+    {
+      "key": "kurve",
+      "title": {
+        "de": "Eine Abkühlkurve erzählt vom Austausch",
+        "en": "A cooling curve tells an energy-transfer story"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Eine warme Flüssigkeit kühlt in einer kühleren Umgebung zunächst schneller, später langsamer ab. Die Temperaturdifferenz wird kleiner, damit verändert sich auch die Netto-Energieübertragung. Im thermischen Gleichgewicht haben gut miteinander gekoppelte Körper dieselbe Temperatur; es gibt keinen gerichteten Netto-Wärmetransport zwischen ihnen. Das bedeutet nicht, dass mikroskopisch gar nichts mehr geschieht.",
+            "en": "A warm liquid in cooler surroundings generally cools faster at first and more slowly later. As the temperature difference shrinks, net energy transfer changes too. Well-connected bodies at thermal equilibrium have the same temperature, with no directed net heat transfer between them. This does not mean that nothing happens microscopically."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Eine Messkurve braucht Zeit und Temperatur mit Einheiten. Notiere zusätzlich Gefäß, Menge und Umgebung, wenn du zwei Kurven vergleichen willst. Sonst könnte der Unterschied an einer anderen Wassermenge statt an der vermeintlich besseren Isolierung liegen. Für einen gedachten Getränkebecher kannst du überlegen: Welche Temperatur ist angenehm? Wie lange soll sie ungefähr bleiben? Soll der Becher leicht oder wiederverwendbar sein? Die Physik liefert dafür Zusammenhänge, nicht ein universell bestes Produkt. Wir rechnen und zeichnen hier; heiße Flüssigkeiten oder verschlossene erhitzte Gefäße sind keine Heimaufgabe. Eine Idee mit ausdrücklich genannten Annahmen ist hilfreicher als ein exaktes Versprechen ohne Daten.",
+            "en": "A measured curve needs time and temperature axes with units. Record the container, amount and surroundings as well when comparing two curves. Otherwise a difference could come from a different water quantity rather than supposedly better insulation. For an imagined drinks cup, ask which temperature is comfortable, how long it should remain near that temperature and whether the cup should be light or reusable. Physics supplies relationships, not one universally best product. We use calculations and drawings here; hot liquids or sealed heated containers are not a home assignment. An idea stating its assumptions is more helpful than an exact promise unsupported by data."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Entwirf einen fairen Vergleich zweier Becher anhand bereitgestellter Abkühlkurven, ohne selbst heiße Flüssigkeit zu verwenden. Bei zwei Bechern kann dieselbe Temperatur nach zehn Minuten aus unterschiedlichen Anfangstemperaturen entstanden sein. Der Endwert allein verrät deshalb noch nicht die Dämmwirkung. Vergleiche den gesamten Verlauf unter gleichen Bedingungen. Eine Kurve ist besonders hilfreich, weil sie schnelle erste und langsamere spätere Änderungen unterscheidet. Das gedankliche Beispiel braucht keine heißen Getränke und liefert trotzdem eine konkrete Frage an die Daten.",
+            "en": "Design a fair comparison of two cups using supplied cooling curves, without using hot liquids yourself. Two cups may reach the same temperature after ten minutes despite starting at different temperatures. The final reading alone therefore does not reveal insulation performance. Compare whole curves under matched conditions. A curve distinguishes faster early changes from slower later ones. The thought example needs no hot drinks while still posing a concrete question about the data."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "Hamburg: Physik Gymnasium (2024)",
+                "en": "Hamburg: Gymnasium physics (2024)"
+              },
+              "url": "https://www.hamburg.de/resource/blob/798534/4cf0047ad61effacd1ff7e6ad819fa41/physik-data.pdf"
+            },
+            {
+              "label": {
+                "de": "Hamburg: Physik Stadtteilschule (2024)",
+                "en": "Hamburg: Stadtteilschule physics (2024)"
+              },
+              "url": "https://www.hamburg.de/resource/blob/798426/ba414a0ace36d17b7813a855db625c42/physik-data.pdf"
+            },
+            {
+              "label": {
+                "de": "PhET: sichere interaktive Simulation",
+                "en": "PhET: safe interactive simulation"
+              },
+              "url": "https://phet.colorado.edu/de/simulations/states-of-matter-basics"
+            },
+            {
+              "label": {
+                "de": "PhET: sichere interaktive Simulation",
+                "en": "PhET: safe interactive simulation"
+              },
+              "url": "https://phet.colorado.edu/de/simulations/energy-forms-and-changes"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": {
+        "de": "1. Lückentext",
+        "en": "1. Fill in the blanks"
+      },
+      "intro": {
+        "de": "Ergänze die fehlenden Fachwörter. Alle Begriffe findest du im Pfad.",
+        "en": "Complete the missing technical words. Every term appears in this path."
+      },
+      "text": {
+        "de": "Eine vergleichbare Temperatur misst ein ___. Die Gesamtenergie auf mikroskopischer Ebene heißt ___. Die absolute Temperaturskala verwendet ___. Ihr unterer Grenzwert heißt absoluter ___. Die Energie für gleiche Erwärmung hängt auch von der ___ ab. Eine Stoffgröße dafür ist die spezifische ___. Beim Übergang von fest zu flüssig erfolgt ___. Der umgekehrte Übergang heißt ___. Ohne gerichteten Netto-Wärmetransport herrscht thermisches ___.",
+        "en": "A comparable temperature reading requires a ___. Total microscopic energy is called ___. The absolute temperature scale uses ___. Its lower limit is absolute ___. Energy for the same temperature rise also depends on ___. The relevant material property is specific ___. The change from solid to liquid is ___. The reverse change is ___. No directed net heat transfer indicates thermal ___."
+      }
+    },
+    {
+      "kind": "compare",
+      "title": {
+        "de": "2. Erklären und vergleichen (AB II)",
+        "en": "2. Explain and compare (level II)"
+      },
+      "intro": {
+        "de": "Antworte mit drei bis vier kurzen Sätzen. Nutze das Gelesene und begründe deinen Vergleich.",
+        "en": "Answer in three or four short sentences. Use what you have read and explain your comparison."
+      },
+      "text": {
+        "de": "Vergleiche eine kleine heiße und eine große lauwarme Wassermenge. Erkläre, warum Temperatur allein die übertragbare Energie nicht bestimmt. Erkläre außerdem, warum beim Schmelzen trotz Energiezufuhr eine Temperaturpause auftreten kann.",
+        "en": "Compare a small hot amount of water with a large lukewarm amount. Explain why temperature alone does not determine transferable energy. Also explain why melting can involve a temperature plateau despite energy input."
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": {
+        "de": "3. Deine Idee im Alltag (AB III)",
+        "en": "3. Your idea for everyday life (level III)"
+      },
+      "intro": {
+        "de": "Entwickle eine eigene Idee in drei bis vier kurzen Sätzen. Begründe sie mit Physik; mehrere Lösungen sind möglich.",
+        "en": "Develop your own idea in three or four short sentences. Support it with physics; several answers are possible."
+      },
+      "text": {
+        "de": "Entwirf auf Papier einen alltagstauglichen Getränkebecher. Nenne ein Temperaturziel, eine Energieübertragung, die du verlangsamen willst, und einen Zielkonflikt wie Gewicht oder Wiederverwendung.",
+        "en": "On paper, design an everyday drinks cup. Name a temperature goal, one energy transfer you want to slow and a trade-off such as weight or reuse."
+      }
+    }
+  ]
+}

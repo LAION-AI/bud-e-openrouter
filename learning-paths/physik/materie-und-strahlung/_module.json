@@ -1,0 +1,15 @@
+{
+  "key": "materie-und-strahlung",
+  "title": {
+    "de": "Atomkerne und Strahlung",
+    "en": "Nuclei and radiation"
+  },
+  "description": {
+    "de": "Sek-I-Kern: Atommodelle, Isotope, Radioaktivität, Halbwertszeit, Schutz sowie Nutzen und Verantwortung. Nur Daten und Simulationen.",
+    "en": "Secondary core: atomic models, isotopes, radioactivity, half-life, protection, applications and responsibility. Data and simulations only."
+  },
+  "icon": "⚛️",
+  "accent": "violet",
+  "badge": "Sek I",
+  "level": "sek1"
+}

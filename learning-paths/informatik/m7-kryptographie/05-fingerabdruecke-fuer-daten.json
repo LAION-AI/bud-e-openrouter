@@ -1,0 +1,323 @@
+{
+  "accent": "sky",
+  "exercises": [
+    {
+      "hint": {
+        "de": "Alle Antworten stehen auf den Bildschirmen davor – lies sie noch einmal von oben.",
+        "en": "All answers sit on the screens before – read them once more from the top."
+      },
+      "intro": {
+        "de": "Setze die fehlenden Wörter ein.",
+        "en": "Fill in the missing words."
+      },
+      "kind": "cloze",
+      "text": {
+        "de": "Eine ___funktion verdichtet Daten zu einem kurzen ___ – dem Fingerabdruck der Daten. Derselbe Text gibt immer denselben Fingerabdruck, ein ___ mehr einen völlig ___ Fingerabdruck. Downloads prüft man so: Stimmt der ___ nicht mit der Angabe überein, ist die Datei ___ – abbrechen, neu laden. Kluge speichern nie ___, sondern nur Hashes. Geklaut werden dann nur ___, aus denen niemand das Passwort ___ kann. Gleiche Passwörter gäben gleiche Hashes – darum mischt man pro Nutzer ___ dazu, das ___. So sieht „123456“ überall ___ aus. Und unterschrieben wird nie die Nachricht, sondern ihr ___ – kurz, eindeutig, fälschungssicher.",
+        "en": "A ___ function compresses data into a short ___ – the fingerprint of the data. The same text always gives the same fingerprint, one ___ more a totally ___ fingerprint. Downloads are checked so: if the ___ does not match the statement, the file is ___ – abort, reload. Clever people never store ___, only hashes. Stolen then are only ___, from which nobody can ___ the password. Equal passwords would give equal hashes – hence per user ___ is mixed in, the ___. So “123456” looks ___ everywhere. And signed is never the message but its ___ – short, unique, forgery-proof."
+      },
+      "title": {
+        "de": "1. Lückentext",
+        "en": "1. Fill in the blanks"
+      }
+    },
+    {
+      "hint": {
+        "de": "Was hat der Dieb jeweils in der Hand – und was kann er damit anfangen?",
+        "en": "What does the thief hold in each case – and what can they do with it?"
+      },
+      "intro": {
+        "de": "Setze zwei Beobachtungen zueinander in Beziehung.",
+        "en": "Relate two observations to each other."
+      },
+      "kind": "compare",
+      "text": {
+        "de": "Zwei Shops werden gehackt: Einer speicherte Passwörter im Klartext, einer Hashes mit Salt. Vergleiche, was die Diebe jeweils erbeuten – und erkläre, warum beim zweiten trotzdem Eile geboten ist.",
+        "en": "Two shops get hacked: one stored passwords in plaintext, the other hashes with salt. Compare what the thieves loot in each case – and explain why hurry is still needed with the second."
+      },
+      "title": {
+        "de": "2. Vergleiche",
+        "en": "2. Compare"
+      }
+    },
+    {
+      "intro": {
+        "de": "Auf diese Frage gibt es keine richtige Antwort.",
+        "en": "There is no right answer to this one."
+      },
+      "kind": "reflect",
+      "text": {
+        "de": "Dein wichtigstes Passwort: Wie sähe eines aus, das stark ist und das du dir trotzdem merken kannst? Denke an die Satz-Methode – und erkläre, warum sie funktioniert.",
+        "en": "Your most important password: what would one look like that is strong yet memorable to you? Think of the sentence method – and explain why it works."
+      },
+      "title": {
+        "de": "3. Zum Nachdenken",
+        "en": "3. Something to think about"
+      }
+    }
+  ],
+  "icon": "🫆",
+  "key": "fingerabdruecke-fuer-daten",
+  "minutes": 19,
+  "screens": [
+    {
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Jede Datei hat einen Fingerabdruck: eine kurze Zeichenkette, die sich bei der kleinsten Änderung völlig verändert. Dahinter steckt eine Hashfunktion.",
+            "en": "Every file has a fingerprint: a short string that changes completely at the smallest alteration. Behind it sits a hash function."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "So geht es: Die Funktion frisst beliebig viel – Text, Foto, Programm – und spuckt immer gleich lang aus, zum Beispiel 64 Zeichen. Derselbe Inhalt, derselbe Fingerabdruck, jedes Mal. Ein Komma mehr, und der Fingerabdruck ist völlig anders. Zurückrechnen geht nicht: Aus dem Abdruck wird kein Inhalt mehr.",
+            "en": "How it goes: the function eats arbitrarily much – text, photo, program – and always spits out equally long, say 64 characters. Same content, same fingerprint, every time. One comma more, and the fingerprint is totally different. Computing back is impossible: from the print no content ever returns."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Wozu das gut ist? Downloads prüfen: Die Seite nennt den Fingerabdruck, dein Rechner rechnet nach. Stimmt er nicht, ist die Datei unterwegs kaputtgegangen – oder ausgetauscht worden. Abbrechen, neu laden. Eine Zeile geprüft, ein Trojaner weniger.",
+            "en": "What is that good for? Checking downloads: the page names the fingerprint, your computer recalculates. If it mismatches, the file broke on the way – or was swapped. Abort, reload. One line checked, one trojan fewer."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Noch ein Alltagstest: Deine Lehrerin verteilt eine Datei und schreibt den Fingerabdruck an die Tafel. Nach dem Laden rechnest du nach – stimmt er, ist die Datei echt und ganz. Stimmt er nicht, hat jemand manipuliert oder das Netz geschlampt. Eine Zeile Kreide schlägt jeden Verdacht: So prüfen Profis, ob angekommen ist, was losgeschickt wurde.",
+            "en": "One more everyday test: your teacher hands out a file and writes the fingerprint on the board. After loading you recalculate – if it matches, the file is genuine and whole. If not, someone manipulated or the net blundered. One line of chalk beats every suspicion: thus professionals check whether what was sent arrived."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "tip",
+          "icon": "🧑‍🏫",
+          "title": {
+            "de": "Vorschlag an die Klasse",
+            "en": "Suggestion for the class"
+          },
+          "text": {
+            "de": "Schlage es beim nächsten Datei-Austausch vor: Hash an die Tafel, alle prüfen. Dauert zwei Minuten, verhindert jeden Streit über „kaputte Dateien“ – und du bist der Hash-Profi der Klasse.",
+            "en": "Suggest it at the next file exchange: hash on the board, everybody checks. Takes two minutes, prevents every quarrel about “broken files” – and you are the class hash professional."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Fingerabdrücke erkennst du überall wieder, wenn du sie einmal kennst: Der Kassenbon hat eine Nummer, das Paket eine Sendungsnummer, dein Spielstand einen Code. Überall kurze Zeichen, die für Langes stehen – überall Hashes im Alltag, nur ohne den Namen. Die Informatik hat das Prinzip nicht erfunden, sie hat es nur perfektioniert.",
+            "en": "You recognise fingerprints everywhere once you know them: the receipt has a number, the parcel a tracking number, your savegame a code. Everywhere short characters standing for long – hashes in everyday life everywhere, only without the name. Computing did not invent the principle, it only perfected it."
+          }
+        }
+      ],
+      "title": {
+        "de": "Der Fingerabdruck",
+        "en": "The fingerprint"
+      }
+    },
+    {
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Die wichtigste Anwendung hängt an deiner Tastatur: Kein vernünftiger Anbieter speichert dein Passwort. Sondern nur seinen Fingerabdruck.",
+            "en": "The most important use hangs on your keyboard: no sane provider stores your password. Only its fingerprint."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Beim Einloggen rechnet der Server den Fingerabdruck deiner Eingabe und vergleicht: gleicher Abdruck, Tür auf. Geklaut werden bei einem Einbruch nur Abdrücke – daraus rechnet niemand dein Passwort zurück. Darum war der Adobe-Diebstahl 2013 mit Millionen schlecht geschützten Hashes so peinlich: Wer schlampig speichert, verschenkt den Schutz.",
+            "en": "At login the server computes the fingerprint of your input and compares: same print, door open. Stolen in a break-in are only prints – from those nobody recomputes your password. Hence the Adobe theft of 2013 with millions of poorly guarded hashes was so embarrassing: whoever stores sloppily gives the protection away."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Ein Trick fehlt noch: Salt. Gleiche Passwörter gäben gleiche Abdrücke – „123456“ sähe überall gleich aus. Darum mischt der Server pro Nutzer einen Zufallswert dazu, das Salt: Derselbe Passwort-Text ergibt überall einen anderen Abdruck. Angreifer müssen dann jeden Nutzer einzeln angehen statt einmal für alle zu raten.",
+            "en": "One trick still missing: salt. Equal passwords would give equal prints – “123456” would look the same everywhere. Hence the server mixes per user a random value in, the salt: the same password text yields a different print everywhere. Attackers must then take on each user singly instead of guessing once for all."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "warn",
+          "icon": "🔑",
+          "title": {
+            "de": "Trotzdem Eile",
+            "en": "Still hurry"
+          },
+          "text": {
+            "de": "Hash plus Salt schützt, aber nicht ewig: Schwache Passwörter rät man trotzdem – Wort für Wort aus Listen. Darum: lang, einmalig, mit Manager. Und nach jedem bekannten Einbruch: wechseln, sofort.",
+            "en": "Hash plus salt guards, but not forever: weak passwords still get guessed – word by word from lists. Hence: long, unique, with a manager. And after every known break-in: change, at once."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Prüfe, ob du schon betroffen bist – ohne etwas preiszugeben: Die Seite „Have I Been Pwned“ sagt dir nach Eingabe deiner Mailadresse, in welchen bekannten Diebstählen sie auftauchte. Dahinter steckt ein Hash-Trick: Es wandert nur ein Stück deines Fingerabdrucks ins Netz, nie das Passwort. Nachsehen, wechseln, Manager einrichten – die Reihenfolge für heute Abend.",
+            "en": "Check whether you are already affected – without giving anything away: the page “Have I Been Pwned” tells you after entering your mail address in which known thefts it appeared. Behind it sits a hash trick: only a piece of your fingerprint travels the net, never the password. Look up, change, set up a manager – tonight's order."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Der häufigste Einbruch beginnt bei dir: dasselbe Passwort überall. Fällt ein Shop, fallen alle Konten – Hash und Salt helfen dann nichts, weil der Dieb dein Passwort kennt, nicht deinen Hash. Darum die eiserne Regel: überall anders, nirgendwo zweimal. Ein Manager merkt es sich, du dir nur eins.",
+            "en": "The most frequent break-in starts with you: the same password everywhere. If one shop falls, all accounts fall – hash and salt help nothing then, because the thief knows your password, not your hash. Hence the iron rule: different everywhere, twice nowhere. A manager remembers them, you only one."
+          }
+        }
+      ],
+      "title": {
+        "de": "Passwörter, die niemand kennt",
+        "en": "Passwords nobody knows"
+      }
+    },
+    {
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Zum Schluss schließt sich der Kreis zur Signatur: Unterschrieben wird nie die Nachricht selbst – sondern ihr Fingerabdruck.",
+            "en": "Finally the circle closes back to the signature: never the message itself gets signed – but its fingerprint."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Warum? Eine Nachricht kann megabytegroß sein, ihr Hash ist winzig – und eindeutig: Ändert der Feind ein Komma, stimmt der Abdruck nicht mehr, die Prüfung schlägt fehl. Kurz unterschreiben, alles sichern: Darum unterschreibt man Hashes, nicht Romane. Genau das passiert bei jedem Update, jeder Überweisung, jedem Schloss-Symbol – ein kleiner Abdruck trägt die ganze Wahrheit.",
+            "en": "Why? A message can be megabytes big, its hash is tiny – and unique: if the enemy changes one comma, the print mismatches, the check fails. Sign briefly, secure everything: hence hashes get signed, not novels. Exactly that happens with every update, every transfer, every padlock symbol – one small print carries the whole truth."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "Hamburg: Bildungsplan Studienstufe (Informatik)",
+                "en": "Hamburg: syllabus for the upper stage (computing)"
+              },
+              "url": "https://www.hamburg.de/politik-und-verwaltung/behoerden/bsfb/veroeffentlichungen/bildungsplaene/start-sek2-2022-123118"
+            },
+            {
+              "label": {
+                "de": "GI: Bildungsstandards Informatik",
+                "en": "GI: computing education standards"
+              },
+              "url": "https://gi.de/meldung/bildungsstandards-gi-stellt-neue-empfehlungen-fuer-den-informatikunterricht-vor"
+            }
+          ]
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Warum nicht einfach die Nachricht unterschreiben? Rechne mit: Ein Video hat eine Milliarde Zeichen, sein Hash 64. Unterschreiben heißt rechnen – und Rechnen kostet Zeit, Strom, Geld. Der Hash schrumpft alles auf Taschenformat, ohne etwas zu verlieren, was die Prüfung braucht: Ändert sich ein Bit, schreit der Abdruck. Klein unterschreiben, Großes sichern – Ökonomie der Sicherheit.",
+            "en": "Why not simply sign the message? Calculate along: one video holds a billion characters, its hash 64. Signing means computing – and computing costs time, power, money. The hash shrinks everything to pocket size without losing what the check needs: if one bit changes, the print screams. Sign small, secure big – economy of security."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "note",
+          "icon": "🕯️",
+          "title": {
+            "de": "Wachs heute",
+            "en": "Wax today"
+          },
+          "text": {
+            "de": "Schau dir Briefwahl-Umschläge oder Medikamenten-Packungen an: Siegel, Perforation, „nicht einnehmen wenn geöffnet“. Versiegelung heißt Integrität – unverändert angekommen. Der Hash ist das Siegel für Daten: unsichtbar, unbestechlich, überall.",
+            "en": "Look at postal-vote envelopes or medicine packs: seals, perforation, “do not take if opened”. Sealing means integrity – arrived unchanged. The hash is the seal for data: invisible, incorruptible, everywhere."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Rechne den Größenwahn durch: Eine Milliarde Zeichen Nachricht gegen 64 Zeichen Abdruck – Faktor fünfzehn Millionen kleiner, bei gleicher Sicherheit für die Prüfung. Das ist, als unterschriebest du ein Hochhaus mit einem Punkt. Klein ist hier keine Schwäche, klein ist der Trick.",
+            "en": "Calculate the megalomania through: one billion characters of message against 64 characters of print – fifteen million times smaller, with equal safety for the check. That is like signing a tower with a dot. Small is no weakness here, small is the trick."
+          }
+        }
+      ],
+      "title": {
+        "de": "Kurz unterschreiben, alles sichern",
+        "en": "Sign briefly, secure everything"
+      }
+    },
+    {
+      "key": "der-alltag-prueft-mit",
+      "title": {
+        "de": "Der Alltag prüft mit",
+        "en": "Everyday life checks along"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Dieser Pfad läuft auf deinem Handy schon – du merkst es nur nicht. Drei Stellen, an denen Hashes für dich arbeiten:",
+            "en": "This path already runs on your phone – you just do not notice. Three places where hashes work for you:"
+          }
+        },
+        {
+          "kind": "steps",
+          "items": [
+            {
+              "title": {
+                "de": "Updates",
+                "en": "Updates"
+              },
+              "text": {
+                "de": "Jedes Handy-Update ist unterschrieben: Dein Handy prüft Signatur und Hash, bevor es installiert. Schlägt die Prüfung fehl, bricht es ab – so kommt kein Trojaner als „Update“ daher.",
+                "en": "Every phone update is signed: your phone checks signature and hash before installing. If the check fails, it aborts – so no trojan arrives as an “update”."
+              }
+            },
+            {
+              "title": {
+                "de": "Downloads",
+                "en": "Downloads"
+              },
+              "text": {
+                "de": "Große Programme nennen ihren Fingerabdruck auf der Webseite. Nach dem Laden selbst nachrechnen (Windows: Get-FileHash, Mac: shasum) – eine Minute, ein Trojaner weniger.",
+                "en": "Big programs name their fingerprint on the website. Recalculate after loading (Windows: Get-FileHash, Mac: shasum) – one minute, one trojan fewer."
+              }
+            },
+            {
+              "title": {
+                "de": "Passwörter",
+                "en": "Passwords"
+              },
+              "text": {
+                "de": "Ein Passwort-Manager merkt sich lange, einmalige Passwörter für dich – du merkst dir nur noch eins. Wer das einmal eingerichtet hat, versteht nicht mehr, wie man ohne leben konnte.",
+                "en": "A password manager remembers long, unique passwords for you – you remember only one. Whoever set that up once no longer understands how life worked without."
+              }
+            }
+          ]
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Hashwerte sind die unauffälligsten Helfer der Sicherheit: keine Show, kein Schloss-Symbol – nur 64 Zeichen, die alles zusammenhalten. Ab heute weißt du, was dahintersteckt, wenn dein Handy „Update wird geprüft“ sagt.",
+            "en": "Hashes are security’s most inconspicuous helpers: no show, no padlock symbol – just 64 characters holding everything together. From today you know what hides behind it when your phone says “checking update”."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Noch näher: Jede E-Mail, die im Beruf wirklich zählt – Vertrag, Kündigung, Rechnung über Tausende – reist unterschrieben per S/MIME. Der Empfänger sieht: echt, unverändert, vom Absender. Normale Mails dagegen sind Postkarten: jeder auf dem Weg kann lesen und ändern. Wer das einmal weiß, schreibt Gehaltsverhandlungen nie wieder als Postkarte.",
+            "en": "Even closer: every mail that truly counts at work – contract, resignation, invoice over thousands – travels signed via S/MIME. The receiver sees: genuine, unchanged, from the sender. Normal mails dagegen are postcards: anyone on the way can read and change. Whoever knows that once never writes salary talks as postcards again."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Schau auf dein Handy: Jedes Update, das je ankam, trug Signatur plus Hash – geprüft, bevor es installierte. Milliarden Geräte prüfen täglich, ohne dass einer hinsieht. Die größte Unterschriftenaktion der Geschichte läuft lautlos, in deiner Hosentasche. Und du weißt jetzt, wie sie geht.",
+            "en": "Look at your phone: every update that ever arrived carried signature plus hash – checked before installing. Billions of devices check daily without anyone watching. History's biggest signing campaign runs silently, in your pocket. And you now know how it goes."
+          }
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "de": "Prüfsummen, Passwörter, Salt: Warum Kluge nur Fingerabdrücke speichern – und was das mit Unterschriften zu tun hat.",
+    "en": "Checksums, passwords, salt: why the clever store only fingerprints – and what that has to do with signatures."
+  },
+  "title": {
+    "de": "Fingerabdrücke für Daten",
+    "en": "Fingerprints for data"
+  }
+}

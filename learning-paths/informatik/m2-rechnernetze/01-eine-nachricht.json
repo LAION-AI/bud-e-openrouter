@@ -10,7 +10,7 @@
   },
   "icon": "📦",
   "accent": "sky",
-  "minutes": 13,
+  "minutes": 18,
   "screens": [
     {
       "key": "eine-sekunde",
@@ -205,6 +205,76 @@
               "url": "https://www.rfc-editor.org/rfc/rfc791"
             }
           ]
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Die Post macht es genauso: Umschlag außen mit Adresse (für die Sortiermaschine), Brief innen mit Inhalt (nur für dich). Einschreiben dazu ist die Empfangsbestätigung – das Paket, das „angekommen“ zurückmeldet. Wer Briefe versteht, versteht Pakete: Adresse außen, Inhalt innen, Quittung zurück.",
+            "en": "The post does exactly the same: envelope outside with address (for the sorting machine), letter inside with content (only for you). Registered mail on top is the receipt – the packet reporting “arrived” back. Whoever understands letters understands packets: address outside, content inside, receipt back."
+          }
+        }
+      ]
+    },
+    {
+      "key": "was-das-fuer-deine-fotos-heisst",
+      "title": {
+        "de": "Was das für deine Fotos heißt",
+        "en": "What that means for your photos"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Dein Klassenfoto wandert nicht am Stück durchs Netz – es reist in hunderten Paketen, kreuz und quer, und wird erst auf dem anderen Handy wieder zusammengesetzt.",
+            "en": "Your class photo does not travel the net in one piece – it journeys in hundreds of packets, criss-cross, and is only reassembled on the other phone."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Jedes Paket trägt eine Nummer. Kommt Paket 77 vor Paket 12 an, wartet das Handy einfach – die Reihenfolge stellt es aus den Nummern wieder her. Fehlt am Ende eins, fordert es genau dieses eine nach: nicht das ganze Foto, nur Paket 203. Darum dauert ein Foto bei schlechtem Empfang länger, kommt aber trotzdem vollständig an.",
+            "en": "Every packet carries a number. If packet 77 arrives before packet 12, the phone simply waits – it restores the order from the numbers. If one is missing at the end, it reorders exactly that one: not the whole photo, just packet 203. That is why a photo takes longer with bad reception but still arrives complete."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "tip",
+          "icon": "📦",
+          "title": {
+            "de": "Sieh es dir an",
+            "en": "Watch it happen"
+          },
+          "text": {
+            "de": "Schick dir selbst ein großes Foto und schalte währenddessen kurz den Flugmodus an und aus. Es kommt trotzdem an – zähle, wie lange es dauert, und überlege, welche Pakete wohl neu angefordert wurden.",
+            "en": "Send yourself a big photo and briefly toggle flight mode mid-way. It still arrives – count how long it takes and consider which packets were probably reordered."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Gruppen-Videoanrufe zeigen die Kehrseite: Jeder schickt seine Pakete an alle – bei zwanzig Leuten also jeder an neunzehn. Die Pakete vervielfachen sich wie Gerüchte auf dem Schulhof. Darum ruckelt die Klassenkonferenz, während ein Film flüssig läuft: Film ist einer an viele, Konferenz ist jeder an jeden.",
+            "en": "Group video calls show the flip side: everybody sends their packets to all – with twenty people everyone to nineteen. Packets multiply like rumours in the schoolyard. Hence the class conference judders while a film flows: film is one to many, conference is everyone to everyone."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "note",
+          "icon": "📊",
+          "title": {
+            "de": "Zähler",
+            "en": "Counter"
+          },
+          "text": {
+            "de": "Dein Handy zählt mit: Einstellungen, mobile Daten – dort stehen Megabyte wie Kilometerzähler. Das sind deine Pakete, gewogen. Wer wenig Volumen hat, schaut Videos im WLAN: Pakete sparen heißt Geld sparen.",
+            "en": "Your phone counts along: settings, mobile data – megabytes stand there like odometers. Those are your packets, weighed. Whoever holds little volume watches videos on Wi-Fi: saving packets means saving money."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Übrigens: Auch dieser Pfad kam in Paketen zu dir – Text, Bilder, Bausteine, jedes für sich adressiert. Während du liest, laufen im Hintergrund ständig Nachbestellungen: ein Bild fehlt, ein Baustein auch. Du merkst nichts, weil alles nummeriert ist. Das Netz vergisst nichts, es sortiert nur.",
+            "en": "Incidentally: this path too reached you in packets – text, pictures, blocks, each addressed separately. While you read, reorders run constantly behind: one picture missing, one block too. You notice nothing because everything is numbered. The net forgets nothing, it only sorts."
+          }
         }
       ]
     }

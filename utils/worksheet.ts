@@ -33,6 +33,15 @@ function esc(text: string): string {
     .replace(/"/g, "&quot;");
 }
 
+/** Keep the on-screen backtick emphasis in the printed worksheet. */
+function inlineCode(text: string): string {
+  return text.split(/(`[^`]+`)/g).map((part) =>
+    part.startsWith("`") && part.endsWith("`")
+      ? `<code>${esc(part.slice(1, -1))}</code>`
+      : esc(part)
+  ).join("");
+}
+
 /** The print stylesheet. Sized for A4 and for being written on by hand. */
 const STYLE = `
   @page { size: A4; margin: 18mm 16mm 16mm 16mm; }
@@ -57,6 +66,11 @@ const STYLE = `
   p { margin: 0 0 2.5mm; }
   ul, ol { margin: 0 0 2.5mm; padding-left: 6mm; }
   li { margin-bottom: 1mm; }
+  code { font-family: Consolas, monospace; background: #eee; padding: 0 1mm; }
+  pre { white-space: pre-wrap; overflow-wrap: anywhere; font-family: Consolas, monospace;
+        font-size: 9pt; background: #f2f2f2; border: 0.6pt solid #bbb;
+        padding: 2mm 3mm; margin: 0 0 3mm; break-inside: avoid; }
+  pre code { background: none; padding: 0; }
 
   .masthead {
     display: flex;
@@ -153,14 +167,17 @@ interface WorksheetText {
 /** Renders one content block. Unknown kinds are skipped, never crash. */
 function renderBlock(block: Block, lang: string): string {
   const L = (v: Localized) => esc(pick(v, lang));
+  const I = (v: Localized) => inlineCode(pick(v, lang));
 
   switch (block.kind) {
     case "lead":
-      return `<p class="lead">${L(block.text)}</p>`;
+      return `<p class="lead">${I(block.text)}</p>`;
     case "heading":
       return `<h3>${L(block.text)}</h3>`;
     case "paragraph":
-      return `<p>${L(block.text)}</p>`;
+      return `<p>${I(block.text)}</p>`;
+    case "code":
+      return `${block.caption ? `<p><b>${L(block.caption)}</b></p>` : ""}<pre><code>${L(block.text)}</code></pre>`;
     case "list": {
       const tag = block.ordered ? "ol" : "ul";
       const items = block.items.map((i) => `<li>${L(i)}</li>`).join("");
@@ -168,7 +185,7 @@ function renderBlock(block: Block, lang: string): string {
     }
     case "steps": {
       const items = block.items
-        .map((s) => `<li><b>${L(s.title)}</b> ${L(s.text)}</li>`)
+        .map((s) => `<li><b>${L(s.title)}</b> ${I(s.text)}</li>`)
         .join("");
       return `<ol>${items}</ol>`;
     }
@@ -176,7 +193,7 @@ function renderBlock(block: Block, lang: string): string {
       const title = block.title
         ? `<span class="t">${L(block.title)}</span> `
         : "";
-      return `<div class="callout">${title}${L(block.text)}</div>`;
+      return `<div class="callout">${title}${I(block.text)}</div>`;
     }
     case "table": {
       const head = block.head.map((h) => `<th>${L(h)}</th>`).join("");

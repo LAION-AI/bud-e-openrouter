@@ -1,0 +1,461 @@
+{
+  "date": "2026-11-03",
+  "audience": "Hamburg, Gymnasium und Stadtteilschule, Jahrgang 5–6, etwa 11–12 Jahre",
+  "scope": "Einstiegs-Lernpfade zu allen sechs Themenfeldern des Hamburger NwT-Plans 2024; keine Behauptung, damit jeden praktischen Unterricht oder alle optionalen Vertiefungen zu ersetzen.",
+  "structure": "18 eigenständig nutzbare Pfade; je drei Leseseiten mit 79–110 Wörtern je Sprache und eine gemeinsame Aufgabenseite. Acht Lücken, eine textgestützte Erklär-/Vergleichsfrage und eine kreative Alltagstransferfrage. Alle Texte eigenständig formuliert, keine übernommenen Bildungsplanpassagen.",
+  "sources": [
+    {
+      "label": {
+        "de": "Hamburg: Naturwissenschaften/Technik 5–6, Gymnasium (2024)",
+        "en": "Hamburg: science and technology, years 5–6, Gymnasium (2024)"
+      },
+      "url": "https://www.hamburg.de/resource/blob/798520/700d66232c2d07bad97d72b6e107e083/naturwissenschaften-technik-data.pdf"
+    },
+    {
+      "label": {
+        "de": "Hamburg: Naturwissenschaften/Technik 5–6, Stadtteilschule (2024)",
+        "en": "Hamburg: science and technology, years 5–6, Stadtteilschule (2024)"
+      },
+      "url": "https://www.hamburg.de/resource/blob/798394/033190c61a9908ff10401a5b66cedae9/naturwissenschaften-technik-data.pdf"
+    },
+    {
+      "label": {
+        "de": "LI Hamburg: Beispielcurricula NwT 5/6",
+        "en": "Hamburg teacher institute: example curricula"
+      },
+      "url": "https://li.hamburg.de/qualitaetsentwicklung-von-unterricht-und-schule/faecher-lernbereiche/mint/naturwissenschaft-technik/beispielcurricula-nwt-5-6-650024"
+    }
+  ],
+  "coverage": [
+    {
+      "module": "forschen-und-messen",
+      "title": "Genau hinsehen und fair testen",
+      "year": "Jg. 5–6",
+      "paths": [
+        {
+          "key": "nwt-fair-forschen",
+          "title": "Woher weißt du, ob das stimmt?"
+        }
+      ]
+    },
+    {
+      "module": "leben-und-lebensraeume",
+      "title": "Pflanzen, Tiere und Lebensräume",
+      "year": "Jg. 5",
+      "paths": [
+        {
+          "key": "nwt-was-ist-leben",
+          "title": "Lebt das – oder sieht es nur so aus?"
+        },
+        {
+          "key": "nwt-pflanzen-starten-durch",
+          "title": "Wie wird aus einem Samen eine Pflanze?"
+        },
+        {
+          "key": "nwt-wirbeltiere-entdecken",
+          "title": "Warum ist ein Wal kein Fisch?"
+        },
+        {
+          "key": "nwt-tiere-sind-kein-spielzeug",
+          "title": "Was braucht ein Tier wirklich?"
+        },
+        {
+          "key": "nwt-natur-vor-der-schultuer",
+          "title": "Wie wird der Schulhof lebendiger?"
+        }
+      ]
+    },
+    {
+      "module": "luft-und-wasser",
+      "title": "Luft und Wasser",
+      "year": "Jg. 5",
+      "paths": [
+        {
+          "key": "nwt-luft-ist-nicht-nichts",
+          "title": "Unsichtbar – und trotzdem da"
+        },
+        {
+          "key": "nwt-wasser-verwandelt-sich",
+          "title": "Wohin verschwindet die Pfütze?"
+        },
+        {
+          "key": "nwt-schiffe-und-wasser",
+          "title": "Warum schwimmt ein schweres Schiff?"
+        }
+      ]
+    },
+    {
+      "module": "licht-schall-und-sinne",
+      "title": "Schall, Licht und Sinne",
+      "year": "Jg. 5–6",
+      "paths": [
+        {
+          "key": "nwt-schall-und-ohr",
+          "title": "Wie kommt Musik in dein Ohr?"
+        },
+        {
+          "key": "nwt-licht-und-schatten",
+          "title": "Warum wandert dein Schatten?"
+        },
+        {
+          "key": "nwt-spiegel-linsen-und-sinne",
+          "title": "Kannst du deinen Augen immer trauen?"
+        }
+      ]
+    },
+    {
+      "module": "informatik-und-medien",
+      "title": "Computer und deine digitale Welt",
+      "year": "Jg. 5–6",
+      "paths": [
+        {
+          "key": "nwt-computer-und-eva",
+          "title": "Was passiert zwischen Klick und Bildschirm?"
+        },
+        {
+          "key": "nwt-dateien-wiederfinden",
+          "title": "Wo ist mein Referat geblieben?"
+        },
+        {
+          "key": "nwt-anweisungen-und-scratch",
+          "title": "Versteht ein Computer „Mach mal schön“?"
+        },
+        {
+          "key": "nwt-deine-daten-deine-entscheidung",
+          "title": "Muss das Internet alles über dich wissen?"
+        }
+      ]
+    },
+    {
+      "module": "koerper-und-ernaehrung",
+      "title": "Dein Körper arbeitet für dich",
+      "year": "Jg. 6",
+      "paths": [
+        {
+          "key": "nwt-reise-deines-pausenbrots",
+          "title": "Was wird aus deinem Pausenbrot?"
+        },
+        {
+          "key": "nwt-herz-und-kreislauf",
+          "title": "Dein Herz: ein Lieferservice ohne Pause"
+        }
+      ]
+    }
+  ],
+  "boundaries": [
+    "Reihenfolge an schulinterne Curricula anpassen; gemeinsame Grundlagen beider Schulformen, Hilfen und offene Transferaufgaben erlauben Differenzierung.",
+    "Datenschutz und Quellenprüfung ergänzen Informatik über die Leitperspektive Digitalität und Medienerziehung. Kein Anspruch auf Rechtsberatung oder allgemeine Freigabe einzelner Plattformen.",
+    "Experimente nur sicher und nach schulischer Absprache: keine Feuer-, Hochspannungs- oder Druckversuche; keine direkte Sonnenbeobachtung; keine Wildtiere sammeln; keine unbekannten Stoffe essen.",
+    "Körperdaten werden nicht erhoben. Kreislaufbeispiel verwendet klar erfundene Werte; keine Diagnosen, Diäten, Körper- oder Leistungsbewertungen.",
+    "Programmieren ist auf Papier oder im vorhandenen Scratch-Editor möglich, kein externer Account nötig.",
+    "Ausdrücklicher Nutzerwunsch für Klasse 5–6 hat Vorrang vor der längeren Textkonvention für ältere Klassen. Keine Füllabsätze zum Erreichen von Wortminima."
+  ],
+  "wordCounts": [
+    {
+      "key": "fair-forschen",
+      "de": [
+        93,
+        97,
+        95
+      ],
+      "en": [
+        96,
+        101,
+        95
+      ],
+      "gaps": [
+        8,
+        8
+      ]
+    },
+    {
+      "key": "was-ist-leben",
+      "de": [
+        87,
+        95,
+        85
+      ],
+      "en": [
+        91,
+        97,
+        92
+      ],
+      "gaps": [
+        8,
+        8
+      ]
+    },
+    {
+      "key": "pflanzen-starten-durch",
+      "de": [
+        98,
+        89,
+        90
+      ],
+      "en": [
+        94,
+        94,
+        91
+      ],
+      "gaps": [
+        8,
+        8
+      ]
+    },
+    {
+      "key": "wirbeltiere-entdecken",
+      "de": [
+        94,
+        92,
+        83
+      ],
+      "en": [
+        97,
+        96,
+        91
+      ],
+      "gaps": [
+        8,
+        8
+      ]
+    },
+    {
+      "key": "tiere-sind-kein-spielzeug",
+      "de": [
+        93,
+        96,
+        89
+      ],
+      "en": [
+        97,
+        100,
+        89
+      ],
+      "gaps": [
+        8,
+        8
+      ]
+    },
+    {
+      "key": "natur-vor-der-schultuer",
+      "de": [
+        79,
+        87,
+        98
+      ],
+      "en": [
+        94,
+        96,
+        105
+      ],
+      "gaps": [
+        8,
+        8
+      ]
+    },
+    {
+      "key": "luft-ist-nicht-nichts",
+      "de": [
+        94,
+        89,
+        86
+      ],
+      "en": [
+        93,
+        96,
+        89
+      ],
+      "gaps": [
+        8,
+        8
+      ]
+    },
+    {
+      "key": "wasser-verwandelt-sich",
+      "de": [
+        81,
+        91,
+        86
+      ],
+      "en": [
+        82,
+        91,
+        93
+      ],
+      "gaps": [
+        8,
+        8
+      ]
+    },
+    {
+      "key": "schiffe-und-wasser",
+      "de": [
+        91,
+        99,
+        90
+      ],
+      "en": [
+        86,
+        94,
+        102
+      ],
+      "gaps": [
+        8,
+        8
+      ]
+    },
+    {
+      "key": "schall-und-ohr",
+      "de": [
+        88,
+        84,
+        96
+      ],
+      "en": [
+        88,
+        84,
+        93
+      ],
+      "gaps": [
+        8,
+        8
+      ]
+    },
+    {
+      "key": "licht-und-schatten",
+      "de": [
+        87,
+        103,
+        90
+      ],
+      "en": [
+        91,
+        97,
+        90
+      ],
+      "gaps": [
+        8,
+        8
+      ]
+    },
+    {
+      "key": "spiegel-linsen-und-sinne",
+      "de": [
+        89,
+        89,
+        94
+      ],
+      "en": [
+        89,
+        92,
+        97
+      ],
+      "gaps": [
+        8,
+        8
+      ]
+    },
+    {
+      "key": "computer-und-eva",
+      "de": [
+        89,
+        83,
+        93
+      ],
+      "en": [
+        92,
+        87,
+        94
+      ],
+      "gaps": [
+        8,
+        8
+      ]
+    },
+    {
+      "key": "dateien-wiederfinden",
+      "de": [
+        86,
+        101,
+        97
+      ],
+      "en": [
+        97,
+        110,
+        101
+      ],
+      "gaps": [
+        8,
+        8
+      ]
+    },
+    {
+      "key": "anweisungen-und-scratch",
+      "de": [
+        96,
+        95,
+        101
+      ],
+      "en": [
+        94,
+        104,
+        104
+      ],
+      "gaps": [
+        8,
+        8
+      ]
+    },
+    {
+      "key": "deine-daten-deine-entscheidung",
+      "de": [
+        96,
+        98,
+        94
+      ],
+      "en": [
+        99,
+        100,
+        89
+      ],
+      "gaps": [
+        8,
+        8
+      ]
+    },
+    {
+      "key": "reise-deines-pausenbrots",
+      "de": [
+        91,
+        94,
+        96
+      ],
+      "en": [
+        89,
+        97,
+        93
+      ],
+      "gaps": [
+        8,
+        8
+      ]
+    },
+    {
+      "key": "herz-und-kreislauf",
+      "de": [
+        96,
+        93,
+        101
+      ],
+      "en": [
+        99,
+        94,
+        99
+      ],
+      "gaps": [
+        8,
+        8
+      ]
+    }
+  ]
+}

@@ -1,12 +1,32 @@
+import type { Handlers, PageProps } from "$fresh/server.ts";
 import Header from "../islands/Header.tsx";
 import ChatAgreementOrIsland from "../islands/ChatAgreementOrIsland.tsx";
+import { hasAgreementCookie } from "../utils/agreement.ts";
+import {
+  learningPathQuery,
+  parseLearningPathTarget,
+} from "../utils/learningPathLinks.ts";
 
-export default function Home(req: Request) {
-  const url = new URL(req.url);
-  const lang = url.searchParams.get("lang") as string !== undefined &&
-      url.searchParams.get("lang") !== null
-    ? url.searchParams.get("lang")
-    : "de";
+interface Data {
+  lang: string;
+  initialAgreed: boolean;
+  returnTo: string;
+}
+
+export const handler: Handlers<Data> = {
+  GET(req, ctx) {
+    const url = new URL(req.url);
+    const target = parseLearningPathTarget(url.search);
+    return ctx.render({
+      lang: url.searchParams.get("lang") ?? "de",
+      initialAgreed: hasAgreementCookie(req),
+      returnTo: target ? `/${learningPathQuery(target)}` : "/",
+    });
+  },
+};
+
+export default function Home({ data }: PageProps<Data>) {
+  const { lang, initialAgreed, returnTo } = data;
 
   return (
     <div
@@ -20,10 +40,13 @@ export default function Home(req: Request) {
       }}
     >
       <div class="w-full max-w-screen-lg px-1 sm:px-2 mx-auto flex flex-col items-center justify-center">
-        <Header lang={lang as string} />
-        <ChatAgreementOrIsland lang={lang as string} />
+        <Header lang={lang} />
+        <ChatAgreementOrIsland
+          lang={lang}
+          initialAgreed={initialAgreed}
+          returnTo={returnTo}
+        />
       </div>
     </div>
-  );   // <- return-Klammer schließen
-
-}     // <- und auch die Funktions-Klammer schließen!
+  ); // <- return-Klammer schließen
+} // <- und auch die Funktions-Klammer schließen!

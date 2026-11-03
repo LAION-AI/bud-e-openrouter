@@ -1,0 +1,485 @@
+{
+  "accent": "teal",
+  "exercises": [
+    {
+      "hint": {
+        "de": "Alle Antworten stehen auf den Bildschirmen davor – lies sie noch einmal von oben.",
+        "en": "All answers sit on the screens before – read them once more from the top."
+      },
+      "intro": {
+        "de": "Setze die fehlenden Wörter ein.",
+        "en": "Fill in the missing words."
+      },
+      "kind": "cloze",
+      "text": {
+        "de": "Ein ___ ist eine vereinfachte Vorstellung der ___. Es konzentriert sich auf bestimmte ___ und lässt den Rest bewusst weg. Der Hamburger ___ zeigt die Reihenfolge der ___, aber keine echten ___ und keine ___. Aus einer einzelnen Eiche wird dabei ein ___ mit einer ___. Dieser Schritt heißt ___. Das Weglassen unwichtiger Dinge heißt ___. Ob ein Modell gut ist, entscheidet allein sein ___.",
+        "en": "A ___ is a simplified picture of ___. It focuses on certain ___ and deliberately leaves out the rest. Hamburg's ___ shows the order of its ___, but no real ___ and no ___. A single oak thereby becomes a ___ with a ___. This step is called ___. Leaving out what does not matter is called ___. Whether a model is good is decided by its ___ alone."
+      },
+      "title": {
+        "de": "1. Lückentext",
+        "en": "1. Fill in the blanks"
+      }
+    },
+    {
+      "hint": {
+        "de": "Denk an den Zweck: Ankommen oder Abstände messen?",
+        "en": "Think about purpose: getting somewhere, or measuring distances?"
+      },
+      "intro": {
+        "de": "Setze zwei Beobachtungen zueinander in Beziehung.",
+        "en": "Relate two observations to each other."
+      },
+      "kind": "compare",
+      "text": {
+        "de": "Ein U-Bahn-Plan und eine maßstabsgetreue Stadtkarte zeigen dieselbe Stadt. Erkläre, wofür jeweils welcher besser ist – und welche der drei Fragen an ein Modell dabei den Ausschlag gibt.",
+        "en": "A metro map and a true-to-scale city map show the same city. Explain which one is better for what – and which of the three questions about a model tips the scales."
+      },
+      "title": {
+        "de": "2. Vergleiche",
+        "en": "2. Compare"
+      }
+    },
+    {
+      "intro": {
+        "de": "Auf diese Frage gibt es keine richtige Antwort.",
+        "en": "There is no right answer to this one."
+      },
+      "kind": "reflect",
+      "text": {
+        "de": "Baue ein Modell von deinem gestrigen Tag für jemanden, der dich nicht kennt. Was kommt hinein, was lässt du weg – und was geht durch dein Weglassen verloren?",
+        "en": "Build a model of your yesterday for someone who does not know you. What goes in, what do you leave out – and what gets lost through your leaving out?"
+      },
+      "title": {
+        "de": "3. Zum Nachdenken",
+        "en": "3. Something to think about"
+      }
+    }
+  ],
+  "icon": "🗺️",
+  "key": "was-ist-ein-modell",
+  "minutes": 21,
+  "screens": [
+    {
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Ein Modell ist eine vereinfachte Vorstellung der Wirklichkeit. Es zeigt nicht alles, sondern konzentriert sich auf bestimmte Aspekte – und lässt den Rest bewusst weg.",
+            "en": "A model is a simplified picture of reality. It does not show everything; it focuses on certain aspects – and deliberately leaves out the rest."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Schau dir den Hamburger U-Bahn-Plan an: Er zeigt, in welcher Reihenfolge die Haltestellen kommen und wo du umsteigst. Echte Abstände zeigt er nicht, Kurven auch nicht – die Linien laufen kerzengerade. Und genau deshalb findest du dich zurecht: Alles, was für deine Frage egal ist, ist schon weggeräumt.",
+            "en": "Look at Hamburg's metro map: it shows the order of the stations and where to change trains. It does not show real distances, nor curves – the lines run dead straight. And that is exactly why you find your way: everything irrelevant to your question has already been tidied away."
+          }
+        },
+        {
+          "icon": "🗺️",
+          "kind": "callout",
+          "text": {
+            "de": "Jedes Modell lügt ein bisschen – absichtlich. Die Kunst ist, an den richtigen Stellen zu lügen.",
+            "en": "Every model lies a little – on purpose. The art is lying in the right places."
+          },
+          "title": {
+            "de": "Zum Merken",
+            "en": "Worth remembering"
+          },
+          "tone": "fact"
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Achte einmal auf die Linienfarben: Die U3 ist gelb und ein Ring – in echt ist sie kein Kreis, sondern eine krumme Schleife durch die Stadt. Umsteigehaltestellen sind dicke Punkte, alles andere dünne Striche. Jede dieser Entscheidungen sagt: Für deine Frage – wo muss ich umsteigen – zählt nur Verbindung, nicht Geografie. Ein Stadtplan daneben zeigt das Gegenteil: echte Straßen, echte Abstände, keine Linien. Zwei Modelle derselben Stadt, zwei verschiedene Fragen.",
+            "en": "Notice the line colours for once: the U3 is yellow and a ring – in reality no circle but a crooked loop through the city. Interchange stations are fat dots, everything else thin strokes. Each of these decisions says: for your question – where must I change – only connection counts, not geography. A city map beside shows the opposite: real streets, real distances, no lines. Two models of the same city, two different questions."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "tip",
+          "icon": "🗺️",
+          "title": {
+            "de": "Atlas-Trick",
+            "en": "Atlas trick"
+          },
+          "text": {
+            "de": "Lege Stadtplan und U-Bahn-Plan übereinander – im Kopf oder auf dem Tisch. Modelle stapeln sich: Jedes beantwortet seine Frage, zusammen beantworten sie deine. So arbeiten auch Informatiker: viele kleine Modelle statt einem großen.",
+            "en": "Lay city map and metro map over each other – in your head or on the table. Models stack: each answers its question, together they answer yours. Computer scientists work the same way: many small models instead of one big."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Teste dein neues Werkzeug noch heute: Nimm die nächste Werbung, die du siehst, und stelle laut die drei Fragen. Was wird gezeigt – und was fehlt auffällig? Wem nützt genau diese Auswahl? Du wirst merken: Die Fragen wirken wie eine Brille. Einmal aufgesetzt, siehst du Modelle überall – und glaubst keinem Plakat mehr alles.",
+            "en": "Test your new tool today: take the next ad you see and ask the three questions aloud. What is shown – and what is strikingly missing? Whom does exactly this selection serve? You will notice: the questions work like glasses. Once put on, you see models everywhere – and believe no poster everything anymore."
+          }
+        }
+      ],
+      "title": {
+        "de": "Die Welt passt in kein Heft",
+        "en": "The world fits in no schoolbook"
+      }
+    },
+    {
+      "blocks": [
+        {
+          "kind": "steps",
+          "items": [
+            {
+              "text": {
+                "de": "Der Ausschnitt der Wirklichkeit, um den es geht: Haltestellen und Linien, nicht die ganze Stadt.",
+                "en": "The slice of reality it covers: stations and lines, not the whole city."
+              },
+              "title": {
+                "de": "Was bildet es ab?",
+                "en": "What does it show?"
+              }
+            },
+            {
+              "text": {
+                "de": "Abstände, Kurven, Häuser, Menschen – alles, was die Antwort nicht braucht.",
+                "en": "Distances, curves, houses, people – everything the answer does not need."
+              },
+              "title": {
+                "de": "Was lässt es weg?",
+                "en": "What does it leave out?"
+              }
+            },
+            {
+              "text": {
+                "de": "Der Zweck entscheidet: Ohne ihn lässt sich nicht sagen, ob ein Modell gut oder schlecht ist.",
+                "en": "Its purpose decides: without one, nobody can say whether a model is good or bad."
+              },
+              "title": {
+                "de": "Wozu ist es gut?",
+                "en": "What is it for?"
+              }
+            }
+          ]
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Wende die drei Fragen auf dein Handy an: Was bildet der Homescreen ab? Deine wichtigsten Apps, Uhrzeit, Akku – und was lässt er weg? Tausend installierte Apps, alle Dateien, alle Einstellungen. Wozu? Damit du in zwei Sekunden startest statt zu suchen. Derselbe Test funktioniert bei jeder Nachrichtensendung, jedem Stundenplan, jeder Speisekarte: Was ist drauf, was fehlt, wozu?",
+            "en": "Apply the three questions to your phone: what does the home screen show? Your most important apps, time, battery – and what does it leave out? A thousand installed apps, all files, all settings. What for? So you start in two seconds instead of searching. The same test works for every news show, every timetable, every menu: what is on it, what is missing, what for?"
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "note",
+          "icon": "❓",
+          "title": {
+            "de": "Drei Fragen, überall",
+            "en": "Three questions, everywhere"
+          },
+          "text": {
+            "de": "Wer die drei Fragen stellt, sieht durch jedes Plakat hindurch: Was wird gezeigt, was fehlt, wem nützt es? Das ist keine Informatik-Übung, das ist Medienkompetenz für alles – Werbung, Politik, Gerüchte.",
+            "en": "Whoever asks the three questions sees through every poster: what is shown, what is missing, whom does it serve? That is no computing exercise, that is media literacy for everything – ads, politics, rumours."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Noch ein Testfall für unterwegs: die Speisekarte der Mensa. Was bildet sie ab? Gerichte und Preise – aber nicht Herkunft, nicht Reste vom Vortag, nicht die Laune der Köchin. Wozu? Damit du in dreißig Sekunden wählst. Jedes Weglassen hat einen Grund, und der Grund heißt Tempo. Gute Modelle sind schnell – nicht vollständig.",
+            "en": "One more test case for the road: the canteen menu. What does it show? Dishes and prices – but not origin, not yesterday's leftovers, not the cook's mood. What for? So you choose in thirty seconds. Every omission has a reason, and the reason is called speed. Good models are fast – not complete."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "tip",
+          "icon": "🍽️",
+          "title": {
+            "de": "Mittags-Test",
+            "en": "Lunch test"
+          },
+          "text": {
+            "de": "Lege morgen in der Mensa die Karte neben dein Handy mit Liefer-App: zwei Modelle desselben Hungers. Welches lässt mehr weg – und welches entscheidet schneller für dich? Du hältst zwei Philosophien in den Händen.",
+            "en": "Tomorrow in the canteen lay the menu beside your phone with delivery app: two models of the same hunger. Which leaves out more – and which decides faster for you? You hold two philosophies in your hands."
+          }
+        }
+      ],
+      "title": {
+        "de": "Drei Fragen an jedes Modell",
+        "en": "Three questions for every model"
+      }
+    },
+    {
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Zwei Wörter gehören dazu. Abstraktion heißt: vom Einzelnen absehen – aus dieser Eiche hier wird ein Baum mit einer Höhe. Reduktion heißt: Unwichtiges streichen. Zusammen machen sie aus der Welt etwas, womit man arbeiten kann.",
+            "en": "Two words belong here. Abstraction means looking past the individual case – this oak becomes a tree with a height. Reduction means cutting what does not matter. Together they turn the world into something you can work with."
+          }
+        },
+        {
+          "caption": {
+            "de": "Drei Modelle, drei Fragen – und drei Antworten.",
+            "en": "Three models, three questions – and three answers."
+          },
+          "head": [
+            {
+              "de": "Modell",
+              "en": "Model"
+            },
+            {
+              "de": "Bildet ab",
+              "en": "Shows"
+            },
+            {
+              "de": "Lässt weg",
+              "en": "Leaves out"
+            }
+          ],
+          "kind": "table",
+          "rows": [
+            [
+              {
+                "de": "U-Bahn-Plan",
+                "en": "Metro map"
+              },
+              {
+                "de": "Haltestellen, Linien, Umstiege",
+                "en": "Stations, lines, connections"
+              },
+              {
+                "de": "Abstände, Kurven, die Stadt",
+                "en": "Distances, curves, the city"
+              }
+            ],
+            [
+              {
+                "de": "Globus",
+                "en": "Globe"
+              },
+              {
+                "de": "Kontinente und ihre Lage",
+                "en": "Continents and where they sit"
+              },
+              {
+                "de": "Menschen, Wetter, echte Größen",
+                "en": "People, weather, true sizes"
+              }
+            ],
+            [
+              {
+                "de": "Architekturmodell",
+                "en": "Architect's model"
+              },
+              {
+                "de": "Form und Räume eines Hauses",
+                "en": "A house's shape and rooms"
+              },
+              {
+                "de": "Leitungen, Möbel, Nachbarn",
+                "en": "Wiring, furniture, neighbours"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Keines davon IST die Sache – alle beantworten eine Frage. Darum gibt es für dieselbe Sache viele Modelle nebeneinander, und keines davon ist falsch, solange es zu seinem Zweck passt.",
+            "en": "None of them IS the thing – all of them answer a question. That is why the same thing can have many models side by side, and none is wrong as long as it fits its purpose."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "fact",
+          "icon": "🌦️",
+          "title": {
+            "de": "Noch ein Modell",
+            "en": "One more model"
+          },
+          "text": {
+            "de": "Der Wetterbericht: Sonne, 22 Grad, 10 Prozent Regen. Dahinter stecken Messwerte, Gleichungen, Wahrscheinlichkeiten – davor ein Symbol, das du in einer Sekunde verstehst. Frage dich: Was bildet es ab (deinen Tag), was lässt es weg (Wind in 5 Kilometern Höhe), wozu (Jacke oder nicht)? Bestanden.",
+            "en": "The weather report: sun, 22 degrees, 10 percent rain. Behind it sit measurements, equations, probabilities – before it a symbol you grasp in a second. Ask yourself: what does it show (your day), what does it leave out (wind at 5 kilometres height), what for (jacket or not)? Passed."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Und beachte: Modelle widersprechen sich ständig, ohne dass eins falsch wäre. Der U-Bahn-Plan sagt „zwei Stationen“, das Navi sagt „zwölf Minuten zu Fuß“, der Stadtplan sagt „ein Kilometer“. Drei Antworten, drei Zwecke, alle richtig. Wer das verinnerlicht, streitet nie wieder über das „richtige“ Modell – sondern fragt nach dem Zweck.",
+            "en": "And note: models constantly contradict each other without any being wrong. The metro map says “two stations”, navigation says “twelve minutes on foot”, the city map says “one kilometre”. Three answers, three purposes, all right. Whoever internalises that never argues about the “right” model again – but asks about the purpose."
+          }
+        }
+      ],
+      "title": {
+        "de": "Modelle, die du schon benutzt",
+        "en": "Models you already use"
+      }
+    },
+    {
+      "key": "modelle-in-deiner-tasche",
+      "title": {
+        "de": "Modelle in deiner Tasche",
+        "en": "Models in your pocket"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Du trägst den ganzen Tag Modelle mit dir herum – dein Handy ist voll davon. Zwei Beispiele, die du heute schon benutzt hast.",
+            "en": "You carry models around all day – your phone is full of them. Two examples you already used today."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Die Navi-App kennt nicht die echte Straße: Sie kennt ein Netz aus Punkten und Linien mit einer Zahl daran – Minuten. Baustelle? Die Zahl steigt. Stau? Die Linie wird rot, und die App rechnet eine neue schnellste Strecke. Dass neben der Straße ein Spielplatz liegt, weiß sie nicht – und muss sie nicht wissen.",
+            "en": "The navigation app does not know the real road: it knows a net of dots and lines with one number attached – minutes. Roadworks? The number rises. Traffic jam? The line turns red, and the app computes a new fastest route. That a playground sits next to the road, it neither knows nor needs to know."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Die Wetter-App zeigt eine Wolke mit 70 Prozent. Dahinter steckt kein Blick aus dem Fenster, sondern ein Rechenmodell der Luft über deiner Stadt – Temperatur, Wind, Feuchte. Die 70 Prozent heißen: In 70 von 100 vergleichbaren Lagen hat es geregnet. Das Symbol ist das Modell, der Regen ist die Welt.",
+            "en": "The weather app shows a cloud with 70 percent. Behind it sits no glance out of the window but a computed model of the air above your city – temperature, wind, humidity. The 70 percent means: in 70 of 100 comparable situations it rained. The symbol is the model, the rain is the world."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "tip",
+          "icon": "📱",
+          "title": {
+            "de": "Der Test",
+            "en": "The test"
+          },
+          "text": {
+            "de": "Halte heute bei jeder App einmal kurz an und frag die drei Fragen: Was bildet sie ab? Was lässt sie weg? Wozu? Du wirst keine App finden, die die Welt enthält – nur Modelle von ihr.",
+            "en": "Today, pause at every app for a moment and ask the three questions: what does it show? What does it leave out? What for? You will find no app that contains the world – only models of it."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Noch eins aus deinem Alltag: Die Musik-App kennt deinen Geschmack als Zahlen – laut oder leise, schnell oder langsam, viel Bass oder wenig. Was fehlt? Deine Stimmung, deine Erinnerungen, der Song aus dem Sommer, den du aus Gründen liebst, die keine Zahl fasst. Darum trifft die Empfehlung manchmal voll und manchmal meilenweit daneben: Das Modell kennt deine Ohren, nicht dein Leben.",
+            "en": "One more from your everyday life: the music app knows your taste as numbers – loud or quiet, fast or slow, much bass or little. What is missing? Your mood, your memories, the song from that summer you love for reasons no number holds. Hence the recommendation sometimes hits fully and sometimes misses by miles: the model knows your ears, not your life."
+          }
+        }
+      ]
+    },
+    {
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Ein Programm kann die Welt nicht enthalten – nur ein Modell von ihr. Wer eine App für den Schulhof schreibt, modelliert zuerst: Was ist ein Schüler, was eine Klasse, und was zählt als Anwesenheit? Der Rest der Welt bleibt draußen.",
+            "en": "A program cannot contain the world – only a model of it. Whoever writes an app for the schoolyard first models: what is a pupil, what is a class, and what counts as being present? The rest of the world stays outside."
+          }
+        },
+        {
+          "kind": "steps",
+          "items": [
+            {
+              "text": {
+                "de": "Die Wirklichkeit ansehen und fragen: Was ist für unsere Aufgabe wichtig?",
+                "en": "Look at reality and ask: what matters for our task?"
+              },
+              "title": {
+                "de": "Analysieren",
+                "en": "Analyse"
+              }
+            },
+            {
+              "text": {
+                "de": "Weglassen, ordnen, aufschreiben – das Modell entsteht.",
+                "en": "Leave out, order, write down – the model comes into being."
+              },
+              "title": {
+                "de": "Modellieren",
+                "en": "Model"
+              }
+            },
+            {
+              "text": {
+                "de": "Das Modell in Code gießen, damit der Rechner damit arbeiten kann.",
+                "en": "Pour the model into code so the computer can work with it."
+              },
+              "title": {
+                "de": "Implementieren",
+                "en": "Implement"
+              }
+            },
+            {
+              "text": {
+                "de": "Stimmt das Ergebnis? Wenn nicht, wird das Modell nachgeschärft.",
+                "en": "Does the result hold? If not, the model gets sharpened."
+              },
+              "title": {
+                "de": "Testen und bewerten",
+                "en": "Test and judge"
+              }
+            }
+          ]
+        },
+        {
+          "icon": "🔭",
+          "kind": "callout",
+          "text": {
+            "de": "Im nächsten Pfad läuft das Modell los: Simulation. Danach baust du Modelle aus Bausteinen: Objekte.",
+            "en": "In the next path the model starts moving: simulation. After that you build models from building blocks: objects."
+          },
+          "title": {
+            "de": "Wie es weitergeht",
+            "en": "What comes next"
+          },
+          "tone": "tip"
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "Hamburg: Bildungsplan Studienstufe (Informatik)",
+                "en": "Hamburg: syllabus for the upper stage (computing)"
+              },
+              "url": "https://www.hamburg.de/politik-und-verwaltung/behoerden/bsfb/veroeffentlichungen/bildungsplaene/start-sek2-2022-123118"
+            },
+            {
+              "label": {
+                "de": "GI: Bildungsstandards Informatik",
+                "en": "GI: computing education standards"
+              },
+              "url": "https://gi.de/meldung/bildungsstandards-gi-stellt-neue-empfehlungen-fuer-den-informatikunterricht-vor"
+            }
+          ]
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Nimm die Anwesenheits-App der Schule: Was zählt als da? Anwesenheit um 8 Uhr – oder auch fünf Minuten später? Zählt krank mit Attest als fehlend? Jede Antwort ist eine Modellentscheidung, und jede trifft jemanden. Wer das Modell baut, baut die Regeln: Darum sitzen bei solchen Fragen nie nur Informatiker am Tisch, sondern auch Lehrer, Eltern – und ihr.",
+            "en": "Take the school's attendance app: what counts as present? Presence at 8 o'clock – or five minutes later too? Does sick with a note count as missing? Every answer is a modelling decision, and every one hits someone. Whoever builds the model builds the rules: hence at such questions never only computer scientists sit at the table, but also teachers, parents – and you."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "warn",
+          "icon": "⚖️",
+          "title": {
+            "de": "Machtfrage",
+            "en": "Power question"
+          },
+          "text": {
+            "de": "Modelle entscheiden mit – über Versetzung, Versicherung, Kredit. Frag bei jedem System, das über Menschen urteilt: Wer hat das Modell gebaut, was hat er weggelassen, und wen fragt man, wenn es falsch liegt? Das ist der Stoff aus Modul 4 und 5 – hier schließt sich der Kreis.",
+            "en": "Models co-decide – on promotion, insurance, credit. Ask with every system judging humans: who built the model, what did they leave out, and whom do you ask when it errs? That is the stuff of modules 4 and 5 – here the circle closes."
+          }
+        }
+      ],
+      "title": {
+        "de": "Warum Informatiker Modelle lieben",
+        "en": "Why computer scientists love models"
+      }
+    }
+  ],
+  "summary": {
+    "de": "Landkarten lügen – absichtlich. Was ein Modell weglässt, ist sein eigentlicher Trick.",
+    "en": "Maps lie – on purpose. What a model leaves out is its real trick."
+  },
+  "title": {
+    "de": "Was ist ein Modell?",
+    "en": "What is a model?"
+  }
+}

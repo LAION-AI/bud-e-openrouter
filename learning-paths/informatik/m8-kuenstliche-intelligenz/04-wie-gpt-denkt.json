@@ -1,0 +1,356 @@
+{
+  "accent": "emerald",
+  "exercises": [
+    {
+      "hint": {
+        "de": "Alle Antworten stehen auf den Bildschirmen davor – lies sie noch einmal von oben.",
+        "en": "All answers sit on the screens before – read them once more from the top."
+      },
+      "intro": {
+        "de": "Setze die fehlenden Wörter ein.",
+        "en": "Fill in the missing words."
+      },
+      "kind": "cloze",
+      "text": {
+        "de": "Ein GPT ist ein ___-Predictor: Es rät immer das nächste ___. Darin arbeitet der ___: Jedes Wort fragt alle anderen, wie ___ sie für es sind – das heißt ___. Trainiert wird mit ___: Das halbe Internet lesen und immer das nächste Wort ___. Dabei entsteht als Nebenprodukt ein inneres ___ der Welt. Danach folgt ___ mit Anweisungen, damit es ___ statt fortzusetzen. Viele Modelle schreiben erst Zwischenschritte auf – ___. Gute Zwischenschritte kommen von ___, aus ___ Learning oder aus ___ Suche. Bei ___ und Code lässt sich die Antwort ___, bei Gedichten und ___ kaum.",
+        "en": "A GPT is a ___ predictor: it always guesses the next ___. Inside works the ___: every word asks all others how ___ they are for it – that is called ___. Training happens with ___: reading half the internet and always ___ the next word. As a by-product an inner ___ of the world emerges. Afterwards follows ___ with instructions, so it ___ instead of continuing. Many models first write down intermediate steps – ___. Good intermediate steps come from ___, from ___ learning or from ___ search. With ___ and code the answer can be ___, with poems and ___ hardly."
+      },
+      "title": {
+        "de": "1. Lückentext",
+        "en": "1. Fill in the blanks"
+      }
+    },
+    {
+      "hint": {
+        "de": "Wer rechnet nach – und wer rät aus Erfahrung? Was folgt daraus für Vertrauen?",
+        "en": "Who recalculates – and who guesses from experience? What follows for trust?"
+      },
+      "intro": {
+        "de": "Setze zwei Beobachtungen zueinander in Beziehung.",
+        "en": "Relate two observations to each other."
+      },
+      "kind": "compare",
+      "text": {
+        "de": "Ein Taschenrechner und ein GPT beantworten beide 247 mal 38. Vergleiche, wie beide zur Antwort kommen – und erkläre, wem du bei einer Mathe-Hausaufgabe mehr vertraust und warum.",
+        "en": "A pocket calculator and a GPT both answer 247 times 38. Compare how each reaches the answer – and explain whom you trust more with maths homework and why."
+      },
+      "title": {
+        "de": "2. Vergleiche",
+        "en": "2. Compare"
+      }
+    },
+    {
+      "intro": {
+        "de": "Auf diese Frage gibt es keine richtige Antwort.",
+        "en": "There is no right answer to this one."
+      },
+      "kind": "reflect",
+      "text": {
+        "de": "Welche Aufgabe würdest du niemals einer KI geben – kein Gedicht, keine Entscheidung, nichts? Und warum gerade diese nicht?",
+        "en": "Which task would you never give to an AI – no poem, no decision, nothing? And why exactly that one?"
+      },
+      "title": {
+        "de": "3. Zum Nachdenken",
+        "en": "3. Something to think about"
+      }
+    }
+  ],
+  "icon": "🔮",
+  "key": "wie-gpt-denkt",
+  "minutes": 21,
+  "screens": [
+    {
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Dein Handy schlägt dir das nächste Wort vor – und liegt oft richtig. Vergrößere das auf die Größe des Internets, und du hast ein GPT: einen Next-Token-Predictor.",
+            "en": "Your phone suggests your next word – and is often right. Enlarge that to the size of the internet, and you hold a GPT: a next-token predictor."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "„Ich gehe in die ___“: Schule, Küche, Berge – alles möglich, manches wahrscheinlicher. Ein GPT hat billionenfach geraten und nachgeschaut: Bei Millionen Sätzen stand hier „Schule“. Also rät es Schule – nicht weil es zur Schule geht, sondern weil die Wahrscheinlichkeiten dafür sprechen. Raten, prüfen, besser raten: Das ist das ganze Geheimnis, nur sehr groß.",
+            "en": "“I walk into the ___”: school, kitchen, mountains – all possible, some more likely. A GPT guessed billions of times and checked: in millions of sentences “school” stood here. So it guesses school – not because it goes to school, but because the probabilities speak for it. Guess, check, guess better: that is the whole secret, only very large."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Beobachte deine Tastatur eine Woche: Drei Vorschläge über den Tasten, einer passt fast immer. Tippe absichtlich Unsinn – „Ich esse morgen ein…“ – und staune, was kommt: Die Vorschläge verraten, womit Millionen Menschen den Satz beenden. Du siehst live, wie aus Zählen Raten wird – Next-Token im Taschenformat.",
+            "en": "Watch your keyboard for a week: three suggestions above the keys, one fits almost always. Type nonsense on purpose – “Tomorrow I eat a…” – and marvel what comes: the suggestions betray how millions end the sentence. You watch live how counting turns into guessing – next-token in pocket size."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "tip",
+          "icon": "⌨️",
+          "title": {
+            "de": "Feldversuch",
+            "en": "Field trial"
+          },
+          "text": {
+            "de": "Sammle eine Woche lang die lustigsten Vorschläge – Screenshot genügt. Am Ende hast du eine Galerie maschineller Fehlgriffe – und ein Gefühl dafür, wo Zählen aufhört und Verstehen anfangen müsste.",
+            "en": "Collect a week of the funniest suggestions – screenshot suffices. At the end you hold a gallery of machine misses – and a feeling for where counting ends and understanding would have to begin."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Teste die Vorschläge wie ein Forscher: Tippe „Meine Mutter ist die…“ und notiere die drei Vorschläge. Dann „Mein Vater ist der…“. Vergleiche: Was verraten die Vorschläge über die Sätze, mit denen trainiert wurde? Du hältst ein Messgerät für Vorurteile in der Hand – Tastatur als Soziologie-Labor.",
+            "en": "Test the suggestions like a researcher: type “My mother is the…” and note the three suggestions. Then “My father is the…”. Compare: what do the suggestions betray about the sentences trained on? You hold a measuring device for prejudice in your hand – keyboard as sociology lab."
+          }
+        }
+      ],
+      "title": {
+        "de": "Die Autovervollständigung denkt",
+        "en": "Autocomplete thinks"
+      }
+    },
+    {
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Drinnen arbeitet der Transformer – erfunden 2017, erklärt am besten mit einem Blick: Jedes Wort schaut alle anderen an und fragt: Wie wichtig bist du für mich?",
+            "en": "Inside works the transformer – invented in 2017, best explained with a glance: every word looks at all others and asks: how important are you for me?"
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "„Die Bank am Fluss“ gegen „Geld auf die Bank“: Dasselbe Wort Bank, zweimal anderer Sinn. Der Mechanismus dahinter heißt Aufmerksamkeit: Im ersten Satz schaut Bank stark auf Fluss, im zweiten stark auf Geld – und versteht sich danach jeweils anders. Tausendfach gestaffelt, Wort für Wort, entsteht aus Hinsehen Bedeutung.",
+            "en": "“The bank by the river” versus “money in the bank”: the same word bank, twice another meaning. The mechanism behind is called attention: in the first sentence bank looks hard at river, in the second hard at money – and understands itself differently afterwards. Stacked a thousandfold, word by word, looking turns into meaning."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "note",
+          "icon": "👁️",
+          "title": {
+            "de": "Stark vereinfacht",
+            "en": "Heavily simplified"
+          },
+          "text": {
+            "de": "In Wahrheit sind es keine Blicke, sondern Zahlen – Gewichte wie beim Perzeptron, nur billionenfach. Merke dir den Namen: The Illustrated Transformer.",
+            "en": "In truth they are no glances but numbers – weights like in the perceptron, only billions of them. Remember the name: The Illustrated Transformer."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Teste es mit einem Witz: „Ich habe Geld auf der Bank vergraben.“ Wo – Flussufer oder Tresorraum? Du lachst, weil du beides siehst und das Falsche wählst. Die Maschine rechnet Wahrscheinlichkeiten: Nach „vergraben“ schaut Bank stark auf Erde, also Fluss. Kein Lachen, nur Gewichte – und trotzdem oft richtig. Humor ist Aufmerksamkeit mit Pointe.",
+            "en": "Test it with a joke: “I buried money at the bank.” Where – riverbank or vault? You laugh because you see both and pick the wrong one. The machine computes probabilities: after “buried”, bank looks hard at earth, hence river. No laughter, only weights – yet often right. Humour is attention with a punchline."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "note",
+          "icon": "😄",
+          "title": {
+            "de": "Lach-Test",
+            "en": "Laugh test"
+          },
+          "text": {
+            "de": "Erzähle einem Chatbot einen Wortwitz mit Bank und frage, wo er lacht. Die Antwort verrät, ob er beide Bedeutungen sieht – Aufmerksamkeit zum Anfassen, mit Pointe als Zugabe.",
+            "en": "Tell a chatbot a word joke with bank and ask where it laughs. The answer betrays whether it sees both meanings – attention to touch, with punchline as a bonus."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Witze sind übrigens der härteste Test für Verstehen: Wer „Bank“ falsch versteht, findet nichts lustig. Erzähle drei Wortwitze weiter – an Menschen und an einen Chatbot. Menschen lachen an verschiedenen Stellen (jeder sieht andere Bedeutungen), der Bot erklärt den Witz oft – und erklärt ihn kaputt. Lachen lässt sich nicht berechnen, nur teilen.",
+            "en": "Jokes are incidentally the hardest test for understanding: whoever mistakes “bank” finds nothing funny. Pass three puns on – to humans and to a chatbot. Humans laugh at different places (everyone sees other meanings), the bot often explains the joke – and explains it broken. Laughing cannot be computed, only shared."
+          }
+        }
+      ],
+      "title": {
+        "de": "Wer schaut wen an",
+        "en": "Who looks at whom"
+      }
+    },
+    {
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Trainiert wird mit Pretraining: Das halbe Internet lesen und immer das nächste Wort vorhersagen. Der Clou ist das Nebenprodukt.",
+            "en": "Training happens with pretraining: reading half the internet and always predicting the next word. The point is the by-product."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Um das nächste Wort in tausend Krimis richtig zu raten, hilft es, Muster zu kennen: Der Gärtner kommt selten gut weg, Mitternacht ist verdächtig, ein Klopfen an der Tür verspricht Besuch. Das Modell baut sich – weil es muss, um gut zu raten – ein inneres Modell der Welt: Grammatik, Fakten, Zusammenhänge. Niemand hat es einprogrammiert. Es ist entstanden, als Nebenprodukt des Ratens.",
+            "en": "To guess the next word right in a thousand crime novels, patterns help: the gardener rarely fares well, midnight is suspicious, a knock promises a visitor. The model builds itself – because it must, to guess well – an inner model of the world: grammar, facts, connections. Nobody programmed it in. It emerged, as a by-product of guessing."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Ehrlich dazu: Ein inneres Modell ist kein Verstehen wie deins. Es irrt selbstbewusst, erfindet Quellen und glaubt nichts – es rechnet. Wer das weiß, nutzt es richtig: als schnellen, belesenen, etwas unzuverlässigen Assistenten.",
+            "en": "Honestly added: an inner model is no understanding like yours. It errs confidently, invents sources and believes nothing – it computes. Whoever knows that uses it right: as a fast, well-read, somewhat unreliable assistant."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Stell dir vor, du hättest tausend Bücher gelesen und müsstest alles aus Erinnerung zitieren: Manchmal wörtlich richtig, manchmal selbstbewusst falsch – ein Name vertauscht, ein Datum verrutscht. Genau so arbeitet ein GPT: Bibliothek im Kopf, Zitate aus Erinnerung, Fehler inklusive. Wer das weiß, prüft Zitate nach – bei Mensch wie Maschine.",
+            "en": "Imagine you had read a thousand books and must quote everything from memory: sometimes literally right, sometimes confidently wrong – a name swapped, a date slipped. Exactly so a GPT works: library in the head, quotes from memory, mistakes included. Whoever knows that checks quotes – with human like machine."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "warn",
+          "icon": "📚",
+          "title": {
+            "de": "Zitieren heißt prüfen",
+            "en": "Quoting means checking"
+          },
+          "text": {
+            "de": "Nimm nie ein Zitat aus einem Chatbot ungeprüft in ein Referat – weder Quelle noch Seite stimmen sicher. Nachschlagen dauert zwei Minuten, eine erfundene Quelle blamiert ein halbes Jahr. Bibliothek ja, Beweis nein.",
+            "en": "Never take a quote from a chatbot unchecked into homework – neither source nor page holds for sure. Looking up takes two minutes, an invented source embarrasses half a year. Library yes, proof no."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Dein Gedächtnis arbeitet übrigens genauso fehlerhaft: Erinnere dich an deinen letzten Geburtstag – wer saß wo? Du ergänzt, rundest, erfindest dazu, ohne es zu merken. Gedächtnis ist Rekonstruktion, kein Abspielen. Der Unterschied zur Maschine: Du weißt – meistens –, dass du dich irren kannst. Bescheidenheit als Feature.",
+            "en": "Your memory incidentally works equally faulty: recall your last birthday – who sat where? You complete, round, invent along without noticing. Memory is reconstruction, no playback. The difference to the machine: you know – mostly – that you can err. Modesty as a feature."
+          }
+        }
+      ],
+      "title": {
+        "de": "Lesen, lesen, lesen",
+        "en": "Read, read, read"
+      }
+    },
+    {
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Nach dem Lesen kommt das Benehmen: Finetuning mit Anweisungen – antworte hilfreich, statt Sätze fortzusetzen. Und dann das Laut-Denken.",
+            "en": "After reading comes manners: finetuning with instructions – answer helpfully instead of continuing sentences. And then thinking aloud."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Viele Modelle schreiben erst Zwischenschritte auf, bevor sie antworten – Chain of Thought. Bei Mathe hilft das enorm: Wer den Rechenweg hinschreibt, verrechnet sich seltener – Mensch wie Maschine. Aber woher kommen gute Zwischenschritte? Drei Quellen: Experten schreiben sie von Hand (teuer, gut), Reinforcement Learning behält die Versuche, die zur richtigen Antwort führen (viele Versuche, automatisch), evolutionäre Suche mischt und mutiert Wege wie in der Zucht (geduldig, überraschend).",
+            "en": "Many models first write down intermediate steps before answering – chain of thought. With maths that helps enormously: whoever writes the working errs less often – human like machine. But where do good intermediate steps come from? Three sources: experts write them by hand (expensive, good), reinforcement learning keeps the attempts leading to the right answer (many attempts, automatic), evolutionary search mixes and mutates paths like in breeding (patient, surprising)."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Dein Mathelehrer will den Rechenweg sehen – aus gutem Grund: Am Weg erkennt er, wo du falsch abbiegst. Für Maschinen gilt dasselbe: Ein Modell mit Rechenweg irrt seltener und lässt sich prüfen – Schritt für Schritt statt Bauchgefühl. Was in der Schule Fairness ist (Teilpunkte für den richtigen Weg!), ist in der KI Qualitätssicherung.",
+            "en": "Your maths teacher wants the working shown – for good reason: on the path they see where you turn wrong. The same counts for machines: a model with working errs less and lets itself be checked – step by step instead of gut feeling. What is fairness at school (part marks for the right path!) is quality assurance in AI."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "tip",
+          "icon": "📐",
+          "title": {
+            "de": "Weg zeigen",
+            "en": "Show the path"
+          },
+          "text": {
+            "de": "Verlange bei der nächsten schweren Aufgabe – von dir und von der KI – den Weg, nicht nur das Ergebnis. Wer den Weg zeigt, macht Fehler findbar. Das gilt für Hausaufgaben wie für Hightech.",
+            "en": "Demand on the next hard task – from yourself and from AI – the path, not only the result. Whoever shows the path makes mistakes findable. That counts for homework like for high-tech."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Fordere den Weg auch von Freunden ein: „Wie kommst du darauf?“ – vier Worte, die jede Diskussion verbessern. Wer nur Ergebnisse tauscht, streitet; wer Wege tauscht, lernt. Was für Mathe und Maschinen gilt, gilt für Freundschaften: Zeig den Weg, und alle kommen mit.",
+            "en": "Demand the path from friends too: “How do you get there?” – four words improving every discussion. Whoever only swaps results quarrels; whoever swaps paths learns. What counts for maths and machines counts for friendships: show the path, and everybody comes along."
+          }
+        }
+      ],
+      "title": {
+        "de": "Vom Nachplappern zum Befolgen",
+        "en": "From parroting to obeying"
+      }
+    },
+    {
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Der Haken am lauten Denken: Wer prüft, ob der Weg stimmt – oder nur schön klingt? Hier trennt sich leicht von schwer.",
+            "en": "The catch with thinking aloud: who checks whether the path holds – or merely sounds nice? Here easy parts from hard."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Leicht zu prüfen: Mathe und Code. Die Antwort lässt sich nachrechnen, der Code lässt sich laufen lassen – falsch ist falsch, egal wie schön der Weg klang. Darum sind Modelle in Mathe und Programmieren so stark geworden: Jeder Versuch kriegt sofort ehrliches Feedback.",
+            "en": "Easy to check: maths and code. The answer can be recalculated, the code can be run – wrong is wrong, no matter how nice the path sounded. Hence models grew so strong in maths and programming: every attempt instantly gets honest feedback."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Schwer zu prüfen: Gedichte, Drehbücher, Songtexte. Was ist ein „richtiger“ Reim – wohlklingend für wen? Drei Auswege, alle unvollkommen: Menschen stimmen ab (teuer, langsam, ehrlich), eine KI prüft die andere (wer prüft die Prüferin?), messbare Teilziele (reimt es sich? Läuft der Refrain im Takt? – misst das Messbare, nicht das Schöne).",
+            "en": "Hard to check: poems, scripts, song lyrics. What is a “right” rhyme – melodious to whom? Three ways out, all imperfect: humans vote (expensive, slow, honest), one AI checks the other (who checks the checker?), measurable sub-goals (does it rhyme? Does the chorus keep time? – measures the measurable, not the beautiful)."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Merke: Nutze KI dort, wo du prüfen kannst – und genieße sie dort, wo du es nicht musst. Ein Gedicht muss nicht richtig sein. Eine Brückenberechnung schon. Wer den Unterschied kennt, kennt die Grenze – und damit die Möglichkeit.",
+            "en": "Note: use AI where you can check – and enjoy it where you need not. A poem need not be right. A bridge calculation must. Whoever knows the difference knows the limit – and hence the possibility."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "Jay Alammar: The Illustrated Transformer",
+                "en": "Jay Alammar: The Illustrated Transformer"
+              },
+              "url": "https://jalammar.github.io/illustrated-transformer/"
+            },
+            {
+              "label": {
+                "de": "Hamburg: Bildungsplan Studienstufe (Informatik)",
+                "en": "Hamburg: syllabus for the upper stage (computing)"
+              },
+              "url": "https://www.hamburg.de/politik-und-verwaltung/behoerden/bsfb/veroeffentlichungen/bildungsplaene/start-sek2-2022-123118"
+            }
+          ]
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Nimm deinen Lieblingssong: Was macht ihn gut für dich – Text, Stimme, Erinnerung an einen Sommer? Erkläre es jemandem in drei Sätzen – und merke, wie schwer Prüfen ist: Kein Messgerät für Gänsehaut. Genau hier endet jede Automatik: Geschmack lässt sich feiern, aber nicht vermessen. Darum bleibt das Schönste Menschenwerk – mit KI als Bandkollege, nicht als Ersatz.",
+            "en": "Take your favourite song: what makes it good for you – lyrics, voice, memory of a summer? Explain it to someone in three sentences – and notice how hard checking is: no gauge for goosebumps. Exactly here all automation ends: taste can be celebrated but not measured. Hence the most beautiful stays human work – with AI as bandmate, not replacement."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Zum Schluss ein Trost für alle, die „nichts Besonderes“ können: Was keine Maschine prüfen kann – dein Humor, dein Geschmack, deine Art zu trösten –, ist genau das, was niemand automatisieren kann. Die schwer prüfbaren Domänen sind dein Schutzraum: Dort bist du unersetzlich, nicht trotz, sondern wegen der fehlenden Messlatte.",
+            "en": "Finally a comfort for all who “can nothing special”: what no machine can check – your humour, your taste, your way of comforting –, is exactly what nobody can automate. The hard-to-check domains are your shelter: there you are irreplaceable, not despite but because of the missing yardstick."
+          }
+        }
+      ],
+      "title": {
+        "de": "Wer prüft den Geschmack",
+        "en": "Who checks taste"
+      }
+    }
+  ],
+  "summary": {
+    "de": "Raten, hinschauen, lesen, befolgen, prüfen: Wie ein GPT denkt – und wo man ihm auf die Finger schaut.",
+    "en": "Guessing, looking, reading, obeying, checking: how a GPT thinks – and where to watch its fingers."
+  },
+  "title": {
+    "de": "Wie GPT denkt",
+    "en": "How GPT thinks"
+  }
+}

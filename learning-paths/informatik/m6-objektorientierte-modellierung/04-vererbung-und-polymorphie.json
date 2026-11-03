@@ -1,0 +1,297 @@
+{
+  "accent": "emerald",
+  "exercises": [
+    {
+      "hint": {
+        "de": "Alle Antworten stehen auf den Bildschirmen davor – lies sie noch einmal von oben.",
+        "en": "All answers sit on the screens before – read them once more from the top."
+      },
+      "intro": {
+        "de": "Setze die fehlenden Wörter ein.",
+        "en": "Fill in the missing words."
+      },
+      "kind": "cloze",
+      "text": {
+        "de": "Hund und Katze haben beide einen ___ und Beine und können ___. Statt alles zweimal zu schreiben, legt man eine ___ Tier an: Beide ___ alles und fügen Eigenes hinzu – ___ und Miauen. Das heißt ___. Die Klassen bilden eine ___ wie einen Stammbaum. Ruft man die Methode ___() auf, bellt der Hund und miaut die Katze: gleiche ___, unterschiedliche ___ – das heißt ___. Sie spart lange ___-Ketten. Beim Überschreiben gilt Respekt: Die Unterklasse muss überall ___ , wo die Oberklasse erwartet wird – sonst ___ die Hierarchie. Ein Pinguin, der von ___ erbt, beweist: Falsch geerbt ist schlimmer als gar nicht ___.",
+        "en": "Dog and cat both hold a ___ and legs and can ___. Instead of writing everything twice, one creates a ___ Animal: both ___ everything adding their own – ___ and meowing. That is called ___. The classes form a ___ like a family tree. Calling the method ___() , the dog barks and the cat meows: same ___, different ___ – that is called ___. It saves long ___ chains. When overriding, respect counts: the subclass must ___ everywhere the superclass is expected – otherwise the hierarchy ___. A penguin inheriting from ___ proves: wrongly inherited beats never ___."
+      },
+      "title": {
+        "de": "1. Lückentext",
+        "en": "1. Fill in the blanks"
+      }
+    },
+    {
+      "hint": {
+        "de": "Was muss Anna anfassen – und was Ben? Zähle die Stellen.",
+        "en": "What must Anna touch – and what Ben? Count the places."
+      },
+      "intro": {
+        "de": "Setze zwei Beobachtungen zueinander in Beziehung.",
+        "en": "Relate two observations to each other."
+      },
+      "kind": "compare",
+      "text": {
+        "de": "Anna schreibt Name und Beine bei Hund UND Katze aus, Ben legt eine Oberklasse Tier an. Die Lehrerin ändert: Beine heißen jetzt Pfoten, und Fische kommen dazu – ohne Beine, mit Flossen. Vergleiche, was beide tun müssen – und erkläre, wo Vererbung hilft und wo sie an ihre Grenze stößt.",
+        "en": "Anna writes out name and legs for Dog AND Cat, Ben creates a superclass Animal. The teacher changes: legs are now called paws, and fish join – without legs, with fins. Compare what each must do – explaining where inheritance helps and where it hits its limit."
+      },
+      "title": {
+        "de": "2. Vergleiche",
+        "en": "2. Compare"
+      }
+    },
+    {
+      "intro": {
+        "de": "Auf diese Frage gibt es keine richtige Antwort.",
+        "en": "There is no right answer to this one."
+      },
+      "kind": "reflect",
+      "text": {
+        "de": "In deiner Familie erbt jeder von jedem – Aussehen, Art, Marotten. Wo ist Vererbung ein Segen, wo eine Falle? Und was würdest du gern „überschreiben“?",
+        "en": "In your family everybody inherits from everybody – looks, manner, quirks. Where is inheritance a blessing, where a trap? And what would you like to “override”?"
+      },
+      "title": {
+        "de": "3. Zum Nachdenken",
+        "en": "3. Something to think about"
+      }
+    }
+  ],
+  "icon": "🌳",
+  "key": "vererbung-und-polymorphie",
+  "minutes": 21,
+  "screens": [
+    {
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Hund und Katze haben beide einen Namen und Beine und können fressen. Zweimal dasselbe schreiben? Informatiker hassen das – sie legen eine Oberklasse Tier an, von der beide erben. Das heißt Vererbung: übernehmen, was gleich ist, hinzufügen, was anders ist.",
+            "en": "Dog and cat both hold a name and legs and can eat. Writing everything twice? Computer scientists hate that – they create a superclass Animal both inherit from. That is called inheritance: taking over what is equal, adding what differs."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "In Pseudocode: `Klasse Hund erbt von Tier: Methode bellen().` – ein Satz, und alles von Tier (Name, Beine, fressen) gehört dazu. Die Katze: `Klasse Katze erbt von Tier: Methode miauen().` Zwei Zeilen Eigenes statt zwanzig Zeilen Doppeltes. Der Nutzen in einem Wort: einmal schreiben, überall benutzen. Ändert sich etwas – Beine heißen jetzt Pfoten –, änderst du es an einer Stelle: in Tier. Alle erben die Korrektur mit.",
+            "en": "In pseudocode: `class Dog inherits from Animal: method bark().` – one sentence, and everything from Animal (name, legs, eat) belongs along. The cat: `class Cat inherits from Animal: method meow().` Two lines of own instead of twenty lines doubled. The benefit in one word: write once, use everywhere. If something changes – legs are now called paws –, you change it in one place: in Animal. All inherit the correction along."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Stell dir vor, ein Zoo mit hundert Tierarten käme ohne Vererbung aus: Name, Beine, Futter hundertmal ausgeschrieben – und bei jeder Änderung hundert Stellen angefasst. Niemand würde das pflegen, jeder würde Fehler einbauen. Vererbung ist darum keine Schönheit, sondern Notwehr gegen das Kopieren: Wer nicht erbt, kopiert – und wer kopiert, irrt sich irgendwann.",
+            "en": "Picture a zoo with a hundred species managing without inheritance: name, legs, food written out a hundred times – touching a hundred places at every change. Nobody would tend that, everybody would build in mistakes. Inheritance is hence no beauty but self-defence against copying: whoever does not inherit copies – and whoever copies errs sometime."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Tierheime arbeiten so – ganz ohne Computer: Ein Aufnahmebogen für alle (Name, Alter, geimpft?), dazu je Art ein Zusatzblatt: Hunde mit Gassi-Zeiten, Katzen mit Kratzbaum-Vorliebe. Ein Formular geerbt, Extras angehängt. Kommt ein Kaninchen, hängt man ein drittes Blatt an – der Bogen bleibt. Vererbung aus Papier, seit Jahrzehnten bewährt.",
+            "en": "Shelters work so – quite without computers: one intake form for all (name, age, vaccinated?), plus per species an extra sheet: dogs with walk times, cats with scratching-post taste. One form inherited, extras attached. When a rabbit arrives, a third sheet gets attached – the form stays. Inheritance from paper, proven for decades."
+          }
+        }
+      ],
+      "title": {
+        "de": "Familienähnlichkeit",
+        "en": "Family resemblance"
+      }
+    },
+    {
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Klassen bilden Hierarchien wie Stammbäume: oben allgemein, unten speziell. Je tiefer, desto genauer – und desto weniger teilen sich die Geschwister.",
+            "en": "Classes form hierarchies like family trees: general on top, special below. The deeper, the more exact – and the less siblings share."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Ein Beispiel zum Aufzeichnen: Fahrzeug (fährt, hat Räder) – darunter Auto (hat Motor, tanken()) und Fahrrad (hat Pedale, treten()). Darunter E-Bike erbt von Fahrrad und fügt Akku plus unterstützen() hinzu. Zeichne es als Kästen mit Pfeilen nach oben – jeder Pfeil heißt „ist ein“: Ein E-Bike IST ein Fahrrad, ein Fahrrad IST ein Fahrzeug. Die Pfeile lügen nie, wenn die Hierarchie stimmt.",
+            "en": "An example to draw: Vehicle (drives, holds wheels) – beneath Car (holds engine, refuel()) and Bicycle (holds pedals, pedal()). Beneath, E-Bike inherits from Bicycle adding battery plus assist(). Draw it as boxes with arrows upward – every arrow means “is a”: an e-bike IS a bicycle, a bicycle IS a vehicle. The arrows never lie when the hierarchy holds."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Die Probe aufs Exempel: Lies einen Pfeil laut vor – „Hund ist ein Tier“ stimmt, „Hund ist eine Leine“ stimmt nicht (Hund HAT eine Leine – Attribut, keine Vererbung!). Diese Zwei-Sekunden-Probe entlarvt jede falsche Hierarchie, bevor sie Schaden anrichtet. Falsche Pfeile sind teurer als keine: Sie versprechen Verwandtschaft, wo keine ist – und das rächt sich bei jeder Änderung.",
+            "en": "The acid test: read one arrow aloud – “dog is an animal” holds, “dog is a leash” does not (dog HAS a leash – attribute, no inheritance!). This two-second test exposes every false hierarchy before it harms. False arrows cost more than none: they promise kinship where none exists – avenging itself at every change."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Deine Schule ist eine Hierarchie zum Anfassen: Person mit Name und Geburtstag – darunter Schüler (plus Klasse) und Lehrer (plus Fächer). Die Stundenplan-App nutzt genau das: Namen kommen von Person, alles andere von der Unterklasse. Neue Schulart? Neue Unterklasse, alter Rest bleibt. So wächst Software mit der Wirklichkeit – Ast für Ast.",
+            "en": "Your school is a hierarchy to touch: Person with name and birthday – beneath Pupil (plus class) and Teacher (plus subjects). The timetable app uses exactly that: names come from Person, everything else from the subclass. New school type? New subclass, old rest stays. Thus software grows with reality – branch by branch."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Stammbäume übrigens funktionieren genauso: Oma gibt den Nachnamen weiter, jeder fügt Vornamen hinzu. Keiner schreibt den Nachnamen neu – er wird vererbt. Und Heirat? Mehrfachvererbung im echten Leben: zwei Namen, ein Kind, doppelte Großeltern. Manche Sprachen erlauben das auch im Code – mit allen Freuden und Streitereien echter Familien.",
+            "en": "Family trees incidentally work the same: granny passes the surname on, everybody adds first names. Nobody rewrites the surname – it gets inherited. And marriage? Multiple inheritance in real life: two names, one child, double grandparents. Some languages allow that in code too – with all joys and quarrels of real families."
+          }
+        }
+      ],
+      "title": {
+        "de": "Der Stammbaum",
+        "en": "The family tree"
+      }
+    },
+    {
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Der Befehl zeichne() geht an einen Kreis und an ein Rechteck – und beide tun das Richtige, jeder auf seine Art. Gleiche Botschaft, unterschiedliche Ausführung: Das heißt Polymorphie, griechisch für Vielgestaltigkeit.",
+            "en": "The command draw() goes to a circle and to a rectangle – both doing the right thing, each in its own way. Same message, different execution: that is called polymorphism, Greek for many-shapedness."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Ohne Polymorphie sähe Zeichnen so aus: Wenn Kreis, dann Kreis-malen; wenn Rechteck, dann Rechteck-malen; wenn Dreieck … – eine Wenn-Dann-Wüste, die bei jeder neuen Form wächst. Mit Polymorphie heißt es nur: `figur.zeichne()` – und jede Figur weiß selbst, wie. Kommt morgen das Fünfeck dazu, ändert sich am alten Code nichts: Das ist der eigentliche Zauber – offen für Neues, geschlossen für Änderungen.",
+            "en": "Without polymorphism drawing would look so: if circle, then circle-painting; if rectangle, then rectangle-painting; if triangle … – an if-desert growing with every new shape. With polymorphism it only reads: `figure.draw()` – and every figure itself knows how. If the pentagon joins tomorrow, the old code changes not: that is the real magic – open for novelty, closed for changes."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Tier-Beispiel zum Hören: `tier.gib_laut()` – Hund bellt, Katze miaut, Kuh muht. Ein Aufruf, drei Antworten. Der Aufrufer muss nicht wissen, wer da antwortet – er vertraut der Botschaft. Genau so arbeiten Spiele mit hundert Gegnern, Apps mit hundert Dateiformaten, Chats mit hundert Nachrichtensorten: eine Botschaft, viele Ausführungen, null Wenn-Dann.",
+            "en": "Animal example to hear: `animal.make_sound()` – dog barks, cat meows, cow moos. One call, three answers. The caller need not know who answers there – trusting the message. Exactly so work games with a hundred enemies, apps with a hundred file formats, chats with a hundred message kinds: one message, many executions, zero if-then."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Deine Musik-App lebt davon: Ein Druck auf Abspielen – und Song spielt, Podcast spielt weiter ab gemerkter Stelle, Hörbuch öffnet das Kapitel. Dieselbe Botschaft, drei Antworten, null Nachfragen. Stell dir die App ohne Polymorphie vor: Ist es ein Song? Dann spiele. Ist es ein Podcast? Dann spiele anders. Hundert Sorten, hundert Fragen – bei jedem Update mehr. So sähe Stillstand aus.",
+            "en": "Your music app lives on it: one press on play – and song plays, podcast resumes from noted place, audiobook opens the chapter. Same message, three answers, zero queries. Picture the app without polymorphism: is it a song? Then play. A podcast? Then play differently. A hundred kinds, a hundred questions – more with every update. Thus standstill would look."
+          }
+        }
+      ],
+      "title": {
+        "de": "Gleiche Botschaft, andere Antwort",
+        "en": "Same message, different answer"
+      }
+    },
+    {
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Überschreiben heißt: Die Unterklasse schreibt eine geerbte Methode neu – Hund erbt fressen, schreibt es aber anders (schlingt statt kaut). Erlaubt – aber nur mit Respekt vor dem Versprechen der Oberklasse.",
+            "en": "Overriding means: the subclass rewrites an inherited method – Dog inherits eat but writes it differently (gulps instead of chews). Allowed – but only respecting the superclass's promise."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Die Regel in einem Satz: Die Unterklasse muss überall passen, wo die Oberklasse erwartet wird. Wer einen Hund erwartet und einen Pinguin bekommt, der von Vogel erbt – inklusive fliegen() –, erlebt eine Bruchlandung im wörtlichen Sinn: Pinguine fliegen nicht. Der Fehler liegt nicht am Pinguin, sondern an der Hierarchie: Fliegen gehört nicht in Vogel, sondern in eine Unterklasse derer, die es können. Falsch geerbt ist schlimmer als gar nicht geerbt.",
+            "en": "The rule in one sentence: the subclass must fit everywhere the superclass is expected. Whoever expects a dog getting a penguin inheriting from bird – including fly() –, experiences a crash landing literally: penguins do not fly. The fault lies not with the penguin but the hierarchy: flying belongs not in Bird but a subclass of those able. Wrongly inherited beats never inherited in badness."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Prüfe darum jede Vererbung zweimal: erstens mit der Ist-ein-Probe („Pinguin ist ein Vogel“ – stimmt, aber...), zweitens mit der Passt-überall-Probe („Überall, wo Vogel steht, darf Pinguin stehen“ – stürzt ab). Erst wenn beide stimmen, hält die Hierarchie. Diese zwei Proben sind das Handwerkszeug jedes Modellierers – notiere sie dir, du brauchst sie öfter, als du denkst.",
+            "en": "Hence check every inheritance twice: first with the is-a test (“penguin is a bird” – holds, but...), second with the fits-everywhere test (“everywhere Bird stands, Penguin may stand” – crashes). Only when both hold does the hierarchy hold. These two tests are every modeller's tools – note them, you need them oftener than you think."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Führerscheinprüfungen arbeiten mit derselben Strenge: Die Regeln gelten für alle – wer eine Extrawurst will (dreirädriges Auto, Handgas statt Fuß), braucht Prüfung und Eintragung: eigene Unterklasse mit Begründung. Sonderfälle ohne Prüfung? Fahren ohne Zulassung. Hierarchien schützen alle – auf der Straße wie im Code. Ausnahmen bestätigt die Regel, wörtlich.",
+            "en": "Driving tests work with the same strictness: rules count for all – whoever wants extras (three-wheeled car, hand throttle instead of foot) needs test and entry: own subclass with justification. Special cases without test? Driving without licence. Hierarchies guard everybody – on roads like in code. Exceptions prove the rule, literally."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Pinguine übrigens als Warnung für alle, die Hierarchien bauen: Jeder Anfänger legt Vogel mit fliegen an – und stolpert über den Pinguin. Profis fragen darum zuerst nach Ausnahmen, dann nach Regeln: Wer kann nicht, was alle können? Die Antwort bestimmt die Hierarchie. Gute Modelleure sammeln Pinguine – als Testfälle.",
+            "en": "Penguins incidentally as a warning for all building hierarchies: every beginner lays out Bird with flying – stumbling over the penguin. Professionals hence ask first for exceptions, then rules: who cannot what all can? The answer decides the hierarchy. Good modellers collect penguins – as test cases."
+          }
+        }
+      ],
+      "title": {
+        "de": "Überschreiben mit Respekt",
+        "en": "Overriding with respect"
+      }
+    },
+    {
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Zum Schluss das Trio im Zusammenspiel: Vererbung teilt Gemeinsames, Polymorphie lässt es verschieden ausführen, Datenkapselung (nächster Pfad) schützt das Innenleben. Drei Ideen, ein Ziel: große Programme, die man ändern kann, ohne sie zu verstehen – ganz.",
+            "en": "Finally the trio interplay: inheritance shares common ground, polymorphism lets it execute differently, encapsulation (next path) guards the inside. Three ideas, one goal: big programs changeable without grasping them – wholly."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Ein Bild zum Mitnehmen: Vererbung ist die Familie (wer gehört zu wem), Polymorphie ist die Anrede (alle verstehen „zeichne dich“, jeder auf seine Art). Zusammen ersetzen sie zwei Übel: Copy-Paste und Wenn-Dann-Wüsten. Wer beide beherrscht, schreibt Programme, die mitwachsen – neue Tiere, neue Formen, neue Gegner, ohne alte Zeilen anzufassen. Das ist der Moment, in dem aus Code Handwerk wird.",
+            "en": "One picture to take along: inheritance is the family (who belongs to whom), polymorphism the address (all grasp “draw yourself”, each in their own way). Together they replace two evils: copy-paste and if-deserts. Whoever masters both writes programs that grow along – new animals, new shapes, new enemies, without touching old lines. That is the moment code turns craft."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "Hamburg: Bildungsplan Studienstufe (Informatik)",
+                "en": "Hamburg: syllabus for the upper stage (computing)"
+              },
+              "url": "https://www.hamburg.de/politik-und-verwaltung/behoerden/bsfb/veroeffentlichungen/bildungsplaene/start-sek2-2022-123118"
+            },
+            {
+              "label": {
+                "de": "GI: Bildungsstandards Informatik",
+                "en": "GI: computing education standards"
+              },
+              "url": "https://gi.de/meldung/bildungsstandards-gi-stellt-neue-empfehlungen-fuer-den-informatikunterricht-vor"
+            }
+          ]
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Baue im Kopf ein Zoo-Spiel: Alle Tiere zeichnen sich selbst – Elefant grau und groß, Pinguin klein und watschelnd. Du rufst nur zeichne_dich() für alle, der Rest passiert von allein. Kommt das Känguru dazu, schreibst du eine Klasse, sonst nichts: Springen kann es schon – geerbt. Zehn Tierarten, null Wenn-Dann: So fühlt sich Wachstum ohne Schmerzen an.",
+            "en": "Build a zoo game in your head: all animals draw themselves – elephant grey and big, penguin small and waddling. You only call draw_self() for all, the rest happens alone. When the kangaroo joins, you write one class, nothing else: jumping it can already – inherited. Ten species, zero if-then: thus growth without pain feels."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Baue im Kopf einen Fuhrpark: Fahrzeuge fahren alle – Auto brummt, Fahrrad klingelt, E-Bike surrt. Ein Aufruf fährt_los(), drei Antworten. Kommt das Lastenrad dazu, schreibst du eine Klasse: tritt, transportiert Kisten. Zehn Fahrzeuge, null Wenn-Dann: So fühlt sich Wachstum ohne Schmerzen an – im Kopfkino schon heute.",
+            "en": "Build a fleet in your head: vehicles all drive – car hums, bicycle rings, e-bike whirrs. One call drive_off(), three answers. When the cargo bike joins, you write one class: pedals, hauls crates. Ten vehicles, zero if-then: thus growth without pain feels – in head cinema already today."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "tip",
+          "icon": "🚲",
+          "title": {
+            "de": "Fuhrpark-Test",
+            "en": "Fleet test"
+          },
+          "text": {
+            "de": "Zähle deine Fahrzeuge zu Hause: Rad, Roller, Auto der Eltern – welche Botschaft verstehen alle? Fahren, parken, tanken/laden? Was alle können, gehört nach oben in die Hierarchie. Was nur eins kann, nach unten. Sortiere – du modellierst schon.",
+            "en": "Count your vehicles at home: bike, scooter, parents' car – which message do all grasp? Driving, parking, fuelling/charging? What all can belongs up in the hierarchy. What only one can, below. Sort – you already model."
+          }
+        }
+      ],
+      "title": {
+        "de": "Das Trio",
+        "en": "The trio"
+      }
+    }
+  ],
+  "summary": {
+    "de": "Familie, Anrede, Respekt: Vererbung gegen Copy-Paste, Polymorphie gegen Wenn-Dann – mit Pinguin-Falle.",
+    "en": "Family, address, respect: inheritance against copy-paste, polymorphism against if-then – with penguin trap."
+  },
+  "title": {
+    "de": "Vererbung und Polymorphie",
+    "en": "Inheritance and polymorphism"
+  }
+}

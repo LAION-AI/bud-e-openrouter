@@ -1,0 +1,190 @@
+{
+  "key": "nwt-pflanzen-starten-durch",
+  "title": {
+    "de": "Wie wird aus einem Samen eine Pflanze?",
+    "en": "How does a seed become a plant?"
+  },
+  "summary": {
+    "de": "Keimung, Blüten, Bestäubung und die Arbeit der Blätter entdecken.",
+    "en": "Explore germination, flowers, pollination and what leaves do."
+  },
+  "icon": "🌱",
+  "accent": "emerald",
+  "minutes": 12,
+  "screens": [
+    {
+      "key": "entdecken-1",
+      "title": {
+        "de": "Ein Vorrat für den Start",
+        "en": "Supplies for the start"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Woher bekommt ein Samen Kraft, bevor er Blätter hat? In ihm liegen ein Pflanzenembryo, also die junge Anlage der Pflanze, und gespeicherte Nährstoffe. Eine Samenschale schützt beides.",
+            "en": "How does a seed get energy before it has leaves? It contains an embryo, the beginnings of a young plant, and stored nutrients. A seed coat protects them."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Zum Keimen braucht ein Bohnensamen Wasser, Sauerstoff und eine passende Temperatur. Licht brauchen viele Samen erst später für gutes Wachstum; die Keimbedingungen unterscheiden sich je nach Pflanzenart. Zuerst wächst eine Wurzel. Sie nimmt Wasser und Mineralstoffe auf. Der Spross wächst nach oben und trägt später die Blätter.",
+            "en": "A bean seed needs water, oxygen and a suitable temperature to germinate. Many seeds need light later for healthy growth; requirements differ between species. A root grows first and takes up water and minerals. The shoot grows upwards and later carries the leaves."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "💡",
+          "title": {
+            "de": "Dein Auftrag",
+            "en": "Your task"
+          },
+          "text": {
+            "de": "Zwei Bohnen sind gleich warm. Eine liegt feucht, die andere trocken. Sage voraus, welche eher keimt. Was darf beim Vergleich sonst nicht verändert werden?",
+            "en": "Two beans are equally warm. One is moist and the other dry. Predict which will sprout first. What else must stay the same?"
+          }
+        }
+      ]
+    },
+    {
+      "key": "entdecken-2",
+      "title": {
+        "de": "Blätter sind keine Erdfresser",
+        "en": "Leaves do not eat soil"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Wovon wächst eine große Sonnenblume? Nicht hauptsächlich von Erde! Mit Licht stellen grüne Pflanzenteile aus Wasser und Kohlenstoffdioxid Zucker her. Dieser Vorgang heißt Fotosynthese. Dabei wird Sauerstoff frei.",
+            "en": "What makes a sunflower grow so tall? Not mainly soil! Using light, green plant parts make sugar from water and carbon dioxide. This process is called photosynthesis, and it releases oxygen."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Der Zucker liefert Baustoffe und Energie für Lebensvorgänge. Wasser und Mineralstoffe kommen über die Wurzeln; Kohlenstoffdioxid gelangt aus der Luft in die Blätter. Pflanzen atmen auch: Sie nutzen Sauerstoff, um Energie aus Zucker verfügbar zu machen. Fotosynthese braucht Licht, Zellatmung läuft auch im Dunkeln.",
+            "en": "Sugar supplies building material and energy for life processes. Roots take up water and minerals; carbon dioxide enters the leaves from the air. Plants also respire: they use oxygen to release energy from sugar. Photosynthesis needs light, while respiration also happens in darkness."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "💡",
+          "title": {
+            "de": "Dein Auftrag",
+            "en": "Your task"
+          },
+          "text": {
+            "de": "Zeichne eine Pflanze. Ergänze Pfeile für Licht, Wasser und Kohlenstoffdioxid hinein sowie Sauerstoff hinaus. Schreibe „Fotosynthese“ dazu.",
+            "en": "Draw a plant. Add arrows showing light, water and carbon dioxide going in, and oxygen coming out. Label this “photosynthesis”."
+          }
+        }
+      ]
+    },
+    {
+      "key": "entdecken-3",
+      "title": {
+        "de": "Von der Blüte zur nächsten Generation",
+        "en": "From flower to the next generation"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Warum besucht eine Hummel Blüten? Sie findet dort Nahrung und kann dabei Pollen übertragen. Gelangt Pollen auf die Narbe einer passenden Blüte, heißt das Bestäubung. Auch Wind kann Pollen transportieren.",
+            "en": "Why does a bumblebee visit flowers? It finds food and may transfer pollen. When pollen reaches the stigma of a suitable flower, this is pollination. Wind can also transport pollen."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Nach Bestäubung und Befruchtung können Samen entstehen. Der Fruchtknoten entwickelt sich zur Frucht. Beim Apfel schützt die Frucht die Kerne. Daraus können neue Pflanzen wachsen. Bestäubung und Befruchtung sind also nicht dasselbe. Ohne Blütenbesucher hätten viele Pflanzen Schwierigkeiten, sich fortzupflanzen.",
+            "en": "After pollination and fertilisation, seeds can develop. The ovary develops into the fruit. In an apple, the fruit protects the seeds, which may grow into new plants. Pollination and fertilisation are not the same. Without flower visitors, many plants would struggle to reproduce."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "💡",
+          "title": {
+            "de": "Dein Auftrag",
+            "en": "Your task"
+          },
+          "text": {
+            "de": "Ordne mündlich: Samen – Keimling – Pflanze mit Blüte – Frucht mit Samen. Erkläre, wo eine Hummel dabei helfen kann.",
+            "en": "Put these in order aloud: seed, seedling, flowering plant, fruit with seeds. Explain where a bumblebee can help."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "Hamburg: Naturwissenschaften/Technik 5–6, Gymnasium (2024)",
+                "en": "Hamburg: science and technology, years 5–6, Gymnasium (2024)"
+              },
+              "url": "https://www.hamburg.de/resource/blob/798520/700d66232c2d07bad97d72b6e107e083/naturwissenschaften-technik-data.pdf"
+            },
+            {
+              "label": {
+                "de": "Hamburg: Naturwissenschaften/Technik 5–6, Stadtteilschule (2024)",
+                "en": "Hamburg: science and technology, years 5–6, Stadtteilschule (2024)"
+              },
+              "url": "https://www.hamburg.de/resource/blob/798394/033190c61a9908ff10401a5b66cedae9/naturwissenschaften-technik-data.pdf"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": {
+        "de": "Die wichtigsten Wörter",
+        "en": "The key words"
+      },
+      "intro": {
+        "de": "Setze passende Wörter aus den drei Seiten ein. Nachschauen ist erlaubt.",
+        "en": "Fill the gaps using words from the three pages. You may look back."
+      },
+      "text": {
+        "de": "Die ___ schützt den Samen. Für die Keimung braucht eine Bohne Wasser, ___ und passende Wärme. Die ___ nimmt Wasser auf. Grüne Blätter betreiben ___. Dabei entsteht unter anderem ___. Die Übertragung von Pollen heißt ___. Nach der Befruchtung entstehen ___. Eine ___ kann diese schützen.",
+        "en": "The ___ protects the seed. A bean needs water, ___ and suitable warmth to germinate. The ___ takes up water. Green leaves carry out ___. One product is ___. Transferring pollen is called ___. After fertilisation, ___ develop. A ___ can protect them."
+      }
+    },
+    {
+      "kind": "compare",
+      "title": {
+        "de": "Erkläre den Zusammenhang",
+        "en": "Explain the connection"
+      },
+      "intro": {
+        "de": "Antworte in zwei bis drei Sätzen. Nutze ein Beispiel aus dem Lernpfad.",
+        "en": "Answer in two or three sentences. Use an example from the learning path."
+      },
+      "text": {
+        "de": "Ein Kind sagt: „Pflanzen fressen Erde und brauchen deshalb keine Luft.“ Verbessere diese Erklärung mit Wasser, Kohlenstoffdioxid und Fotosynthese.",
+        "en": "A child says, “Plants eat soil, so they do not need air.” Improve this explanation using water, carbon dioxide and photosynthesis."
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": {
+        "de": "Deine Idee für den Alltag",
+        "en": "Your everyday idea"
+      },
+      "intro": {
+        "de": "Hier zählt deine begründete Idee, nicht eine bestimmte Musterantwort.",
+        "en": "Your reasoned idea matters, not a particular model answer."
+      },
+      "text": {
+        "de": "Plane einen kleinen Pflanzenplatz am Fenster oder auf dem Schulhof. Was braucht die Pflanze, und wie könnten Blütenbesucher profitieren?",
+        "en": "Plan a small growing space by a window or in the school grounds. What does the plant need, and how could flower visitors benefit?"
+      }
+    }
+  ]
+}

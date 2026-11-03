@@ -1,0 +1,15 @@
+{
+  "key": "waerme-und-klima",
+  "title": {
+    "de": "Wärme und Klimaphysik",
+    "en": "Heat and climate physics"
+  },
+  "description": {
+    "de": "Sek-I-Kern mit NWT-/Chemie-Anschluss: Temperatur, thermische Energie, Transport, Strahlungsbilanz, Treibhauseffekt und Rückkopplungen.",
+    "en": "Secondary core connected to NWT and chemistry: temperature, thermal energy, transfer, radiation balance, greenhouse effect and feedbacks."
+  },
+  "icon": "🌍",
+  "accent": "rose",
+  "badge": "Sek I",
+  "level": "sek1"
+}

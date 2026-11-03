@@ -1,0 +1,264 @@
+{
+  "key": "elektrostatik-und-ladung",
+  "title": {
+    "de": "Warum dein Pulli knistert",
+    "en": "Why your jumper crackles"
+  },
+  "summary": {
+    "de": "Elektronen, Ladung und Modelle erklären klebende Haare und den Übergang vom Aufladen zum Stromkreis.",
+    "en": "Electrons, charge and models explain clinging hair and the connection between charging and circuits."
+  },
+  "icon": "✨",
+  "accent": "amber",
+  "minutes": 22,
+  "screens": [
+    {
+      "key": "haare",
+      "title": {
+        "de": "Anziehen ohne Klebstoff",
+        "en": "Attraction without glue"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Du ziehst einen trockenen Pullover aus und hörst ein leises Knistern. Manchmal stehen Haare ab oder ein leichter Gegenstand wird angezogen. Beim Kontakt und anschließenden Trennen können Elektronen zwischen Materialien übertragen werden. Dadurch entsteht ein Überschuss negativer Ladung auf einer Seite und ein Mangel auf der anderen. Reibung kann den Kontakt verstärken, erzeugt aber keine Ladung aus dem Nichts.",
+            "en": "You take off a dry jumper and hear a faint crackle. Sometimes hair stands up or a light object is attracted. Contact followed by separation can transfer electrons between materials, leaving excess negative charge on one side and a deficit on the other. Rubbing can increase contact, but does not create charge from nothing."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Elektrische Ladung ist eine erhaltene Größe. Sie wird umverteilt. Gleichnamige Ladungen stoßen sich ab, ungleichnamige ziehen sich an. Neutral bedeutet nicht, dass ein Körper gar keine Ladungen enthält: Positive und negative Ladungen gleichen sich insgesamt aus. Diese Unterscheidung verbindet das alltägliche Knistern mit dem Modell des Atoms. Wir sprechen hier über kleine elektrostatische Alltagserscheinungen und sichere Simulationen. Große Funken, Hochspannungsgeneratoren und Experimente nahe brennbaren Stoffen sind kein Teil dieses Pfads. Auch harmlos wirkende Entladungen können empfindliche Elektronik beschädigen. Beobachten und Erklären ist deshalb sinnvoller als absichtlich möglichst starke Funken zu erzeugen.",
+            "en": "Electric charge is conserved: it is redistributed. Like charges repel and unlike charges attract. Neutral does not mean an object contains no charges; its positive and negative charges balance overall. This distinction connects everyday crackling with the atomic model. We discuss small everyday electrostatic effects and safe simulations here. Large sparks, high-voltage generators and experiments near flammable substances are not part of this path. Even apparently minor discharges can damage sensitive electronics. Observing and explaining is therefore more useful than deliberately trying to produce the strongest possible spark."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Weshalb ist „Ladung wurde beim Reiben neu erzeugt“ eine schlechtere Erklärung als „Ladung wurde übertragen“? Wenn zwei Körper nach dem Kontakt entgegengesetzt geladen sind, kann ihre gemeinsame Gesamtladung trotzdem unverändert geblieben sein. Elektronenüberschuss und Elektronenmangel gehören dann zusammen. Vergleiche das mit dem Verschieben von Spielsteinen zwischen zwei Schalen: Die einzelnen Mengen ändern sich, ihre Summe nicht. Das Bild erklärt die Bilanz, aber nicht alle Kräfte zwischen Ladungen oder den mikroskopischen Kontaktvorgang.",
+            "en": "Why is “rubbing created new charge” a worse explanation than “charge was transferred”? Two objects can acquire opposite charges after contact while their combined total charge remains unchanged. Electron excess and deficit then belong together. Compare moving counters between two bowls: the separate amounts change but their sum does not. The analogy explains the account, not all forces between charges or the microscopic contact process."
+          }
+        }
+      ]
+    },
+    {
+      "key": "atom",
+      "title": {
+        "de": "Was im Metall beweglich ist",
+        "en": "What can move in a metal"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Im vereinfachten Atommodell sitzen positiv geladene Protonen im Kern. Negativ geladene Elektronen befinden sich in der Hülle. Neutronen sind elektrisch neutral. In einem neutralen Atom ist die Anzahl von Protonen und Elektronen gleich. Gibt ein Körper Elektronen ab, bleibt ein positiver Überschuss zurück; nimmt er Elektronen auf, wird er negativ geladen.",
+            "en": "In a simplified atomic model, positively charged protons are in the nucleus, while negatively charged electrons occupy the surrounding region. Neutrons have no electric charge. A neutral atom has equal numbers of protons and electrons. An object losing electrons is left with a positive excess; gaining electrons gives it a negative charge."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "In einem Metall können sich bestimmte Elektronen durch das Material bewegen. Positive Atomrümpfe bleiben im festen Metall weitgehend an ihren Plätzen. Deshalb beschreibt das Elektronengasmodell einen beweglichen Anteil negativer Ladung zwischen den Atomrümpfen. Es ist ein Modell für bestimmte Fragen, kein sichtbarer Film vom Innenleben eines Drahtes. In Isolatoren sind Ladungen normalerweise weniger frei beweglich. Eine geladene Kunststoffoberfläche kann deshalb örtlich geladen bleiben. „Leiter“ und „Isolator“ bedeuten nicht, dass alles unter allen Bedingungen gleich funktioniert: Feuchtigkeit, Temperatur und sehr hohe Spannungen können das Verhalten verändern. Für unsere einfachen Modelle halten wir diese Bedingungen fest und vergleichen erst dann die Materialien.",
+            "en": "In a metal, certain electrons can move through the material. Positive atomic cores remain largely in place in the solid. The electron-gas model therefore describes mobile negative charge among these cores. It is a model for particular questions, not a visible recording from inside a wire. In insulators, charges are normally less free to move. A charged plastic surface can consequently retain charge locally. “Conductor” and “insulator” do not mean identical behaviour under every condition: humidity, temperature and extremely high voltages can change the response. Our simple models keep these conditions fixed before comparing materials."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Wie würdest du in einem Modell kennzeichnen, welche Ladungsträger im Metall beweglich und welche weitgehend ortsfest sind? Ein positiv geladener Metallkörper muss nicht zusätzliche Protonen bekommen haben. Für viele einfache Aufladevorgänge genügt die Abgabe beweglicher Elektronen. Die Atomrümpfe bleiben dabei weitgehend an ihren Orten. Zeige in deiner Zeichnung deshalb eine Elektronenübertragung statt wandernder Protonen durch den ganzen Draht. Das unterscheidet eine passende Modellvorstellung von einer bloß symmetrisch aussehenden Zeichnung beider Ladungsarten.",
+            "en": "How would your model show which charges are mobile in a metal and which remain largely fixed? A positively charged metal object need not have received extra protons. Losing mobile electrons is enough in many simple charging processes, while atomic cores largely remain in place. Your drawing should therefore show electron transfer rather than protons travelling along the whole wire. This distinguishes an appropriate model from a merely symmetrical picture of both charge types."
+          }
+        }
+      ]
+    },
+    {
+      "key": "neutral",
+      "title": {
+        "de": "Warum auch neutrale Dinge angezogen werden",
+        "en": "Why neutral objects can be attracted too"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Ein geladener Gegenstand kann einen neutralen Körper anziehen. Das wirkt zunächst widersprüchlich. Im neutralen Körper können sich positive und negative Ladungsanteile aber geringfügig gegeneinander verschieben oder ausrichten. Die insgesamt ausgeglichene Ladung bleibt dabei erhalten. Die dem geladenen Gegenstand nähere Seite erfährt eine stärkere Anziehung als die entferntere Seite eine Abstoßung.",
+            "en": "A charged object can attract a neutral object, which initially seems contradictory. Within the neutral object, however, positive and negative charge can shift slightly relative to each other or become aligned. Its total balanced charge remains unchanged. The nearer side experiences stronger attraction than the farther side experiences repulsion."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Bei einem leitenden Körper heißt die Ladungsverschiebung durch einen äußeren geladenen Körper Influenz. In isolierenden Stoffen spricht man häufig von Polarisation. Die mikroskopischen Vorgänge unterscheiden sich, die Grundidee der ungleichen Verteilung hilft aber in beiden Fällen. Neutral ist also nicht gleich „elektrisch wirkungslos“. Für einen fairen Vergleich musst du Abstand, Material und ursprüngliche Ladung beachten. Ein kleiner Papierstreifen in einer Zeichnung ist keine bereits geladene Batterie. Er kann durch Umverteilung angezogen werden, ohne vorher insgesamt geladen zu sein. Diese Erklärung verhindert die Denkfalle, jede Anziehung müsse automatisch zwischen zwei insgesamt entgegengesetzt geladenen Körpern auftreten.",
+            "en": "In a conductor, charge redistribution caused by an external charged object is called electrostatic induction. In insulating materials, related effects are often described as polarisation. Their microscopic mechanisms differ, but the idea of an uneven distribution helps in both cases. Neutral therefore does not mean “electrically unaffected”. A fair comparison must consider distance, material and initial charge. A paper strip in a drawing is not an already charged battery. Redistribution can attract it without giving it an overall charge beforehand. This explanation avoids the misconception that every attraction must occur between two objects with opposite total charges."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Vergleiche zwei insgesamt neutrale Körper: einen weit weg und einen nahe an einem geladenen Körper. Was kann sich innen unterscheiden? Zeichne im neutralen Körper gleich viele positive und negative Zeichen, aber nahe am äußeren geladenen Körper leicht verschoben. Die Summe bleibt neutral, die räumliche Verteilung ändert sich. Ein zweites Bild ohne äußeren Einfluss macht diesen Unterschied sichtbar. Entscheidend ist hier kein Zahlenwert mit Einheit, sondern die Beziehung zwischen Gesamtladung, Verteilung und Abstand. Genau das erklärt die zunächst überraschende Anziehung.",
+            "en": "Compare two overall neutral objects, one far from and one near a charged object. What may differ internally? Draw equal numbers of positive and negative signs inside the neutral object, slightly shifted near the external charged object. The total remains neutral while the spatial distribution changes. A second drawing without the external influence makes the difference clear. No numerical value is needed here: the relationship between total charge, distribution and distance explains the surprising attraction."
+          }
+        }
+      ]
+    },
+    {
+      "key": "spannung",
+      "title": {
+        "de": "Vom Ladungsunterschied zum Strom",
+        "en": "From charge differences to current"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Eine Batterie ist nicht einfach ein Behälter voller Strom. Durch chemische Vorgänge hält sie einen elektrischen Unterschied zwischen ihren Polen aufrecht. Spannung beschreibt die Energieübertragung pro transportierter Ladung. Wird ein geeigneter leitender Kreis geschlossen, können sich Ladungsträger gerichtet bewegen: Es fließt Strom. Die Ladungen waren dabei schon im Leiter vorhanden.",
+            "en": "A battery is not simply a container full of current. Chemical processes maintain an electrical difference between its terminals. Voltage describes energy transfer per transported charge. Closing a suitable conducting circuit allows charge carriers to move in an organised way: current flows. Those charges were already present in the conductor."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Eine elektrostatische Entladung gleicht Ladungsunterschiede oft nur kurz aus. Danach fehlt die treibende Ursache, sofern nicht erneut aufgeladen wird. Eine Batterie kann durch ihre chemische Energie länger einen Stromkreis versorgen. Auch sie ist aber nicht unbegrenzt. Die Unterscheidung zwischen Ladung, Spannung, Strom und Energie ist deshalb entscheidend. Eine hohe Spannung allein nennt noch nicht die übertragene Energiemenge; die Gefahr darf daraus trotzdem nicht eigenmächtig abgeschätzt werden. Insbesondere Netzspannung ist lebensgefährlich. Für konkrete Stromkreise verweist dieser Pfad auf die vorhandenen Elektrizitätswege: dort werden nur geeignete Kleinspannung, strombegrenzte Schulgeräte oder Simulationen verwendet. Körperkontakte mit Batterien sind ausdrücklich keine Messmethode.",
+            "en": "An electrostatic discharge often equalises charge differences only briefly. Afterwards, the driving cause is absent unless charging happens again. A battery can supply a circuit for longer using its chemical energy, but not indefinitely. Distinguishing charge, voltage, current and energy is therefore essential. A high voltage alone does not specify the transferred energy, but this is not a reason to judge safety for yourself. Mains voltage is particularly dangerous. For actual circuits, this path connects to the existing electricity paths, which use suitable low voltage, current-limited school equipment or simulations only. Touching batteries to the body is expressly not a measuring method."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Unter welchen Bedingungen fließt nach einer Ladungstrennung ein anhaltender Strom statt nur einer kurzen Entladung? Eine kurze Entladung kann nach dem Ausgleich enden, obwohl das leitende Material noch vorhanden ist. Es fehlt dann die ursprüngliche Ladungstrennung als Ursache. Eine Batterie erhält den Unterschied durch chemische Vorgänge länger aufrecht. Vergleiche deshalb nicht nur sichtbare Funken und leuchtende Lampen, sondern frage, welcher Prozess Energie nachliefert. Das verbindet das elektrostatische Bild mit dem geschlossenen Stromkreis.",
+            "en": "What conditions produce a sustained current after charge separation rather than just a brief discharge? A brief discharge can stop after equalisation although conducting material remains. The original charge separation is then no longer driving it. A battery maintains a difference for longer through chemical processes. Compare not just visible sparks and glowing lamps but which process continues supplying energy. This links the electrostatic picture with a closed circuit."
+          }
+        }
+      ]
+    },
+    {
+      "key": "anwendung",
+      "title": {
+        "de": "Statische Ladung bewusst beherrschen",
+        "en": "Managing static charge deliberately"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "In manchen technischen Bereichen ist Aufladung erwünscht, etwa wenn geladene Teilchen gezielt angezogen werden. An anderen Stellen stört sie: Staub haftet, Kleidung knistert oder Elektronik kann beschädigt werden. Eine leitende Verbindung zu einem passenden Bezugspotenzial kann Ladungsunterschiede abbauen. Professioneller Schutz gegen elektrostatische Entladung nutzt abgestimmte Arbeitsflächen und Geräte.",
+            "en": "Charging is useful in some technologies, for example when charged particles are deliberately attracted. Elsewhere it causes problems: dust sticks, clothing crackles or electronics may be damaged. A conducting connection to a suitable reference potential can reduce charge differences. Professional electrostatic-discharge protection uses carefully coordinated work surfaces and equipment."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Das ist keine Anleitung, dich selbst an Heizungen, Steckdosen oder andere elektrische Einrichtungen anzuschließen. Eine Sicherheitseinrichtung muss fachgerecht ausgelegt sein. Für deine Gestaltungsidee genügt eine Skizze: Wo entsteht Ladungstrennung? Wo kann sich Ladung sammeln? Wie könnte der Hersteller unerwünschte Entladung vermeiden? Ein Produkt kann beispielsweise andere Materialien oder eine dafür vorgesehene ableitfähige Oberfläche nutzen. Feuchtigkeit kann Alltagserscheinungen verändern, ist aber keine allgemeine Schutzlösung für Elektrik. Gute Physik verbindet das Modell mit der konkreten Aufgabe und hält dabei die Sicherheitsgrenze ein. Aus „Ich sehe keine Ladungen“ wird so eine nachvollziehbare Erklärung für eine sichtbare Wirkung.",
+            "en": "This is not advice to connect yourself to heaters, sockets or other electrical installations. Safety equipment must be properly designed. A sketch is enough for your design idea: where does charge separation occur, where can charge accumulate, and how could the manufacturer avoid unwanted discharge? A product might use different materials or a purpose-designed dissipative surface. Humidity can affect everyday charging, but is not a general electrical safety measure. Good physics connects a model to a particular task while respecting safety boundaries. “I cannot see the charges” then becomes an understandable explanation for an effect you can observe."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Entwirf eine Herstelleridee gegen unerwünschte Aufladung und erkläre das Prinzip ohne einen gefährlichen Selbstversuch. Für einen gedachten Staubsammler könntest du die Anziehung kleiner Teilchen als gewünschte Wirkung beschreiben. Für ein Elektronikgehäuse wäre dagegen das Vermeiden plötzlicher Entladung wichtig. Dieselbe physikalische Wirkung kann also Nutzen oder Störung sein. Wähle in deinem Entwurf ausdrücklich eines dieser Ziele und beschreibe die Materialentscheidung, statt eine allgemeine Lösung gegen jede Ladung zu versprechen.",
+            "en": "Design a manufacturer's idea for reducing unwanted charging and explain it without a dangerous personal experiment. In an imagined dust collector, attracting small particles could be the desired effect. For an electronics enclosure, avoiding sudden discharge may instead matter. The same physical effect can therefore be useful or unwanted. Choose one goal explicitly and explain the material choice rather than promising a universal solution against every kind of charging."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "Hamburg: Physik Gymnasium (2024)",
+                "en": "Hamburg: Gymnasium physics (2024)"
+              },
+              "url": "https://www.hamburg.de/resource/blob/798534/4cf0047ad61effacd1ff7e6ad819fa41/physik-data.pdf"
+            },
+            {
+              "label": {
+                "de": "Hamburg: Physik Stadtteilschule (2024)",
+                "en": "Hamburg: Stadtteilschule physics (2024)"
+              },
+              "url": "https://www.hamburg.de/resource/blob/798426/ba414a0ace36d17b7813a855db625c42/physik-data.pdf"
+            },
+            {
+              "label": {
+                "de": "PhET: sichere interaktive Simulation",
+                "en": "PhET: safe interactive simulation"
+              },
+              "url": "https://phet.colorado.edu/de/simulations/balloons-and-static-electricity"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": {
+        "de": "1. Lückentext",
+        "en": "1. Fill in the blanks"
+      },
+      "intro": {
+        "de": "Ergänze die fehlenden Fachwörter. Alle Begriffe findest du im Pfad.",
+        "en": "Complete the missing technical words. Every term appears in this path."
+      },
+      "text": {
+        "de": "Beim Kontakt können ___ zwischen Materialien übertragen werden. Für die Gesamtladung gilt die ___. Gleichnamige Ladungen bewirken eine ___. Insgesamt ausgeglichene Ladung nennen wir ___. Im Metall beschreibt bewegliche Elektronen das ___. Ladungsverschiebung in einem Leiter durch äußere Ladung heißt ___. Die Energie pro transportierter Ladung beschreibt die ___. Gerichtete Ladungsbewegung heißt ___. Die Batterie liefert dafür letztlich chemische ___.",
+        "en": "Contact can transfer ___ between materials. Total electric charge obeys ___. Like charges produce ___. Overall balanced charge is called ___. Mobile electrons in a metal are described by the ___. Charge redistribution in a conductor due to external charge is electrostatic ___. Energy per transported charge is described by ___. Organised charge movement is ___. A battery ultimately supplies chemical ___."
+      }
+    },
+    {
+      "kind": "compare",
+      "title": {
+        "de": "2. Erklären und vergleichen (AB II)",
+        "en": "2. Explain and compare (level II)"
+      },
+      "intro": {
+        "de": "Antworte mit drei bis vier kurzen Sätzen. Nutze das Gelesene und begründe deinen Vergleich.",
+        "en": "Answer in three or four short sentences. Use what you have read and explain your comparison."
+      },
+      "text": {
+        "de": "Vergleiche eine kurze elektrostatische Entladung mit einem geschlossenen Batteriestromkreis. Erkläre Ladungsbewegung und Energiezufuhr. Warum wird ein neutraler Papierstreifen trotzdem von einem geladenen Körper angezogen?",
+        "en": "Compare a brief electrostatic discharge with a closed battery circuit. Explain charge movement and energy supply. Why can a charged object nevertheless attract a neutral paper strip?"
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": {
+        "de": "3. Deine Idee im Alltag (AB III)",
+        "en": "3. Your idea for everyday life (level III)"
+      },
+      "intro": {
+        "de": "Entwickle eine eigene Idee in drei bis vier kurzen Sätzen. Begründe sie mit Physik; mehrere Lösungen sind möglich.",
+        "en": "Develop your own idea in three or four short sentences. Support it with physics; several answers are possible."
+      },
+      "text": {
+        "de": "Entwirf eine Produktidee, die unerwünschte Aufladung verringert oder Ladungsanziehung sinnvoll nutzt. Benenne Ladungstrennung, gewünschte Wirkung und eine Sicherheitsgrenze.",
+        "en": "Design a product that reduces unwanted charging or uses electrical attraction usefully. Identify charge separation, the desired effect and one safety boundary."
+      }
+    }
+  ]
+}

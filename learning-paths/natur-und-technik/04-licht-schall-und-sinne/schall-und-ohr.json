@@ -1,0 +1,190 @@
+{
+  "key": "nwt-schall-und-ohr",
+  "title": {
+    "de": "Wie kommt Musik in dein Ohr?",
+    "en": "How does music reach your ear?"
+  },
+  "summary": {
+    "de": "Schwingungen, Schallausbreitung und Rücksicht auf empfindliche Ohren verstehen.",
+    "en": "Understand vibrations, sound transmission and caring for sensitive ears."
+  },
+  "icon": "🌈",
+  "accent": "violet",
+  "minutes": 12,
+  "screens": [
+    {
+      "key": "entdecken-1",
+      "title": {
+        "de": "Musik beginnt mit Bewegung",
+        "en": "Music starts with movement"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Du zupfst eine Gitarrensaite. Sie bewegt sich schnell hin und her. Diese wiederholte Bewegung heißt Schwingung. Sie kann Luft in Bewegung versetzen. So entsteht Schall.",
+            "en": "You pluck a guitar string. It moves quickly back and forth. This repeated movement is a vibration. It can set air in motion, producing sound."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Eine Schallquelle erzeugt Schwingungen. Die Luftteilchen geben Bewegungen an ihre Nachbarn weiter. Die Teilchen reisen dabei nicht vom Lautsprecher bis in dein Ohr. Schall braucht einen Stoff zur Ausbreitung, zum Beispiel Luft, Wasser oder einen festen Körper. Im luftleeren Raum kann er sich nicht ausbreiten.",
+            "en": "A sound source produces vibrations. Air particles pass movements to their neighbours; the particles do not travel from the loudspeaker all the way into your ear. Sound needs a material such as air, water or a solid to travel through. It cannot travel through a vacuum."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "💡",
+          "title": {
+            "de": "Dein Auftrag",
+            "en": "Your task"
+          },
+          "text": {
+            "de": "Berühre beim leisen Summen vorsichtig deinen Hals. Was bemerkst du? Erkläre, warum dieses Gefühl zum Wort Schwingung passt.",
+            "en": "Gently touch your throat while humming quietly. What do you notice? Explain how it relates to vibration."
+          }
+        }
+      ]
+    },
+    {
+      "key": "entdecken-2",
+      "title": {
+        "de": "Hoch ist nicht dasselbe wie laut",
+        "en": "High is not the same as loud"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Eine Flöte kann hoch und leise klingen, eine Trommel tief und laut. Tonhöhe und Lautstärke beschreiben verschiedene Dinge. Schnellere Schwingungen bedeuten einen höheren Ton.",
+            "en": "A flute can sound high and quiet, while a drum sounds low and loud. Pitch and loudness describe different things. Faster vibrations mean a higher pitch."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Die Anzahl der Schwingungen pro Sekunde heißt Frequenz. Ihre Einheit ist Hertz (Hz). Stärkere Schwingungen können lauter klingen. Das Ohr nimmt Schall auf: Das Trommelfell schwingt, kleine Knochen leiten die Bewegung weiter. Im Innenohr entstehen Signale, die über Nerven zum Gehirn gelangen.",
+            "en": "The number of vibrations per second is frequency, measured in hertz (Hz). Stronger vibrations can sound louder. The eardrum vibrates and tiny bones carry the movement onwards. In the inner ear, signals are produced and travel along nerves to the brain."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "💡",
+          "title": {
+            "de": "Dein Auftrag",
+            "en": "Your task"
+          },
+          "text": {
+            "de": "Ordne „mehr Schwingungen pro Sekunde“ der Tonhöhe oder Lautstärke zu. Erkläre anschließend den Unterschied zwischen hoch und laut.",
+            "en": "Match “more vibrations per second” with pitch or loudness. Then explain the difference between high and loud."
+          }
+        }
+      ]
+    },
+    {
+      "key": "entdecken-3",
+      "title": {
+        "de": "Deine Ohren haben keine Ersatzteile",
+        "en": "Your ears have no spare parts"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Weshalb kann Musik aus Kopfhörern andere nicht stören und trotzdem für deine Ohren zu laut sein? Entscheidend ist, was am Ohr ankommt – und wie lange. Sehr lauter Schall kann das Gehör schädigen.",
+            "en": "Why can headphones be quiet for everyone else but too loud for your ears? What matters is the sound reaching your ears and how long it lasts. Very loud sound can damage hearing."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Gönne deinen Ohren Pausen und vermeide unnötig hohe Lautstärke. Bei Konzerten helfen Abstand und geeigneter Gehörschutz. Für diesen Lernpfad brauchst du keinen Lautstärketest und keinen Wettbewerb im Schreien. Eine App kann Messwerte liefern, ersetzt aber kein geprüftes Messgerät und ist keine Garantie für ungefährliche Lautstärke.",
+            "en": "Give your ears breaks and avoid unnecessarily high volume. Distance and suitable hearing protection help at concerts. This path requires no volume tests or shouting contest. An app can provide readings, but does not replace a checked instrument or guarantee that sound is harmless."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "💡",
+          "title": {
+            "de": "Dein Auftrag",
+            "en": "Your task"
+          },
+          "text": {
+            "de": "Entwirf eine Rücksichtsregel für Musik in der Klasse. Sie soll Zuhörende, Ruhebedürfnisse und den Schutz der Ohren berücksichtigen.",
+            "en": "Design a considerate classroom rule for music. Include listeners, those needing quiet and protection for ears."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "Hamburg: Naturwissenschaften/Technik 5–6, Gymnasium (2024)",
+                "en": "Hamburg: science and technology, years 5–6, Gymnasium (2024)"
+              },
+              "url": "https://www.hamburg.de/resource/blob/798520/700d66232c2d07bad97d72b6e107e083/naturwissenschaften-technik-data.pdf"
+            },
+            {
+              "label": {
+                "de": "Hamburg: Naturwissenschaften/Technik 5–6, Stadtteilschule (2024)",
+                "en": "Hamburg: science and technology, years 5–6, Stadtteilschule (2024)"
+              },
+              "url": "https://www.hamburg.de/resource/blob/798394/033190c61a9908ff10401a5b66cedae9/naturwissenschaften-technik-data.pdf"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": {
+        "de": "Die wichtigsten Wörter",
+        "en": "The key words"
+      },
+      "intro": {
+        "de": "Setze passende Wörter aus den drei Seiten ein. Nachschauen ist erlaubt.",
+        "en": "Fill the gaps using words from the three pages. You may look back."
+      },
+      "text": {
+        "de": "Eine wiederholte Hin-und-her-Bewegung heißt ___. Eine ___ erzeugt Schall. Schall braucht einen ___ zur Ausbreitung. Schnellere Schwingungen machen den Ton ___. Die Anzahl pro Sekunde heißt ___. Ihre Einheit ist ___. Im Ohr schwingt das ___. Zum Schutz helfen unter anderem ___.",
+        "en": "A repeated back-and-forth movement is a ___. A sound ___ produces sound. Sound needs a ___ to travel through. Faster vibrations make a ___ pitch. The number per second is ___. Its unit is ___. In the ear, the ___ vibrates. Taking ___ can help protect hearing."
+      }
+    },
+    {
+      "kind": "compare",
+      "title": {
+        "de": "Erkläre den Zusammenhang",
+        "en": "Explain the connection"
+      },
+      "intro": {
+        "de": "Antworte in zwei bis drei Sätzen. Nutze ein Beispiel aus dem Lernpfad.",
+        "en": "Answer in two or three sentences. Use an example from the learning path."
+      },
+      "text": {
+        "de": "Ein Ton wird höher, aber nicht lauter. Was muss sich an der Schwingung ändern? Erkläre, warum Tonhöhe und Lautstärke nicht dasselbe sind.",
+        "en": "A note becomes higher but not louder. What must change in the vibration? Explain why pitch and loudness are different."
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": {
+        "de": "Deine Idee für den Alltag",
+        "en": "Your everyday idea"
+      },
+      "intro": {
+        "de": "Hier zählt deine begründete Idee, nicht eine bestimmte Musterantwort.",
+        "en": "Your reasoned idea matters, not a particular model answer."
+      },
+      "text": {
+        "de": "Wo wünschst du dir mehr Ruhe, und wo möchtest du Musik hören? Schlage eine faire Lösung für Menschen mit verschiedenen Bedürfnissen vor.",
+        "en": "Where would you like more quiet, and where would you like music? Suggest a fair solution for people with different needs."
+      }
+    }
+  ]
+}

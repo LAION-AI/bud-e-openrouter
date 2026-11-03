@@ -1,0 +1,306 @@
+{
+  "key": "impuls-kreis-und-wurf",
+  "title": {
+    "de": "Warum ein Ball nicht um die Ecke weiterfliegt",
+    "en": "Why a ball does not keep turning by itself"
+  },
+  "summary": {
+    "de": "Übergang Gymnasium 10 / Stadtteilschule 11: Wurf, Kreisbewegung und Impuls erweitern dein Bewegungsmodell.",
+    "en": "Gymnasium year 10 / Stadtteilschule year 11 transition: projectiles, circular motion and momentum extend your model."
+  },
+  "icon": "🎡",
+  "accent": "violet",
+  "minutes": 22,
+  "screens": [
+    {
+      "key": "einordnung",
+      "title": {
+        "de": "Neue Werkzeuge, vertraute Situationen",
+        "en": "New tools for familiar situations"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Ein Ball fliegt, zwei Spielwagen stoßen zusammen, ein Sitz dreht sich auf einem Karussell. Hinter diesen verschiedenen Geschichten stecken dieselben Fragen: Wie ändert sich Geschwindigkeit? Welche Kräfte wirken? Welche Größen bleiben in einem abgegrenzten System erhalten? Du brauchst dafür die Grundlagen zu Kraft, Energie und Beschleunigung aus den anderen Pfaden.",
+            "en": "A ball flies, two toy carts collide and a seat travels around a carousel. These different stories share the same questions: how does velocity change, which forces act and which quantities stay constant in a chosen system? You need the earlier foundations of force, energy and acceleration from the other paths."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Dieser Pfad ist ausdrücklich eine Erweiterung für den Übergang: Die aktuellen Hamburger Pläne ordnen die vertieften Inhalte am Gymnasium der Klasse 10, an der Stadtteilschule der Vorstufe 11 zu. Er ist also nicht gemeinsamer Pflichtstoff jeder Stadtteilschulklasse 7–10. Wir arbeiten mit einfachen Modellen und verzichten auf die vollständige mathematische Beschreibung harmonischer Schwingungen; diese erscheint in einem eigenen Schwingungspfad als gekennzeichnete Erweiterung. Wichtig bleibt der Perspektivwechsel: Eine Bewegung lässt sich durch Komponenten darstellen und durch Erhaltungsgrößen untersuchen. Zeichnungen und Simulationen sind dafür völlig ausreichend. Es gibt keinen Auftrag, schnelle Drehgeräte zu bauen oder Wurfversuche in Menschennähe durchzuführen.",
+            "en": "This path is explicitly a transition extension. Current Hamburg plans place these more advanced topics in Gymnasium year 10 and Stadtteilschule preparatory year 11. They are not common compulsory material for every Stadtteilschule class in years 7–10. We use simple models rather than the full mathematical description of harmonic oscillations; a separate oscillation path identifies that as an extension. The useful shift in perspective remains: motion can be represented by components and investigated using conserved quantities. Drawings and simulations are entirely sufficient. Nothing here asks you to build fast rotating equipment or throw objects near other people."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Warum ist die Klassenangabe dieses Pfads eine Orientierung für zwei Schulformen und kein allgemeiner Stoffplan für jede Klasse 10? Wähle für die drei Situationen zuerst das Werkzeug: Beim Zusammenstoß kann Impuls helfen, bei einer Kreisfahrt die nach innen gerichtete Kraft und beim Wurf die Zerlegung der Bewegung. Die Auswahl ist bereits ein Teil der Lösung. Eine passende Formel ohne passende Voraussetzungen wäre dagegen irreführend. Die schulformspezifische Einordnung sagt dir zusätzlich, wann diese vertieften Werkzeuge vorgesehen sind.",
+            "en": "Why is this path's year label guidance for two school types rather than a universal programme for every year 10 class? First select a tool for each situation: momentum may help with collisions, inward force with circular motion and component analysis with projectiles. Choosing the tool is already part of the solution. A formula without its required assumptions would mislead. The school-specific classification also tells you when these more advanced tools are intended to be introduced."
+          }
+        }
+      ]
+    },
+    {
+      "key": "wurf",
+      "title": {
+        "de": "Zwei Bewegungen gleichzeitig",
+        "en": "Two motions at the same time"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "In einem idealen waagerechten Wurf bewegt sich ein Ball horizontal gleichförmig, während er vertikal frei fällt. Ohne Luftwiderstand beeinflussen diese Komponenten einander nicht. Horizontal gilt x = v_x · t. Vertikal wächst der Fallweg aus der Ruhe mit h = ½ · g · t². Zusammen entsteht eine gekrümmte Flugbahn, obwohl die horizontale Geschwindigkeit unverändert bleibt.",
+            "en": "In an ideal horizontal projectile motion, a ball moves uniformly sideways while falling freely in the vertical direction. Without air resistance, these components do not interfere with one another. Horizontally, x = v_x · t. Vertically, the distance fallen from rest grows as h = ½ · g · t². Together they create a curved path although horizontal velocity remains unchanged."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Zwei ideale Bälle starten gleichzeitig aus derselben Höhe. Einer wird waagerecht bewegt, der andere nur losgelassen. Ohne Luftwiderstand erreichen beide gleichzeitig den Boden, weil ihre vertikale Bewegung gleich ist. Der waagerechte Ball legt zusätzlich eine horizontale Strecke zurück. In der Realität können Form, Luftwiderstand und Rotation Unterschiede verursachen. Beim senkrechten Wurf nach oben wirkt die Erdbeschleunigung ebenfalls die ganze Zeit nach unten. Am höchsten Punkt ist das vertikale Tempo kurz null, die Beschleunigung aber nicht. Diese Unterscheidung zwischen Geschwindigkeit und ihrer Änderung ist wichtiger als das Auswendiglernen einer Flugbahn.",
+            "en": "Two ideal balls start at the same time and height. One is launched horizontally; the other is simply released. With no air resistance, both reach the ground together because their vertical motions are identical. The horizontally launched ball also travels sideways. Real shape, air resistance and rotation can cause differences. For a vertical upward throw, gravitational acceleration still points downwards throughout the motion. At the highest point, vertical speed is momentarily zero, but acceleration is not. Distinguishing velocity from its change matters more than memorising a picture of a flight path."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Wie kannst du in einer Skizze zeigen, warum eine zusätzliche horizontale Bewegung die ideale Fallzeit nicht verlängert? Am höchsten Punkt eines senkrechten Wurfs kann die Geschwindigkeit für einen Moment null sein. Die Erde zieht aber weiterhin am Körper. Eine Skizze sollte deshalb dort einen Beschleunigungspfeil nach unten zeigen. Verwechsle einen momentanen Stillstand nicht mit Kräftegleichgewicht. Beim waagerechten Wurf ist die entsprechende Trennung zwischen horizontaler und vertikaler Bewegung ebenso hilfreich.",
+            "en": "How can a sketch show why adding horizontal motion does not increase the ideal falling time? At the highest point of a vertical throw, velocity can momentarily be zero, but Earth's pull continues. A drawing should therefore retain a downward acceleration arrow there. Do not confuse instantaneous rest with balanced forces. Separating horizontal and vertical movement in a horizontal projectile is useful for the same reason: velocity and its change are different quantities."
+          }
+        }
+      ]
+    },
+    {
+      "key": "impuls",
+      "title": {
+        "de": "Eine zweite Bilanz neben der Energie",
+        "en": "Another conserved quantity besides energy"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Der Impuls eines Körpers ist p = m · v. Er besitzt wie Geschwindigkeit eine Richtung und wird in kg · m/s angegeben. Ein 2-kg-Wagen mit 3 m/s hat einen Impuls von 6 kg · m/s in seiner Fahrtrichtung. Beim Addieren zählt die Richtung: Gleich große entgegengesetzte Impulse können zusammen null ergeben, obwohl beide Körper Bewegungsenergie besitzen.",
+            "en": "An object's momentum is p = m · v. Like velocity, it has direction and is measured in kg · m/s. A 2 kg cart moving at 3 m/s has momentum of 6 kg · m/s in its travel direction. Direction matters when adding momenta: equal opposite momenta can add to zero although both objects possess kinetic energy."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "In einem System ohne resultierende äußere Kraft bleibt der Gesamtimpuls erhalten. Zwei gleich schwere Wagen fahren in derselben Richtung. Einer hat 4 m/s, der andere ruht. Bleiben beide nach einem Stoß zusammen, fahren sie im idealen Modell mit 2 m/s weiter. Der Gesamtimpuls bleibt gleich; die Bewegungsenergie nimmt dabei ab und wird teilweise innere Energie oder Verformungsenergie. Energieerhaltung ist nicht verletzt, nur die Bewegungsenergie allein bleibt nicht erhalten. Du brauchst deshalb zwei verschiedene Bilanzen. Die Rechnung setzt gleiche Massen, gemeinsames Weiterfahren und vernachlässigbare äußere Kräfte voraus; sie beschreibt keinen echten Verkehrsunfall vollständig.",
+            "en": "In a system with no resultant external force, total momentum is conserved. Consider two equal-mass carts travelling along one line: one moves at 4 m/s while the other is at rest. If they stick together after colliding, the ideal model gives a shared speed of 2 m/s. Total momentum is unchanged, but kinetic energy decreases as some becomes internal energy or deformation energy. Energy conservation is not violated; kinetic energy alone is not conserved. We therefore need two different accounts. This calculation assumes equal masses, sticking together and negligible external forces; it is not a complete model of a real traffic collision."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Warum kann bei zusammenbleibenden Wagen der Impuls erhalten bleiben, obwohl die Bewegungsenergie abnimmt? Bei zwei entgegengesetzt fahrenden gleichen Wagen kann der Gesamtimpuls null sein, obwohl beide deutlich bewegte Körper sind. Ihre Bewegungsenergien heben sich nicht durch Richtungszeichen auf. Das ist ein konkretes Gegenbeispiel zur Idee, Impuls sei nur ein anderer Name für Energie. Zeichne die Geschwindigkeitspfeile und ergänze getrennt eine skalare Energiebilanz, damit beide Sichtweisen sichtbar bleiben.",
+            "en": "Why can momentum be conserved when carts stick together even though their kinetic energy decreases? Two equal carts travelling in opposite directions can have zero total momentum while both are moving. Their kinetic energies do not cancel through direction signs. This directly disproves the idea that momentum is simply another name for energy. Draw velocity arrows and a separate scalar energy account so the distinction remains visible."
+          }
+        }
+      ]
+    },
+    {
+      "key": "kreis",
+      "title": {
+        "de": "Gleiches Tempo, ständig neue Richtung",
+        "en": "Constant speed, continuously changing direction"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Bei einer gleichförmigen Kreisbewegung bleibt das Tempo gleich, aber die Geschwindigkeit ändert ständig ihre Richtung. Es ist deshalb eine Beschleunigung zur Kreismitte nötig. Die resultierende Kraft nach innen heißt Zentripetalkraft. Sie ist keine zusätzliche geheimnisvolle Kraftart: Je nach Situation liefern Reibung, Seilspannung oder Gravitation diese Wirkung.",
+            "en": "In uniform circular motion, speed stays constant but velocity continuously changes direction. Acceleration towards the centre is therefore necessary. The resultant inward force is called centripetal force. It is not an extra mysterious type of force: friction, tension or gravity can provide it in different situations."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Für den Betrag gilt F = m · v² / r. Bei gleicher Masse und gleichem Radius braucht doppeltes Tempo die vierfache Kraft. Bei gleichem Tempo verringert ein größerer Kurvenradius die nötige Kraft. Fällt die nach innen wirkende Kraft weg, bewegt sich der Körper im idealen Modell tangential weiter, nicht radial nach außen und nicht auf dem Kreis. Eine Tangente berührt den Kreis am jeweiligen Ort. Ein bewegtes Karussell lässt sich aus verschiedenen Bezugssystemen beschreiben. Hier betrachten wir zunächst die Sicht von außen. Das erlaubt eine klare Trennung zwischen tatsächlichen Wechselwirkungen und Beschreibungen aus einem beschleunigten System.",
+            "en": "Its magnitude is F = m · v² / r. With the same mass and radius, doubling speed requires four times the force. At the same speed, a larger turn radius reduces the required force. If the inward force disappears, the ideal object continues along a tangent, not radially outwards and not around the circle. A tangent touches the circle at the current position. A moving carousel can be described from different reference frames. Here we first use the view from outside. This allows a clear distinction between actual interactions and descriptions made from an accelerating frame."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Was müsste gleich bleiben, damit die Regel „doppeltes Tempo, vierfache Zentripetalkraft“ hier gilt? Eine gerade Tangente am betrachteten Kreispunkt zeigt die momentane Bewegungsrichtung. Der Kraftpfeil zeigt dagegen nach innen und steht dort quer zur Geschwindigkeit. Ihre unterschiedliche Richtung ist kein Fehler. Gerade die Richtungsänderung bei gleichem Tempo verlangt diese nach innen gerichtete Beschleunigung. Ein außerhalb stehender Beobachter braucht dafür keine zusätzliche nach außen wirkende Wechselwirkung.",
+            "en": "What must remain unchanged for the rule “double speed, four times the centripetal force” to apply here? A tangent at the chosen circle point shows instantaneous motion, while the force arrow points inward and is perpendicular to velocity there. This difference is not a mistake. Changing direction at constant speed requires the inward acceleration. An outside observer does not need to invent an additional outward interaction to explain the path."
+          }
+        }
+      ]
+    },
+    {
+      "key": "bezugssystem",
+      "title": {
+        "de": "Warum sich die Kurve innen anders anfühlt",
+        "en": "Why the turn feels different from inside"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Von außen gesehen zwingt eine nach innen gerichtete Kraft den Körper auf die Kreisbahn. In einem mitdrehenden Bezugssystem kannst du zusätzlich mit einer nach außen gerichteten Trägheitskraft rechnen, der Zentrifugalkraft. Sie ist keine neue Wechselwirkung mit einem äußeren Gegenstand. Sie gehört zur Beschreibung im beschleunigten Bezugssystem. Beide Sichtweisen können sinnvoll sein, solange du sie nicht unbemerkt vermischst.",
+            "en": "Viewed from outside, an inward force keeps an object on its circular path. In a rotating reference frame, calculations may additionally use an outward inertial force called centrifugal force. It is not a new interaction with some external object; it belongs to the description in an accelerating frame. Both viewpoints can be useful as long as they are not mixed without noticing."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Die Umlaufdauer T ist die Zeit für eine vollständige Runde. Die Umlauffrequenz f gibt Runden pro Sekunde an; f = 1 / T. Bei gleichförmigem Umlauf gilt v = 2πr / T. Ein größerer Radius bedeutet bei gleicher Umlaufdauer deshalb größeres Bahntempo. Das gilt etwa für zwei Punkte auf einer gleichmäßig drehenden Scheibe. Eine anschauliche Zeichnung hilft mehr als das Wort „schneller“ allein: Meinst du mehr Runden pro Sekunde oder mehr Meter pro Sekunde? Beides ist nicht dasselbe. Solche Unterscheidungen brauchst du auch bei technischen Anzeigen und Sportvideos.",
+            "en": "The period T is the time for one complete revolution. Frequency f gives revolutions per second, with f = 1 / T. For uniform circular motion, v = 2πr / T. A larger radius at the same period therefore means greater tangential speed. Two points on a uniformly rotating disc illustrate this. A clear drawing helps more than the word “faster” alone: do you mean more revolutions per second or more metres per second? They are not the same thing. Such distinctions also matter when interpreting technical displays and sports videos."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Zwei Punkte einer Drehscheibe brauchen gleich lange für eine Runde. Warum legt der äußere trotzdem mehr Weg pro Sekunde zurück? Markiere auf derselben Drehscheibe einen inneren und einen äußeren Punkt. Beide vollenden gemeinsam eine Runde, der äußere legt jedoch den größeren Kreisumfang zurück. Gleiche Umlauffrequenz bedeutet deshalb nicht gleiches Bahntempo. Eine Tabelle mit Radius, Umlaufdauer und Weg pro Runde macht sichtbar, welche Größe gleich bleibt und welche sich unterscheidet, ohne eine echte Drehanlage zu verwenden.",
+            "en": "Two points on a rotating disc take the same time for one revolution. Why does the outer point cover more distance per second? Mark an inner and an outer point on the same rotating disc. They complete each revolution together, but the outer point covers a larger circumference. Equal rotation frequency therefore does not mean equal tangential speed. A table of radius, period and distance per revolution reveals what stays equal and what differs without using real rotating machinery."
+          }
+        }
+      ]
+    },
+    {
+      "key": "anwendung",
+      "title": {
+        "de": "Ein Modell macht Sicherheitsargumente verständlich",
+        "en": "Models make safety arguments understandable"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Für eine Kurve im Schulweg kannst du nun erklären: Bei höherem Tempo wächst die nötige nach innen gerichtete Kraft stark. Ob die Reifen diese Kraft übertragen können, hängt unter anderem von Untergrund und Haftreibung ab. Die einfache Kreisformel ist trotzdem keine Anleitung, die sichere Geschwindigkeit für eine reale Straße auszurechnen. Unebenheiten, Sicht, andere Menschen und veränderliche Kurvenradien fehlen im Modell.",
+            "en": "For a bend on the way to school, you can now explain why greater speed strongly increases the required inward force. Whether tyres can transmit it depends partly on the surface and static friction. The simple circular-motion equation is still not a method for calculating a safe speed on a real road. Bumps, visibility, other people and changing curve radii are missing from the model."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Für ein Sportvideo könntest du dagegen zwei harmlose Simulationen vergleichen: dieselbe Kreisbahn mit unterschiedlichem Tempo oder dieselbe Wurfbewegung mit unterschiedlicher horizontaler Anfangsgeschwindigkeit. Du beschreibst zuerst, welche Größe du gezielt änderst. Danach prüfst du die Vorhersage. Bei einem Stoßvideo wäre die Impulsbilanz ein anderes Werkzeug, bei einer Höhenfahrt die Energiebilanz. Physik ist hier eine Werkzeugkiste und nicht eine einzige Formel für alles. Der kreative Schritt besteht darin, das passende Modell auszuwählen und seine Grenzen offenzulegen. Das macht deine Erklärung für andere hilfreicher und verhindert gefährliche Scheingenauigkeit.",
+            "en": "For a sports analysis, you could instead compare two harmless simulations: the same circular path at different speeds, or the same projectile motion with different initial horizontal velocities. First state which quantity you deliberately change, then check the prediction. A collision calls for a momentum account; a journey involving height may call for an energy account. Physics offers a toolbox, not a single equation for everything. The creative step is choosing the appropriate model and showing its limits. That makes the explanation more useful to others and prevents a dangerous illusion of precision."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Entwirf eine kurze Sportvideo-Erklärung, in der du bewusst zwischen Energie-, Impuls- und Kraftbeschreibung auswählst. Für einen gedachten Basketballwurf brauchst du zur Bahnvorhersage Anfangsgeschwindigkeit und Richtung, nicht nur die Ballmasse. Für den anschließenden Fangvorgang wird die Zeit der Geschwindigkeitsänderung wichtig. Ein einziges Sportereignis kann also nacheinander verschiedene Modelle verlangen. Benenne den betrachteten Abschnitt ausdrücklich, statt eine Formel für die ganze Szene zu beanspruchen. Genau darin liegt die Stärke einer verständlichen Videoerklärung.",
+            "en": "Design a short explanation of a sports video that deliberately chooses between energy, momentum and force descriptions. Predicting an imagined basketball flight requires initial velocity and direction, not just ball mass. For the later catch, the duration of the velocity change becomes important. One sporting event can therefore require different models in successive stages. State which stage you are explaining rather than claiming one equation explains the entire scene. That makes a video explanation clearer."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "Hamburg: Physik Gymnasium (2024)",
+                "en": "Hamburg: Gymnasium physics (2024)"
+              },
+              "url": "https://www.hamburg.de/resource/blob/798534/4cf0047ad61effacd1ff7e6ad819fa41/physik-data.pdf"
+            },
+            {
+              "label": {
+                "de": "Hamburg: Physik Stadtteilschule (2024)",
+                "en": "Hamburg: Stadtteilschule physics (2024)"
+              },
+              "url": "https://www.hamburg.de/resource/blob/798426/ba414a0ace36d17b7813a855db625c42/physik-data.pdf"
+            },
+            {
+              "label": {
+                "de": "PhET: sichere interaktive Simulation",
+                "en": "PhET: safe interactive simulation"
+              },
+              "url": "https://phet.colorado.edu/de/simulations/projectile-motion"
+            },
+            {
+              "label": {
+                "de": "PhET: sichere interaktive Simulation",
+                "en": "PhET: safe interactive simulation"
+              },
+              "url": "https://phet.colorado.edu/de/simulations/collision-lab"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": {
+        "de": "1. Lückentext",
+        "en": "1. Fill in the blanks"
+      },
+      "intro": {
+        "de": "Ergänze die fehlenden Fachwörter. Alle Begriffe findest du im Pfad.",
+        "en": "Complete the missing technical words. Every term appears in this path."
+      },
+      "text": {
+        "de": "Ein idealer waagerechter Wurf überlagert gleichförmige Bewegung und freien ___. Am höchsten Punkt eines senkrechten Wurfs bleibt die ___ nach unten gerichtet. Masse mal Geschwindigkeit heißt ___. Seine Richtung ist für die ___ wichtig. In einem abgeschlossenen Stoßsystem bleibt der Gesamtimpuls erhalten, nicht unbedingt die ___. Bei Kreisbewegung ändert sich ständig die ___. Die notwendige Kraft nach innen heißt ___. Eine vollständige Runde dauert eine ___. Runden pro Sekunde beschreibt die ___.",
+        "en": "An ideal horizontal projectile combines uniform motion with free ___. At the highest point of an upward throw, ___ still points downwards. Mass times velocity is ___. Its direction matters for ___. In an isolated collision system, total momentum is conserved, but not necessarily ___. Circular motion continuously changes ___. The required inward force is called ___. One complete revolution takes one ___. Revolutions per second are described by ___."
+      }
+    },
+    {
+      "kind": "compare",
+      "title": {
+        "de": "2. Erklären und vergleichen (AB II)",
+        "en": "2. Explain and compare (level II)"
+      },
+      "intro": {
+        "de": "Antworte mit drei bis vier kurzen Sätzen. Nutze das Gelesene und begründe deinen Vergleich.",
+        "en": "Answer in three or four short sentences. Use what you have read and explain your comparison."
+      },
+      "text": {
+        "de": "Vergleiche zwei Kreisfahrten bei gleichem Radius und gleicher Masse, aber doppeltem Tempo. Erkläre die Änderung der Kraft. Vergleiche danach die Sicht von außen mit der mitdrehenden Sicht und benenne das jeweilige Bezugssystem.",
+        "en": "Compare two circular motions with the same radius and mass but double the speed. Explain how force changes. Then compare the outside view with the rotating view and identify the reference frame in each."
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": {
+        "de": "3. Deine Idee im Alltag (AB III)",
+        "en": "3. Your idea for everyday life (level III)"
+      },
+      "intro": {
+        "de": "Entwickle eine eigene Idee in drei bis vier kurzen Sätzen. Begründe sie mit Physik; mehrere Lösungen sind möglich.",
+        "en": "Develop your own idea in three or four short sentences. Support it with physics; several answers are possible."
+      },
+      "text": {
+        "de": "Gestalte eine harmlose Simulationserklärung für eine Sportbewegung. Wähle Wurf, Kreis oder Stoß. Nenne die gezielt veränderte Größe, eine Vorhersage und eine Modellgrenze.",
+        "en": "Create an explanation using a harmless simulation of a sporting movement. Choose a projectile, circle or collision. Name the deliberately changed quantity, one prediction and one model limitation."
+      }
+    }
+  ]
+}

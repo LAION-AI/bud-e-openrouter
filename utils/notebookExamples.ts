@@ -738,6 +738,726 @@ im Hintergrund, auf dem etwas ausgeführt wird. Deshalb:
       },
     ],
   },
+
+  // ------------------------------------------------------------------ 6
+  {
+    key: "adventure",
+    name: { de: "6 - Das Textadventure", en: "6 - The text adventure" },
+    about: {
+      de: "Mit input und if/elif/else ein eigenes Abenteuer bauen: Räume als Funktionen und ein Inventar.",
+      en: "Build your own adventure with input and if/elif/else: rooms as functions and an inventory.",
+    },
+    cells: [
+      {
+        type: "markdown",
+        source: `# 6 - Das Textadventure
+
+Dein erstes richtiges Spiel - nur aus Text. Du beschreibst einen Ort,
+der Spieler tippt, was er tun will, und mit \`if\` entscheidest du,
+wie es weitergeht.
+
+Alles, was du dafür brauchst, kennst du schon: \`input\` aus Notebook 2
+und \`if\` mit Einrückung.`,
+      },
+      {
+        type: "code",
+        source: `# Zwei Türen, eine Entscheidung. Die Antwort wird danach geputzt:
+# .lower() macht alles klein, .strip() schneidet Leerzeichen ab.
+# So ist " Links " genauso gut wie "links".
+# (Immer in zwei Zeilen: nichts direkt an input() anhängen.)
+antwort = input("Links oder rechts? ")
+antwort = antwort.lower().strip()
+
+if antwort == "links":
+    print("Du findest eine stille Lichtung mit einem alten Brunnen.")
+elif antwort == "rechts":
+    print("Der Gang wird eng. Irgendwo tropft Wasser.")
+else:
+    print("Diesen Weg gibt es nicht. Das Abenteuer endet hier.")`,
+      },
+      {
+        type: "markdown",
+        source: `### 🎯 Aufgabe
+
+Bau eine dritte Tür ein: \`geheim\`. Dahinter liegt eine Schatzkammer.
+Du brauchst dafür ein zweites \`elif\`.
+
+Teste danach absichtlich \`LINKS\` in Großbuchstaben. Dank der zweiten
+Zeile funktioniert es trotzdem - lass sie einmal weg und sieh dir
+den Unterschied an.`,
+      },
+      {
+        type: "markdown",
+        source: `## Eingaben sauber machen
+
+Spieler tippen alles Mögliche: große Buchstaben, Leerzeichen davor,
+einen Tippfehler. Zwei kleine Helfer fangen das meiste ab:
+
+- \`.lower()\` macht aus \`LINKS\` ein \`links\`
+- \`.strip()\` macht aus \`"  links  "\` ein \`links\`
+
+Beide stehen in einer **eigenen Zeile** - direkt an \`input()\`
+angehängt versteht Python sie hier nicht. Und die Schleife, die so
+lange fragt, bis die Antwort passt, steht **außerhalb jeder Funktion**.
+Das sind die zwei Regeln für Eingaben in diesem Notizbuch.`,
+      },
+      {
+        type: "code",
+        source: `# So lange fragen, bis die Antwort passt. while True läuft endlos,
+# break steigt aus, sobald die Antwort stimmt - wie in Notebook 4.
+while True:
+    antwort = input("Gehst du nach links oder rechts? ")
+    antwort = antwort.lower().strip()
+    if antwort in ["links", "rechts"]:
+        break
+    print("Das geht hier nicht. Versuch links oder rechts.")
+
+print("Du gehst nach", antwort)`,
+      },
+      {
+        type: "markdown",
+        source: `### 🎯 Aufgabe
+
+Stell eine eigene Frage mit zwei Möglichkeiten - zum Beispiel ob du
+einen seltsamen Trank trinkst oder wegwirfst. Baue dieselbe Schleife:
+\`while True\`, Eingabe plus Putz-Zeile, \`if\` mit \`break\`, Hinweis
+bei ungültigen Antworten.
+
+Teste danach absichtlich \`LINKS\` in Großbuchstaben und mit Leerzeichen
+davor. Beides muss funktionieren - und jetzt weißt du auch, welche
+zwei Zeilen dafür sorgen.`,
+      },
+      {
+        type: "markdown",
+        source: `## Räume als Funktionen
+
+Ein Abenteuer aus lauter \`if\`-Zeilen wird schnell unübersichtlich.
+Der Trick: **Jeder Ort wird eine eigene Funktion.** Die Eingabe steht
+davor und wird als **Parameter übergeben** - so bleibt jede Funktion
+für sich lesbar, und \`input\` steht immer außerhalb.`,
+      },
+      {
+        type: "code",
+        source: `# Ein Raum als Funktion: Die Entscheidung kommt als Parameter rein,
+# die Beschreibung als Text zurück. Die Eingabe steht nicht hier,
+# sondern davor.
+def eingang(richtung):
+    if richtung == "lichtung":
+        return "Lichtung mit einem alten Brunnen. Vögel singen."
+    if richtung == "dunkelheit":
+        return "Ein enger Gang. Irgendwo tropft Wasser."
+    return "Diesen Weg gibt es nicht."
+
+# Die Eingabe steht außerhalb - und wird übergeben:
+wunsch = input("Wohin gehst du, lichtung oder dunkelheit? ")
+wunsch = wunsch.lower().strip()
+print(eingang(wunsch))`,
+      },
+      {
+        type: "markdown",
+        source: `### 🎯 Aufgabe
+
+Schreib eine zweite Raum-Funktion \`lichtung(aktion)\`: Sie bekommt die
+Antwort als Parameter und beschreibt bei \`"öffnen"\` einen
+verschlossenen Kasten, bei \`"zurück"\` den Weg zurück.
+
+Frag davor mit \`input\` nach, putze die Antwort in einer eigenen Zeile
+und übergib sie: \`print(lichtung(aktion))\`.`,
+      },
+      {
+        type: "markdown",
+        source: `## Inventar - Dinge mitnehmen
+
+Manches Abenteuer braucht Gegenstände. Dafür reicht eine **Liste**:
+\`append()\` legt etwas dazu, \`in\` prüft, ob etwas dabei ist.`,
+      },
+      {
+        type: "code",
+        source: `# Eine leere Liste, dann kommt etwas dazu.
+inventar = []
+print("Dabei hast du:", inventar)
+
+inventar.append("Laterne")
+print("Jetzt hast du:", inventar)
+
+if "Laterne" in inventar:
+    print("Mit der Laterne traust du dich in die Dunkelheit.")`,
+      },
+      {
+        type: "markdown",
+        source: `### 🎯 Aufgabe
+
+Leg einen \`"Schlüssel"\` dazu - aber nur, wenn der Spieler auf die
+Frage \`"mitnehmen oder liegenlassen?"\` wirklich \`mitnehmen\`
+antwortet. Frag mit \`input\`, putze in der nächsten Zeile und prüfe
+danach mit \`if\`, ob der Schlüssel im Inventar ist.`,
+      },
+      {
+        type: "markdown",
+        source: `## Alles zusammen - das kleine Abenteuer
+
+Drei Räume, ein Gegenstand, drei Enden. Lies es von oben nach unten:
+Jede Funktion ist ein Ort, die letzten Zeilen spielen die Geschichte.`,
+      },
+      {
+        type: "code",
+        source: `# Das ganze Spiel. Alle Eingaben stehen unten im Ablauf,
+# die Funktionen beschreiben nur Orte - so bleibt input erlaubt
+# und trotzdem jeder Raum für sich.
+
+def zeige_hoehle():
+    print("Höhle: An der Wand hängt eine Laterne.")
+
+def zeige_gang(rucksack):
+    print("Gang: Es wird dunkel. Du hörst Wasser tropfen.")
+    if "Laterne" in rucksack:
+        print("Deine Laterne zeigt eine Tür mit einem Rätsel:")
+        print("'Ich habe Tasten, aber öffne nichts. Was bin ich?'")
+    else:
+        print("Ohne Licht kehrst du um. Ende 1 von 3.")
+
+def zeige_schatzkammer(mitbringsel):
+    print("Schatzkammer: Gold, so weit das Licht reicht!")
+    print("Du nimmst:", mitbringsel, "- und wirst zur Legende. Ende 3 von 3.")
+
+# --- Hier läuft die Geschichte ---
+zeige_hoehle()
+beute = input("Nimmst du die Laterne mit? (ja/nein) ")
+beute = beute.lower().strip()
+
+rucksack = []
+if beute == "ja":
+    rucksack.append("Laterne")
+
+zeige_gang(rucksack)
+
+if "Laterne" in rucksack:
+    antwort = input("Deine Antwort: ")
+    antwort = antwort.lower().strip()
+    if antwort == "klavier":
+        print("Die Tür springt auf!")
+        mitbringsel = input("Was nimmst du mit? (münze/krone/nichts) ")
+        mitbringsel = mitbringsel.lower().strip()
+        zeige_schatzkammer(mitbringsel)
+    else:
+        print("Die Tür bleibt zu. Trotzdem ein Abenteuer. Ende 2 von 3.")`,
+      },
+      {
+        type: "markdown",
+        source: `### 🎯 Aufgabe zum Schluss - dein neues Level
+
+Jetzt erweiterst du das Spiel. Es hat 3 Enden - bau ein viertes dazu.
+So bleibt es übersichtlich:
+
+1. Kopiere eine Raum-Funktion (z. B. \`zeige_gang\`) und benenne sie
+   um, zum Beispiel \`zeige_bruecke\`.
+2. Frage **eine** Entscheidung mit \`input\` ab (plus Putz-Zeile) und
+   biete **zwei bis drei** Möglichkeiten an - mehr verwirrt nur.
+   Die Antwort übergibst du an deine Raum-Funktion.
+3. Lege **einen** neuen Gegenstand ins Spiel (Seil, Karte, Kompass),
+   der an genau einer Stelle nützt.
+4. Rufe deinen Raum im Ablauf unten auf und zähle die Enden hoch
+   ("Ende 4 von 4").
+
+Regel für Übersicht: eine Funktion, ein Ort, eine Entscheidung.
+Wer das einhält, kann zehn Räume bauen, ohne sich zu verlaufen.`,
+      },
+    ],
+  },
+
+  // ------------------------------------------------------------------ 7
+  {
+    key: "bubblesort",
+    name: { de: "7 - Bubble Sort", en: "7 - Bubble sort" },
+    about: {
+      de: "Sortieren wie aufsteigende Blasen: erst die innere Schleife, dann die äußere, dazu Aufwand und Grenzen.",
+      en: "Sorting like rising bubbles: first the inner loop, then the outer one, plus cost and limits.",
+    },
+    cells: [
+      {
+        type: "markdown",
+        source: `# 7 - Bubble Sort: Sortieren wie Blasen
+
+Wie sortierst du einen Stapel Karten in der Hand? Eine Idee: Geh immer
+wieder durch den Stapel, vergleiche zwei Nachbarn und tausche sie, wenn
+sie falsch herum liegen.
+
+Die größte Karte steigt dabei wie eine **Blase** nach oben - bis ganz
+ans Ende. Daher der Name. Wir schauen zuerst **einem einzigen Vergleich**
+zu, dann **einem Durchgang** und erst danach dem ganzen Verfahren.`,
+      },
+      {
+        type: "code",
+        source: `# Nur ein Vergleich: Steht der Größere vorne, tauschen wir.
+zahlen = [5, 3]
+print("Vorher: ", zahlen)
+
+if zahlen[0] > zahlen[1]:
+    merk = zahlen[0]
+    zahlen[0] = zahlen[1]
+    zahlen[1] = merk
+    print("Getauscht!")
+
+print("Nachher:", zahlen)`,
+      },
+      {
+        type: "markdown",
+        source: `### 🎯 Aufgabe
+
+Starte mit \`[3, 5]\` statt \`[5, 3]\` und führ die Zelle aus. Es wird
+nichts getauscht - die Reihenfolge stimmt ja schon.
+
+Dreh dann eine längere Liste um: Was passiert mit \`[2, 1, 3]\`?
+Nur das erste Paar wird angeschaut, der Rest bleibt liegen. Genau
+dafür brauchen wir als Nächstes eine Schleife.`,
+      },
+      {
+        type: "markdown",
+        source: `## Die innere Schleife - einmal komplett durchgehen
+
+Jetzt läuft der Vergleich über die **ganze Liste**: Stelle 0 mit 1,
+1 mit 2, 2 mit 3. Schau genau hin, was mit der größten Zahl passiert.`,
+      },
+      {
+        type: "code",
+        source: `# Ein Durchgang: jedes Nachbarpaar einmal vergleichen.
+zahlen = [5, 3, 4, 1, 2]
+print("Start:", zahlen)
+
+for i in range(len(zahlen) - 1):
+    print("Vergleiche Stelle", i, ":", zahlen[i], "und", zahlen[i + 1])
+    if zahlen[i] > zahlen[i + 1]:
+        merk = zahlen[i]
+        zahlen[i] = zahlen[i + 1]
+        zahlen[i + 1] = merk
+        print("Getauscht:", zahlen)
+
+print("Nach einem Durchgang:", zahlen)`,
+      },
+      {
+        type: "markdown",
+        source: `### 🎯 Aufgabe
+
+Die größte Zahl steht jetzt ganz hinten - wie eine Blase, die
+aufgestiegen ist. Der Rest ist nur "ein bisschen sortierter".
+
+Starte mit \`[2, 1, 3]\` und dann mit \`[1, 2, 3, 4, 5]\`. Bei der
+sortierten Liste wird nie getauscht - ein Durchgang genügt zum
+Feststellen, dass alles stimmt.
+
+Zähle mit: Lege vor der Schleife \`tausche = 0\` an, zähle bei jedem
+Tausch eins hoch und gib die Zahl danach aus.`,
+      },
+      {
+        type: "markdown",
+        source: `## Was ein Durchgang garantiert - und was nicht
+
+Nach **einem** Durchgang steht nur **eine** Zahl sicher richtig:
+die größte, ganz hinten.
+
+Also wiederholen wir den Durchgang - für jede Stelle einmal.
+Das ist die **äußere Schleife**.`,
+      },
+      {
+        type: "code",
+        source: `# Außen: "noch einmal durchgehen". Innen: "jedes Paar prüfen".
+# Nach jedem Durchgang ist eine weitere Zahl hinten einsortiert.
+zahlen = [5, 3, 4, 1, 2]
+
+for durchgang in range(len(zahlen) - 1):
+    for i in range(len(zahlen) - 1):
+        if zahlen[i] > zahlen[i + 1]:
+            merk = zahlen[i]
+            zahlen[i] = zahlen[i + 1]
+            zahlen[i + 1] = merk
+    print("Nach Durchgang", durchgang + 1, ":", zahlen)`,
+      },
+      {
+        type: "markdown",
+        source: `### 🎯 Aufgabe
+
+Lies die Ausgabe Zeile für Zeile: Welche Zahl steht nach Durchgang 1
+hinten? Welche kommt in Durchgang 2 dazu?
+
+Überlege dann: Der hintere Teil ist schon sortiert - trotzdem
+vergleicht die innere Schleife ihn jedes Mal neu. Verschwendung?
+Genau die bauen wir als Nächstes aus.`,
+      },
+      {
+        type: "markdown",
+        source: `## Als Funktion - mit zwei Verbesserungen
+
+Zum Schluss wird daraus eine wiederverwendbare Funktion. Sie bekommt
+zwei Tricks aus der Aufgabe oben mit:
+
+1. **Kürzerer Weg:** Hinten ist schon sortiert, also läuft die innere
+   Schleife jedes Mal ein Stück weniger weit (\`- durchgang\`).
+2. **Früher Stopp:** Wurde in einem Durchgang gar nichts getauscht,
+   war die Liste schon fertig - \`getauscht\` bleibt \`False\` und wir
+   hören mit \`break\` auf.`,
+      },
+      {
+        type: "code",
+        source: `# Die fertige Funktion. list(zahlen) kopiert, damit die
+# übergebene Liste unverändert bleibt.
+def bubble_sort(zahlen):
+    sortiert = list(zahlen)
+    n = len(sortiert)
+    for durchgang in range(n - 1):
+        getauscht = False
+        for i in range(n - 1 - durchgang):
+            if sortiert[i] > sortiert[i + 1]:
+                merk = sortiert[i]
+                sortiert[i] = sortiert[i + 1]
+                sortiert[i + 1] = merk
+                getauscht = True
+        # Nichts getauscht? Dann sind wir fertig.
+        if not getauscht:
+            break
+    return sortiert
+
+print(bubble_sort([5, 3, 4, 1, 2]))
+print(bubble_sort([1, 2, 3, 4, 5]))
+print(bubble_sort(["birne", "apfel", "kirsche"]))`,
+      },
+      {
+        type: "markdown",
+        source: `### 🎯 Aufgabe
+
+Sortiere deine eigene Liste: die Geburtsjahre deiner Familie, die
+Längen der Vornamen in deiner Klasse oder fünf Zufallszahlen aus
+Notebook 4 (\`random.randint\`).
+
+Beobachte: Bei \`[1, 2, 3, 4, 5]\` stoppt die Funktion nach einem
+Durchgang - dank \`getauscht\`. Nimm das \`break\` einmal heraus und
+vergleiche: Das Ergebnis bleibt gleich, nur die Arbeit nicht.`,
+      },
+      {
+        type: "markdown",
+        source: `## Wie schnell ist das? - Aufwand und Ehrlichkeit
+
+Zählen wir Vergleiche: Bei 5 Zahlen sind es höchstens 4 + 3 + 2 + 1
+= **10**. Bei 10 Zahlen 9 + 8 + ... + 1 = **45**. Bei 100 schon **4950**.
+
+Die Formel: \`n * (n - 1) / 2\`. Das wächst **quadratisch** - doppelt
+so viele Zahlen, viermal so viel Arbeit. Fachwort: \`O(n hoch 2)\`.
+
+**Vorteile:** in zehn Zeilen erklärt, braucht keine extra Liste,
+stabil (gleiche Werte behalten ihre Reihenfolge), super zum Lernen.
+
+**Nachteile:** ab ein paar tausend Zahlen quälend langsam. Echte
+Programme nehmen \`sorted()\` oder Verfahren wie Mergesort - die sind
+komplizierter, schaffen dafür aber \`O(n log n)\`.
+
+Merksatz: Bubble Sort zum **Verstehen**, \`sorted()\` zum **Arbeiten**.`,
+      },
+      {
+        type: "code",
+        source: `# Vergleiche zählen: Wie hängt die Arbeit von der Ordnung ab?
+def vergleiche_zaehlen(zahlen):
+    arbeit = 0
+    sortiert = list(zahlen)
+    n = len(sortiert)
+    for durchgang in range(n - 1):
+        getauscht = False
+        for i in range(n - 1 - durchgang):
+            arbeit = arbeit + 1
+            if sortiert[i] > sortiert[i + 1]:
+                merk = sortiert[i]
+                sortiert[i] = sortiert[i + 1]
+                sortiert[i + 1] = merk
+                getauscht = True
+        if not getauscht:
+            break
+    return arbeit
+
+print("Durcheinander:", vergleiche_zaehlen([5, 3, 4, 1, 2]))
+print("Sortiert:     ", vergleiche_zaehlen([1, 2, 3, 4, 5]))
+print("Rückwärts:    ", vergleiche_zaehlen([5, 4, 3, 2, 1]))
+print("Pythons Antwort:", sorted([5, 3, 4, 1, 2]))`,
+      },
+      {
+        type: "markdown",
+        source: `### 🎯 Aufgabe zum Schluss
+
+Miss selbst: Baue drei Listen mit je 10 Zahlen - sortiert, gemischt,
+rückwärts - und zähle die Vergleiche mit \`vergleiche_zaehlen()\`.
+Welche braucht am meisten?
+
+Rechne hoch: Bei 1000 Zahlen wären es fast 500000 Vergleiche. Kein
+Wunder, dass \`sorted()\` gewinnt - probier es mit 1000 Zufallszahlen
+und staune, wie schnell Python ist.
+
+Und wenn du magst: Erkläre jemandem an der Ausgabe von oben, warum
+die größte Zahl wie eine Blase aufsteigt. Wer das in eigenen Worten
+kann, hat Sortieren verstanden.`,
+      },
+    ],
+  },
+
+  // ------------------------------------------------------------------ 8
+  {
+    key: "hangman",
+    name: { de: "8 - Galgenraten", en: "8 - Hangman" },
+    about: {
+      de: "Das schwerste Spiel der Reihe: ASCII-Galgen, Lücken und ein fertiges Ratespiel aus Funktionen.",
+      en: "The hardest game in the series: ASCII gallows, blanks and a finished guessing game built from functions.",
+    },
+    cells: [
+      {
+        type: "markdown",
+        source: `# 8 - Galgenraten (Hangman)
+
+Das schwerste Spiel in dieser Reihe - und das schönste: Das Programm
+denkt sich ein Wort aus, du rätst Buchstaben. Jeder Fehlversuch malt
+ein Stück mehr vom Galgenmännchen. Nach 6 Fehlern ist das Spiel aus.
+
+Wir bauen es in drei Schritten: erst die **Bilder**, dann die
+**Lücken**, dann das **Spiel**. Jede Stufe ist eine eigene Funktion -
+so bleibt selbst ein großes Programm übersichtlich.`,
+      },
+      {
+        type: "code",
+        source: `# 7 Bilder: vom leeren Galgen bis zum fertigen Männchen.
+# GALGEN[0] ist der Anfang, GALGEN[6] das Ende. Es gibt also
+# 6 Leben - ein Bild pro Fehlversuch.
+GALGEN = [
+    """
+  +---+
+  |   |
+      |
+      |
+      |
+      |
+=========
+""",
+    """
+  +---+
+  |   |
+  O   |
+      |
+      |
+      |
+=========
+""",
+    """
+  +---+
+  |   |
+  O   |
+  |   |
+      |
+      |
+=========
+""",
+    """
+  +---+
+  |   |
+  O   |
+ /|   |
+      |
+      |
+=========
+""",
+    """
+  +---+
+  |   |
+  O   |
+ /|/  |
+      |
+      |
+=========
+""",
+    """
+  +---+
+  |   |
+  O   |
+ /|/  |
+ /    |
+      |
+=========
+""",
+    """
+  +---+
+  |   |
+  O   |
+ /|/  |
+ / /  |
+      |
+=========
+""",
+]
+
+print(GALGEN[0])
+print("Stufen:", len(GALGEN) - 1)`,
+      },
+      {
+        type: "markdown",
+        source: `### 🎯 Aufgabe
+
+Gib \`GALGEN[3]\` und \`GALGEN[6]\` aus. Was kam bei Stufe 3 dazu,
+was bei Stufe 6?
+
+Zähle nach: \`len(GALGEN)\` ist 7, aber es gibt nur 6 Leben. Warum?
+(Weil Bild 0 der Start ohne Fehler ist - genau wie \`range(5)\`
+bei 0 anfängt und bei 4 aufhört.)`,
+      },
+      {
+        type: "markdown",
+        source: `## Das Wort als Lücken
+
+Solange Buchstaben fehlen, zeigen wir \`_\`. Eine kleine Funktion
+baut diese Ansicht: bekannte Buchstaben rein, Rest Unterstriche.`,
+      },
+      {
+        type: "code",
+        source: `# maske("python", ["p", "o"]) zeigt p _ _ _ o _.
+# Leerzeichen zwischen den Zeichen machen es lesbar.
+def maske(wort, geraten):
+    ansicht = ""
+    for buchstabe in wort:
+        if buchstabe in geraten:
+            ansicht = ansicht + buchstabe + " "
+        else:
+            ansicht = ansicht + "_ "
+    return ansicht
+
+print(maske("python", ["p", "o"]))
+print(maske("python", []))
+print(maske("python", ["p", "y", "t", "h", "o", "n"]))`,
+      },
+      {
+        type: "markdown",
+        source: `### 🎯 Aufgabe
+
+Nimm dein Lieblingswort mit 6 Buchstaben und zeige es mit zwei
+geratenen Buchstaben. Dann mit leerer Liste \`[]\` - alles Lücken.
+
+Frage für später: Woran erkennt das Programm, dass gewonnen ist?
+(Tipp: Wenn **kein** \`_\` mehr in der Ansicht steht.)`,
+      },
+      {
+        type: "markdown",
+        source: `## Eine Runde: Buchstabe prüfen
+
+Eine Spielrunde ist reine Logik: Eingabe putzen, drei Fälle
+unterscheiden - schon erraten, Treffer, Fehlversuch. Genau das
+übt diese Zelle, noch ohne Schleife.`,
+      },
+      {
+        type: "code",
+        source: `# Eine einzelne Runde zum Ausprobieren. Führ die Zelle mehrmals
+# aus und tippe jedes Mal einen anderen Buchstaben.
+wort = "schleife"
+geraten = ["s", "e"]
+fehler = 1
+
+print(GALGEN[fehler])
+print(maske(wort, geraten))
+
+tipp = input("Welcher Buchstabe? ")
+tipp = tipp.lower().strip()
+
+if len(tipp) != 1:
+    print("Bitte genau einen Buchstaben eingeben.")
+elif tipp in geraten:
+    print("Den hattest du schon. Schau oben nach.")
+elif tipp in wort:
+    geraten.append(tipp)
+    print("Treffer!", maske(wort, geraten))
+else:
+    geraten.append(tipp)
+    fehler = fehler + 1
+    print("Leider daneben. Fehler:", fehler)
+    print(GALGEN[fehler])`,
+      },
+      {
+        type: "markdown",
+        source: `### 🎯 Aufgabe
+
+Führ die Zelle dreimal aus: einmal mit einem Treffer, einmal mit
+einem Fehlversuch, einmal mit einem Buchstaben, der schon oben
+steht. Alle drei Fälle müssen verschiedene Antworten geben.
+
+Bonus: Was passiert bei \`7\` oder \`!\`? Baue eine Prüfung, die nur
+Buchstaben zulässt. (\`tipp.isalpha()\` sagt dir, ob alles Buchstaben
+sind - probier es in einer eigenen Zeile aus.)`,
+      },
+      {
+        type: "markdown",
+        source: `## Alles zusammen - das fertige Spiel
+
+Jetzt fehlt nur noch die Schleife drumherum: **solange** Fehler
+übrig **und** Lücken da sind, weiter raten. Dazu zwei Helfer aus
+den Zellen oben (\`GALGEN\` und \`maske\`) - führ die Zellen der Reihe
+nach aus, dann kennt Python beide.`,
+      },
+      {
+        type: "code",
+        source: `# Das fertige Spiel. import steht hier, damit die Zelle für sich
+# läuft - GALGEN und maske kommen aus den Zellen weiter oben.
+import random
+
+# choice zieht ein zufälliges Wort aus der Liste.
+worte = ["python", "schleife", "variable", "computer",
+         "tastatur", "funktion", "abenteuer", "bildschirm"]
+wort = random.choice(worte)
+geraten = []
+fehler = 0
+leben = len(GALGEN) - 1
+
+print("Ich denke an ein Wort mit", len(wort), "Buchstaben.")
+
+while fehler < leben:
+    print()
+    print(GALGEN[fehler])
+    print(maske(wort, geraten))
+    print("Versucht:", geraten)
+
+    if "_" not in maske(wort, geraten):
+        break
+
+    tipp = input("Welcher Buchstabe? ")
+    tipp = tipp.lower().strip()
+
+    if len(tipp) != 1:
+        print("Bitte genau einen Buchstaben.")
+    elif tipp in geraten:
+        print("Den hattest du schon.")
+    elif tipp in wort:
+        geraten.append(tipp)
+        print("Treffer!")
+    else:
+        geraten.append(tipp)
+        fehler = fehler + 1
+        print("Daneben! Noch", leben - fehler, "Leben.")
+
+print()
+if "_" not in maske(wort, geraten):
+    print("Gewonnen! Das Wort war:", wort)
+else:
+    print(GALGEN[fehler])
+    print("Verloren. Das Wort war:", wort)`,
+      },
+      {
+        type: "markdown",
+        source: `### 🎯 Aufgabe zum Schluss - mach es zu deinem Spiel
+
+1. **Eigene Wörter:** Ersetze die Liste durch dein Thema - Tiere,
+   Fußball, deine Klasse (mindestens 8 Wörter, ohne Umlaute, alles
+   klein). Warum klein? Weil wir alles mit \`.lower()\` vergleichen.
+2. **Schwierigkeit:** Was müsstest du an \`GALGEN\` ändern, um mit
+   mehr oder weniger Leben zu spielen?
+3. **Komfort:** Zeige nach jedem Treffer, wie viele Buchstaben noch
+   fehlen. (Tipp: zähle \`_\` in der Ansicht.)
+4. **Fairness:** Was passiert bei Umlauten oder \`ß\`? Verbiete sie
+   mit einer Prüfung - oder erlaube sie überall konsequent.
+
+Wer alle vier kann, hat Funktionen, Schleifen, Listen und
+Verzweigungen in einem einzigen Programm verbunden. Genau das
+heißt es, programmieren zu können.`,
+      },
+    ],
+  },
 ];
 
 /** Builds a fresh, independent notebook from an example. */

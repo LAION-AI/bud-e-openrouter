@@ -1,0 +1,339 @@
+{
+  "key": "atome-und-strahlungsarten",
+  "title": {
+    "de": "Was im Atomkern anders ist als in der Hülle",
+    "en": "What makes the nucleus different from the electron region"
+  },
+  "summary": {
+    "de": "Atommodell, Isotope und ionisierende Strahlung: Du lernst präzise Begriffe statt unsichtbarer Horrorbilder.",
+    "en": "Atomic models, isotopes and ionising radiation: precise ideas instead of invisible horror stories."
+  },
+  "icon": "⚛️",
+  "accent": "violet",
+  "minutes": 22,
+  "screens": [
+    {
+      "key": "kern",
+      "title": {
+        "de": "Ein kleiner Kern, viel Raum für ein Modell",
+        "en": "A small nucleus and plenty of room for a model"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Ein Atom ist nicht einfach eine massive winzige Kugel. Im Kern sitzen positiv geladene Protonen und elektrisch neutrale Neutronen. Die negative Elektronenladung gehört zur Hülle. Fast die gesamte Masse liegt im Kern, während die Hülle die Größenordnung des Atoms bestimmt. Eine einfache Zeichnung ist gewöhnlich nicht maßstabsgetreu.",
+            "en": "An atom is not simply a tiny solid ball. Its nucleus contains positively charged protons and electrically neutral neutrons. Negative electron charge belongs to the surrounding region. Almost all atomic mass is concentrated in the nucleus, while the electron region sets the atom's overall scale. A simple drawing is usually not to scale."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Protonen und Neutronen heißen zusammen Nukleonen. Zwischen ihnen wirkt auf sehr kurzen Abständen die starke Kernwechselwirkung. Sie kann trotz der elektrischen Abstoßung zwischen Protonen für gebundene Kerne sorgen. Nicht jede Kombination ist stabil. In der Hülle erklärt elektrische Wechselwirkung viele chemische und elektrische Eigenschaften. Kernvorgänge sind davon zu unterscheiden. Ein glühender Draht und ein radioaktiver Stoff geben beide Energie ab, aber nicht durch denselben mikroskopischen Prozess. Wir betrachten Kerne ausschließlich in Modellen und Simulationen. Weder unbekannte Mineralien noch alte Leuchtfarben, Rauchmelder oder andere mögliche Strahlungsquellen sollen gesammelt, geöffnet oder untersucht werden. Unsichtbare Vorgänge sind kein Anlass für riskante Materialsuche.",
+            "en": "Protons and neutrons together are called nucleons. The strong nuclear interaction acts between them over very short distances and can bind nuclei despite the electrical repulsion between protons. Not every combination is stable. Electrical interactions in the surrounding electron region explain many chemical and electrical properties; nuclear processes must be distinguished from them. A glowing wire and a radioactive substance both release energy, but not through the same microscopic process. We study nuclei only through models and simulations. Do not collect, open or investigate unknown minerals, old luminous paint, smoke detectors or other possible radiation sources. Invisible processes are not an invitation to search for risky materials."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Warum ist ein Atommodell ohne Maßstabsangabe keine verlässliche Abbildung der wirklichen Größenverhältnisse? Die Zeichnung eines großen Kerns mit eng darum kreisenden Punkten ist meist eine Orientierungsskizze. Sie zeigt weder Größenmaßstab noch das moderne Verhalten der Elektronen vollständig. Beschrifte ausdrücklich, welche Information sie liefern soll: Ladung, Teilchenart oder Kernzahl. So bleibt das Bild nützlich, ohne ein falsches Miniatur-Sonnensystem als vollständige Wirklichkeit zu behaupten. Ein Modellwechsel erweitert die Erklärung statt sie beliebig zu machen.",
+            "en": "Why is an atomic drawing without scale information not a reliable picture of actual size relationships? A large nucleus with nearby orbiting dots is usually a schematic guide, not an accurate scale or full modern electron description. Label what it is intended to show: charge, particle type or nuclear number. This keeps it useful without presenting a miniature solar system as complete reality. Changing models extends explanation rather than making it arbitrary."
+          }
+        }
+      ]
+    },
+    {
+      "key": "isotope",
+      "title": {
+        "de": "Gleiche Protonenzahl, andere Neutronenzahl",
+        "en": "Same proton number, different neutron number"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Die Ordnungszahl Z zählt die Protonen und bestimmt das chemische Element. Die Massenzahl A zählt Protonen und Neutronen zusammen. Daraus ergibt sich die Neutronenzahl N = A − Z. Kohlenstoff besitzt immer sechs Protonen. Kohlenstoff-12 hat sechs Neutronen, Kohlenstoff-14 acht. Solche Varianten desselben Elements heißen Isotope.",
+            "en": "Atomic number Z counts protons and determines the element. Mass number A counts protons and neutrons together. The neutron number is therefore N = A − Z. Carbon always has six protons. Carbon-12 has six neutrons; carbon-14 has eight. These variants of the same element are called isotopes."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "In der Symbolschreibweise steht A oben und Z unten links am Elementsymbol, etwa ¹⁴₆C. Die Zahl 14 ist keine elektrische Ladung und keine Masse in Gramm. Ein neutrales Kohlenstoffatom hat zusätzlich sechs Elektronen. Verliert es ein Elektron, entsteht ein positiv geladenes Ion, aber kein anderes Element. Ändert sich dagegen die Protonenzahl im Kern, ändert sich das Element. Manche Isotope sind stabil, andere radioaktiv. Das lässt sich nicht allein aus dem Wort „Kohlenstoff“ ablesen. Die Unterscheidung von Isotop, Ion und Element verbindet Physik mit Chemie und verhindert, dass jede Veränderung am Atom fälschlich als Kernreaktion beschrieben wird.",
+            "en": "In nuclide notation, A is written above and Z below to the left of the element symbol, for example ¹⁴₆C. Fourteen is neither electric charge nor mass in grams. A neutral carbon atom also has six electrons. Losing one electron creates a positive ion, not a different element. Changing the proton number in the nucleus, however, changes the element. Some isotopes are stable and others radioactive, which cannot be determined from the word “carbon” alone. Distinguishing isotope, ion and element connects physics with chemistry and avoids incorrectly describing every change in an atom as a nuclear reaction."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Wie würdest du Kohlenstoff-12, Kohlenstoff-14 und ein Kohlenstoff-Ion in einer Skizze eindeutig unterscheiden? Für ¹⁴₆C ergibt A−Z acht Neutronen. Eine Änderung auf fünf Elektronen würde dagegen die Kernzahlen nicht verändern, sondern einen anderen Ladungszustand erzeugen. Zwei getrennte Beschriftungsfelder für Kern und Hülle helfen deshalb beim Vergleichen. Prüfe erst die Protonenzahl, wenn du das Element bestimmen willst. Eine große Zahl im Namen allein sagt weder die Elektronenzahl noch eine persönliche Strahlungsgefahr aus.",
+            "en": "How would you clearly distinguish carbon-12, carbon-14 and a carbon ion in a diagram? For ¹⁴₆C, A−Z gives eight neutrons. Changing to five electrons would alter charge, not nuclear numbers. Separate labels for nucleus and electron region help comparison. Check proton number to identify the element. A large number in an isotope name alone states neither electron count nor personal radiation risk."
+          }
+        }
+      ]
+    },
+    {
+      "key": "arten",
+      "title": {
+        "de": "Alpha, Beta und Gamma sind nicht dasselbe",
+        "en": "Alpha, beta and gamma are not the same"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Bei einem Alphazerfall verlässt ein Heliumkern mit zwei Protonen und zwei Neutronen den ursprünglichen Kern. Die Massenzahl sinkt um vier, die Ordnungszahl um zwei. Alphateilchen sind positiv geladen und geben auf kurzen Wegen viel Energie ab. Betastrahlung kann aus Elektronen oder Positronen bestehen. Beim hier betrachteten Beta-minus-Zerfall wird im Kern ein Neutron zu einem Proton; dabei entstehen ein Elektron und ein Antineutrino.",
+            "en": "In alpha decay, a helium nucleus containing two protons and two neutrons leaves the original nucleus. Mass number decreases by four and atomic number by two. Alpha particles carry positive charge and deposit substantial energy over short paths. Beta radiation can consist of electrons or positrons. In the beta-minus case considered here, a neutron in the nucleus becomes a proton, producing an electron and an antineutrino."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Das Betaelektron war also nicht einfach vorher ein Hüllenelektron. Die Massenzahl bleibt beim Beta-minus-Zerfall gleich, die Ordnungszahl steigt um eins. Gammastrahlung ist elektromagnetische Strahlung aus einem angeregten Kern. Sie ändert für sich genommen weder Protonen- noch Nukleonenzahl. Diese Eigenschaften erklären unterschiedliche Ablenkung und Wechselwirkung, nicht bloß drei Namen. Eine Tabelle hilft beim Vergleichen. Die Reichweite hängt zusätzlich von Energie und Material ab; pauschale Schutzversprechen aus einer Schulskizze sind unzulässig. Keine dieser Strahlungsarten wird hier mit echten Quellen ausprobiert.",
+            "en": "The beta electron was therefore not simply an electron previously orbiting outside the nucleus. In beta-minus decay, mass number stays unchanged and atomic number increases by one. Gamma radiation is electromagnetic radiation emitted by an excited nucleus. By itself it changes neither proton number nor nucleon number. These properties explain different deflection and interactions, not merely three labels. A table helps compare them. Range also depends on energy and material; a school diagram cannot justify blanket shielding guarantees. None of these radiation types is tested here using actual sources."
+          }
+        },
+        {
+          "kind": "table",
+          "head": [
+            {
+              "de": "Vorgang",
+              "en": "Process"
+            },
+            {
+              "de": "Massenzahl A",
+              "en": "Mass number A"
+            },
+            {
+              "de": "Ordnungszahl Z",
+              "en": "Atomic number Z"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "de": "Alpha",
+                "en": "Alpha"
+              },
+              {
+                "de": "−4",
+                "en": "−4"
+              },
+              {
+                "de": "−2",
+                "en": "−2"
+              }
+            ],
+            [
+              {
+                "de": "Beta-minus",
+                "en": "Beta-minus"
+              },
+              {
+                "de": "unverändert",
+                "en": "unchanged"
+              },
+              {
+                "de": "+1",
+                "en": "+1"
+              }
+            ],
+            [
+              {
+                "de": "Gamma-Abgabe",
+                "en": "Gamma emission"
+              },
+              {
+                "de": "unverändert",
+                "en": "unchanged"
+              },
+              {
+                "de": "unverändert",
+                "en": "unchanged"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Vergleiche beim Alpha- und Beta-minus-Zerfall, welche Kernzahlen sich verändern und warum die Produkte verschieden sind. Bei Gamma-Abgabe kann der Kern Energie verlieren, ohne dass sich A oder Z ändern. Beim Alpha-Zerfall ändern sich beide Zahlen. Die Tabelle unterscheidet also Kernzusammensetzung von Energiezustand. Ein gleichbleibendes Elementsymbol beweist nicht, dass überhaupt nichts passiert ist. Umgekehrt bedeutet ein ausgesandtes Elektron beim Beta-minus-Zerfall nicht, dass lediglich die Hülle ein Elektron verloren hätte.",
+            "en": "Compare which nuclear numbers change in alpha and beta-minus decay and why their products differ. Gamma emission can reduce nuclear energy without changing A or Z, while alpha decay changes both. The table distinguishes composition from energy state. An unchanged element symbol does not prove nothing happened. Conversely, an electron emitted in beta-minus decay does not mean only the surrounding electron region lost one electron."
+          }
+        }
+      ]
+    },
+    {
+      "key": "ionisation",
+      "title": {
+        "de": "Ionisieren ist mehr als erwärmen",
+        "en": "Ionisation is more than warming"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Ionisierende Strahlung kann Elektronen aus Atomen oder Molekülen entfernen. Dadurch entstehen Ionen und Veränderungen im Material. In lebendem Gewebe können daraus Schäden an biologisch wichtigen Strukturen folgen. Ob und wie stark eine Wirkung entsteht, hängt unter anderem von Strahlungsart, Energie, Dosis und betroffenem Gewebe ab. Unsichtbar bedeutet weder automatisch gefährlich noch automatisch harmlos.",
+            "en": "Ionising radiation can remove electrons from atoms or molecules, producing ions and changing the material. In living tissue, this can damage biologically important structures. Whether an effect occurs and how strong it is depend on radiation type, energy, dose and affected tissue, among other factors. Invisible does not automatically mean dangerous or harmless."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Röntgenstrahlung ist wie Gammastrahlung elektromagnetisch, entsteht aber typischerweise bei anderen Prozessen, etwa beim Abbremsen schneller Elektronen. Ein ausgeschaltetes medizinisches Röntgengerät ist deshalb nicht mit einer fortlaufend zerfallenden radioaktiven Quelle gleichzusetzen. Sichtbares Licht und übliche Mobilfunkstrahlung sind nicht ionisierend; das bedeutet nicht, dass jede beliebige Intensität folgenlos wäre. Starke Strahlung kann beispielsweise erwärmen oder Augen schädigen. Die richtige Frage ist immer konkret: Welche Art, welche Einwirkung, welches Material? Für den Unterricht verwenden wir nur Datensätze und Simulationen. Persönliche Gesundheitsentscheidungen lassen sich daraus nicht ableiten und gehören in fachkundige Beratung.",
+            "en": "Like gamma rays, X-rays are electromagnetic radiation, but they typically arise from other processes, such as rapid electrons slowing down. A switched-off medical X-ray machine is therefore not the same as a continuously decaying radioactive source. Visible light and ordinary radio communication are non-ionising; that does not mean every possible intensity is without effects. Intense radiation can, for example, cause heating or eye injury. The useful question is specific: which type, which exposure and which material? We use supplied data and simulations only. These lessons do not determine personal healthcare decisions, which require qualified professional advice."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Welche Bedingung fehlt der Aussage, nichtionisierende Strahlung könne unabhängig von Intensität nie eine Wirkung haben? Ein starkes nichtionisierendes Lichtsignal kann Augen gefährden, während eine schwache Anzeige für einen anderen Zweck ausgelegt ist. Das gemeinsame Wort „Licht“ legt die Einwirkung nicht fest. Dasselbe gilt für „Strahlung“ allgemein. Nenne deshalb stets Art und Bedingungen. Die Unterscheidung zwischen ionisierend und nichtionisierend erklärt einen Mechanismus, ersetzt aber keine vollständige Sicherheitsbewertung einer realen Quelle.",
+            "en": "What condition is missing from the claim that non-ionising radiation can never have effects regardless of intensity? Intense non-ionising light can injure eyes, while a weak indicator serves another purpose. The shared word “light” does not specify exposure. The same applies to “radiation”. Always name type and conditions. Ionising versus non-ionising distinguishes a mechanism but does not replace a complete safety assessment of a real source."
+          }
+        }
+      ]
+    },
+    {
+      "key": "messung",
+      "title": {
+        "de": "Ein Zähler misst nicht automatisch Gefahr",
+        "en": "A counter does not directly measure danger"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Ein Geiger-Müller-Zählrohr registriert bestimmte ionisierende Ereignisse. Die Anzahl pro Zeit heißt Zählrate. Auch ohne zusätzliche Probe kann es Ereignisse durch Umgebungsstrahlung geben; diese Messung wird Nullrate oder Hintergrundmessung genannt. „Nullrate“ bedeutet hier also nicht zwingend null Ereignisse. Eine Messung schwankt, weil viele zugrunde liegende Vorgänge zufällig sind.",
+            "en": "A Geiger–Müller tube detects certain ionising events. Their number per unit time is the count rate. Even without an added sample, background radiation may produce counts; this is a background measurement. The German term Nullrate therefore does not necessarily mean zero events. Readings fluctuate because many underlying processes are random."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Gedachte Daten ergeben mit Probe 120 und ohne Probe 40 Ereignisse pro Minute. Die Differenz beträgt 80 pro Minute. Sie ist nicht automatisch die Aktivität der Probe: Geometrie, Abschirmung und Nachweiswahrscheinlichkeit beeinflussen, welcher Anteil registriert wird. Die Aktivität zählt tatsächliche Kernumwandlungen pro Sekunde und wird in Becquerel angegeben. Eine Dosis beschreibt dagegen Energieaufnahme oder bewertete Wirkung im Empfänger. Diese Größen darfst du nicht gleichsetzen. Im Unterricht untersuchen wir hier nur vorgegebene Messdaten. Eine gute Infografik würde Einheit, Messbedingungen und Unsicherheit zeigen, statt aus einem großen Zählerwert ohne Zusammenhang eine Schlagzeile zu machen.",
+            "en": "Imagined data give 120 events per minute with a sample and 40 without it. The difference is 80 per minute, but that is not automatically the sample's activity. Geometry, shielding and detection efficiency affect which fraction is recorded. Activity counts actual nuclear transformations per second and is measured in becquerels. Dose instead concerns absorbed energy or a weighted effect in the recipient. These quantities must not be treated as identical. Here we examine supplied data only. A sound infographic would show units, conditions and uncertainty rather than turn a large unexplained counter reading into a sensational headline."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Wie müsste eine Infografik Messwert, Hintergrund und Grenzen zeigen, damit ein Zählerwert nicht fälschlich als persönliche Dosis gelesen wird? Die Differenz 120−40 ergibt 80 registrierte Ereignisse pro Minute unter den gewählten Bedingungen. Wird der Abstand verändert, kann sich die registrierte Rate ändern, ohne dass die Quelle plötzlich eine andere Aktivität besitzt. Ein Diagramm sollte deshalb den Aufbau mitnennen. Der Schritt von Messwert zu Eigenschaft der Quelle verlangt ein Nachweismodell; der Schritt zu einer Dosis zusätzlich ein Modell des Empfängers.",
+            "en": "How should an infographic present readings, background and limitations so a count is not mistaken for personal dose? The difference 120−40 gives 80 recorded events per minute under the chosen conditions. Changing distance can change that count without changing source activity. A graph should therefore describe the setup. Inferring source properties needs a detection model; inferring dose additionally needs a model of the recipient."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "Hamburg: Physik Gymnasium (2024)",
+                "en": "Hamburg: Gymnasium physics (2024)"
+              },
+              "url": "https://www.hamburg.de/resource/blob/798534/4cf0047ad61effacd1ff7e6ad819fa41/physik-data.pdf"
+            },
+            {
+              "label": {
+                "de": "Hamburg: Physik Stadtteilschule (2024)",
+                "en": "Hamburg: Stadtteilschule physics (2024)"
+              },
+              "url": "https://www.hamburg.de/resource/blob/798426/ba414a0ace36d17b7813a855db625c42/physik-data.pdf"
+            },
+            {
+              "label": {
+                "de": "PhET: sichere interaktive Simulation",
+                "en": "PhET: safe interactive simulation"
+              },
+              "url": "https://phet.colorado.edu/de/simulations/build-an-atom"
+            },
+            {
+              "label": {
+                "de": "PhET: sichere interaktive Simulation",
+                "en": "PhET: safe interactive simulation"
+              },
+              "url": "https://phet.colorado.edu/de/simulations/rutherford-scattering"
+            },
+            {
+              "label": {
+                "de": "LfU Bayern: Grundbegriffe Radioaktivität und Strahlung",
+                "en": "Bavarian environment agency: radiation and radioactivity basics"
+              },
+              "url": "https://www.lfu.bayern.de/buerger/doc/uw_56_radioaktivitaet_strahlung_grundbegriffe.pdf"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": {
+        "de": "1. Lückentext",
+        "en": "1. Fill in the blanks"
+      },
+      "intro": {
+        "de": "Ergänze die fehlenden Fachwörter. Alle Begriffe findest du im Pfad.",
+        "en": "Complete the missing technical words. Every term appears in this path."
+      },
+      "text": {
+        "de": "Im Atomkern sitzen Protonen und ___. Gemeinsam heißen sie ___. Die Protonenzahl bestimmt das ___. Varianten mit verschiedener Neutronenzahl heißen ___. Ein Alphateilchen ist ein ___. Beim Beta-minus-Zerfall entsteht ein ___. Gammastrahlung ist elektromagnetische ___. Das Entfernen eines Elektrons heißt ___. Registrierte Ereignisse pro Zeit ergeben eine ___. Die Messung ohne zusätzliche Probe liefert den ___.",
+        "en": "The nucleus contains protons and ___. Together they are ___. Proton number determines the ___. Variants with different neutron numbers are ___. An alpha particle is a ___. Beta-minus decay produces an ___. Gamma radiation is electromagnetic ___. Removing an electron is ___. Recorded events per unit time give the ___. A reading without an added sample gives the ___."
+      }
+    },
+    {
+      "kind": "compare",
+      "title": {
+        "de": "2. Erklären und vergleichen (AB II)",
+        "en": "2. Explain and compare (level II)"
+      },
+      "intro": {
+        "de": "Antworte mit drei bis vier kurzen Sätzen. Nutze das Gelesene und begründe deinen Vergleich.",
+        "en": "Answer in three or four short sentences. Use what you have read and explain your comparison."
+      },
+      "text": {
+        "de": "Vergleiche Alpha-, Beta-minus- und Gammastrahlung anhand ihrer Bestandteile und der Veränderung von Massenzahl und Ordnungszahl. Erkläre außerdem, warum eine gemessene Zählrate nicht automatisch die Aktivität oder eine persönliche Dosis ist.",
+        "en": "Compare alpha, beta-minus and gamma radiation by their components and changes to mass number and atomic number. Also explain why a measured count rate is not automatically activity or personal dose."
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": {
+        "de": "3. Deine Idee im Alltag (AB III)",
+        "en": "3. Your idea for everyday life (level III)"
+      },
+      "intro": {
+        "de": "Entwickle eine eigene Idee in drei bis vier kurzen Sätzen. Begründe sie mit Physik; mehrere Lösungen sind möglich.",
+        "en": "Develop your own idea in three or four short sentences. Support it with physics; several answers are possible."
+      },
+      "text": {
+        "de": "Entwirf eine verständliche Infografik gegen eine verbreitete Strahlungs-Denkfalle. Wähle Zählrate versus Dosis oder unsichtbar versus gefährlich. Nenne eine notwendige Kontextangabe und eine Grenze deines Modells.",
+        "en": "Design an understandable infographic addressing a radiation misconception. Choose count rate versus dose or invisible versus dangerous. Identify one necessary contextual detail and a limit of your model."
+      }
+    }
+  ]
+}

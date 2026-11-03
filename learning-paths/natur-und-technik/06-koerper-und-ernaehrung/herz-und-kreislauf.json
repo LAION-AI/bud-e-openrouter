@@ -1,0 +1,190 @@
+{
+  "key": "nwt-herz-und-kreislauf",
+  "title": {
+    "de": "Dein Herz: ein Lieferservice ohne Pause",
+    "en": "Your heart: a delivery service that never stops"
+  },
+  "summary": {
+    "de": "Herz, Blutgefäße, Sauerstoff und Nährstoffe als zusammenarbeitendes System verstehen.",
+    "en": "Understand the heart, blood vessels, oxygen and nutrients as a connected system."
+  },
+  "icon": "🫀",
+  "accent": "rose",
+  "minutes": 12,
+  "screens": [
+    {
+      "key": "entdecken-1",
+      "title": {
+        "de": "Wer bringt den Sauerstoff zum Fuß?",
+        "en": "Who delivers oxygen to your foot?"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Deine Lunge liegt nicht neben jedem Zeh. Trotzdem brauchen auch die Zellen im Fuß Sauerstoff und Nährstoffe. Das Blut transportiert Stoffe durch den Körper. Das Herz ist die Muskelpumpe, die es antreibt.",
+            "en": "Your lungs are not beside every toe. Yet cells in your foot need oxygen and nutrients too. Blood transports substances through your body. The heart is the muscular pump that drives it."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Das Blut fließt in Blutgefäßen. Arterien führen vom Herzen weg, Venen zum Herzen hin. In winzigen Kapillaren können Stoffe zwischen Blut und Gewebe ausgetauscht werden. Merke dir die Richtung statt „Arterie bedeutet immer sauerstoffreich“: Bei den Gefäßen zur Lunge passt diese einfache Regel nicht.",
+            "en": "Blood travels through vessels. Arteries carry it away from the heart, and veins carry it towards the heart. Substances can pass between blood and tissues through tiny capillaries. Remember direction rather than “artery always means oxygen-rich”: the vessels to the lungs do not fit that simple rule."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "💡",
+          "title": {
+            "de": "Dein Auftrag",
+            "en": "Your task"
+          },
+          "text": {
+            "de": "Erkläre die Aufgaben von Herz und Blut mit einem Lieferservice-Vergleich. Sage auch, was an diesem Vergleich nur ein Modell ist.",
+            "en": "Explain the roles of heart and blood using a delivery-service comparison. Also say where this comparison is only a model."
+          }
+        }
+      ]
+    },
+    {
+      "key": "entdecken-2",
+      "title": {
+        "de": "Zwei verbundene Runden",
+        "en": "Two connected circuits"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Wie kommt verbrauchtes Blut wieder an Sauerstoff? Vom Herzen fließt es zur Lunge. Dort gibt es Kohlenstoffdioxid ab und nimmt Sauerstoff auf. Es kehrt zum Herzen zurück.",
+            "en": "How does blood obtain oxygen again? It flows from the heart to the lungs, releases carbon dioxide and takes up oxygen. Then it returns to the heart."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Vom Herzen wird sauerstoffreiches Blut in den Körper gepumpt. An den Kapillaren erhalten Zellen Sauerstoff und Nährstoffe. Abfallstoffe werden mitgenommen. Danach fließt das Blut zum Herzen zurück. Lungenkreislauf und Körperkreislauf sind verbunden. Das Blut transportiert außerdem Wärme und hilft so, sie im Körper zu verteilen.",
+            "en": "The heart pumps oxygen-rich blood around the body. At capillaries, cells receive oxygen and nutrients, while waste products are collected. Blood then returns to the heart. The lung and body circuits are connected. Blood also carries heat and helps distribute it through the body."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "💡",
+          "title": {
+            "de": "Dein Auftrag",
+            "en": "Your task"
+          },
+          "text": {
+            "de": "Zeichne Herz → Lunge → Herz → Körper → Herz. Beschrifte, wo Sauerstoff aufgenommen und wo er an Zellen abgegeben wird.",
+            "en": "Draw heart → lungs → heart → body → heart. Label where oxygen is taken up and where it is delivered to cells."
+          }
+        }
+      ]
+    },
+    {
+      "key": "entdecken-3",
+      "title": {
+        "de": "Mehr Arbeit, mehr Transport",
+        "en": "More work, more transport"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Warum schlägt das Herz bei Bewegung häufig schneller? Arbeitende Muskeln brauchen mehr Energie. Dafür müssen unter anderem mehr Sauerstoff und Nährstoffe ankommen. Herz und Atmung passen sich an.",
+            "en": "Why does your heart often beat faster during movement? Working muscles need more energy, requiring delivery of more oxygen and nutrients, among other things. The heart and breathing adjust."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Den Herzschlag kannst du als Puls spüren. Für diese Aufgabe reichen erfundene Daten: Alex zählt in Ruhe 18 Schläge in 15 Sekunden, nach lockerer Bewegung 27. Viermal so viel ergibt die Zahl pro Minute: 72 und 108. Das sind Übungswerte, keine Diagnose und kein Fitnessvergleich. Du musst nichts an deinem Körper messen oder veröffentlichen.",
+            "en": "You can feel the heartbeat as a pulse. Use fictional data here: Alex counts 18 beats in 15 seconds at rest and 27 after gentle movement. Multiplying by four gives 72 and 108 per minute. These are practice figures, not a diagnosis or fitness comparison. You need not measure or publish anything about your body."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "💡",
+          "title": {
+            "de": "Dein Auftrag",
+            "en": "Your task"
+          },
+          "text": {
+            "de": "Vergleiche die erfundenen Werte von Alex. Erkläre die Veränderung mit den Bedürfnissen der Muskeln, nicht mit „gut“ oder „schlecht“.",
+            "en": "Compare Alex's fictional readings. Explain the change using the muscles' needs, not “good” or “bad”."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "Hamburg: Naturwissenschaften/Technik 5–6, Gymnasium (2024)",
+                "en": "Hamburg: science and technology, years 5–6, Gymnasium (2024)"
+              },
+              "url": "https://www.hamburg.de/resource/blob/798520/700d66232c2d07bad97d72b6e107e083/naturwissenschaften-technik-data.pdf"
+            },
+            {
+              "label": {
+                "de": "Hamburg: Naturwissenschaften/Technik 5–6, Stadtteilschule (2024)",
+                "en": "Hamburg: science and technology, years 5–6, Stadtteilschule (2024)"
+              },
+              "url": "https://www.hamburg.de/resource/blob/798394/033190c61a9908ff10401a5b66cedae9/naturwissenschaften-technik-data.pdf"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": {
+        "de": "Die wichtigsten Wörter",
+        "en": "The key words"
+      },
+      "intro": {
+        "de": "Setze passende Wörter aus den drei Seiten ein. Nachschauen ist erlaubt.",
+        "en": "Fill the gaps using words from the three pages. You may look back."
+      },
+      "text": {
+        "de": "Das ___ pumpt Blut. Blut fließt in ___. Vom Herzen weg führen ___. Zum Herzen hin führen ___. Der Stoffaustausch geschieht an den ___. In der Lunge nimmt Blut ___ auf. Der spürbare Herzschlag heißt ___. Blut transportiert außer Stoffen auch ___.",
+        "en": "The ___ pumps blood. Blood travels through ___. ___ lead away from the heart. ___ lead towards it. Substances are exchanged at ___. Blood takes up ___ in the lungs. The heartbeat you feel is your ___. Besides substances, blood also carries ___."
+      }
+    },
+    {
+      "kind": "compare",
+      "title": {
+        "de": "Erkläre den Zusammenhang",
+        "en": "Explain the connection"
+      },
+      "intro": {
+        "de": "Antworte in zwei bis drei Sätzen. Nutze ein Beispiel aus dem Lernpfad.",
+        "en": "Answer in two or three sentences. Use an example from the learning path."
+      },
+      "text": {
+        "de": "Erkläre, wie Lunge, Herz und Muskeln zusammenarbeiten. Warum brauchen Muskeln bei Bewegung häufig mehr Transport als in Ruhe?",
+        "en": "Explain how lungs, heart and muscles work together. Why do moving muscles often need more transport than resting ones?"
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": {
+        "de": "Deine Idee für den Alltag",
+        "en": "Your everyday idea"
+      },
+      "intro": {
+        "de": "Hier zählt deine begründete Idee, nicht eine bestimmte Musterantwort.",
+        "en": "Your reasoned idea matters, not a particular model answer."
+      },
+      "text": {
+        "de": "Erfinde eine freundliche Ausstellungstafel: „Unser Körper arbeitet zusammen“. Welche drei Stationen verbindest du, und wie vermeidest du Leistungs- oder Körpervergleiche?",
+        "en": "Invent a friendly exhibition panel titled “Our body works together”. Which three stops will you connect, and how will you avoid comparing performance or bodies?"
+      }
+    }
+  ]
+}

@@ -10,7 +10,7 @@
   },
   "icon": "⚖️",
   "accent": "emerald",
-  "minutes": 13,
+  "minutes": 18,
   "screens": [
     {
       "key": "muehelos",
@@ -69,6 +69,13 @@
           "text": {
             "de": "Merk dir dabei: Das alles ist genau das, was du in Scratch gebaut hast. Eine Schleife, die zählt. Eine Verzweigung, die prüft. Eine Variable, die sich etwas merkt. Der Unterschied zwischen deinem Apfelspiel und einer Wettervorhersage ist Umfang - nicht Art.",
             "en": "And bear in mind: all of it is exactly what you built in Scratch. A loop that counts. A branch that checks. A variable that remembers. The difference between your apple game and a weather forecast is one of scale - not of kind."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Fordere einen Taschenrechner heraus: hundert dreistellige Zahlen addieren – du gegen Maschine. Du verlierst, ehrenvoll und deutlich. Und jetzt umgekehrt: Erkläre dem Rechner, warum dein bester Freund traurig ist. Er schweigt – nicht aus Takt, sondern aus Leere. Zwei Wettkämpfe, zwei Sieger: Tempo gegen Tiefe.",
+            "en": "Challenge a calculator: adding a hundred three-digit numbers – you versus machine. You lose, honourably and clearly. And now reversed: explain to the calculator why your best friend is sad. It stays silent – not from tact but from emptiness. Two contests, two winners: tempo versus depth."
           }
         }
       ]
@@ -181,6 +188,13 @@
             "de": "Die ehrliche Trennlinie verläuft nicht zwischen leicht und schwer, sondern zwischen „gibt es eine Regel dafür?“ und „muss man das im Einzelfall abwägen?“. Schach hat Regeln, deshalb sind Rechner darin unschlagbar. Streit schlichten hat keine, deshalb sind sie darin nutzlos.",
             "en": "The honest dividing line does not run between easy and hard, but between \"is there a rule for it?\" and \"does each case need weighing up?\". Chess has rules, which is why computers are unbeatable at it. Settling an argument has none, which is why they are useless at it."
           }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "CAPTCHAs zeigen den Wettlauf live: verdrehte Buchstaben, die Menschen lesen und Maschinen lange nicht konnten. Darum gibt es sie an jeder Anmeldung: Mensch oder Maschine? Doch die Maschinen lernen dazu – moderne Knobel-Bilder werden immer fieser, weil die Angreifer immer besser werden. Ein Wettrüsten, das du täglich bestehst, ohne es zu merken.",
+            "en": "CAPTCHAs show the race live: twisted letters humans read and machines long could not. Hence they guard every login: human or machine? But the machines catch up – modern puzzles grow nastier because attackers grow better. An arms race you pass daily without noticing."
+          }
         }
       ]
     },
@@ -271,6 +285,69 @@
               "url": "https://www.hamburg.de/resource/blob/798514/ad3c2fdfb3a32b9545a271dfceae5772/informatik-data.pdf"
             }
           ]
+        }
+      ]
+    },
+    {
+      "key": "dein-platz-daneben",
+      "title": {
+        "de": "Dein Platz daneben",
+        "en": "Your place beside them"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Die Frage ist nicht, ob Maschinen dich ersetzen, sondern wo dein Platz neben ihnen ist.",
+            "en": "The question is not whether machines replace you, but where your place beside them is."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Schau dir Teams aus Mensch und Maschine an: Der Pilot entscheidet, der Autopilot hält den Kurs. Die Ärztin verantwortet die Diagnose, das Programm markiert verdächtige Stellen im Bild. Die Tischlerin fühlt das Holz, die Maschine misst auf den Millimeter. Das Muster: Maschinen bringen Ausdauer, Menschen bringen Ziele, Verantwortung und Geschmack.",
+            "en": "Look at human-machine teams: the pilot decides, the autopilot holds the course. The doctor owns the diagnosis, the program marks suspicious spots in the image. The carpenter feels the wood, the machine measures to the millimetre. The pattern: machines bring endurance, humans bring goals, responsibility and taste."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "🔍",
+          "title": {
+            "de": "Der Berufe-Test",
+            "en": "The jobs test"
+          },
+          "text": {
+            "de": "Zerlege einen Beruf in Aufgaben: Was ist Wiederholung – das kann die Maschine? Was braucht Urteil – das bleibst du? Mach das mit deinem Wunschberuf und diskutiere es mit jemandem, der ihn ausübt.",
+            "en": "Take a job apart into tasks: what is repetition – the machine can do that? What needs judgement – that stays you? Do it with your dream job and discuss it with someone who does it."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Wer das unterscheiden kann, hat vor Maschinen keine Angst: Er weiß, wofür er gebraucht wird – und lernt genau das besser als jede Maschine.",
+            "en": "Whoever can tell the difference fears no machine: they know what they are needed for – and learn exactly that better than any machine."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Nimm den Friseur: dieselbe Frisur, jedes Mal anders – Haare, Kopfform, Wunsch, Stimmung. Kein Roboter der Welt schneidet dir so die Haare, wie deine Friseurin es tut: hinschauen, anfassen, entscheiden. Urteil statt Wiederholung – das ist der Stoff, aus dem Berufe mit Zukunft sind.",
+            "en": "Take the hairdresser: the same haircut, different every time – hair, head shape, wish, mood. No robot in the world cuts your hair like your hairdresser does: looking, touching, deciding. Judgement instead of repetition – that is the stuff jobs with futures are made of."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "note",
+          "icon": "💈",
+          "title": {
+            "de": "Nie automatisierbar?",
+            "en": "Never automatable?"
+          },
+          "text": {
+            "de": "Pflege, Erziehung, Seelsorge: Überall geht es um Menschen in besonderen Momenten – da will niemand eine Maschine, selbst wenn sie könnte. Manche Arbeit bleibt menschlich, nicht weil Maschinen zu dumm sind, sondern weil wir Menschen wollen.",
+            "en": "Nursing, parenting, counselling: everywhere it is about humans in special moments – nobody wants a machine there, even if it could. Some work stays human, not because machines are too dumb, but because we want humans."
+          }
         }
       ]
     }

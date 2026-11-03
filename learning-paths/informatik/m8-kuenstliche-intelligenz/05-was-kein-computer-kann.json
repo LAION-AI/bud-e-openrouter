@@ -1,0 +1,294 @@
+{
+  "accent": "emerald",
+  "exercises": [
+    {
+      "hint": {
+        "de": "Alle Antworten stehen auf den Bildschirmen davor – lies sie noch einmal von oben.",
+        "en": "All answers sit on the screens before – read them once more from the top."
+      },
+      "intro": {
+        "de": "Setze die fehlenden Wörter ein.",
+        "en": "Fill in the missing words."
+      },
+      "kind": "cloze",
+      "text": {
+        "de": "Manche Fragen kann kein ___ je beantworten – nicht aus Mangel an ___, sondern aus ___. Der Barbier rasiert alle, die sich nicht selbst rasieren: Wer rasiert den ___? Ein Programm, das andere Programme ___, scheitert an sich ___: Antwortet es Ja, lügt es – antwortet es ___, auch. Das heißt ___problem. Daneben gibt es praktisch Unlösbares: Alle Routen durch 30 ___ prüfen dauert länger, als das ___ alt ist. Unmöglich ist unmöglich – zu lange dauert zu ___. Kluge fragen darum vorher: Geht das überhaupt, und geht es ___?",
+        "en": "Some questions can no ___ ever answer – not from lack of ___, but from ___. The barber shaves all who do not shave themselves: who shaves the ___? A program ___ other programs fails on ___: answering yes, it lies – answering ___, too. That is called the ___ problem. Besides sits the practically unsolvable: checking all routes through 30 ___ takes longer than the ___ is old. Impossible stays impossible – too long takes too ___. Clever people hence ask first: does that work at all, and does it work ___?"
+      },
+      "title": {
+        "de": "1. Lückentext",
+        "en": "1. Fill in the blanks"
+      }
+    },
+    {
+      "hint": {
+        "de": "Was ist unmöglich – und was nur zu langsam? Denke an Antwort gegen Wartezeit.",
+        "en": "What is impossible – and what only too slow? Think answer versus waiting time."
+      },
+      "intro": {
+        "de": "Setze zwei Beobachtungen zueinander in Beziehung.",
+        "en": "Relate two observations to each other."
+      },
+      "kind": "compare",
+      "text": {
+        "de": "Ein Halteprüfer und ein Routenplaner für 30 Städte scheitern beide. Vergleiche beide Niederlagen – und erkläre, welche endgültig ist und welche nur eine Frage der Geduld.",
+        "en": "A halt checker and a route planner for 30 cities both fail. Compare both defeats – and explain which one is final and which only a question of patience."
+      },
+      "title": {
+        "de": "2. Vergleiche",
+        "en": "2. Compare"
+      }
+    },
+    {
+      "intro": {
+        "de": "Auf diese Frage gibt es keine richtige Antwort.",
+        "en": "There is no right answer to this one."
+      },
+      "kind": "reflect",
+      "text": {
+        "de": "Gibt es Fragen, die Menschen nie beantworten können – nicht aus Dummheit, sondern aus Logik? Sammle zwei Kandidaten und erkläre jeweils, woran sie scheitern.",
+        "en": "Are there questions humans can never answer – not from stupidity but from logic? Collect two candidates explaining in each case what they fail on."
+      },
+      "title": {
+        "de": "3. Zum Nachdenken",
+        "en": "3. Something to think about"
+      }
+    }
+  ],
+  "icon": "🚫",
+  "key": "was-kein-computer-kann",
+  "minutes": 18,
+  "screens": [
+    {
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Manche Aufgaben sind zu schwer für jeden Rechner der Welt. Und manche sind nicht zu schwer, sondern unmöglich – bewiesenermaßen, für immer. Dieser Pfad handelt von beiden Sorten Niederlagen.",
+            "en": "Some tasks are too hard for every computer in the world. And some are not too hard but impossible – provably, forever. This path tells of both kinds of defeat."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Fang mit dem Barbier an: In einem Dorf rasiert der Barbier genau alle Männer, die sich nicht selbst rasieren. Wer rasiert den Barbier? Rasiert er sich, darf er nicht – rasiert er sich nicht, muss er. Beide Antworten widersprechen sich. Kein Rätsel mit Lösung, sondern mit Lehre: Manche Fragen fressen sich selbst.",
+            "en": "Start with the barber: in one village the barber shaves exactly all men not shaving themselves. Who shaves the barber? If he shaves himself, he may not – if he does not, he must. Both answers contradict themselves. No riddle with a fix, but with a lesson: some questions eat themselves."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Informatiker nennen das Selbstbezug: eine Aussage über sich selbst, die sich beißt. Lächle darüber – und merke sie dir gut. Auf der nächsten Seite baut dieselbe Schlange ein Programm, das kein Computer der Welt schreiben kann.",
+            "en": "Computer scientists call that self-reference: a statement about itself that bites. Smile about it – noting it well. On the next screen the same snake builds a program no computer in the world can write."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Barbier-Witze gibt es übrigens überall: „Dieser Satz ist gelogen“ – wahr oder falsch? Beides beißt sich. Solche Sätze heißen Paradoxien und beschäftigen Philosophen seit 2000 Jahren. Informatiker lieben sie besonders: Wo Sprache sich selbst frisst, frisst sich später auch Code selbst. Der Barbier war erst der Anfang – das Programm kommt noch.",
+            "en": "Barber jokes incidentally live everywhere: “This sentence is a lie” – true or false? Both bite themselves. Such sentences are called paradoxes occupying philosophers for 2000 years. Computer scientists love them especially: where language eats itself, code later eats itself too. The barber was only the start – the program still comes."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "💈",
+          "title": {
+            "de": "Barbier-Test",
+            "en": "Barber test"
+          },
+          "text": {
+            "de": "Erzähle den Barbier weiter – an Eltern, Freunde, Großeltern. Wer zuerst lacht, hat ihn verstanden; wer zuerst widerspricht, auch. Sammle die Reaktionen: Jede zeigt, wie Köpfe mit Selbstbezug ringen. Philosophie zum Abendbrot.",
+            "en": "Pass the barber on – to parents, friends, grandparents. Whoever laughs first understood; whoever objects first too. Collect the reactions: each shows how heads wrestle self-reference. Philosophy for dinner."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Barbier-Witze übrigens als Eisbrecher: Auf Partys zündet der Barbier immer – kurz, paradox, gesprächswürdig. Wer ihn erzählt, sammelt staunende Blicke und kluge Gegenfragen. Manchmal öffnet ein Paradox mehr Köpfe als ein Vortrag. Probiere es aus: beim nächsten Essen.",
+            "en": "Barber jokes incidentally as icebreakers: at parties the barber always ignites – short, paradoxical, talkworthy. Whoever tells it collects amazed looks and clever counter-questions. Sometimes a paradox opens more heads than a lecture. Try it: at the next dinner."
+          }
+        }
+      ],
+      "title": {
+        "de": "Der Barbier",
+        "en": "The barber"
+      }
+    },
+    {
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Baue im Kopf einen Halteprüfer: ein Programm, das für jedes andere Programm voraussagt – hält es an oder läuft es ewig? Nützlich, oder? Virenscanner, Endlosschleifen-Finder, alles kein Problem mehr. Zu schön, um wahr zu sein.",
+            "en": "Build in your head a halt checker: a program foretelling for every other program – does it stop or run forever? Useful, no? Virus scanners, endless-loop finders, all no problem anymore. Too good to be true."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Der Gegenbeweis passt in eine Geschichte: Schreibe ein fieses Programm, das den Prüfer fragt: „Halte ich an?“ Antwortet er Ja, läuft es absichtlich ewig. Antwortet er Nein, hält es sofort an. Jede Antwort lügt – denn das Programm tut das Gegenteil. Also kann es keinen richtigen Prüfer geben: bewiesen 1936 von Alan Turing, bevor es Computer gab.",
+            "en": "The counterproof fits one story: write a nasty program asking the checker: “Do I stop?” If they answer yes, it deliberately runs forever. If they answer no, it stops at once. Every answer lies – for the program does the opposite. Hence no right checker can exist: proven 1936 by Alan Turing, before computers existed."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Das heißt Halteproblem – und es ist endgültig: nicht zu schwer, sondern unmöglich. Kein schnellerer Rechner, keine klügere KI, keine Zukunft ändert daran etwas. Manche Mauern sind aus Logik, nicht aus Technik. Wer das einmal verstanden hat, fragt bei jedem „unmöglich“ genauer nach: unmöglich – oder nur schwer?",
+            "en": "That is called the halting problem – and it is final: not too hard but impossible. No faster computer, no cleverer AI, no future changes anything about it. Some walls consist of logic, not technology. Whoever grasped that once asks more precisely with every “impossible”: impossible – or only hard?"
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Turing war übrigens 24, als er das bewies – 1936, auf Papier, ohne einen einzigen Rechner je benutzt zu haben. Seine Maschine existierte nur im Kopf – und widerlegte Rechner, die es noch nicht gab. Manchmal besiegt Bleistift die Zukunft: Wer tief genug denkt, braucht keine Hardware. Genie heißt: früher sehen, was alle später einsehen.",
+            "en": "Turing was incidentally 24 when proving that – 1936, on paper, without ever having used a single computer. His machine existed only in the head – refuting computers not yet existing. Sometimes pencil defeats the future: whoever thinks deep enough needs no hardware. Genius means: seeing earlier what all realise later."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Turing starb übrigens früh und ungeehrt – erst Jahrzehnte später kam die Ehrung: Begnadigung, Statuen, sein Gesicht auf der 50-Pfund-Note. Genies zahlen oft voraus, die Welt zahlt spät. Behalte das im Kopf, wenn wieder einer zu früh ausgelacht wird – vielleicht in deiner Klasse.",
+            "en": "Turing incidentally died early and unhonoured – only decades later came honour: pardon, statues, his face on the 50-pound note. Geniuses often pay upfront, the world pays late. Keep that in mind when again someone gets laughed at too early – maybe in your class."
+          }
+        }
+      ],
+      "title": {
+        "de": "Der Prüfer, den es nicht gibt",
+        "en": "The checker that does not exist"
+      }
+    },
+    {
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Daneben die zweite Sorte Niederlage: möglich, aber zu langsam für jedes Universum. Beispiel gefällig? Alle Routen durch 30 Städte.",
+            "en": "Beside it the second kind of defeat: possible but too slow for every universe. An example gefällig? All routes through 30 cities."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Zähle mit: Bei 30 Städten gibt es mehr Reihenfolgen als Sekunden seit dem Urknall – billionenfach mehr. Jede Route prüfen, die kürzeste nehmen: Der Rechner wäre fertig, wenn längst keine Städte mehr stehen. Theoretisch lösbar, praktisch ein Witz. Solche Probleme heißen schwer im technischen Sinn: Die Arbeit explodiert mit der Größe.",
+            "en": "Count along: with 30 cities exist more orders than seconds since the Big Bang – billions of times more. Checking every route, taking the shortest: the computer would finish when long no cities stand. Theoretically solvable, practically a joke. Such problems are called hard in the technical sense: work explodes with size."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Die Rettung: Niemand braucht die perfekte Route – die fast perfekte genügt. Navis raten clever statt vollständig: erst grob, dann feiner, anhalten wenn es reicht. Heuristik heißt das: Faustregeln statt Beweis. Unvollkommen, schnell, gut genug – so fährt die Welt: nicht optimal, sondern pünktlich.",
+            "en": "The rescue: nobody needs the perfect route – the almost perfect suffices. Navigations guess cleverly instead of completely: first coarse, then finer, stopping when enough. That is called heuristics: rules of thumb instead of proof. Imperfect, fast, good enough – thus the world drives: not optimal but punctual."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "tip",
+          "icon": "🗺️",
+          "title": {
+            "de": "30 Städte",
+            "en": "30 cities"
+          },
+          "text": {
+            "de": "Rechne selbst: 30 mal 29 mal 28 und so weiter – schon die ersten drei Faktoren geben 24360. Weiter geht es ins Astronomische. Wer das einmal ausmultipliziert hat, versteht „explodieren“ für immer.",
+            "en": "Calculate yourself: 30 times 29 times 28 and so on – already the first three factors give 24360. Onward into the astronomical. Whoever multiplied that once understands “explode” forever."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Routenplaner schummeln übrigens meisterhaft: Sie prüfen nie alle Wege – sie raten gut. Erst Autobahnen, dann Landstraßen, Details nur am Ende: grob zu fein, schnell statt perfekt. Darum findet dein Navi in Sekunden, wofür Vollzähligkeit Jahrmilliarden bräuchte. Klugheit heißt oft: aufhören, bevor es perfekt wird.",
+            "en": "Route planners incidentally cheat masterfully: they never check all ways – they guess well. First highways, then country roads, details only at the end: coarse to fine, fast instead of perfect. Hence your navigation finds in seconds what completeness would need aeons for. Cleverness often means: stopping before it turns perfect."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Heuristiken nutzt du übrigens ständig: Hausaufgaben zuerst das Leichte (warm werden), dann das Schwere, zum Schluss Kontrolle. Keine Garantie für Bestnoten – aber fast immer gut genug, immer pünktlich. Perfektionisten rechnen alles durch und werden nie fertig. Heuristiker werden fertig und gut genug. Rate, wer bessere Noten schreibt.",
+            "en": "Heuristics you incidentally use constantly: homework first the easy (warming up), then the hard, control at last. No guarantee for top grades – but almost always good enough, always punctual. Perfectionists compute everything through never finishing. Heuristicists finish, good enough. Guess who writes better grades."
+          }
+        }
+      ],
+      "title": {
+        "de": "Zu langsam fürs Universum",
+        "en": "Too slow for the universe"
+      }
+    },
+    {
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Zwei Niederlagen, zwei Lehren – merke dir beide, sie schützen dich vor zwei Irrtümern.",
+            "en": "Two defeats, two lessons – remember both, they guard you against two errors."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Erstens: Unmöglich bleibt unmöglich – kein Geld, kein Hype, keine Zukunft ändert Logik. Wer dir einen Halteprüfer verkauft (oder „KI, die alles kann“), verkauft Perpetuum mobile mit Stromanschluss. Zweitens: Zu langsam heißt nicht aufgeben – sondern umdenken: Wie gut muss die Antwort sein? Oft genügt fast perfekt, und fast perfekt geht schnell. Die Kunst heißt: die richtige Niederlage wählen.",
+            "en": "First: impossible stays impossible – no money, no hype, no future changes logic. Whoever sells you a halt checker (or “AI that can do everything”) sells perpetual motion with power plug. Second: too slow does not mean giving up – but rethinking: how good must the answer be? Often almost perfect suffices, and almost perfect goes fast. The art is called: picking the right defeat."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Und die Moral für alle Pfade hier: Computer sind stark im Engen, Menschen im Breiten – und beide stoßen an Mauern. Wer die Mauern kennt – Logik hier, Zeit dort –, nutzt beide richtig: Maschinen fürs Rechenbare, Menschen fürs Entscheidbare. Grenzen kennen heißt Möglichkeiten haben. Genau dafür war dieses Modul da.",
+            "en": "And the moral for all paths here: computers are strong in the narrow, humans in the broad – and both hit walls. Whoever knows the walls – logic here, time there –, uses both rightly: machines for the computable, humans for the decidable. Knowing limits means holding possibilities. Exactly what this module existed for."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "Hamburg: Bildungsplan Studienstufe (Informatik)",
+                "en": "Hamburg: syllabus for the upper stage (computing)"
+              },
+              "url": "https://www.hamburg.de/politik-und-verwaltung/behoerden/bsfb/veroeffentlichungen/bildungsplaene/start-sek2-2022-123118"
+            },
+            {
+              "label": {
+                "de": "GI: Bildungsstandards Informatik",
+                "en": "GI: computing education standards"
+              },
+              "url": "https://gi.de/meldung/bildungsstandards-gi-stellt-neue-empfehlungen-fuer-den-informatikunterricht-vor"
+            }
+          ]
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Nimm die Lehre mit in die Woche: Bei jedem „geht nicht“ frage – unmöglich oder nur schwer? Hausaufgaben zu schwer: machbar mit Hilfe. Perpetuum mobile: unmöglich, Energieerhaltung. Die Unterscheidung spart Leben: Aufgegeben wird nur bei Unmöglichem, gerungen wird mit Schwerem. Wer beides verwechselt, gibt zu früh auf – oder rennt gegen Mauern.",
+            "en": "Take the lesson into the week: with every “impossible” ask – impossible or only hard? Homework too hard: doable with help. Perpetual motion: impossible, energy conservation. The distinction saves lives: surrendered only at impossible, wrestled with hard. Whoever mixes both quits too early – or runs against walls."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "tip",
+          "icon": "🧱",
+          "title": {
+            "de": "Mauer-Test",
+            "en": "Wall test"
+          },
+          "text": {
+            "de": "Sammle eine Woche lang jedes „geht nicht“ – deins und fremdes. Sortiere abends: Mauer (unmöglich) oder Berg (schwer)? Du wirst staunen, wie viele Berge sich als Mauern tarnen – und umgekehrt.",
+            "en": "Collect every “impossible” for a week – yours and foreign. Sorting evenings: wall (impossible) or mountain (hard)? You will marvel how many mountains camouflage as walls – and reversed."
+          }
+        }
+      ],
+      "title": {
+        "de": "Zwei Niederlagen, zwei Lehren",
+        "en": "Two defeats, two lessons"
+      }
+    }
+  ],
+  "summary": {
+    "de": "Barbier, Prüfer, Routen: Was kein Computer je kann – und was nur zu lange dauert.",
+    "en": "Barber, checker, routes: what no computer ever can – and what only takes too long."
+  },
+  "title": {
+    "de": "Was kein Computer kann",
+    "en": "What no computer can"
+  }
+}

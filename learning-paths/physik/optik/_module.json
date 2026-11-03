@@ -1,0 +1,15 @@
+{
+  "key": "optik",
+  "title": {
+    "de": "Licht und Bilder",
+    "en": "Light and images"
+  },
+  "description": {
+    "de": "NWT5/6-Auffrischung für spätere Anwendungen: Schatten, Spiegel, Brechung, Linsen und Farben. Schulische Vertiefung möglich.",
+    "en": "NWT years5/6 refresher for later applications: shadows, mirrors, refraction, lenses and colour. Schools may extend these topics."
+  },
+  "icon": "📷",
+  "accent": "sky",
+  "badge": "NWT-Basis",
+  "level": "sek1"
+}

@@ -1,0 +1,15 @@
+{
+  "accent": "rose",
+  "badge": "Sek II",
+  "description": {
+    "de": "Für die Oberstufe: Von Zitronensaft und Enigma über Caesar und Vigenère bis zu Diffie-Hellman, RSA, Signatur, Hash und SSL – mit Rechenbeispielen zum Nachrechnen.",
+    "en": "For the upper stage: from lemon juice and Enigma via Caesar and Vigenère to Diffie-Hellman, RSA, signatures, hashes and SSL – with worked examples to recalculate."
+  },
+  "icon": "🔐",
+  "key": "m7-kryptographie",
+  "level": "sek2",
+  "title": {
+    "de": "Geheime Botschaften",
+    "en": "Secret messages"
+  }
+}

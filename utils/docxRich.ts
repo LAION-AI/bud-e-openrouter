@@ -508,22 +508,23 @@ function drawingXml(b: ImageBlock, relId: string, docPrId: number): string {
     `</pic:pic></a:graphicData></a:graphic></wp:inline></w:drawing></w:r></w:p>`;
 }
 
-function tableXml(rows: Run[][][], head?: boolean): string {
+function tableXml(rows: Run[][][], head?: boolean, compact = false): string {
   const width = Math.floor(9638 / Math.max(1, rows[0]?.length ?? 1));
   const body = rows.map((row, r) => {
     const cells = row.map((cell) => {
       const shade = head && r === 0
         ? `<w:shd w:val="clear" w:fill="EDF2F7"/>`
         : "";
-      const runs = cell.length ? cell.map(runXml).join("") : "<w:r><w:t/></w:r>";
+      const render = (run: Run) => runXml(compact ? { ...run, sizePx: run.sizePx ?? 12 } : run);
+      const runs = cell.length ? cell.map(render).join("") : "<w:r><w:t/></w:r>";
       const bold = head && r === 0 ? "<w:rPr><w:b/></w:rPr>" : "";
       const inner = head && r === 0 && cell.length
-        ? cell.map((c) => runXml({ ...c, bold: true })).join("")
+        ? cell.map((c) => render({ ...c, bold: true })).join("")
         : runs;
       return `<w:tc><w:tcPr><w:tcW w:w="${width}" w:type="dxa"/>${shade}</w:tcPr>` +
-        `<w:p>${bold ? "" : ""}${inner}</w:p></w:tc>`;
+        `<w:p>${compact ? '<w:pPr><w:spacing w:after="0" w:line="220" w:lineRule="auto"/></w:pPr>' : ""}${bold ? "" : ""}${inner}</w:p></w:tc>`;
     }).join("");
-    return `<w:tr>${cells}</w:tr>`;
+    return `<w:tr>${compact ? `<w:trPr><w:cantSplit/>${head && r===0 ? '<w:tblHeader/>' : ''}</w:trPr>` : ""}${cells}</w:tr>`;
   }).join("");
   return `<w:tbl><w:tblPr><w:tblStyle w:val="TableGrid"/>` +
     `<w:tblW w:w="0" w:type="auto"/><w:tblBorders>` +
@@ -626,7 +627,7 @@ function extensionFor(mime: string): string {
 }
 
 /** Builds a .docx from rich blocks, pictures and all. */
-export async function blocksToDocx(blocks: RichBlock[]): Promise<Uint8Array> {
+export async function blocksToDocx(blocks: RichBlock[], options: { compact?: boolean } = {}): Promise<Uint8Array> {
   const enc = new TextEncoder();
   const media: ZipEntry[] = [];
   const rels: string[] = [
@@ -656,7 +657,7 @@ export async function blocksToDocx(blocks: RichBlock[]): Promise<Uint8Array> {
       );
       return drawingXml(b, relId, picNo);
     }
-    if (b.kind === "table") return tableXml(b.rows, b.head);
+    if (b.kind === "table") return tableXml(b.rows, b.head, options.compact);
 
     const style = STYLE_OF[b.kind];
     const numId = b.kind === "bullet" ? 1 : b.kind === "number" ? 2 : 0;
@@ -692,7 +693,12 @@ ${rels.join("\n")}
     { name: "_rels/.rels", data: enc.encode(ROOT_RELS) },
     { name: "word/document.xml", data: enc.encode(document) },
     { name: "word/_rels/document.xml.rels", data: enc.encode(docRels) },
-    { name: "word/styles.xml", data: enc.encode(STYLES) },
+    { name: "word/styles.xml", data: enc.encode(options.compact
+      ? STYLES.replace('w:val="22"', 'w:val="20"').replace('w:val="36"', 'w:val="30"')
+        .replace('w:val="28"', 'w:val="24"').replaceAll('w:line="276"', 'w:line="240"')
+        .replaceAll('w:after="120"', 'w:after="60"').replaceAll('w:before="360"', 'w:before="180"')
+        .replaceAll('w:before="280"', 'w:before="120"').replaceAll('w:before="200"', 'w:before="100"')
+      : STYLES) },
     { name: "word/numbering.xml", data: enc.encode(NUMBERING) },
     ...media,
   ]);

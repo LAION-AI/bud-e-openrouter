@@ -1,0 +1,230 @@
+{
+  "accent": "sky",
+  "exercises": [
+    {
+      "hint": {
+        "de": "Alle Antworten stehen auf den Bildschirmen davor – lies sie noch einmal von oben.",
+        "en": "All answers sit on the screens before – read them once more from the top."
+      },
+      "intro": {
+        "de": "Setze die fehlenden Wörter ein.",
+        "en": "Fill in the missing words."
+      },
+      "kind": "cloze",
+      "text": {
+        "de": "Tor schickt deine Nachricht über drei ___: Eingang, Mitte, Ausgang. Jede kennt nur ihre ___ – keiner kennt Weg und ___ zugleich. Die Nachricht trägt drei ___ wie eine Zwiebel: Jede Station zieht genau eine ___. Am Ausgang steht das ___ im Klartext – darum gehört dorthin kein ___. Langsam, aber ___. Wer sich einloggt, ist ___ – der Ausgang sieht alles. Tor schützt den ___, nicht die ___.",
+        "en": "Tor sends your message over three ___: entry, middle, exit. Each knows only its ___ – none knows path and ___ at once. The message wears three ___ like an onion: each station peels exactly one ___. At the exit the ___ stands in plaintext – hence no ___ belongs there. Slow but ___. Whoever logs in is ___ – the exit sees everything. Tor guards the ___, not the ___."
+      },
+      "title": {
+        "de": "1. Lückentext",
+        "en": "1. Fill in the blanks"
+      }
+    },
+    {
+      "hint": {
+        "de": "Wer sieht was – Absender, Inhalt, Ziel? Gehe Station für Station durch.",
+        "en": "Who sees what – sender, content, destination? Walk station by station."
+      },
+      "intro": {
+        "de": "Setze zwei Beobachtungen zueinander in Beziehung.",
+        "en": "Relate two observations to each other."
+      },
+      "kind": "compare",
+      "text": {
+        "de": "Deine Nachricht reist einmal direkt, einmal über Tor. Vergleiche, was ein Lauscher unterwegs jeweils erfährt – und erkläre, warum Tor trotzdem keine Bankgeschäfte ohne weiteres absichert.",
+        "en": "Your message travels once directly, once via Tor. Compare what an eavesdropper learns in each case – and explain why Tor still does not secure banking just like that."
+      },
+      "title": {
+        "de": "2. Vergleiche",
+        "en": "2. Compare"
+      }
+    },
+    {
+      "intro": {
+        "de": "Auf diese Frage gibt es keine richtige Antwort.",
+        "en": "There is no right answer to this one."
+      },
+      "kind": "reflect",
+      "text": {
+        "de": "Journalisten unter Zensur brauchen Tor, Kriminelle missbrauchen es. Ist ein Werkzeug gut, das beides kann? Wo ziehst du die Grenze – und wer sollte sie ziehen?",
+        "en": "Journalists under censorship need Tor, criminals abuse it. Is a tool good that can do both? Where do you draw the line – and who should draw it?"
+      },
+      "title": {
+        "de": "3. Zum Nachdenken",
+        "en": "3. Something to think about"
+      }
+    }
+  ],
+  "icon": "🧅",
+  "key": "zwiebeln-im-netz",
+  "minutes": 16,
+  "screens": [
+    {
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Manche Nachrichten dürfen keine Absender haben: Die Journalistin unter Zensur, der Hinweisgeber in der Firma, du bei einer heiklen Recherche. Für sie gibt es Tor – ein Netz, das den Weg versteckt statt der Nachricht.",
+            "en": "Some messages may have no sender: the journalist under censorship, the whistleblower in the company, you at delicate research. For them exists Tor – a net hiding the path instead of the message."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "So geht es: Deine Nachricht reist nicht direkt, sondern über drei fremde Rechner – Eingang, Mitte, Ausgang. Sie trägt drei Verschlüsselungen wie eine Zwiebel Schichten: Der Eingang zieht eine ab und erfährt nur, wohin weiter. Die Mitte zieht die nächste ab und weiß nur Vorgänger und Nachfolger. Der Ausgang zieht die letzte ab und kennt nur das Ziel – nicht dich. Jeder kennt Nachbarn, keiner kennt den Weg.",
+            "en": "How it goes: your message travels not directly but over three foreign computers – entry, middle, exit. It wears three encryptions like an onion skins: the entry peels one off learning only where onward. The middle peels the next knowing only predecessor and successor. The exit peels the last knowing only the destination – not you. Everybody knows neighbours, nobody knows the way."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Der Preis ist Tempo: dreimal um die Welt statt direkt – Surfen wird zäh, Videos unmöglich. Und eine Grenze bleibt: Am Ausgang steht deine Nachricht im Klartext. Wer dort lauscht, liest mit – Tor schützt den Weg, nicht den Inhalt. Darum: Tor plus Schloss (https) ist sicher, Tor allein ist halb.",
+            "en": "The price is tempo: three times around the world instead of direct – surfing turns tough, videos impossible. And one limit stays: at the exit your message stands in plaintext. Whoever listens there reads along – Tor guards the way, not the content. Hence: Tor plus padlock (https) is safe, Tor alone is half."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Baue eine Menschen-Zwiebel: Drei Freunde in einer Reihe, Zettel mit drei Umschlägen (einer im anderen, Namen außen). Jeder öffnet nur seinen und gibt weiter – am Ende liest der Letzte. Keiner kennt Weg und Inhalt zugleich: Der Erste kennt dich, der Letzte das Ziel, die Mitte nur Nachbarn. Fünf Minuten, null Computer, volles Verständnis.",
+            "en": "Build a human onion: three friends in a row, note with three envelopes (one inside the other, names outside). Everybody opens only theirs passing on – at the end the last reads. Nobody knows way and content at once: the first knows you, the last the goal, the middle only neighbours. Five minutes, zero computer, full grasp."
+          }
+        }
+      ],
+      "title": {
+        "de": "Zwiebeln im Netz",
+        "en": "Onions in the net"
+      }
+    },
+    {
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Wofür das gut ist? Frag Menschen, die es brauchen: Journalisten, die mit Quellen reden, ohne sie zu verraten. Oppositionelle, die Zensur umgehen. Forscher, die heikle Themen lesen, ohne Spuren zu legen. Für sie ist Tor kein Spielzeug, sondern Arbeitszeug.",
+            "en": "What is that good for? Ask humans needing it: journalists talking sources without betraying them. Opposition dodging censorship. Researchers reading delicate topics without leaving traces. For them Tor is no toy but working gear."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Aber ehrlich dazu: Dasselbe Netz nutzen Kriminelle – für Märkte, die es nie geben dürfte. Technik unterscheidet nicht zwischen Mut und Missbrauch: Sie versteckt jeden gleich gut. Die Frage „Tor abschaffen?“ trifft darum immer die Falschen zuerst – die Journalistin verliert ihr Werkzeug, der Kriminelle findet ein neues. Werkzeuge verbieten trifft selten nur die Bösen.",
+            "en": "But honestly added: criminals use the same net – for markets that should never exist. Technology distinguishes not between courage and abuse: it hides everybody equally well. The question “abolish Tor?” hence always hits the wrong first – the journalist loses her tool, the criminal finds a new one. Banning tools rarely hits only the bad."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "warn",
+          "icon": "🐌",
+          "title": {
+            "de": "Langsam, aber frei",
+            "en": "Slow but free"
+          },
+          "text": {
+            "de": "Lade dir den Tor-Browser und besuche damit eine Nachrichtenseite: Es dauert, es ruckelt – und niemand erfährt, dass du es warst. Dieses Gefühl, unbeobachtet zu lesen, ist in manchen Ländern lebensgefährlich selten. Nutze es mit Respekt.",
+            "en": "Load the Tor browser visiting a news page with it: it takes, it judders – and nobody learns it was you. This feeling of reading unwatched is in some countries lethally rare. Use it with respect."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Geschichte dazu: Tor entstand beim US-Militär – sichere Kommunikation für alle, die sie brauchen. Heute pflegt eine Stiftung es weiter, finanziert aus Spenden. Millionen nutzen es täglich: Journalisten, Aktivisten, Forscher – und ja, auch Kriminelle. Wie Autobahnen: gebaut für alle, missbraucht von wenigen. Abschaffen würde die Falschen treffen – zuerst die, die Schutz am nötigsten haben.",
+            "en": "History along: Tor emerged at the US military – safe communication for all needing it. Today a foundation tends it onward, funded from donations. Millions use it daily: journalists, activists, researchers – and yes, criminals too. Like highways: built for all, abused by few. Abolishing would hit the wrong first – those needing guard most."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "note",
+          "icon": "🛣️",
+          "title": {
+            "de": "Straßen-Regel",
+            "en": "Road rule"
+          },
+          "text": {
+            "de": "Autobahnen tragen Krankenwagen und Fluchtautos – verbietet sie keiner. Werkzeuge richten sich nach Gebrauch, nicht nach Missbrauch. Wer das verinnerlicht, diskutiert Technik ehrlicher: Was kann es Gutes – und was kostet das?",
+            "en": "Highways carry ambulances and getaway cars – nobody bans them. Tools judge by use, not abuse. Whoever internalises that discusses technology more honestly: what good can it do – and what does that cost?"
+          }
+        }
+      ],
+      "title": {
+        "de": "Wofür – und wogegen",
+        "en": "What for – and against what"
+      }
+    },
+    {
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Merke dir drei Sätze über Tor – sie retten dich vor den zwei häufigsten Irrtümern.",
+            "en": "Remember three sentences about Tor – they save you from the two most frequent mistakes."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Erstens: Tor versteckt, wer du bist – nicht, was du tust. Wer sich einloggt, ist enttarnt: Der Ausgang sieht alles, der Anbieter kennt den Namen. Anonym surfen und eingeloggt posten schließt sich aus. Zweitens: Tor ist legal – in Deutschland ausdrücklich. Verboten ist, was man damit tut, nicht womit. Drittens: Tor schützt vor Lauschern, nicht vor Dummheit – wer sein Passwort verrät, dem hilft keine Zwiebel der Welt.",
+            "en": "First: Tor hides who you are – not what you do. Whoever logs in is exposed: the exit sees everything, the provider knows the name. Surfing anonymously and posting logged in exclude each other. Second: Tor is legal – in Germany expressly. Forbidden is what one does with it, not with what. Third: Tor guards against listeners, not against folly – whoever betrays their password is helped by no onion in the world."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "Hamburg: Bildungsplan Studienstufe (Informatik)",
+                "en": "Hamburg: syllabus for the upper stage (computing)"
+              },
+              "url": "https://www.hamburg.de/politik-und-verwaltung/behoerden/bsfb/veroeffentlichungen/bildungsplaene/start-sek2-2022-123118"
+            },
+            {
+              "label": {
+                "de": "GI: Bildungsstandards Informatik",
+                "en": "GI: computing education standards"
+              },
+              "url": "https://gi.de/meldung/bildungsstandards-gi-stellt-neue-empfehlungen-fuer-den-informatikunterricht-vor"
+            }
+          ]
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Drei Irrtümer zum Abgewöhnen: Erstens – Tor macht dich nicht unsichtbar, nur unauffindbar; wer prahlt, fliegt auf. Zweitens – Tor schützt nicht vor Viren; verseuchte Dateien bleiben verseucht, egal wie sie reisen. Drittens – Tor ist kein Freibrief: Was offline strafbar ist, bleibt es online. Anonym heißt nicht unantastbar – nur unbekannt. Ein Unterschied mit Folgen.",
+            "en": "Three errors to unlearn: first – Tor makes you not invisible, only untraceable; whoever boasts flies up. Second – Tor guards not against viruses; infected files stay infected however they travel. Third – Tor is no free pass: what is punishable offline stays so online. Anonymous means not untouchable – only unknown. A difference with consequences."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "warn",
+          "icon": "⚠️",
+          "title": {
+            "de": "Drei Neins",
+            "en": "Three nos"
+          },
+          "text": {
+            "de": "Merke: kein Einloggen, keine Downloads von überall, keine Straftaten. Wer diese drei Neins beherzigt, nutzt Tor, wie es gedacht ist: als Schutzraum, nicht als Versteck. Schutzräume haben Regeln – Verstecke haben keine.",
+            "en": "Note: no logging in, no downloads from anywhere, no crimes. Whoever heeds these three nos uses Tor as meant: as shelter, not hideout. Shelters hold rules – hideouts hold none."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Drei Neins übrigens als Lebenseinstellung: nicht einloggen, nichts laden, nichts Illegales – egal wo. Wer so surft, surft überall sicher: Tor oder nicht. Die Zwiebel schützt den Weg, der Kopf den Rest. Technik plus Haltung schlägt Technik allein – immer.",
+            "en": "Three nos incidentally as life attitude: no logging in, nothing loaded, nothing illegal – wherever. Whoever surfs so surfs safely everywhere: Tor or not. The onion guards the way, the head the rest. Technology plus attitude beats technology alone – always."
+          }
+        }
+      ],
+      "title": {
+        "de": "Drei Sätze über Tor",
+        "en": "Three sentences about Tor"
+      }
+    }
+  ],
+  "summary": {
+    "de": "Drei Stationen, drei Schichten, keiner kennt den Weg: Wie Tor schützt – und wo seine Grenzen liegen.",
+    "en": "Three stations, three layers, nobody knows the way: how Tor guards – and where its limits lie."
+  },
+  "title": {
+    "de": "Zwiebeln im Netz",
+    "en": "Onions in the net"
+  }
+}

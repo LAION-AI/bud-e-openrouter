@@ -39,8 +39,8 @@ import {
   newSlideSpec,
   relayoutSlide,
   type SlideLayout,
-  THEMES,
   themeOf,
+  THEMES,
 } from "../utils/slideLayouts.ts";
 import {
   type DeckMeta,
@@ -51,8 +51,17 @@ import {
   newDeckId,
   saveDeck,
 } from "../utils/slideStore.ts";
-import { isSlidesAssistantAllowed, setSlidesAssistantAllowed } from "../utils/slidesTools.ts";
-import { type AudioNote, audioKb, canRecord, type Recorder, startRecording } from "../utils/audioNote.ts";
+import {
+  isSlidesAssistantAllowed,
+  setSlidesAssistantAllowed,
+} from "../utils/slidesTools.ts";
+import {
+  audioKb,
+  type AudioNote,
+  canRecord,
+  type Recorder,
+  startRecording,
+} from "../utils/audioNote.ts";
 
 const SIZES = [10, 12, 14, 16, 18, 20, 24, 28, 32, 36, 40, 48, 60];
 /** Where the editor left off: which deck, which slide. */
@@ -111,21 +120,35 @@ const clone = <T,>(v: T): T => JSON.parse(JSON.stringify(v));
 function hexColor(value: string): string | undefined {
   const v = value.trim();
   if (!v || v === "inherit" || v === "transparent") return undefined;
-  if (v.startsWith("#")) return v.length === 4 ? "#" + [...v.slice(1)].map((c) => c + c).join("") : v.toLowerCase();
+  if (v.startsWith("#")) {
+    return v.length === 4
+      ? "#" + [...v.slice(1)].map((c) => c + c).join("")
+      : v.toLowerCase();
+  }
   const m = v.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);
   if (!m) return undefined;
-  return "#" + [m[1], m[2], m[3]].map((n) => Number(n).toString(16).padStart(2, "0")).join("");
+  return "#" +
+    [m[1], m[2], m[3]].map((n) => Number(n).toString(16).padStart(2, "0")).join(
+      "",
+    );
 }
 
 /** Text of a run as inline HTML, for the editable box. */
 function runHtml(r: Run): string {
   if (r.text === "\n") return "<br>";
-  const esc = r.text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  const esc = r.text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(
+    />/g,
+    "&gt;",
+  );
   const style = [
     r.bold ? "font-weight:bold" : "",
     r.italic ? "font-style:italic" : "",
     r.underline || r.strike
-      ? `text-decoration:${[r.underline ? "underline" : "", r.strike ? "line-through" : ""].filter(Boolean).join(" ")}`
+      ? `text-decoration:${
+        [r.underline ? "underline" : "", r.strike ? "line-through" : ""].filter(
+          Boolean,
+        ).join(" ")
+      }`
       : "",
     r.color ? `color:${r.color}` : "",
     r.size ? `font-size:${r.size}pt` : "",
@@ -138,7 +161,13 @@ function paragraphsHtml(ps: Paragraph[]): string {
   return ps.map((p) => {
     const tag = p.bullet ? "li" : p.numbered ? "li" : "div";
     const attrs = [
-      p.align ? `style="text-align:${p.align}${p.level ? `;margin-left:${p.level * 24}px` : ""}"` : p.level ? `style="margin-left:${p.level * 24}px"` : "",
+      p.align
+        ? `style="text-align:${p.align}${
+          p.level ? `;margin-left:${p.level * 24}px` : ""
+        }"`
+        : p.level
+        ? `style="margin-left:${p.level * 24}px"`
+        : "",
       p.bullet ? 'data-bullet="1"' : "",
       p.numbered ? 'data-numbered="1"' : "",
       p.level ? `data-level="${p.level}"` : "",
@@ -166,14 +195,17 @@ function htmlToParagraphs(root: HTMLElement, base: Partial<Run>): Paragraph[] {
     if (st.fontStyle === "italic") m.italic = true;
     if (st.textDecoration.includes("underline")) m.underline = true;
     if (st.textDecoration.includes("line-through")) m.strike = true;
-    const color = hexColor(st.color) ?? (tag === "FONT" ? hexColor(el.getAttribute("color") ?? "") : undefined);
+    const color = hexColor(st.color) ??
+      (tag === "FONT" ? hexColor(el.getAttribute("color") ?? "") : undefined);
     if (color) m.color = color;
     if (st.fontSize) {
       const n = parseFloat(st.fontSize);
       if (st.fontSize.endsWith("px")) m.size = Math.round(n * 0.75);
       else if (st.fontSize.endsWith("pt")) m.size = Math.round(n);
     }
-    if (st.fontFamily) m.font = st.fontFamily.replace(/["']/g, "").split(",")[0].trim();
+    if (st.fontFamily) {
+      m.font = st.fontFamily.replace(/["']/g, "").split(",")[0].trim();
+    }
     return m;
   };
 
@@ -195,13 +227,18 @@ function htmlToParagraphs(root: HTMLElement, base: Partial<Run>): Paragraph[] {
 
   const block = (el: HTMLElement, list: "ul" | "ol" | null) => {
     const runs: Run[] = [];
-    for (const c of Array.from(el.childNodes)) walkInline(c, marksOf(el, base), runs);
+    for (const c of Array.from(el.childNodes)) {
+      walkInline(c, marksOf(el, base), runs);
+    }
     // A trailing line break is the editor's own, not a paragraph's.
     while (runs.length && runs[runs.length - 1].text === "\n") runs.pop();
     const p: Paragraph = { runs: runs.length ? runs : [{ ...base, text: "" }] };
     const align = el.style.textAlign;
-    if (align === "center" || align === "right" || align === "justify") p.align = align;
-    const level = Number(el.dataset.level ?? 0) || Math.round(parseFloat(el.style.marginLeft || "0") / 24);
+    if (align === "center" || align === "right" || align === "justify") {
+      p.align = align;
+    }
+    const level = Number(el.dataset.level ?? 0) ||
+      Math.round(parseFloat(el.style.marginLeft || "0") / 24);
     if (level) p.level = level;
     if (list === "ul" || el.dataset.bullet) p.bullet = true;
     if (list === "ol" || el.dataset.numbered) p.numbered = true;
@@ -223,11 +260,18 @@ function htmlToParagraphs(root: HTMLElement, base: Partial<Run>): Paragraph[] {
       if (tag === "UL" || tag === "OL") {
         flushLoose();
         walkBlocks(el, tag === "UL" ? "ul" : "ol");
-      } else if (tag === "DIV" || tag === "P" || tag === "LI" || /^H[1-6]$/.test(tag)) {
+      } else if (
+        tag === "DIV" || tag === "P" || tag === "LI" || /^H[1-6]$/.test(tag)
+      ) {
         flushLoose();
         // A div holding only further blocks is a wrapper the browser made.
         const inner = Array.from(el.childNodes);
-        if (inner.length && inner.every((n) => n.nodeType === Node.ELEMENT_NODE && /^(DIV|P|UL|OL|LI)$/.test((n as HTMLElement).tagName))) {
+        if (
+          inner.length && inner.every((n) =>
+            n.nodeType === Node.ELEMENT_NODE &&
+            /^(DIV|P|UL|OL|LI)$/.test((n as HTMLElement).tagName)
+          )
+        ) {
           walkBlocks(el, list);
         } else block(el, list);
       } else {
@@ -253,27 +297,76 @@ function ShapeSvg({ el }: { el: Extract<SlideElement, { kind: "shape" }> }) {
   const fill = el.fill ?? "none";
   const stroke = el.stroke ?? (el.shape === "line" ? "#000000" : "none");
   const sw = el.strokeWidth ?? (el.shape === "line" ? 2 : 1);
-  const common = { fill, stroke, "stroke-width": sw, "vector-effect": "non-scaling-stroke" } as Record<string, unknown>;
-  const pts = (list: number[][]) => list.map(([x, y]) => `${x * w},${y * h}`).join(" ");
+  const common = {
+    fill,
+    stroke,
+    "stroke-width": sw,
+    "vector-effect": "non-scaling-stroke",
+  } as Record<string, unknown>;
+  const pts = (list: number[][]) =>
+    list.map(([x, y]) => `${x * w},${y * h}`).join(" ");
   let body: preact.JSX.Element;
   switch (el.shape) {
     case "ellipse":
-      body = <ellipse cx={w / 2} cy={h / 2} rx={w / 2} ry={h / 2} {...common} />;
+      body = (
+        <ellipse
+          cx={w / 2}
+          cy={h / 2}
+          rx={w / 2}
+          ry={h / 2}
+          {...common}
+        />
+      );
       break;
     case "roundRect":
-      body = <rect x={0} y={0} width={w} height={h} rx={Math.min(w, h) * 0.16} {...common} />;
+      body = (
+        <rect
+          x={0}
+          y={0}
+          width={w}
+          height={h}
+          rx={Math.min(w, h) * 0.16}
+          {...common}
+        />
+      );
       break;
     case "triangle":
       body = <polygon points={pts([[0.5, 0], [1, 1], [0, 1]])} {...common} />;
       break;
     case "diamond":
-      body = <polygon points={pts([[0.5, 0], [1, 0.5], [0.5, 1], [0, 0.5]])} {...common} />;
+      body = (
+        <polygon
+          points={pts([[0.5, 0], [1, 0.5], [0.5, 1], [0, 0.5]])}
+          {...common}
+        />
+      );
       break;
     case "rightArrow":
-      body = <polygon points={pts([[0, 0.25], [0.65, 0.25], [0.65, 0], [1, 0.5], [0.65, 1], [0.65, 0.75], [0, 0.75]])} {...common} />;
+      body = (
+        <polygon
+          points={pts([
+            [0, 0.25],
+            [0.65, 0.25],
+            [0.65, 0],
+            [1, 0.5],
+            [0.65, 1],
+            [0.65, 0.75],
+            [0, 0.75],
+          ])}
+          {...common}
+        />
+      );
       break;
     case "hexagon":
-      body = <polygon points={pts([[0.25, 0], [0.75, 0], [1, 0.5], [0.75, 1], [0.25, 1], [0, 0.5]])} {...common} />;
+      body = (
+        <polygon
+          points={pts([[0.25, 0], [0.75, 0], [1, 0.5], [0.75, 1], [0.25, 1], [
+            0,
+            0.5,
+          ]])}
+          {...common}
+        />
+      );
       break;
     case "star5": {
       const p: number[][] = [];
@@ -292,17 +385,32 @@ function ShapeSvg({ el }: { el: Extract<SlideElement, { kind: "shape" }> }) {
       body = <rect x={0} y={0} width={w} height={h} {...common} />;
   }
   return (
-    <svg width={w} height={h} viewBox={`0 0 ${w} ${h}`} class="absolute inset-0 overflow-visible" style="pointer-events:none">
+    <svg
+      width={w}
+      height={h}
+      viewBox={`0 0 ${w} ${h}`}
+      class="absolute inset-0 overflow-visible"
+      style="pointer-events:none"
+    >
       {body}
     </svg>
   );
 }
 
-function TextView({ paragraphs, valign }: { paragraphs: Paragraph[]; valign?: string }) {
-  const justify = valign === "middle" ? "center" : valign === "bottom" ? "flex-end" : "flex-start";
+function TextView(
+  { paragraphs, valign }: { paragraphs: Paragraph[]; valign?: string },
+) {
+  const justify = valign === "middle"
+    ? "center"
+    : valign === "bottom"
+    ? "flex-end"
+    : "flex-start";
   let num = 0;
   return (
-    <div class="absolute inset-0 flex flex-col overflow-hidden px-2 py-1" style={`justify-content:${justify}`}>
+    <div
+      class="absolute inset-0 flex flex-col overflow-hidden px-2 py-1"
+      style={`justify-content:${justify}`}
+    >
       {paragraphs.map((p, i) => {
         num = p.numbered ? num + 1 : 0;
         const indent = (p.level ?? 0) * 24 + (p.bullet || p.numbered ? 22 : 0);
@@ -310,12 +418,25 @@ function TextView({ paragraphs, valign }: { paragraphs: Paragraph[]; valign?: st
           <div
             key={i}
             class="relative leading-[1.3] whitespace-pre-wrap break-words"
-            style={`text-align:${p.align ?? "left"};padding-left:${indent}px;min-height:1em;${
-              (p.bullet || p.numbered) && !(p.level) ? "margin-top:0.3em;" : p.level ? "margin-top:0.1em;" : i > 0 ? "margin-top:0.45em;" : ""
+            style={`text-align:${
+              p.align ?? "left"
+            };padding-left:${indent}px;min-height:1em;${
+              (p.bullet || p.numbered) && !(p.level)
+                ? "margin-top:0.3em;"
+                : p.level
+                ? "margin-top:0.1em;"
+                : i > 0
+                ? "margin-top:0.45em;"
+                : ""
             }`}
           >
             {(p.bullet || p.numbered) && (
-              <span class="absolute" style={`left:${(p.level ?? 0) * 24 + 2}px;${p.runs[0]?.size ? `font-size:${p.runs[0].size}pt;` : ""}${p.runs[0]?.color ? `color:${p.runs[0].color}` : ""}`}>
+              <span
+                class="absolute"
+                style={`left:${(p.level ?? 0) * 24 + 2}px;${
+                  p.runs[0]?.size ? `font-size:${p.runs[0].size}pt;` : ""
+                }${p.runs[0]?.color ? `color:${p.runs[0].color}` : ""}`}
+              >
                 {p.numbered ? `${num}.` : "•"}
               </span>
             )}
@@ -327,7 +448,12 @@ function TextView({ paragraphs, valign }: { paragraphs: Paragraph[]; valign?: st
                     r.bold ? "font-weight:bold" : "",
                     r.italic ? "font-style:italic" : "",
                     r.underline || r.strike
-                      ? `text-decoration:${[r.underline ? "underline" : "", r.strike ? "line-through" : ""].filter(Boolean).join(" ")}`
+                      ? `text-decoration:${
+                        [
+                          r.underline ? "underline" : "",
+                          r.strike ? "line-through" : "",
+                        ].filter(Boolean).join(" ")
+                      }`
                       : "",
                     r.color ? `color:${r.color}` : "",
                     r.size ? `font-size:${r.size}pt` : "",
@@ -348,13 +474,26 @@ function TextView({ paragraphs, valign }: { paragraphs: Paragraph[]; valign?: st
 
 /** One slide, drawn at a scale. Used for the stage and for thumbnails. */
 export function SlideView(
-  { slide, scale, interactive, selected, editing, onPointerDown, onDoubleClick, editRef }: {
+  {
+    slide,
+    scale,
+    interactive,
+    selected,
+    editing,
+    onPointerDown,
+    onDoubleClick,
+    editRef,
+  }: {
     slide: Slide;
     scale: number;
     interactive?: boolean;
     selected?: string | null;
     editing?: string | null;
-    onPointerDown?: (e: PointerEvent, el: SlideElement | null, handle?: string) => void;
+    onPointerDown?: (
+      e: PointerEvent,
+      el: SlideElement | null,
+      handle?: string,
+    ) => void;
     onDoubleClick?: (el: SlideElement) => void;
     editRef?: { current: HTMLDivElement | null };
   },
@@ -363,14 +502,18 @@ export function SlideView(
   return (
     <div
       class="relative shadow-lg select-none"
-      style={`width:${SLIDE_W * scale}px;height:${SLIDE_H * scale}px;background:${slideBackgroundCss(slide)}`}
+      style={`width:${SLIDE_W * scale}px;height:${
+        SLIDE_H * scale
+      }px;background:${slideBackgroundCss(slide)}`}
     >
       <div
         class="absolute left-0 top-0 origin-top-left"
         style={`width:${SLIDE_W}px;height:${SLIDE_H}px;transform:scale(${scale});font-family:Calibri,Carlito,'Segoe UI',system-ui,sans-serif;font-size:18pt;color:#262626;touch-action:none`}
-        onPointerDown={interactive ? (e) => {
-          if (e.target === e.currentTarget) onPointerDown?.(e, null);
-        } : undefined}
+        onPointerDown={interactive
+          ? (e) => {
+            if (e.target === e.currentTarget) onPointerDown?.(e, null);
+          }
+          : undefined}
       >
         {slide.elements.map((el) => {
           const isSel = selected === el.id;
@@ -381,27 +524,47 @@ export function SlideView(
               key={el.id}
               class={`absolute ${interactive ? "cursor-move" : ""}`}
               style={`left:${el.x}px;top:${el.y}px;width:${el.w}px;height:${el.h}px;${rot}${
-                el.kind !== "image" && el.kind !== "shape" && el.fill ? `background:${el.fill};` : ""
-              }${el.kind === "text" && el.stroke ? `outline:${el.strokeWidth ?? 1}px solid ${el.stroke};` : ""}`}
-              onPointerDown={interactive && !isEdit ? (e) => {
-                // Without this the browser starts a native drag of any text
-                // that happens to be selected, fires pointercancel, and the
-                // box stops following the pointer after the first pixel.
-                e.preventDefault();
-                e.stopPropagation();
-                onPointerDown?.(e, el);
-              } : undefined}
-              onDblClick={interactive && el.kind !== "image" ? (e) => {
-                e.stopPropagation();
-                onDoubleClick?.(el);
-              } : undefined}
+                el.kind !== "image" && el.kind !== "shape" && el.fill
+                  ? `background:${el.fill};`
+                  : ""
+              }${
+                el.kind === "text" && el.stroke
+                  ? `outline:${el.strokeWidth ?? 1}px solid ${el.stroke};`
+                  : ""
+              }`}
+              onPointerDown={interactive && !isEdit
+                ? (e) => {
+                  // Without this the browser starts a native drag of any text
+                  // that happens to be selected, fires pointercancel, and the
+                  // box stops following the pointer after the first pixel.
+                  e.preventDefault();
+                  e.stopPropagation();
+                  onPointerDown?.(e, el);
+                }
+                : undefined}
+              onDblClick={interactive && el.kind !== "image"
+                ? (e) => {
+                  e.stopPropagation();
+                  onDoubleClick?.(el);
+                }
+                : undefined}
             >
               {el.kind === "image" && (
-                <img src={el.src} class="w-full h-full object-fill pointer-events-none" draggable={false} alt="" />
+                <img
+                  src={el.src}
+                  class="w-full h-full object-fill pointer-events-none"
+                  draggable={false}
+                  alt=""
+                />
               )}
               {el.kind === "shape" && <ShapeSvg el={el} />}
-              {el.kind !== "image" && !isEdit && (el.kind === "text" || el.paragraphs) && (
-                <TextView paragraphs={el.paragraphs ?? []} valign={el.valign ?? (el.kind === "shape" ? "middle" : undefined)} />
+              {el.kind !== "image" && !isEdit &&
+                (el.kind === "text" || el.paragraphs) && (
+                <TextView
+                  paragraphs={el.paragraphs ?? []}
+                  valign={el.valign ??
+                    (el.kind === "shape" ? "middle" : undefined)}
+                />
               )}
               {isEdit && (
                 <div
@@ -410,8 +573,13 @@ export function SlideView(
                   class="absolute inset-0 px-2 py-1 outline-none overflow-hidden slides-edit leading-[1.25]"
                   style={`display:flex;flex-direction:column;justify-content:${
                     (() => {
-                      const v = el.kind === "image" ? "top" : (el.valign ?? (el.kind === "shape" ? "middle" : "top"));
-                      return v === "middle" ? "center" : v === "bottom" ? "flex-end" : "flex-start";
+                      const v = el.kind === "image" ? "top" : (el.valign ??
+                        (el.kind === "shape" ? "middle" : "top"));
+                      return v === "middle"
+                        ? "center"
+                        : v === "bottom"
+                        ? "flex-end"
+                        : "flex-start";
                     })()
                   }`}
                   onPointerDown={(e) => e.stopPropagation()}
@@ -419,7 +587,10 @@ export function SlideView(
               )}
               {isSel && interactive && !isEdit && (
                 <>
-                  <div class="absolute inset-0 pointer-events-none" style="outline:2px solid #2563eb;outline-offset:1px" />
+                  <div
+                    class="absolute inset-0 pointer-events-none"
+                    style="outline:2px solid #2563eb;outline-offset:1px"
+                  />
                   {handles.map((h) => (
                     <div
                       key={h}
@@ -430,9 +601,17 @@ export function SlideView(
                       }}
                       class="absolute bg-white border-2 border-blue-600 rounded-sm"
                       style={`width:${12 / scale}px;height:${12 / scale}px;${
-                        h.includes("n") ? `top:${-6 / scale}px;` : h.includes("s") ? `bottom:${-6 / scale}px;` : `top:calc(50% - ${6 / scale}px);`
+                        h.includes("n")
+                          ? `top:${-6 / scale}px;`
+                          : h.includes("s")
+                          ? `bottom:${-6 / scale}px;`
+                          : `top:calc(50% - ${6 / scale}px);`
                       }${
-                        h.includes("w") ? `left:${-6 / scale}px;` : h.includes("e") ? `right:${-6 / scale}px;` : `left:calc(50% - ${6 / scale}px);`
+                        h.includes("w")
+                          ? `left:${-6 / scale}px;`
+                          : h.includes("e")
+                          ? `right:${-6 / scale}px;`
+                          : `left:calc(50% - ${6 / scale}px);`
                       }cursor:${h}-resize`}
                     />
                   ))}
@@ -451,7 +630,8 @@ export function SlideView(
 export default function SlidesModal(
   { lang = "en", onClose, onDeckOpen, revision = 0, incoming, openId }: Props,
 ) {
-  const t = (key: string) => (slidesContent[lang]?.[key] ?? slidesContent.en[key] ?? key) as string;
+  const t = (key: string) =>
+    (slidesContent[lang]?.[key] ?? slidesContent.en[key] ?? key) as string;
 
   const [decks, setDecks] = useState<DeckMeta[]>([]);
   const [id, setId] = useState<string>(() => newDeckId());
@@ -463,17 +643,22 @@ export default function SlidesModal(
   const [editing, setEditing] = useState<string | null>(null);
   const [dirty, setDirty] = useState(false);
   const [status, setStatus] = useState("");
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+  // Keep the library and assistant permission visible until explicitly collapsed.
+  const [sidebarOpen, setSidebarOpen] = useState(true);
   const [assistantAllowed, setAllowed] = useState(false);
   const [busy, setBusy] = useState(false);
   const [scale, setScale] = useState(0.6);
   const [presenting, setPresenting] = useState(false);
   const [showShapes, setShowShapes] = useState(false);
   /** Which picker is open: a new slide, a layout for this one, or a design. */
-  const [picker, setPicker] = useState<null | "new" | "layout" | "design">(null);
+  const [picker, setPicker] = useState<null | "new" | "layout" | "design">(
+    null,
+  );
   const [showNotes, setShowNotes] = useState(false);
   /** Recording for the current slide: idle, running, or being encoded. */
-  const [recState, setRecState] = useState<"idle" | "recording" | "encoding">("idle");
+  const [recState, setRecState] = useState<"idle" | "recording" | "encoding">(
+    "idle",
+  );
   const [recError, setRecError] = useState("");
   const [recSeconds, setRecSeconds] = useState(0);
   const [playing, setPlaying] = useState(false);
@@ -496,10 +681,27 @@ export default function SlidesModal(
   const createdRef = useRef(created);
   const currentRef = useRef(current);
   const editingRef = useRef(editing);
-  const history = useRef<{ past: Deck[]; future: Deck[] }>({ past: [], future: [] });
+  const history = useRef<{ past: Deck[]; future: Deck[] }>({
+    past: [],
+    future: [],
+  });
   const drag = useRef<
-    | { mode: "move"; id: string; sx: number; sy: number; ox: number; oy: number }
-    | { mode: "resize"; id: string; handle: string; sx: number; sy: number; box: { x: number; y: number; w: number; h: number } }
+    | {
+      mode: "move";
+      id: string;
+      sx: number;
+      sy: number;
+      ox: number;
+      oy: number;
+    }
+    | {
+      mode: "resize";
+      id: string;
+      handle: string;
+      sx: number;
+      sy: number;
+      box: { x: number; y: number; w: number; h: number };
+    }
     | null
   >(null);
 
@@ -513,7 +715,10 @@ export default function SlidesModal(
   const sel = slide?.elements.find((e) => e.id === selected) ?? null;
 
   /** Replaces the deck, remembering the previous state for undo. */
-  const setDeck = (next: Deck | ((d: Deck) => Deck), opts: { silent?: boolean } = {}) => {
+  const setDeck = (
+    next: Deck | ((d: Deck) => Deck),
+    opts: { silent?: boolean } = {},
+  ) => {
     const value = typeof next === "function" ? next(deckRef.current) : next;
     if (!opts.silent) {
       history.current.past.push(clone(deckRef.current));
@@ -525,13 +730,29 @@ export default function SlidesModal(
     setDeckState(value);
   };
 
-  const updateSlide = (fn: (s: Slide) => Slide, opts?: { silent?: boolean; current?: number }) => {
+  const updateSlide = (
+    fn: (s: Slide) => Slide,
+    opts?: { silent?: boolean; current?: number },
+  ) => {
     const at = opts?.current ?? current;
-    setDeck((d) => ({ ...d, slides: d.slides.map((s, i) => (i === at ? fn(s) : s)) }), opts);
+    setDeck(
+      (d) => ({ ...d, slides: d.slides.map((s, i) => (i === at ? fn(s) : s)) }),
+      opts,
+    );
   };
 
-  const updateElement = (elId: string, fn: (e: SlideElement) => SlideElement, opts?: { silent?: boolean; current?: number }) =>
-    updateSlide((s) => ({ ...s, elements: s.elements.map((e) => (e.id === elId ? fn(e) : e)) }), opts);
+  const updateElement = (
+    elId: string,
+    fn: (e: SlideElement) => SlideElement,
+    opts?: { silent?: boolean; current?: number },
+  ) =>
+    updateSlide(
+      (s) => ({
+        ...s,
+        elements: s.elements.map((e) => (e.id === elId ? fn(e) : e)),
+      }),
+      opts,
+    );
 
   const undo = () => {
     const prev = history.current.past.pop();
@@ -589,7 +810,9 @@ export default function SlidesModal(
     return () => clearTimeout(timer);
   }, [dirty, deck, name]);
 
-  const load = (rec: { id: string; name: string; deck: Deck; created?: string }) => {
+  const load = (
+    rec: { id: string; name: string; deck: Deck; created?: string },
+  ) => {
     setId(rec.id);
     setName(rec.name);
     setCreated(rec.created);
@@ -626,7 +849,9 @@ export default function SlidesModal(
       if (dirty) await autosave();
       try {
         const d = await pptxToDeck(incoming.bytes);
-        const deckName = await freeDeckName(incoming.name.replace(/\.pptx?$/i, ""));
+        const deckName = await freeDeckName(
+          incoming.name.replace(/\.pptx?$/i, ""),
+        );
         const fresh = newDeckId();
         await saveDeck({ id: fresh, name: deckName, deck: d });
         load({ id: fresh, name: deckName, deck: d });
@@ -648,7 +873,13 @@ export default function SlidesModal(
   useEffect(() => {
     onDeckOpen?.(
       decks.find((d) => d.id === id) ??
-        { id, name, created: created ?? "", updated: "", slideCount: deck.slides.length },
+        {
+          id,
+          name,
+          created: created ?? "",
+          updated: "",
+          slideCount: deck.slides.length,
+        },
     );
   }, [id, name, decks]);
 
@@ -715,13 +946,16 @@ export default function SlidesModal(
     if (!rec) return;
     load(rec);
     setStatus("");
-    setSidebarOpen(false);
   };
 
   const create = async () => {
     commitEdit();
     if (dirty) await autosave();
-    load({ id: newDeckId(), name: await freeDeckName(t("untitled")), deck: emptyDeck() });
+    load({
+      id: newDeckId(),
+      name: await freeDeckName(t("untitled")),
+      deck: emptyDeck(),
+    });
     setStatus("");
   };
 
@@ -742,7 +976,8 @@ export default function SlidesModal(
     try {
       const bytes = await deckToPptx(deckRef.current, { lang, title: name });
       const blob = new Blob([bytes as BlobPart], {
-        type: "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+        type:
+          "application/vnd.openxmlformats-officedocument.presentationml.presentation",
       });
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
@@ -777,7 +1012,6 @@ export default function SlidesModal(
       load({ id: fresh, name: deckName, deck: d });
       await refresh();
       setStatus(t("imported"));
-      setSidebarOpen(false);
     } catch (err) {
       setStatus(`${t("openFailed")}: ${String(err).slice(0, 120)}`);
     } finally {
@@ -791,8 +1025,18 @@ export default function SlidesModal(
 
   /** A slide from the picker, with placeholder text in the right places. */
   const addSlideFromLayout = (layout: SlideLayout) => {
-    const built = buildSlide(newSlideSpec(layout, lang), themeNow(), () => null, { first: deck.slides.length === 0 }).slide;
-    setDeck((d) => ({ ...d, slides: [...d.slides.slice(0, current + 1), built, ...d.slides.slice(current + 1)] }));
+    const built =
+      buildSlide(newSlideSpec(layout, lang), themeNow(), () => null, {
+        first: deck.slides.length === 0,
+      }).slide;
+    setDeck((d) => ({
+      ...d,
+      slides: [
+        ...d.slides.slice(0, current + 1),
+        built,
+        ...d.slides.slice(current + 1),
+      ],
+    }));
     setCurrent(current + 1);
     setSelected(null);
     setPicker(null);
@@ -801,8 +1045,16 @@ export default function SlidesModal(
   /** The current slide's content, rearranged. Boxes moved by hand start over. */
   const changeLayout = (layout: SlideLayout) => {
     commitEdit();
-    const next = relayoutSlide(deckRef.current.slides[current], layout, themeNow(), lang);
-    setDeck((d) => ({ ...d, slides: d.slides.map((sl, i) => (i === current ? next : sl)) }));
+    const next = relayoutSlide(
+      deckRef.current.slides[current],
+      layout,
+      themeNow(),
+      lang,
+    );
+    setDeck((d) => ({
+      ...d,
+      slides: d.slides.map((sl, i) => (i === current ? next : sl)),
+    }));
     setSelected(null);
     setPicker(null);
   };
@@ -818,7 +1070,14 @@ export default function SlidesModal(
   const addSlide = (after = current) => {
     const s = emptySlide();
     if (slide?.background) s.background = slide.background;
-    setDeck((d) => ({ ...d, slides: [...d.slides.slice(0, after + 1), s, ...d.slides.slice(after + 1)] }));
+    setDeck((d) => ({
+      ...d,
+      slides: [
+        ...d.slides.slice(0, after + 1),
+        s,
+        ...d.slides.slice(after + 1),
+      ],
+    }));
     setCurrent(after + 1);
     setSelected(null);
   };
@@ -826,7 +1085,14 @@ export default function SlidesModal(
     const copy = clone(slide);
     copy.id = newSlideId();
     copy.elements.forEach((e) => (e.id = newElementId()));
-    setDeck((d) => ({ ...d, slides: [...d.slides.slice(0, current + 1), copy, ...d.slides.slice(current + 1)] }));
+    setDeck((d) => ({
+      ...d,
+      slides: [
+        ...d.slides.slice(0, current + 1),
+        copy,
+        ...d.slides.slice(current + 1),
+      ],
+    }));
     setCurrent(current + 1);
   };
   const deleteSlide = () => {
@@ -834,7 +1100,10 @@ export default function SlidesModal(
       setDeck((d) => ({ ...d, slides: [emptySlide()] }));
       return;
     }
-    setDeck((d) => ({ ...d, slides: d.slides.filter((_, i) => i !== current) }));
+    setDeck((d) => ({
+      ...d,
+      slides: d.slides.filter((_, i) => i !== current),
+    }));
     setCurrent(Math.max(0, current - 1));
     setSelected(null);
   };
@@ -860,7 +1129,13 @@ export default function SlidesModal(
       y: 200,
       w: 600,
       h: 80,
-      paragraphs: [{ runs: [{ text: t("textPlaceholder"), size: 20, ...(themeFont ? { font: themeFont } : {}) }] }],
+      paragraphs: [{
+        runs: [{
+          text: t("textPlaceholder"),
+          size: 20,
+          ...(themeFont ? { font: themeFont } : {}),
+        }],
+      }],
     };
     updateSlide((s) => ({ ...s, elements: [...s.elements, el] }));
     setSelected(el.id);
@@ -869,8 +1144,27 @@ export default function SlidesModal(
   const addShape = (shape: ShapeKind) => {
     const accent = THEMES[deck.theme ?? ""]?.accent ?? "#2e75b6";
     const el: SlideElement = shape === "line"
-      ? { kind: "shape", id: newElementId(), x: 280, y: 268, w: 400, h: 4, shape, stroke: accent, strokeWidth: 3 }
-      : { kind: "shape", id: newElementId(), x: 380, y: 170, w: 200, h: 200, shape, fill: accent };
+      ? {
+        kind: "shape",
+        id: newElementId(),
+        x: 280,
+        y: 268,
+        w: 400,
+        h: 4,
+        shape,
+        stroke: accent,
+        strokeWidth: 3,
+      }
+      : {
+        kind: "shape",
+        id: newElementId(),
+        x: 380,
+        y: 170,
+        w: 200,
+        h: 200,
+        shape,
+        fill: accent,
+      };
     updateSlide((s) => ({ ...s, elements: [...s.elements, el] }));
     setSelected(el.id);
     setShowShapes(false);
@@ -904,7 +1198,15 @@ export default function SlidesModal(
       }
       const fit = Math.min(420 / w, 320 / h, 1);
       const ew = Math.round(w * fit), eh = Math.round(h * fit);
-      const el: SlideElement = { kind: "image", id: newElementId(), x: Math.round((SLIDE_W - ew) / 2), y: Math.round((SLIDE_H - eh) / 2), w: ew, h: eh, src };
+      const el: SlideElement = {
+        kind: "image",
+        id: newElementId(),
+        x: Math.round((SLIDE_W - ew) / 2),
+        y: Math.round((SLIDE_H - eh) / 2),
+        w: ew,
+        h: eh,
+        src,
+      };
       updateSlide((s) => ({ ...s, elements: [...s.elements, el] }));
       setSelected(el.id);
       setStatus(t("imageAdded"));
@@ -916,7 +1218,10 @@ export default function SlidesModal(
   };
   const deleteElement = () => {
     if (!sel) return;
-    updateSlide((s) => ({ ...s, elements: s.elements.filter((e) => e.id !== sel.id) }));
+    updateSlide((s) => ({
+      ...s,
+      elements: s.elements.filter((e) => e.id !== sel.id),
+    }));
     setSelected(null);
   };
   const duplicateElement = () => {
@@ -932,7 +1237,10 @@ export default function SlidesModal(
     if (!sel) return;
     updateSlide((s) => {
       const rest = s.elements.filter((e) => e.id !== sel.id);
-      return { ...s, elements: dir === "front" ? [...rest, sel] : [sel, ...rest] };
+      return {
+        ...s,
+        elements: dir === "front" ? [...rest, sel] : [sel, ...rest],
+      };
     });
   };
 
@@ -953,12 +1261,17 @@ export default function SlidesModal(
       return { ...e, paragraphs: ps };
     });
   };
-  const toggleMark = (key: "bold" | "italic" | "underline" | "strike", cmd: string) => {
+  const toggleMark = (
+    key: "bold" | "italic" | "underline" | "strike",
+    cmd: string,
+  ) => {
     if (sel && editing === sel.id) {
       document.execCommand(cmd, false);
       return;
     }
-    const on = !dominantRun(sel && sel.kind !== "image" ? sel.paragraphs : [])[key];
+    const on = !dominantRun(
+      sel && sel.kind !== "image" ? sel.paragraphs : [],
+    )[key];
     restyle((r) => ({ ...r, [key]: on }));
   };
   const setSize = (size: number) => {
@@ -983,18 +1296,35 @@ export default function SlidesModal(
   };
   const setAlign = (align: Paragraph["align"]) => {
     if (sel && editing === sel.id) {
-      document.execCommand(align === "center" ? "justifyCenter" : align === "right" ? "justifyRight" : "justifyLeft", false);
+      document.execCommand(
+        align === "center"
+          ? "justifyCenter"
+          : align === "right"
+          ? "justifyRight"
+          : "justifyLeft",
+        false,
+      );
       return;
     }
     restyle((r) => r, (p) => ({ ...p, align }));
   };
   const toggleList = (kind: "bullet" | "numbered") => {
     if (sel && editing === sel.id) {
-      document.execCommand(kind === "bullet" ? "insertUnorderedList" : "insertOrderedList", false);
+      document.execCommand(
+        kind === "bullet" ? "insertUnorderedList" : "insertOrderedList",
+        false,
+      );
       return;
     }
     const on = !(sel && sel.kind !== "image" && sel.paragraphs?.[0]?.[kind]);
-    restyle((r) => r, (p) => ({ ...p, bullet: kind === "bullet" ? on : false, numbered: kind === "numbered" ? on : false }));
+    restyle(
+      (r) => r,
+      (p) => ({
+        ...p,
+        bullet: kind === "bullet" ? on : false,
+        numbered: kind === "numbered" ? on : false,
+      }),
+    );
   };
 
   // ------------------------------------------------------------ editing
@@ -1002,14 +1332,20 @@ export default function SlidesModal(
   const startEdit = (elId: string) => {
     // From the ref, not the render: a box that was added a moment ago is
     // not in this render's slide yet, and this is called right after adding.
-    const el = deckRef.current.slides[currentRef.current]?.elements.find((e) => e.id === elId);
-    if (!el || el.kind === "image" || (el.kind === "shape" && el.shape === "line")) return;
+    const el = deckRef.current.slides[currentRef.current]?.elements.find((e) =>
+      e.id === elId
+    );
+    if (
+      !el || el.kind === "image" || (el.kind === "shape" && el.shape === "line")
+    ) return;
     setSelected(elId);
     setEditing(elId);
     setTimeout(() => {
       const box = editRef.current;
       if (!box) return;
-      box.innerHTML = paragraphsHtml(el.paragraphs ?? [{ runs: [{ text: "" }] }]);
+      box.innerHTML = paragraphsHtml(
+        el.paragraphs ?? [{ runs: [{ text: "" }] }],
+      );
       box.focus();
       const range = document.createRange();
       range.selectNodeContents(box);
@@ -1027,19 +1363,29 @@ export default function SlidesModal(
     editingRef.current = null;
     setEditing(null);
     if (!box) return;
-    const el = deckRef.current.slides[currentRef.current]?.elements.find((e) => e.id === elId);
+    const el = deckRef.current.slides[currentRef.current]?.elements.find((e) =>
+      e.id === elId
+    );
     if (!el || el.kind === "image") return;
     const base = dominantRun(el.paragraphs);
     const { text: _t, ...baseMarks } = base;
     const paragraphs = htmlToParagraphs(box, baseMarks);
     if (JSON.stringify(paragraphs) !== JSON.stringify(el.paragraphs)) {
-      updateElement(elId, (e) => (e.kind === "image" ? e : { ...e, paragraphs }), { current: currentRef.current });
+      updateElement(
+        elId,
+        (e) => (e.kind === "image" ? e : { ...e, paragraphs }),
+        { current: currentRef.current },
+      );
     }
   };
 
   // ------------------------------------------------------------ pointer
 
-  const onPointerDown = (e: PointerEvent, el: SlideElement | null, handle?: string) => {
+  const onPointerDown = (
+    e: PointerEvent,
+    el: SlideElement | null,
+    handle?: string,
+  ) => {
     if (editing) commitEdit();
     if (!el) {
       setSelected(null);
@@ -1048,9 +1394,23 @@ export default function SlidesModal(
     setSelected(el.id);
     (e.currentTarget as HTMLElement).setPointerCapture?.(e.pointerId);
     if (handle) {
-      drag.current = { mode: "resize", id: el.id, handle, sx: e.clientX, sy: e.clientY, box: { x: el.x, y: el.y, w: el.w, h: el.h } };
+      drag.current = {
+        mode: "resize",
+        id: el.id,
+        handle,
+        sx: e.clientX,
+        sy: e.clientY,
+        box: { x: el.x, y: el.y, w: el.w, h: el.h },
+      };
     } else {
-      drag.current = { mode: "move", id: el.id, sx: e.clientX, sy: e.clientY, ox: el.x, oy: el.y };
+      drag.current = {
+        mode: "move",
+        id: el.id,
+        sx: e.clientX,
+        sy: e.clientY,
+        ox: el.x,
+        oy: el.y,
+      };
     }
     history.current.past.push(clone(deckRef.current));
     history.current.future = [];
@@ -1063,7 +1423,15 @@ export default function SlidesModal(
       const dx = (e.clientX - d.sx) / scale;
       const dy = (e.clientY - d.sy) / scale;
       if (d.mode === "move") {
-        updateElement(d.id, (el) => ({ ...el, x: Math.round(d.ox + dx), y: Math.round(d.oy + dy) }), { silent: true });
+        updateElement(
+          d.id,
+          (el) => ({
+            ...el,
+            x: Math.round(d.ox + dx),
+            y: Math.round(d.oy + dy),
+          }),
+          { silent: true },
+        );
       } else {
         const b = d.box;
         let { x, y, w, h } = b;
@@ -1077,7 +1445,17 @@ export default function SlidesModal(
           h = Math.max(4, b.h - dy);
           y = b.y + (b.h - h);
         }
-        updateElement(d.id, (el) => ({ ...el, x: Math.round(x), y: Math.round(y), w: Math.round(w), h: Math.round(h) }), { silent: true });
+        updateElement(
+          d.id,
+          (el) => ({
+            ...el,
+            x: Math.round(x),
+            y: Math.round(y),
+            w: Math.round(w),
+            h: Math.round(h),
+          }),
+          { silent: true },
+        );
       }
       setDirty(true);
     };
@@ -1098,7 +1476,9 @@ export default function SlidesModal(
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      const typing = editing || (e.target as HTMLElement)?.tagName === "INPUT" || (e.target as HTMLElement)?.tagName === "TEXTAREA";
+      const typing = editing ||
+        (e.target as HTMLElement)?.tagName === "INPUT" ||
+        (e.target as HTMLElement)?.tagName === "TEXTAREA";
       if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "s") {
         e.preventDefault();
         save();
@@ -1106,8 +1486,12 @@ export default function SlidesModal(
       }
       if (presenting) {
         if (e.key === "Escape") setPresenting(false);
-        if (e.key === "ArrowRight" || e.key === " " || e.key === "PageDown") setCurrent((c) => Math.min(c + 1, deckRef.current.slides.length - 1));
-        if (e.key === "ArrowLeft" || e.key === "PageUp") setCurrent((c) => Math.max(c - 1, 0));
+        if (e.key === "ArrowRight" || e.key === " " || e.key === "PageDown") {
+          setCurrent((c) => Math.min(c + 1, deckRef.current.slides.length - 1));
+        }
+        if (e.key === "ArrowLeft" || e.key === "PageUp") {
+          setCurrent((c) => Math.max(c - 1, 0));
+        }
         return;
       }
       if (e.key === "Escape") {
@@ -1146,12 +1530,22 @@ export default function SlidesModal(
       if (sel && e.key.startsWith("Arrow")) {
         e.preventDefault();
         const step = e.shiftKey ? 10 : 1;
-        const dx = e.key === "ArrowLeft" ? -step : e.key === "ArrowRight" ? step : 0;
-        const dy = e.key === "ArrowUp" ? -step : e.key === "ArrowDown" ? step : 0;
+        const dx = e.key === "ArrowLeft"
+          ? -step
+          : e.key === "ArrowRight"
+          ? step
+          : 0;
+        const dy = e.key === "ArrowUp"
+          ? -step
+          : e.key === "ArrowDown"
+          ? step
+          : 0;
         updateElement(sel.id, (el) => ({ ...el, x: el.x + dx, y: el.y + dy }));
         return;
       }
-      if (!sel && e.key === "PageDown") setCurrent((c) => Math.min(c + 1, deckRef.current.slides.length - 1));
+      if (!sel && e.key === "PageDown") {
+        setCurrent((c) => Math.min(c + 1, deckRef.current.slides.length - 1));
+      }
       if (!sel && e.key === "PageUp") setCurrent((c) => Math.max(c - 1, 0));
     };
     document.addEventListener("keydown", onKey);
@@ -1184,7 +1578,11 @@ export default function SlidesModal(
       setRecState("recording");
       setRecSeconds(0);
     } catch (err) {
-      setRecError(`${t("micDenied")} (${String(err instanceof Error ? err.message : err).slice(0, 80)})`);
+      setRecError(
+        `${t("micDenied")} (${
+          String(err instanceof Error ? err.message : err).slice(0, 80)
+        })`,
+      );
     }
   };
 
@@ -1198,7 +1596,9 @@ export default function SlidesModal(
       const at = currentRef.current;
       updateSlide((sl) => ({ ...sl, audio: note }), { current: at });
     } catch (err) {
-      setRecError(String(err instanceof Error ? err.message : err).slice(0, 120));
+      setRecError(
+        String(err instanceof Error ? err.message : err).slice(0, 120),
+      );
     } finally {
       setRecState("idle");
     }
@@ -1251,12 +1651,23 @@ export default function SlidesModal(
 
   if (presenting) {
     return (
-      <div class="fixed inset-0 bg-black z-[60] flex items-center justify-center" onClick={() => setCurrent((c) => Math.min(c + 1, deck.slides.length - 1))}>
-        <div ref={stageRef} class="w-full h-full flex items-center justify-center">
+      <div
+        class="fixed inset-0 bg-black z-[60] flex items-center justify-center"
+        onClick={() =>
+          setCurrent((c) => Math.min(c + 1, deck.slides.length - 1))}
+      >
+        <div
+          ref={stageRef}
+          class="w-full h-full flex items-center justify-center"
+        >
           <SlideView slide={slide} scale={scale} />
         </div>
         <div class="absolute bottom-3 right-4 text-white/60 text-sm select-none flex items-center gap-3">
-          {slide?.audio && <span title={t("narration")}>{playing ? "🔊" : "🔈"} {slide.audio.seconds}s</span>}
+          {slide?.audio && (
+            <span title={t("narration")}>
+              {playing ? "🔊" : "🔈"} {slide.audio.seconds}s
+            </span>
+          )}
           <span>{current + 1} / {deck.slides.length} · Esc</span>
         </div>
         {slide?.audio && (
@@ -1268,7 +1679,13 @@ export default function SlidesModal(
               setPlaying(false);
               // On to the next slide once the narration is over - the show
               // runs itself, the way a recorded talk should.
-              if (autoAdvance && current < deck.slides.length - 1) setTimeout(() => setCurrent((c) => Math.min(c + 1, deck.slides.length - 1)), 600);
+              if (autoAdvance && current < deck.slides.length - 1) {
+                setTimeout(
+                  () =>
+                    setCurrent((c) => Math.min(c + 1, deck.slides.length - 1)),
+                  600,
+                );
+              }
             }}
           />
         )}
@@ -1287,14 +1704,26 @@ export default function SlidesModal(
   }
 
   const run = dominantRun(sel && sel.kind !== "image" ? sel.paragraphs : []);
-  const textSel = sel && sel.kind !== "image" && !(sel.kind === "shape" && sel.shape === "line");
+  const textSel = sel && sel.kind !== "image" &&
+    !(sel.kind === "shape" && sel.shape === "line");
 
   return (
     <div class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm flex items-center justify-center z-50 p-1 md:p-4">
       <div class="bg-white rounded-xl shadow-2xl w-full h-full md:w-[96vw] md:h-[93vh] flex flex-col overflow-hidden relative">
         {/* ---------------------------------------------------- title bar */}
         <header class="flex items-center gap-2 md:gap-3 px-3 md:px-4 py-2 bg-slate-800 text-white shrink-0">
-          <button onClick={() => setSidebarOpen((v) => !v)} title={t("myDecks")} class="p-1.5 rounded hover:bg-white/15 shrink-0">
+          <button
+            onClick={() => setSidebarOpen((v) => !v)}
+            title={t("myDecks")}
+            aria-label={lang === "de"
+              ? (sidebarOpen
+                ? "Seitenleiste einklappen"
+                : "Seitenleiste ausklappen")
+              : (sidebarOpen ? "Collapse sidebar" : "Expand sidebar")}
+            aria-expanded={sidebarOpen}
+            aria-controls="slides-library"
+            class="p-1.5 rounded hover:bg-white/15 shrink-0"
+          >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
               <path d="M3 6h18v2H3V6Zm0 5h18v2H3v-2Zm0 5h18v2H3v-2Z" />
             </svg>
@@ -1310,14 +1739,37 @@ export default function SlidesModal(
               title={t("nameHint")}
               class="bg-transparent font-semibold truncate outline-none border-b border-transparent hover:border-white/30 focus:border-white/60 min-w-0 w-full md:w-64"
             />
-            {dirty && <span class="text-xs text-amber-300 shrink-0">{t("unsaved")}</span>}
+            {dirty && (
+              <span class="text-xs text-amber-300 shrink-0">
+                {t("unsaved")}
+              </span>
+            )}
           </div>
-          {status && <span class="text-xs text-slate-300 hidden lg:block truncate max-w-xs">{status}</span>}
-          <button onClick={() => setPresenting(true)} title={t("present")} class="px-2.5 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-sm font-semibold shrink-0">▶</button>
-          <button onClick={save} disabled={busy} class="px-3 py-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-sm font-semibold disabled:opacity-50 shrink-0">
+          {status && (
+            <span class="text-xs text-slate-300 hidden lg:block truncate max-w-xs">
+              {status}
+            </span>
+          )}
+          <button
+            onClick={() => setPresenting(true)}
+            title={t("present")}
+            class="px-2.5 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-sm font-semibold shrink-0"
+          >
+            ▶
+          </button>
+          <button
+            onClick={save}
+            disabled={busy}
+            class="px-3 py-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-sm font-semibold disabled:opacity-50 shrink-0"
+          >
             {t("save")}
           </button>
-          <button onClick={download} disabled={busy} title={t("downloadHint")} class="px-3 py-1.5 rounded-lg bg-blue-500 hover:bg-blue-400 text-sm font-semibold disabled:opacity-50 shrink-0 hidden sm:block">
+          <button
+            onClick={download}
+            disabled={busy}
+            title={t("downloadHint")}
+            class="px-3 py-1.5 rounded-lg bg-blue-500 hover:bg-blue-400 text-sm font-semibold disabled:opacity-50 shrink-0 hidden sm:block"
+          >
             {t("download")}
           </button>
           <button
@@ -1337,26 +1789,99 @@ export default function SlidesModal(
 
         {/* ------------------------------------------------------ toolbar */}
         <div class="flex flex-wrap items-center gap-1 px-2 md:px-3 py-1.5 border-b bg-slate-50 shrink-0 text-sm">
-          <Btn onClick={() => setPicker(picker === "new" ? null : "new")} title={t("newSlide")} label={<span>+ {t("slide")} ▾</span>} active={picker === "new"} />
-          <Btn onClick={() => setPicker(picker === "layout" ? null : "layout")} title={t("layoutHint")} label={<span>{t("layout")}</span>} active={picker === "layout"} />
-          <Btn onClick={() => setPicker(picker === "design" ? null : "design")} title={t("designHint")} label={<span>🎨 {t("design")}</span>} active={picker === "design"} />
-          <Btn onClick={duplicateSlide} title={t("duplicateSlide")} label={<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></svg>} />
-          <Btn onClick={deleteSlide} title={t("deleteSlide")} label={<span>🗑</span>} />
+          <Btn
+            onClick={() => fileRef.current?.click()}
+            title={t("importHint")}
+            label={lang === "de"
+              ? "↑ Vom Computer hochladen (.pptx)"
+              : "↑ Upload from computer (.pptx)"}
+          />
+          <label class="flex items-center gap-1.5 mx-2 text-xs cursor-pointer">
+            <input
+              type="checkbox"
+              checked={assistantAllowed}
+              onChange={(e) => {
+                const on = e.currentTarget.checked;
+                setSlidesAssistantAllowed(on);
+                setAllowed(on);
+              }}
+            />
+            {lang === "de"
+              ? "Bud-E darf lesen und bearbeiten"
+              : "Allow Bud-E to read and edit"}
+          </label>
+          <Btn
+            onClick={() => setPicker(picker === "new" ? null : "new")}
+            title={t("newSlide")}
+            label={<span>+ {t("slide")} ▾</span>}
+            active={picker === "new"}
+          />
+          <Btn
+            onClick={() => setPicker(picker === "layout" ? null : "layout")}
+            title={t("layoutHint")}
+            label={<span>{t("layout")}</span>}
+            active={picker === "layout"}
+          />
+          <Btn
+            onClick={() => setPicker(picker === "design" ? null : "design")}
+            title={t("designHint")}
+            label={<span>🎨 {t("design")}</span>}
+            active={picker === "design"}
+          />
+          <Btn
+            onClick={duplicateSlide}
+            title={t("duplicateSlide")}
+            label={
+              <svg
+                width="15"
+                height="15"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <rect x="8" y="8" width="12" height="12" rx="2" />
+                <path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2" />
+              </svg>
+            }
+          />
+          <Btn
+            onClick={deleteSlide}
+            title={t("deleteSlide")}
+            label={<span>🗑</span>}
+          />
           <Sep />
-          <Btn onClick={addText} title={t("addText")} label={<span class="font-serif font-bold">T</span>} />
+          <Btn
+            onClick={addText}
+            title={t("addText")}
+            label={<span class="font-serif font-bold">T</span>}
+          />
           <div class="relative">
-            <Btn onClick={() => setShowShapes((v) => !v)} title={t("addShape")} label={<span>◯▭</span>} />
+            <Btn
+              onClick={() => setShowShapes((v) => !v)}
+              title={t("addShape")}
+              label={<span>◯▭</span>}
+            />
             {showShapes && (
               <div class="absolute z-20 top-8 left-0 bg-white border rounded-lg shadow-lg p-1.5 grid grid-cols-5 gap-1 w-44">
                 {SHAPES.map((s) => (
-                  <button key={s.kind} onClick={() => addShape(s.kind)} class="h-7 rounded hover:bg-slate-100 text-base" title={s.kind}>
+                  <button
+                    key={s.kind}
+                    onClick={() => addShape(s.kind)}
+                    class="h-7 rounded hover:bg-slate-100 text-base"
+                    title={s.kind}
+                  >
                     {s.label}
                   </button>
                 ))}
               </div>
             )}
           </div>
-          <Btn onClick={() => imageRef.current?.click()} title={t("addImage")} label={<span>🖼️</span>} />
+          <Btn
+            onClick={() => imageRef.current?.click()}
+            title={t("addImage")}
+            label={<span>🖼️</span>}
+          />
           <Sep />
           <Btn onClick={undo} title={t("undo")} label={<span>↶</span>} />
           <Btn onClick={redo} title={t("redo")} label={<span>↷</span>} />
@@ -1364,10 +1889,30 @@ export default function SlidesModal(
           {textSel && (
             <>
               <Sep />
-              <Btn onClick={() => toggleMark("bold", "bold")} title={t("bold")} label={<b>B</b>} active={!!run.bold} />
-              <Btn onClick={() => toggleMark("italic", "italic")} title={t("italic")} label={<i>I</i>} active={!!run.italic} />
-              <Btn onClick={() => toggleMark("underline", "underline")} title={t("underline")} label={<u>U</u>} active={!!run.underline} />
-              <Btn onClick={() => toggleMark("strike", "strikeThrough")} title={t("strike")} label={<s>S</s>} active={!!run.strike} />
+              <Btn
+                onClick={() => toggleMark("bold", "bold")}
+                title={t("bold")}
+                label={<b>B</b>}
+                active={!!run.bold}
+              />
+              <Btn
+                onClick={() => toggleMark("italic", "italic")}
+                title={t("italic")}
+                label={<i>I</i>}
+                active={!!run.italic}
+              />
+              <Btn
+                onClick={() => toggleMark("underline", "underline")}
+                title={t("underline")}
+                label={<u>U</u>}
+                active={!!run.underline}
+              />
+              <Btn
+                onClick={() => toggleMark("strike", "strikeThrough")}
+                title={t("strike")}
+                label={<s>S</s>}
+                active={!!run.strike}
+              />
               <select
                 value={String(run.size ?? "")}
                 onMouseDown={(e) => e.stopPropagation()}
@@ -1379,63 +1924,173 @@ export default function SlidesModal(
                 title={t("size")}
               >
                 <option value="">{t("size")}</option>
-                {SIZES.map((s) => <option key={s} value={String(s)}>{s}</option>)}
+                {SIZES.map((s) => (
+                  <option key={s} value={String(s)}>{s}</option>
+                ))}
               </select>
-              <input type="color" value={run.color ?? "#262626"} onInput={(e) => setColor((e.target as HTMLInputElement).value)} title={t("color")} class="w-7 h-7 rounded border bg-white cursor-pointer p-0.5" />
-              <Btn onClick={() => setAlign("left")} title={t("alignLeft")} label={<span>≡</span>} />
-              <Btn onClick={() => setAlign("center")} title={t("alignCenter")} label={<span>☰</span>} />
-              <Btn onClick={() => setAlign("right")} title={t("alignRight")} label={<span>≣</span>} />
-              <Btn onClick={() => toggleList("bullet")} title={t("bullets")} label={<span>•—</span>} />
-              <Btn onClick={() => toggleList("numbered")} title={t("numbers")} label={<span>1.—</span>} />
+              <input
+                type="color"
+                value={run.color ?? "#262626"}
+                onInput={(e) => setColor((e.target as HTMLInputElement).value)}
+                title={t("color")}
+                class="w-7 h-7 rounded border bg-white cursor-pointer p-0.5"
+              />
+              <Btn
+                onClick={() => setAlign("left")}
+                title={t("alignLeft")}
+                label={<span>≡</span>}
+              />
+              <Btn
+                onClick={() => setAlign("center")}
+                title={t("alignCenter")}
+                label={<span>☰</span>}
+              />
+              <Btn
+                onClick={() => setAlign("right")}
+                title={t("alignRight")}
+                label={<span>≣</span>}
+              />
+              <Btn
+                onClick={() => toggleList("bullet")}
+                title={t("bullets")}
+                label={<span>•—</span>}
+              />
+              <Btn
+                onClick={() => toggleList("numbered")}
+                title={t("numbers")}
+                label={<span>1.—</span>}
+              />
             </>
           )}
           {sel && sel.kind !== "image" && (
             <>
               <Sep />
-              <label class="flex items-center gap-1 text-xs text-slate-600" title={t("fill")}>
+              <label
+                class="flex items-center gap-1 text-xs text-slate-600"
+                title={t("fill")}
+              >
                 {t("fill")}
                 <input
                   type="color"
                   value={sel.fill ?? "#ffffff"}
-                  onInput={(e) => updateElement(sel.id, (el) => ({ ...el, fill: (e.target as HTMLInputElement).value }))}
+                  onInput={(e) =>
+                    updateElement(
+                      sel.id,
+                      (el) => ({
+                        ...el,
+                        fill: (e.target as HTMLInputElement).value,
+                      }),
+                    )}
                   class="w-7 h-7 rounded border bg-white cursor-pointer p-0.5"
                 />
-                <button onClick={() => updateElement(sel.id, (el) => ({ ...el, fill: undefined }))} class="text-slate-400 hover:text-slate-700" title={t("noFill")}>∅</button>
+                <button
+                  onClick={() =>
+                    updateElement(sel.id, (el) => ({ ...el, fill: undefined }))}
+                  class="text-slate-400 hover:text-slate-700"
+                  title={t("noFill")}
+                >
+                  ∅
+                </button>
               </label>
-              <label class="flex items-center gap-1 text-xs text-slate-600" title={t("stroke")}>
+              <label
+                class="flex items-center gap-1 text-xs text-slate-600"
+                title={t("stroke")}
+              >
                 {t("stroke")}
                 <input
                   type="color"
                   value={sel.stroke ?? "#000000"}
-                  onInput={(e) => updateElement(sel.id, (el) => ({ ...el, stroke: (e.target as HTMLInputElement).value, strokeWidth: (el as { strokeWidth?: number }).strokeWidth ?? 2 }))}
+                  onInput={(e) =>
+                    updateElement(
+                      sel.id,
+                      (el) => ({
+                        ...el,
+                        stroke: (e.target as HTMLInputElement).value,
+                        strokeWidth:
+                          (el as { strokeWidth?: number }).strokeWidth ?? 2,
+                      }),
+                    )}
                   class="w-7 h-7 rounded border bg-white cursor-pointer p-0.5"
                 />
-                <button onClick={() => updateElement(sel.id, (el) => ({ ...el, stroke: undefined }))} class="text-slate-400 hover:text-slate-700" title={t("noStroke")}>∅</button>
+                <button
+                  onClick={() =>
+                    updateElement(
+                      sel.id,
+                      (el) => ({ ...el, stroke: undefined }),
+                    )}
+                  class="text-slate-400 hover:text-slate-700"
+                  title={t("noStroke")}
+                >
+                  ∅
+                </button>
               </label>
             </>
           )}
           {sel && (
             <>
               <Sep />
-              <Btn onClick={() => reorder("front")} title={t("front")} label={<span>⬆</span>} />
-              <Btn onClick={() => reorder("back")} title={t("back")} label={<span>⬇</span>} />
-              <Btn onClick={duplicateElement} title={t("duplicate")} label={<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></svg>} />
-              <Btn onClick={deleteElement} title={t("deleteElement")} label={<span class="text-red-600">✕</span>} />
+              <Btn
+                onClick={() => reorder("front")}
+                title={t("front")}
+                label={<span>⬆</span>}
+              />
+              <Btn
+                onClick={() => reorder("back")}
+                title={t("back")}
+                label={<span>⬇</span>}
+              />
+              <Btn
+                onClick={duplicateElement}
+                title={t("duplicate")}
+                label={
+                  <svg
+                    width="15"
+                    height="15"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <rect x="8" y="8" width="12" height="12" rx="2" />
+                    <path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2" />
+                  </svg>
+                }
+              />
+              <Btn
+                onClick={deleteElement}
+                title={t("deleteElement")}
+                label={<span class="text-red-600">✕</span>}
+              />
             </>
           )}
           <div class="flex-1" />
-          <label class="flex items-center gap-1 text-xs text-slate-600" title={t("background")}>
+          <label
+            class="flex items-center gap-1 text-xs text-slate-600"
+            title={t("background")}
+          >
             {t("background")}
             <input
               type="color"
               value={slide?.background ?? "#ffffff"}
-              onInput={(e) => updateSlide((s) => ({ ...s, background: (e.target as HTMLInputElement).value }))}
+              onInput={(e) =>
+                updateSlide((s) => ({
+                  ...s,
+                  background: (e.target as HTMLInputElement).value,
+                }))}
               class="w-7 h-7 rounded border bg-white cursor-pointer p-0.5"
             />
           </label>
-          <Btn onClick={() => setShowNotes((v) => !v)} title={t("notes")} label={<span>📝</span>} active={showNotes} />
+          <Btn
+            onClick={() => setShowNotes((v) => !v)}
+            title={t("notes")}
+            label={<span>📝</span>}
+            active={showNotes}
+          />
           <span class="text-xs text-slate-500 px-1 hidden md:inline">
-            {t("slideOf").replace("{n}", String(current + 1)).replace("{m}", String(deck.slides.length))}
+            {t("slideOf").replace("{n}", String(current + 1)).replace(
+              "{m}",
+              String(deck.slides.length),
+            )}
           </span>
         </div>
 
@@ -1443,42 +2098,91 @@ export default function SlidesModal(
         <div class="flex-1 flex flex-col md:flex-row min-h-0 relative">
           {sidebarOpen && (
             <>
-              <div class="md:hidden absolute inset-0 bg-black/30 z-20" onClick={() => setSidebarOpen(false)} />
-              <aside class="absolute md:static z-30 left-0 top-0 bottom-0 w-72 md:w-72 shrink-0 border-r bg-white overflow-y-auto shadow-xl md:shadow-none">
+              <div
+                class="md:hidden absolute inset-0 bg-black/30 z-20"
+                onClick={() => setSidebarOpen(false)}
+              />
+              <aside
+                id="slides-library"
+                aria-label={t("myDecks")}
+                class="absolute md:static z-30 left-0 top-0 bottom-0 w-72 md:w-72 shrink-0 border-r bg-white overflow-y-auto shadow-xl md:shadow-none"
+              >
                 <div class="p-3 space-y-4">
                   <section>
                     <div class="flex items-center justify-between mb-1.5">
-                      <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-500">{t("myDecks")}</h3>
-                      <button onClick={create} title={t("newDeck")} class="px-2 py-0.5 rounded-md bg-green-100 text-green-800 hover:bg-green-200 text-sm font-bold leading-none">+</button>
+                      <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                        {t("myDecks")}
+                      </h3>
+                      <button
+                        onClick={create}
+                        title={t("newDeck")}
+                        class="px-2 py-0.5 rounded-md bg-green-100 text-green-800 hover:bg-green-200 text-sm font-bold leading-none"
+                      >
+                        +
+                      </button>
                     </div>
                     <p class="text-xs text-slate-500 mb-2">{t("decksHint")}</p>
-                    {decks.length === 0 ? <p class="text-sm text-slate-400">{t("noDecks")}</p> : (
-                      <ul class="space-y-0.5">
-                        {decks.map((d) => (
-                          <li key={d.id} class="group flex items-center gap-1">
-                            <button onClick={() => open(d.id)} class={`flex-1 min-w-0 text-left px-2 py-1.5 rounded-md text-sm ${d.id === id ? "bg-blue-50 text-blue-900 font-semibold" : "hover:bg-slate-100"}`}>
-                              <span class="block truncate">{d.name}</span>
-                              <span class="block text-xs text-slate-400">{d.slideCount} {t("slides")}</span>
-                            </button>
-                            <button onClick={() => remove(d.id)} title={t("delete")} class="md:opacity-0 group-hover:opacity-100 px-1.5 py-1 text-red-600 hover:bg-red-50 rounded text-xs shrink-0">✕</button>
-                          </li>
-                        ))}
-                      </ul>
-                    )}
+                    {decks.length === 0
+                      ? <p class="text-sm text-slate-400">{t("noDecks")}</p>
+                      : (
+                        <ul class="space-y-0.5">
+                          {decks.map((d) => (
+                            <li
+                              key={d.id}
+                              class="group flex items-center gap-1"
+                            >
+                              <button
+                                onClick={() => open(d.id)}
+                                class={`flex-1 min-w-0 text-left px-2 py-1.5 rounded-md text-sm ${
+                                  d.id === id
+                                    ? "bg-blue-50 text-blue-900 font-semibold"
+                                    : "hover:bg-slate-100"
+                                }`}
+                              >
+                                <span class="block truncate">{d.name}</span>
+                                <span class="block text-xs text-slate-400">
+                                  {d.slideCount} {t("slides")}
+                                </span>
+                              </button>
+                              <button
+                                onClick={() => remove(d.id)}
+                                title={t("delete")}
+                                class="md:opacity-0 group-hover:opacity-100 px-1.5 py-1 text-red-600 hover:bg-red-50 rounded text-xs shrink-0"
+                              >
+                                ✕
+                              </button>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
                   </section>
                   <section class="space-y-2">
-                    <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-500">{t("fileSection")}</h3>
-                    <button onClick={() => fileRef.current?.click()} class="w-full text-left px-2.5 py-2 border border-slate-200 rounded-lg hover:border-blue-400 hover:bg-blue-50/60 text-sm">
+                    <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                      {t("fileSection")}
+                    </h3>
+                    <button
+                      onClick={() => fileRef.current?.click()}
+                      class="w-full text-left px-2.5 py-2 border border-slate-200 rounded-lg hover:border-blue-400 hover:bg-blue-50/60 text-sm"
+                    >
                       {t("importFile")}
-                      <span class="block text-xs text-slate-500">{t("importHint")}</span>
+                      <span class="block text-xs text-slate-500">
+                        {t("importHint")}
+                      </span>
                     </button>
-                    <button onClick={download} class="w-full text-left px-2.5 py-2 border border-slate-200 rounded-lg hover:border-blue-400 hover:bg-blue-50/60 text-sm">
+                    <button
+                      onClick={download}
+                      class="w-full text-left px-2.5 py-2 border border-slate-200 rounded-lg hover:border-blue-400 hover:bg-blue-50/60 text-sm"
+                    >
                       {t("exportPptx")}
-                      <span class="block text-xs text-slate-500">{t("exportHint")}</span>
+                      <span class="block text-xs text-slate-500">
+                        {t("exportHint")}
+                      </span>
                     </button>
                   </section>
                   <section>
-                    <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-500 mb-1.5">{t("assistantSection")}</h3>
+                    <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-500 mb-1.5">
+                      {t("assistantSection")}
+                    </h3>
                     <label class="flex items-start gap-2 text-sm cursor-pointer">
                       <input
                         type="checkbox"
@@ -1492,7 +2196,9 @@ export default function SlidesModal(
                       />
                       <span>
                         {t("allowAssistant")}
-                        <span class="block text-xs text-slate-500">{t("allowAssistantHint")}</span>
+                        <span class="block text-xs text-slate-500">
+                          {t("allowAssistantHint")}
+                        </span>
                       </span>
                     </label>
                   </section>
@@ -1511,40 +2217,90 @@ export default function SlidesModal(
                   setCurrent(i);
                   setSelected(null);
                 }}
-                class={`relative shrink-0 rounded-md p-1 ${i === current ? "ring-2 ring-blue-500 bg-white" : "hover:bg-slate-200"}`}
+                class={`relative shrink-0 rounded-md p-1 ${
+                  i === current
+                    ? "ring-2 ring-blue-500 bg-white"
+                    : "hover:bg-slate-200"
+                }`}
                 title={`${i + 1}`}
               >
                 <div class="pointer-events-none">
                   <SlideView slide={s} scale={0.125} />
                 </div>
-                <span class="absolute left-0.5 bottom-0.5 text-[10px] bg-black/50 text-white rounded px-1 leading-4">{i + 1}</span>
-                {s.audio && <span class="absolute right-0.5 bottom-0.5 text-[10px] bg-black/50 text-white rounded px-1 leading-4" title={`${s.audio.seconds}s`}>🔊</span>}
+                <span class="absolute left-0.5 bottom-0.5 text-[10px] bg-black/50 text-white rounded px-1 leading-4">
+                  {i + 1}
+                </span>
+                {s.audio && (
+                  <span
+                    class="absolute right-0.5 bottom-0.5 text-[10px] bg-black/50 text-white rounded px-1 leading-4"
+                    title={`${s.audio.seconds}s`}
+                  >
+                    🔊
+                  </span>
+                )}
               </button>
             ))}
             <div class="shrink-0 flex md:flex-row gap-1 justify-center">
-              <button onClick={() => moveSlide(-1)} class="text-xs px-1.5 py-0.5 rounded bg-white border hover:bg-slate-50" title={t("moveUp")}>◀</button>
-              <button onClick={() => addSlide()} class="text-xs px-1.5 py-0.5 rounded bg-white border hover:bg-slate-50" title={t("newSlide")}>+</button>
-              <button onClick={() => moveSlide(1)} class="text-xs px-1.5 py-0.5 rounded bg-white border hover:bg-slate-50" title={t("moveDown")}>▶</button>
+              <button
+                onClick={() => moveSlide(-1)}
+                class="text-xs px-1.5 py-0.5 rounded bg-white border hover:bg-slate-50"
+                title={t("moveUp")}
+              >
+                ◀
+              </button>
+              <button
+                onClick={() => addSlide()}
+                class="text-xs px-1.5 py-0.5 rounded bg-white border hover:bg-slate-50"
+                title={t("newSlide")}
+              >
+                +
+              </button>
+              <button
+                onClick={() => moveSlide(1)}
+                class="text-xs px-1.5 py-0.5 rounded bg-white border hover:bg-slate-50"
+                title={t("moveDown")}
+              >
+                ▶
+              </button>
             </div>
           </div>
 
           {/* The stage. */}
           <div class="flex-1 min-h-0 flex flex-col relative">
             {picker && (
-              <div class="absolute inset-0 z-20 bg-slate-900/40 flex items-start justify-center p-3 overflow-y-auto" onClick={() => setPicker(null)}>
-                <div class="bg-white rounded-xl shadow-2xl p-3 md:p-4 w-full max-w-3xl" onClick={(e) => e.stopPropagation()}>
+              <div
+                class="absolute inset-0 z-20 bg-slate-900/40 flex items-start justify-center p-3 overflow-y-auto"
+                onClick={() => setPicker(null)}
+              >
+                <div
+                  class="bg-white rounded-xl shadow-2xl p-3 md:p-4 w-full max-w-3xl"
+                  onClick={(e) => e.stopPropagation()}
+                >
                   <div class="flex items-center justify-between mb-2">
                     <h3 class="font-semibold text-slate-800">
-                      {picker === "design" ? t("design") : picker === "layout" ? t("changeLayout") : t("newFromLayout")}
+                      {picker === "design"
+                        ? t("design")
+                        : picker === "layout"
+                        ? t("changeLayout")
+                        : t("newFromLayout")}
                     </h3>
-                    <button onClick={() => setPicker(null)} class="px-2 text-slate-500 hover:text-slate-800">✕</button>
+                    <button
+                      onClick={() => setPicker(null)}
+                      class="px-2 text-slate-500 hover:text-slate-800"
+                    >
+                      ✕
+                    </button>
                   </div>
                   {picker === "design"
                     ? (
                       <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2">
                         {Object.values(THEMES).map((th) => {
                           const sample = buildSlide(
-                            { layout: "title", title: th.label[lang === "en" ? "en" : "de"], subtitle: "Aa Bb Cc" },
+                            {
+                              layout: "title",
+                              title: th.label[lang === "en" ? "en" : "de"],
+                              subtitle: "Aa Bb Cc",
+                            },
                             th,
                             () => null,
                           ).slide;
@@ -1552,12 +2308,24 @@ export default function SlidesModal(
                             <button
                               key={th.key}
                               onClick={() => changeTheme(th.key)}
-                              class={`rounded-lg border p-1.5 text-left hover:border-blue-400 hover:bg-blue-50/60 ${deck.theme === th.key ? "border-blue-500 ring-2 ring-blue-200" : "border-slate-200"}`}
+                              class={`rounded-lg border p-1.5 text-left hover:border-blue-400 hover:bg-blue-50/60 ${
+                                deck.theme === th.key
+                                  ? "border-blue-500 ring-2 ring-blue-200"
+                                  : "border-slate-200"
+                              }`}
                             >
-                              <div class="pointer-events-none mx-auto" style="width:160px">
-                                <SlideView slide={sample} scale={160 / SLIDE_W} />
+                              <div
+                                class="pointer-events-none mx-auto"
+                                style="width:160px"
+                              >
+                                <SlideView
+                                  slide={sample}
+                                  scale={160 / SLIDE_W}
+                                />
                               </div>
-                              <span class="block text-xs mt-1 text-slate-700 truncate">{th.label[lang === "en" ? "en" : "de"]}</span>
+                              <span class="block text-xs mt-1 text-slate-700 truncate">
+                                {th.label[lang === "en" ? "en" : "de"]}
+                              </span>
                             </button>
                           );
                         })}
@@ -1566,18 +2334,38 @@ export default function SlidesModal(
                     : (
                       <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2">
                         {LAYOUTS.map((l) => {
-                          const sample = buildSlide(newSlideSpec(l.key, lang), themeNow(), () => null, { first: l.key === "title" }).slide;
+                          const sample = buildSlide(
+                            newSlideSpec(l.key, lang),
+                            themeNow(),
+                            () => null,
+                            { first: l.key === "title" },
+                          ).slide;
                           return (
                             <button
                               key={l.key}
-                              onClick={() => picker === "new" ? addSlideFromLayout(l.key) : changeLayout(l.key)}
-                              class={`rounded-lg border p-1.5 text-left hover:border-blue-400 hover:bg-blue-50/60 ${picker === "layout" && slide?.layout === l.key ? "border-blue-500 ring-2 ring-blue-200" : "border-slate-200"}`}
+                              onClick={() =>
+                                picker === "new"
+                                  ? addSlideFromLayout(l.key)
+                                  : changeLayout(l.key)}
+                              class={`rounded-lg border p-1.5 text-left hover:border-blue-400 hover:bg-blue-50/60 ${
+                                picker === "layout" && slide?.layout === l.key
+                                  ? "border-blue-500 ring-2 ring-blue-200"
+                                  : "border-slate-200"
+                              }`}
                               title={l.key}
                             >
-                              <div class="pointer-events-none mx-auto" style="width:128px">
-                                <SlideView slide={sample} scale={128 / SLIDE_W} />
+                              <div
+                                class="pointer-events-none mx-auto"
+                                style="width:128px"
+                              >
+                                <SlideView
+                                  slide={sample}
+                                  scale={128 / SLIDE_W}
+                                />
                               </div>
-                              <span class="block text-xs mt-1 text-slate-700 truncate">{lang === "en" ? l.en : l.de}</span>
+                              <span class="block text-xs mt-1 text-slate-700 truncate">
+                                {lang === "en" ? l.en : l.de}
+                              </span>
                             </button>
                           );
                         })}
@@ -1586,8 +2374,10 @@ export default function SlidesModal(
                 </div>
               </div>
             )}
-            {/* The desk around the slide: a click there ends editing and
-                clears the selection, as it does in every slide program. */}
+            {
+              /* The desk around the slide: a click there ends editing and
+                clears the selection, as it does in every slide program. */
+            }
             <div
               ref={stageRef}
               class="flex-1 min-h-0 overflow-hidden bg-slate-200 flex items-center justify-center p-3"
@@ -1613,46 +2403,94 @@ export default function SlidesModal(
             {showNotes && (
               <textarea
                 value={slide?.notes ?? ""}
-                onInput={(e) => updateSlide((s) => ({ ...s, notes: (e.target as HTMLTextAreaElement).value }))}
+                onInput={(e) =>
+                  updateSlide((s) => ({
+                    ...s,
+                    notes: (e.target as HTMLTextAreaElement).value,
+                  }))}
                 placeholder={t("notesHint")}
                 class="shrink-0 h-24 md:h-28 border-t px-3 py-2 text-sm outline-none resize-none bg-amber-50/60"
               />
             )}
             {/* The narration strip: record, listen, record again. */}
-            <div class="shrink-0 border-t bg-slate-50 px-3 py-1.5 flex flex-wrap items-center gap-2 text-sm" data-narration>
-              <span class="font-semibold text-slate-700">🎙 {t("narration")}</span>
+            <div
+              class="shrink-0 border-t bg-slate-50 px-3 py-1.5 flex flex-wrap items-center gap-2 text-sm"
+              data-narration
+            >
+              <span class="font-semibold text-slate-700">
+                🎙 {t("narration")}
+              </span>
               {recState === "recording"
                 ? (
-                  <button onClick={stopRec} class="px-3 py-1 rounded-lg bg-red-600 text-white font-semibold animate-pulse" title={t("recording")}>
+                  <button
+                    onClick={stopRec}
+                    class="px-3 py-1 rounded-lg bg-red-600 text-white font-semibold animate-pulse"
+                    title={t("recording")}
+                  >
                     ■ {t("stop")} · {recSeconds}s
                   </button>
                 )
                 : recState === "encoding"
                 ? <span class="text-slate-500">{t("encoding")}</span>
                 : (
-                  <button onClick={startRec} class="px-3 py-1 rounded-lg bg-red-100 text-red-800 hover:bg-red-200 font-semibold" title={slide?.audio ? t("rerecord") : t("record")}>
+                  <button
+                    onClick={startRec}
+                    class="px-3 py-1 rounded-lg bg-red-100 text-red-800 hover:bg-red-200 font-semibold"
+                    title={slide?.audio ? t("rerecord") : t("record")}
+                  >
                     ● {slide?.audio ? t("rerecord") : t("record")}
                   </button>
                 )}
               {slide?.audio && recState === "idle" && (
                 <>
-                  <button onClick={togglePlay} class="px-3 py-1 rounded-lg bg-white border hover:bg-slate-100" title={playing ? t("pause") : t("play")}>
+                  <button
+                    onClick={togglePlay}
+                    class="px-3 py-1 rounded-lg bg-white border hover:bg-slate-100"
+                    title={playing ? t("pause") : t("play")}
+                  >
                     {playing ? "⏸" : "▶"} {playing ? t("pause") : t("play")}
                   </button>
-                  <span class="text-xs text-slate-500">{slide.audio.seconds}s · {audioKb(slide.audio)} KB</span>
-                  <button onClick={deleteAudio} class="px-2 py-1 rounded text-red-600 hover:bg-red-50 text-xs" title={t("deleteAudio")}>✕</button>
-                  <audio key={slide.id} ref={audioRef} src={slide.audio.src} onEnded={() => setPlaying(false)} />
+                  <span class="text-xs text-slate-500">
+                    {slide.audio.seconds}s · {audioKb(slide.audio)} KB
+                  </span>
+                  <button
+                    onClick={deleteAudio}
+                    class="px-2 py-1 rounded text-red-600 hover:bg-red-50 text-xs"
+                    title={t("deleteAudio")}
+                  >
+                    ✕
+                  </button>
+                  <audio
+                    key={slide.id}
+                    ref={audioRef}
+                    src={slide.audio.src}
+                    onEnded={() => setPlaying(false)}
+                  />
                 </>
               )}
               {recError && <span class="text-xs text-red-700">{recError}</span>}
-              {!recError && !slide?.audio && recState === "idle" && <span class="text-xs text-slate-500 hidden md:inline">{t("narrationHint")}</span>}
+              {!recError && !slide?.audio && recState === "idle" && (
+                <span class="text-xs text-slate-500 hidden md:inline">
+                  {t("narrationHint")}
+                </span>
+              )}
               <span class="flex-1" />
-              <label class="text-xs text-slate-600 flex items-center gap-1" title={t("autoAdvance")}>
-                <input type="checkbox" checked={autoAdvance} onChange={(e) => setAutoAdvance((e.target as HTMLInputElement).checked)} />
+              <label
+                class="text-xs text-slate-600 flex items-center gap-1"
+                title={t("autoAdvance")}
+              >
+                <input
+                  type="checkbox"
+                  checked={autoAdvance}
+                  onChange={(e) =>
+                    setAutoAdvance((e.target as HTMLInputElement).checked)}
+                />
                 {t("autoAdvance")}
               </label>
             </div>
-            <p class="shrink-0 text-[11px] text-slate-500 px-3 py-1 border-t bg-white hidden md:block">{t("hint")}</p>
+            <p class="shrink-0 text-[11px] text-slate-500 px-3 py-1 border-t bg-white hidden md:block">
+              {t("hint")}
+            </p>
           </div>
         </div>
 
@@ -1686,7 +2524,12 @@ export default function SlidesModal(
 /* ------------------------------------------------------------- small bits */
 
 function Btn(
-  { onClick, title, label, active }: { onClick: () => void; title: string; label: preact.ComponentChildren; active?: boolean },
+  { onClick, title, label, active }: {
+    onClick: () => void;
+    title: string;
+    label: preact.ComponentChildren;
+    active?: boolean;
+  },
 ) {
   return (
     <button
@@ -1694,7 +2537,9 @@ function Btn(
       onClick={onClick}
       title={title}
       class={`min-w-[30px] h-7 px-1.5 rounded border flex items-center justify-center ${
-        active ? "bg-blue-100 border-blue-300 text-blue-900" : "border-slate-200 bg-white hover:bg-slate-100 hover:border-slate-300 text-slate-700"
+        active
+          ? "bg-blue-100 border-blue-300 text-blue-900"
+          : "border-slate-200 bg-white hover:bg-slate-100 hover:border-slate-300 text-slate-700"
       }`}
     >
       {label}

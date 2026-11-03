@@ -1,0 +1,15 @@
+{
+  "key": "physikalisch-arbeiten",
+  "title": {
+    "de": "Physikalisch arbeiten",
+    "en": "Working scientifically"
+  },
+  "description": {
+    "de": "Fragen, sicher untersuchen, messen, auswerten und Modelle beurteilen. Querschnitt für die Sekundarstufe I.",
+    "en": "Questions, safe investigations, measurements, analysis and evaluating models. Cross-cutting secondary skills."
+  },
+  "icon": "📏",
+  "accent": "teal",
+  "badge": "Sek I",
+  "level": "sek1"
+}

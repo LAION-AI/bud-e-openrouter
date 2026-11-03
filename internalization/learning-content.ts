@@ -7,6 +7,10 @@
 export const learningContent: InternalizationContent = {
   en: {
     chooseModuleHint: "Choose a module.",
+    chooseStage: "Choose an age group",
+    levelClass56: "Years 5–6",
+    levelSek1: "Lower secondary",
+    levelSek2: "Upper secondary",
     openNotebook: "Try it in the notebook",
     openNotebookHint: "Opens the notebook",
     backToModules: "Back to the modules",
@@ -23,15 +27,20 @@ export const learningContent: InternalizationContent = {
     printSheet: "Worksheet",
     printHint:
       'Opens a printable version of this path with the exercises. Choose "Save as PDF" in the print dialogue to keep it as a file.',
+    copyLink: "Copy link to this learning path",
+    linkCopied: "Link copied. It opens this learning path at page 1.",
+    copyLinkManually: "Copy this link manually:",
+    linkNotFound:
+      "This learning path could not be found. You can choose one from the overview below.",
     worksheet: "Worksheet",
     sheetName: "Name:",
     sheetDate: "Date:",
     sheetSources: "Sources",
-    sheetFooter: "Computing basics - free to copy for teaching",
+    sheetFooter: "Learning paths - free to copy for teaching",
     popupBlocked:
       "The browser blocked the new window. Allow pop-ups for this page, then try again.",
     title: "Learning paths",
-    subtitle: "Understand computers - one screen at a time",
+    subtitle: "Explore your world - one screen at a time",
     close: "Close",
     chooseSubject: "Which subject would you like to explore?",
     chooseSubjectHint:
@@ -74,6 +83,10 @@ export const learningContent: InternalizationContent = {
   },
   de: {
     chooseModuleHint: "Wähle ein Modul.",
+    chooseStage: "Klassenstufe wählen",
+    levelClass56: "Klasse 5–6",
+    levelSek1: "Sekundarstufe 1",
+    levelSek2: "Sekundarstufe 2",
     openNotebook: "Probier es im Notizbuch",
     openNotebookHint: "Öffnet das Notizbuch",
     backToModules: "Zurück zu den Modulen",
@@ -90,16 +103,20 @@ export const learningContent: InternalizationContent = {
     printSheet: "Arbeitsblatt",
     printHint:
       'Öffnet eine druckbare Fassung dieses Lernpfads samt Aufgaben. Im Druckfenster "Als PDF speichern" wählen, dann hast du es als Datei.',
+    copyLink: "Link zu diesem Lernpfad kopieren",
+    linkCopied: "Link kopiert. Er öffnet diesen Lernpfad auf Seite 1.",
+    copyLinkManually: "Kopiere diesen Link von Hand:",
+    linkNotFound:
+      "Dieser Lernpfad wurde nicht gefunden. Du kannst unten einen anderen auswählen.",
     worksheet: "Arbeitsblatt",
     sheetName: "Name:",
     sheetDate: "Datum:",
     sheetSources: "Quellen",
-    sheetFooter:
-      "Informatische Grundbildung - für den Unterricht frei kopierbar",
+    sheetFooter: "Lernpfade - für den Unterricht frei kopierbar",
     popupBlocked:
       "Der Browser hat das neue Fenster blockiert. Erlaube Pop-ups für diese Seite und versuch es noch einmal.",
     title: "Lernpfade",
-    subtitle: "Computer verstehen - ein Bildschirm nach dem anderen",
+    subtitle: "Deine Welt entdecken - ein Bildschirm nach dem anderen",
     close: "Schließen",
     chooseSubject: "Welches Fach möchtest du erkunden?",
     chooseSubjectHint:

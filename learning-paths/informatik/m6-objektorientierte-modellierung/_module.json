@@ -1,0 +1,15 @@
+{
+  "accent": "violet",
+  "badge": "Sek II",
+  "description": {
+    "de": "Für die Oberstufe: Was ein Modell ist, wie Simulationen laufen – und die drei Säulen der Objektorientierung: Modellierung, Vererbung mit Polymorphie, Datenkapselung.",
+    "en": "For the upper stage: what a model is, how simulations run – and the three pillars of objects: modelling, inheritance with polymorphism, encapsulation."
+  },
+  "icon": "🏛️",
+  "key": "m6-objektorientierte-modellierung",
+  "level": "sek2",
+  "title": {
+    "de": "Modelle, Simulationen, Objekte",
+    "en": "Models, simulations, objects"
+  }
+}

@@ -1,0 +1,190 @@
+{
+  "key": "nwt-spiegel-linsen-und-sinne",
+  "title": {
+    "de": "Kannst du deinen Augen immer trauen?",
+    "en": "Can you always trust your eyes?"
+  },
+  "summary": {
+    "de": "Spiegel, Linsen und Sinnestäuschungen zeigen, wie Sehen funktioniert.",
+    "en": "Mirrors, lenses and illusions reveal how seeing works."
+  },
+  "icon": "🌈",
+  "accent": "violet",
+  "minutes": 12,
+  "screens": [
+    {
+      "key": "entdecken-1",
+      "title": {
+        "de": "Warum siehst du dich im Spiegel?",
+        "en": "Why can you see yourself in a mirror?"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Was macht der Badezimmerspiegel mit dem Licht von deinem Gesicht? Seine glatte Oberfläche wirft es geordnet zurück. Diese Reflexion lenkt Licht in deine Augen. Du blickst also nicht durch ein Fenster zu einer zweiten Person.",
+            "en": "What does a bathroom mirror do with light from your face? Its smooth surface reflects it in an orderly way, directing light into your eyes. You are not looking through a window at a second person."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Eine raue Wand reflektiert Licht ebenfalls, aber in viele Richtungen. Darum kannst du sie von verschiedenen Plätzen sehen, erkennst darin jedoch kein klares Spiegelbild. Ein Modell mit Lichtstrahlen erklärt den Unterschied. Die Oberfläche und die Richtung des ankommenden Lichts sind wichtig.",
+            "en": "A rough wall also reflects light, but in many directions. You can therefore see it from different positions without seeing a clear mirror image. A ray model explains the difference. The surface and direction of incoming light matter."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "💡",
+          "title": {
+            "de": "Dein Auftrag",
+            "en": "Your task"
+          },
+          "text": {
+            "de": "Vergleiche Spiegel und Wand: Beide werfen Licht zurück. Was macht der Spiegel anders?",
+            "en": "Compare a mirror and a wall: both reflect light. What does the mirror do differently?"
+          }
+        }
+      ]
+    },
+    {
+      "key": "entdecken-2",
+      "title": {
+        "de": "Eine Lupe lenkt Licht um",
+        "en": "A magnifier redirects light"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Warum sieht ein Blatt durch eine Lupe größer aus? Eine Linse ist ein passend geformter durchsichtiger Körper. Beim Übergang zwischen Luft und Linse kann Licht seine Richtung ändern. Das heißt Brechung.",
+            "en": "Why does a leaf look larger through a magnifier? A lens is a shaped transparent object. Light can change direction when crossing between air and the lens. This is refraction."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Eine Sammellinse kann Licht bündeln. Als Lupe kann sie kleine Dinge vergrößert erscheinen lassen. Auch dein Auge besitzt eine Linse. Sie hilft, ein Bild auf der Netzhaut zu erzeugen. Dort sitzen lichtempfindliche Zellen. Linsen nie auf die Sonne richten: Gebündeltes Licht kann Augen verletzen und Feuer auslösen.",
+            "en": "A converging lens can bring light together. Used as a magnifier, it can make small objects appear larger. Your eye also has a lens, helping form an image on the retina, which contains light-sensitive cells. Never point lenses at the Sun: concentrated light can injure eyes and start fires."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "💡",
+          "title": {
+            "de": "Dein Auftrag",
+            "en": "Your task"
+          },
+          "text": {
+            "de": "Beschreibe eine sichere Verwendung einer Lupe. Was lässt du unbedingt bleiben?",
+            "en": "Describe a safe use for a magnifying glass. What must you definitely avoid?"
+          }
+        }
+      ]
+    },
+    {
+      "key": "entdecken-3",
+      "title": {
+        "de": "Dein Gehirn deutet die Signale",
+        "en": "Your brain interprets signals"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Warum kann eine Zeichnung täuschen? Augen liefern Signale, das Gehirn deutet sie mithilfe von Erfahrungen. Linien können dadurch länger erscheinen, obwohl ein Lineal gleiche Längen zeigt. Das nennt man eine optische Täuschung.",
+            "en": "Why can a drawing fool you? Eyes provide signals, and the brain interprets them using experience. Lines can therefore appear longer even when a ruler shows equal lengths. This is an optical illusion."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Eine Täuschung bedeutet nicht, dass jemand unaufmerksam oder weniger klug ist. Messgeräte können eine Vermutung überprüfen. Gleichzeitig müssen sie richtig benutzt werden. Ein Mikroskop erweitert den Blick auf kleine Strukturen, zeigt aber auch nur einen Ausschnitt. Beobachtung, Modell und Messung ergänzen sich.",
+            "en": "An illusion does not mean someone is careless or less intelligent. Instruments can test an impression, but they must be used correctly. A microscope extends our view of small structures, yet still shows only part of the picture. Observation, models and measurements work together."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "💡",
+          "title": {
+            "de": "Dein Auftrag",
+            "en": "Your task"
+          },
+          "text": {
+            "de": "Zeichne zwei gleich lange Linien und ergänze unterschiedliche Pfeilspitzen. Frage nach der geschätzten Länge und prüfe anschließend mit einem Lineal.",
+            "en": "Draw two equally long lines and add different arrowheads. Ask someone to estimate their lengths, then check with a ruler."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "Hamburg: Naturwissenschaften/Technik 5–6, Gymnasium (2024)",
+                "en": "Hamburg: science and technology, years 5–6, Gymnasium (2024)"
+              },
+              "url": "https://www.hamburg.de/resource/blob/798520/700d66232c2d07bad97d72b6e107e083/naturwissenschaften-technik-data.pdf"
+            },
+            {
+              "label": {
+                "de": "Hamburg: Naturwissenschaften/Technik 5–6, Stadtteilschule (2024)",
+                "en": "Hamburg: science and technology, years 5–6, Stadtteilschule (2024)"
+              },
+              "url": "https://www.hamburg.de/resource/blob/798394/033190c61a9908ff10401a5b66cedae9/naturwissenschaften-technik-data.pdf"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": {
+        "de": "Die wichtigsten Wörter",
+        "en": "The key words"
+      },
+      "intro": {
+        "de": "Setze passende Wörter aus den drei Seiten ein. Nachschauen ist erlaubt.",
+        "en": "Fill the gaps using words from the three pages. You may look back."
+      },
+      "text": {
+        "de": "Ein Spiegel wirft Licht durch ___ zurück. Eine raue Wand verteilt es in viele ___. Eine ___ kann Licht umlenken. Diese Richtungsänderung heißt ___. Im Auge entsteht ein Bild auf der ___. Die Signale deutet das ___. Ein falscher Längeneindruck kann eine optische ___ sein. Zum Prüfen hilft ein ___.",
+        "en": "A mirror sends light back by ___. A rough wall spreads it in many ___. A ___ can redirect light. This change of direction is ___. Inside the eye, an image forms on the ___. The ___ interprets signals. A misleading impression of length can be an optical ___. A ___ helps check it."
+      }
+    },
+    {
+      "kind": "compare",
+      "title": {
+        "de": "Erkläre den Zusammenhang",
+        "en": "Explain the connection"
+      },
+      "intro": {
+        "de": "Antworte in zwei bis drei Sätzen. Nutze ein Beispiel aus dem Lernpfad.",
+        "en": "Answer in two or three sentences. Use an example from the learning path."
+      },
+      "text": {
+        "de": "Warum ist „Die Linie sieht länger aus“ etwas anderes als „Die Linie ist mit dem Lineal gemessen länger“? Verbinde Wahrnehmung und Messung.",
+        "en": "Why is “The line looks longer” different from “The line measures longer with a ruler”? Connect perception and measurement."
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": {
+        "de": "Deine Idee für den Alltag",
+        "en": "Your everyday idea"
+      },
+      "intro": {
+        "de": "Hier zählt deine begründete Idee, nicht eine bestimmte Musterantwort.",
+        "en": "Your reasoned idea matters, not a particular model answer."
+      },
+      "text": {
+        "de": "Wo könnten Spiegel, Linsen oder vergrößerte Bilder deinen Alltag erleichtern? Entwirf eine hilfreiche Anwendung und erkläre sie.",
+        "en": "Where could mirrors, lenses or enlarged images make daily life easier? Design a useful application and explain it."
+      }
+    }
+  ]
+}

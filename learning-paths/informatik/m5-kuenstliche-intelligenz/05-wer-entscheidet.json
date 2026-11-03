@@ -10,7 +10,7 @@
   },
   "icon": "🧑‍⚖️",
   "accent": "violet",
-  "minutes": 15,
+  "minutes": 21,
   "screens": [
     {
       "key": "monate-vorher",
@@ -44,6 +44,26 @@
           "text": {
             "de": "Eine Ethik-Kommission hat 2017 Regeln formuliert, die bis heute gelten: Sachschaden geht immer vor Personenschaden. Und Menschenleben dürfen nicht gegeneinander aufgerechnet werden - nicht nach Alter, nicht nach Anzahl. Das ist eine Entscheidung, die man auch anders hätte treffen können, und in anderen Ländern hat man das.",
             "en": "An ethics commission formulated rules in 2017 that still hold: damage to property always takes precedence over harm to people. And human lives may not be weighed against one another - not by age, not by number. That is a decision that could have been made differently, and in other countries it was."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Autonomes Fahren zeigt das Dilemma live: Das Auto muss vorab wissen, was in Sekundenbruchteilen gilt – ausweichen, bremsen, wohin? Programmierer schreiben heute, was das Auto morgen in Gefahr tut. Noch nie musste ein Mensch seine Notentscheidung im Voraus aufschreiben und unterschreiben. Genau das verlangt man jetzt von Teams – eine Zumutung, der man sich stellen muss.",
+            "en": "Autonomous driving shows the dilemma live: the car must know upfront what counts in split seconds – swerve, brake, where to? Programmers write today what the car does tomorrow in danger. Never had a human to write their emergency decision upfront and sign it. Exactly that teams are asked now – an imposition to face."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "note",
+          "icon": "🚗",
+          "title": {
+            "de": "Beifahrer-Test",
+            "en": "Passenger test"
+          },
+          "text": {
+            "de": "Fahre einmal bewusst Beifahrer und notiere jede Entscheidung des Fahrers: Warum hier bremsen, warum dort überholen? Nach zehn Minuten verstehst du: Fahren ist Entscheiden im Sekundentakt – und jede davon müsste man aufschreiben. Viel Spaß dabei.",
+            "en": "Ride shotgun consciously once noting every driver decision: why braking here, why passing there? After ten minutes you grasp: driving decides every second – each to write down. Have fun with that."
           }
         }
       ]
@@ -94,6 +114,13 @@
           "text": {
             "de": "Über gefälschte Videos wird viel geredet. Die gefährlichere Folge ist die umgekehrte: Wenn alles gefälscht sein könnte, kann sich jeder herausreden. Ein echtes Video wird zum „das war doch KI“. Was verloren geht, ist nicht die Wahrheit - es ist die Möglichkeit, etwas zu beweisen.",
             "en": "Much is said about faked videos. The more dangerous consequence is the reverse: if everything could be fake, anyone can talk their way out. A genuine video becomes \"that was AI\". What is lost is not truth - it is the possibility of proving anything."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Die offenen Fragen betreffen dich direkt: Darf dein Bewerbungsfoto von Software vorsortiert werden? Deine Hausaufgaben von ihr benotet? Deine Stimme im Chor nach Klang optimiert? Hinter jeder Frage steht dieselbe: Wo endet Werkzeug, wo beginnt Urteil? Es gibt noch keine Antworten – nur die Pflicht, zu fragen. Gut, dass du schon dabei bist.",
+            "en": "The open questions touch you directly: may your application photo get presorted by software? Your homework graded by it? Your choir voice optimised by sound? Behind every question stands the same: where ends tool, where begins judgement? Answers exist none yet – only the duty to ask. Good you already join in."
           }
         }
       ]
@@ -157,18 +184,84 @@
           "kind": "sources",
           "items": [
             {
-              "label": { "de": "Alan Turing, Computing Machinery and Intelligence (1950)", "en": "Alan Turing, Computing Machinery and Intelligence (1950)" },
+              "label": {
+                "de": "Alan Turing, Computing Machinery and Intelligence (1950)",
+                "en": "Alan Turing, Computing Machinery and Intelligence (1950)"
+              },
               "url": "https://academic.oup.com/mind/article/LIX/236/433/986238"
             },
             {
-              "label": { "de": "Teachable Machine (Google)", "en": "Teachable Machine (Google)" },
+              "label": {
+                "de": "Teachable Machine (Google)",
+                "en": "Teachable Machine (Google)"
+              },
               "url": "https://teachablemachine.withgoogle.com"
             },
             {
-              "label": { "de": "Bildungsplan Informatik Sek I, Hamburg", "en": "Hamburg curriculum for computer science, lower secondary" },
+              "label": {
+                "de": "Bildungsplan Informatik Sek I, Hamburg",
+                "en": "Hamburg curriculum for computer science, lower secondary"
+              },
               "url": "https://www.hamburg.de/resource/blob/798514/ad3c2fdfb3a32b9545a271dfceae5772/informatik-data.pdf"
             }
           ]
+        }
+      ]
+    },
+    {
+      "key": "deine-stimme-zaehlt",
+      "title": {
+        "de": "Deine Stimme zählt",
+        "en": "Your voice counts"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Über KI wird entschieden – mit oder ohne dich. Mit dir ist besser, und dafür musst du kein Experte sein.",
+            "en": "Decisions about AI get made – with or without you. With you is better, and for that you need be no expert."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Fang klein an, fang zu Hause an: Schreibt als Klasse einen Ehrenkodex für Hausaufgaben mit KI – was ist Werkzeug, was ist Schummeln? Eine Seite, unterschrieben von allen, aufgehängt neben die Tafel. Plötzlich habt ihr keine Grauzone mehr, sondern eine Regel, die ihr selbst gemacht habt.",
+            "en": "Start small, start at home: write a class honour code for homework with AI – what is a tool, what is cheating? One page, signed by all, pinned beside the board. Suddenly you have no grey zone anymore but a rule you made yourselves."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Und größer: Jugendbeiräte, Petitionen, Anhörungen – überall sitzen Menschen, die noch nie einen Jugendlichen zu KI gefragt haben. Deine Erfahrung („So nutze ich das wirklich“) ist dort die seltenste und wertvollste Auskunft. Zuschauen ist auch eine Entscheidung – nur keine gute.",
+            "en": "And bigger: youth councils, petitions, hearings – everywhere sit people who never asked a young person about AI. Your experience (“this is how I really use it”) is the rarest and most valuable testimony there. Watching is a decision too – just not a good one."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": " Fang im Kleinen an, das wirkt sofort: Schreibt als Klasse Regeln für KI bei Hausaufgaben – erlaubt: Rechtschreibung prüfen, Ideen sammeln; verboten: Text abgeben als eigenen. Eine Seite, alle unterschreiben, an die Wand. Ihr habt gerade Recht gesetzt – im Klassenzimmer, für euch, wirksam ab morgen.",
+            "en": "Start small, it works at once: write as a class rules for AI in homework – allowed: checking spelling, gathering ideas; forbidden: handing text in as your own. One page, all sign, on the wall. You just made law – in the classroom, for you, effective tomorrow."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "tip",
+          "icon": "📜",
+          "title": {
+            "de": "Erste Sitzung",
+            "en": "First session"
+          },
+          "text": {
+            "de": "Beruft eine Klassenrats-Sitzung ein, Tagesordnung: ein Punkt – KI-Regeln. Diskutiert, stimmt ab, hängt auf. Demokratie zum Anfassen, in 45 Minuten. Wer das einmal gemacht hat, versteht Parlamente besser.",
+            "en": "Convene a class-council session, agenda: one item – AI rules. Discuss, vote, pin up. Democracy to touch, in 45 minutes. Whoever did that once grasps parliaments better."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Regeln wirken übrigens erst, wenn sie hängen: Druckt euren Kodex aus – groß, unterschrieben, neben die Tafel. Jeder Verstoß wird Gesprächsstoff, jede Woche eine Revision. Was hängt, gilt. Was nur besprochen wurde, verfliegt. Papier schlägt Vorsatz – auch hier.",
+            "en": "Rules incidentally work only when hung: print your code – big, signed, beside the board. Every breach turns talking point, every week a revision. What hangs counts. What was only discussed evaporates. Paper beats intention – here too."
+          }
         }
       ]
     }

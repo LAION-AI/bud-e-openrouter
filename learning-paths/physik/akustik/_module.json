@@ -5,10 +5,11 @@
     "en": "Acoustics"
   },
   "description": {
-    "de": "Wie Schall entsteht, wie schnell er ist und was man daraus alles ablesen kann.",
-    "en": "How sound is made, how fast it travels and what can be read from that."
+    "de": "NWT-Auffrischung zu Schall, Wahrnehmung und Wellen; harmonische Schwingungen ausdrücklich als Erweiterung Gym10/STS11 gekennzeichnet.",
+    "en": "NWT refresher on sound, perception and waves; harmonic oscillations are explicitly marked as a Gymnasium10/Stadtteilschule11 extension."
   },
   "icon": "🔊",
   "accent": "violet",
-  "badge": "Jg. 7-9"
+  "badge": "Basis+Überg.",
+  "level": "sek1"
 }

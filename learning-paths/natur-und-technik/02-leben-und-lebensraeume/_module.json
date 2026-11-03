@@ -1,0 +1,15 @@
+{
+  "key": "leben-und-lebensraeume",
+  "title": {
+    "de": "Pflanzen, Tiere und Lebensräume",
+    "en": "Plants, animals and habitats"
+  },
+  "description": {
+    "de": "Vom keimenden Samen bis zum Tierwohl: Leben entdecken und schützen.",
+    "en": "From sprouting seeds to animal welfare: discover and protect life."
+  },
+  "icon": "🌱",
+  "accent": "emerald",
+  "badge": "Jg. 5",
+  "level": "klasse56"
+}

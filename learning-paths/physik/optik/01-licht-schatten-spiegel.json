@@ -1,0 +1,257 @@
+{
+  "key": "licht-schatten-spiegel",
+  "title": {
+    "de": "Warum dein Schatten mitwandert",
+    "en": "Why your shadow moves with you"
+  },
+  "summary": {
+    "de": "NWT-Auffrischung für die Sek I: Lichtwege helfen dir, Schatten, Spiegel und sichere Sichtbarkeit zu erklären.",
+    "en": "NWT refresher for secondary learning: light paths explain shadows, mirrors and safe visibility."
+  },
+  "icon": "🔦",
+  "accent": "sky",
+  "minutes": 22,
+  "screens": [
+    {
+      "key": "sehen",
+      "title": {
+        "de": "Sehen beginnt mit Licht in deinem Auge",
+        "en": "Seeing starts with light entering your eye"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Ein ausgeschaltetes Handy siehst du im hellen Zimmer, obwohl es selbst kein Licht erzeugt. Es reflektiert Licht anderer Quellen in dein Auge. Eine Lampe ist dagegen eine Lichtquelle. Ohne Licht, das dein Auge erreicht, kannst du einen Gegenstand nicht sehen. Dein Blick sendet keine Sehstrahlen aus, die Dinge abtasten.",
+            "en": "You can see a switched-off phone in a bright room although it produces no light. It reflects light from other sources into your eye. A lamp, by contrast, is a light source. You cannot see an object without light reaching your eye. Your gaze does not send out “seeing rays” to scan objects."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Für viele Alltagsfragen reicht das Strahlenmodell: Lichtwege werden als Linien mit Pfeilen gezeichnet. In einem gleichmäßigen durchsichtigen Medium verläuft Licht näherungsweise geradlinig. Das Modell erklärt Sichtlinien und Schatten, aber nicht alle Lichtphänomene; für Beugung und Interferenz brauchst du später ein Wellenmodell. Der Pfad frischt vor allem Hamburger NWT-Inhalte aus 5/6 auf und ist keine Behauptung über ein identisches Optikprogramm aller Klassen 7–10. Als sichere Lichtquelle genügt eine gewöhnliche schwache Lampe in einer Zeichnung oder Simulation. Schaue niemals direkt in die Sonne, in Laser oder in besonders helle Leuchten. Auch optische Geräte können Licht gefährlich bündeln.",
+            "en": "For many everyday questions, the ray model is sufficient: light paths are represented by lines with arrows. In a uniform transparent medium, light travels approximately along straight paths. This model explains lines of sight and shadows, but not every optical effect; diffraction and interference later require a wave model. This path mainly revisits Hamburg NWT content from years 5/6, rather than claiming every class in years 7–10 follows an identical optics programme. A normal dim lamp in a drawing or simulation is sufficient. Never look directly at the Sun, lasers or especially bright lights. Optical equipment can also concentrate light dangerously."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Welcher Lichtweg muss in einer Skizze vorhanden sein, damit du ein nicht selbst leuchtendes Buch sehen kannst? Für das Buch gehört der Pfeil zuerst von der Lampe zum Papier und dann vom Papier zum Auge. Ein einzelner Pfeil vom Auge zum Buch würde den Sehprozess falsch erklären. Bei einer selbst leuchtenden Anzeige kann dagegen ein direkter Lichtweg zum Auge genügen. Diese Unterscheidung hilft dir auch, Dunkelheit und ausgeschaltete Geräte in einer Raumszene zu analysieren.",
+            "en": "Which light path must appear in a sketch for you to see a book that does not emit its own light? For the book, the arrow goes first from lamp to paper and then from paper to eye. An arrow from eye to book would misrepresent seeing. A luminous display can instead send light directly to the eye. This distinction also helps explain darkness and switched-off equipment in a room scene."
+          }
+        }
+      ]
+    },
+    {
+      "key": "schatten",
+      "title": {
+        "de": "Ein Schatten ist fehlendes Licht einer Quelle",
+        "en": "A shadow is missing light from a source"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Ein undurchsichtiger Gegenstand blockiert bestimmte Lichtwege. Hinter ihm entsteht ein Bereich, den die Quelle nicht direkt beleuchtet. Bei einer kleinen nahezu punktförmigen Lichtquelle ist die Schattengrenze vergleichsweise scharf. Bei einer ausgedehnten Quelle erreichen manche ihrer Bereiche einen Ort noch, andere nicht. Dadurch entsteht neben dem Kernschatten ein Halbschatten.",
+            "en": "An opaque object blocks certain light paths. Behind it is a region not directly illuminated by the source. A small, nearly point-like source produces comparatively sharp shadow edges. With an extended source, some parts can illuminate a location while other parts are blocked. A partial shadow therefore appears beside the full shadow."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Die Schattengröße hängt von den Abständen zwischen Quelle, Gegenstand und Schirm ab. Rückt ein Gegenstand näher an eine kleine Lichtquelle, kann sein Schatten auf einem weiter entfernten Schirm größer werden. Diese Aussage braucht die Geometrie; „nah bedeutet groß“ ist ohne Angabe wozu unvollständig. Zwei Lampen können zwei verschieden versetzte Schatten erzeugen. Ein dunkler Schatten ist trotzdem kein Stoff, der sich selbst bewegt. Es fehlt nur die direkte Beleuchtung aus einer bestimmten Richtung. Mit Papierzeichnungen kannst du Randstrahlen von der Quelle am Gegenstand vorbei zum Schirm verlängern. Die Schnittpunkte bestimmen die Schattengrenzen, ohne dass du eine Formel auswendig lernen musst.",
+            "en": "Shadow size depends on the distances between source, object and screen. Moving an object closer to a small source can enlarge its shadow on a more distant screen. The geometry matters: “closer means bigger” is incomplete without saying closer to what. Two lamps can produce two displaced shadows. A dark shadow is still not a substance moving by itself; direct illumination from a particular direction is missing. On paper, extend boundary rays from the source past the edges of the object to the screen. Their intersections mark the shadow's edges without requiring a memorised equation."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Wie zeigen Randstrahlen den Unterschied zwischen einer kleinen Quelle und einer ausgedehnten Quelle beim Schatten? Eine größere Lichtquelle kann dieselbe Schattengröße mit weicheren Rändern erzeugen. Größe und Randschärfe sind also verschiedene Beobachtungen. Für einen Vergleich markierst du sowohl die Ausdehnung der Quelle als auch ihre Position. Eine einzige dicke Linie von der Lampenmitte reicht beim Halbschatten nicht; du brauchst Randstrahlen von verschiedenen Quellpunkten. Dadurch bekommt das Lichtmodell eine erkennbare Grenze.",
+            "en": "How do boundary rays show the difference between shadows from a small source and an extended source? A larger source can produce a similarly sized shadow with softer edges. Size and edge sharpness are different observations. Mark both source extent and position. One thick line from the lamp's centre is insufficient for partial shadow; boundary rays from different source points are needed. This shows where the point-source simplification stops being adequate."
+          }
+        }
+      ]
+    },
+    {
+      "key": "spiegel",
+      "title": {
+        "de": "Ein Winkel braucht eine Bezugsrichtung",
+        "en": "An angle needs a reference direction"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "An einem ebenen Spiegel gilt das Reflexionsgesetz: Einfallswinkel und Reflexionswinkel sind gleich groß. Beide werden zum Lot gemessen, einer gedachten Linie senkrecht auf der Oberfläche am Auftreffpunkt. Ein Strahl mit 30° zum Lot wird mit 30° zum Lot reflektiert. Die Winkel zur Spiegelfläche betragen dagegen jeweils 60°.",
+            "en": "For a plane mirror, the angle of incidence equals the angle of reflection. Both are measured from the normal: an imaginary line perpendicular to the surface at the point where the ray arrives. A ray at 30° to the normal is reflected at 30° to the normal. Its angles to the mirror surface are instead 60°."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Der reflektierte Strahl liegt zusammen mit einfallendem Strahl und Lot in einer Ebene. Eine Skizze braucht deshalb Oberfläche, Auftreffpunkt, Lot und gerichtete Strahlen. Misst du einmal zur Oberfläche und einmal zum Lot, scheint das Gesetz falsch, obwohl nur die Beschreibung gewechselt wurde. Eine raue helle Wand streut Licht in viele Richtungen. An ihren kleinen Oberflächenbereichen gilt weiterhin Reflexion, aber die Lotrichtungen unterscheiden sich. Deshalb können mehrere Menschen die Wand sehen, während ein Spiegel nur für passende Blickrichtungen Licht aus einer bestimmten Quelle liefert. Das erklärt auch, warum „reflektiert Licht“ nicht immer bedeutet „zeigt ein deutliches Spiegelbild“.",
+            "en": "The incoming ray, reflected ray and normal lie in one plane. A diagram therefore needs the surface, impact point, normal and arrows showing ray directions. Measuring one angle from the surface and the other from the normal makes the law appear wrong, although only the description changed. A rough bright wall scatters light in many directions. Reflection still occurs at its small surface regions, but their normals point in different directions. Several people can therefore see the wall, whereas a mirror reflects light from a particular source only towards suitable viewing positions. “Reflects light” does not necessarily mean “shows a clear reflected image”."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Ein Strahl trifft mit 30° zum Lot ein. Warum wäre ein Reflexionswinkel von 60° zum Lot eine falsche Schlussfolgerung? Dreht sich der Spiegel, verändert sich auch das Lot an der Oberfläche. Du darfst deshalb nicht einfach die alte Bezugsrichtung beibehalten. Zeichne den Auftreffpunkt und das neue Lot zuerst, dann den reflektierten Strahl. Das Verfahren ist genauer als die Alltagserklärung, Licht werde „irgendwie zurückgeworfen“. Es macht außerdem klar, welche Winkel du bei einem Vergleich tatsächlich misst.",
+            "en": "A ray arrives at 30° to the normal. Why would concluding that it reflects at 60° to the normal be incorrect? Rotating the mirror also rotates its normal. Do not keep the old reference direction unchanged. Draw the impact point and new normal first, then the reflected ray. This is more precise than saying light is “somehow bounced back” and makes clear which angles are actually being compared."
+          }
+        }
+      ]
+    },
+    {
+      "key": "bild",
+      "title": {
+        "de": "Das Spiegelbild steht nicht hinter Glas herum",
+        "en": "The image is not an object standing behind the mirror"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Im ebenen Spiegel wirkt dein Bild so, als läge es ebenso weit hinter dem Spiegel wie du davor stehst. Tatsächlich gelangen reflektierte Strahlen in dein Auge. Verlängerst du diese Strahlen gedanklich geradlinig nach hinten, treffen sie sich am scheinbaren Bildort. Das nennt man ein virtuelles Bild: Dort kommt das Licht nicht wirklich von einem Gegenstand hinter dem Spiegel.",
+            "en": "In a plane mirror, your image appears as far behind the mirror as you stand in front. In reality, reflected rays enter your eye. Extending them backwards in straight lines makes them meet at an apparent image position. This is a virtual image: light does not actually come from an object at that point behind the mirror."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Ein Spiegel vertauscht nicht einfach immer links und rechts. Er kehrt die Richtung senkrecht zur Spiegelfläche um; welche Seiten du beim Vergleich „links“ und „rechts“ nennst, hängt von deiner gedachten Drehung ab. Für eine einfache Erklärung genügt die Lagekonstruktion mit zwei Strahlen. Sie zeigt auch, warum du bestimmte Dinge um eine Ecke mit einem passend gerichteten Spiegel sehen kannst. Dein Blick muss den richtigen reflektierten Lichtweg erreichen. Eine bloße Zeichnung eines Auges vor dem Spiegel beweist noch keine Sichtbarkeit. Die Strahlen müssen vom Gegenstand über den Spiegel bis ins Auge passen.",
+            "en": "A mirror does not simply swap left and right in every situation. It reverses the direction perpendicular to its surface; what you call left and right during comparison depends on your imagined rotation. A simple explanation can use a two-ray construction. It also shows how a suitably positioned mirror lets you see around a corner. The correct reflected light path must reach your eye. Merely drawing an eye in front of a mirror does not establish visibility. Rays must connect the object, mirror and eye in the right order. That is the part of the model that explains the observation."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Unter welcher Bedingung siehst du einen Gegenstand über einen Spiegel, auch wenn beide im Raum vorhanden sind? Bewegst du dich vor dem Spiegel seitlich, kommen andere reflektierte Strahlen in dein Auge. Das Bild muss dafür kein wirklicher Gegenstand hinter der Wand sein. Seine scheinbare Lage ergibt sich weiterhin aus den rückwärts verlängerten Lichtwegen. Versuche deshalb, die Bildkonstruktion vom tatsächlichen Raum hinter dem Spiegel zu trennen. Eine gestrichelte Verlängerung kann diese Modellbedeutung sichtbar kennzeichnen.",
+            "en": "What condition lets you see an object via a mirror, beyond simply having both present in the room? Moving sideways before a mirror sends different reflected rays into your eye. The image need not be a real object behind the wall. Its apparent location still follows from backwards-extended light paths. Separate the image construction from the actual space behind the mirror; dashed extensions can make their model meaning visible."
+          }
+        }
+      ]
+    },
+    {
+      "key": "sichtbarkeit",
+      "title": {
+        "de": "Sichtbar sein ist eine technische Aufgabe",
+        "en": "Being visible is an engineering problem"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Ein dunkles Kleidungsstück reflektiert unter bestimmten Bedingungen weniger sichtbares Licht ins Auge als ein helles. Ein Reflektor kann Licht gezielt in Richtung seiner Quelle zurücksenden. Das ist nicht dasselbe wie selbst zu leuchten. Ohne passende Beleuchtung oder bei ungünstiger Geometrie hilft seine Wirkung weniger. Für Sichtbarkeit zählen deshalb Quelle, Umgebung, Blickrichtung und Material gemeinsam.",
+            "en": "Under particular conditions, dark clothing reflects less visible light into an observer's eye than bright clothing. A retroreflector can return light towards its source. That is not the same as producing its own light. Without suitable illumination or geometry, its benefit is reduced. Visibility therefore depends jointly on source, surroundings, viewing direction and material."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Du könntest auf Papier einen übersichtlicheren Fahrradabstellplatz entwerfen: Wo stehen Lampen? Welche dunklen Ecken bleiben? Wo blenden spiegelnde Flächen? Eine gute Idee erhöht nicht einfach überall die Helligkeit. Sie kann Licht dorthin lenken, wo es gebraucht wird, und unnötige Abstrahlung vermeiden. Ob eine Verkehrsbeleuchtung oder ein Reflektor zugelassen ist, bestimmen allerdings zusätzliche Regeln und Prüfungen. Unsere Skizze ersetzt sie nicht. Die Physik liefert dir eine überprüfbare Erklärung: Du zeichnest Lichtwege und zeigst, wer was unter welchen Bedingungen sehen kann. So wird aus „mehr Licht ist besser“ eine differenzierte, alltagsnahe Gestaltungsfrage.",
+            "en": "On paper, you could design a clearer bicycle parking area: where should lamps stand, which corners remain dark and where might shiny surfaces cause glare? A good idea does not simply make everything brighter. It directs light where it is needed and avoids unnecessary emission elsewhere. Actual approved vehicle lights or reflectors must also meet regulations and testing requirements; our sketch does not replace them. Physics provides a testable explanation: draw light paths and show who can see what under which conditions. “More light is better” then becomes a more thoughtful everyday design question."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Wie könnte deine Lichtplanung bessere Orientierung schaffen und zugleich Blendung sowie unnötige Beleuchtung vermeiden? Eine glänzende Fläche kann für eine Person stark blenden und für eine andere dunkel wirken, weil beide unterschiedliche reflektierte Lichtwege erreichen. Beleuchtungsplanung braucht daher mehr als die Materialbezeichnung. Zeichne zwei mögliche Augenpositionen in deine Schulskizze. Damit prüfst du, ob deine Lösung nur aus einer Blickrichtung angenehm ist oder auch anderen Menschen verständliche Orientierung bietet.",
+            "en": "How could your lighting design improve orientation while reducing glare and unnecessary illumination? A shiny surface may dazzle one person yet appear dark to another because their eyes receive different reflected paths. Lighting design therefore needs more than a material label. Include two possible viewing positions in your school sketch to check whether the solution works only from one direction or also helps other people navigate."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "Hamburg: NWT 5/6 (2024), Licht und Sinne",
+                "en": "Hamburg: NWT years 5/6 (2024), light and senses"
+              },
+              "url": "https://www.hamburg.de/resource/blob/798520/700d66232c2d07bad97d72b6e107e083/naturwissenschaften-technik-data.pdf"
+            },
+            {
+              "label": {
+                "de": "PhET: sichere interaktive Simulation",
+                "en": "PhET: safe interactive simulation"
+              },
+              "url": "https://phet.colorado.edu/de/simulations/geometric-optics"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": {
+        "de": "1. Lückentext",
+        "en": "1. Fill in the blanks"
+      },
+      "intro": {
+        "de": "Ergänze die fehlenden Fachwörter. Alle Begriffe findest du im Pfad.",
+        "en": "Complete the missing technical words. Every term appears in this path."
+      },
+      "text": {
+        "de": "Zum Sehen muss ___ in dein Auge gelangen. Ein selbst leuchtender Gegenstand heißt ___. Das vereinfachte Modell der Lichtwege heißt ___. Ein undurchsichtiger Körper erzeugt einen ___. Eine ausgedehnte Quelle kann einen ___ verursachen. Das Reflexionsgesetz vergleicht Einfalls- und ___. Gemessen wird jeweils zum ___. Ein scheinbarer Bildort hinter dem Spiegel gehört zu einem virtuellen ___. Ein Reflektor braucht eine passende ___.",
+        "en": "Seeing requires ___ to enter your eye. An object that emits its own light is a ___. The simplified model of light paths is the ___. An opaque object produces a ___. An extended source can produce a ___. The reflection law compares incidence and ___. Both are measured from the ___. An apparent location behind a mirror belongs to a virtual ___. A reflector needs suitable ___."
+      }
+    },
+    {
+      "kind": "compare",
+      "title": {
+        "de": "2. Erklären und vergleichen (AB II)",
+        "en": "2. Explain and compare (level II)"
+      },
+      "intro": {
+        "de": "Antworte mit drei bis vier kurzen Sätzen. Nutze das Gelesene und begründe deinen Vergleich.",
+        "en": "Answer in three or four short sentences. Use what you have read and explain your comparison."
+      },
+      "text": {
+        "de": "Vergleiche eine raue helle Wand mit einem ebenen Spiegel. Erkläre, wie beide Licht reflektieren und warum nur einer ein deutliches Bild erzeugt. Nutze Strahlen und Lot als Modell.",
+        "en": "Compare a rough bright wall with a plane mirror. Explain how both reflect light and why only one forms a clear image. Use rays and normals in your model."
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": {
+        "de": "3. Deine Idee im Alltag (AB III)",
+        "en": "3. Your idea for everyday life (level III)"
+      },
+      "intro": {
+        "de": "Entwickle eine eigene Idee in drei bis vier kurzen Sätzen. Begründe sie mit Physik; mehrere Lösungen sind möglich.",
+        "en": "Develop your own idea in three or four short sentences. Support it with physics; several answers are possible."
+      },
+      "text": {
+        "de": "Plane auf Papier eine sinnvoll beleuchtete Ecke deiner Schule. Zeichne mindestens einen Lichtweg und begründe, wie du Sichtbarkeit verbessern und Blendung begrenzen willst.",
+        "en": "On paper, plan lighting for a corner of your school. Draw at least one light path and explain how you would improve visibility while limiting glare."
+      }
+    }
+  ]
+}

@@ -5,6 +5,8 @@
 
 // The ChatIsland component is responsible for managing the chat messages and audio playback.
 import ChatTemplate from "../components/ChatTemplate.tsx";
+import ResearchDetails from "../components/ResearchDetails.tsx";
+import type { ResearchReport } from "../utils/classroomResearch.ts";
 
 // Buttons separated from ChatTemplate to avoid circular dependencies
 import { ChatSubmitButton } from "../components/ChatSubmitButton.tsx";
@@ -33,11 +35,11 @@ import { useEffect, useRef, useState } from "preact/hooks";
 // Internalization
 import {
   chatIslandContent,
-  mailSyncContent,
-  docsContent,
-  slidesContent,
   chatTemplateContent,
+  docsContent,
+  mailSyncContent,
   notebookContent,
+  slidesContent,
 } from "../internalization/content.ts";
 
 // Generated/uploaded images are offloaded to IndexedDB so that base64 payloads
@@ -51,9 +53,16 @@ import {
 // Optional sync of the whole local state through an IMAP mailbox the user owns.
 import MailSyncModal from "../components/MailSyncModal.tsx";
 import NotebookModal from "../components/NotebookModal.tsx";
+import ScratchModal from "../components/ScratchModal.tsx";
+import { handleScratchReply, preloadScratch, scratchContext, scratchProjectData, scratchRequest, scratchState } from "../utils/scratchSession.ts";
+import { inspectScratchReply, isScratchEditRequest, isScratchTurn, scratchRepairMessages } from "../utils/scratchTools.ts";
 import DocsModal from "../components/DocsModal.tsx";
 import SlidesModal from "../components/SlidesModal.tsx";
 import LearningModal from "../components/LearningModal.tsx";
+import {
+  type LearningPathTarget,
+  parseLearningPathTarget,
+} from "../utils/learningPathLinks.ts";
 import { schedulePythonBoot } from "../utils/pythonKernel.ts";
 import { learningContent } from "../internalization/learning-content.ts";
 
@@ -117,7 +126,6 @@ class FatalError extends Error {}
 // No frontend default for image generation on purpose: when no model is named
 // explicitly, the request omits the field and the API uses its own default.
 
-
 /**
  * The sentence inside a provider error.
  *
@@ -126,10 +134,15 @@ class FatalError extends Error {}
  * request requires at least $0.50 in balance". The reader gets the sentence,
  * and the remedy hint that travels with it.
  */
-function readableError(v: unknown, depth = 0): { message: string; hint?: string } {
+function readableError(
+  v: unknown,
+  depth = 0,
+): { message: string; hint?: string } {
   // Each layer costs two steps (the object, then its message string), and
   // OpenRouter's errors arrive three layers deep.
-  if (depth > 10) return { message: typeof v === "string" ? v : JSON.stringify(v ?? "") };
+  if (depth > 10) {
+    return { message: typeof v === "string" ? v : JSON.stringify(v ?? "") };
+  }
   if (typeof v === "string") {
     const t = v.trim();
     if (t.startsWith("{")) {
@@ -146,7 +159,8 @@ function readableError(v: unknown, depth = 0): { message: string; hint?: string 
     if (o.error !== undefined) return readableError(o.error, depth + 1);
     const inner = readableError(o.message ?? "", depth + 1);
     const meta = o.metadata as Record<string, unknown> | undefined;
-    const hint = inner.hint ?? (typeof meta?.remedy_hint === "string" ? meta.remedy_hint : undefined);
+    const hint = inner.hint ??
+      (typeof meta?.remedy_hint === "string" ? meta.remedy_hint : undefined);
     return { message: inner.message, ...(hint ? { hint } : {}) };
   }
   return { message: String(v ?? "") };
@@ -223,7 +237,8 @@ export default function ChatIsland({ lang }: { lang: string }) {
   // ---------- DEBUG helper (sendet Logs an den Server) ----------
   const DEBUG = true;
   const serverLog = async (stage: string, detail?: unknown) => {
-    if (!DEBUG) return;
+    // Scratch code and model proposals must not enter persistent debug logs.
+    if (!DEBUG || scratchState().ready) return;
     try {
       await fetch("/api/debug", {
         method: "POST",
@@ -317,6 +332,7 @@ export default function ChatIsland({ lang }: { lang: string }) {
     () => localStorage.getItem("bud-e-song-autoplay") !== "0",
   );
   const [showSettings, setShowSettings] = useState(false);
+  const [researchReports, setResearchReports] = useState<ResearchReport[]>([]);
 
   // ---------- Mailbox sync ----------
   const [mailAccount, setMailAccount] = useState<MailAccount>(
@@ -324,12 +340,26 @@ export default function ChatIsland({ lang }: { lang: string }) {
   );
   const [showMailSync, setShowMailSync] = useState(false);
   const [showNotebook, setShowNotebook] = useState(false);
+  const [scratchMounted, setScratchMounted] = useState(false);
+  useEffect(() => preloadScratch(() => setScratchMounted(true)), []);
+  const [showScratch, setShowScratch] = useState(false);
+  const openScratch = () => { setScratchMounted(true); setShowScratch(true); };
   // Set when a learning path sent the reader here, so the notebook can open
   // at the right example and the path can be picked up again afterwards.
   const [notebookJump, setNotebookJump] = useState<
     { example: string; cell?: number } | null
   >(null);
   const [showLearning, setShowLearning] = useState(false);
+  const [sharedPath, setSharedPath] = useState<LearningPathTarget | null>(null);
+  const [invalidSharedPath, setInvalidSharedPath] = useState(false);
+  useEffect(() => {
+    const search = globalThis.location.search;
+    if (!new URLSearchParams(search).has("lernpfad")) return;
+    const target = parseLearningPathTarget(search);
+    setSharedPath(target);
+    setInvalidSharedPath(!target);
+    setShowLearning(true);
+  }, []);
 
   // Permissions are read once per render; both default to off.
   const [notebookToolsAllowed, setNotebookToolsAllowed] = useState(false);
@@ -350,7 +380,9 @@ export default function ChatIsland({ lang }: { lang: string }) {
   const [slidesRevision, setSlidesRevision] = useState(0);
   const [deckList, setDeckList] = useState<DeckMeta[]>([]);
   const activeDeckRef = useRef<DeckMeta | null>(null);
-  const [incomingDeck, setIncomingDeck] = useState<{ name: string; bytes: Uint8Array } | null>(null);
+  const [incomingDeck, setIncomingDeck] = useState<
+    { name: string; bytes: Uint8Array } | null
+  >(null);
   const [openDeckId, setOpenDeckId] = useState<string | undefined>(undefined);
 
   // The names of the documents travel with every request, so they have to be
@@ -398,6 +430,8 @@ export default function ChatIsland({ lang }: { lang: string }) {
     // the server picks", which is what almost everyone will want.
     orLlmModel: localStorage.getItem("bud-e-or-llm-model") || "",
     orVlmModel: localStorage.getItem("bud-e-or-vlm-model") || "",
+    rqLlmModel: localStorage.getItem("bud-e-rq-llm-model") || "",
+    rqVlmModel: localStorage.getItem("bud-e-rq-vlm-model") || "",
     orAsrModel: localStorage.getItem("bud-e-or-asr-model") || "",
     orTtsModel: localStorage.getItem("bud-e-or-tts-model") || "",
     orImageModel: localStorage.getItem("bud-e-or-image-model") || "",
@@ -458,7 +492,9 @@ export default function ChatIsland({ lang }: { lang: string }) {
   const ttsPoolIdle = () =>
     ttsActiveRef.current === 0 && ttsQueueRef.current.length === 0;
   const pumpTtsQueue = () => {
-    while (ttsActiveRef.current < TTS_POOL_LIMIT && ttsQueueRef.current.length) {
+    while (
+      ttsActiveRef.current < TTS_POOL_LIMIT && ttsQueueRef.current.length
+    ) {
       const job = ttsQueueRef.current.shift()!;
       ttsActiveRef.current++;
       job()
@@ -620,6 +656,8 @@ export default function ChatIsland({ lang }: { lang: string }) {
         "",
       orLlmModel: localStorage.getItem("bud-e-or-llm-model") || "",
       orVlmModel: localStorage.getItem("bud-e-or-vlm-model") || "",
+      rqLlmModel: localStorage.getItem("bud-e-rq-llm-model") || "",
+      rqVlmModel: localStorage.getItem("bud-e-rq-vlm-model") || "",
       orAsrModel: localStorage.getItem("bud-e-or-asr-model") || "",
       orTtsModel: localStorage.getItem("bud-e-or-tts-model") || "",
       orImageModel: localStorage.getItem("bud-e-or-image-model") || "",
@@ -649,6 +687,8 @@ export default function ChatIsland({ lang }: { lang: string }) {
         "",
       orLlmModel: localStorage.getItem("bud-e-or-llm-model") || "",
       orVlmModel: localStorage.getItem("bud-e-or-vlm-model") || "",
+      rqLlmModel: localStorage.getItem("bud-e-rq-llm-model") || "",
+      rqVlmModel: localStorage.getItem("bud-e-rq-vlm-model") || "",
       orAsrModel: localStorage.getItem("bud-e-or-asr-model") || "",
       orTtsModel: localStorage.getItem("bud-e-or-tts-model") || "",
       orImageModel: localStorage.getItem("bud-e-or-image-model") || "",
@@ -660,7 +700,10 @@ export default function ChatIsland({ lang }: { lang: string }) {
 
   const handleSaveSettings = (newSettings: typeof settings) => {
     setSettings(newSettings);
-    localStorage.setItem("bud-e-universal-api-key", newSettings.universalApiKey);
+    localStorage.setItem(
+      "bud-e-universal-api-key",
+      newSettings.universalApiKey,
+    );
     localStorage.setItem("bud-e-api-url", newSettings.apiUrl);
     localStorage.setItem("bud-e-api-key", newSettings.apiKey);
     localStorage.setItem("bud-e-model", newSettings.apiModel);
@@ -680,11 +723,19 @@ export default function ChatIsland({ lang }: { lang: string }) {
     );
     localStorage.setItem("bud-e-or-llm-model", newSettings.orLlmModel ?? "");
     localStorage.setItem("bud-e-or-vlm-model", newSettings.orVlmModel ?? "");
+    localStorage.setItem("bud-e-rq-llm-model", newSettings.rqLlmModel ?? "");
+    localStorage.setItem("bud-e-rq-vlm-model", newSettings.rqVlmModel ?? "");
     localStorage.setItem("bud-e-or-asr-model", newSettings.orAsrModel ?? "");
     localStorage.setItem("bud-e-or-tts-model", newSettings.orTtsModel ?? "");
-    localStorage.setItem("bud-e-or-image-model", newSettings.orImageModel ?? "");
+    localStorage.setItem(
+      "bud-e-or-image-model",
+      newSettings.orImageModel ?? "",
+    );
     localStorage.setItem("bud-e-tts-prompt", newSettings.ttsPrompt ?? "");
-    localStorage.setItem("bud-e-or-music-model", newSettings.orMusicModel ?? "");
+    localStorage.setItem(
+      "bud-e-or-music-model",
+      newSettings.orMusicModel ?? "",
+    );
     setShowSettings(false);
     setMailToolsAllowed(isMailAllowed());
   };
@@ -855,7 +906,9 @@ export default function ChatIsland({ lang }: { lang: string }) {
     const print = fingerprint(messages);
     const previous = lastSeenRef.current;
     lastSeenRef.current = { suffix: currentChatSuffix, print };
-    if (previous.suffix !== currentChatSuffix || previous.print === print) return;
+    if (previous.suffix !== currentChatSuffix || previous.print === print) {
+      return;
+    }
     markDirty();
 
     // Restarts on every change, so the upload only happens once the user has
@@ -863,7 +916,10 @@ export default function ChatIsland({ lang }: { lang: string }) {
     const sinceLast = Date.now() - lastAutoUploadRef.current;
     const wait = lastAutoUploadRef.current === 0
       ? AUTO_UPLOAD_DEBOUNCE_MS
-      : Math.max(AUTO_UPLOAD_DEBOUNCE_MS, AUTO_UPLOAD_MIN_INTERVAL_MS - sinceLast);
+      : Math.max(
+        AUTO_UPLOAD_DEBOUNCE_MS,
+        AUTO_UPLOAD_MIN_INTERVAL_MS - sinceLast,
+      );
     const timer = window.setTimeout(() => void runAutoUpload(), wait);
     return () => clearTimeout(timer);
   }, [messages, currentChatSuffix, mailAccount]);
@@ -894,7 +950,9 @@ export default function ChatIsland({ lang }: { lang: string }) {
         // Multimodal content (e.g. generated images) must stay an object array –
         // joining it would turn the images into "[object Object]".
         const isMultimodal = Array.isArray(lastMessageContent) &&
-          lastMessageContent.some((p: any) => p !== null && typeof p === "object");
+          lastMessageContent.some((p: any) =>
+            p !== null && typeof p === "object"
+          );
 
         if (typeof lastMessageContent === "string") {
           lastMessageFromBuddy = lastMessageContent;
@@ -944,9 +1002,7 @@ export default function ChatIsland({ lang }: { lang: string }) {
     if (!firstLoad) {
       safePersist(messages, currentChatSuffix);
       setLocalStorageKeys(
-        Object.keys(localStorage).filter((key) =>
-          key.startsWith("bude-chat-")
-        ),
+        Object.keys(localStorage).filter((key) => key.startsWith("bude-chat-")),
       );
     }
     if (firstLoad) setFirstLoad(false);
@@ -976,7 +1032,7 @@ export default function ChatIsland({ lang }: { lang: string }) {
 
       const isLatestGroup =
         Math.max(...Object.keys(audioFileDict).map(Number)) <=
-        Number(groupIndex);
+          Number(groupIndex);
 
       if (
         isLatestGroup &&
@@ -1161,7 +1217,8 @@ export default function ChatIsland({ lang }: { lang: string }) {
       if (attempts >= MAX_PLAY_ATTEMPTS) {
         // Give up on this clip and let the chain continue with the next one.
         try {
-          (audio as HTMLAudioElement & { __skipped?: boolean }).__skipped = true;
+          (audio as HTMLAudioElement & { __skipped?: boolean }).__skipped =
+            true;
         } catch { /* stub objects may be frozen */ }
         markItemPlayed(groupIndex, audioIndex);
       }
@@ -1193,7 +1250,7 @@ export default function ChatIsland({ lang }: { lang: string }) {
     const group = audioFileDictRef.current[groupIndex];
     if (!group) return;
     const nextIdx = findNextUnplayedAudio(group);
-    const first = (nextIdx !== null ? group[nextIdx]?.audio : group[0]?.audio);
+    const first = nextIdx !== null ? group[nextIdx]?.audio : group[0]?.audio;
     if (!first) return;
 
     first.play().catch((err) =>
@@ -1211,7 +1268,9 @@ export default function ChatIsland({ lang }: { lang: string }) {
     idx: number,
   ): HTMLAudioElement | undefined => {
     for (let i = idx - 1; i >= 0; i--) {
-      const el = group[i]?.audio as (HTMLAudioElement & { __skipped?: boolean }) | undefined;
+      const el = group[i]?.audio as
+        | (HTMLAudioElement & { __skipped?: boolean })
+        | undefined;
       if (el && !el.__skipped) return el;
     }
     return undefined;
@@ -1247,7 +1306,7 @@ export default function ChatIsland({ lang }: { lang: string }) {
         // Ignore if another regenerate started
         if (session !== playSessionRef.current) return;
         currEl.play().catch((err) =>
-          console.warn("Audio play() rejected in chain:", err),
+          console.warn("Audio play() rejected in chain:", err)
         );
       };
       prevEl.addEventListener("ended", playNextOnce, { once: true });
@@ -1255,7 +1314,7 @@ export default function ChatIsland({ lang }: { lang: string }) {
       // Manual fast-path: if prev already finished when current arrives
       if ((prevEl as any).ended && !stopListRef.current.includes(groupIndex)) {
         currEl.play().catch((err) =>
-          console.warn("Audio play() rejected (prev already ended):", err),
+          console.warn("Audio play() rejected (prev already ended):", err)
         );
       }
     }
@@ -1318,21 +1377,20 @@ export default function ChatIsland({ lang }: { lang: string }) {
     const rxWiki =
       /#\s*wikipedia(?:_(de|en))?\s*:\s*([^:\n]+?)(?:\s*:\s*(\d+))?(?=$|\s)/i;
     const rxPapers = /#\s*papers\s*:\s*([^:\n]+?)(?:\s*:\s*(\d+))?(?=$|\s)/i;
-    const rxBP =
-      /#\s*bildungsplan\s*:\s*([^:\n]+?)(?:\s*:\s*(\d+))?(?=$|\s)/i;
+    const rxBP = /#\s*bildungsplan\s*:\s*([^:\n]+?)(?:\s*:\s*(\d+))?(?=$|\s)/i;
     // #imagegen:model:prompt or #imagegen:prompt (model is optional and
     // recognised because model names never contain spaces)
-    const rxImageGen = /#\s*imagegen\s*:\s*(?:([a-zA-Z0-9_.-]+)\s*:\s*)?(.+?)(?=$|\n|#)/i;
+    const rxImageGen =
+      /#\s*imagegen\s*:\s*(?:([a-zA-Z0-9_.-]+)\s*:\s*)?(.+?)(?=$|\n|#)/i;
 
     const triggers: AutoTrigger[] = [];
 
     const mW = t.match(rxWiki);
     if (mW) {
       const langSuffix = (mW[1] || "").toLowerCase();
-      let collection =
-        lang === "en"
-          ? "English-ConcatX-Abstract"
-          : "German-ConcatX-Abstract";
+      let collection = lang === "en"
+        ? "English-ConcatX-Abstract"
+        : "German-ConcatX-Abstract";
       if (langSuffix === "de") collection = "German-ConcatX-Abstract";
       if (langSuffix === "en") collection = "English-ConcatX-Abstract";
       const q = (mW[2] || "").trim();
@@ -1489,7 +1547,8 @@ export default function ChatIsland({ lang }: { lang: string }) {
     // Correcting starts with the uploaded pages alone - the marking scheme is
     // asked for afterwards - so an empty value is legitimate here.
     if (key === "grade") {
-      return typeof v === "string" || (!!v && typeof v === "object") || v === true;
+      return typeof v === "string" || (!!v && typeof v === "object") ||
+        v === true;
     }
 
     // A song brief is a single block of prose plus lyrics - long, with line
@@ -1644,7 +1703,10 @@ export default function ChatIsland({ lang }: { lang: string }) {
         const criteria = typeof val === "string"
           ? val
           : String((val as any)?.criteria ?? "");
-        triggers.push({ kind: "grade", criteria: criteria.trim() || undefined });
+        triggers.push({
+          kind: "grade",
+          criteria: criteria.trim() || undefined,
+        });
         continue;
       }
 
@@ -1656,7 +1718,9 @@ export default function ChatIsland({ lang }: { lang: string }) {
         const model = typeof val === "object" && val
           ? String((val as any).model ?? "") || undefined
           : undefined;
-        if (prompt.trim()) triggers.push({ kind: "song", prompt: prompt.trim(), model });
+        if (prompt.trim()) {
+          triggers.push({ kind: "song", prompt: prompt.trim(), model });
+        }
         continue;
       }
 
@@ -1786,10 +1850,9 @@ export default function ChatIsland({ lang }: { lang: string }) {
         if (!q) continue;
 
         if (k === "wikipedia" || k === "wikipedia_de" || k === "wikipedia_en") {
-          let collection =
-            lang === "en"
-              ? "English-ConcatX-Abstract"
-              : "German-ConcatX-Abstract";
+          let collection = lang === "en"
+            ? "English-ConcatX-Abstract"
+            : "German-ConcatX-Abstract";
           if (k.endsWith("_de")) collection = "German-ConcatX-Abstract";
           if (k.endsWith("_en")) collection = "English-ConcatX-Abstract";
           triggers.push({
@@ -1817,14 +1880,18 @@ export default function ChatIsland({ lang }: { lang: string }) {
       // summarise afterwards - but it still needs a label here.
       if (t.kind === "song") return `${t.kind}: "${t.prompt}"`;
       if (t.kind === "grade") return "grade";
-      if (t.kind === "notebook" || t.kind === "mail" || t.kind === "docs" || t.kind === "slides") return t.kind;
+      if (
+        t.kind === "notebook" || t.kind === "mail" || t.kind === "docs" ||
+        t.kind === "slides"
+      ) return t.kind;
       return `${t.kind}: "${t.q}"`;
     }).join(", ");
 
     // 1) Optional per-language localStorage override (no UI needed):
     //    Put "{topics}" where you want the joined topics.
-    const overrideKey =
-      lang === "de" ? "bud-e-summary-template-de" : "bud-e-summary-template-en";
+    const overrideKey = lang === "de"
+      ? "bud-e-summary-template-de"
+      : "bud-e-summary-template-en";
     const override = (typeof localStorage !== "undefined")
       ? localStorage.getItem(overrideKey)
       : null;
@@ -1958,7 +2025,10 @@ export default function ChatIsland({ lang }: { lang: string }) {
 
     // Drop the old audio for this group - both in state and in the ref the
     // async handlers read from.
-    audioFileDictRef.current = { ...audioFileDictRef.current, [groupIndex]: {} };
+    audioFileDictRef.current = {
+      ...audioFileDictRef.current,
+      [groupIndex]: {},
+    };
     setAudioFileDict((prev) => {
       const next = { ...prev };
       next[groupIndex] = {};
@@ -2067,7 +2137,9 @@ export default function ChatIsland({ lang }: { lang: string }) {
     // Rewind and re-arm. The clips were played before, so their one-shot
     // "ended" handlers are spent and have to be attached again.
     order.forEach((idx, position) => {
-      const el = group[idx].audio as HTMLAudioElement & { __chain?: () => void };
+      const el = group[idx].audio as HTMLAudioElement & {
+        __chain?: () => void;
+      };
       try {
         el.currentTime = 0;
       } catch {
@@ -2357,7 +2429,11 @@ export default function ChatIsland({ lang }: { lang: string }) {
     }
   };
 
-  const fetchWikipedia = async (text: string, collection: string, n: number) => {
+  const fetchWikipedia = async (
+    text: string,
+    collection: string,
+    n: number,
+  ) => {
     try {
       // DEBUG req
       await serverLog("api.fetch.wikipedia.req", { text, collection, n });
@@ -2369,6 +2445,7 @@ export default function ChatIsland({ lang }: { lang: string }) {
           text,
           collection,
           n,
+          transparent: true,
           universalApiKey: settings.universalApiKey,
         }),
       });
@@ -2379,15 +2456,20 @@ export default function ChatIsland({ lang }: { lang: string }) {
       });
 
       if (!response.ok) {
-        console.error(
-          "wikipedia API HTTP",
-          response.status,
-          await response.text().catch(() => ""),
-        );
+        const failed = await response.json().catch(() => ({}));
+        if (failed.research) {
+          setResearchReports((old) => [...old, failed.research].slice(-10));
+        }
         return [] as WikipediaResult[];
       }
 
-      const data = (await response.json()) as WikipediaResult[] | null;
+      const payload = await response.json();
+      if (payload?.research) {
+        setResearchReports((old) => [...old, payload.research].slice(-10));
+      }
+      const data = (Array.isArray(payload) ? payload : payload?.results) as
+        | WikipediaResult[]
+        | null;
 
       await serverLog("api.fetch.wikipedia.parsed", {
         count: data?.length ?? 0,
@@ -2412,6 +2494,7 @@ export default function ChatIsland({ lang }: { lang: string }) {
         body: JSON.stringify({
           query: query_,
           limit,
+          transparent: true,
           universalApiKey: settings.universalApiKey,
         }),
       });
@@ -2422,17 +2505,20 @@ export default function ChatIsland({ lang }: { lang: string }) {
       });
 
       if (!response.ok) {
-        console.error(
-          "papers API HTTP",
-          response.status,
-          await response.text().catch(() => ""),
-        );
+        const failed = await response.json().catch(() => ({}));
+        if (failed.research) {
+          setResearchReports((old) => [...old, failed.research].slice(-10));
+        }
         return {
           payload: { items: [] as PapersItem[] },
         } as PapersResponse;
       }
 
       const data = (await response.json()) as PapersResponse | null;
+      const report =
+        (data as (PapersResponse & { research?: ResearchReport }) | null)
+          ?.research;
+      if (report) setResearchReports((old) => [...old, report].slice(-10));
 
       await serverLog("api.fetch.papers.parsed", {
         count: data?.payload?.items?.length ?? 0,
@@ -2598,7 +2684,9 @@ export default function ChatIsland({ lang }: { lang: string }) {
     const c = chatIslandContent[lang];
     if (result.error) {
       return {
-        text: `**${c.imageGenError ?? "Image generation error"}**: ${result.error}`,
+        text: `**${
+          c.imageGenError ?? "Image generation error"
+        }**: ${result.error}`,
         images: [],
       };
     }
@@ -2612,9 +2700,11 @@ export default function ChatIsland({ lang }: { lang: string }) {
     const modelLine = result.model
       ? `\n**${c.imageGenModel ?? "Model"}**: ${result.model}`
       : "";
-    const text = `**${c.imageGenGenerated ?? "Generated image"}** (${
-      result.images.length
-    })\n**${c.imageGenPrompt ?? "Prompt"}**: ${prompt}${modelLine}`;
+    const text = `**${
+      c.imageGenGenerated ?? "Generated image"
+    }** (${result.images.length})\n**${
+      c.imageGenPrompt ?? "Prompt"
+    }**: ${prompt}${modelLine}`;
     return { text, images: result.images };
   };
 
@@ -2637,8 +2727,12 @@ export default function ChatIsland({ lang }: { lang: string }) {
       mail: mailOn,
       // Lieder gibt es nur ueber OpenRouter; ohne solchen Schluessel bekommt
       // das Modell die Anleitung gar nicht erst zu sehen.
-      music: /^sk-or-v1-[A-Za-z0-9]/.test((settings.universalApiKey ?? "").trim()),
-      grading: /^sk-or-v1-[A-Za-z0-9]/.test((settings.universalApiKey ?? "").trim()),
+      music: /^sk-or-v1-[A-Za-z0-9]/.test(
+        (settings.universalApiKey ?? "").trim(),
+      ),
+      grading: /^sk-or-v1-[A-Za-z0-9]/.test(
+        (settings.universalApiKey ?? "").trim(),
+      ),
       docCount: images.length + pdfs.length,
       notebookName: notebookToolsAllowed && nb ? nb.name : "",
       notebookCells: notebookToolsAllowed && nb ? nb.cells.length : 0,
@@ -2660,7 +2754,10 @@ export default function ChatIsland({ lang }: { lang: string }) {
    * model sees the result of its own action and can react to it.
    */
   const runToolTrigger = async (
-    trig: Extract<AutoTrigger, { kind: "notebook" | "mail" | "docs" | "slides" }>,
+    trig: Extract<
+      AutoTrigger,
+      { kind: "notebook" | "mail" | "docs" | "slides" }
+    >,
     accumulated: Message[],
   ): Promise<{ accumulated: Message[]; success: boolean }> => {
     const say = (text: string, extra?: Record<string, unknown>[]) => {
@@ -2861,9 +2958,7 @@ ${result.snapshot}`
             trig.imageId ? ` Bild-ID "${trig.imageId}" existiert nicht.` : ""
           } Bitte lade ein Bild hoch oder generiere zuerst eines.`
           : `No image found to edit.${
-            trig.imageId
-              ? ` Image ID "${trig.imageId}" does not exist.`
-              : ""
+            trig.imageId ? ` Image ID "${trig.imageId}" does not exist.` : ""
           } Please upload an image or generate one first.`;
         const next = [
           ...accumulated,
@@ -2952,7 +3047,10 @@ ${result.snapshot}`
     trig: Extract<AutoTrigger, { kind: "song" }>,
     accumulated: Message[],
   ): Promise<{ accumulated: Message[]; success: boolean }> => {
-    await serverLog("song.call", { prompt: trig.prompt.slice(0, 120), model: trig.model });
+    await serverLog("song.call", {
+      prompt: trig.prompt.slice(0, 120),
+      model: trig.model,
+    });
 
     const songId = `song_${String(Date.now()).slice(-8)}`;
     const draftIndex = accumulated.length;
@@ -3039,7 +3137,9 @@ ${result.snapshot}`
             patch({ lyrics: data.lyrics });
           } else if (event === "audio") {
             patch({
-              audio_url: { url: `data:${data.mime ?? "audio/mpeg"};base64,${data.audio}` },
+              audio_url: {
+                url: `data:${data.mime ?? "audio/mpeg"};base64,${data.audio}`,
+              },
               lyrics: data.lyrics ?? undefined,
               pending: false,
               model: data.model,
@@ -3099,7 +3199,12 @@ ${result.snapshot}`
       for (const img of images) {
         const url = img?.image_url?.url;
         if (typeof url === "string" && url) {
-          docs.push({ index: ++i, name: img.name ?? `bild_${i}.png`, kind: "image", content: url });
+          docs.push({
+            index: ++i,
+            name: img.name ?? `bild_${i}.png`,
+            kind: "image",
+            content: url,
+          });
         }
       }
       for (const pdf of pdfs) {
@@ -3107,7 +3212,9 @@ ${result.snapshot}`
           index: ++i,
           name: pdf.name ?? `datei_${i}.pdf`,
           kind: "pdf",
-          content: `data:${pdf.mime_type || "application/pdf"};base64,${pdf.data}`,
+          content: `data:${
+            pdf.mime_type || "application/pdf"
+          };base64,${pdf.data}`,
         });
       }
       if (docs.length === 0) {
@@ -3214,7 +3321,8 @@ ${result.snapshot}`
         type: "file_download",
         id: `dl_${Date.now()}`,
         name: done.filename,
-        mime: "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        mime:
+          "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
         data: done.docx,
       };
 
@@ -3318,7 +3426,21 @@ ${result.snapshot}`
     setResetTranscript((n) => n + 1);
 
     // Build outbound user content
-    const userText = transcript && transcript.trim() !== "" ? transcript : query;
+    const userText = transcript && transcript.trim() !== ""
+      ? transcript
+      : query;
+    let scratchSnapshot = "";
+    const scratchHistory = prevMessages || messages;
+    const scratchRequested = isScratchTurn(userText, scratchHistory);
+    const scratchDirectEdit = isScratchEditRequest(userText, scratchHistory);
+    try {
+      scratchSnapshot = await scratchContext(userText, scratchHistory);
+    } catch (cause) {
+      setUploadProblems([cause instanceof Error ? cause.message : "Scratch konnte nicht gelesen werden."]);
+      setIsStreamComplete(true);
+      setThinkingSince(null);
+      return;
+    }
     let previousMessages = prevMessages || messages;
 
     previousMessages = previousMessages.map((m) => {
@@ -3346,8 +3468,12 @@ ${result.snapshot}`
       type: "text",
       text: imageHints ? `${userText}\n\n${imageHints}` : userText,
     }];
-    if (images.length > 0) for (const img of images) contentPayload.push(img);
-    if (pdfs.length > 0) for (const pdf of pdfs) contentPayload.push(pdf);
+    if (images.length > 0) {
+      for (const img of images) {
+        contentPayload.push(img);
+      }
+    }
+    if (pdfs.length > 0) { for (const pdf of pdfs) contentPayload.push(pdf); }
     // Documents that were unpacked in the browser travel as text parts - no
     // chat API takes a .docx, so this is the only way they arrive at all.
     for (const doc of docTexts) {
@@ -3399,8 +3525,7 @@ ${result.snapshot}`
             collection: trig.collection,
           });
           const n = trig.n ?? 5;
-          const collection =
-            trig.collection ??
+          const collection = trig.collection ??
             (lang === "en"
               ? "English-ConcatX-Abstract"
               : "German-ConcatX-Abstract");
@@ -3416,7 +3541,7 @@ ${result.snapshot}`
               chatIslandContent[lang].wikipediaContent
             }**: ${r.content}\n**${
               chatIslandContent[lang].wikipediaScore
-            }**: ${r.score}`,
+            }**: ${r.score}`
           ).join("\n\n");
           serverLog("wikipedia.result", {
             length: out.length,
@@ -3453,11 +3578,7 @@ ${result.snapshot}`
             const doiLabel = "DOI";
             return `**${chatIslandContent[lang].result} ${i + 1} ${
               chatIslandContent[lang].of
-            } ${items.length}**\n**${T}**: ${it.title}\n**${A}**: ${
-              authors
-            }\n**${S}**: ${subjs}\n**${doiLabel}**: ${it.doi}\n**${AB}**: ${
-              it.abstract
-            }`;
+            } ${items.length}**\n**${T}**: ${it.title}\n**${A}**: ${authors}\n**${S}**: ${subjs}\n**${doiLabel}**: ${it.doi}\n**${AB}**: ${it.abstract}`;
           }).join("\n\n");
           serverLog("papers.result", {
             length: out.length,
@@ -3487,7 +3608,7 @@ ${result.snapshot}`
           const out = results.map((r, i) =>
             `**${chatIslandContent[lang].result} ${i + 1} ${
               chatIslandContent[lang].of
-            } ${results.length}**\n${r.text}\n\n**Score**: ${r.score}`,
+            } ${results.length}**\n${r.text}\n\n**Score**: ${r.score}`
           ).join("\n\n");
           serverLog("bildungsplan.result", {
             length: out.length,
@@ -3517,15 +3638,19 @@ ${result.snapshot}`
           // With an editor open to it, a picture is usually a step, not the
           // end: "make an image and put it on a slide" needs a second turn
           // in which the assistant sees the image's id and places it.
-          if (out.success && (slidesToolsAllowed || docsToolsAllowed)) imageFollowUp = true;
+          if (out.success && (slidesToolsAllowed || docsToolsAllowed)) {
+            imageFollowUp = true;
+          }
         } else if (trig.kind === "grade") {
           const out = await runGradeTrigger(trig, accumulated);
           accumulated = out.accumulated;
         } else if (trig.kind === "song") {
           const out = await runSongTrigger(trig, accumulated);
           accumulated = out.accumulated;
-        } else if (trig.kind === "notebook" || trig.kind === "mail" ||
-          trig.kind === "docs" || trig.kind === "slides") {
+        } else if (
+          trig.kind === "notebook" || trig.kind === "mail" ||
+          trig.kind === "docs" || trig.kind === "slides"
+        ) {
           // The assistant should see what came back, so these do continue the
           // conversation - but through their own follow-up, not the search
           // summary.
@@ -3535,7 +3660,7 @@ ${result.snapshot}`
         }
       }
       setIsStreamComplete(true);
-    setThinkingSince(null);
+      setThinkingSince(null);
       serverLog("triggers.summary.maybe", {
         anyResults,
         successCount: successTrigs.length,
@@ -3568,8 +3693,7 @@ ${result.snapshot}`
             collection: trig.collection,
           });
           const n = trig.n ?? 5;
-          const collection =
-            trig.collection ??
+          const collection = trig.collection ??
             (lang === "en"
               ? "English-ConcatX-Abstract"
               : "German-ConcatX-Abstract");
@@ -3585,7 +3709,7 @@ ${result.snapshot}`
               chatIslandContent[lang].wikipediaContent
             }**: ${r.content}\n**${
               chatIslandContent[lang].wikipediaScore
-            }**: ${r.score}`,
+            }**: ${r.score}`
           ).join("\n\n");
           serverLog("wikipedia.result", {
             length: out.length,
@@ -3616,11 +3740,7 @@ ${result.snapshot}`
             const doiLabel = "DOI";
             return `**${chatIslandContent[lang].result} ${i + 1} ${
               chatIslandContent[lang].of
-            } ${items.length}**\n**${T}**: ${it.title}\n**${A}**: ${
-              authors
-            }\n**${S}**: ${subjs}\n**${doiLabel}**: ${it.doi}\n**${AB}**: ${
-              it.abstract
-            }`;
+            } ${items.length}**\n**${T}**: ${it.title}\n**${A}**: ${authors}\n**${S}**: ${subjs}\n**${doiLabel}**: ${it.doi}\n**${AB}**: ${it.abstract}`;
           }).join("\n\n");
           serverLog("papers.result", {
             length: out.length,
@@ -3644,7 +3764,7 @@ ${result.snapshot}`
           const out = results.map((r, i) =>
             `**${chatIslandContent[lang].result} ${i + 1} ${
               chatIslandContent[lang].of
-            } ${results.length}**\n${r.text}\n\n**Score**: ${r.score}`,
+            } ${results.length}**\n${r.text}\n\n**Score**: ${r.score}`
           ).join("\n\n");
           serverLog("bildungsplan.result", {
             length: out.length,
@@ -3669,8 +3789,10 @@ ${result.snapshot}`
         } else if (trig.kind === "song") {
           const out = await runSongTrigger(trig, accumulated);
           accumulated = out.accumulated;
-        } else if (trig.kind === "notebook" || trig.kind === "mail" ||
-          trig.kind === "docs" || trig.kind === "slides") {
+        } else if (
+          trig.kind === "notebook" || trig.kind === "mail" ||
+          trig.kind === "docs" || trig.kind === "slides"
+        ) {
           // This path has no follow-up round; the result is shown as it is.
           const out = await runToolTrigger(trig, accumulated);
           accumulated = out.accumulated;
@@ -3679,7 +3801,7 @@ ${result.snapshot}`
       setMessages(accumulated);
       safePersist(accumulated, currentChatSuffix);
       setIsStreamComplete(true);
-    setThinkingSince(null);
+      setThinkingSince(null);
       return;
     }
 
@@ -3720,12 +3842,11 @@ ${result.snapshot}`
         }
         const idx = assistantDraftIndex;
         const last = prev[idx];
-        const prevText =
-          typeof last.content === "string"
-            ? last.content
-            : Array.isArray(last.content)
-            ? (last.content as string[]).join("")
-            : "";
+        const prevText = typeof last.content === "string"
+          ? last.content
+          : Array.isArray(last.content)
+          ? (last.content as string[]).join("")
+          : "";
         const updated = { ...last, content: prevText + txt };
         const next = [...prev];
         next[idx] = updated;
@@ -3735,7 +3856,10 @@ ${result.snapshot}`
     };
 
     const keyOf = (t: AutoTrigger) => {
-      if (t.kind === "notebook" || t.kind === "mail" || t.kind === "docs" || t.kind === "slides") {
+      if (
+        t.kind === "notebook" || t.kind === "mail" || t.kind === "docs" ||
+        t.kind === "slides"
+      ) {
         return `${t.kind}|${JSON.stringify(t.payload)}`;
       }
       if (t.kind === "imagegen") {
@@ -3816,8 +3940,7 @@ ${result.snapshot}`
             collection: trig.collection,
           });
           const n = trig.n ?? 5;
-          const collection =
-            trig.collection ??
+          const collection = trig.collection ??
             (lang === "en"
               ? "English-ConcatX-Abstract"
               : "German-ConcatX-Abstract");
@@ -3833,7 +3956,7 @@ ${result.snapshot}`
               chatIslandContent[lang].wikipediaContent
             }**: ${r.content}\n**${
               chatIslandContent[lang].wikipediaScore
-            }**: ${r.score}`,
+            }**: ${r.score}`
           ).join("\n\n");
           await serverLog("wikipedia.result", {
             length: out.length,
@@ -3870,11 +3993,7 @@ ${result.snapshot}`
             const doiLabel = "DOI";
             return `**${chatIslandContent[lang].result} ${i + 1} ${
               chatIslandContent[lang].of
-            } ${items.length}**\n**${T}**: ${it.title}\n**${A}**: ${
-              authors
-            }\n**${S}**: ${subjs}\n**${doiLabel}**: ${it.doi}\n**${AB}**: ${
-              it.abstract
-            }`;
+            } ${items.length}**\n**${T}**: ${it.title}\n**${A}**: ${authors}\n**${S}**: ${subjs}\n**${doiLabel}**: ${it.doi}\n**${AB}**: ${it.abstract}`;
           }).join("\n\n");
           await serverLog("papers.result", {
             length: out.length,
@@ -3907,7 +4026,7 @@ ${result.snapshot}`
           const out = results.map((r, i) =>
             `**${chatIslandContent[lang].result} ${i + 1} ${
               chatIslandContent[lang].of
-            } ${results.length}**\n${r.text}\n\n**Score**: ${r.score}`,
+            } ${results.length}**\n${r.text}\n\n**Score**: ${r.score}`
           ).join("\n\n");
           await serverLog("bildungsplan.result", {
             length: out.length,
@@ -3936,31 +4055,46 @@ ${result.snapshot}`
           // gets a turn in which it sees the image's id and can place it.
           const out = await runImageTrigger(trig, accumulated);
           accumulated = out.accumulated;
-          if (out.success && (slidesToolsAllowed || docsToolsAllowed)) imageFollowUp = true;
+          if (out.success && (slidesToolsAllowed || docsToolsAllowed)) {
+            imageFollowUp = true;
+          }
         } else if (trig.kind === "grade") {
           const out = await runGradeTrigger(trig, accumulated);
           accumulated = out.accumulated;
         } else if (trig.kind === "song") {
           const out = await runSongTrigger(trig, accumulated);
           accumulated = out.accumulated;
-        } else if (trig.kind === "notebook" || trig.kind === "mail" ||
-          trig.kind === "docs" || trig.kind === "slides") {
+        } else if (
+          trig.kind === "notebook" || trig.kind === "mail" ||
+          trig.kind === "docs" || trig.kind === "slides"
+        ) {
           const out = await runToolTrigger(trig, accumulated);
           accumulated = out.accumulated;
           if (out.success) toolFollowUp = true;
         }
       }
 
-      return { anyResults, accumulated, successTrigs, toolFollowUp, imageFollowUp };
+      return {
+        anyResults,
+        accumulated,
+        successTrigs,
+        toolFollowUp,
+        imageFollowUp,
+      };
     };
 
     // Zusammenfassung nach Triggern (nur bei Erfolg)
     const runTriggersAndMaybeSummarize = async (trigs: AutoTrigger[]) => {
       await serverLog("triggers.summary.maybe", { requested: trigs.length });
-      const { anyResults, accumulated, successTrigs, toolFollowUp, imageFollowUp } =
-        await handleTriggers(trigs);
+      const {
+        anyResults,
+        accumulated,
+        successTrigs,
+        toolFollowUp,
+        imageFollowUp,
+      } = await handleTriggers(trigs);
       setIsStreamComplete(true);
-    setThinkingSince(null);
+      setThinkingSince(null);
       await serverLog("triggers.summary.result", {
         anyResults,
         successCount: successTrigs.length,
@@ -3984,7 +4118,7 @@ ${result.snapshot}`
       endFinalized = true;
 
       setIsStreamComplete(true);
-    setThinkingSince(null);
+      setThinkingSince(null);
       setQuery("");
 
       const flushed = filterThink.flush();
@@ -4002,15 +4136,15 @@ ${result.snapshot}`
       if (!gotAnyText) {
         setMessages((prev) => {
           if (!prev.length) return prev;
-          const idx =
-            assistantDraftIndex === -1 ? prev.length - 1 : assistantDraftIndex;
+          const idx = assistantDraftIndex === -1
+            ? prev.length - 1
+            : assistantDraftIndex;
           const last = prev[idx];
-          const txt =
-            typeof last?.content === "string"
-              ? last.content
-              : Array.isArray(last?.content)
-              ? (last.content as string[]).join("")
-              : "";
+          const txt = typeof last?.content === "string"
+            ? last.content
+            : Array.isArray(last?.content)
+            ? (last.content as string[]).join("")
+            : "";
           if (last?.role === "assistant" && (!txt || txt.trim() === "")) {
             const next = [...prev];
             next.splice(idx, 1);
@@ -4026,14 +4160,56 @@ ${result.snapshot}`
         // would swallow the end of the answer, so a short tail is spoken.
         const remaining = ongoingStream.join("").trim();
         if (remaining) {
-          const groupIndex =
-            assistantDraftIndex === -1
-              ? messagesRef.current.length - 1
-              : assistantDraftIndex;
+          const groupIndex = assistantDraftIndex === -1
+            ? messagesRef.current.length - 1
+            : assistantDraftIndex;
           getTTS(remaining, groupIndex, `stream${currentAudioIndex}`);
         }
       }
 
+      // Only an explicit user edit request authorizes direct application.
+      if (scratchSnapshot || inspectScratchReply(assistantAccum).attempted) {
+        let receipt: string | null;
+        try {
+          if (!scratchSnapshot) throw new Error("Die KI hat einen Scratch-Auftrag geschickt, aber ohne freigegebenen Projektstand. Öffne Scratch und frage dort über das Fragenfeld erneut; prüfe das Häkchen zum Lesen und Bearbeiten.");
+          receipt = await handleScratchReply(assistantAccum, scratchDirectEdit, async (reply, error) => {
+            const snapshot = await scratchRequest("snapshot");
+            // Keep each repair cancellable with its own live controller.
+            const repairController = new AbortController();
+            abortRef.current = repairController;
+            setIsStreamComplete(false);
+            setThinkingSince(Date.now());
+            const response = await fetch("/api/chat", {
+              method:"POST", headers:{"Content-Type":"application/json"},
+              signal:repairController.signal,
+              body:JSON.stringify({...requestPayload,stream:false,
+                toolFlags:{...requestPayload.toolFlags,scratchProject:snapshot},
+                messages:scratchRepairMessages(newMessagesArr,reply,error,scratchDirectEdit),
+              }),
+            });
+            const repaired = await response.json();
+            if (!response.ok) throw new Error(repaired.error || "Scratch-Werkzeugantwort fehlgeschlagen.");
+            return repaired.choices?.[0]?.message?.content || repaired.reply || "";
+          });
+          if (receipt !== null) openScratch();
+        } catch (cause) {
+          receipt = cause instanceof Error ? cause.message : "Scratch-Werkzeugantwort fehlgeschlagen.";
+        } finally {
+          setIsStreamComplete(true);
+          setThinkingSince(null);
+        }
+        if (receipt !== null) {
+          setMessages((prev) => {
+            const next = [...prev];
+            const index = assistantDraftIndex === -1 ? next.length - 1 : assistantDraftIndex;
+            if (next[index]?.role === "assistant") next[index] = { role: "assistant", content: receipt };
+            safePersist(next, currentChatSuffix);
+            return next;
+          });
+          abortRef.current = null;
+          return;
+        }
+      }
       // Nach regulärem Stream-Ende: Trigger (falls vorhanden) ausführen und ggf. zusammenfassen
       const finalTriggers = findJsonTriggersInText(assistantAccum);
       await serverLog("stream.finalize", {
@@ -4059,11 +4235,9 @@ ${result.snapshot}`
       pdfs: pdfs.length,
     });
 
-    await fetchEventSource("/api/chat", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
+    const requestPayload = {
         lang,
+        // The snapshot is only sent for this request, not added to chat storage.
         messages: newMessagesArr,
         universalApiKey: settings.universalApiKey,
         llmApiUrl: settings.apiUrl,
@@ -4076,11 +4250,20 @@ ${result.snapshot}`
         // Overrides that only apply when the key is an OpenRouter key.
         orLlmModel: settings.orLlmModel,
         orVlmModel: settings.orVlmModel,
+        // Overrides that only apply when the key is a Requesty key.
+        rqLlmModel: settings.rqLlmModel,
+        rqVlmModel: settings.rqVlmModel,
         systemPrompt: settings.systemPrompt,
         // Only the flags travel; the instructions themselves are assembled
         // on the server.
-        toolFlags: buildToolFlags(),
-      }),
+        toolFlags: { ...buildToolFlags(), scratch: !!scratchSnapshot, scratchRequested,
+          scratchEdit: !!scratchSnapshot && scratchDirectEdit,
+          scratchProject: scratchProjectData(scratchSnapshot) },
+      };
+    await fetchEventSource("/api/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(requestPayload),
       signal: abortRef.current?.signal,
 
       async onopen(response: Response) {
@@ -4117,7 +4300,9 @@ ${result.snapshot}`
           appendToAssistant(
             `\n\n**BACKEND ERROR**\nStatuscode: ${
               err?.status ?? ""
-            }\nMessage: ${clean.message || err?.message || ""}${clean.hint ? `\n${clean.hint}` : ""}`,
+            }\nMessage: ${clean.message || err?.message || ""}${
+              clean.hint ? `\n${clean.hint}` : ""
+            }`,
           );
           return;
         }
@@ -4144,7 +4329,8 @@ ${result.snapshot}`
 
         // Early end marker
         if (rawChunk === "[DONE]") {
-          setTimeout(() => abortRef.current?.abort(), 0);
+          const finishedStream = abortRef.current;
+          setTimeout(() => finishedStream?.abort(), 0);
           finalizeStream();
           return;
         }
@@ -4348,8 +4534,8 @@ ${result.snapshot}`
           throw new Error(`HTTP error! status: ${response.status}`);
         }
 
-        const contentType =
-          response.headers.get("Content-Type") || "audio/mpeg";
+        const contentType = response.headers.get("Content-Type") ||
+          "audio/mpeg";
         const audioData = await response.arrayBuffer();
         if (audioData.byteLength === 0) {
           throw new Error("TTS returned an empty audio body");
@@ -4560,8 +4746,8 @@ ${result.snapshot}`
 
         const newChatSuffix = chats
           ? Object.keys(chats).sort((a, b) =>
-              Number(a.slice(10)) - Number(b.slice(10))
-            )[0].slice(10)
+            Number(a.slice(10)) - Number(b.slice(10))
+          )[0].slice(10)
           : "0";
         setLocalStorageKeys(
           Object.keys(localStorage).filter((key) =>
@@ -4587,7 +4773,7 @@ ${result.snapshot}`
   // ---------- RENDER ----------
   return (
     <div class="w-full">
-       <div class="flex items-center justify-center mb-4 flex-wrap w-full">
+      <div class="flex items-center justify-center mb-4 flex-wrap w-full">
         {/* Add settings button next to existing chat buttons */}
         <button
           class="rounded-full bg-slate-200 px-4 py-2 mx-2 mb-2"
@@ -4620,10 +4806,12 @@ ${result.snapshot}`
           </button>
         )}
 
-        {/*
+        {
+          /*
           Named rather than drawn. A compass and a pair of angle brackets both
           left people guessing what they would open; the word does not.
-        */}
+        */
+        }
         <button
           class="rounded-full bg-indigo-100 text-indigo-900 hover:bg-indigo-200
                  font-semibold text-sm px-3 py-1.5 mx-1 mb-1.5 md:px-4 md:py-2 md:mx-2 md:mb-2 flex items-center gap-1.5
@@ -4644,6 +4832,12 @@ ${result.snapshot}`
         >
           <span class="text-base leading-none">🐍</span>
           Python
+        </button>
+
+        <button type="button"
+          class="rounded-full bg-orange-100 text-orange-900 hover:bg-orange-200 font-semibold text-sm px-3 py-1.5 mx-1 mb-1.5 md:px-4 md:py-2 md:mx-2 md:mb-2 flex items-center gap-1.5 transition-colors"
+          title="Scratch · Blöcke programmieren" onClick={openScratch}>
+          <span class="text-base leading-none">🧩</span> Scratch
         </button>
 
         <button
@@ -4785,7 +4979,9 @@ ${result.snapshot}`
         thinkingSince={thinkingSince}
         parentDocTexts={docTexts}
         onDocTextsChange={(rest) =>
-          setDocTexts(docTexts.filter((d) => rest.some((r) => r.name === d.name)))}
+          setDocTexts(
+            docTexts.filter((d) => rest.some((r) => r.name === d.name)),
+          )}
         uploadProblems={uploadProblems}
         onDismissProblems={() => setUploadProblems([])}
         onOpenInEditor={(name, base64) => {
@@ -4819,18 +5015,24 @@ ${result.snapshot}`
           // every edit that was saved since the assistant made the deck.
           const rec = await loadDeck(deckId);
           if (!rec) {
-            alert(chatTemplateContent[lang]?.deckGone ?? "This presentation was deleted.");
+            alert(
+              chatTemplateContent[lang]?.deckGone ??
+                "This presentation was deleted.",
+            );
             return;
           }
           const bytes = await deckToPptx(rec.deck, { lang, title: rec.name });
           const url = URL.createObjectURL(
             new Blob([bytes as BlobPart], {
-              type: "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+              type:
+                "application/vnd.openxmlformats-officedocument.presentationml.presentation",
             }),
           );
           const a = document.createElement("a");
           a.href = url;
-          a.download = `${(rec.name || name).replace(/[\\/:*?"<>|]/g, "_")}.pptx`;
+          a.download = `${
+            (rec.name || name).replace(/[\\/:*?"<>|]/g, "_")
+          }.pptx`;
           a.click();
           setTimeout(() => URL.revokeObjectURL(url), 10_000);
         }}
@@ -4842,7 +5044,7 @@ ${result.snapshot}`
           abortRef.current?.abort();
           abortRef.current = null;
           setIsStreamComplete(true);
-    setThinkingSince(null);
+          setThinkingSince(null);
         }}
         readAlways={readAlways}
         autoScroll={autoScroll}
@@ -4852,9 +5054,7 @@ ${result.snapshot}`
         onSpeakAtGroupIndexAction={handleOnSpeakAtGroupIndexAction}
         onToggleReadAlwaysAction={() => toggleReadAlways(!readAlways)}
         onToggleAutoScrollAction={() => toggleAutoScroll(!autoScroll)}
-        onToggleSkipCurlyBracesAction={() =>
-          setSkipCurlyBraces((v) => !v)
-        } // NEW
+        onToggleSkipCurlyBracesAction={() => setSkipCurlyBraces((v) => !v)} // NEW
         onRefreshAction={handleRefreshAction}
         onEditAction={handleEditAction}
         onUploadActionToMessages={handleUploadActionToMessages}
@@ -4862,6 +5062,16 @@ ${result.snapshot}`
         onTrashAction={() => setMessages([])}
       />
 
+      {researchReports.length > 0 && (
+        <details class="my-3 rounded-lg bg-white/80 p-3 text-sm">
+          <summary class="cursor-pointer font-semibold">
+            Recherche nachprüfen · Wikipedia / Papers ({researchReports.length})
+          </summary>
+          {researchReports.map((report, i) => (
+            <ResearchDetails key={`${report.at}-${i}`} report={report} />
+          ))}
+        </details>
+      )}
       {showSettings && (
         <Settings
           settings={settings}
@@ -4889,7 +5099,17 @@ ${result.snapshot}`
       {showLearning && (
         <LearningModal
           lang={lang}
-          onClose={() => setShowLearning(false)}
+          initialPath={sharedPath}
+          initialLinkInvalid={invalidSharedPath}
+          onInitialPathConsumed={() => {
+            setSharedPath(null);
+            setInvalidSharedPath(false);
+          }}
+          onClose={() => {
+            setShowLearning(false);
+            setSharedPath(null);
+            setInvalidSharedPath(false);
+          }}
           onOpenNotebook={(example, cell) => {
             // Two overlays on top of each other help nobody: step out of the
             // path, into the notebook, and back again when it closes.
@@ -4900,6 +5120,11 @@ ${result.snapshot}`
         />
       )}
 
+      {scratchMounted && (
+        <ScratchModal open={showScratch} lang={lang} canAsk={isStreamComplete}
+          brand={globalThis.location.hostname.includes("school") ? "SchoolBuddy" : "Buddy"}
+          onClose={() => setShowScratch(false)} onAsk={(q) => { void startStream(q); }} />
+      )}
       {showNotebook && (
         <NotebookModal
           lang={lang}
@@ -5001,7 +5226,6 @@ ${result.snapshot}`
               onTextsUploaded={handleTextsUploaded}
               onError={setUploadProblems}
             />
-
 
             <VoiceRecordButton
               resetTranscript={resetTranscript}

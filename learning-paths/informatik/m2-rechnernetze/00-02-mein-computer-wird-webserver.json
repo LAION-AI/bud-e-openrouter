@@ -1,0 +1,703 @@
+{
+  "key": "mein-computer-wird-webserver",
+  "title": {
+    "de": "Mein Computer wird zum Webserver",
+    "en": "My computer becomes a web server"
+  },
+  "summary": {
+    "de": "Starte mit IDLE deinen Webserver, öffne buddy.html über deine lokale IPv4-Adresse und gestalte die Seite neu.",
+    "en": "Start your web server in IDLE, open buddy.html using your local IPv4 address and redesign the page."
+  },
+  "icon": "🖥️",
+  "accent": "emerald",
+  "minutes": 30,
+  "screens": [
+    {
+      "key": "datei-holen",
+      "title": {
+        "de": "1. Datei auf H: speichern",
+        "en": "1. Save the file on H:"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Wie wird aus einer HTML-Datei eine Webseite, die ein Browser beim Server abruft? Du probierst es zuerst sicher auf deinem eigenen Rechner aus: `buddy.html` bleibt in `H:\\Server`, und Python liefert sie an deinen Browser.",
+            "en": "How does an HTML file become a page a browser requests from a server? First try it safely on your own computer: `buddy.html` stays in `H:\\Server`, and Python delivers it to your browser."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "fact",
+          "icon": "🔁",
+          "title": {
+            "de": "Kurz erinnert",
+            "en": "Quick reminder"
+          },
+          "text": {
+            "de": "Dein Browser fragt als Client. Das Python-Programm antwortet als Server. Beide Programme können auf demselben Rechner laufen – genau das testen wir zuerst.",
+            "en": "Your browser asks as the client. The Python program responds as the server. Both programs can run on the same computer – that is what we test first."
+          }
+        },
+        {
+          "kind": "steps",
+          "items": [
+            {
+              "title": {
+                "de": "Ordner `Server` anlegen",
+                "en": "Create the `Server` folder"
+              },
+              "text": {
+                "de": "Drücke Windows-Taste + E. Öffne „Dieser PC“ → Laufwerk `H:`. Rechtsklick auf eine freie Stelle → „Neu“ → „Ordner“. Nenne ihn genau `Server`. Öffne ihn. Oben muss `H:\\Server` stehen.",
+                "en": "Press Windows key + E. Open “This PC” → drive `H:`. Right-click an empty area → New → Folder. Name it exactly `Server`. Open it. The path at the top must be `H:\\Server`."
+              }
+            },
+            {
+              "title": {
+                "de": "`buddy.html` herunterladen",
+                "en": "Download `buddy.html`"
+              },
+              "text": {
+                "de": "Klicke den blauen Download-Knopf hier. Wenn der Browser nach einem Speicherort fragt, wähle `H:\\Server`. Landet die Datei in „Downloads“? Dort Rechtsklick auf `buddy.html` → „Ausschneiden“; in `H:\\Server` Rechtsklick → „Einfügen“.",
+                "en": "Click the blue download button here. If the browser asks where to save, choose `H:\\Server`. Did the file land in Downloads? Right-click `buddy.html` there → Cut; then right-click in `H:\\Server` → Paste."
+              },
+              "download": {
+                "label": {
+                  "de": "buddy.html herunterladen",
+                  "en": "Download buddy.html"
+                },
+                "url": "/api/download-buddy",
+                "filename": "buddy.html"
+              }
+            },
+            {
+              "title": {
+                "de": "Kurz prüfen",
+                "en": "Check the file"
+              },
+              "text": {
+                "de": "Im Ordner `H:\\Server` muss `buddy.html` liegen. Lege keine privaten Dateien dazu: Der Server kann alle Dateien in diesem Ordner anbieten. Fehlt `H:`, frage die Lehrkraft.",
+                "en": "`buddy.html` must be in `H:\\Server`. Do not put private files there: the server can offer every file in that folder. If `H:` is missing, ask your teacher."
+              }
+            }
+          ]
+        },
+        {
+          "kind": "callout",
+          "tone": "tip",
+          "icon": "📁",
+          "title": {
+            "de": "Warum genau dieser Ordner?",
+            "en": "Why this exact folder?"
+          },
+          "text": {
+            "de": "Der Python-Befehl `os.chdir(r\"H:\\Server\")` wechselt später in diesen Ordner. Der Server bietet dann Dateien von dort an. Lege deshalb nur `buddy.html` hinein, keine privaten Dateien.",
+            "en": "The Python command `os.chdir(r\"H:\\Server\")` changes to this folder. The server then offers files from it. Put only `buddy.html` there, not private files."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "note",
+          "icon": "🐧",
+          "title": {
+            "de": "Ubuntu oder macOS?",
+            "en": "Ubuntu or macOS?"
+          },
+          "text": {
+            "de": "Erstelle in deinem persönlichen Ordner `Server` und speichere `buddy.html` dort. Im Einzeiler auf der nächsten Seite ersetzt du vor dem Einfügen nur `os.chdir(r\"H:\\Server\")` durch `os.chdir(os.path.expanduser(\"~/Server\"))`.",
+            "en": "Create `Server` in your home folder and save `buddy.html` there. Before pasting the one-line command on the next page, replace only `os.chdir(r\"H:\\Server\")` with `os.chdir(os.path.expanduser(\"~/Server\"))`."
+          }
+        }
+      ]
+    },
+    {
+      "key": "server-starten",
+      "title": {
+        "de": "2. Python-Server in IDLE starten",
+        "en": "2. Start the Python server in IDLE"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Kann dein eigener Rechner eine Webseite an deinen Browser liefern? Dafür startest du einen kleinen Python-Server. Ein einziger kopierbarer Befehl in IDLE reicht: keine neue Datei, kein F5. IDLE ist ein Programm, mit dem du Python ausführen kannst.",
+            "en": "Can your computer send a web page to your browser? You will start a small Python server. One copyable command in IDLE is enough: no new file and no F5. IDLE is a program that runs Python."
+          }
+        },
+        {
+          "kind": "steps",
+          "items": [
+            {
+              "title": {
+                "de": "IDLE öffnen",
+                "en": "Open IDLE"
+              },
+              "text": {
+                "de": "Drücke die Windows-Taste, suche `IDLE` und öffne „IDLE (Python 3...)“. Im Fenster mit `>>>` kannst du Python-Befehle eingeben. Dieses Fenster heißt Python-Shell. Klicke hinter `>>>`.",
+                "en": "Press the Windows key, search for `IDLE` and open “IDLE (Python 3...)”. The window with `>>>` lets you enter Python commands. It is called the Python Shell. Click after `>>>`."
+              }
+            },
+            {
+              "title": {
+                "de": "Einzeiler kopieren und einfügen",
+                "en": "Copy and paste the one-line command"
+              },
+              "text": {
+                "de": "Klicke in der dunklen Codebox auf „Kopieren“. Klicke dann in IDLE hinter `>>>`, drücke Strg+V und danach Enter. Kopiere nur den Code, nicht die Zeichen `>>>`. Der lange Befehl ist eine einzige Zeile; die Teile sind durch Semikolons getrennt.",
+                "en": "Click “Copy” in the dark code box. Then click after `>>>` in IDLE, press Ctrl+V and then Enter. Copy only the code, not the `>>>` prompt. The long command is a single line; semicolons separate its parts."
+              },
+              "code": {
+                "caption": {
+                  "de": "Eine Zeile für die IDLE-Shell – auf „Kopieren“ klicken",
+                  "en": "One line for the IDLE Shell – click “Copy”"
+                },
+                "text": {
+                  "de": "import os, http.server; os.chdir(r\"H:\\Server\"); http.server.test(HandlerClass=http.server.SimpleHTTPRequestHandler, port=8000, bind=\"0.0.0.0\")",
+                  "en": "import os, http.server; os.chdir(r\"H:\\Server\"); http.server.test(HandlerClass=http.server.SimpleHTTPRequestHandler, port=8000, bind=\"0.0.0.0\")"
+                }
+              }
+            },
+            {
+              "title": {
+                "de": "Rückmeldung ansehen",
+                "en": "Check the response"
+              },
+              "text": {
+                "de": "In IDLE erscheint ungefähr `Serving HTTP on 0.0.0.0 port 8000 ...`. Das bedeutet: Der Server läuft. Das ist eine Rückmeldung, keine Browseradresse. Lass das Fenster offen und gehe zur nächsten Seite.",
+                "en": "IDLE shows something like `Serving HTTP on 0.0.0.0 port 8000 ...`. This means the server is running. It is a result, not a browser address. Keep this window open and go to the next page."
+              }
+            }
+          ]
+        },
+        {
+          "kind": "callout",
+          "tone": "fact",
+          "icon": "🧩",
+          "title": {
+            "de": "Was steckt im Einzeiler?",
+            "en": "What does the one-liner do?"
+          },
+          "text": {
+            "de": "`import` lädt zwei Python-Bausteine. `os.chdir(...)` wählt den Ordner mit `buddy.html`. `http.server.test(...)` startet den Server auf Port `8000`. `bind=\"0.0.0.0\"` lässt Anfragen an die lokalen Adressen deines Rechners zu. So kannst du gleich deine eigene IPv4-Adresse ausprobieren. Die Semikolons verbinden die Schritte zu einer Zeile.",
+            "en": "`import` loads two Python modules. `os.chdir(...)` selects the folder containing `buddy.html`. `http.server.test(...)` starts the server on port `8000`. `bind=\"0.0.0.0\"` accepts requests to your computer's local addresses, so you can try your own IPv4 address next. Semicolons put the steps on one line."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "tip",
+          "icon": "➡️",
+          "title": {
+            "de": "Falls IDLE nicht möglich ist",
+            "en": "If IDLE is not available"
+          },
+          "text": {
+            "de": "Eine freiwillige CMD-Alternative und Hilfe bei Fehlermeldungen findest du auf der nächsten Seite. Der IDLE-Weg bleibt unser Standard.",
+            "en": "The next page has an optional Command Prompt alternative and help for error messages. IDLE remains our standard route."
+          }
+        }
+      ]
+    },
+    {
+      "key": "eigene-seite-oeffnen",
+      "title": {
+        "de": "3. Seite im Browser öffnen",
+        "en": "3. Open the page in your browser"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Wie findet dein Browser den Server auf deinem eigenen Rechner? Du kennst schon lokale IP-Adressen. Finde jetzt deine IPv4-Adresse und rufe `buddy.html` damit auf – nicht per Doppelklick auf die Datei.",
+            "en": "How does your browser find the server on your own computer? You already know about local IP addresses. Find your IPv4 address and use it to open `buddy.html` – do not just double-click the file."
+          }
+        },
+        {
+          "kind": "steps",
+          "items": [
+            {
+              "title": {
+                "de": "Eingabeaufforderung öffnen",
+                "en": "Open Command Prompt"
+              },
+              "text": {
+                "de": "Drücke die Windows-Taste, tippe `cmd` oder `Eingabeaufforderung` und öffne das gefundene Programm. Das schwarze Fenster nimmt Befehle für deinen Rechner entgegen. Der Python-Server in IDLE bleibt daneben offen.",
+                "en": "Press the Windows key, type `cmd` or `Eingabeaufforderung` and open the result. The black window accepts commands for your computer. Keep the Python server running in IDLE."
+              }
+            },
+            {
+              "title": {
+                "de": "Lokale IPv4-Adresse finden",
+                "en": "Find your local IPv4 address"
+              },
+              "text": {
+                "de": "Gib in der Eingabeaufforderung diesen Befehl ein und drücke Enter. `ipconfig` zeigt dir die Netzwerkadressen deines Rechners. Suche beim verbundenen WLAN- oder Ethernet-Adapter nach `IPv4-Adresse`, zum Beispiel `192.168.1.34`. Auch Adressen mit `10...` oder `172.16...` bis `172.31...` sind möglich. Notiere deine eigene Adresse; andere Zeilen brauchst du hier nicht.",
+                "en": "Enter this command in Command Prompt and press Enter. `ipconfig` shows your computer's network addresses. Under the connected Wi-Fi or Ethernet adapter, find `IPv4-Adresse` (IPv4 Address), for example `192.168.1.34`. Addresses beginning with `10...` or `172.16...` to `172.31...` are possible too. Write down your own address; you do not need the other lines here."
+              },
+              "code": {
+                "caption": {
+                  "de": "In CMD eingeben",
+                  "en": "Enter in Command Prompt"
+                },
+                "text": {
+                  "de": "ipconfig",
+                  "en": "ipconfig"
+                }
+              }
+            },
+            {
+              "title": {
+                "de": "Mit deiner IP im Browser öffnen",
+                "en": "Open it in the browser using your IP"
+              },
+              "text": {
+                "de": "Öffne den Browser auf demselben Rechner. Ersetze im Muster `DEINE-IP` durch die eben gefundene IPv4-Adresse, zum Beispiel `192.168.1.34`. Tippe den fertigen Link oben in die Adressleiste und drücke Enter. `0.0.0.0` aus IDLE gehört nicht in den Browser.",
+                "en": "Open a browser on the same computer. Replace `YOUR-IP` in the pattern with the IPv4 address you just found, for example `192.168.1.34`. Type the finished link into the address bar and press Enter. Do not put `0.0.0.0` from IDLE in the browser."
+              },
+              "code": {
+                "caption": {
+                  "de": "Link-Muster: DEINE-IP ersetzen",
+                  "en": "URL pattern: replace YOUR-IP"
+                },
+                "text": {
+                  "de": "http://DEINE-IP:8000/buddy.html",
+                  "en": "http://YOUR-IP:8000/buddy.html"
+                }
+              }
+            },
+            {
+              "title": {
+                "de": "IDLE-Shell ansehen",
+                "en": "Look at the IDLE Shell"
+              },
+              "text": {
+                "de": "Wechsle zurück zur IDLE-Shell. Ist eine neue Zeile mit `GET /buddy.html` erschienen? Das zeigt: Dein Browser hat diese Datei beim Server angefragt. Kehre dann zum Browser zurück.",
+                "en": "Switch back to the IDLE Shell. Did a new line with `GET /buddy.html` appear? It shows that your browser requested this file from the server. Then return to the browser."
+              }
+            }
+          ]
+        },
+        {
+          "kind": "callout",
+          "tone": "fact",
+          "icon": "🏠",
+          "title": {
+            "de": "Alternative: `localhost`",
+            "en": "Alternative: `localhost`"
+          },
+          "text": {
+            "de": "Probiere zuerst deine IPv4-Adresse. Alternativ klappt auf demselben Rechner oft `http://localhost:8000/buddy.html`: `localhost` bedeutet „dieser Rechner“. `:8000` ist der Port des Servers, `/buddy.html` die angefragte Datei.",
+            "en": "Try your IPv4 address first. On the same computer, `http://localhost:8000/buddy.html` often works too: `localhost` means “this computer”. `:8000` is the server port and `/buddy.html` is the requested file."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "warn",
+          "icon": "🔒",
+          "title": {
+            "de": "Warum nur Dateien im Ordner `Server`?",
+            "en": "Why keep only web files in `Server`?"
+          },
+          "text": {
+            "de": "Damit deine lokale IPv4-Adresse funktioniert, startet Python mit `bind=\"0.0.0.0\"`. Das lässt auch Anfragen aus dem Netz zu, falls die Schule sie erlaubt. Lege deshalb keine privaten Dateien in `H:\\Server` und stoppe den Server nach der Übung.",
+            "en": "Python starts with `bind=\"0.0.0.0\"` so your local IPv4 address works. This also permits network requests if the school allows them. Do not put private files in `H:\\Server`, and stop the server after the exercise."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "warn",
+          "icon": "🧯",
+          "title": {
+            "de": "Wenn eine Fehlermeldung erscheint",
+            "en": "If you see an error"
+          },
+          "text": {
+            "de": "`FileNotFoundError`: Prüfe, ob `H:\\Server` existiert. „Address already in use“: Port 8000 ist schon belegt; frage die Lehrkraft. Lädt der Link mit deiner IP nicht, teste `localhost` und frage bei einer Firewall-Meldung die Lehrkraft. Ändere keine Sicherheitseinstellungen selbst.",
+            "en": "`FileNotFoundError`: check that `H:\\Server` exists. “Address already in use”: port 8000 is taken; ask your teacher. If your IP link does not load, try `localhost` and ask your teacher about any firewall warning. Do not change security settings yourself."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "note",
+          "icon": "🐧",
+          "title": {
+            "de": "Ubuntu oder macOS?",
+            "en": "Ubuntu or macOS?"
+          },
+          "text": {
+            "de": "Öffne ein Terminal. Unter Ubuntu zeigt `hostname -I` deine Adressen; wähle die lokale IPv4. Auf dem Mac findest du sie unter „Systemeinstellungen“ → „Netzwerk“ → aktive Verbindung → „Details“ → „TCP/IP“. Setze sie genauso in den Browserlink ein.",
+            "en": "Open a terminal. On Ubuntu, `hostname -I` shows your addresses; choose the local IPv4. On a Mac, find it in System Settings → Network → active connection → Details → TCP/IP. Put it into the browser URL in the same way."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "note",
+          "icon": "⌨️",
+          "title": {
+            "de": "Optional: über CMD",
+            "en": "Optional: using Command Prompt"
+          },
+          "text": {
+            "de": "`ipconfig` gibst du in CMD ein. Den Python-Server startest du wie auf Seite 2 in IDLE. Nur wenn Python auch in CMD gestartet werden darf, kannst du stattdessen dort die zwei Zeilen unten nacheinander eingeben. Falls `python` nicht gefunden wird, versuche `py`.",
+            "en": "Use Command Prompt for `ipconfig`, but start the Python server in IDLE as on page 2. Only if Python can also run in Command Prompt may you enter the two lines below there, one after the other. If `python` is not found, try `py`."
+          }
+        },
+        {
+          "kind": "code",
+          "caption": {
+            "de": "Nur als Alternative in CMD",
+            "en": "Command Prompt alternative only"
+          },
+          "text": {
+            "de": "cd /d H:\\Server\npython -m http.server 8000 --bind 0.0.0.0",
+            "en": "cd /d H:\\Server\npython -m http.server 8000 --bind 0.0.0.0"
+          }
+        }
+      ]
+    },
+    {
+      "key": "seite-aendern",
+      "title": {
+        "de": "4. Ändere den Inhalt",
+        "en": "4. Change the content"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Deine Webseite ist erreichbar. Muss sich der Link ändern, wenn du ihre Überschrift änderst? Probiere es aus: Der Server bleibt offen, nur die HTML-Datei bekommt neuen Inhalt.",
+            "en": "Your web page is reachable. Does its link need to change when you change its heading? Try it: the server stays open, only the HTML file gets new content."
+          }
+        },
+        {
+          "kind": "steps",
+          "items": [
+            {
+              "title": {
+                "de": "Als Text öffnen",
+                "en": "Open as text"
+              },
+              "text": {
+                "de": "Im Datei-Explorer: Rechtsklick auf `H:\\Server\\buddy.html` → „Öffnen mit“ → „Editor“. Falls „Öffnen mit“ fehlt, unter Windows 11 zuerst „Weitere Optionen anzeigen“ wählen. Nimm nicht Word oder den Browser.",
+                "en": "In File Explorer: right-click `H:\\Server\\buddy.html` → Open with → Notepad. If Open with is missing, choose Show more options first in Windows 11. Do not use Word or the browser."
+              }
+            },
+            {
+              "title": {
+                "de": "Zwei Texte ersetzen",
+                "en": "Replace two texts"
+              },
+              "text": {
+                "de": "Zwischen `<h1>` und `</h1>` steht die große Überschrift; zwischen `<p>` und `</p>` ein Absatz. Ändere nur die Wörter dazwischen. Die Zeichen `< >` bleiben stehen.",
+                "en": "The big heading is between `<h1>` and `</h1>`; a paragraph is between `<p>` and `</p>`. Change only the words inside. Keep the `< >` signs."
+              }
+            },
+            {
+              "title": {
+                "de": "Speichern und neu laden",
+                "en": "Save and reload"
+              },
+              "text": {
+                "de": "Drücke im Editor Strg+S. Lade im Browser den Link mit deiner IPv4-Adresse von Seite 3 mit Strg+R neu. Hast du `localhost` verwendet, lade diesen Link neu. Siehst du deine neuen Texte? Falls nicht, drücke Strg+F5.",
+                "en": "Press Ctrl+S in Notepad. In the browser, reload the URL with your IPv4 address from page 3 using Ctrl+R. If you used `localhost`, reload that URL instead. Do you see your new text? If not, press Ctrl+F5."
+              }
+            }
+          ]
+        },
+        {
+          "kind": "callout",
+          "tone": "fact",
+          "icon": "🔄",
+          "title": {
+            "de": "Warum klappt es mit demselben Link?",
+            "en": "Why does the same link work?"
+          },
+          "text": {
+            "de": "Beim Neuladen fragt der Browser den Server erneut. Python liest die gespeicherte `buddy.html` erneut und liefert jetzt die neue Version. Die Adresse zeigt weiterhin auf dieselbe Datei.",
+            "en": "On reload, the browser asks the server again. Python reads the saved `buddy.html` again and now delivers the new version. The address still points to the same file."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "fact",
+          "icon": "🏁",
+          "title": {
+            "de": "Mindestziel geschafft!",
+            "en": "Minimum goal reached!"
+          },
+          "text": {
+            "de": "Du hast Python als Webserver gestartet, deine lokale IPv4-Adresse ausprobiert und `buddy.html` im Browser gesehen. Nach deiner Änderung zeigt derselbe Link den neuen Inhalt. Falls die Schultechnik deine IP blockiert, genügt `localhost` als Ausweichweg.",
+            "en": "You started Python as a web server, tried your local IPv4 address and saw `buddy.html` in the browser. After your edit, the same URL shows the new content. If the school setup blocks your IP, `localhost` is an acceptable fallback."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "note",
+          "icon": "🐧",
+          "title": {
+            "de": "Ubuntu oder macOS?",
+            "en": "Ubuntu or macOS?"
+          },
+          "text": {
+            "de": "Öffne `~/Server/buddy.html` in einem Texteditor, speichere die Änderung und lade den Link mit deiner lokalen IPv4-Adresse neu. Wenn das nicht klappt, nimm `http://localhost:8000/buddy.html`.",
+            "en": "Open `~/Server/buddy.html` in a text editor, save your edit and reload the URL with your local IPv4 address. If that does not work, use `http://localhost:8000/buddy.html`."
+          }
+        }
+      ]
+    },
+    {
+      "key": "eigene-hobby-webseite",
+      "title": {
+        "de": "5. Extra: deine eigene Webseite",
+        "en": "5. Extra: your own web page"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Was könnte deine Webseite über ein Hobby, Spiel oder Schulprojekt erzählen? Bitte School Bud-E um einen HTML-Entwurf. Du wählst das Thema und stellst die fertige Datei über deinen Server bereit.",
+            "en": "What could your page say about a hobby, game or school project? Ask School Bud-E for an HTML draft. You choose the topic and serve the finished file from your server."
+          }
+        },
+        {
+          "kind": "steps",
+          "items": [
+            {
+              "title": {
+                "de": "School Bud-E fragen",
+                "en": "Ask School Bud-E"
+              },
+              "text": {
+                "de": "Kopiere diesen Auftrag in School Bud-E. Ersetze `[THEMA]` durch dein Thema. Bitte um genau eine vollständige HTML-Datei, ohne persönliche Daten, externe Skripte oder Bilder.",
+                "en": "Copy this request into School Bud-E. Replace `[TOPIC]` with your topic. Ask for exactly one complete HTML file, without personal data, external scripts or images."
+              },
+              "code": {
+                "caption": {
+                  "de": "Auftrag zum Kopieren",
+                  "en": "Prompt to copy"
+                },
+                "text": {
+                  "de": "Erstelle eine vollständige HTML-Webseite über [THEMA] als eine einzige Datei. Verwende HTML und CSS in derselben Datei. Schreibe eine Überschrift und kurze Abschnitte. Keine externen Skripte, Bilder oder persönlichen Daten. Gib nur den vollständigen HTML-Code aus.",
+                  "en": "Create one complete HTML web page about [TOPIC] as a single file. Put HTML and CSS in the same file. Add a heading and short sections. No external scripts, images or personal data. Output only the complete HTML code."
+                }
+              }
+            },
+            {
+              "title": {
+                "de": "`buddy.html` im Editor öffnen",
+                "en": "Open `buddy.html` in Notepad"
+              },
+              "text": {
+                "de": "Drücke Windows-Taste + E und öffne `H:\\Server`. Rechtsklick auf `buddy.html` → „Öffnen mit“ → „Editor“. Fehlt „Öffnen mit“? Unter Windows 11 zuerst „Weitere Optionen anzeigen“. Fehlt „Editor“? Klicke „Andere App auswählen“ und dann bei Bedarf „Weitere Apps“; wähle „Editor“ (englisch „Notepad“).",
+                "en": "Press Windows key + E and open `H:\\Server`. Right-click `buddy.html` → Open with → Notepad. Missing Open with? On Windows 11 first choose Show more options. Missing Notepad? Click Choose another app, then More apps if needed, and choose Notepad."
+              }
+            },
+            {
+              "title": {
+                "de": "HTML-Code einsetzen und speichern",
+                "en": "Paste the HTML code and save"
+              },
+              "text": {
+                "de": "Kopiere nur den HTML-Code aus School Bud-E, nicht Erklärsätze oder die Umrandung eines Codekastens. Prüfe, ob der Code mit `<!DOCTYPE html>` oder `<html>` beginnt. Im Editor: Strg+A, Strg+V, Strg+S. Der Dateiname bleibt `buddy.html`, nicht `.txt`.",
+                "en": "Copy only the HTML code from School Bud-E, not explanations or the code-box markers. Check that it begins with `<!DOCTYPE html>` or `<html>`. In Notepad: Ctrl+A, Ctrl+V, Ctrl+S. Keep the filename `buddy.html`, not `.txt`."
+              }
+            },
+            {
+              "title": {
+                "de": "Eigene Seite ansehen",
+                "en": "See your own page"
+              },
+              "text": {
+                "de": "Lass den IDLE-Server laufen. Lade den Link mit deiner lokalen IPv4-Adresse und Port `8000` mit Strg+R neu. Falls du `localhost` benutzt hast, bleibe bei diesem Link. Jetzt sollte dein Thema erscheinen. Ein Server-Neustart ist nicht nötig.",
+                "en": "Keep the IDLE server running. Reload the URL with your local IPv4 address and port `8000` using Ctrl+R. If you used `localhost`, keep using that URL. Your topic should appear. No server restart is needed."
+              }
+            }
+          ]
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "💭",
+          "title": {
+            "de": "Was hat sich geändert?",
+            "en": "What changed?"
+          },
+          "text": {
+            "de": "Adresse und Server sind gleich geblieben; nur der Inhalt von `buddy.html` wurde ersetzt. Warum zeigt derselbe Link jetzt deine eigene Seite?",
+            "en": "The address and server stayed the same; only the contents of `buddy.html` changed. Why does the same link now show your own page?"
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "note",
+          "icon": "🛑",
+          "title": {
+            "de": "Weiter oder beenden?",
+            "en": "Continue or stop?"
+          },
+          "text": {
+            "de": "Auf der nächsten Seite kannst du freiwillig einen anderen Port testen. Wenn du fertig bist, stoppe den Server in der IDLE-Shell über „Shell“ → „Interrupt Execution“. Die Datei bleibt gespeichert.",
+            "en": "On the next page, you can optionally try another port. If you are finished, stop the server in the IDLE Shell using Shell → Interrupt Execution. The file stays saved."
+          }
+        }
+      ]
+    },
+    {
+      "key": "extras",
+      "title": {
+        "de": "6. Extra: anderer Port",
+        "en": "6. Extra: another port"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Du möchtest herausfinden, wofür `:8000` im Link steht? Dieser Versuch ist freiwillig. Er ändert nur die „Türnummer“ deines Python-Servers.",
+            "en": "Want to find out what `:8000` means in the link? This experiment is optional. It changes only your Python server's “door number”."
+          }
+        },
+        {
+          "kind": "steps",
+          "items": [
+            {
+              "title": {
+                "de": "Server stoppen",
+                "en": "Stop the server"
+              },
+              "text": {
+                "de": "Wechsle zur IDLE-Shell: „Shell“ → „Interrupt Execution/Ausführung unterbrechen“. Die Datei `buddy.html` bleibt gespeichert.",
+                "en": "In the IDLE Shell choose Shell → Interrupt Execution. The file `buddy.html` stays saved."
+              }
+            },
+            {
+              "title": {
+                "de": "Einzeiler für Port 8080 starten",
+                "en": "Run the one-line command for port 8080"
+              },
+              "text": {
+                "de": "Klicke auf „Kopieren“, füge den vollständigen Einzeiler hinter `>>>` in IDLE ein und drücke Enter. Nur der Port ändert sich von `8000` zu `8080`; deine lokale IPv4-Adresse bleibt gleich.",
+                "en": "Click “Copy”, paste the complete one-line command after `>>>` in IDLE and press Enter. Only the port changes from `8000` to `8080`; your local IPv4 address stays the same."
+              },
+              "code": {
+                "caption": {
+                  "de": "Vollständiger Einzeiler für Port 8080",
+                  "en": "Complete one-line command for port 8080"
+                },
+                "text": {
+                  "de": "import os, http.server; os.chdir(r\"H:\\Server\"); http.server.test(HandlerClass=http.server.SimpleHTTPRequestHandler, port=8080, bind=\"0.0.0.0\")",
+                  "en": "import os, http.server; os.chdir(r\"H:\\Server\"); http.server.test(HandlerClass=http.server.SimpleHTTPRequestHandler, port=8080, bind=\"0.0.0.0\")"
+                }
+              }
+            },
+            {
+              "title": {
+                "de": "Neuen Link testen",
+                "en": "Try the new link"
+              },
+              "text": {
+                "de": "Ersetze im Link von Seite 3 nur `:8000` durch `:8080` und öffne ihn erneut. Der alte Link passt nicht mehr. Was blieb gleich: IP-Adresse oder Port?",
+                "en": "In the URL from page 3, replace only `:8000` with `:8080` and open it again. The old URL no longer matches. What stayed the same: IP address or port?"
+              },
+              "code": {
+                "caption": {
+                  "de": "Link-Muster: DEINE-IP ersetzen",
+                  "en": "URL pattern: replace YOUR-IP"
+                },
+                "text": {
+                  "de": "http://DEINE-IP:8080/buddy.html",
+                  "en": "http://YOUR-IP:8080/buddy.html"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "kind": "callout",
+          "tone": "tip",
+          "icon": "↩️",
+          "title": {
+            "de": "Zum Schluss",
+            "en": "At the end"
+          },
+          "text": {
+            "de": "Beende den Server in der IDLE-Shell über „Shell“ → „Interrupt Execution“. Deine Webseite bleibt gespeichert, ist ohne laufenden Server aber nicht mehr über den Link erreichbar.",
+            "en": "Stop the server in the IDLE Shell using Shell → Interrupt Execution. Your web page stays saved, but without the running server the URL no longer opens it."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "Python-Dokumentation: IDLE",
+                "en": "Python documentation: IDLE"
+              },
+              "url": "https://docs.python.org/3/library/idle.html"
+            },
+            {
+              "label": {
+                "de": "Python-Dokumentation: http.server",
+                "en": "Python documentation: http.server"
+              },
+              "url": "https://docs.python.org/3/library/http.server.html"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": {
+        "de": "1. Der Weg zur Webseite",
+        "en": "1. The path to the page"
+      },
+      "intro": {
+        "de": "Setze die Wörter ein.",
+        "en": "Fill in the words."
+      },
+      "text": {
+        "de": "Die Datei ___ liegt in `H:\\Server`. In ___ starte ich mit Python einen ___. Mein Browser ist der ___ und fragt die Datei an. Mit `ipconfig` finde ich meine lokale ___-Adresse. Die Zahl 8000 ist der ___. Der Dateiname im Link lautet ___. Nach einer Änderung muss ich die Datei ___ und die Webseite ___.",
+        "en": "The file ___ is in `H:\\Server`. In ___ I start a Python ___. My browser is the ___ and requests the file. With `ipconfig` I find my local ___ address. The number 8000 is the ___. The file name in the URL is ___. After an edit I must ___ the file and ___ the web page."
+      },
+      "hint": {
+        "de": "buddy.html, IDLE, Webserver, Client, IPv4, Port, buddy.html, speichern, neu laden",
+        "en": "buddy.html, IDLE, web server, client, IPv4, port, buddy.html, save, reload"
+      }
+    },
+    {
+      "kind": "compare",
+      "title": {
+        "de": "2. Datei oder Server?",
+        "en": "2. File or server?"
+      },
+      "intro": {
+        "de": "Erkläre in zwei oder drei Sätzen.",
+        "en": "Explain in two or three sentences."
+      },
+      "text": {
+        "de": "Was ist der Unterschied zwischen einem Doppelklick auf `buddy.html` und dem Aufruf über `http://DEINE-IP:8000/buddy.html`? Warum kann auf demselben Rechner auch `localhost` funktionieren?",
+        "en": "What is the difference between double-clicking `buddy.html` and opening it through `http://YOUR-IP:8000/buddy.html`? Why can `localhost` also work on the same computer?"
+      },
+      "hint": {
+        "de": "Denke an den Webserver und daran, wohin beide Adressen auf deinem Rechner führen.",
+        "en": "Think about the web server and where both addresses lead on your computer."
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": {
+        "de": "3. Webseite beim Schulfest?",
+        "en": "3. A page at the school fair?"
+      },
+      "intro": {
+        "de": "Übertrage den Versuch auf deinen Alltag.",
+        "en": "Connect the experiment to everyday life."
+      },
+      "text": {
+        "de": "Du möchtest deine Hobby-Webseite beim Schulfest zeigen. Was müsstest du vor einem öffentlichen Link mit der Lehrkraft klären? Was passiert, wenn dein Rechner ausgeschaltet wird?",
+        "en": "You want to show your hobby page at the school fair. What would you need to discuss with your teacher before sharing a public link? What happens when your computer is turned off?"
+      }
+    }
+  ]
+}

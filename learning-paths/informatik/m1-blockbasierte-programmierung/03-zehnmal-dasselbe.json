@@ -10,7 +10,7 @@
   },
   "icon": "🔁",
   "accent": "emerald",
-  "minutes": 14,
+  "minutes": 18,
   "screens": [
     {
       "key": "der-turm",
@@ -205,6 +205,76 @@
               "url": "https://www.inf-schule.de/imperative-programmierung"
             }
           ]
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Waschmaschinen denken übrigens genauso: Waschen, spülen, schleudern – und bei stark verschmutzt alles noch einmal. Das Programm ist eine Schleife mit Bedingung: wiederhole, bis sauber. Deine Blume und die Waschmaschine laufen nach demselben Bauplan – nur riecht eine besser.",
+            "en": "Washing machines incidentally think the same way: wash, rinse, spin – and with heavy dirt all again. The program is a loop with a condition: repeat until clean. Your flower and the washing machine run on the same blueprint – only one smells better."
+          }
+        }
+      ]
+    },
+    {
+      "key": "spiralen-und-sterne",
+      "title": {
+        "de": "Spiralen und Sterne",
+        "en": "Spirals and stars"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Dein Quadrat kannst du – was passiert, wenn das Quadrat selbst in einer Schleife steckt und sich jedes Mal ein bisschen weiterdreht?",
+            "en": "You can do the square – what happens if the square itself sits inside a loop and turns a little further each time?"
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Pack dein Quadrat-Programm komplett in ein „wiederhole 12-mal“ und hänge dahinter ein „drehe dich um 30 Grad“. Zwölf Quadrate, jedes 30 Grad weiter gedreht – eine Blume. Kein neuer Baustein, nur eine Schleife um eine Schleife. Das nennt man verschachtelt.",
+            "en": "Wrap your whole square program in a “repeat 12 times” and add a “turn 30 degrees” behind it. Twelve squares, each turned 30 degrees further – a flower. No new block, just a loop around a loop. That is called nesting."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "🌸",
+          "title": {
+            "de": "Bauanleitung",
+            "en": "Building instructions"
+          },
+          "text": {
+            "de": "Äußere Schleife 12-mal: darin dein Quadrat plus 30 Grad Drehung. Ändere 12 zu 36 und 30 Grad zu 10 Grad: eine dichtere Blume. Und was geben 5-mal mit 72 Grad? Probier es – es wird ein Stern.",
+            "en": "Outer loop 12 times: inside it your square plus a 30-degree turn. Change 12 to 36 and 30 degrees to 10: a denser flower. And what do 5 times with 72 degrees give? Try it – it becomes a star."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Das ist das Muster hinter fast allen Mustern: eine Form, oft wiederholt, jedes Mal ein bisschen anders. Teppiche, Zäune, Hintergründe in Computerspielen – überall stecken Schleifen in Schleifen.",
+            "en": "That is the pattern behind almost all patterns: one shape, repeated often, a little different each time. Carpets, fences, backgrounds in computer games – loops inside loops everywhere."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Noch eine Stufe: die Treppe. Gehe 20 Schritte, drehe dich um 90 Grad, gehe 20 Schritte, drehe dich um 90 Grad – aber werde jedes Mal 5 Schritte länger: 20, 25, 30. Dafür brauchst du eine Variable als Zähler, die bei jedem Durchgang wächst. Schleife plus Variable: Das ist die Kombination, mit der Profis Spiralen, Treppen und Labyrinthe bauen.",
+            "en": "One more level: the stairs. Walk 20 steps, turn 90 degrees, walk 20 steps, turn 90 degrees – but grow 5 steps longer each time: 20, 25, 30. For that you need a variable as a counter growing each round. Loop plus variable: that is the combination professionals use to build spirals, stairs and mazes."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "🌀",
+          "title": {
+            "de": "Wildwuchs",
+            "en": "Wild growth"
+          },
+          "text": {
+            "de": "Ändere den Winkel bei jedem Durchgang um 1 Grad mehr – mit einer Variable als Drehung. Aus der Blume wird eine Spirale, aus der Ordnung ein Wirbel. Solche wachsenden Schleifen stecken in Muscheln, Galaxien und Frisuren.",
+            "en": "Change the angle by 1 degree more each round – with a variable as the turn. From the flower grows a spiral, from order a swirl. Such growing loops sit in shells, galaxies and hairstyles."
+          }
         }
       ]
     }

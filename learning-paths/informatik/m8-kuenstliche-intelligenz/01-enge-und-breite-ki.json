@@ -1,0 +1,324 @@
+{
+  "accent": "emerald",
+  "exercises": [
+    {
+      "hint": {
+        "de": "Alle Antworten stehen auf den Bildschirmen davor – lies sie noch einmal von oben.",
+        "en": "All answers sit on the screens before – read them once more from the top."
+      },
+      "intro": {
+        "de": "Setze die fehlenden Wörter ein.",
+        "en": "Fill in the missing words."
+      },
+      "kind": "cloze",
+      "text": {
+        "de": "Ein ___programm folgt Regeln, die ___ dafür geschrieben haben – für einen einzigen ___. Ein Schachprogramm spielt kein ___. Der Forscher ___ unterscheidet viele Arten von ___: sprachliche, mathematische, räumliche, emotionale und ___. Breite Intelligenz heißt ___: Auch Probleme lösen, für die man nie ___ wurde. Darum trainiert man große Modelle ___ und prüft sie an ___ Problemen. Der ehrliche Test fragt nicht, was es ___, sondern wie schnell es ___ lernt.",
+        "en": "A ___ program follows rules that ___ wrote for it – for a single ___. A chess program plays no ___. The researcher ___ distinguishes many kinds of ___: linguistic, mathematical, spatial, emotional and ___. Broad intelligence means ___: solving even problems one was never ___ for. Hence large models are trained ___ and tested on ___ problems. The honest test asks not what it ___, but how fast it learns ___ things."
+      },
+      "title": {
+        "de": "1. Lückentext",
+        "en": "1. Fill in the blanks"
+      }
+    },
+    {
+      "hint": {
+        "de": "Stell beiden dasselbe neue Spiel hin: Wer liest die Anleitung?",
+        "en": "Put the same new game before both: who reads the manual?"
+      },
+      "intro": {
+        "de": "Setze zwei Beobachtungen zueinander in Beziehung.",
+        "en": "Relate two observations to each other."
+      },
+      "kind": "compare",
+      "text": {
+        "de": "Ein Schachprogramm und ein Kind lernen dasselbe neue Brettspiel. Vergleiche, was beide dafür brauchen – und erkläre, woran man erkennt, wer enge und wer breite Intelligenz hat.",
+        "en": "A chess program and a child learn the same new board game. Compare what each of them needs for it – and explain how to tell who has narrow and who has broad intelligence."
+      },
+      "title": {
+        "de": "2. Vergleiche",
+        "en": "2. Compare"
+      }
+    },
+    {
+      "intro": {
+        "de": "Auf diese Frage gibt es keine richtige Antwort.",
+        "en": "There is no right answer to this one."
+      },
+      "kind": "reflect",
+      "text": {
+        "de": "Welche deiner Intelligenzen – Sprache, Mathe, Raum, Gefühl, Handwerk – wäre für einen Computer am schwersten? Und was sagt deine Antwort über dich?",
+        "en": "Which of your intelligences – language, maths, space, feeling, craft – would be hardest for a computer? And what does your answer say about you?"
+      },
+      "title": {
+        "de": "3. Zum Nachdenken",
+        "en": "3. Something to think about"
+      }
+    }
+  ],
+  "icon": "🎯",
+  "key": "enge-und-breite-ki",
+  "minutes": 18,
+  "screens": [
+    {
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "1997 schlägt ein Schachcomputer den Weltmeister. Sensation – und kein bisschen überraschend für alle, die wissen, wie er funktioniert: Menschen haben ihm Regeln gegeben, er hat Varianten gezählt. Frag ihn nach dem Wetter, und er schweigt.",
+            "en": "In 1997 a chess computer beats the world champion. Sensation – and not surprising at all for those who know how it works: humans gave it rules, it counted lines. Ask it about the weather, and it stays silent."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Dasselbe beim Navi: Es findet den kürzesten Weg durch deine Stadt – aber nur, weil Menschen ihm Karte, Regeln und Ziel einprogrammiert haben. Fährt eine Straße weg (Baustelle!), rechnet es neu, versteht aber nichts. Das ist enge KI, auf Englisch narrow AI, auf Deutsch manchmal good old fashioned AI: hart codierte Regeln von Menschen für einen bestimmten Zweck.",
+            "en": "Same with navigation: it finds the shortest way through your city – but only because humans programmed map, rules and goal into it. If a road vanishes (roadworks!), it recomputes but understands nothing. That is narrow AI, sometimes called good old fashioned AI: hard-coded rules by humans for one purpose."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Deep Blue wog über eine Tonne, rechnete 200 Millionen Stellungen pro Sekunde – und kannte jede Eröffnung aus Büchern, die Großmeister eingetippt hatten. Maschine plus Menschenwissen gegen einen Menschen: Kasparov verlor 1997 knapp. Die Pointe: Danach konnte Deep Blue immer noch kein Tic-Tac-Toe erklären, geschweige denn spielen lernen. Eine Tonne Genie für 64 Felder – und nichts dahinter.",
+            "en": "Deep Blue weighed over a ton, computed 200 million positions per second – and knew every opening from books grandmasters had typed in. Machine plus human knowledge against one human: Kasparov lost narrowly in 1997. The punchline: afterwards Deep Blue still could not explain tic-tac-toe, let alone learn playing it. A ton of genius for 64 squares – and nothing behind."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "fact",
+          "icon": "♟️",
+          "title": {
+            "de": "1997",
+            "en": "1997"
+          },
+          "text": {
+            "de": "Eröffnungswissen eingetippt, Endspiele einprogrammiert, dazwischen rohe Rechenkraft: So sah der Sieg aus – Menschenfleiß mal Maschinentempo. Kein Verstehen, kein Lernen, nur Tempo. Behalte das Bild: Es ist der Unterschied zwischen Spitze und Breite in einer Tonne Blech.",
+            "en": "Opening knowledge typed in, endgames programmed, raw compute in between: thus the victory looked – human diligence times machine tempo. No understanding, no learning, only tempo. Keep the picture: it is the difference between peak and breadth in a ton of tin."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Kasparov übte übrigens weiter – und schlug später Computer, die auf Deep Blue folgten, mit neuem Stil: unberechenbar spielen, wo Maschinen rechnen. Menschen lernen aus Niederlagen, Maschinen nur aus Daten. Der Weltmeister verlor eine Partie und gewann eine Lektion; die Maschine gewann eine Partie und lernte nichts. Wer lernt hier eigentlich?",
+            "en": "Kasparov incidentally kept practising – and later beat computers following Deep Blue with a new style: playing unpredictably where machines compute. Humans learn from defeats, machines only from data. The champion lost a game and won a lesson; the machine won a game and learned nothing. Who actually learns here?"
+          }
+        }
+      ],
+      "title": {
+        "de": "Der Meister einer Sache",
+        "en": "The master of one thing"
+      }
+    },
+    {
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Der Forscher François Chollet sagt: Intelligenz ist nicht eins, sondern viele. Und die spannende Frage ist nicht, wie gut jemand in einer Sache ist, sondern wie breit.",
+            "en": "The researcher François Chollet says: intelligence is not one thing but many. And the exciting question is not how good someone is at one thing, but how broad."
+          }
+        },
+        {
+          "kind": "list",
+          "items": [
+            {
+              "de": "Sprachliche Intelligenz: erzählen, erklären, verhandeln.",
+              "en": "Linguistic intelligence: telling, explaining, negotiating."
+            },
+            {
+              "de": "Mathematische Intelligenz: Muster in Zahlen sehen.",
+              "en": "Mathematical intelligence: seeing patterns in numbers."
+            },
+            {
+              "de": "Räumliche Intelligenz: sich zurechtfinden, bauen, werfen.",
+              "en": "Spatial intelligence: finding your way, building, throwing."
+            },
+            {
+              "de": "Emotionale Intelligenz: Gefühle lesen – bei anderen und bei sich.",
+              "en": "Emotional intelligence: reading feelings – in others and in yourself."
+            },
+            {
+              "de": "Handwerkliche Intelligenz: mit den Händen denken – nähen, schrauben, fangen.",
+              "en": "Craft intelligence: thinking with your hands – sewing, screwing, catching."
+            }
+          ]
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Ein Papagei spricht Sätze nach und versteht keinen. Ein Taschenrechner rechnet fehlerfrei und versteht keine Zahl. Wer nur eine Liste abhakt, misst Dressur, nicht Intelligenz. Natürlich lässt sich die Liste weiter unterteilen – genau darum geht es: Intelligenz zeigt sich in der Breite, nicht in der Spitze.",
+            "en": "A parrot repeats sentences and understands none. A calculator computes flawlessly and understands no number. Whoever only ticks a list measures dressage, not intelligence. Of course the list can be split further – exactly that is the point: intelligence shows in breadth, not in peak."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Ein Oktopus trägt zwei Drittel seiner Neuronen in den Armen: Jeder Arm schmeckt, tastet, entscheidet – halb selbstständig. Ist das eine Intelligenz oder acht? Die Frage klingt lustig und trifft den Kern: Intelligenz sitzt nicht unbedingt in einer Zentrale. Wer nur menschliche Köpfe als Maß nimmt, versteht weder Oktopus noch Maschine.",
+            "en": "An octopus carries two thirds of its neurons in its arms: each arm tastes, feels, decides – half independently. Is that one intelligence or eight? The question sounds funny and hits the core: intelligence does not necessarily sit in one headquarters. Whoever takes only human heads as the measure understands neither octopus nor machine."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "note",
+          "icon": "🐙",
+          "title": {
+            "de": "Acht Arme, eine Frage",
+            "en": "Eight arms, one question"
+          },
+          "text": {
+            "de": "Chollets Liste ist ein Anfang, kein Gesetz: Man kann sie weiter unterteilen – Humor, Orientierung, Taktgefühl. Entscheidend ist die Richtung: Weg vom einen IQ, hin zu vielen Fähigkeiten. So misst man Breite.",
+            "en": "Chollet's list is a start, no law: it can be split further – humour, orientation, tact. Decisive is the direction: away from one IQ, towards many abilities. Thus breadth gets measured."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Teste die Liste an dir selbst: Erkläre einem Fünftklässler Bruchrechnung (sprachlich), schätze, wie viele Gummibärchen ins Glas passen (mathematisch-räumlich), merke, dass deine Freundin traurig ist, bevor sie es sagt (emotional), flicke einen Reifen (handwerklich). Vier Intelligenzen an einem Nachmittag – und keine Note dafür. Breite ist Alltag, nicht Examen.",
+            "en": "Test the list on yourself: explain fractions to a fifth-grader (linguistic), estimate how many gummy bears fit the jar (mathematical-spatial), notice your friend is sad before she says it (emotional), patch a tyre (craft). Four intelligences in one afternoon – and no grade for it. Breadth is everyday life, not exam."
+          }
+        }
+      ],
+      "title": {
+        "de": "Wie viele Intelligenzen?",
+        "en": "How many intelligences?"
+      }
+    },
+    {
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Breite Intelligenz heißt Generalisierung: Probleme lösen, für die man nie gebaut oder trainiert wurde.",
+            "en": "Broad intelligence means generalisation: solving problems one was never built or trained for."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Ein Kind lernt den Löffel – und isst später mit Stift, Pinsel und Schraubenzieher, ohne je dafür trainiert worden zu sein. Die Idee „Werkzeug in der Hand“ wandert mit. Genauso trainiert man große Modelle heute: erst ein breites, ungerichtetes Vortraining über viel Welt, danach die Prüfung – nicht in einem Fach, sondern in möglichst vielen, an ungesehenen neuen Problemen.",
+            "en": "A child learns the spoon – and later eats with pen, brush and screwdriver without ever being trained for it. The idea “tool in hand” travels along. Likewise large models are trained today: first a broad, undirected pre-training over much world, then the exam – not in one subject but in as many as possible, on unseen new problems."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "fact",
+          "icon": "🌉",
+          "title": {
+            "de": "Zum Merken",
+            "en": "Worth remembering"
+          },
+          "text": {
+            "de": "Eng: ein Programm pro Domäne, getestet in genau dieser. Breit: ein Modell für vieles, getestet an Neuem. Der Unterschied ist nicht die Leistung – es ist die Generalisierung.",
+            "en": "Narrow: one program per domain, tested in exactly that. Broad: one model for much, tested on novelty. The difference is not performance – it is generalisation."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Fahrradfahren gelernt? Dann konntest du Roller fast sofort – Gleichgewicht wandert mit. Skateboard später: wieder derselbe Trick, neues Gerät. So sieht Transfer aus: nicht alles neu lernen, sondern das Muster mitnehmen. Genau das fehlt enger KI: Jedes neue Gerät wäre für sie das erste Fahrrad der Welt – Stützräder inklusive.",
+            "en": "Learned cycling? Then you almost instantly managed scooters – balance travels along. Skateboard later: the same trick again, new device. Thus transfer looks: not learning everything anew but taking the pattern along. Exactly that narrow AI lacks: every new device would be the world's first bicycle for it – stabilisers included."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "tip",
+          "icon": "🚲",
+          "title": {
+            "de": "Selbsttest",
+            "en": "Self test"
+          },
+          "text": {
+            "de": "Zähle heute drei Dinge, die du kannst, weil du etwas anderes kannst: Schwimmen hilft beim Tauchen, Mathe beim Programmieren, Streit schlichten beim Verhandeln. Jeder Transfer ist ein kleiner Beweis breiter Intelligenz – deiner.",
+            "en": "Count today three things you can because you can something else: swimming helps diving, maths helps programming, settling quarrels helps negotiating. Every transfer is small proof of broad intelligence – yours."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Noch ein Transfer aus deinem Leben: Wer Klavier spielt, lernt Tippen schneller – Finger wissen schon, wo sie hingehören. Wer Fußball spielt, steht auf dem Skateboard stabiler. Das Gehirn recycelt ständig: einmal gelernt, überall benutzt. Enge KI recycelt nichts – jedes Programm fängt bei null an, jedes Mal, für immer.",
+            "en": "One more transfer from your life: whoever plays piano learns typing faster – fingers already know where they belong. Whoever plays football stands steadier on the skateboard. The brain constantly recycles: learned once, used everywhere. Narrow AI recycles nothing – every program starts at zero, every time, forever."
+          }
+        }
+      ],
+      "title": {
+        "de": "Breit statt tief",
+        "en": "Broad instead of deep"
+      }
+    },
+    {
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Der ehrliche Test fragt nicht, was ein System kann, wofür es gebaut wurde. Er fragt: Wie schnell lernt es Neues? Für genau diesen Test gibt es seit 2019 eine Messlatte mit drei Sprossen: ARC-AGI-1, 2 und 3.",
+            "en": "The honest test does not ask what a system can do that it was built for. It asks: how fast does it learn new things? For exactly this test a measuring stick with three rungs exists since 2019: ARC-AGI-1, 2 and 3."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Sprosse 1: Bunte Kästchen-Rätsel, Menschen lösen fast alle in etwa 30 Sekunden. KI stand jahrelang bei fast null – bis Ende 2024 Modelle kamen, die nachdenken, statt nur zu raten, und im Test noch üben dürfen. Ergebnis: von null auf über die Hälfte, heute über 90 Prozent. Nebenbei sanken die Kosten um ein Hundertfaches: Klug rechnen schlägt viel rechnen.",
+            "en": "Rung 1: colourful grid riddles, humans solve almost all in about 30 seconds. AI stood near zero for years – until late 2024 models arrived that think instead of merely guessing, allowed to practise during the test. Result: from zero to over half, today over 90 percent. Along the way costs fell a hundredfold: computing cleverly beats computing much."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Sprosse 2 (März 2025): gleiche Kästchen, tiefere Nüsse – mehrere Schritte, Zeichen deuten, Regeln je nach Lage anders anwenden. Menschen wieder 100 Prozent, getestet an über 400 Personen mit je fünf Minuten pro Rätsel. Im Wettbewerb mit 1455 Teams schaffte die beste KI ein Viertel, die großen Labore etwa zwei Drittel. Lehre: Größer allein reicht nicht – es braucht neue Ideen.",
+            "en": "Rung 2 (March 2025): same grids, deeper nuts – several steps, interpreting symbols, applying rules differently by situation. Humans again 100 percent, tested on over 400 people at five minutes per riddle. In the contest with 1,455 teams the best AI managed a quarter, the big labs about two thirds. Lesson: bigger alone does not suffice – new ideas are needed."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Sprosse 3 (März 2026): keine Rätsel zum Anschauen mehr, sondern Spiele ohne Anleitung und ohne Ziel. Der Agent muss erkunden, herausfinden, was Gewinnen heißt, und von Level zu Level mitnehmen, was er lernt. Menschen: 100 Prozent. Beste KI: ein halbes Prozent. Preisgeld 2026: zwei Millionen Dollar für den, der die Lücke schließt – mit offenen Lösungen für alle.",
+            "en": "Rung 3 (March 2026): no riddles to look at anymore but games without manual and without goal. The agent must explore, find out what winning means, and carry what it learns from level to level. Humans: 100 percent. Best AI: half a percent. Prize money 2026: two million dollars for whoever closes the gap – with open solutions for all."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "note",
+          "icon": "🪜",
+          "title": {
+            "de": "Die Treppe",
+            "en": "The ladder"
+          },
+          "text": {
+            "de": "Behalte diese Treppe im Kopf: Stufe 1 maß Nachdenken, Stufe 2 tieferes Denken, Stufe 3 Erkunden. Jedes Mal holen Menschen fast alles, KI erst wenig – und jedes Mal zeigt die neue Stufe die nächste Grenze. Spitze beeindruckt, Breite zählt. Und Effizienz zählt mit: Wer mit wenig Rechnen viel lernt, ist klüger als wer mit viel Rechnen wenig lernt.",
+            "en": "Keep this ladder in mind: rung 1 measured thinking, rung 2 deeper thinking, rung 3 exploring. Every time humans take almost everything, AI first little – and every time the new rung shows the next limit. Peak impresses, breadth counts. And efficiency counts too: whoever learns much with little computing is cleverer than whoever learns little with much computing."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "Chollet: On the Measure of Intelligence (2019)",
+                "en": "Chollet: On the Measure of Intelligence (2019)"
+              },
+              "url": "https://arxiv.org/abs/1911.01547"
+            },
+            {
+              "label": {
+                "de": "ARC Prize: Benchmarks und Wettbewerbe",
+                "en": "ARC Prize: benchmarks and competitions"
+              },
+              "url": "https://arcprize.org/"
+            }
+          ]
+        }
+      ],
+      "title": {
+        "de": "Der ehrliche Test",
+        "en": "The honest test"
+      }
+    }
+  ],
+  "summary": {
+    "de": "Schachmeister, die nichts anderes können, gegen Intelligenz in der Breite: Was Chollet unterscheidet – und wie man ehrlich testet.",
+    "en": "Chess masters that can do nothing else versus intelligence in breadth: what Chollet tells apart – and how to test honestly."
+  },
+  "title": {
+    "de": "Enge und breite KI",
+    "en": "Narrow and broad AI"
+  }
+}

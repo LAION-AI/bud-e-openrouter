@@ -10,7 +10,7 @@
   },
   "icon": "🔊",
   "accent": "violet",
-  "minutes": 11,
+  "minutes": 22,
   "screens": [
     {
       "key": "die-luecke",
@@ -55,8 +55,15 @@
             "en": "When it gets serious"
           },
           "text": {
-            "de": "Unter zehn Sekunden Abstand ist das Gewitter näher als drei Kilometer - dann gehört man ins Haus oder ins Auto. Und nach dem letzten Donner wartet man noch eine halbe Stunde: Blitze schlagen auch aus einer Wolke ein, die schon weitergezogen scheint.",
-            "en": "Under ten seconds means the storm is closer than three kilometres - time to go inside or into a car. And after the last thunder you wait another half hour: lightning also strikes from a cloud that appears to have moved on."
+            "de": "Wenn du Donner hörst, suchst du rechtzeitig geeigneten Schutz: ein festes Gebäude oder ein geschlossenes Fahrzeug mit Metallkarosserie. Warte nicht auf einen bestimmten Sekundenabstand. Die Entfernungsregel ist keine Sicherheitsfreigabe. Nach dem letzten Donner bleibst du entsprechend amtlichen Hinweisen noch geschützt; als verbreitete Vorsichtsregel gelten mindestens 30 Minuten.",
+            "en": "If you hear thunder, seek suitable shelter promptly: a substantial building or an enclosed metal-bodied vehicle. Do not wait for a particular time gap. The distance rule is not a safety clearance. Remain sheltered afterwards according to official guidance; a widely used precaution is at least 30 minutes after the last thunder."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "An einer bereitgestellten Aufnahme kannst du die Regel prüfen: sechs Sekunden Laufzeit entsprechen ungefähr zwei Kilometern. Eine echte Gewitterbeobachtung erfolgt nur aus geeignetem Schutz; du gehst dafür nicht nach draußen und bleibst nicht wegen einer Messung dort. Ein kleiner Abstand zwischen Blitz und Donner ist ein Warnsignal, keine Einladung, noch genauer hinzusehen.",
+            "en": "Check the rule with a supplied recording: six seconds of travel time corresponds to about two kilometres. Observe an actual storm only from suitable shelter; do not go outside or remain outdoors to measure it. A short gap between lightning and thunder is a warning, not an invitation to look more closely."
           }
         }
       ]
@@ -99,8 +106,8 @@
           "kind": "table",
           "highlightFirst": true,
           "caption": {
-            "de": "Je enger die Teilchen beieinanderliegen, desto schneller die Weitergabe.",
-            "en": "The closer the particles sit, the faster the passing on."
+            "de": "Beispielwerte: Ausbreitung hängt unter anderem von Steifigkeit, Dichte, Temperatur und Wellenart ab, nicht nur vom Teilchenabstand.",
+            "en": "Example values: propagation depends on stiffness, density, temperature and wave type, not particle spacing alone."
           },
           "head": [
             {
@@ -180,12 +187,12 @@
           "tone": "try",
           "icon": "👂",
           "title": {
-            "de": "Selbst ausprobieren, an einem Tisch",
-            "en": "Try it yourself, on a table"
+            "de": "Sicher vergleichen: vorgegebene Sensordaten",
+            "en": "Compare safely: supplied sensor data"
           },
           "text": {
-            "de": "Leg ein Ohr flach auf eine lange Tischplatte und lass jemanden am anderen Ende leise klopfen. Du hörst es zweimal: einmal durch das Holz, kurz darauf durch die Luft. Der Abstand ist winzig, aber bei einem langen Tisch bemerkbar - und derselbe Effekt, aus dem Westernhelden ihr Ohr auf die Schiene legen.",
-            "en": "Put one ear flat on a long table top and have somebody tap quietly at the other end. You hear it twice: once through the wood, shortly after through the air. The gap is tiny, but noticeable on a long table - and the same effect that made western heroes put an ear to the rail."
+            "de": "Vergleiche bereitgestellte Sensordaten für Luft und einen festen Körper. Bei derselben Strecke kann ein Signal im Festkörper früher ankommen; das hängt von Steifigkeit und Dichte sowie der betrachteten Wellenart ab. Bei einem kurzen Tisch ist der Zeitunterschied meist nicht als zwei getrennte Klopfgeräusche erkennbar. Probiere solche Vergleiche niemals an Gleisen, Straßen oder mit lauten Schlägen direkt am Ohr.",
+            "en": "Compare supplied sensor data for air and a solid. Over the same distance, a signal may arrive earlier through the solid, depending on stiffness, density and wave type. Across a short table, the delay is usually not heard as two separate taps. Never test such comparisons on railway tracks, roads or with loud impacts close to an ear."
           }
         }
       ]
@@ -233,8 +240,8 @@
                 "en": "Ultrasound at the doctor's"
               },
               "text": {
-                "de": "Dasselbe Verfahren, nur mit Tönen weit oberhalb dessen, was Menschen hören. Aus tausenden Echos entsteht ein Bild - ohne Strahlung, weshalb man es auch bei Ungeborenen einsetzen kann.",
-                "en": "The same method, only with tones far above what humans can hear. Thousands of echoes build a picture - without radiation, which is why it can be used on the unborn."
+                "de": "Medizinischer Ultraschall nutzt Schall oberhalb des üblichen Hörbereichs. Aus vielen reflektierten Signalen entsteht ein Bild. Er verwendet keine ionisierende Röntgenstrahlung, ist aber trotzdem eine fachlich zu planende medizinische Anwendung und kein Anlass für eigene Untersuchungen. Ob und wie er eingesetzt wird, entscheiden qualifizierte Fachpersonen.",
+                "en": "Medical ultrasound uses sound above the usual hearing range. Many reflected signals form an image. It does not use ionising X-rays, but remains a professionally planned medical procedure, not an invitation to perform your own examinations. Qualified professionals decide whether and how it should be used."
               }
             }
           ]
@@ -250,6 +257,83 @@
           "text": {
             "de": "Die Zahl gilt für 20 Grad. Bei null Grad sind es nur etwa 331 Meter je Sekunde, bei 30 Grad rund 349. Warme Luft leitet Schall schneller, weil sich die Teilchen ohnehin schon schneller bewegen. Für die Gewitterregel spielt das keine Rolle - für ein Echolot sehr wohl.",
             "en": "The figure holds for 20 degrees. At zero it is only about 331 metres per second, at 30 degrees around 349. Warm air carries sound faster because the particles are already moving faster. For the thunderstorm rule this makes no difference - for an echo sounder it certainly does."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Fledermäuse leben davon: Sie rufen im Ultraschall – über 20 Kilohertz, unhörbar für dich – und hören das Echo. Aus der Laufzeit bauen sie ein Bild der Nacht: Motte dort, Wand da. Ärzte machen dasselbe mit Ultraschallbildern, Schiffe mit Echolot. Wer Echos liest, sieht mit Ohren.",
+            "en": "Bats live on it: they call in ultrasound – above 20 kilohertz, inaudible to you – hearing the echo. From travel time they build a picture of the night: moth there, wall here. Doctors do the same with ultrasound images, ships with echo sounders. Whoever reads echoes sees with ears."
+          }
+        }
+      ]
+    },
+    {
+      "key": "ton",
+      "title": {
+        "de": "Ein hoher Ton ist nicht automatisch lauter",
+        "en": "A higher tone is not automatically louder"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Eine schwingende Lautsprechermembran erzeugt zeitliche Druckänderungen in der Luft. Wie oft sich eine Schwingung pro Sekunde wiederholt, beschreibt die Frequenz in Hertz. Sie bestimmt wesentlich die wahrgenommene Tonhöhe. Die Stärke der Druckschwankung hängt dagegen mit der Amplitude zusammen und beeinflusst die Lautstärkewahrnehmung. Ein leiser hoher Ton und ein lauter tiefer Ton sind deshalb ohne Widerspruch möglich.",
+            "en": "A vibrating loudspeaker cone creates pressure changes in air over time. Frequency in hertz describes how many complete oscillations repeat each second and strongly determines perceived pitch. The size of pressure changes relates to amplitude and influences loudness. A quiet high-pitched sound and a loud low-pitched sound are therefore perfectly possible."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Eine Mikrofonkurve zeigt Messsignal über der Zeit. Engere Wiederholungen bedeuten höhere Frequenz, größere Ausschläge größere Amplitude. Prüfe aber zuerst, ob die Zeit- und Signalskalen gleich sind. Zwei automatisch skalierte Kurven können ähnlich aussehen, obwohl die zugrunde liegenden Signale verschieden sind. Ein Smartphone ist zudem kein automatisch geeichtes Schallmessgerät. Für die Grundidee reicht eine bereitgestellte Kurve oder eine Simulation mit leiser beziehungsweise ausgeschalteter Tonausgabe. Du sollst weder die eigene Hörgrenze ausprobieren noch Kopfhörer absichtlich lauter stellen. Unterschiedliches Hören ist eine menschliche Vielfalt, keine Rangliste für den Klassenraum.",
+            "en": "A microphone graph shows a measured signal against time. More closely spaced repetitions mean higher frequency; larger peaks mean greater amplitude. First check that time and signal scales match, however. Automatically scaled graphs can look alike while representing different signals. A smartphone is also not automatically a calibrated sound meter. Supplied graphs or a simulation with quiet or muted audio are sufficient for the basic idea. Do not test your hearing limits or deliberately turn headphones up. Differences in hearing are human variation, not a ranking exercise for a classroom. The aim is to distinguish quantities in the model, not compare personal health information."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Vergleiche zwei gleich skalierte Kurven: eine mit größeren Ausschlägen, die andere mit engeren Wiederholungen. Welche Größe verändert sich jeweils? Zwei gleich hohe Ausschläge können bei verschiedener Zeitskala sehr unterschiedliche Frequenzen darstellen. Die Kurvenform allein ist deshalb keine sichere Aussage über den Ton. Beschrifte zunächst beide Achsen und vergleiche einen gleich langen Zeitabschnitt. So erkennst du, ob wirklich mehr Schwingungen stattfinden oder ob nur die Darstellung gedehnt wurde. Für diesen Vergleich kann die Tonausgabe vollständig ausgeschaltet bleiben.",
+            "en": "Compare two graphs with equal scales: one has larger peaks, the other more closely spaced repetitions. Which quantity changes in each? Equal peaks can represent very different frequencies if time scales differ. Shape alone therefore does not identify the tone. Label both axes and compare equal durations to see whether there are genuinely more oscillations or merely a stretched display. Audio can remain completely muted for this comparison."
+          }
+        }
+      ]
+    },
+    {
+      "key": "hoerraum",
+      "title": {
+        "de": "Weniger Lärm, mehr Zugang",
+        "en": "Less noise, better access"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Schall kann erwünschte Information sein und zugleich andere Menschen stören. Für eine Belastung zählen nicht nur einzelne Spitzen, sondern auch Dauer, Abstand und Erholung. Eine Dezibelangabe verwendet eine logarithmische Skala; doppelte Zahl bedeutet nicht doppelte empfundene Lautstärke. Aus einer Handy-App allein lässt sich deshalb keine verlässliche persönliche Sicherheitsfreigabe ableiten.",
+            "en": "Sound can provide useful information and still disturb other people. Exposure depends not only on peaks but also on duration, distance and recovery. Decibels use a logarithmic scale; doubling the number does not double perceived loudness. A phone application alone therefore cannot provide a reliable personal safety clearance."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Ein sinnvoller Klassenraum berücksichtigt Nachhall und Verständlichkeit. Geeignete absorbierende Materialien können Reflexionen verringern; sichtbare Hinweise ergänzen gesprochene Ansagen. Ein Pausensignal sollte nicht unnötig laut sein und trotzdem alle erreichen, etwa durch zusätzliche visuelle Information. Die konkrete Anlage muss fachgerecht geplant werden, einschließlich Brandschutz und Barrierefreiheit. Für deine Idee brauchst du keine persönlichen Hörtests oder lauten Versuche. Du kannst einen Raumplan zeichnen, laute und ruhige Nutzungen trennen und einen Messbedarf benennen. So verbindet sich die Schallphysik mit Rücksichtnahme: Eine gute Umgebung hilft nicht nur denen, die am lautesten sprechen, sondern auch denen, die konzentriert arbeiten oder Informationen auf anderem Weg brauchen.",
+            "en": "A useful classroom design considers reverberation and speech clarity. Suitable absorbing materials can reduce reflections, while visible messages supplement spoken announcements. A break signal should not be unnecessarily loud but should still reach everyone, perhaps with additional visual information. Real systems need professional planning, including fire safety and accessibility. Your idea requires no personal hearing tests or loud experiments. Draw a room plan, separate noisy and quiet uses and identify a measurement that would help. This connects sound physics with consideration for others: a good environment supports not only the loudest speakers but also people concentrating or receiving information in different ways."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Entwirf ein verständliches Schulsignal, das nicht allein auf hohe Lautstärke setzt und Menschen mit unterschiedlichem Hören einbezieht. Eine sichtbare Pausenanzeige macht ein Signal zugänglicher, ohne den Schallpegel erhöhen zu müssen. Geeignete Raumgestaltung kann zugleich die Verständlichkeit einer normalen Stimme verbessern. Beide Maßnahmen ergänzen sich, adressieren aber unterschiedliche Ursachen. Begründe daher getrennt, wie Reflexionen verändert werden und wie zusätzliche Information Menschen erreicht. Eine einzige Lautstärkeziffer kann diese soziale und räumliche Aufgabe nicht vollständig beschreiben.",
+            "en": "Design a clear school signal that does not depend only on high volume and includes people with different hearing abilities. A visible break indicator improves access without raising sound level. Room design can also improve ordinary speech clarity. These measures complement each other but address different causes. Explain separately how reflections change and how extra information reaches people. One loudness figure cannot fully describe this social and spatial task."
           }
         },
         {
@@ -275,6 +359,20 @@
                 "en": "Physikalisch-Technische Bundesanstalt"
               },
               "url": "https://www.ptb.de"
+            },
+            {
+              "label": {
+                "de": "Hamburg: Physik Gymnasium (2024)",
+                "en": "Hamburg: Gymnasium physics (2024)"
+              },
+              "url": "https://www.hamburg.de/resource/blob/798534/4cf0047ad61effacd1ff7e6ad819fa41/physik-data.pdf"
+            },
+            {
+              "label": {
+                "de": "Hamburg: Physik Stadtteilschule (2024)",
+                "en": "Hamburg: Stadtteilschule physics (2024)"
+              },
+              "url": "https://www.hamburg.de/resource/blob/798426/ba414a0ace36d17b7813a855db625c42/physik-data.pdf"
             }
           ]
         }
@@ -285,50 +383,46 @@
     {
       "kind": "cloze",
       "title": {
-        "de": "1. Lückentext: vom Blitz bis zum Echolot",
-        "en": "1. Fill in the blanks: from the flash to the echo sounder"
+        "de": "1. Lückentext",
+        "en": "1. Fill in the blanks"
       },
       "intro": {
-        "de": "Setze die fehlenden Wörter und Zahlen ein.",
-        "en": "Fill in the missing words and numbers."
+        "de": "Ergänze die fehlenden Fachwörter. Alle Begriffe findest du im Pfad.",
+        "en": "Complete the missing technical words. Every term appears in this path."
       },
       "text": {
-        "de": "Schall breitet sich in Luft bei 20 Grad mit etwa ___ Metern pro Sekunde aus, Licht dagegen praktisch ___. Zählt man nach dem Blitz die ___ und teilt sie durch ___, erhält man die Entfernung in ___. Weitergegeben wird dabei nicht die Luft selbst, sondern eine ___, die von Teilchen zu Teilchen läuft. Deshalb kann sich Schall im ___ gar nicht ausbreiten. Je enger die Teilchen beieinanderliegen, desto ___ ist er: In Wasser sind es 1 480, in ___ sogar 5 900 Meter pro Sekunde. Wer die Geschwindigkeit kennt, kann aus einer gemessenen Zeit eine ___ berechnen - genau das tun Fledermäuse mit dem ___ ihres Rufs.",
-        "en": "Sound travels through air at 20 degrees at about ___ metres per second, while light is practically ___. Counting the ___ after the flash and dividing by ___ gives the distance in ___. What is passed on is not the air itself but a ___ running from particle to particle. That is why sound cannot travel in a ___ at all. The closer the particles sit, the ___ it is: in water 1,480 and in ___ even 5,900 metres per second. Anyone who knows the speed can turn a measured time into a ___ - which is exactly what bats do with the ___ of their call."
+        "de": "Eine Schallwelle benötigt einen ___. Weitergegeben wird eine ___ statt der ganzen Luftmenge. Licht erreicht dich viel früher als der ___. Mit Laufzeit und Geschwindigkeit berechnest du eine ___. Beim Echo muss der doppelte ___ berücksichtigt werden. Im Vakuum fehlt das ___. Schwingungen pro Sekunde beschreibt die ___. Die größte Auslenkung heißt ___. Zum Vergleich zweier Kurven brauchst du dieselbe ___.",
+        "en": "A sound wave needs a ___. A ___ travels rather than the whole air mass. Light reaches you much earlier than ___. Travel time and speed give a ___. An echo requires accounting for the double ___. A vacuum lacks the ___. Oscillations per second are described by ___. Maximum displacement is ___. Comparing graphs requires the same ___."
       }
     },
     {
       "kind": "compare",
       "title": {
-        "de": "2. Vergleiche: das Ohr an der Schiene",
-        "en": "2. Compare: an ear to the rail"
+        "de": "2. Erklären und vergleichen (AB II)",
+        "en": "2. Explain and compare (level II)"
       },
       "intro": {
-        "de": "Setze zwei Beobachtungen zueinander in Beziehung und rechne nach.",
-        "en": "Relate two observations to each other and check by calculating."
+        "de": "Antworte mit drei bis vier kurzen Sätzen. Nutze das Gelesene und begründe deinen Vergleich.",
+        "en": "Answer in three or four short sentences. Use what you have read and explain your comparison."
       },
       "text": {
-        "de": "In Stahl ist Schall etwa siebzehnmal schneller als in Luft. Erkläre damit, warum man ein herannahendes Fahrzeug früher hört, wenn man das Ohr an die Schiene legt, als wenn man einfach horcht. Rechne außerdem aus, wie lange der Schall für 1 700 Meter durch Luft und wie lange durch Stahl braucht - und begründe aus dem Teilchenbild, woher der Unterschied kommt.",
-        "en": "In steel sound is about seventeen times faster than in air. Use that to explain why an approaching vehicle is heard sooner with an ear on the rail than by simply listening. Also work out how long sound takes for 1,700 metres through air and through steel - and explain from the particle picture where the difference comes from."
-      },
-      "hint": {
-        "de": "Rechne Zeit = Strecke geteilt durch Geschwindigkeit, und überlege, wie weit ein Stoß bis zum nächsten Teilchen zu laufen hat.",
-        "en": "Use time = distance divided by speed, and think about how far a nudge has to travel to the next particle."
+        "de": "Vorgegebene Sensordaten zeigen: Schall durchläuft 1700 m Stahl früher als 1700 m Luft. Erkläre den Unterschied mit Materialeigenschaften wie Steifigkeit und Dichte, nicht nur Teilchenabstand. Warum entspricht eine Echo-Laufzeit dem Hin- und Rückweg? Niemals an Gleisen ausprobieren.",
+        "en": "Supplied sensor data show sound travelling 1700 m through steel sooner than through air. Explain the difference using properties such as stiffness and density, not particle spacing alone. Why does an echo time include an outward and return journey? Never test this on railway tracks."
       }
     },
     {
       "kind": "reflect",
       "title": {
-        "de": "3. Zum Nachdenken: mit den Ohren sehen",
-        "en": "3. Something to think about: seeing with your ears"
+        "de": "3. Deine Idee im Alltag (AB III)",
+        "en": "3. Your idea for everyday life (level III)"
       },
       "intro": {
-        "de": "Auf diese Frage gibt es keine richtige Antwort.",
-        "en": "There is no right answer to this one."
+        "de": "Entwickle eine eigene Idee in drei bis vier kurzen Sätzen. Begründe sie mit Physik; mehrere Lösungen sind möglich.",
+        "en": "Develop your own idea in three or four short sentences. Support it with physics; several answers are possible."
       },
       "text": {
-        "de": "Fledermäuse, Wale und U-Boote benutzen Schall, um wahrzunehmen, was ihre Augen nicht erreichen. Manche blinde Menschen tun dasselbe mit Zungenklicks und finden sich damit erstaunlich sicher zurecht. Überlege, was sich für dich ändern würde, wenn du Entfernungen hören statt sehen müsstest - und wo im Alltag du das längst tust, ohne darüber nachzudenken: beim Rückwärtsfahren, in einem dunklen Raum, oder wenn du an einem Klang hörst, wie groß ein Zimmer ist.",
-        "en": "Bats, whales and submarines use sound to perceive what their eyes cannot reach. Some blind people do the same with tongue clicks and get around remarkably confidently. Consider what would change for you if you had to hear distances rather than see them - and where in daily life you already do exactly that without thinking: reversing a car, moving through a dark room, or hearing from a sound how large a space is."
+        "de": "Entwirf eine verständlichere Schallumgebung oder ein zugängliches Schulsignal. Begründe eine akustische Maßnahme und ergänze einen sichtbaren Informationsweg. Keine lauten Versuche oder persönlichen Hörtests.",
+        "en": "Design a clearer sound environment or accessible school signal. Explain one acoustic measure and add a visible information route. No loud experiments or personal hearing tests."
       }
     }
   ]

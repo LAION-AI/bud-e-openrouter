@@ -15,14 +15,18 @@ import Menu from "./Menu.tsx";
  *
  * @returns {JSX.Element} The rendered header component.
  */
-function Header({ lang }: { lang: string }): JSX.Element {
+function Header(
+  { lang, showMenu = true }: { lang: string; showMenu?: boolean },
+): JSX.Element {
   return (
     <header class="flex flex-col justify-between items-center my-3 md:my-6 w-full px-2 md:px-4">
       {/* Render the navigation menu */}
-      <Menu lang={lang} />
+      {showMenu && <Menu lang={lang} />}
 
-      {/* Smaller on a phone: the lion and the title took a third of the
-          screen before a single message was visible. */}
+      {
+        /* Smaller on a phone: the lion and the title took a third of the
+          screen before a single message was visible. */
+      }
       <div class="flex items-center align-middle px-2 md:px-4 drop-shadow-2xl rounded-md">
         <img
           src="/logo.png"

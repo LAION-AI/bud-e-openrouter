@@ -1,0 +1,15 @@
+{
+  "key": "licht-schall-und-sinne",
+  "title": {
+    "de": "Schall, Licht und Sinne",
+    "en": "Sound, light and senses"
+  },
+  "description": {
+    "de": "Wie du hörst und siehst – und was Modelle daran erklären.",
+    "en": "How you hear and see, and how models explain it."
+  },
+  "icon": "🌈",
+  "accent": "violet",
+  "badge": "Jg. 5–6",
+  "level": "klasse56"
+}

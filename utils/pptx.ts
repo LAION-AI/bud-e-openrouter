@@ -78,7 +78,14 @@ export interface TextElement extends BaseElement {
   strokeWidth?: number;
   valign?: "top" | "middle" | "bottom";
   /** Where it came from, so a title stays a title on the way back out. */
-  placeholder?: "title" | "subtitle" | "body" | "caption" | "columnTitle" | "quote" | "author";
+  placeholder?:
+    | "title"
+    | "subtitle"
+    | "body"
+    | "caption"
+    | "columnTitle"
+    | "quote"
+    | "author";
 }
 
 export interface ImageElement extends BaseElement {
@@ -135,7 +142,9 @@ export interface Slide {
 /** The slide's background as CSS, for the editor and the thumbnails. */
 export function slideBackgroundCss(slide: Slide): string {
   if (slide.gradient) {
-    return `linear-gradient(${slide.gradient.angle + 90}deg, ${slide.gradient.from}, ${slide.gradient.to})`;
+    return `linear-gradient(${
+      slide.gradient.angle + 90
+    }deg, ${slide.gradient.from}, ${slide.gradient.to})`;
   }
   return slide.background ?? "#ffffff";
 }
@@ -195,7 +204,10 @@ function unesc(s: string): string {
     .replace(/&quot;/g, '"')
     .replace(/&apos;/g, "'")
     .replace(/&#(\d+);/g, (_, d) => String.fromCodePoint(Number(d)))
-    .replace(/&#x([0-9a-fA-F]+);/g, (_, h) => String.fromCodePoint(parseInt(h, 16)))
+    .replace(
+      /&#x([0-9a-fA-F]+);/g,
+      (_, h) => String.fromCodePoint(parseInt(h, 16)),
+    )
     .replace(/&amp;/g, "&");
 }
 
@@ -224,7 +236,9 @@ export function parseXml(xml: string): XNode {
       const attrs: Record<string, string> = {};
       ATTR.lastIndex = 0;
       let a: RegExpExecArray | null;
-      while ((a = ATTR.exec(attrText ?? ""))) attrs[a[1]] = unesc(a[2] ?? a[3] ?? "");
+      while ((a = ATTR.exec(attrText ?? ""))) {
+        attrs[a[1]] = unesc(a[2] ?? a[3] ?? "");
+      }
       const node: XNode = { name: open, attrs, children: [], text: "" };
       top.children.push(node);
       if (!selfClose) stack.push(node);
@@ -290,8 +304,10 @@ function colorOf(fill: XNode | undefined): string | undefined {
     const off = Number(child(scheme, "a:lumOff")?.attrs.val ?? 0) / 100000;
     if (mod === 1 && off === 0) return base;
     const [r, g, b] = [1, 3, 5].map((i) => parseInt(base.slice(i, i + 2), 16));
-    const adj = (v: number) => Math.max(0, Math.min(255, Math.round(v * mod + 255 * off)));
-    return "#" + [r, g, b].map((v) => adj(v).toString(16).padStart(2, "0")).join("");
+    const adj = (v: number) =>
+      Math.max(0, Math.min(255, Math.round(v * mod + 255 * off)));
+    return "#" +
+      [r, g, b].map((v) => adj(v).toString(16).padStart(2, "0")).join("");
   }
   const sys = child(fill, "a:sysClr");
   if (sys?.attrs.lastClr) return "#" + sys.attrs.lastClr.toLowerCase();
@@ -322,8 +338,14 @@ function readXfrm(xfrm: XNode | undefined): Xfrm | undefined {
   const chOff = child(xfrm, "a:chOff");
   const chExt = child(xfrm, "a:chExt");
   if (chOff && chExt) {
-    out.chOff = { x: Number(chOff.attrs.x) / EMU_PER_PX, y: Number(chOff.attrs.y) / EMU_PER_PX };
-    out.chExt = { w: Number(chExt.attrs.cx) / EMU_PER_PX, h: Number(chExt.attrs.cy) / EMU_PER_PX };
+    out.chOff = {
+      x: Number(chOff.attrs.x) / EMU_PER_PX,
+      y: Number(chOff.attrs.y) / EMU_PER_PX,
+    };
+    out.chExt = {
+      w: Number(chExt.attrs.cx) / EMU_PER_PX,
+      h: Number(chExt.attrs.cy) / EMU_PER_PX,
+    };
   }
   return out;
 }
@@ -349,7 +371,10 @@ const PH_SIZES: Record<string, number> = {
   body: 18,
 };
 
-function readParagraphs(txBody: XNode | undefined, phType?: string): Paragraph[] {
+function readParagraphs(
+  txBody: XNode | undefined,
+  phType?: string,
+): Paragraph[] {
   if (!txBody) return [];
   const out: Paragraph[] = [];
   for (const p of kids(txBody, "a:p")) {
@@ -366,7 +391,9 @@ function readParagraphs(txBody: XNode | undefined, phType?: string): Paragraph[]
     // A body placeholder bullets by default in every template, and says so
     // only on the master - which we do not walk. The reverse marker is
     // explicit, so it wins.
-    if (phType === "body" && !child(pPr, "a:buNone") && !para.numbered) para.bullet = true;
+    if (phType === "body" && !child(pPr, "a:buNone") && !para.numbered) {
+      para.bullet = true;
+    }
 
     for (const c of p.children) {
       if (c.name === "a:r" || c.name === "a:fld") {
@@ -375,7 +402,9 @@ function readParagraphs(txBody: XNode | undefined, phType?: string): Paragraph[]
         if (rPr?.attrs.b === "1") run.bold = true;
         if (rPr?.attrs.i === "1") run.italic = true;
         if (rPr?.attrs.u && rPr.attrs.u !== "none") run.underline = true;
-        if (rPr?.attrs.strike && rPr.attrs.strike !== "noStrike") run.strike = true;
+        if (rPr?.attrs.strike && rPr.attrs.strike !== "noStrike") {
+          run.strike = true;
+        }
         if (rPr?.attrs.sz) run.size = Number(rPr.attrs.sz) / 100;
         const color = colorOf(child(rPr, "a:solidFill"));
         if (color) run.color = color;
@@ -387,7 +416,8 @@ function readParagraphs(txBody: XNode | undefined, phType?: string): Paragraph[]
       }
     }
     if (phType && PH_SIZES[phType]) {
-      const base = PH_SIZES[phType] - (phType === "body" ? Math.min(lvl, 3) * 2 : 0);
+      const base = PH_SIZES[phType] -
+        (phType === "body" ? Math.min(lvl, 3) * 2 : 0);
       for (const r of para.runs) if (!r.size) r.size = base;
       if ((phType === "title" || phType === "ctrTitle") && para.runs.length) {
         for (const r of para.runs) if (r.bold === undefined) r.bold = true;
@@ -400,7 +430,11 @@ function readParagraphs(txBody: XNode | undefined, phType?: string): Paragraph[]
 }
 
 /** Placeholder position from a layout or master, matched like PowerPoint. */
-function placeholderXfrm(tree: XNode | undefined, type: string | undefined, idx: string | undefined): Xfrm | undefined {
+function placeholderXfrm(
+  tree: XNode | undefined,
+  type: string | undefined,
+  idx: string | undefined,
+): Xfrm | undefined {
   if (!tree) return undefined;
   const sps = descendants(tree, "p:sp");
   const match = (want: (ph: XNode) => boolean) =>
@@ -408,9 +442,14 @@ function placeholderXfrm(tree: XNode | undefined, type: string | undefined, idx:
       const ph = path(sp, "p:nvSpPr", "p:nvPr", "p:ph");
       return ph ? want(ph) : false;
     });
-  const byIdx = idx !== undefined ? match((ph) => ph.attrs.idx === idx) : undefined;
+  const byIdx = idx !== undefined
+    ? match((ph) => ph.attrs.idx === idx)
+    : undefined;
   const t = type ?? "body";
-  const byType = match((ph) => (ph.attrs.type ?? "body") === t || (t === "ctrTitle" && ph.attrs.type === "title"));
+  const byType = match((ph) =>
+    (ph.attrs.type ?? "body") === t ||
+    (t === "ctrTitle" && ph.attrs.type === "title")
+  );
   const hit = byIdx ?? byType;
   return readXfrm(path(hit, "p:spPr", "a:xfrm"));
 }
@@ -495,7 +534,11 @@ export async function pptxToDeck(bytes: Uint8Array): Promise<Deck> {
 
   const presPart = "ppt/presentation.xml";
   const pres = xml(presPart);
-  if (!pres) throw new Error("keine ppt/presentation.xml - ist das wirklich eine .pptx?");
+  if (!pres) {
+    throw new Error(
+      "keine ppt/presentation.xml - ist das wirklich eine .pptx?",
+    );
+  }
   const presRels = readRels(entries, relsPathFor(presPart));
 
   // Scale: source slide size onto our canvas.
@@ -505,7 +548,10 @@ export async function pptxToDeck(bytes: Uint8Array): Promise<Deck> {
   const scale = Math.min(SLIDE_W / srcW, SLIDE_H / srcH);
   const dx = (SLIDE_W - srcW * scale) / 2;
   const dy = (SLIDE_H - srcH * scale) / 2;
-  const fit = (f: Xfrm, parent?: { ox: number; oy: number; sx: number; sy: number }) => {
+  const fit = (
+    f: Xfrm,
+    parent?: { ox: number; oy: number; sx: number; sy: number },
+  ) => {
     const p = parent ?? { ox: 0, oy: 0, sx: 1, sy: 1 };
     return {
       x: Math.round((p.ox + f.x * p.sx) * scale + dx),
@@ -518,7 +564,9 @@ export async function pptxToDeck(bytes: Uint8Array): Promise<Deck> {
   const deck: Deck = { slides: [] };
   const layoutCache = new Map<string, { layout?: XNode; master?: XNode }>();
 
-  for (const sldId of kids(path(pres, "p:presentation", "p:sldIdLst"), "p:sldId")) {
+  for (
+    const sldId of kids(path(pres, "p:presentation", "p:sldIdLst"), "p:sldId")
+  ) {
     const rel = presRels.byId[sldId.attrs["r:id"]];
     if (!rel) continue;
     const slidePart = resolve(presPart, rel.target);
@@ -529,13 +577,17 @@ export async function pptxToDeck(bytes: Uint8Array): Promise<Deck> {
     // Layout and master, for placeholder positions and the background.
     let layout: XNode | undefined;
     let master: XNode | undefined;
-    const layoutRel = Object.values(slideRels.byId).find((r) => r.type.endsWith("/slideLayout"));
+    const layoutRel = Object.values(slideRels.byId).find((r) =>
+      r.type.endsWith("/slideLayout")
+    );
     if (layoutRel) {
       const layoutPart = resolve(slidePart, layoutRel.target);
       if (!layoutCache.has(layoutPart)) {
         const l = xml(layoutPart);
         const lRels = readRels(entries, relsPathFor(layoutPart));
-        const mRel = Object.values(lRels.byId).find((r) => r.type.endsWith("/slideMaster"));
+        const mRel = Object.values(lRels.byId).find((r) =>
+          r.type.endsWith("/slideMaster")
+        );
         const m = mRel ? xml(resolve(layoutPart, mRel.target)) : undefined;
         layoutCache.set(layoutPart, { layout: l, master: m });
       }
@@ -544,8 +596,16 @@ export async function pptxToDeck(bytes: Uint8Array): Promise<Deck> {
 
     const slide: Slide = { id: newSlideId(), elements: [] };
     const bgPrOf = (tree: XNode | undefined) =>
-      path(tree, tree?.name === "#root" ? tree.children[0]?.name ?? "" : "", "p:cSld", "p:bg", "p:bgPr");
-    const bgPr = [sld, layout, master].map(bgPrOf).find((n) => n && (child(n, "a:solidFill") || child(n, "a:gradFill")));
+      path(
+        tree,
+        tree?.name === "#root" ? tree.children[0]?.name ?? "" : "",
+        "p:cSld",
+        "p:bg",
+        "p:bgPr",
+      );
+    const bgPr = [sld, layout, master].map(bgPrOf).find((n) =>
+      n && (child(n, "a:solidFill") || child(n, "a:gradFill"))
+    );
     const grad = child(bgPr, "a:gradFill");
     if (grad) {
       // Two stops are what we draw; a longer list keeps its first and last.
@@ -565,14 +625,19 @@ export async function pptxToDeck(bytes: Uint8Array): Promise<Deck> {
     if (layoutMark) slide.layout = layoutMark;
     let counter = 0;
     /** What a shape's name says about it, if we wrote it. */
-    const marksOf = (nv: XNode | undefined): { decor?: true; role?: string } => {
+    const marksOf = (
+      nv: XNode | undefined,
+    ): { decor?: true; role?: string } => {
       const name = path(nv, "p:cNvPr")?.attrs.name ?? "";
       if (/^Dekor\b/.test(name)) return { decor: true };
       const role = name.match(/^Rolle:([a-zA-Z]+)\b/)?.[1];
       return role ? { role } : {};
     };
 
-    const walk = (node: XNode, parent?: { ox: number; oy: number; sx: number; sy: number }) => {
+    const walk = (
+      node: XNode,
+      parent?: { ox: number; oy: number; sx: number; sy: number },
+    ) => {
       for (const c of node.children) {
         if (c.name === "p:grpSp") {
           const gx = readXfrm(path(c, "p:grpSpPr", "a:xfrm"));
@@ -601,7 +666,9 @@ export async function pptxToDeck(bytes: Uint8Array): Promise<Deck> {
           if (!xf) continue;
           const txBody = child(c, "p:txBody");
           const paragraphs = readParagraphs(txBody, phType);
-          const hasText = paragraphs.some((p) => p.runs.some((r) => r.text.trim()));
+          const hasText = paragraphs.some((p) =>
+            p.runs.some((r) => r.text.trim())
+          );
           // Empty placeholders ("Click to add title") have nothing to show.
           if (ph && !hasText) continue;
 
@@ -614,23 +681,38 @@ export async function pptxToDeck(bytes: Uint8Array): Promise<Deck> {
           const style = child(c, "p:style");
           const fillRef = child(style, "a:fillRef");
           const lnRef = child(style, "a:lnRef");
-          const styleFill = fillRef && fillRef.attrs.idx !== "0" ? colorOf(fillRef) : undefined;
-          const styleLine = lnRef && lnRef.attrs.idx !== "0" ? colorOf(lnRef) : undefined;
-          const fill = child(spPr, "a:noFill") ? undefined : colorOf(child(spPr, "a:solidFill")) ?? styleFill;
+          const styleFill = fillRef && fillRef.attrs.idx !== "0"
+            ? colorOf(fillRef)
+            : undefined;
+          const styleLine = lnRef && lnRef.attrs.idx !== "0"
+            ? colorOf(lnRef)
+            : undefined;
+          const fill = child(spPr, "a:noFill")
+            ? undefined
+            : colorOf(child(spPr, "a:solidFill")) ?? styleFill;
           const ln = child(spPr, "a:ln");
           const stroke = ln && child(ln, "a:noFill")
             ? undefined
             : (ln ? colorOf(child(ln, "a:solidFill")) : undefined) ?? styleLine;
-          const strokeWidth = ln?.attrs.w ? Number(ln.attrs.w) / EMU_PER_PX : undefined;
+          const strokeWidth = ln?.attrs.w
+            ? Number(ln.attrs.w) / EMU_PER_PX
+            : undefined;
           const anchor = child(txBody, "a:bodyPr")?.attrs.anchor;
-          const valign = anchor === "ctr" ? "middle" : anchor === "b" ? "bottom" : undefined;
+          const valign = anchor === "ctr"
+            ? "middle"
+            : anchor === "b"
+            ? "bottom"
+            : undefined;
           const box = fit(xf, parent);
           const id = `e${++counter}_${slide.id}`;
           const shape = PRST_TO_SHAPE[prst];
           const marks = marksOf(child(c, "p:nvSpPr"));
           const decor = marks.decor ? { decor: true as const } : {};
 
-          if (shape && shape !== "rect" || (shape === "rect" && (fill || stroke) && !ph)) {
+          if (
+            shape && shape !== "rect" ||
+            (shape === "rect" && (fill || stroke) && !ph)
+          ) {
             slide.elements.push({
               kind: "shape",
               id,
@@ -645,8 +727,17 @@ export async function pptxToDeck(bytes: Uint8Array): Promise<Deck> {
               ...(valign ? { valign } : {}),
             });
           } else if (hasText) {
-            const ROLES = ["subtitle", "body", "caption", "columnTitle", "quote", "author"];
-            const role = marks.role && ROLES.includes(marks.role) ? marks.role as TextElement["placeholder"] : undefined;
+            const ROLES = [
+              "subtitle",
+              "body",
+              "caption",
+              "columnTitle",
+              "quote",
+              "author",
+            ];
+            const role = marks.role && ROLES.includes(marks.role)
+              ? marks.role as TextElement["placeholder"]
+              : undefined;
             slide.elements.push({
               kind: "text",
               id,
@@ -686,17 +777,29 @@ export async function pptxToDeck(bytes: Uint8Array): Promise<Deck> {
           // A narration: PowerPoint stores it as a picture (the loudspeaker
           // icon) whose nvPr points at the sound. The sound becomes the
           // slide's audio; the icon is not shown, the player is.
-          const audioLink = path(c, "p:nvPicPr", "p:nvPr", "a:audioFile")?.attrs["r:link"];
+          const audioLink = path(c, "p:nvPicPr", "p:nvPr", "a:audioFile")
+            ?.attrs["r:link"];
           if (audioLink) {
             const rel = slideRels.byId[audioLink];
             const part = rel ? resolve(slidePart, rel.target) : "";
             const data = part ? entries.get(part) : undefined;
             if (data && !slide.audio) {
               const ext = part.toLowerCase().split(".").pop() ?? "mp3";
-              const mime = ext === "m4a" || ext === "mp4" ? "audio/mp4" : ext === "wav" ? "audio/wav" : ext === "ogg" || ext === "oga" ? "audio/ogg" : "audio/mpeg";
+              const mime = ext === "m4a" || ext === "mp4"
+                ? "audio/mp4"
+                : ext === "wav"
+                ? "audio/wav"
+                : ext === "ogg" || ext === "oga"
+                ? "audio/ogg"
+                : "audio/mpeg";
               const name = path(c, "p:nvPicPr", "p:cNvPr")?.attrs.name ?? "";
-              const secs = Number(name.match(/\((\d+(?:\.\d+)?) s\)/)?.[1] ?? 0);
-              slide.audio = { src: `data:${mime};base64,${encodeBase64(data)}`, seconds: secs };
+              const secs = Number(
+                name.match(/\((\d+(?:\.\d+)?) s\)/)?.[1] ?? 0,
+              );
+              slide.audio = {
+                src: `data:${mime};base64,${encodeBase64(data)}`,
+                seconds: secs,
+              };
             }
             continue;
           }
@@ -730,19 +833,29 @@ export async function pptxToDeck(bytes: Uint8Array): Promise<Deck> {
             // legible, and PowerPoint gets a text box it can show.
             const rows = kids(tbl, "a:tr").map((tr) =>
               kids(tr, "a:tc").map((tc) =>
-                readParagraphs(child(tc, "a:txBody")).map((p) => p.runs.map((r) => r.text).join("")).join(" ")
+                readParagraphs(child(tc, "a:txBody")).map((p) =>
+                  p.runs.map((r) => r.text).join("")
+                ).join(" ")
               ).join("  |  ")
             );
             slide.elements.push({
               kind: "text",
               id,
               ...box,
-              paragraphs: rows.map((r, i) => ({ runs: [{ text: r, size: 14, ...(i === 0 ? { bold: true } : {}) }] })),
+              paragraphs: rows.map((r, i) => ({
+                runs: [{
+                  text: r,
+                  size: 14,
+                  ...(i === 0 ? { bold: true } : {}),
+                }],
+              })),
               stroke: "#bfbfbf",
               strokeWidth: 1,
             });
           } else {
-            const label = descendants(c, "c:chart").length ? "Diagramm" : "Objekt";
+            const label = descendants(c, "c:chart").length
+              ? "Diagramm"
+              : "Objekt";
             slide.elements.push({
               kind: "shape",
               id,
@@ -750,7 +863,10 @@ export async function pptxToDeck(bytes: Uint8Array): Promise<Deck> {
               shape: "rect",
               fill: "#f2f2f2",
               stroke: "#bfbfbf",
-              paragraphs: [{ runs: [{ text: `[${label}]`, color: "#7f7f7f", size: 14 }], align: "center" }],
+              paragraphs: [{
+                runs: [{ text: `[${label}]`, color: "#7f7f7f", size: 14 }],
+                align: "center",
+              }],
               valign: "middle",
             });
           }
@@ -760,13 +876,19 @@ export async function pptxToDeck(bytes: Uint8Array): Promise<Deck> {
     if (spTree) walk(spTree);
 
     // Speaker notes.
-    const notesRel = Object.values(slideRels.byId).find((r) => r.type.endsWith("/notesSlide"));
+    const notesRel = Object.values(slideRels.byId).find((r) =>
+      r.type.endsWith("/notesSlide")
+    );
     if (notesRel) {
       const notes = xml(resolve(slidePart, notesRel.target));
-      const bodySp = descendants(notes ?? { name: "", attrs: {}, children: [], text: "" }, "p:sp").find((sp) =>
+      const bodySp = descendants(
+        notes ?? { name: "", attrs: {}, children: [], text: "" },
+        "p:sp",
+      ).find((sp) =>
         path(sp, "p:nvSpPr", "p:nvPr", "p:ph")?.attrs.type === "body"
       );
-      const text = paragraphsText(readParagraphs(child(bodySp, "p:txBody"))).trim();
+      const text = paragraphsText(readParagraphs(child(bodySp, "p:txBody")))
+        .trim();
       if (text) slide.notes = text;
     }
 
@@ -778,7 +900,8 @@ export async function pptxToDeck(bytes: Uint8Array): Promise<Deck> {
 /* ============================================================ writing */
 
 /** The loudspeaker PowerPoint shows for an embedded sound, 64 x 64 PNG. */
-const SPEAKER_PNG = "iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAABaElEQVR42u1byxKDMAhEpt+m1/ZL7VV/rj0543R8EEAbyO5ZUnbZkMekRAAAAEC76CzBff/81EJknt/dbQLURNwqRJeFuFYIzki+JF/OSL4kb85KXpo/U+PgzNWX8IADslf/jA8cUFtC0zSq4zSxnIW8dgyOTp6IaBhe6rE4Ovk9EcII4EF+SwTpuI9IxJcYbbWrcYCFfEm85DuOYnlpoyt1B0ea757Wd+sBnk1MKsLym9M0mkVJuRUuWQ1wFshe4SanAASAABAAAkCAzAKslz7sBDEFbA4xH4ZKLOhxcPK0/+0OsCZ8xcnz9imgFeGX/N44Ia7FNSKsY6Txku/+dim6JFdSsStuhP6+CniS0jTIKpZBDxG0DbKafYBFBGmDrH4jpBVB0yAX7L6ly/ZAgmj77SDOAiVqZas+HHAmQBYXHPGAAyzqRa++2AFRRZDkzZ6DRSN/uBE6QrP/GKlZiGz7FgAAgFvwBeubqPF7hDgjAAAAAElFTkSuQmCC";
+const SPEAKER_PNG =
+  "iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAABaElEQVR42u1byxKDMAhEpt+m1/ZL7VV/rj0543R8EEAbyO5ZUnbZkMekRAAAAEC76CzBff/81EJknt/dbQLURNwqRJeFuFYIzki+JF/OSL4kb85KXpo/U+PgzNWX8IADslf/jA8cUFtC0zSq4zSxnIW8dgyOTp6IaBhe6rE4Ovk9EcII4EF+SwTpuI9IxJcYbbWrcYCFfEm85DuOYnlpoyt1B0ea757Wd+sBnk1MKsLym9M0mkVJuRUuWQ1wFshe4SanAASAABAAAkCAzAKslz7sBDEFbA4xH4ZKLOhxcPK0/+0OsCZ8xcnz9imgFeGX/N44Ia7FNSKsY6Txku/+dim6JFdSsStuhP6+CniS0jTIKpZBDxG0DbKafYBFBGmDrH4jpBVB0yAX7L6ly/ZAgmj77SDOAiVqZas+HHAmQBYXHPGAAyzqRa++2AFRRZDkzZ6DRSN/uBE6QrP/GKlZiGz7FgAAgFvwBeubqPF7hDgjAAAAAElFTkSuQmCC";
 
 /**
  * A sound on a slide, the way PowerPoint writes one: a picture shape that
@@ -786,12 +909,20 @@ const SPEAKER_PNG = "iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAABaElEQVR42u1
  * comes up. The last shape id on the slide is passed in so the ids stay
  * unique.
  */
-function audioPicXml(n: number, seconds: number, rels: { link: string; media: string; icon: string }): string {
+function audioPicXml(
+  n: number,
+  seconds: number,
+  rels: { link: string; media: string; icon: string },
+): string {
   return `<p:pic><p:nvPicPr><p:cNvPr id="${n}" name="Audio ${n} (${seconds} s)"><a:hlinkClick r:id="" action="ppaction://media"/></p:cNvPr>` +
     `<p:cNvPicPr><a:picLocks noChangeAspect="1"/></p:cNvPicPr><p:nvPr><a:audioFile r:link="${rels.link}"/>` +
     `<p:extLst><p:ext uri="{DAA4B4D4-6D71-4841-9C94-3DE7FCFB9230}"><p14:media xmlns:p14="http://schemas.microsoft.com/office/powerpoint/2010/main" r:embed="${rels.media}"/></p:ext></p:extLst></p:nvPr></p:nvPicPr>` +
     `<p:blipFill><a:blip r:embed="${rels.icon}"/><a:stretch><a:fillRect/></a:stretch></p:blipFill>` +
-    `<p:spPr><a:xfrm><a:off x="${emu(SLIDE_W - 60)}" y="${emu(SLIDE_H - 60)}"/><a:ext cx="${emu(44)}" cy="${emu(44)}"/></a:xfrm><a:prstGeom prst="rect"><a:avLst/></a:prstGeom></p:spPr></p:pic>`;
+    `<p:spPr><a:xfrm><a:off x="${emu(SLIDE_W - 60)}" y="${
+      emu(SLIDE_H - 60)
+    }"/><a:ext cx="${emu(44)}" cy="${
+      emu(44)
+    }"/></a:xfrm><a:prstGeom prst="rect"><a:avLst/></a:prstGeom></p:spPr></p:pic>`;
 }
 
 function audioTimingXml(spid: number, seconds: number): string {
@@ -811,10 +942,13 @@ function audioTimingXml(spid: number, seconds: number): string {
 }
 
 const NS_A = 'xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main"';
-const NS_R = 'xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"';
-const NS_P = 'xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main"';
+const NS_R =
+  'xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"';
+const NS_P =
+  'xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main"';
 const XMLDECL = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n';
-const REL = "http://schemas.openxmlformats.org/officeDocument/2006/relationships";
+const REL =
+  "http://schemas.openxmlformats.org/officeDocument/2006/relationships";
 const CT = "application/vnd.openxmlformats-officedocument.presentationml";
 
 const emu = (px: number) => Math.round(px * EMU_PER_PX);
@@ -841,13 +975,21 @@ function runXml(r: Run, lang: string): string {
     'dirty="0"',
   ].filter(Boolean).join(" ");
   const inner = (r.color ? solidFill(r.color) : "") +
-    (r.font ? `<a:latin typeface="${esc(r.font)}"/><a:cs typeface="${esc(r.font)}"/>` : "");
+    (r.font
+      ? `<a:latin typeface="${esc(r.font)}"/><a:cs typeface="${esc(r.font)}"/>`
+      : "");
   return `<a:r><a:rPr ${attrs}>${inner}</a:rPr><a:t>${esc(r.text)}</a:t></a:r>`;
 }
 
 function paragraphXml(p: Paragraph, lang: string, first = false): string {
   const level = p.level ?? 0;
-  const algn = p.align === "center" ? "ctr" : p.align === "right" ? "r" : p.align === "justify" ? "just" : undefined;
+  const algn = p.align === "center"
+    ? "ctr"
+    : p.align === "right"
+    ? "r"
+    : p.align === "justify"
+    ? "just"
+    : undefined;
   const indent = p.bullet || p.numbered;
   const marL = indent ? 342900 * (level + 1) : level ? 342900 * level : 0;
   const pAttrs = [
@@ -862,15 +1004,23 @@ function paragraphXml(p: Paragraph, lang: string, first = false): string {
     ? '<a:buFont typeface="Arial"/><a:buChar char="&#8226;"/>'
     : "<a:buNone/>";
   const size = p.runs.find((r) => r.size)?.size;
-  const endPr = `<a:endParaRPr lang="${lang}"${size ? ` sz="${Math.round(size * 100)}"` : ""} dirty="0"/>`;
+  const endPr = `<a:endParaRPr lang="${lang}"${
+    size ? ` sz="${Math.round(size * 100)}"` : ""
+  } dirty="0"/>`;
   // Space before a paragraph, as the editor shows it: a little between
   // bullet points, more between paragraphs of running text.
   const before = indent ? (level ? 200 : 600) : first ? 0 : 900;
   const spc = before ? `<a:spcBef><a:spcPts val="${before}"/></a:spcBef>` : "";
-  return `<a:p><a:pPr${pAttrs ? " " + pAttrs : ""}>${spc}${bu}</a:pPr>${p.runs.map((r) => runXml(r, lang)).join("")}${endPr}</a:p>`;
+  return `<a:p><a:pPr${pAttrs ? " " + pAttrs : ""}>${spc}${bu}</a:pPr>${
+    p.runs.map((r) => runXml(r, lang)).join("")
+  }${endPr}</a:p>`;
 }
 
-function txBodyXml(paragraphs: Paragraph[], valign: string | undefined, lang: string): string {
+function txBodyXml(
+  paragraphs: Paragraph[],
+  valign: string | undefined,
+  lang: string,
+): string {
   const anchor = valign === "middle" ? "ctr" : valign === "bottom" ? "b" : "t";
   const ps = paragraphs.length ? paragraphs : [{ runs: [{ text: "" }] }];
   return `<p:txBody><a:bodyPr wrap="square" rtlCol="0" anchor="${anchor}"><a:normAutofit/></a:bodyPr><a:lstStyle/>${
@@ -880,7 +1030,9 @@ function txBodyXml(paragraphs: Paragraph[], valign: string | undefined, lang: st
 
 function xfrmXml(e: BaseElement): string {
   const rot = e.rotation ? ` rot="${Math.round(e.rotation * 60000)}"` : "";
-  return `<a:xfrm${rot}><a:off x="${emu(e.x)}" y="${emu(e.y)}"/><a:ext cx="${emu(e.w)}" cy="${emu(e.h)}"/></a:xfrm>`;
+  return `<a:xfrm${rot}><a:off x="${emu(e.x)}" y="${emu(e.y)}"/><a:ext cx="${
+    emu(e.w)
+  }" cy="${emu(e.h)}"/></a:xfrm>`;
 }
 
 const SHAPE_TO_PRST: Record<ShapeKind, string> = {
@@ -907,9 +1059,13 @@ function elementXml(
   const mark = e.decor ? "Dekor" : "";
   if (e.kind === "image") {
     const rId = imageRel(e.src);
-    return `<p:pic><p:nvPicPr><p:cNvPr id="${n}" name="${mark || "Bild"} ${n}"/><p:cNvPicPr><a:picLocks noChangeAspect="1"/></p:cNvPicPr><p:nvPr/></p:nvPicPr>` +
+    return `<p:pic><p:nvPicPr><p:cNvPr id="${n}" name="${
+      mark || "Bild"
+    } ${n}"/><p:cNvPicPr><a:picLocks noChangeAspect="1"/></p:cNvPicPr><p:nvPr/></p:nvPicPr>` +
       `<p:blipFill><a:blip r:embed="${rId}"/><a:stretch><a:fillRect/></a:stretch></p:blipFill>` +
-      `<p:spPr>${xfrmXml(e)}<a:prstGeom prst="rect"><a:avLst/></a:prstGeom></p:spPr></p:pic>`;
+      `<p:spPr>${
+        xfrmXml(e)
+      }<a:prstGeom prst="rect"><a:avLst/></a:prstGeom></p:spPr></p:pic>`;
   }
   if (e.kind === "text") {
     // A title carries the placeholder mark, so a reader - ours, PowerPoint's
@@ -921,19 +1077,35 @@ function elementXml(
       ? `<p:cNvSpPr><a:spLocks noGrp="1"/></p:cNvSpPr><p:nvPr><p:ph type="title"/></p:nvPr>`
       : `<p:cNvSpPr txBox="1"/><p:nvPr/>`;
     const role = e.placeholder && !isTitle ? `Rolle:${e.placeholder}` : "";
-    return `<p:sp><p:nvSpPr><p:cNvPr id="${n}" name="${isTitle ? "Titel" : role || mark || "Textfeld"} ${n}"/>${nv}</p:nvSpPr>` +
-      `<p:spPr>${xfrmXml(e)}<a:prstGeom prst="rect"><a:avLst/></a:prstGeom>${e.fill ? solidFill(e.fill) : "<a:noFill/>"}${
-        lineXml(e.stroke, e.strokeWidth)
-      }</p:spPr>${txBodyXml(e.paragraphs, e.valign, lang)}</p:sp>`;
+    return `<p:sp><p:nvSpPr><p:cNvPr id="${n}" name="${
+      isTitle ? "Titel" : role || mark || "Textfeld"
+    } ${n}"/>${nv}</p:nvSpPr>` +
+      `<p:spPr>${xfrmXml(e)}<a:prstGeom prst="rect"><a:avLst/></a:prstGeom>${
+        e.fill ? solidFill(e.fill) : "<a:noFill/>"
+      }${lineXml(e.stroke, e.strokeWidth)}</p:spPr>${
+        txBodyXml(e.paragraphs, e.valign, lang)
+      }</p:sp>`;
   }
   // shape
   const prst = SHAPE_TO_PRST[e.shape] ?? "rect";
   const isLine = e.shape === "line";
-  const fill = isLine ? "<a:noFill/>" : e.fill ? solidFill(e.fill) : "<a:noFill/>";
+  const fill = isLine
+    ? "<a:noFill/>"
+    : e.fill
+    ? solidFill(e.fill)
+    : "<a:noFill/>";
   const stroke = isLine ? (e.stroke ?? "#000000") : e.stroke;
-  const body = isLine ? "" : txBodyXml(e.paragraphs ?? [], e.valign ?? "middle", lang);
-  return `<p:sp><p:nvSpPr><p:cNvPr id="${n}" name="${mark || "Form"} ${n}"/><p:cNvSpPr/><p:nvPr/></p:nvSpPr>` +
-    `<p:spPr>${xfrmXml(e)}<a:prstGeom prst="${prst}"><a:avLst/></a:prstGeom>${fill}${lineXml(stroke, e.strokeWidth ?? (isLine ? 2 : 1))}</p:spPr>${body}</p:sp>`;
+  const body = isLine
+    ? ""
+    : txBodyXml(e.paragraphs ?? [], e.valign ?? "middle", lang);
+  return `<p:sp><p:nvSpPr><p:cNvPr id="${n}" name="${
+    mark || "Form"
+  } ${n}"/><p:cNvSpPr/><p:nvPr/></p:nvSpPr>` +
+    `<p:spPr>${
+      xfrmXml(e)
+    }<a:prstGeom prst="${prst}"><a:avLst/></a:prstGeom>${fill}${
+      lineXml(stroke, e.strokeWidth ?? (isLine ? 2 : 1))
+    }</p:spPr>${body}</p:sp>`;
 }
 
 function slideXml(
@@ -946,14 +1118,24 @@ function slideXml(
     ? `<p:bg><p:bgPr><a:gradFill rotWithShape="1"><a:gsLst>` +
       `<a:gs pos="0"><a:srgbClr val="${hex(slide.gradient.from)}"/></a:gs>` +
       `<a:gs pos="100000"><a:srgbClr val="${hex(slide.gradient.to)}"/></a:gs>` +
-      `</a:gsLst><a:lin ang="${Math.round(slide.gradient.angle * 60000)}" scaled="0"/></a:gradFill><a:effectLst/></p:bgPr></p:bg>`
+      `</a:gsLst><a:lin ang="${
+        Math.round(slide.gradient.angle * 60000)
+      }" scaled="0"/></a:gradFill><a:effectLst/></p:bgPr></p:bg>`
     : slide.background
-    ? `<p:bg><p:bgPr>${solidFill(slide.background)}<a:effectLst/></p:bgPr></p:bg>`
+    ? `<p:bg><p:bgPr>${
+      solidFill(slide.background)
+    }<a:effectLst/></p:bgPr></p:bg>`
     : "";
-  const shapes = slide.elements.map((e, i) => elementXml(e, i + 2, lang, imageRel)).join("");
+  const shapes = slide.elements.map((e, i) =>
+    elementXml(e, i + 2, lang, imageRel)
+  ).join("");
   const audioId = slide.elements.length + 2;
-  const audio = slide.audio && audioRels ? audioPicXml(audioId, slide.audio.seconds, audioRels) : "";
-  const timing = slide.audio && audioRels ? audioTimingXml(audioId, slide.audio.seconds) : "";
+  const audio = slide.audio && audioRels
+    ? audioPicXml(audioId, slide.audio.seconds, audioRels)
+    : "";
+  const timing = slide.audio && audioRels
+    ? audioTimingXml(audioId, slide.audio.seconds)
+    : "";
   // The slide's name carries the layout it was built with.
   const cSldName = slide.layout ? ` name="layout:${esc(slide.layout)}"` : "";
   return XMLDECL +
@@ -972,7 +1154,9 @@ function notesXml(text: string, lang: string): string {
     `<p:grpSpPr><a:xfrm><a:off x="0" y="0"/><a:ext cx="0" cy="0"/><a:chOff x="0" y="0"/><a:chExt cx="0" cy="0"/></a:xfrm></p:grpSpPr>` +
     `<p:sp><p:nvSpPr><p:cNvPr id="2" name="Folienbildplatzhalter 1"/><p:cNvSpPr><a:spLocks noGrp="1" noRot="1" noChangeAspect="1"/></p:cNvSpPr><p:nvPr><p:ph type="sldImg"/></p:nvPr></p:nvSpPr><p:spPr/></p:sp>` +
     `<p:sp><p:nvSpPr><p:cNvPr id="3" name="Notizenplatzhalter 2"/><p:cNvSpPr><a:spLocks noGrp="1"/></p:cNvSpPr><p:nvPr><p:ph type="body" idx="1"/></p:nvPr></p:nvSpPr><p:spPr/>` +
-    `<p:txBody><a:bodyPr/><a:lstStyle/>${paragraphs.map((p) => paragraphXml(p, lang)).join("")}</p:txBody></p:sp>` +
+    `<p:txBody><a:bodyPr/><a:lstStyle/>${
+      paragraphs.map((p) => paragraphXml(p, lang)).join("")
+    }</p:txBody></p:sp>` +
     `</p:spTree></p:cSld><p:clrMapOvr><a:masterClrMapping/></p:clrMapOvr></p:notes>`;
 }
 
@@ -1006,8 +1190,14 @@ const CLR_MAP =
 
 function lvlStyles(prefix: string, sizes: number[]): string {
   return sizes.map((sz, i) =>
-    `<a:lvl${i + 1}pPr marL="${i * 457200}" algn="l" defTabSz="914400" rtl="0" eaLnBrk="1" latinLnBrk="0" hangingPunct="1">` +
-    `<a:defRPr sz="${sz * 100}" kern="1200"><a:solidFill><a:schemeClr val="tx1"/></a:solidFill><a:latin typeface="${prefix}"/><a:ea typeface="+mn-ea"/><a:cs typeface="+mn-cs"/></a:defRPr></a:lvl${i + 1}pPr>`
+    `<a:lvl${i + 1}pPr marL="${
+      i * 457200
+    }" algn="l" defTabSz="914400" rtl="0" eaLnBrk="1" latinLnBrk="0" hangingPunct="1">` +
+    `<a:defRPr sz="${
+      sz * 100
+    }" kern="1200"><a:solidFill><a:schemeClr val="tx1"/></a:solidFill><a:latin typeface="${prefix}"/><a:ea typeface="+mn-ea"/><a:cs typeface="+mn-cs"/></a:defRPr></a:lvl${
+      i + 1
+    }pPr>`
   ).join("");
 }
 
@@ -1016,7 +1206,9 @@ const SLIDE_MASTER = XMLDECL +
   `<p:sldLayoutIdLst><p:sldLayoutId id="2147483649" r:id="rId1"/></p:sldLayoutIdLst>` +
   `<p:txStyles><p:titleStyle>${lvlStyles("+mj-lt", [44])}</p:titleStyle>` +
   `<p:bodyStyle>${lvlStyles("+mn-lt", [28, 24, 20, 18, 18])}</p:bodyStyle>` +
-  `<p:otherStyle>${lvlStyles("+mn-lt", [18, 18, 18, 18, 18])}</p:otherStyle></p:txStyles></p:sldMaster>`;
+  `<p:otherStyle>${
+    lvlStyles("+mn-lt", [18, 18, 18, 18, 18])
+  }</p:otherStyle></p:txStyles></p:sldMaster>`;
 
 /** The one layout: a title placeholder, so slides may mark their heading. */
 const SLIDE_LAYOUT = XMLDECL +
@@ -1024,29 +1216,49 @@ const SLIDE_LAYOUT = XMLDECL +
   `<p:nvGrpSpPr><p:cNvPr id="1" name=""/><p:cNvGrpSpPr/><p:nvPr/></p:nvGrpSpPr>` +
   `<p:grpSpPr><a:xfrm><a:off x="0" y="0"/><a:ext cx="0" cy="0"/><a:chOff x="0" y="0"/><a:chExt cx="0" cy="0"/></a:xfrm></p:grpSpPr>` +
   `<p:sp><p:nvSpPr><p:cNvPr id="2" name="Titel 1"/><p:cNvSpPr><a:spLocks noGrp="1"/></p:cNvSpPr><p:nvPr><p:ph type="title"/></p:nvPr></p:nvSpPr>` +
-  `<p:spPr><a:xfrm><a:off x="${emu(60)}" y="${emu(36)}"/><a:ext cx="${emu(840)}" cy="${emu(84)}"/></a:xfrm><a:prstGeom prst="rect"><a:avLst/></a:prstGeom></p:spPr>` +
+  `<p:spPr><a:xfrm><a:off x="${emu(60)}" y="${emu(36)}"/><a:ext cx="${
+    emu(840)
+  }" cy="${
+    emu(84)
+  }"/></a:xfrm><a:prstGeom prst="rect"><a:avLst/></a:prstGeom></p:spPr>` +
   `<p:txBody><a:bodyPr/><a:lstStyle/><a:p><a:endParaRPr lang="de-DE"/></a:p></p:txBody></p:sp>` +
   `</p:spTree></p:cSld><p:clrMapOvr><a:masterClrMapping/></p:clrMapOvr></p:sldLayout>`;
 
 const NOTES_MASTER = XMLDECL +
   `<p:notesMaster ${NS_A} ${NS_R} ${NS_P}><p:cSld>${EMPTY_TREE}</p:cSld>${CLR_MAP}` +
-  `<p:notesStyle>${lvlStyles("+mn-lt", [12, 12, 12, 12, 12])}</p:notesStyle></p:notesMaster>`;
+  `<p:notesStyle>${
+    lvlStyles("+mn-lt", [12, 12, 12, 12, 12])
+  }</p:notesStyle></p:notesMaster>`;
 
 function rels(list: { id: string; type: string; target: string }[]): string {
   const typeOf = (t: string) =>
-    t === "media2010" ? "http://schemas.microsoft.com/office/2007/relationships/media" : `${REL}/${t}`;
+    t === "media2010"
+      ? "http://schemas.microsoft.com/office/2007/relationships/media"
+      : `${REL}/${t}`;
   return XMLDECL +
     `<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">` +
-    list.map((r) => `<Relationship Id="${r.id}" Type="${typeOf(r.type)}" Target="${r.target}"/>`).join("") +
+    list.map((r) =>
+      `<Relationship Id="${r.id}" Type="${
+        typeOf(r.type)
+      }" Target="${r.target}"/>`
+    ).join("") +
     `</Relationships>`;
 }
 
 /** Content type by data: URL prefix. */
-function imageMeta(src: string): { ext: string; mime: string; bytes: Uint8Array } {
+function imageMeta(
+  src: string,
+): { ext: string; mime: string; bytes: Uint8Array } {
   const m = src.match(/^data:(image\/[a-z+]+);base64,(.*)$/s);
   if (!m) throw new Error("Bild ist keine data:-URL");
   const mime = m[1];
-  const ext = mime === "image/jpeg" ? "jpeg" : mime === "image/gif" ? "gif" : mime === "image/webp" ? "webp" : "png";
+  const ext = mime === "image/jpeg"
+    ? "jpeg"
+    : mime === "image/gif"
+    ? "gif"
+    : mime === "image/webp"
+    ? "webp"
+    : "png";
   return { ext, mime, bytes: decodeBase64(m[2]) };
 }
 
@@ -1056,12 +1268,18 @@ function imageMeta(src: string): { ext: string; mime: string; bytes: Uint8Array 
  * Every picture is stored once, however many slides show it - the same data
  * URL maps to the same media part.
  */
-export async function deckToPptx(deck: Deck, opts: { lang?: string; title?: string } = {}): Promise<Uint8Array> {
+export async function deckToPptx(
+  deck: Deck,
+  opts: { lang?: string; title?: string } = {},
+): Promise<Uint8Array> {
   const lang = opts.lang === "en" ? "en-US" : "de-DE";
   const enc = new TextEncoder();
   const files: ZipEntry[] = [];
   const put = (name: string, content: string | Uint8Array) =>
-    files.push({ name, data: typeof content === "string" ? enc.encode(content) : content });
+    files.push({
+      name,
+      data: typeof content === "string" ? enc.encode(content) : content,
+    });
 
   const media = new Map<string, string>(); // src -> media part name
   const mediaTypes = new Set<string>();
@@ -1078,17 +1296,25 @@ export async function deckToPptx(deck: Deck, opts: { lang?: string; title?: stri
     return part;
   };
 
-  const slides = deck.slides.length ? deck.slides : [{ id: newSlideId(), elements: [] }];
+  const slides = deck.slides.length
+    ? deck.slides
+    : [{ id: newSlideId(), elements: [] }];
   const withNotes = slides.some((s) => s.notes?.trim());
 
   slides.forEach((slide, i) => {
     const n = i + 1;
     const slideRels: { id: string; type: string; target: string }[] = [
-      { id: "rId1", type: "slideLayout", target: "../slideLayouts/slideLayout1.xml" },
+      {
+        id: "rId1",
+        type: "slideLayout",
+        target: "../slideLayouts/slideLayout1.xml",
+      },
     ];
     const imageRel = (src: string) => {
       const part = mediaFor(src);
-      const existing = slideRels.find((r) => r.target === "../" + part.slice(4));
+      const existing = slideRels.find((r) =>
+        r.target === "../" + part.slice(4)
+      );
       if (existing) return existing.id;
       const id = `rId${slideRels.length + 1}`;
       slideRels.push({ id, type: "image", target: "../" + part.slice(4) });
@@ -1096,30 +1322,58 @@ export async function deckToPptx(deck: Deck, opts: { lang?: string; title?: stri
     };
     let audioRels: { link: string; media: string; icon: string } | undefined;
     if (slide.audio) {
-      const m = slide.audio.src.match(/^data:(audio\/[a-z0-9.+-]+);base64,(.*)$/s);
+      const m = slide.audio.src.match(
+        /^data:(audio\/[a-z0-9.+-]+);base64,(.*)$/s,
+      );
       if (m) {
-        const ext = m[1] === "audio/mp4" ? "m4a" : m[1] === "audio/wav" || m[1] === "audio/x-wav" ? "wav" : m[1] === "audio/ogg" ? "ogg" : "mp3";
+        const ext = m[1] === "audio/mp4"
+          ? "m4a"
+          : m[1] === "audio/wav" || m[1] === "audio/x-wav"
+          ? "wav"
+          : m[1] === "audio/ogg"
+          ? "ogg"
+          : "mp3";
         const part = `ppt/media/media${n}.${ext}`;
         put(part, decodeBase64(m[2]));
         mediaTypes.add(ext);
         const iconPart = mediaFor(`data:image/png;base64,${SPEAKER_PNG}`);
         const link = `rId${slideRels.length + 1}`;
-        slideRels.push({ id: link, type: "audio", target: "../" + part.slice(4) });
+        slideRels.push({
+          id: link,
+          type: "audio",
+          target: "../" + part.slice(4),
+        });
         const media = `rId${slideRels.length + 1}`;
-        slideRels.push({ id: media, type: "media2010", target: "../" + part.slice(4) });
+        slideRels.push({
+          id: media,
+          type: "media2010",
+          target: "../" + part.slice(4),
+        });
         const icon = `rId${slideRels.length + 1}`;
-        slideRels.push({ id: icon, type: "image", target: "../" + iconPart.slice(4) });
+        slideRels.push({
+          id: icon,
+          type: "image",
+          target: "../" + iconPart.slice(4),
+        });
         audioRels = { link, media, icon };
       }
     }
     put(`ppt/slides/slide${n}.xml`, slideXml(slide, lang, imageRel, audioRels));
     if (slide.notes?.trim()) {
-      slideRels.push({ id: `rId${slideRels.length + 1}`, type: "notesSlide", target: `../notesSlides/notesSlide${n}.xml` });
+      slideRels.push({
+        id: `rId${slideRels.length + 1}`,
+        type: "notesSlide",
+        target: `../notesSlides/notesSlide${n}.xml`,
+      });
       put(`ppt/notesSlides/notesSlide${n}.xml`, notesXml(slide.notes, lang));
       put(
         `ppt/notesSlides/_rels/notesSlide${n}.xml.rels`,
         rels([
-          { id: "rId1", type: "notesMaster", target: "../notesMasters/notesMaster1.xml" },
+          {
+            id: "rId1",
+            type: "notesMaster",
+            target: "../notesMasters/notesMaster1.xml",
+          },
           { id: "rId2", type: "slide", target: `../slides/slide${n}.xml` },
         ]),
       );
@@ -1131,14 +1385,22 @@ export async function deckToPptx(deck: Deck, opts: { lang?: string; title?: stri
   put(
     "ppt/slideMasters/_rels/slideMaster1.xml.rels",
     rels([
-      { id: "rId1", type: "slideLayout", target: "../slideLayouts/slideLayout1.xml" },
+      {
+        id: "rId1",
+        type: "slideLayout",
+        target: "../slideLayouts/slideLayout1.xml",
+      },
       { id: "rId2", type: "theme", target: "../theme/theme1.xml" },
     ]),
   );
   put("ppt/slideLayouts/slideLayout1.xml", SLIDE_LAYOUT);
   put(
     "ppt/slideLayouts/_rels/slideLayout1.xml.rels",
-    rels([{ id: "rId1", type: "slideMaster", target: "../slideMasters/slideMaster1.xml" }]),
+    rels([{
+      id: "rId1",
+      type: "slideMaster",
+      target: "../slideMasters/slideMaster1.xml",
+    }]),
   );
   put("ppt/theme/theme1.xml", THEME);
   if (withNotes) {
@@ -1151,18 +1413,42 @@ export async function deckToPptx(deck: Deck, opts: { lang?: string; title?: stri
   }
 
   const presRels: { id: string; type: string; target: string }[] = [
-    { id: "rId1", type: "slideMaster", target: "slideMasters/slideMaster1.xml" },
-    ...slides.map((_, i) => ({ id: `rId${i + 2}`, type: "slide", target: `slides/slide${i + 1}.xml` })),
+    {
+      id: "rId1",
+      type: "slideMaster",
+      target: "slideMasters/slideMaster1.xml",
+    },
+    ...slides.map((_, i) => ({
+      id: `rId${i + 2}`,
+      type: "slide",
+      target: `slides/slide${i + 1}.xml`,
+    })),
   ];
   const themeId = `rId${presRels.length + 1}`;
   presRels.push({ id: themeId, type: "theme", target: "theme/theme1.xml" });
-  presRels.push({ id: `rId${presRels.length + 1}`, type: "presProps", target: "presProps.xml" });
-  presRels.push({ id: `rId${presRels.length + 1}`, type: "viewProps", target: "viewProps.xml" });
-  presRels.push({ id: `rId${presRels.length + 1}`, type: "tableStyles", target: "tableStyles.xml" });
+  presRels.push({
+    id: `rId${presRels.length + 1}`,
+    type: "presProps",
+    target: "presProps.xml",
+  });
+  presRels.push({
+    id: `rId${presRels.length + 1}`,
+    type: "viewProps",
+    target: "viewProps.xml",
+  });
+  presRels.push({
+    id: `rId${presRels.length + 1}`,
+    type: "tableStyles",
+    target: "tableStyles.xml",
+  });
   let notesMasterId = "";
   if (withNotes) {
     notesMasterId = `rId${presRels.length + 1}`;
-    presRels.push({ id: notesMasterId, type: "notesMaster", target: "notesMasters/notesMaster1.xml" });
+    presRels.push({
+      id: notesMasterId,
+      type: "notesMaster",
+      target: "notesMasters/notesMaster1.xml",
+    });
   }
   put("ppt/_rels/presentation.xml.rels", rels(presRels));
 
@@ -1171,22 +1457,44 @@ export async function deckToPptx(deck: Deck, opts: { lang?: string; title?: stri
     XMLDECL +
       `<p:presentation ${NS_A} ${NS_R} ${NS_P} saveSubsetFonts="1">` +
       `<p:sldMasterIdLst><p:sldMasterId id="2147483648" r:id="rId1"/></p:sldMasterIdLst>` +
-      (withNotes ? `<p:notesMasterIdLst><p:notesMasterId r:id="${notesMasterId}"/></p:notesMasterIdLst>` : "") +
-      `<p:sldIdLst>${slides.map((_, i) => `<p:sldId id="${256 + i}" r:id="rId${i + 2}"/>`).join("")}</p:sldIdLst>` +
-      `<p:sldSz cx="${emu(SLIDE_W)}" cy="${emu(SLIDE_H)}"/><p:notesSz cx="6858000" cy="9144000"/>` +
-      `<p:defaultTextStyle>${lvlStyles("+mn-lt", [18, 18, 18, 18, 18, 18, 18, 18, 18])}</p:defaultTextStyle>` +
+      (withNotes
+        ? `<p:notesMasterIdLst><p:notesMasterId r:id="${notesMasterId}"/></p:notesMasterIdLst>`
+        : "") +
+      `<p:sldIdLst>${
+        slides.map((_, i) => `<p:sldId id="${256 + i}" r:id="rId${i + 2}"/>`)
+          .join("")
+      }</p:sldIdLst>` +
+      `<p:sldSz cx="${emu(SLIDE_W)}" cy="${
+        emu(SLIDE_H)
+      }"/><p:notesSz cx="6858000" cy="9144000"/>` +
+      `<p:defaultTextStyle>${
+        lvlStyles("+mn-lt", [18, 18, 18, 18, 18, 18, 18, 18, 18])
+      }</p:defaultTextStyle>` +
       `</p:presentation>`,
   );
-  put("ppt/presProps.xml", XMLDECL + `<p:presentationPr ${NS_A} ${NS_R} ${NS_P}/>`);
-  put("ppt/viewProps.xml", XMLDECL + `<p:viewPr ${NS_A} ${NS_R} ${NS_P}><p:normalViewPr><p:restoredLeft sz="15620"/><p:restoredTop sz="94660"/></p:normalViewPr><p:gridSpacing cx="72008" cy="72008"/></p:viewPr>`);
-  put("ppt/tableStyles.xml", XMLDECL + `<a:tblStyleLst ${NS_A} def="{5C22544A-7EE6-4342-B048-85BDC9FD1C3A}"/>`);
+  put(
+    "ppt/presProps.xml",
+    XMLDECL + `<p:presentationPr ${NS_A} ${NS_R} ${NS_P}/>`,
+  );
+  put(
+    "ppt/viewProps.xml",
+    XMLDECL +
+      `<p:viewPr ${NS_A} ${NS_R} ${NS_P}><p:normalViewPr><p:restoredLeft sz="15620"/><p:restoredTop sz="94660"/></p:normalViewPr><p:gridSpacing cx="72008" cy="72008"/></p:viewPr>`,
+  );
+  put(
+    "ppt/tableStyles.xml",
+    XMLDECL +
+      `<a:tblStyleLst ${NS_A} def="{5C22544A-7EE6-4342-B048-85BDC9FD1C3A}"/>`,
+  );
 
   const now = new Date().toISOString().replace(/\.\d+Z$/, "Z");
   put(
     "docProps/core.xml",
     XMLDECL +
       `<cp:coreProperties xmlns:cp="http://schemas.openxmlformats.org/package/2006/metadata/core-properties" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:dcmitype="http://purl.org/dc/dcmitype/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">` +
-      `<dc:title>${esc(opts.title ?? "")}</dc:title><dc:creator>Bud-E</dc:creator>` +
+      `<dc:title>${
+        esc(opts.title ?? "")
+      }</dc:title><dc:creator>Bud-E</dc:creator>` +
       `<dcterms:created xsi:type="dcterms:W3CDTF">${now}</dcterms:created><dcterms:modified xsi:type="dcterms:W3CDTF">${now}</dcterms:modified></cp:coreProperties>`,
   );
   put(
@@ -1216,10 +1524,18 @@ export async function deckToPptx(deck: Deck, opts: { lang?: string; title?: stri
     `<Override PartName="/ppt/tableStyles.xml" ContentType="${CT}.tableStyles+xml"/>`,
     `<Override PartName="/docProps/core.xml" ContentType="application/vnd.openxmlformats-package.core-properties+xml"/>`,
     `<Override PartName="/docProps/app.xml" ContentType="application/vnd.openxmlformats-officedocument.extended-properties+xml"/>`,
-    ...slides.map((_, i) => `<Override PartName="/ppt/slides/slide${i + 1}.xml" ContentType="${CT}.slide+xml"/>`),
+    ...slides.map((_, i) =>
+      `<Override PartName="/ppt/slides/slide${
+        i + 1
+      }.xml" ContentType="${CT}.slide+xml"/>`
+    ),
     ...slides.flatMap((s, i) =>
       s.notes?.trim()
-        ? [`<Override PartName="/ppt/notesSlides/notesSlide${i + 1}.xml" ContentType="${CT}.notesSlide+xml"/>`]
+        ? [
+          `<Override PartName="/ppt/notesSlides/notesSlide${
+            i + 1
+          }.xml" ContentType="${CT}.notesSlide+xml"/>`,
+        ]
         : []
     ),
     ...(withNotes
@@ -1233,15 +1549,27 @@ export async function deckToPptx(deck: Deck, opts: { lang?: string; title?: stri
     `<Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/>`,
     `<Default Extension="xml" ContentType="application/xml"/>`,
     ...[...mediaTypes].map((ext) => {
-      const audio = ext === "mp3" ? "audio/mpeg" : ext === "m4a" ? "audio/mp4" : ext === "wav" ? "audio/wav" : ext === "ogg" ? "audio/ogg" : "";
-      return `<Default Extension="${ext}" ContentType="${audio || `image/${ext === "jpeg" ? "jpeg" : ext}`}"/>`;
+      const audio = ext === "mp3"
+        ? "audio/mpeg"
+        : ext === "m4a"
+        ? "audio/mp4"
+        : ext === "wav"
+        ? "audio/wav"
+        : ext === "ogg"
+        ? "audio/ogg"
+        : "";
+      return `<Default Extension="${ext}" ContentType="${
+        audio || `image/${ext === "jpeg" ? "jpeg" : ext}`
+      }"/>`;
     }),
   ];
   files.unshift({
     name: "[Content_Types].xml",
     data: enc.encode(
       XMLDECL +
-        `<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">${defaults.join("")}${overrides.join("")}</Types>`,
+        `<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">${
+          defaults.join("")
+        }${overrides.join("")}</Types>`,
     ),
   });
 
@@ -1253,19 +1581,42 @@ export async function deckToPptx(deck: Deck, opts: { lang?: string; title?: stri
 /** The deck as text, for the assistant and for tests. */
 export function deckToText(deck: Deck): string {
   return deck.slides.map((s, i) => {
-    const bgNote = s.gradient ? ` (Verlauf ${s.gradient.from}→${s.gradient.to})` : s.background ? ` (Hintergrund ${s.background})` : "";
-    const lines: string[] = [`Folie ${i + 1}${bgNote}:`];
+    const bgNote = s.gradient
+      ? ` (Verlauf ${s.gradient.from}→${s.gradient.to})`
+      : s.background
+      ? ` (Hintergrund ${s.background})`
+      : "";
+    const lines: string[] = [
+      `Folie ${i + 1}${bgNote}${s.layout ? `, Layout: ${s.layout}` : ""}:`,
+    ];
     for (const e of s.elements) {
       if (e.kind === "image") {
-        lines.push(`  [Bild ${Math.round(e.w)}x${Math.round(e.h)} bei ${Math.round(e.x)},${Math.round(e.y)}]`);
+        lines.push(
+          `  [Bild ${Math.round(e.w)}x${Math.round(e.h)} bei ${
+            Math.round(e.x)
+          },${Math.round(e.y)}]`,
+        );
       } else {
         const text = paragraphsText(e.paragraphs).trim();
-        const label = e.kind === "shape" ? `Form ${e.shape}` : e.placeholder === "title" ? "Titel" : "Text";
-        if (text) lines.push(`  ${label}: ${text.replace(/\n/g, " / ")}`);
-        else if (e.kind === "shape") lines.push(`  [${label}]`);
+        const label = e.kind === "shape"
+          ? `Form ${e.shape}`
+          : e.placeholder === "title"
+          ? "Titel"
+          : "Text";
+        const font = e.paragraphs?.[0]?.runs?.[0];
+        const format = `[Position ${Math.round(e.x)},${
+          Math.round(e.y)
+        }, Größe ${Math.round(e.w)}×${Math.round(e.h)}${
+          font?.size ? `, Schrift ${font.size}pt` : ""
+        }${font?.color ? `, Farbe ${font.color}` : ""}]`;
+        if (text) {
+          lines.push(`  ${label} ${format}: ${text.replace(/\n/g, " / ")}`);
+        } else if (e.kind === "shape") lines.push(`  [${label}]`);
       }
     }
-    if (s.notes?.trim()) lines.push(`  Notizen: ${s.notes.trim().replace(/\n/g, " / ")}`);
+    if (s.notes?.trim()) {
+      lines.push(`  Notizen: ${s.notes.trim().replace(/\n/g, " / ")}`);
+    }
     if (s.audio) lines.push(`  [Audio: ${s.audio.seconds} s gesprochen]`);
     return lines.join("\n");
   }).join("\n\n");

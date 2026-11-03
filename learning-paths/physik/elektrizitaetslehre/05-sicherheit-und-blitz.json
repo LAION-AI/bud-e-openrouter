@@ -5,40 +5,40 @@
     "en": "From 30 milliamps to lightning"
   },
   "summary": {
-    "de": "Warum eine winzige Stromstärke tödlich sein kann, wie ein Schalter im Sicherungskasten das verhindert - und was in einem Gewitter wirklich passiert.",
-    "en": "Why a tiny current can be lethal, how one switch in the fuse box prevents it - and what really happens in a thunderstorm."
+    "de": "Wie Stromweg und Einwirkdauer die Gefahr beeinflussen, was Schutzgeräte leisten und wo ihre Grenzen liegen.",
+    "en": "How current path and duration affect danger, what protective devices do and where their limits lie."
   },
   "icon": "⚡",
   "accent": "rose",
-  "minutes": 15,
+  "minutes": 22,
   "screens": [
     {
       "key": "was-gefaehrlich-ist",
       "title": {
-        "de": "Nicht die Volt bringen dich um",
-        "en": "It is not the volts that kill you"
+        "de": "Was einen Stromschlag gefährlich macht",
+        "en": "What makes electric shock dangerous"
       },
       "blocks": [
         {
           "kind": "lead",
           "text": {
-            "de": "Ein Blitz hat hundert Millionen Volt. Ein Weidezaun hat zehntausend. Eine Steckdose hat 230. Von diesen dreien sterben Menschen am häufigsten an der Steckdose. Das klingt verkehrt - und erklärt genau, worauf es ankommt.",
-            "en": "A lightning bolt carries a hundred million volts. An electric fence carries ten thousand. A socket carries 230. Of these three, people most often die at the socket. That sounds wrong - and explains exactly what matters."
+            "de": "Blitze, elektrische Zäune und Steckdosen können gefährlich sein, aber ihre Wirkung lässt sich nicht allein aus der Voltzahl ablesen. Entscheidend sind auch Stromstärke, Stromweg, Dauer und Stromart. Du kannst daraus keine sichere Berührung ableiten. Dieser Pfad erklärt Schutzprinzipien ausschließlich mit Modellen und Daten, niemals mit eigenen Kontakten zu elektrischen Quellen.",
+            "en": "Lightning, electric fences and sockets can be dangerous, but voltage alone does not describe their effects. Current, path, duration and current type also matter. None of this establishes a safe way to touch a source. This path explains protection principles using models and data only, never personal contact with electrical sources."
           }
         },
         {
           "kind": "paragraph",
           "text": {
-            "de": "Gefährlich ist nicht die Spannung, sondern der Strom, der durch den Körper fließt - und wie lange. Ein Weidezaun gibt einen sehr kurzen Stoß mit sehr wenig Ladung ab. Eine Steckdose liefert dauerhaft, so lange du dranhängst. Und der menschliche Körper leitet leider gut genug.",
-            "en": "What is dangerous is not the voltage but the current flowing through the body - and for how long. An electric fence delivers a very short jolt with very little charge. A socket delivers continuously, as long as you are attached. And the human body unfortunately conducts well enough."
+            "de": "Eine Spannung kann einen Strom durch den Körper antreiben. Die Wirkung hängt von dessen Stärke, Weg und Dauer ab, außerdem von Stromart und Kontaktbedingungen. Eine Quelle, die dauerhaft Energie nachliefert, ist anders zu beurteilen als eine kurze Entladung. Diese Unterscheidung ist aber kein Grund, Zäune, Batterien oder andere Quellen am eigenen Körper auszuprobieren.",
+            "en": "Voltage can drive current through the body. Its effects depend on magnitude, path and duration, as well as current type and contact conditions. A source supplying energy continuously differs from a brief discharge. This distinction is not a reason to test fences, batteries or other sources on your body."
           }
         },
         {
           "kind": "table",
           "highlightFirst": true,
           "caption": {
-            "de": "Wirkung von Wechselstrom auf den Menschen, Größenordnungen.",
-            "en": "Effect of alternating current on people, orders of magnitude."
+            "de": "Vereinfachte Größenordnungen, keine sicheren Grenzwerte: Wirkung hängt zusätzlich von Dauer, Weg und Person ab.",
+            "en": "Simplified orders of magnitude, not safe thresholds: effects also depend on duration, path and person."
           },
           "head": [
             {
@@ -77,8 +77,8 @@
                 "en": "from about 30 mA"
               },
               {
-                "de": "gefährlich; hier greift der Schutzschalter ein",
-                "en": "dangerous; this is where the safety switch steps in"
+                "de": "ernste Gefahr möglich; kein garantierter sicherer Schwellenwert",
+                "en": "serious danger is possible; not a guaranteed safe threshold"
               }
             ],
             [
@@ -102,8 +102,15 @@
             "en": "Why water changes everything"
           },
           "text": {
-            "de": "Trockene Haut hat einen Widerstand von zehntausend bis hunderttausend Ohm - bei 230 Volt fließen dann wenige Milliampere. Feuchte Haut kann auf etwa tausend Ohm fallen. Nach U = R · I bedeutet das rund 230 Milliampere: das Vielfache der tödlichen Grenze. Deshalb sind Steckdosen im Bad besonders geschützt, und deshalb fasst man nie mit nassen Händen an Elektrik.",
-            "en": "Dry skin has a resistance of ten thousand to a hundred thousand ohms - at 230 volts that means a few milliamps. Damp skin can drop to about a thousand ohms. By U = R · I that means around 230 milliamps: many times the lethal threshold. Which is why bathroom sockets are specially protected, and why you never touch wiring with wet hands."
+            "de": "Feuchtigkeit, Kontaktfläche und Hautzustand können den wirksamen Widerstand stark verändern. Im reinen Rechenmodell würden 230 V an 10 000 Ω bereits 23 mA ergeben, an 1000 Ω sogar 230 mA. Das sind keine verlässlichen persönlichen Körperwerte und keine Grenzen für sichere Berührung. Auch trockene Haut schützt nicht zuverlässig. Elektrik und Wasser werden deshalb nicht experimentell miteinander verbunden.",
+            "en": "Moisture, contact area and skin condition can greatly change effective resistance. In a calculation model, 230 V across 10,000 Ω gives 23 mA, while 1000 Ω gives 230 mA. These are not reliable personal body values or safe-contact thresholds. Dry skin is not dependable protection either. Electrical equipment and water must not be combined experimentally."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Spannung, Stromstärke, Weg und Zeit gehören gemeinsam zur Gefahrenbeschreibung. Eine einzelne Zahl darf keine Entwarnung geben. Das Bild vom Vogel auf einer Leitung erklärt höchstens einen fehlenden Potenzialunterschied zwischen nahen Kontaktpunkten; es ist keinesfalls eine Anleitung zum Annähern an Leitungen. An elektrische Anlagen hältst du Abstand, unabhängig davon, welche Modellrechnung du gerade gelernt hast.",
+            "en": "Voltage, current, path and duration belong together in a hazard description. One number cannot give reassurance. A bird-on-a-wire picture explains at most a small potential difference between nearby contact points; it is never advice to approach wires. Keep away from electrical installations regardless of any model calculation you have learned."
           }
         }
       ]
@@ -141,8 +148,8 @@
                 "en": "The RCD: protects the person"
               },
               "text": {
-                "de": "Er vergleicht ständig, wie viel Strom hin- und wie viel zurückfließt. Normalerweise ist das genau gleich viel. Fehlt etwas auf dem Rückweg, muss es einen anderen Weg genommen haben - zum Beispiel durch einen Menschen zur Erde. Bei einer Abweichung von 30 Milliampere schaltet er in Sekundenbruchteilen ab.",
-                "en": "It constantly compares how much current goes out and how much comes back. Normally that is exactly the same. If something is missing on the return, it must have taken another way - through a person to earth, for example. At a difference of 30 milliamps it cuts off within a fraction of a second."
+                "de": "Ein Fehlerstromschutzschalter vergleicht die Ströme in den zugehörigen Hin- und Rückleitern. Eine Differenz kann einen unerwünschten Weg anzeigen. Ein geeignetes Gerät kann dann rasch abschalten und bietet zusätzlichen Schutz. Der häufige Bemessungswert 30 mA ist keine ungefährliche Körperstromgrenze. Das Gerät verhindert weder jede Berührung noch jeden gefährlichen Strom.",
+                "en": "An RCD compares currents in its associated outgoing and return conductors. A difference can indicate an unwanted path. A suitable device can then disconnect rapidly, providing additional protection. The common 30 mA rating is not a harmless body-current threshold. The device prevents neither every contact nor every dangerous current."
               }
             }
           ]
@@ -169,8 +176,8 @@
             "en": "Look inside your fuse box"
           },
           "text": {
-            "de": "Du erkennst den FI-Schalter an der Prüftaste, meist mit einem T beschriftet. Drückt man sie, erzeugt das Gerät absichtlich eine kleine Unwucht und muss auslösen. Fachleute empfehlen, das halbjährlich zu tun. Frag zu Hause, wann es zuletzt gemacht wurde - viele wissen es nicht.",
-            "en": "You can recognise the RCD by its test button, usually marked with a T. Pressing it makes the device deliberately create a small imbalance, and it must trip. Professionals recommend doing this every six months. Ask at home when it was last done - many people do not know."
+            "de": "Prüfen und Instandhalten gehören in die Verantwortung zuständiger, fachkundiger Personen nach Herstellerangaben und geltenden Vorgaben. Dieser Lernpfad fordert dich nicht auf, einen Verteiler zu öffnen oder zu bedienen. Bei Fragen informierst du eine zuständige erwachsene Person. Du darfst niemals eine Sicherung oder einen Schutzschalter überbrücken, um einen Stromkreis trotz Abschaltung weiter zu betreiben.",
+            "en": "Testing and maintenance are the responsibility of authorised, qualified people following manufacturer instructions and applicable requirements. This path does not ask you to open or operate a distribution board. Ask a responsible adult if you have questions. Never bypass a fuse or protective switch to keep a circuit running after disconnection."
           }
         }
       ]
@@ -185,8 +192,8 @@
         {
           "kind": "lead",
           "text": {
-            "de": "Ein Gewitter ist Elektrizität in einer Größenordnung, die man im Labor nie erreicht. Und doch passiert dabei genau das, was du an der Batterie gelernt hast: Ladung sammelt sich, bis der Druck reicht, und sucht sich dann den Weg des geringsten Widerstands.",
-            "en": "A thunderstorm is electricity on a scale no laboratory reaches. And yet exactly what you learned with a battery is going on: charge builds up until the push is enough, and then finds the way of least resistance."
+            "de": "Bei einem Gewitter werden große Ladungsmengen räumlich getrennt. Wenn die elektrischen Bedingungen ausreichen, kann ein leitender Entladungskanal entstehen. Der Weg wird von vielen lokalen Vorgängen beeinflusst; ein Blitz ist nicht einfach ein berechenbarer Draht entlang des „geringsten Widerstands“. Beobachte Gewitter ausschließlich aus geeignetem Schutz, nicht als Versuch im Freien.",
+            "en": "A thunderstorm separates large amounts of charge in space. Suitable electrical conditions can produce a conducting discharge channel. Many local processes influence its route; lightning is not simply a predictable wire following the “least resistance”. Observe storms only from appropriate shelter, never as an outdoor experiment."
           }
         },
         {
@@ -256,8 +263,78 @@
             "en": "Why a car is safe - and not because of the tyres"
           },
           "text": {
-            "de": "Der verbreitete Satz, Gummireifen würden isolieren, ist falsch: Wer hundert Millionen Volt überwindet, dem sind zwei Zentimeter Gummi gleichgültig. Sicher ist das Auto, weil sein Metallkäfig den Strom außen herum zur Erde leitet, statt durch den Innenraum. Dasselbe Prinzip schützt Flugzeuge - und heißt Faradayscher Käfig.",
-            "en": "The common claim that rubber tyres insulate is wrong: anything that has crossed a hundred million volts is unimpressed by two centimetres of rubber. A car is safe because its metal shell carries the current around the outside to the ground rather than through the inside. The same principle protects aircraft - and is called a Faraday cage."
+            "de": "Bei einem geeigneten geschlossenen Fahrzeug mit Metallkarosserie kann die Hülle Blitzstrom überwiegend außen führen. Dieses Schutzprinzip ähnelt einem Faradayschen Käfig. Die Gummireifen sind nicht der entscheidende Grund. Ein offenes Fahrzeug, ein Fahrrad oder ein Unterstand ist nicht gleichwertig. Auch im geeigneten Fahrzeug bleiben andere Unwettergefahren bestehen; daraus folgt keine allgemeine Ungefährlichkeitsgarantie.",
+            "en": "An appropriate enclosed vehicle with a metal body can carry most lightning current around its exterior. This resembles a Faraday cage. Rubber tyres are not the decisive reason. Open vehicles, bicycles and open shelters are not equivalent. Other storm hazards remain even in suitable vehicles, so this is not a general guarantee of safety."
+          }
+        }
+      ]
+    },
+    {
+      "key": "grenzen",
+      "title": {
+        "de": "Zusätzlicher Schutz ist keine Ungefährlichkeitsgarantie",
+        "en": "Additional protection is not a guarantee of safety"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Ein Fehlerstromschutzschalter vergleicht Ströme in den zugehörigen hin- und zurückführenden Leitern. Eine Differenz kann anzeigen, dass Strom auf einem anderen Weg fließt. Dann kann das Gerät die Abschaltzeit verkürzen. Es verhindert aber nicht jede Berührung und begrenzt nicht automatisch die Höhe jedes Körperstroms. Unter bestimmten Fehlerbedingungen kann ein gefährlicher Strom ohne erfasste Differenz fließen.",
+            "en": "A residual-current device compares currents in the associated outgoing and return conductors. A difference can indicate current taking another route, allowing the device to shorten the disconnection time. It does not prevent every contact or automatically limit every body current's magnitude. Under some fault conditions, dangerous current can flow without a detected imbalance."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Eine Sicherung oder ein Leitungsschutzschalter erfüllt eine andere Aufgabe: Schutz gegen übermäßige Belastung der Leitung. Die einfache Tabelle über Körperströme zeigt nur Größenordnungen, keine persönlich sicheren Grenzwerte. Wirkung hängt zusätzlich von Dauer, Weg, Stromart und individuellen Bedingungen ab. Auch trockene Haut ist keine sichere Isolation. Daraus folgt die wichtigste Regel dieses Pfads: Kein eigener Versuch mit Körperstrom, Steckdosen oder Installation. Prüfungen und Reparaturen gehören in fachkundige Hände. Eine Simulation darf die Bilanzidee zeigen, sie ersetzt aber keine Schutzprüfung. Wenn dir eine Beschädigung auffällt, hältst du Abstand und informierst eine zuständige erwachsene Person, statt sie selbst zu untersuchen.",
+            "en": "A fuse or circuit breaker has a different role: protecting wiring from excessive loading. The simple body-current table shows orders of magnitude, not personally safe thresholds. Effects also depend on duration, path, current type and individual conditions. Dry skin is not reliable insulation either. The central rule follows: no experiments with body currents, sockets or electrical installations. Testing and repairs belong to qualified people. A simulation can show the accounting principle, but cannot replace a protection test. If you notice damage, keep your distance and tell a responsible adult instead of investigating it yourself."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Warum wäre „Der FI ist vorhanden, also darf ich gefährliche Anschlüsse berühren“ eine falsche Schlussfolgerung? Im Modell kann ein Strom zwischen zwei aktiven Leitern fließen, ohne die vom Schutzschalter verglichene Bilanz zu verändern. Eine Differenzmessung erkennt nicht automatisch jeden gefährlichen Kontakt. Gerade diese Grenze erklärt, warum mehrere Schutzprinzipien zusammenwirken müssen. Für Lernende folgt daraus kein weiterer Prüfversuch, sondern die klare Trennung: Funktionsprinzip verstehen, reale elektrische Einrichtungen nicht selbst untersuchen oder verändern.",
+            "en": "Why is “an RCD is present, so touching dangerous connections is safe” an invalid conclusion? Current can flow between two live conductors without changing the balance compared by an RCD. Imbalance detection therefore does not automatically recognise every dangerous contact. This explains why several protective principles work together. For learners, the conclusion is not another experiment but a clear boundary: understand the principle without investigating or modifying real installations."
+          }
+        }
+      ]
+    },
+    {
+      "key": "schutzplanung",
+      "title": {
+        "de": "Eine Warnung muss vor der Gefahr helfen",
+        "en": "A warning must help before danger arrives"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Bei hörbarem Donner wartest du nicht auf eine bestimmte Sekundenlücke, um Schutz zu suchen. Du gehst rechtzeitig in ein geeignetes festes Gebäude oder in ein geschlossenes Fahrzeug mit Metallkarosserie. Bäume, offene Unterstände und ein Fahrrad sind kein gleichwertiger Schutz. Die Laufzeitregel schätzt eine Entfernung, sie erklärt einen Ort nicht für sicher. Amtliche Warnungen und Anweisungen verantwortlicher Personen haben Vorrang.",
+            "en": "When thunder is audible, do not wait for a particular seconds-long gap before seeking shelter. Move in good time to a suitable substantial building or an enclosed vehicle with a metal body. Trees, open shelters and bicycles do not offer equivalent protection. The travel-time rule estimates distance; it does not certify a location safe. Official warnings and instructions from responsible people take priority."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Die metallische Hülle eines geeigneten Fahrzeugs kann Blitzstrom überwiegend außen führen; die Reifen sind nicht der entscheidende Schutz. Trotzdem bleiben Sturm, fallende Äste und andere Gefahren möglich. Deshalb ist „im Auto kann nichts passieren“ ebenfalls zu pauschal. Eine hilfreiche Schul-Infokarte könnte vor dem Ausflug Zuständigkeiten und sichere Rückzugsorte benennen. Sie enthält keine Mutprobe und kein Sammeln von Blitzfotos im Freien. Die Physik erklärt, warum eine Maßnahme wirkt; gute Organisation sorgt dafür, dass sie rechtzeitig genutzt wird. Ein verständliches Warnsystem sollte Informationen zudem sichtbar und hörbar anbieten, damit unterschiedliche Menschen es erreichen können.",
+            "en": "A suitable vehicle's metal body can carry most lightning current around the outside; tyres are not the decisive protection. Storms, falling branches and other hazards still remain. “Nothing can happen inside a car” is therefore too broad as well. A useful school information card could identify responsibilities and suitable shelters before a trip. It includes no dares or outdoor lightning-photography challenge. Physics explains why a measure works; good organisation ensures it is used in time. Clear warnings should provide both visible and audible information so they reach different people."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Entwirf eine kurze Ausflugs-Infokarte, die rechtzeitiges Handeln und zugängliche Warnung erklärt, ohne eine sichere Entfernung zu versprechen. Eine Warnung kann physikalisch korrekt und trotzdem nutzlos sein, wenn der sichere Rückzugsort nicht bekannt oder nicht erreichbar ist. Markiere deshalb im Papierplan nicht nur die Gefahr, sondern auch Zuständigkeit und Handlung. Ein sichtbarer Hinweis ergänzt eine Durchsage. Die Laufzeitmessung erklärt Entfernung, während die organisatorische Regel rechtzeitiges Handeln ermöglicht; beide erfüllen verschiedene Aufgaben.",
+            "en": "Design a brief trip information card explaining timely action and accessible warnings without promising a safe distance. A physically correct warning may still fail if shelter is unknown or inaccessible. Mark responsibilities and actions in the paper plan, not just the hazard. A visible message supplements an announcement. Travel time explains distance, while organisation enables timely action; these are different tasks."
           }
         },
         {
@@ -283,6 +360,34 @@
                 "en": "LEIFIphysik: electric charge"
               },
               "url": "https://www.leifiphysik.de/elektrizitaetslehre/ladungen-felder"
+            },
+            {
+              "label": {
+                "de": "Hamburg: Physik Gymnasium (2024)",
+                "en": "Hamburg: Gymnasium physics (2024)"
+              },
+              "url": "https://www.hamburg.de/resource/blob/798534/4cf0047ad61effacd1ff7e6ad819fa41/physik-data.pdf"
+            },
+            {
+              "label": {
+                "de": "Hamburg: Physik Stadtteilschule (2024)",
+                "en": "Hamburg: Stadtteilschule physics (2024)"
+              },
+              "url": "https://www.hamburg.de/resource/blob/798426/ba414a0ace36d17b7813a855db625c42/physik-data.pdf"
+            },
+            {
+              "label": {
+                "de": "Verbraucherportal Bayern: Fehlerstromschutzschalter",
+                "en": "Bavarian consumer portal: residual-current protection"
+              },
+              "url": "https://vis.bayern.de/produkte_energie/praevention/fehlerstromschutzschalter.htm"
+            },
+            {
+              "label": {
+                "de": "VDE: Gewitter in Fahrzeugen",
+                "en": "VDE: thunderstorms and vehicles"
+              },
+              "url": "https://www.vde.com/de/blitzschutz/infos/in-fahrzeugen"
             }
           ]
         }
@@ -293,50 +398,46 @@
     {
       "kind": "cloze",
       "title": {
-        "de": "1. Lückentext: was schützt wovor",
-        "en": "1. Fill in the blanks: what protects against what"
+        "de": "1. Lückentext",
+        "en": "1. Fill in the blanks"
       },
       "intro": {
-        "de": "Setze die fehlenden Wörter und Zahlen ein.",
-        "en": "Fill in the missing words and numbers."
+        "de": "Ergänze die fehlenden Fachwörter. Alle Begriffe findest du im Pfad.",
+        "en": "Complete the missing technical words. Every term appears in this path."
       },
       "text": {
-        "de": "Für den Menschen gefährlich ist nicht die Spannung allein, sondern der ___, der durch den Körper fließt. Schon ab etwa ___ Milliampere verkrampfen die Muskeln, ab etwa 50 Milliampere wird es lebensgefährlich. Wie viel fließt, hängt vom ___ des Körpers ab, und der sinkt stark, wenn die Haut ___ ist. Im Sicherungskasten schützt die ___ die Leitung vor Überhitzung; sie löst erst bei etwa ___ Ampere aus. Den Menschen schützt dagegen der ___, der vergleicht, ob genauso viel Strom zurückkommt, wie hingeflossen ist. Fehlt etwas, hat es einen anderen Weg genommen, und er schaltet bei ___ Milliampere ab. In einem Gewitter trennen sich in der Wolke ___, bis die Spannung ausreicht, um die Luft leitend zu machen. Ein Auto schützt dabei nicht wegen der Reifen, sondern weil sein Metallkörper wie ein ___ wirkt.",
-        "en": "What is dangerous to a person is not the voltage alone but the ___ flowing through the body. From about ___ milliamps the muscles cramp; from about 50 milliamps it becomes life-threatening. How much flows depends on the body's ___, which drops sharply when the skin is ___. In the fuse box the ___ protects the wiring from overheating; it trips only at about ___ amperes. The person, by contrast, is protected by the ___, which checks whether as much current returns as went out. If something is missing it has taken another way, and it cuts off at ___ milliamps. In a thunderstorm ___ separate inside the cloud until the voltage suffices to make the air conduct. A car protects you not because of its tyres but because its metal body acts as a ___."
+        "de": "Die Wirkung eines Körperstroms hängt auch von Weg und ___ ab. Eine höhere Spannung kann einen größeren ___ antreiben. Feuchtigkeit verändert den elektrischen ___. Gegen Überlast der Leitung dient ein ___. Ein Fehlerstromschutzschalter vergleicht Hin- und ___. Ihre Differenz kann einen ___ anzeigen. Kein Schutzgerät erlaubt eine gefährliche ___. In Gewitterwolken werden ___ getrennt. Die geschlossene Metallhülle eines geeigneten Fahrzeugs wirkt als Faradayscher ___.",
+        "en": "The effect of body current also depends on path and ___. A higher voltage can drive a larger ___. Moisture changes electrical ___. A ___ protects wiring against overload. An RCD compares outgoing and return ___. Their difference can indicate a ___. No protective device makes dangerous ___ acceptable. Thunderclouds separate ___. The closed metal body of a suitable vehicle acts as a Faraday ___."
       }
     },
     {
       "kind": "compare",
       "title": {
-        "de": "2. Vergleiche und rechne: dieselbe Steckdose, zwei Hände",
-        "en": "2. Compare and calculate: the same socket, two hands"
+        "de": "2. Erklären und vergleichen (AB II)",
+        "en": "2. Explain and compare (level II)"
       },
       "intro": {
-        "de": "Rechne beide Fälle mit dem ohmschen Gesetz aus.",
-        "en": "Work out both cases using Ohm's law."
+        "de": "Antworte mit drei bis vier kurzen Sätzen. Nutze das Gelesene und begründe deinen Vergleich.",
+        "en": "Answer in three or four short sentences. Use what you have read and explain your comparison."
       },
       "text": {
-        "de": "Eine Person mit trockener Haut hat etwa 10 000 Ohm Widerstand, mit feuchter Haut etwa 1 000 Ohm. Rechne für beide Fälle aus, welcher Strom bei 230 Volt durch den Körper flösse, und vergleiche die Ergebnisse mit der Tabelle aus Bildschirm 1. Erkläre anschließend, warum die Sicherung in beiden Fällen nicht auslösen würde - und warum der FI-Schalter es tut.",
-        "en": "A person with dry skin has about 10,000 ohms of resistance, with damp skin about 1,000 ohms. Work out for both cases what current would flow through the body at 230 volts, and compare the results with the table on screen 1. Then explain why the fuse would not trip in either case - and why the RCD does."
-      },
-      "hint": {
-        "de": "Rechne I = U / R und vergleiche das Ergebnis mit den 16 Ampere der Sicherung.",
-        "en": "Calculate I = U / R and compare the result with the fuse's 16 amperes."
+        "de": "Vergleiche Leitungsschutzschalter und Fehlerstromschutzschalter anhand ihrer Aufgaben. Erkläre, warum der zweite zusätzlichen Schutz bietet, aber weder jeden Körperstrom verhindert noch jede Berührung sicher macht.",
+        "en": "Compare a circuit breaker and an RCD by their functions. Explain why the latter provides additional protection but neither prevents every body current nor makes contact safe."
       }
     },
     {
       "kind": "reflect",
       "title": {
-        "de": "3. Zum Nachdenken: der Schutz, den man nie bemerkt",
-        "en": "3. Something to think about: the protection you never notice"
+        "de": "3. Deine Idee im Alltag (AB III)",
+        "en": "3. Your idea for everyday life (level III)"
       },
       "intro": {
-        "de": "Auf diese Frage gibt es keine richtige Antwort.",
-        "en": "There is no right answer to this one."
+        "de": "Entwickle eine eigene Idee in drei bis vier kurzen Sätzen. Begründe sie mit Physik; mehrere Lösungen sind möglich.",
+        "en": "Develop your own idea in three or four short sentences. Support it with physics; several answers are possible."
       },
       "text": {
-        "de": "Der FI-Schalter rettet vermutlich jedes Jahr Menschenleben - und niemand weiß, wessen. Wenn er funktioniert, passiert schlicht nichts, und man erfährt nie, dass man in Gefahr war. Solche unsichtbaren Schutzmaßnahmen gibt es überall: Gurte, Impfungen, Geländer, Bauvorschriften. Überlege, warum es so schwer ist, den Wert von etwas zu schätzen, dessen Wirkung darin besteht, dass nichts geschieht - und was das für Entscheidungen bedeutet, bei denen jemand über solche Maßnahmen abstimmen muss.",
-        "en": "The RCD probably saves lives every year - and nobody knows whose. When it works, simply nothing happens, and you never learn that you were in danger. Such invisible protections are everywhere: seatbelts, vaccinations, railings, building codes. Consider why it is so hard to value something whose whole effect is that nothing occurs - and what that means for decisions where somebody has to vote on such measures."
+        "de": "Entwirf eine verständliche Schul-Infokarte für sicheres Handeln vor einem Gewitter oder bei beschädigter Elektrik. Begründe eine Maßnahme physikalisch und ergänze eine zugängliche Warnung. Keine eigenen Eingriffe.",
+        "en": "Design a clear school information card for action before a thunderstorm or around damaged electrical equipment. Explain one measure physically and add an accessible warning. Do not intervene yourself."
       }
     }
   ]

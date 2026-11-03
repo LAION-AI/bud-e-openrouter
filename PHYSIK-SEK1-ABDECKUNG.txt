@@ -1,0 +1,183 @@
+Physik-Lernpfade: Recherche, Abgrenzung und Abdeckung
+Stand: 03.11.2026. Zielgruppe: ungefähr 13–16 Jahre, Nutzung in Jg.7–10.
+
+Umfang und Grenzen
+24 zweisprachige Pfade in 10 Modulen, insgesamt 125 Lesescreens.
+18 Pfade sind neu; die vorhandenen 6 Pfade wurden von 3 auf 5 Screens erweitert.
+Alle Pfade haben 5 oder 6 Screens und genau Lückentext, AB-II-Erklären/Vergleichen,
+AB-III-Alltagsgestaltung. Die offenen Aufgaben sind in 3–4 kurzen Sätzen lösbar.
+Keine Schülerdaten, keine Änderung an Informatik oder Anwendungscode.
+Dieser Bestand ist eine breite Lernhilfe, keine amtliche Vollständigkeitszusage
+und kein Ersatz für Unterricht, verbindliche Schulcurricula oder Abschlussprüfung.
+Die Bildungspläne verlangen auch praktische Kompetenzen und Unterrichtsexperimente,
+die ein Lesepfad mit Simulationen nicht vollständig nachweisen oder ersetzen kann.
+
+Verbindliche curriculare Referenz, nicht ältere Suchtreffer
+Die Hamburger Übersichtsseite nennt 01.08.2024 als Inkrafttreten der weiteren
+Sek-I-Fachrahmenpläne. Die beiden unten verwendeten Physik-PDFs tragen Hamburg2024.
+Nicht als aktuelle Grundlage verwendet wurden die weiterhin auffindbaren Pläne
+Physik Gymnasium2011 bzw. Stadtteilschule2014.
+https://www.hamburg.de/politik-und-verwaltung/behoerden/bsfb/veroeffentlichungen/bildungsplaene/bildungsplaene-119432
+
+Gymnasium, Bildungsplan Physik SekundarstufeI, Hamburg2024:
+https://www.hamburg.de/resource/blob/798534/4cf0047ad61effacd1ff7e6ad819fa41/physik-data.pdf
+Inhaltsabschnitt2.3, insbesondere S.29–45: Elektrostatik/Stromkreis und MechanikI
+in7/8; E-LehreII, Materie/ionisierende Strahlung, Klima und MechanikII in8/9;
+vertiefte Magnetfelder und MechanikIII in10 als Übergang zur Oberstufe.
+
+Stadtteilschule, Bildungsplan Physik Jahrgangsstufen5–11, Hamburg2024:
+https://www.hamburg.de/resource/blob/798426/ba414a0ace36d17b7813a855db625c42/physik-data.pdf
+Inhaltsabschnitt2.3, insbesondere S.31–48: entsprechender gemeinsamer Kern in7/8
+und9/10; vertiefte Felder und MechanikIII erst in Vorstufe11. Diese zeitliche
+Verschiebung wird nicht als gemeinsamer Pflichtstoff aller Klassen10 ausgegeben.
+
+NWT-Vorkenntnisse, Gymnasium5/6, Hamburg2024:
+https://www.hamburg.de/resource/blob/798520/700d66232c2d07bad97d72b6e107e083/naturwissenschaften-technik-data.pdf
+NWT Stadtteilschule, Hamburg2024:
+https://www.hamburg.de/resource/blob/798394/033190c61a9908ff10401a5b66cedae9/naturwissenschaften-technik-data.pdf
+Optik, Akustik, Sinne und Teile des Teilchen-/Stoffmodells liegen bereits in NWT.
+Die Lernpfade dazu sind Auffrischung und Verbindung, keine erfundene neue
+landesweite Pflichtverteilung auf einzelne Physikjahrgänge7–10.
+
+Offizielle Umsetzungshilfen
+LI Hamburg: Beispielcurricula, insbesondere E-Lehre, Mechanik, Kernphysik und
+Klimaphysik; auf der Seite dokumentierte Aktualisierungen02–07/2024.
+https://li.hamburg.de/qualitaetsentwicklung-von-unterricht-und-schule/faecher-lernbereiche/mint/physik/beispielcurricula-653528
+Diese Beispiele sind ausdrücklich mögliche Umsetzung, nicht das Curriculum
+einer konkreten Schule und nicht zusätzliche landesweite Verbindlichkeit.
+
+Mehrere konkrete Hamburger Schulverteilungen zum Gegencheck
+Gymnasium Allermöhe, Fachseite ohne sichtbares Veröffentlichungsdatum, abgerufen
+03.11.2026:7 Elektrizität/Mechanik;8 Elektrizität/Strahlung/Klima;9 Mechanik und
+Materiestrukturen/Strahlung;10 Mechanik/Elektrizität. Physik dort durchgehend ab7.
+https://gymnasium-allermoehe.hamburg.de/lernen/faecher/physik/
+
+Stadtteilschule Stellingen, Fachseite ohne sichtbares Veröffentlichungsdatum,
+abgerufen03.11.2026:7 E-LehreI/MechanikI;9 E-LehreII/MechanikII;10 Kern-/Klimaphysik.
+https://stadtteilschule-stellingen.hamburg.de/unterricht/fachbereiche/physik/
+Die Schule veröffentlicht außerdem jahrgangsbezogene Stoffverteilungspläne:
+https://stadtteilschule-stellingen.hamburg.de/unterricht/organisation/stoffverteilungsplaene/
+Die am03.11.2026 dort aktuell verlinkten PDFs2026/27 wurden zusätzlich direkt
+gelesen:7 Bewegung/Kraft/Energie vor Elektrostatik/Stromkreis;9 Widerstand,
+Energie/Leistung, Induktion und MechanikII;10 Thermodynamik/Klima sowie
+Kernphysik/Radioaktivität. Die Dateien nennen das Schuljahr, aber kein separates
+Publikationsdatum. Damit liegt neben den älteren Beispielen ein konkreter
+aktueller schulischer Stoffverteilungsplan vor:
+https://stadtteilschule-stellingen.hamburg.de/wp-content/uploads/sites/767/2026/11/26-27-Stoffverteilung-Stand-Jg.-7.pdf
+https://stadtteilschule-stellingen.hamburg.de/wp-content/uploads/sites/767/2026/11/26-27-Stoffverteilung-Jg.-9.pdf
+https://stadtteilschule-stellingen.hamburg.de/wp-content/uploads/sites/767/2026/11/26-27-Stoffverteilung-Stand_Jg.-10.pdf
+
+Gymnasium Hochrad: ausdrücklich datiertes schulinternes Curriculum, Stand
+August2015, weiterhin von der aktuellen Fachseite verlinkt. Als historisches
+konkretes Schulbeispiel gelesen, NICHT als Beleg für den gültigen Bildungsplan:
+7 Magnetismus/E-Lehre/Optik/Bewegung;8 Brechung/Linsen/Kräfte/E-Lehre;
+9 Energie/Wärme/Elektronik;10 Radioaktivität und vertiefte Mechanik.
+https://www.gymnasium-hochrad.de/wp-content/uploads/2014/08/Physik-kompetenzorientiert.pdf
+https://www.gymnasium-hochrad.de/faecher/physik/
+
+Stadtteilschule Hamburg-Mitte: konkretes kompetenzorientiertes Fachcurriculum
+7/8, Stand01/2014, auf der aktuellen Curriculaseite verlinkt. Ebenfalls historisch,
+nicht der heutige verbindliche Landesplan. Es enthält Optik, Magnetismus,
+Stromkreise, Dichte/Kraft und Bewegung sowie das Modellhaus als Projekt.
+https://stadtteilschule-mitte.hamburg.de/wp-content/uploads/sites/90/2015/11/Schulcurriculum-Physik.pdf
+https://stadtteilschule-mitte.hamburg.de/faecher-und-lernfelder/
+
+Folgerung: Jahrgangsbeginn, Reihenfolge und Vertiefung nicht pauschal für jede
+Hamburger Schule festschreiben. Die Module verwenden deshalb überwiegend SekI,
+NWT-Basis, Ergänzung oder Gym10/STS11 statt vermeintlich allgemeiner Einzelklassen.
+
+Abdeckungsmapping auf die vorhandenen Dateien
+Querschnitt Erkenntnisgewinnung/Kommunikation/Bewertung:
+physikalisch-arbeiten/01-messen-statt-raten.json; zusätzlich Modellgrenzen,
+faire Vergleiche, Dateninterpretation und Entscheidungen in den Fachpfaden.
+
+E-LehreI (1.1), Ladung, Elektronenmodell, Spannung, Stromkreis:
+elektrizitaetslehre/00-elektrostatik-und-ladung.json und01-stromkreis.json.
+
+E-LehreII (1.2), Widerstand, Schaltungen, Energie/Leistung, Schutz, qualitative
+Induktion, Motor und Transformator:
+elektrizitaetslehre/02-ohmsches-gesetz.json bis07-induktion-und-generator.json.
+Qualitative Induktion gehört bereits zum gemeinsamen Kern, nicht erst zur Vorstufe.
+Vertiefte quantitative Feldbeschreibung wird ausdrücklich als Übergang abgegrenzt.
+
+MechanikI/II (2.1/2.2), Geschwindigkeit als Tempo/Richtung, Diagramme,
+Beschleunigung/freier Fall, Newtonprinzipien, Kraftstoß, Masse/Gewicht,
+Energieerhaltung und einfache Maschinen:
+mechanik/01-bewegung-und-tempo.json,02-kraefte-und-traegheit.json,
+03-arbeit-energie-maschinen.json. Nachhaltige Versorgung zusätzlich separat.
+
+Struktur der Materie/ionisierende Strahlung (3.1), Atomkerne, Isotope,
+Strahlungsarten, Zufall, Aktivität/Zählrate, Halbwertszeit, Schutz, Anwendung,
+Spaltung/Fusion und Verantwortung:
+materie-und-strahlung/01-atome-und-strahlungsarten.json,
+02-halbwertszeit-und-verantwortung.json.
+
+Strahlung/Klimaphysik (3.2), Temperatur/Teilchen, Zustandswechsel, thermischer
+Transport, EM-Spektrum und Materiewechselwirkung, Wärmebildskalen,
+Albedo/Strahlungsgleichgewicht, Treibhauseffekt/Strahlungsantrieb,
+Stefan-Boltzmann als Tabellenablesen, Rückkopplung/Kippelemente und Quellenkritik:
+waerme-und-klima/01-temperatur-und-teilchen.json,02-waerme-und-daemmung.json,
+03-strahlung-und-klima.json.
+
+Nachhaltige Energieversorgung aus MechanikII und Querverbindungen:
+energieversorgung/01-energie-fuer-dein-quartier.json: Quellen/Umwandlung,
+Leistung versus Energiemenge/Zeitprofil, Speicherung, Wirkungsgrad, Wärmepumpe,
+Dämmung und Zielkonflikte. Keine Kaufberatung oder Anlagenplanung.
+
+NWT-Auffrischung/schulische Vertiefung:
+optik/01-licht-schatten-spiegel.json,02-linsen-farben-und-kamera.json;
+akustik/schall.json und02-schwingungen-und-wellen.json.
+materie-und-druck/01-dichte-druck-auftrieb.json verbindet NWT-Stoffwissen und
+Auftrieb mit Druck/Hydraulik als schulischer Ergänzung. Kein behaupteter
+gemeinsamer Druck-/Hydraulik-Pflichtblock des aktuellen Physikplans7–10.
+
+Übergang Gymnasium10/Stadtteilschule11, nicht STS-Mindestkern bis10:
+uebergang-zur-oberstufe/01-impuls-kreis-und-wurf.json; harmonische Schwingung
+mit Sinus/Kosinus und Federpendelabhängigkeit im ausdrücklich gekennzeichneten
+Erweiterungsscreen in akustik/02-schwingungen-und-wellen.json.
+Nicht jede optionale Einzelvertiefung ist ausgebaut: z.B. Quarks, vollständige
+Zerfallsketten, ausführliche Elektronik, Satellitenbahnen und Abitur-Feldtheorie.
+
+Fachquellen und sichere Werkzeuge zusätzlich zu den Bildungsplänen
+PhET, University of Colorado: topic-specific simulation links at every new path.
+https://phet.colorado.edu/de/simulations/browse
+NASA: Treibhauseffekt, Antrieb und Rückkopplungen; Webseite ohne hier beanspruchte
+feste Publikationsdatierung, geprüft03.11.2026.
+https://science.nasa.gov/climate-change/causes/
+LfU Bayern: Grundbegriffe Radioaktivität/Strahlung.
+https://www.lfu.bayern.de/buerger/doc/uw_56_radioaktivitaet_strahlung_grundbegriffe.pdf
+NRC: Radiation Basics, geprüft03.11.2026.
+https://www.nrc.gov/facilities-safety/radiation-protection/radiation-and-its-health-effects/radiation-basics
+US Department of Energy, Fission and Fusion,01.04.2021; nur Grundprinzipien,
+keine Übernahme zeitabhängiger oder pauschaler Leistungs-/Umweltversprechen.
+https://www.energy.gov/ne/articles/fission-and-fusion-what-difference
+Umweltbundesamt: Wärmepumpenprinzip, Seitenstand16.05.2024; keine übernommenen
+Förder-, Gesetzes-, Preis- oder Kaufempfehlungen.
+https://www.umweltbundesamt.de/umwelttipps-fuer-den-alltag/heizen-bauen/waermepumpe
+Verbraucherportal Bayern: Fehlerstromschutzschalter, geprüft03.11.2026.
+https://vis.bayern.de/produkte_energie/praevention/fehlerstromschutzschalter.htm
+VDE: Schutz in Fahrzeugen bei Gewitter, geprüft03.11.2026.
+https://www.vde.com/de/blitzschutz/infos/in-fahrzeugen
+
+Gezielte Bestandskorrekturen
+Batterie-auf-Zunge und pauschal harmlos entfernt; keine Körperstromversuche.
+Kein Ohr-an-Schiene-Vorschlag und kein versprochenes Doppelklopfen am kurzen Tisch.
+Schalltempo nicht allein mit Teilchenabstand erklärt, sondern Materialeigenschaften.
+Ultraschall ohne ionisierende Röntgenstrahlung statt pauschal ohne Strahlung.
+Gewittermessung nur aus Schutz; nicht erst ab einer Sekundenregel Schutz suchen.
+RCD/FI als zusätzlicher Schutz mit Grenzen statt Garantie; kein Bedienen von
+Verteilern als Lernauftrag. Körperwiderstandsrechnungen als Modell, keine sicheren
+persönlichen Körperwerte. Lichterketten nicht pauschal mit identischer Überbrückung.
+Strompreis40ct ausdrücklich fiktiv statt derzeitiger Tarif.
+Generische Denkstopp-Anhänge durch107 konkrete, zum jeweiligen Screen passende
+Beispiele/Gegenvergleiche/zweite Denkschritte ersetzt. Beide Sprachen abgestimmt.
+
+Prüfung
+Pro Screen mindestens200 Wörter Deutsch und Englisch, ohne Quellenlabels gezählt.
+Gemessene Spanne: Deutsch203–278, Englisch208–272 Wörter je Lesescreen.
+Jeder Pfad:5–6 Screens, vollständiges Sprachpaar, gleiche Lückenzahl, Quellenblock
+am Ende. Beide Gesamtvalidatoren ausgeführt: jeweils94 Dateien,0 Fehler,0 Hinweise.
+Physik separat:24 Dateien,0 Fehler,0 Hinweise. Formatcheck:35 Physik-JSONs sauber.
+Beide Physikverzeichnisse und dieser Bericht sind byteidentisch gespiegelt.
+Nur JSON und diese Recherchedatei geändert. Kein Build, Neustart, Commit oder Push
+durch den Physik-Teilauftrag; Abnahme und Veröffentlichung durch Hauptauftrag.

@@ -1,0 +1,15 @@
+{
+  "key": "forschen-und-messen",
+  "title": {
+    "de": "Genau hinsehen und fair testen",
+    "en": "Observe carefully and test fairly"
+  },
+  "description": {
+    "de": "Werde Naturdetektiv: beobachten, messen und Vermutungen prüfen.",
+    "en": "Be a nature detective: observe, measure and test predictions."
+  },
+  "icon": "🔎",
+  "accent": "sky",
+  "badge": "Jg. 5–6",
+  "level": "klasse56"
+}

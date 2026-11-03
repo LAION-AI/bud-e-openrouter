@@ -1,0 +1,352 @@
+{
+  "accent": "sky",
+  "exercises": [
+    {
+      "hint": {
+        "de": "Alle Antworten stehen auf den Bildschirmen davor – lies sie noch einmal von oben.",
+        "en": "All answers sit on the screens before – read them once more from the top."
+      },
+      "intro": {
+        "de": "Setze die fehlenden Wörter ein.",
+        "en": "Fill in the missing words."
+      },
+      "kind": "cloze",
+      "text": {
+        "de": "Ein ___-Code speichert Text als ___ Muster – zum Beispiel einen ___. In drei Ecken sitzen große ___, an denen der Leser erkennt, wo ___ ist. Zerkratzte Codes lesen sich trotzdem, weil ___ einkalkuliert sind: Je mehr ___, desto robuster, aber desto weniger ___. Getestet wird mit dem ___: Foto machen, lesen, ___. Wer Codes baut, baut ___ für Augen – und wer sie liest, versteht, dass Information überall ___ kann.",
+        "en": "A ___ code stores text as a ___ pattern – a ___, say. In three corners sit big ___, telling the reader where ___ is. Scratched codes still read because ___ are calculated in: the more ___, the sturdier, but the less ___. Testing happens with the ___: photograph, read, ___. Whoever builds codes builds ___ for eyes – and whoever reads them grasps that information can ___ anywhere."
+      },
+      "title": {
+        "de": "1. Lückentext",
+        "en": "1. Fill in the blanks"
+      }
+    },
+    {
+      "hint": {
+        "de": "Was sieht das Auge – und was braucht der Leser? Denke an Richtung und Schaden.",
+        "en": "What does the eye see – and what does the reader need? Think direction and damage."
+      },
+      "intro": {
+        "de": "Setze zwei Beobachtungen zueinander in Beziehung.",
+        "en": "Relate two observations to each other."
+      },
+      "kind": "compare",
+      "text": {
+        "de": "Strichcode und QR-Code speichern beide Text für Maschinen. Vergleiche beide – und erkläre, warum der eine auf Verpackungen klebt und der andere auf Plakaten, Tickets und Tischen.",
+        "en": "Barcodes and QR codes both store text for machines. Compare both – and explain why one sticks on packaging and the other on posters, tickets and tables."
+      },
+      "title": {
+        "de": "2. Vergleiche",
+        "en": "2. Compare"
+      }
+    },
+    {
+      "intro": {
+        "de": "Auf diese Frage gibt es keine richtige Antwort.",
+        "en": "There is no right answer to this one."
+      },
+      "kind": "reflect",
+      "text": {
+        "de": "Überall Codes: Türen, Tickets, Tische. Wo helfen sie dir wirklich – und wo ersetzen sie nur ein Gespräch, das schöner wäre? Sammle eine Woche lang Beispiele für beides.",
+        "en": "Codes everywhere: doors, tickets, tables. Where do they truly help you – and where do they merely replace a conversation that would be nicer? Collect examples for both for a week."
+      },
+      "title": {
+        "de": "3. Zum Nachdenken",
+        "en": "3. Something to think about"
+      }
+    }
+  ],
+  "icon": "🔳",
+  "key": "qr-codes",
+  "minutes": 17,
+  "screens": [
+    {
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Fahrkarte, Menü, WLAN-Passwort, Überweisung: Überall kleben kleine Quadrate, die dein Handy versteht und du nicht. Sie heißen QR-Codes – Quick Response, schnelle Antwort. Wie sie funktionieren, steht hier. Danach verstehst du sie besser als die meisten Erwachsenen.",
+            "en": "Ticket, menu, Wi-Fi password, transfer: everywhere stick small squares your phone understands and you do not. They are called QR codes – quick response. How they work sits here. Afterwards you understand them better than most adults."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Ein QR-Code ist Schrift für Augen, die keine Buchstaben kennen: schwarze und weiße Kästchen als Nullen und Einsen – derselbe Trick wie im letzten Pfad, nur zweidimensional gemalt. Darin steckt Text: ein Link, ein Satz, ein Passwort. Die Kamera fotografiert, das Handy übersetzt Kästchen in Zeichen, fertig. Lesen ohne Lesen-Können: Die Maschine sieht Muster, wo du Rauschen siehst.",
+            "en": "A QR code is writing for eyes knowing no letters: black and white boxes as zeros and ones – the same trick as in the last path, only painted two-dimensionally. Inside sits text: a link, a sentence, a password. The camera photographs, the phone translates boxes into characters, done. Reading without being able to read: the machine sees pattern where you see noise."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Drei große Quadrate in den Ecken verraten jedem Leser: Hier oben ist oben – egal, wie du das Handy hältst. Der Rest ist Inhalt plus eingebaute Fehlerkorrektur: Teile des Codes dürfen fehlen, zerkratzt oder überklebt sein, und er liest sich trotzdem. Wie viel Schaden er verzeiht, entscheidet der Ersteller: mehr Schutz, weniger Platz für Inhalt. Robuste Codes auf Baustellen, dichte Codes auf Visitenkarten.",
+            "en": "Three big squares in the corners betray every reader: up is up here – no matter how you hold the phone. The rest is content plus built-in error correction: parts of the code may miss, scratched or pasted over, yet it still reads. How much damage it forgives, the creator decides: more guard, less room for content. Sturdy codes on building sites, dense codes on business cards."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Halte einmal ein Lineal an einen QR-Code: Die drei Eckquadrate sitzen immer gleich – groß, quadratisch, mit hellem Rand. Dieser ruhige Rand heißt Quiet Zone und gehört dazu: Ohne ihn erkennt der Leser nichts, wie du ohne Brille. Wer Codes druckt und den Rand abschneidet, druckt unlesbar. Respektiere die Ruhezone.",
+            "en": "Hold a ruler to a QR code for once: the three corner squares always sit equal – big, square, with bright margin. This calm margin is called quiet zone belonging along: without it the reader recognises nothing, like you without glasses. Whoever prints codes cutting the margin prints unreadably. Respect the quiet zone."
+          }
+        }
+      ],
+      "title": {
+        "de": "Quadrate, die sprechen",
+        "en": "Squares that speak"
+      }
+    },
+    {
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Warum klebt auf der Milchtüte ein Strichcode und auf dem Plakat ein QR-Code? Weil beide verschiedene Jobs haben – und jeder seinen perfekt macht.",
+            "en": "Why sticks a barcode on the milk carton and a QR code on the poster? Because both hold different jobs – each doing theirs perfectly."
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "de": "Zwei Codes, zwei Jobs.",
+            "en": "Two codes, two jobs."
+          },
+          "head": [
+            {
+              "de": "Frage",
+              "en": "Question"
+            },
+            {
+              "de": "Strichcode",
+              "en": "Barcode"
+            },
+            {
+              "de": "QR-Code",
+              "en": "QR code"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "de": "Was steckt drin?",
+                "en": "What sits inside?"
+              },
+              {
+                "de": "Wenige Ziffern",
+                "en": "Few digits"
+              },
+              {
+                "de": "Text, Links, alles",
+                "en": "Text, links, everything"
+              }
+            ],
+            [
+              {
+                "de": "Leserichtung?",
+                "en": "Reading direction?"
+              },
+              {
+                "de": "Nur quer",
+                "en": "Only across"
+              },
+              {
+                "de": "Egal, Ecken helfen",
+                "en": "Any, corners help"
+              }
+            ],
+            [
+              {
+                "de": "Schaden egal?",
+                "en": "Damage ignored?"
+              },
+              {
+                "de": "Nein – Strich weg, Code tot",
+                "en": "No – line gone, code dead"
+              },
+              {
+                "de": "Ja, bis zu einem Drittel",
+                "en": "Yes, up to a third"
+              }
+            ],
+            [
+              {
+                "de": "Wo klebt er?",
+                "en": "Where does it stick?"
+              },
+              {
+                "de": "Verpackung, Kasse",
+                "en": "Packaging, checkout"
+              },
+              {
+                "de": "Plakat, Ticket, Tisch",
+                "en": "Poster, ticket, table"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Merke: Der Strichcode ist ein Nummernschild – kurz, schnell, empfindlich. Der QR-Code ist ein Brief – lang, robust, aus allen Richtungen lesbar. Darum piept die Kasse mit Strichen und das Konzert mit Quadraten. Falscher Code am falschen Ort kostet Zeit oder Nerven – manchmal beides.",
+            "en": "Note: the barcode is a number plate – short, fast, fragile. The QR code is a letter – long, sturdy, readable from all directions. Hence the checkout beeps with lines and the concert with squares. Wrong code at the wrong place costs time or nerves – sometimes both."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Geschichte zum Code: Strichcodes kamen 1974 an die Kasse – erste Ware war ein Kaugummi-Päckchen. QR-Codes erfand 1994 ein Japaner für Autoteile – Toyota wollte mehr speichern als Striche erlauben. Vom Kaugummi zum Konzert in zwanzig Jahren: Zwei kleine Muster, die den Alltag umbauten. Nächstes Mal an der Kasse: kurz grüßen, innerlich.",
+            "en": "History for the code: barcodes reached checkout in 1974 – first ware was a chewing-gum pack. QR codes a Japanese invented 1994 for car parts – Toyota wanted more stored than lines allow. From chewing gum to concert in twenty years: two small patterns rebuilding everyday life. Next time at checkout: greet briefly, inwardly."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "fact",
+          "icon": "🛒",
+          "title": {
+            "de": "1974",
+            "en": "1974"
+          },
+          "text": {
+            "de": "Das erste gescannte Produkt der Geschichte: Wrigley's Kaugummi, Supermarkt in Ohio, 26. Juni 1974, morgens um 8:01. Der Kassenzettel hängt heute im Museum. Manchmal beginnt die Zukunft mit Kaugummi.",
+            "en": "History's first scanned product: Wrigley's chewing gum, supermarket in Ohio, June 26th 1974, 8:01 in the morning. The receipt hangs in a museum today. Sometimes the future starts with chewing gum."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Zähle übrigens einmal Striche gegen Quadrate im Supermarkt: Obst lose – Strichcode am Band, abgepackt sowieso. An der Kasse piept es hundertmal pro Stunde, jeder Piep ein Treffer. Ohne Codes stünde die Schlange bis zur Tür. Kleine Muster, große Wirkung – Alltag eben.",
+            "en": "Count incidentally lines against squares in the supermarket: loose fruit – barcode at the belt, packed anyway. At checkout it beeps a hundred times per hour, every beep a hit. Without codes the queue would stand to the door. Small patterns, big effect – that is everyday life."
+          }
+        }
+      ],
+      "title": {
+        "de": "Striche gegen Quadrate",
+        "en": "Lines versus squares"
+      }
+    },
+    {
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Jetzt baust du selbst: Einen QR-Code erzeugen dauert zehn Sekunden – im Netz gibt es kostenlose Generatoren. Aber Vorsicht ist angebracht, denn Codes führen überallhin, auch in Fallen.",
+            "en": "Now build yourself: generating a QR code takes ten seconds – free generators live online. But care fits, for codes lead anywhere, including traps."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Der Spaß zuerst: Erstelle einen Code mit einer Nachricht an deine Klasse („Freitag fällt aus – April, April!“) und hänge ihn ans Brett. Oder einen WLAN-Code für Gäste: Passwort teilen, ohne es zu verraten – abfotografieren genügt. Oder einen Link zu deinem Lieblingssong auf die Geburtstagskarte. Codes sind Briefe, die nur Handys lesen – nutze das.",
+            "en": "The fun first: create a code with a message to your class (“Friday cancelled – April fool!”) pinning it to the board. Or a Wi-Fi code for guests: sharing the password without betraying it – photographing suffices. Or a link to your favourite song on the birthday card. Codes are letters only phones read – use that."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Der Ernst danach: Scanne nie blind. Aufkleber über echten Codes sind die Masche: Der falsche Code führt auf Betrugsseiten, die nach Passwörtern fischen. Prüfe vor dem Öffnen, wohin der Link zeigt – die Vorschau verrät die Adresse. Regel wie bei Mails: erst schauen, dann klicken. Quadrate lügen nie – aber Kleber schon.",
+            "en": "The seriousness after: never scan blindly. Stickers over real codes are the racket: the false code leads to fraud pages fishing passwords. Check before opening where the link points – the preview betrays the address. Rule like with mails: first look, then click. Squares never lie – but stickers do."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "warn",
+          "icon": "⚠️",
+          "title": {
+            "de": "Kleber-Alarm",
+            "en": "Sticker alert"
+          },
+          "text": {
+            "de": "An Ladesäulen, Parkautomaten und Restauranttischen kleben Betrüger eigene Codes über echte. Fahre mit dem Finger darüber: wölbt es sich? Dann Finger weg – und dem Betreiber Bescheid sagen. Du schützt damit alle nach dir.",
+            "en": "On chargers, parking meters and restaurant tables fraudsters glue own codes over real ones. Run your finger across: does it bulge? Then hands off – telling the operator. You thereby guard everybody after you."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Baue übrigens auch einmal rückwärts: Fotografiere einen QR-Code, drucke ihn riesig aus, hänge ihn ans Fenster. Funktioniert er noch? Meist ja – Größe stört nicht, nur Verhältnis und Ruhezone zählen. Codes sind geduldig: zerknittert, vergrößert, halb abgerissen – sie lesen, solange das Muster atmet.",
+            "en": "Build incidentally also backwards: photograph a QR code, print it hugely, hang it in the window. Does it still work? Mostly yes – size disturbs not, only ratio and quiet zone count. Codes are patient: crumpled, enlarged, half torn – they read as long as the pattern breathes."
+          }
+        }
+      ],
+      "title": {
+        "de": "Bauen und misstrauen",
+        "en": "Build and distrust"
+      }
+    },
+    {
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Zum Schluss die Preisfrage: Warum funktioniert das alles ohne Anmeldung, Konto und Abo? Weil QR-Codes ein offenes Format sind – erfunden 1994 für Autoteile, freigegeben für alle. Niemandem gehört der Code, jeder darf ihn lesen und schreiben.",
+            "en": "Finally the prize question: why does all this work without login, account and subscription? Because QR codes are an open format – invented 1994 for car parts, released for all. Nobody owns the code, everybody may read and write it."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Offen heißt: keine Firma kontrolliert, was du codierst – im Guten wie im Bösen. Kostenlos für die Tafel Schokolade wie für den Betrugsaufkleber. Das ist der Preis der Freiheit in Technik: Dieselbe Offenheit, die Schulprojekte gratis macht, macht Betrug billig. Wer das versteht, versteht das halbe Internet: offen, mächtig – und auf Misstrauen angewiesen.",
+            "en": "Open means: no company controls what you encode – for good like bad. Free for the chocolate bar like for the fraud sticker. That is the price of freedom in technology: the same openness making school projects gratis makes fraud cheap. Whoever grasps that grasps half the internet: open, mighty – and dependent on distrust."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "Hamburg: Bildungsplan Studienstufe (Informatik)",
+                "en": "Hamburg: syllabus for the upper stage (computing)"
+              },
+              "url": "https://www.hamburg.de/politik-und-verwaltung/behoerden/bsfb/veroeffentlichungen/bildungsplaene/start-sek2-2022-123118"
+            },
+            {
+              "label": {
+                "de": "GI: Bildungsstandards Informatik",
+                "en": "GI: computing education standards"
+              },
+              "url": "https://gi.de/meldung/bildungsstandards-gi-stellt-neue-empfehlungen-fuer-den-informatikunterricht-vor"
+            }
+          ]
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Offenheit hat übrigens Väter: Denso Wave gab die Patente frei – absichtlich, für alle. Ohne diese Entscheidung gäbe es keine Menü-Codes, keine Tickets, keine WLAN-Teilerei. Eine Firma verzichtete auf Geld und schenkte der Welt ein Alphabet. Manchmal ist das klügste Geschäft, keines zu machen.",
+            "en": "Openness incidentally holds fathers: Denso Wave released the patents – on purpose, for all. Without that decision no menu codes, no tickets, no Wi-Fi sharing existed. One company waived money gifting the world an alphabet. Sometimes the cleverest business is making none."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "note",
+          "icon": "🎁",
+          "title": {
+            "de": "Geschenkt",
+            "en": "Gifted"
+          },
+          "text": {
+            "de": "Vergleiche das mit App-Stores und Abos: Überall Zäune, Gebühren, Konten – und daneben ein Muster aus den Neunzigern, gratis für immer. Offen schlägt geschlossen, wo es um Alltägliches geht. Behalte das als Maßstab für jede neue Technik.",
+            "en": "Compare that with app stores and subscriptions: fences everywhere, fees, accounts – and beside a pattern from the nineties, gratis forever. Open beats closed where everyday things count. Keep that as a yardstick for every new technology."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Offene Formate übrigens überall: WLAN heißt 802.11, Web heißt HTML, Mail heißt SMTP – alles offen, alles gratis, alles überall. Geschlossene Formate sterben leise: Wer erinnert sich an MiniDisc, HD-DVD, Flash? Offen gewinnt auf Dauer – fast immer. Ein Trost für alle, die teilen statt zu horten.",
+            "en": "Open formats incidentally everywhere: Wi-Fi means 802.11, web means HTML, mail means SMTP – all open, all gratis, all everywhere. Closed formats die quietly: who remembers MiniDisc, HD-DVD, Flash? Open wins in the long run – almost always. Comfort for all sharing instead of hoarding."
+          }
+        }
+      ],
+      "title": {
+        "de": "Offen für alle",
+        "en": "Open for all"
+      }
+    }
+  ],
+  "summary": {
+    "de": "Lesen ohne Lesen-Können: Wie Quadrate sprechen – und wann man ihnen misstraut.",
+    "en": "Reading without being able to read: how squares speak – and when to distrust them."
+  },
+  "title": {
+    "de": "QR-Codes",
+    "en": "QR codes"
+  }
+}

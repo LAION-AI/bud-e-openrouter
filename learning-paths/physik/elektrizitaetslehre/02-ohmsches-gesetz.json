@@ -10,7 +10,7 @@
   },
   "icon": "🔺",
   "accent": "amber",
-  "minutes": 13,
+  "minutes": 22,
   "screens": [
     {
       "key": "widerstand",
@@ -114,6 +114,13 @@
           "text": {
             "de": "Miss den Widerstand einer alten Glühlampe im ausgeschalteten Zustand: erstaunlich klein. Heiß ist er zehnmal so groß. Deshalb fließt im ersten Moment nach dem Einschalten ein Vielfaches - und deshalb gehen Glühlampen fast immer genau beim Einschalten kaputt, nie mittendrin.",
             "en": "Measure the resistance of an old filament lamp while it is off: surprisingly small. Hot, it is ten times larger. So in the first instant after switching on, many times more current flows - and that is why filament lamps almost always fail at the moment of switching on, never in the middle."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Denk an einen Gartenschlauch: Druck ist die Spannung, Engstellen sind der Widerstand, Wassermenge der Strom. Schlauch zudrücken – weniger Wasser. Pumpe stärker – mehr Wasser. U gleich R mal I ist nur diese Weisheit in Buchstaben: Druck durch Enge gibt Menge. Wer Schläuche versteht, versteht Ohm.",
+            "en": "Think garden hose: pressure is voltage, narrow spots resistance, water amount current. Squeeze the hose – less water. Pump harder – more water. U equals R times I is only this wisdom in letters: pressure through narrowness gives amount. Whoever grasps hoses grasps Ohm."
           }
         }
       ]
@@ -243,6 +250,83 @@
           }
         },
         {
+          "kind": "paragraph",
+          "text": {
+            "de": "Fühle es am Ladekabel: Lauwarm ist normal – Strom wärmt jeden Leiter ein bisschen. Heiß ist Alarm: zu viel Strom für zu dünnen Draht, Widerstand frisst Leistung und wird Heizung. Darum haben Föhne dicke Kabel und Handys dünne: Leistung bestimmt Draht. Warm darf, heiß nie.",
+            "en": "Feel it on the charger cable: lukewarm is normal – current warms every conductor a little. Hot is alarm: too much current for too thin wire, resistance eats power turning heater. Hence hairdryers hold fat cables, phones thin ones: power decides wire. Warm may, hot never."
+          }
+        }
+      ]
+    },
+    {
+      "key": "kennlinie",
+      "title": {
+        "de": "Nicht jeder Quotient bleibt konstant",
+        "en": "Not every voltage-to-current ratio stays constant"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Ein Bauteil wird in einer Simulation bei verschiedenen Spannungen untersucht. Bei 1 V fließen 0,05 A, bei 2 V 0,10 A und bei 3 V 0,15 A. Der Quotient U/I beträgt jeweils 20 Ω. Im U-I-Diagramm ergibt sich unter diesen Bedingungen eine Gerade durch den Ursprung. Das Bauteil verhält sich ohmsch.",
+            "en": "A component is tested at different voltages in a simulation. At 1 V, current is 0.05 A; at 2 V it is 0.10 A; at 3 V it is 0.15 A. The ratio U/I is 20 Ω each time. Under these conditions, a voltage–current graph is a straight line through the origin. The component behaves ohmically."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "R = U/I kann auch für einen einzelnen Betriebspunkt eines nichtohmschen Bauteils berechnet werden. Daraus folgt aber nicht, dass derselbe Widerstand bei jeder Spannung gelten muss. Bei einem Glühdraht ändert Erwärmung den Widerstand; eine Diode besitzt ebenfalls eine andere Kennlinie. Die genaue Messrichtung der Achsen ist wichtig, bevor du aus einer Steigung einen Widerstand abliest. Für den fairen Vergleich müssen Temperatur und andere Bedingungen genannt werden. Eine Simulation zeigt diese Unterschiede ohne heiße Drähte oder riskante Stromquellen. Das Gesetz ist ein starkes Werkzeug, gerade weil du seine Gültigkeitsbedingungen ausdrücklich prüfen kannst. Eine gerade Linie allein ersetzt diese Prüfung nicht.",
+            "en": "R = U/I can also be calculated at a single operating point of a non-ohmic component. That does not mean the same resistance applies at every voltage. Heating changes a filament's resistance, while a diode has another characteristic curve. Check which quantity is on each axis before interpreting a gradient as resistance. A fair comparison must state temperature and other relevant conditions. A simulation shows these differences without hot wires or risky power supplies. The law is especially powerful when its validity conditions are checked explicitly. A straight line alone does not replace that check."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Vergleiche drei Betriebspunkte mit gleichem Quotienten U/I mit einer gekrümmten Kennlinie. Welche Aussage ist jeweils möglich? Die drei Messpaare zeigen nicht nur steigenden Strom, sondern denselben Quotienten bei jedem Punkt. Das ist die relevante Gemeinsamkeit. Eine andere Kurve könnte ebenfalls steigen, ohne diese Proportionalität zu besitzen. Vergleiche deshalb nicht bloß „geht nach oben“, sondern die zugehörigen Spannungs- und Stromwerte. Für eine warme Glühlampe muss zusätzlich die Temperaturänderung in die Erklärung aufgenommen werden.",
+            "en": "Compare three operating points with equal U/I ratios with a curved characteristic. What conclusion is possible in each case? The three readings show not just increasing current but an equal ratio at every point. Another rising curve need not be proportional. Compare paired voltages and currents rather than merely saying “it goes up”. For a warming filament, temperature change must also be included in the explanation."
+          }
+        }
+      ]
+    },
+    {
+      "key": "fehlersuche",
+      "title": {
+        "de": "Eine Diagnose braucht mehr als einen Zahlenwert",
+        "en": "Diagnosis needs more than one reading"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "In einem virtuellen Stromkreis liegen 6 V an einem vorgesehenen Widerstand von 20 Ω. Erwartet werden I = U/R = 0,3 A. Zeigt die Simulation keinen Strom, prüfst du zuerst, ob der Kreis geschlossen und die Messung richtig angeordnet ist. Zeigt sie einen anderen Wert, könnten Bauteil, Spannung oder Modellbedingungen anders sein.",
+            "en": "A virtual circuit applies 6 V to a specified 20 Ω resistor. The expected current is I = U/R = 0.3 A. If the simulation shows no current, first check whether the circuit is closed and the meter connected correctly. A different reading could indicate a different component, voltage or set of model conditions."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Eine gute Diagnose verändert nicht alles gleichzeitig. Du nennst eine Vermutung und wählst eine gezielte, sichere Prüfung. Ein größerer Widerstand würde bei gleicher Spannung die Stromstärke verkleinern. Eine größere Spannung würde bei gleichbleibendem Widerstand die Stromstärke vergrößern. Eine heiße Glühlampe folgt dem einfachen konstanten Widerstandsmodell dagegen nicht zuverlässig. Im Alltag bedeutet Fehlersuche deshalb nicht, ein Netzgerät zu öffnen oder eine Sicherung zu überbrücken. Auch ein dickes Kabel macht einen unzulässigen Anschluss nicht sicher. Für den Lernpfad reichen vorhandene Daten und die Simulation. Du entwirfst eine nachvollziehbare Reihenfolge von Fragen, keine Reparaturanleitung für Haushaltsstrom.",
+            "en": "Good diagnosis does not change everything at once. State a hypothesis and choose one targeted, safe check. Greater resistance at the same voltage would reduce current. Greater voltage at unchanged resistance would increase current. A hot filament, however, does not reliably follow a constant-resistance model. In everyday life, troubleshooting does not mean opening a mains appliance or bypassing a fuse. A thicker cable does not make an unsuitable connection safe either. Supplied data and the simulation are enough here. Your task is to design an understandable sequence of questions, not instructions for repairing household wiring."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Entwirf drei sichere Diagnosefragen für eine Simulation mit unerwartet kleiner Stromstärke und begründe ihre Reihenfolge. Eine offene Verbindung und ein größerer Widerstand können beide einen kleinen Messwert verursachen, sind aber nicht dieselbe Erklärung. Ein virtueller Schaltertest und ein kontrollierter Bauteilwechsel prüfen verschiedene Vermutungen. Schreibe vor der Prüfung auf, welche Änderung du erwartest. Dann ist ein überraschendes Ergebnis neue Information statt ein Anlass, planlos immer weitere Größen gleichzeitig zu verändern.",
+            "en": "Design three safe diagnostic questions for a simulation showing unexpectedly low current, and explain their order. An open connection and increased resistance can both produce a low reading but are different explanations. A virtual switch check and controlled component change test different hypotheses. State the expected effect first. An unexpected result then becomes information rather than a reason to change more variables at random."
+          }
+        },
+        {
           "kind": "sources",
           "items": [
             {
@@ -258,6 +342,20 @@
                 "en": "Physikalisch-Technische Bundesanstalt"
               },
               "url": "https://www.ptb.de"
+            },
+            {
+              "label": {
+                "de": "Hamburg: Physik Gymnasium (2024)",
+                "en": "Hamburg: Gymnasium physics (2024)"
+              },
+              "url": "https://www.hamburg.de/resource/blob/798534/4cf0047ad61effacd1ff7e6ad819fa41/physik-data.pdf"
+            },
+            {
+              "label": {
+                "de": "Hamburg: Physik Stadtteilschule (2024)",
+                "en": "Hamburg: Stadtteilschule physics (2024)"
+              },
+              "url": "https://www.hamburg.de/resource/blob/798426/ba414a0ace36d17b7813a855db625c42/physik-data.pdf"
             }
           ]
         }
@@ -268,50 +366,46 @@
     {
       "kind": "cloze",
       "title": {
-        "de": "1. Lückentext: drei Größen, ein Zusammenhang",
-        "en": "1. Fill in the blanks: three quantities, one relationship"
+        "de": "1. Lückentext",
+        "en": "1. Fill in the blanks"
       },
       "intro": {
-        "de": "Setze die fehlenden Wörter und Zahlen ein.",
-        "en": "Fill in the missing words and numbers."
+        "de": "Ergänze die fehlenden Fachwörter. Alle Begriffe findest du im Pfad.",
+        "en": "Complete the missing technical words. Every term appears in this path."
       },
       "text": {
-        "de": "Wie schwer es die Ladung in einem Bauteil hat, sagt der ___, gemessen in ___. Er ist umso größer, je ___ und je dünner ein Kabel ist. Der Zusammenhang zwischen Spannung, Widerstand und Stromstärke heißt ___ und lautet U = ___ · I. Sucht man die Stromstärke, teilt man die Spannung durch den ___. An 4,5 Volt und 15 Ohm fließen also ___ Ampere. Der Zusammenhang gilt nicht immer: Bei einer Glühlampe steigt der Widerstand mit der ___. Fließt Strom durch einen Widerstand, wird er ___ - im Wasserkocher erwünscht, im Verlängerungskabel nicht. Genau darauf beruht auch die ___, deren dünner Draht absichtlich zuerst schmilzt.",
-        "en": "How hard the charge has it in a component is given by the ___, measured in ___. It is larger the ___ and the thinner a cable is. The relationship between voltage, resistance and current is called ___ and reads U = ___ · I. To find the current you divide the voltage by the ___. At 4.5 volts and 15 ohms, ___ amperes therefore flow. The relationship does not always hold: in a filament lamp the resistance rises with ___. When current flows through a resistance it gets ___ - wanted in a kettle, not in an extension lead. That is also what a ___ relies on, its thin wire deliberately melting first."
+        "de": "Der Quotient aus Spannung und Stromstärke heißt ___. Seine Einheit ist ___. Für ein ohmsches Bauteil bleibt er bei gleicher ___ konstant. Ein längerer Draht besitzt bei sonst gleichen Bedingungen größeren ___. Der Zusammenhang wird als ohmsches ___ bezeichnet. Eine Gerade im passenden Diagramm zeigt eine lineare ___. Bei einem Glühdraht verändert Erwärmung die ___. Ein Strommessgerät gehört in ___. Bei einer Diagnose prüfst du auch die Gültigkeit des ___.",
+        "en": "The ratio of voltage to current is ___. Its unit is the ___. For an ohmic component it remains constant at unchanged ___. A longer wire has greater ___ when other conditions match. The relationship is called Ohm's ___. A straight graph shows a linear ___. Heating changes a filament's ___. An ammeter belongs in ___. Diagnosis must also check the validity of the ___."
       }
     },
     {
       "kind": "compare",
       "title": {
-        "de": "2. Vergleiche: zweimal Wärme, einmal gewollt",
-        "en": "2. Compare: heat twice, wanted once"
+        "de": "2. Erklären und vergleichen (AB II)",
+        "en": "2. Explain and compare (level II)"
       },
       "intro": {
-        "de": "Setze zwei Bauteile zueinander in Beziehung und rechne.",
-        "en": "Relate two components to each other and calculate."
+        "de": "Antworte mit drei bis vier kurzen Sätzen. Nutze das Gelesene und begründe deinen Vergleich.",
+        "en": "Answer in three or four short sentences. Use what you have read and explain your comparison."
       },
       "text": {
-        "de": "Ein Wasserkocher und ein Verlängerungskabel werden beide warm, wenn Strom fließt - beim einen ist das der Zweck, beim anderen ein Ärgernis. Erkläre mit dem ohmschen Gesetz, wodurch sich die beiden unterscheiden, und leite daraus ab, warum Kabel für hohe Ströme dick sein müssen. Rechne dazu aus, welchen Widerstand ein Gerät hat, das an 230 Volt genau 8,7 Ampere zieht.",
-        "en": "A kettle and an extension lead both get warm when current flows - in one case that is the point, in the other a nuisance. Using Ohm's law, explain how the two differ, and deduce why cables for high currents must be thick. Work out the resistance of a device drawing exactly 8.7 amperes at 230 volts."
-      },
-      "hint": {
-        "de": "Frag dich, wo der Widerstand groß sein soll und wo klein - und was mit der Wärme jeweils geschehen soll.",
-        "en": "Ask where the resistance is supposed to be large and where small - and what is meant to happen with the heat in each case."
+        "de": "Vergleiche einen ohmschen Widerstand mit einem warm werdenden Glühdraht. Erkläre, was aus dem Quotienten U/I folgt und was nicht. Warum musst du bei einer gekrümmten Kennlinie die Bedingungen mitnennen?",
+        "en": "Compare an ohmic resistor with a heating filament. Explain what the ratio U/I does and does not establish. Why must conditions be stated for a curved characteristic?"
       }
     },
     {
       "kind": "reflect",
       "title": {
-        "de": "3. Zum Nachdenken: ein Gesetz, das keines ist",
-        "en": "3. Something to think about: a law that is not one"
+        "de": "3. Deine Idee im Alltag (AB III)",
+        "en": "3. Your idea for everyday life (level III)"
       },
       "intro": {
-        "de": "Auf diese Frage gibt es keine richtige Antwort.",
-        "en": "There is no right answer to this one."
+        "de": "Entwickle eine eigene Idee in drei bis vier kurzen Sätzen. Begründe sie mit Physik; mehrere Lösungen sind möglich.",
+        "en": "Develop your own idea in three or four short sentences. Support it with physics; several answers are possible."
       },
       "text": {
-        "de": "Das ohmsche Gesetz heißt Gesetz, gilt aber nur unter Bedingungen - für Metalle bei gleichbleibender Temperatur. Trotzdem ist es eines der nützlichsten Werkzeuge der Physik. In anderen Fächern begegnen dir ähnliche Fälle: Regeln, die fast immer stimmen und deren Ausnahmen man kennen muss. Überlege, was eine Regel wertvoll macht, obwohl sie nicht ausnahmslos gilt - und was passieren kann, wenn jemand ihre Grenzen nicht kennt.",
-        "en": "Ohm's law is called a law but only holds under conditions - for metals at constant temperature. Even so it is one of the most useful tools in physics. Other subjects hold similar cases: rules that nearly always hold and whose exceptions you have to know. Consider what makes a rule valuable although it does not hold without exception - and what can happen when someone does not know its limits."
+        "de": "Entwirf einen sicheren virtuellen Diagnoseplan für unerwartet kleinen Strom. Formuliere zwei Prüfungen, die jeweils nur einen Einfluss verändern, und nenne eine Grenze des Modells.",
+        "en": "Design a safe virtual diagnostic plan for unexpectedly low current. Give two checks, each changing only one factor, and state a model limitation."
       }
     }
   ]

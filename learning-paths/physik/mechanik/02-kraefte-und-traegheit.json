@@ -1,0 +1,264 @@
+{
+  "key": "kraefte-und-traegheit",
+  "title": {
+    "de": "Warum du beim Bremsen nach vorne willst",
+    "en": "Why braking sends you forwards"
+  },
+  "summary": {
+    "de": "Kraftpfeile, Masse und Gewicht helfen dir, Sport, Rucksack und Bewegung ohne Denkfallen zu verstehen.",
+    "en": "Force arrows, mass and weight help you understand sport, backpacks and motion without common misconceptions."
+  },
+  "icon": "🛹",
+  "accent": "sky",
+  "minutes": 22,
+  "screens": [
+    {
+      "key": "wirkung",
+      "title": {
+        "de": "Eine Kraft ist kein Vorrat im Gegenstand",
+        "en": "Force is not something stored inside an object"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Ein Ball fliegt nach dem Schuss weiter, obwohl der Fuß ihn nicht mehr berührt. Er enthält deshalb keine „Schusskraft“, die langsam aufgebraucht wird. Kräfte beschreiben Wechselwirkungen zwischen Körpern. Sie können einen Körper verformen oder seine Geschwindigkeit verändern: schneller, langsamer oder in eine andere Richtung. Beim Flug wirken beispielsweise Erdanziehung und Luftwiderstand.",
+            "en": "A ball keeps moving after a kick although the foot no longer touches it. That does not mean it contains a supply of “kicking force” that gradually runs out. Forces describe interactions between objects. They can deform an object or change its velocity: speeding it up, slowing it down or changing its direction. During flight, gravity and air resistance act on the ball."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Die Einheit der Kraft ist Newton, abgekürzt N. Ein Kraftpfeil zeigt Angriffspunkt, Richtung und Stärke. Zwei gleich lange Pfeile können sich aufheben, wenn sie entgegengesetzt auf denselben Körper wirken. Auf einem ruhig liegenden Rucksack wirken Gewichtskraft nach unten und die Stützkraft des Tisches nach oben. Die Kräfte sind nicht verschwunden; ihre Summe ist null. Deshalb verändert sich die Bewegung nicht. Zur Analyse wählst du immer zuerst den Körper, dessen Bewegung dich interessiert. Sonst vermischst du leicht Kräfte auf verschiedene Dinge. Eine Skizze mit einem einzelnen Körper ist oft hilfreicher als eine ganze gezeichnete Szene.",
+            "en": "Force is measured in newtons, abbreviated N. A force arrow shows where the force acts, its direction and its magnitude. Two equal arrows can cancel when they act in opposite directions on the same object. A backpack resting on a table experiences downward weight and an upward support force. These forces have not disappeared; their sum is zero. Its motion therefore does not change. Always choose the object whose motion you want to analyse first. Otherwise it is easy to mix forces acting on different things. A diagram showing one object is often clearer than a drawing of the entire scene."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Welche Kräfte wirken auf einen ruhenden Rucksack, obwohl er weder fällt noch nach oben steigt? Für den Rucksack wäre ein Pfeil „Tisch auf Rucksack“ hilfreich. Ein anderer Pfeil „Rucksack auf Tisch“ gehört nicht in dieselbe Kräftebilanz, weil er auf den Tisch wirkt. Beide können in einer zweiten Skizze erscheinen. Mit dieser Beschriftung erkennst du schon vor einer Rechnung, ob du wirklich die Kräfte auf einen einzigen ausgewählten Körper gesammelt hast.",
+            "en": "Which forces act on a resting backpack even though it neither falls nor rises? For the backpack, label one arrow “table on backpack”. Another arrow, “backpack on table”, belongs in a different force account because it acts on the table. Both can appear in separate drawings. These labels let you check before calculating whether all the forces in an account genuinely act on the one object you selected."
+          }
+        }
+      ]
+    },
+    {
+      "key": "traegheit",
+      "title": {
+        "de": "Bewegung braucht keine dauernde Anschubskraft",
+        "en": "Motion does not need a continuous push"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Auf glattem Eis gleitet ein Spielstein lange weiter. Auf Teppich bleibt er rasch stehen. Daraus folgt nicht, dass Bewegung von selbst erschöpft wird: Auf dem Teppich ist die bremsende Reibung stärker. Das Trägheitsprinzip lautet: Ohne resultierende äußere Kraft bleibt ein Körper in Ruhe oder bewegt sich gleichförmig geradlinig. „Resultierend“ meint die gemeinsame Wirkung aller Kräfte auf diesen Körper.",
+            "en": "A playing piece slides a long way on smooth ice but stops quickly on carpet. This does not mean that motion simply runs out: the carpet supplies greater friction. The principle of inertia states that without a resultant external force, an object remains at rest or moves uniformly in a straight line. “Resultant” means the combined effect of all forces on that object."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Wenn ein Bus bremst, will dein Körper seinen bisherigen Bewegungszustand beibehalten. Der Boden, dein Halt oder ein Gurt müssen eine Kraft auf dich ausüben, um deine Geschwindigkeit zu ändern. Es braucht keine geheimnisvolle Kraft, die dich nach vorne zieht. Im mitbewegten Bus sieht dein Verhalten trotzdem so aus. Dass Bezugssysteme unterschiedliche Beschreibungen liefern, ist kein Widerspruch. Sich beim Fahren gut festzuhalten ist eine praktische Konsequenz. Die Modellidee beschreibt keine Empfehlung für eigene Bremsversuche. Du kannst sie sicher mit einer Simulation prüfen und dabei Reibung ein- und ausschalten.",
+            "en": "When a bus brakes, your body tends to keep its previous state of motion. The floor, your handhold or a belt must exert a force on you to change your velocity. No mysterious force pulling you forwards is needed. From the moving bus, however, your motion can look that way. Different reference frames giving different descriptions is not a contradiction. Holding on securely during travel is a practical consequence. This model is not advice to perform your own braking tests. You can investigate it safely in a simulation by switching friction on and off and comparing what happens."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Wie sähe die Bewegung eines angeschobenen Körpers aus, wenn Reibung und andere bremsende Kräfte fehlen? Wenn ein Gleitstück langsamer wird, suche nach einer Wechselwirkung statt nach verbrauchter Bewegung. Vielleicht reibt es am Untergrund oder schiebt Luft vor sich her. Die Aussage „keine resultierende Kraft“ ist eine Modellbedingung, keine Behauptung über jeden realen Raum. In der Simulation kannst du gerade deshalb erkennen, was sich durch Hinzufügen einer bremsenden Kraft ändert.",
+            "en": "What would happen to a pushed object if friction and other slowing forces were absent? If a sliding object slows, look for an interaction rather than used-up motion. It may rub against the surface or push through air. “No resultant force” is a model condition, not a claim about every real environment. A simulation is useful precisely because it reveals what changes when a slowing force is added to that idealised situation."
+          }
+        }
+      ]
+    },
+    {
+      "key": "masse",
+      "title": {
+        "de": "Masse bleibt, Gewichtskraft hängt vom Ort ab",
+        "en": "Mass stays the same; weight depends on location"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Masse beschreibt unter anderem, wie träge ein Körper auf eine Kraft reagiert. Ihre Einheit ist Kilogramm. Die Gewichtskraft ist die Anziehungskraft zwischen Erde und Körper. Ihre Einheit ist Newton. Nahe der Erdoberfläche gilt F_G = m · g mit g ≈ 9,81 N/kg. Für Überschläge reichen 10 N/kg. Ein Rucksack mit 5 kg Masse hat damit ungefähr 50 N Gewichtskraft.",
+            "en": "Mass describes, among other things, an object's inertia when a force acts on it. It is measured in kilograms. Weight is the gravitational force between Earth and the object, measured in newtons. Near Earth's surface, F_G = m · g, with g approximately 9.81 N/kg. For estimates, 10 N/kg is sufficient. A backpack of mass 5 kg therefore has a weight of roughly 50 N."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Auf dem Mond ist die Gewichtskraft desselben Rucksacks deutlich kleiner, seine Masse bleibt aber 5 kg. Du könntest ihn leichter anheben, aber nicht ohne Kraft beliebig schnell beschleunigen. Eine Badezimmerwaage misst mechanisch eine Kraft und zeigt daraus unter Erdannahmen eine Masse an. Ein Federkraftmesser zeigt dagegen unmittelbar eine Kraftskala. Häufig werden Gramm und Kilogramm im Alltag als „Gewicht“ bezeichnet. Das ist verständlich, aber beim Erklären musst du zwischen Masse und Gewichtskraft unterscheiden. Die Formel gilt hier näherungsweise für einen Ort nahe der Erdoberfläche; g ist nicht überall im Universum gleich.",
+            "en": "On the Moon, the same backpack has a much smaller weight, but its mass is still 5 kg. You could lift it more easily, but could not accelerate it arbitrarily quickly without force. A bathroom scale mechanically measures a force and converts it to a mass using assumptions appropriate to Earth. A spring force meter instead displays a force scale directly. In everyday language, people often call a number of grams or kilograms “weight”. That is understandable, but explanations need to distinguish mass from gravitational force. This equation is an approximation for a location near Earth's surface; g is not the same everywhere in the universe."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Welche Größen ändern sich und welche bleiben gleich, wenn derselbe Rucksack von der Erde auf den Mond gelangt? Ein 5-kg-Rucksack auf dem Mond wäre nicht plötzlich aus weniger Material zusammengesetzt. Seine Trägheit bliebe entsprechend seiner Masse erhalten. Beim Anheben ist jedoch die kleinere örtliche Gewichtskraft zu überwinden. Erkläre die beiden Beobachtungen getrennt: leichtes Hochheben betrifft die Gravitation, Beschleunigen betrifft die Reaktion auf eine resultierende Kraft. So bekommt „leichter“ eine präzisere Bedeutung.",
+            "en": "Which quantities change, and which remain unchanged, when the same backpack is taken from Earth to the Moon? A 5 kg backpack on the Moon would not suddenly contain less material. Its inertia would still correspond to its mass. Lifting it would require overcoming a smaller local gravitational force, however. Explain these observations separately: easier lifting concerns gravity, while acceleration concerns the response to a resultant force. This gives the everyday word “lighter” a more precise meaning."
+          }
+        }
+      ]
+    },
+    {
+      "key": "wechselwirkung",
+      "title": {
+        "de": "Gleich groß, aber auf verschiedene Körper",
+        "en": "Equal in magnitude, acting on different objects"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Drückst du mit der Hand gegen eine Wand, drückt die Wand gleichzeitig gegen deine Hand. Die beiden Kräfte sind gleich groß und entgegengesetzt. Sie heben sich aber nicht gegenseitig auf, weil sie auf unterschiedliche Körper wirken. Das ist das Wechselwirkungsprinzip. Es ist etwas anderes als das Kräftegleichgewicht an einem einzigen Körper.",
+            "en": "If your hand pushes against a wall, the wall simultaneously pushes against your hand. The two forces are equal in magnitude and opposite in direction. They do not cancel each other because they act on different objects. This is the interaction principle, also called Newton's third law. It differs from balanced forces acting on one object."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Auch beim Gehen drückst du den Boden nach hinten, während der Boden dich nach vorne drückt. Auf glattem Eis fehlt oft genügend Haftreibung, um diese Wechselwirkung wirksam für das Vorwärtsgehen zu nutzen. Reibung ist also nicht nur ein störender Energieverlust. Sie ermöglicht Bremsen, Greifen und Fortbewegung. Bei gleicher Masse bewirkt eine größere resultierende Kraft eine größere Beschleunigung. Für eine konstante Masse gilt F = m · a. Dieselbe Kraft beschleunigt eine größere Masse weniger stark. Die Reaktionskräfte sind trotzdem gleich groß; unterschiedliche Beschleunigungen entstehen wegen der unterschiedlichen Massen. Dieser Gedanke erklärt, warum gleiche Kraft nicht automatisch gleiche Bewegung bedeutet.",
+            "en": "When walking, you push the ground backwards and the ground pushes you forwards. On smooth ice, there may not be enough static friction to make this interaction useful for walking. Friction is therefore not just an unwanted energy loss: it enables braking, gripping and movement. For the same mass, a greater resultant force produces a greater acceleration. With constant mass, F = m · a. The same force accelerates a larger mass less strongly. Interaction forces remain equal; different accelerations come from different masses. This explains why equal forces do not necessarily produce equal changes in motion, and why identifying which object each arrow belongs to is so important."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Warum sind Hand-Wand-Kräfte ein Wechselwirkungspaar, die beiden Kräfte auf einen ruhenden Rucksack dagegen nicht? Ein kleiner Wagen kann nach einem Stoß stärker beschleunigen als ein großer, obwohl beide während der Wechselwirkung gleich große entgegengesetzte Kräfte erfahren. Die unterschiedlichen Massen erklären die verschiedenen Änderungen. Vertausche daher nicht „gleiche Kraft“ mit „gleiche Beschleunigung“. Die Beschriftung jedes Pfeils mit verursachendem und betroffenem Körper verhindert hier zwei typische Denkfehler gleichzeitig.",
+            "en": "Why are hand–wall forces an interaction pair, while the two forces on a resting backpack are not? A small cart can accelerate more during a collision than a large cart even though both experience equal opposite interaction forces. Their different masses explain the different responses. Do not confuse equal force with equal acceleration. Labelling each arrow with the object causing the force and the object receiving it avoids two common misconceptions at once."
+          }
+        }
+      ]
+    },
+    {
+      "key": "kraftstoss",
+      "title": {
+        "de": "Länger abbremsen kann die Kraft verkleinern",
+        "en": "Taking longer to stop can reduce the force"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Ein Fanghandschuh gibt beim Fangen etwas nach. Ein Helm besitzt Material, das sich beim Aufprall verformt. Beide verlängern den Abbremsvorgang. Für dieselbe Geschwindigkeitsänderung derselben Masse gilt: Je länger die Kraft wirken kann, desto kleiner kann die mittlere Kraft sein. Als Kraftstoß schreiben wir F_mittel · Δt = m · Δv.",
+            "en": "A catching glove gives way slightly when receiving a ball. A helmet contains material that deforms during impact. Both extend the stopping process. For the same mass undergoing the same change in velocity, a longer interaction time allows a smaller average force. We write the impulse relation as F_average · Δt = m · Δv."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Eine Masse von 1 kg wird im Rechenmodell um 4 m/s abgebremst. In 0,2 s sind dafür im Mittel 20 N nötig, in 0,02 s dagegen 200 N. Das sind vereinfachte Mittelwerte, keine tatsächlichen Spitzenkräfte und keine Verletzungsgrenzen. Auch Verteilung über eine Fläche und Bauform spielen eine Rolle. Schutzmaterial macht einen Aufprall nicht harmlos und darf nicht selbst durch gefährliche Belastungen getestet werden. Du kannst aber eine Verpackung für einen zerbrechlichen Modellgegenstand auf Papier entwerfen: genügend Bremsweg, festes Halten ohne harte Kontaktstellen und möglichst wenig Material. Dabei wird aus einer Formel eine nachvollziehbare Gestaltungsidee.",
+            "en": "In a calculation model, a 1 kg mass is slowed by 4 m/s. Doing so in 0.2 s requires an average force of 20 N; doing so in 0.02 s requires 200 N. These are simplified averages, not actual peak forces or injury thresholds. Contact area and construction matter too. Protective material does not make an impact harmless and must not be tested by deliberately causing dangerous impacts. You can instead design packaging for a fragile model object on paper: provide stopping distance, hold the object without hard contact points and minimise material use. A formula then becomes an understandable design principle."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Wie könnte eine schützende Verpackung die Abbremszeit verlängern, ohne unnötig viel Material zu verbrauchen? Eine Polsterung darf nicht schon vollständig zusammengedrückt sein, bevor der empfindliche Gegenstand gebremst wird. Sonst fehlt der zusätzliche Bremsweg. Bei deinem Papierentwurf ist deshalb neben weichem Material auch verfügbarer Platz wichtig. Die Zahlen aus dem Modell vergleichen mittlere Kräfte; sie sagen nicht, bei welcher Belastung ein echtes Display bricht oder ein Mensch verletzt wird.",
+            "en": "How could protective packaging extend the stopping time without using unnecessary material? Padding must not be fully compressed before the fragile object is slowed, or there is no extra stopping distance left. Your paper design therefore needs available space as well as soft material. The model numbers compare average forces; they do not predict the load at which a real display breaks or a person is injured."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "Hamburg: Physik Gymnasium (2024)",
+                "en": "Hamburg: Gymnasium physics (2024)"
+              },
+              "url": "https://www.hamburg.de/resource/blob/798534/4cf0047ad61effacd1ff7e6ad819fa41/physik-data.pdf"
+            },
+            {
+              "label": {
+                "de": "Hamburg: Physik Stadtteilschule (2024)",
+                "en": "Hamburg: Stadtteilschule physics (2024)"
+              },
+              "url": "https://www.hamburg.de/resource/blob/798426/ba414a0ace36d17b7813a855db625c42/physik-data.pdf"
+            },
+            {
+              "label": {
+                "de": "PhET: sichere interaktive Simulation",
+                "en": "PhET: safe interactive simulation"
+              },
+              "url": "https://phet.colorado.edu/de/simulations/forces-and-motion-basics"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": {
+        "de": "1. Lückentext",
+        "en": "1. Fill in the blanks"
+      },
+      "intro": {
+        "de": "Ergänze die fehlenden Fachwörter. Alle Begriffe findest du im Pfad.",
+        "en": "Complete the missing technical words. Every term appears in this path."
+      },
+      "text": {
+        "de": "Eine Kraft beschreibt eine ___. Die Einheit dafür heißt ___. Die Richtung zeigen wir mit einem ___. Ohne resultierende äußere Kraft gilt das ___. Die Masse messen wir in ___. Die Anziehung der Erde heißt ___. Entgegengesetzte Kräfte auf verschiedene Körper bilden ein ___. Auf demselben Körper kann dagegen ein ___ herrschen. Für dieselbe Geschwindigkeitsänderung verringert eine längere Abbremszeit die mittlere ___.",
+        "en": "A force describes an ___. Its unit is the ___. We show its direction with an ___. Without a resultant external force, the principle of ___ applies. Mass is measured in ___. Earth's gravitational force on an object is its ___. Opposite forces on different objects form an ___. Forces on the same object can instead be in ___. For the same change in velocity, a longer stopping time reduces the average ___."
+      }
+    },
+    {
+      "kind": "compare",
+      "title": {
+        "de": "2. Erklären und vergleichen (AB II)",
+        "en": "2. Explain and compare (level II)"
+      },
+      "intro": {
+        "de": "Antworte mit drei bis vier kurzen Sätzen. Nutze das Gelesene und begründe deinen Vergleich.",
+        "en": "Answer in three or four short sentences. Use what you have read and explain your comparison."
+      },
+      "text": {
+        "de": "Vergleiche den Rucksack auf dem Tisch mit einer Hand, die gegen die Wand drückt. Erkläre, welche Kräfte auf denselben und welche auf verschiedene Körper wirken. Warum darfst du diese Fälle nicht gleich behandeln?",
+        "en": "Compare a backpack on a table with a hand pushing against a wall. Explain which forces act on the same object and which act on different objects. Why must these cases be treated differently?"
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": {
+        "de": "3. Deine Idee im Alltag (AB III)",
+        "en": "3. Your idea for everyday life (level III)"
+      },
+      "intro": {
+        "de": "Entwickle eine eigene Idee in drei bis vier kurzen Sätzen. Begründe sie mit Physik; mehrere Lösungen sind möglich.",
+        "en": "Develop your own idea in three or four short sentences. Support it with physics; several answers are possible."
+      },
+      "text": {
+        "de": "Entwirf eine sichere Verpackung auf Papier. Erkläre mit Kraft, Zeit und Verformung, wie sie einen empfindlichen Gegenstand schützen soll. Nenne eine Grenze deiner Idee.",
+        "en": "Design protective packaging on paper. Use force, time and deformation to explain how it should protect a fragile object. Name one limitation."
+      }
+    }
+  ]
+}

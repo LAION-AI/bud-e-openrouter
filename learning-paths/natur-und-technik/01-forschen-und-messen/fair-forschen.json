@@ -1,0 +1,190 @@
+{
+  "key": "nwt-fair-forschen",
+  "title": {
+    "de": "Woher weißt du, ob das stimmt?",
+    "en": "How do you know it is true?"
+  },
+  "summary": {
+    "de": "Beobachte genau, plane einen fairen Vergleich und lies Messwerte mit Einheit.",
+    "en": "Observe carefully, plan a fair comparison and read measurements with units."
+  },
+  "icon": "🔎",
+  "accent": "sky",
+  "minutes": 12,
+  "screens": [
+    {
+      "key": "entdecken-1",
+      "title": {
+        "de": "Erst schauen, dann erklären",
+        "en": "Observe first, explain afterwards"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Warum wächst die Pflanze am Fenster anders als die hinten im Raum? Naturforschung beginnt mit solchen Fragen. Eine Beobachtung beschreibt, was du tatsächlich sehen oder messen kannst. Eine Vermutung ist deine mögliche Erklärung dafür.",
+            "en": "Why does the plant by the window grow differently from the one at the back? Research begins with questions like this. An observation describes what you can actually see or measure. A prediction or hypothesis is your possible explanation."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "„Der Stängel neigt sich zum Fenster“ ist eine Beobachtung. „Die Pflanze braucht Licht“ ist eine Erklärung, die du prüfen kannst. Eine Lupe vergrößert kleine Dinge. Ein Mikroskop zeigt noch kleinere Strukturen. Beschrifte eine Zeichnung nur mit dem, was du wirklich erkennst.",
+            "en": "“The stem leans towards the window” is an observation. “The plant needs light” is an explanation you can test. A magnifying glass enlarges small things; a microscope shows even smaller structures. Label a drawing only with what you can actually identify."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "💡",
+          "title": {
+            "de": "Dein Auftrag",
+            "en": "Your task"
+          },
+          "text": {
+            "de": "Schreibe einen Beobachtungssatz über einen Gegenstand neben dir. Ergänze getrennt eine Vermutung: „Vielleicht liegt das daran, dass …“.",
+            "en": "Write one observation about an object nearby. Separately add a hypothesis: “Perhaps this happens because …”"
+          }
+        }
+      ]
+    },
+    {
+      "key": "entdecken-2",
+      "title": {
+        "de": "Nur eine Sache ändern",
+        "en": "Change just one thing"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Welche Küchenrolle nimmt mehr Wasser auf? Ein fairer Vergleich gibt beiden Rollen dieselbe Chance. Ändere möglichst nur die Sache, die du untersuchen möchtest: hier die Sorte der Küchenrolle.",
+            "en": "Which kitchen paper absorbs more water? A fair test gives both types the same chance. Change only the thing you want to investigate: here, the type of paper."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Nimm gleich große Stücke, gleich viel Wasser und dieselbe Wartezeit. Wiederhole den Vergleich. Schreibe auf: Frage, Vermutung, Durchführung, Beobachtung, Ergebnis. Diese Aufzeichnung heißt Protokoll. Passt das Ergebnis nicht zur Vermutung, änderst du die Erklärung – nicht heimlich die Messwerte. Unbekannte Stoffe werden weder probiert noch vermischt.",
+            "en": "Use equally sized pieces, equal amounts of water and the same waiting time. Repeat the comparison. Record your question, hypothesis, method, observation and conclusion. This record is called a report. If the result disagrees with your hypothesis, change the explanation, not the measurements. Never taste or mix unknown substances."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "💡",
+          "title": {
+            "de": "Dein Auftrag",
+            "en": "Your task"
+          },
+          "text": {
+            "de": "Kim testet ein großes Stück A gegen ein kleines Stück B. Erkläre, warum dieser Vergleich noch nichts Sicheres über die bessere Sorte verrät.",
+            "en": "Kim tests a large piece of A against a small piece of B. Explain why this does not yet reveal which type is better."
+          }
+        }
+      ]
+    },
+    {
+      "key": "entdecken-3",
+      "title": {
+        "de": "Eine Zahl braucht eine Einheit",
+        "en": "A number needs a unit"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "„Meine Flasche enthält 500.“ Klingt unvollständig, oder? Zu einem Messwert gehört eine Einheit, zum Beispiel Milliliter (ml) für das Volumen. Volumen bedeutet: wie viel Raum etwas einnimmt.",
+            "en": "“My bottle contains 500.” Something is missing, right? A measurement needs a unit, such as millilitres (ml) for volume. Volume means how much space something occupies."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Längen misst du etwa in Zentimetern, Massen in Gramm und Temperaturen in Grad Celsius. Ein Messzylinder hat eine Skala, also Striche mit Zahlen. Lies sie auf Augenhöhe ab. Ein Lineal mit Millimeterstrichen verrät keine millionstel Millimeter. Messgeräte helfen unseren Sinnen, sind aber nicht beliebig genau.",
+            "en": "Lengths can be measured in centimetres, masses in grams and temperatures in degrees Celsius. A measuring cylinder has a scale: marks with numbers. Read it at eye level. A ruler marked in millimetres cannot reveal millionths of a millimetre. Instruments extend our senses, but are not infinitely precise."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "💡",
+          "title": {
+            "de": "Dein Auftrag",
+            "en": "Your task"
+          },
+          "text": {
+            "de": "Wähle für die Länge eines Stifts, die Masse eines Apfels und die Wassermenge in einer Flasche je ein passendes Messgerät und eine Einheit.",
+            "en": "Choose a suitable instrument and unit for a pencil's length, an apple's mass and the amount of water in a bottle."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "Hamburg: Naturwissenschaften/Technik 5–6, Gymnasium (2024)",
+                "en": "Hamburg: science and technology, years 5–6, Gymnasium (2024)"
+              },
+              "url": "https://www.hamburg.de/resource/blob/798520/700d66232c2d07bad97d72b6e107e083/naturwissenschaften-technik-data.pdf"
+            },
+            {
+              "label": {
+                "de": "Hamburg: Naturwissenschaften/Technik 5–6, Stadtteilschule (2024)",
+                "en": "Hamburg: science and technology, years 5–6, Stadtteilschule (2024)"
+              },
+              "url": "https://www.hamburg.de/resource/blob/798394/033190c61a9908ff10401a5b66cedae9/naturwissenschaften-technik-data.pdf"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": {
+        "de": "Die wichtigsten Wörter",
+        "en": "The key words"
+      },
+      "intro": {
+        "de": "Setze passende Wörter aus den drei Seiten ein. Nachschauen ist erlaubt.",
+        "en": "Fill the gaps using words from the three pages. You may look back."
+      },
+      "text": {
+        "de": "Was du tatsächlich erkennst, heißt ___. Eine mögliche Erklärung ist eine ___. Beim fairen Versuch änderst du möglichst nur ___ Sache. Deine Aufzeichnung heißt ___. Eine Zahl und ihre ___ bilden einen Messwert. Die ___ verrät das Volumen in ml. Kleine Dinge vergrößert eine ___. Messgeräte sind nicht beliebig ___.",
+        "en": "What you actually notice is an ___. A possible explanation is a ___. In a fair test, change only ___ thing. Your written record is a ___. A measurement includes a number and a ___. A cylinder's ___ shows its volume in ml. A ___ glass enlarges small things. Instruments are not infinitely ___."
+      }
+    },
+    {
+      "kind": "compare",
+      "title": {
+        "de": "Erkläre den Zusammenhang",
+        "en": "Explain the connection"
+      },
+      "intro": {
+        "de": "Antworte in zwei bis drei Sätzen. Nutze ein Beispiel aus dem Lernpfad.",
+        "en": "Answer in two or three sentences. Use an example from the learning path."
+      },
+      "text": {
+        "de": "Zwei Teams vergleichen Küchenrollen. Team A verändert Sorte und Stückgröße, Team B nur die Sorte. Welches Ergebnis ist aussagekräftiger? Begründe in zwei Sätzen.",
+        "en": "Two teams compare kitchen paper. Team A changes type and piece size; team B changes only type. Which result is more useful? Explain in two sentences."
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": {
+        "de": "Deine Idee für den Alltag",
+        "en": "Your everyday idea"
+      },
+      "intro": {
+        "de": "Hier zählt deine begründete Idee, nicht eine bestimmte Musterantwort.",
+        "en": "Your reasoned idea matters, not a particular model answer."
+      },
+      "text": {
+        "de": "Welche Frage aus deinem Alltag würdest du fair testen? Nenne eine Sache, die du änderst, und zwei Dinge, die gleich bleiben sollen.",
+        "en": "What everyday question would you test fairly? Name one thing to change and two things to keep the same."
+      }
+    }
+  ]
+}

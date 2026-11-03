@@ -1,0 +1,190 @@
+{
+  "key": "nwt-licht-und-schatten",
+  "title": {
+    "de": "Warum wandert dein Schatten?",
+    "en": "Why does your shadow move?"
+  },
+  "summary": {
+    "de": "Lichtquellen, Schatten, Finsternisse und Farben mit einfachen Modellen erklären.",
+    "en": "Explain light sources, shadows, eclipses and colours using simple models."
+  },
+  "icon": "🌈",
+  "accent": "violet",
+  "minutes": 12,
+  "screens": [
+    {
+      "key": "entdecken-1",
+      "title": {
+        "de": "Deine Augen brauchen ankommendes Licht",
+        "en": "Your eyes need incoming light"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Warum findest du einen roten Ball im völlig dunklen Zimmer nicht? Dein Auge braucht Licht, das hineinfällt. Eine Lampe sendet selbst Licht aus. Der Ball wirft einen Teil des auftreffenden Lichts zurück.",
+            "en": "Why can you not find a red ball in a completely dark room? Your eye needs incoming light. A lamp gives out light itself. The ball reflects some of the light that reaches it."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Lampe und Sonne sind Lichtquellen. Der Mond leuchtet nicht selbst wie die Sonne: Er reflektiert Sonnenlicht. Reflektieren bedeutet zurückwerfen. In einer einfachen Zeichnung zeigen Lichtstrahlen den Weg des Lichts als gerade Linien. Das ist ein Modell und kein Foto des Lichts.",
+            "en": "Lamps and the Sun are light sources. The Moon does not produce sunlight; it reflects it. Reflecting means sending light back. In a simple drawing, rays show light's path as straight lines. This is a model, not a photograph of light."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "💡",
+          "title": {
+            "de": "Dein Auftrag",
+            "en": "Your task"
+          },
+          "text": {
+            "de": "Zeichne Lampe → Ball → Auge. Erkläre, warum der Pfeil nicht beim Auge beginnt.",
+            "en": "Draw lamp → ball → eye. Explain why the arrow does not start at the eye."
+          }
+        }
+      ]
+    },
+    {
+      "key": "entdecken-2",
+      "title": {
+        "de": "Schatten ist kein schwarzer Stoff",
+        "en": "A shadow is not a black substance"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Was passiert, wenn du eine undurchsichtige Figur vor eine Lampe stellst? Die Figur hält Licht auf. Hinter ihr entsteht ein Bereich, den diese Lichtquelle nicht direkt erreicht: ein Schatten.",
+            "en": "What happens when you place an opaque figure in front of a lamp? The figure blocks light. Behind it is a region not reached directly by this light source: a shadow."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Bewegt sich die Lichtquelle oder der Gegenstand, verändert sich der Schatten. Auch die Abstände beeinflussen seine Größe. Eine Sonnenfinsternis entsteht, wenn der Mond zwischen Sonne und Erde steht und sein Schatten Teile der Erde erreicht. Schaue nie direkt in die Sonne – auch nicht durch eine Lupe, ein Fernglas oder ein Handy.",
+            "en": "Moving the source or object changes the shadow. Distances also affect its size. A solar eclipse occurs when the Moon is between the Sun and Earth and its shadow reaches parts of Earth. Never look directly at the Sun, including through magnifiers, binoculars or a phone."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "💡",
+          "title": {
+            "de": "Dein Auftrag",
+            "en": "Your task"
+          },
+          "text": {
+            "de": "Beschreibe, was sich an einem Schatten ändern kann, wenn der Gegenstand näher an eine kleine Lampe rückt. Nutze eine Zeichnung, keinen Sonnenversuch.",
+            "en": "Describe what can change when an object moves closer to a small lamp. Use a drawing, not a Sun-viewing experiment."
+          }
+        }
+      ]
+    },
+    {
+      "key": "entdecken-3",
+      "title": {
+        "de": "Weißes Licht enthält viele Farben",
+        "en": "White light contains many colours"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Woher kommen die Farben eines Regenbogens? Sonnenlicht enthält verschiedene Farben. Wassertröpfchen lenken und zerlegen das Licht. Auch ein Prisma kann weißes Licht in Farben aufteilen.",
+            "en": "Where do rainbow colours come from? Sunlight contains different colours. Water droplets redirect and separate the light. A prism can also split white light into colours."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Ein roter Ball erscheint bei weißem Licht rot, weil er einen Teil der Farben aufnimmt und vor allem rotes Licht zurückwirft. Unter anderem Licht kann er anders aussehen. Farbe hängt also von Licht, Gegenstand und Wahrnehmung ab. Ein Display mischt Lichtfarben; das ist nicht dasselbe wie das Mischen von Wasserfarben.",
+            "en": "Under white light, a red ball appears red because it absorbs some colours and mainly reflects red. Under different light it can look different. Colour depends on light, the object and perception. A display mixes coloured light, which is not the same as mixing paints."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "💡",
+          "title": {
+            "de": "Dein Auftrag",
+            "en": "Your task"
+          },
+          "text": {
+            "de": "Erkläre einem Freund, warum ein roter Gegenstand nicht unabhängig von der Beleuchtung immer gleich aussieht.",
+            "en": "Explain to a friend why a red object does not always look the same under every kind of lighting."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "Hamburg: Naturwissenschaften/Technik 5–6, Gymnasium (2024)",
+                "en": "Hamburg: science and technology, years 5–6, Gymnasium (2024)"
+              },
+              "url": "https://www.hamburg.de/resource/blob/798520/700d66232c2d07bad97d72b6e107e083/naturwissenschaften-technik-data.pdf"
+            },
+            {
+              "label": {
+                "de": "Hamburg: Naturwissenschaften/Technik 5–6, Stadtteilschule (2024)",
+                "en": "Hamburg: science and technology, years 5–6, Stadtteilschule (2024)"
+              },
+              "url": "https://www.hamburg.de/resource/blob/798394/033190c61a9908ff10401a5b66cedae9/naturwissenschaften-technik-data.pdf"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": {
+        "de": "Die wichtigsten Wörter",
+        "en": "The key words"
+      },
+      "intro": {
+        "de": "Setze passende Wörter aus den drei Seiten ein. Nachschauen ist erlaubt.",
+        "en": "Fill the gaps using words from the three pages. You may look back."
+      },
+      "text": {
+        "de": "Selbst leuchtende Dinge sind ___. Ein Ball ___ auftreffendes Licht. Das Auge sieht, wenn Licht ___ fällt. Gerade Linien bilden das ___ des Lichtwegs. Hinter einem Hindernis entsteht ein ___. Bei einer Sonnenfinsternis steht der ___ zwischen Sonne und Erde. Weißes Licht enthält mehrere ___. Ein ___ kann es zerlegen.",
+        "en": "Things producing their own light are light ___. A ball ___ incoming light. We see when light enters the ___. Straight lines form a ___ of light's path. Behind an obstacle, a ___ forms. During a solar eclipse, the ___ lies between Sun and Earth. White light contains several ___. A ___ can separate them."
+      }
+    },
+    {
+      "kind": "compare",
+      "title": {
+        "de": "Erkläre den Zusammenhang",
+        "en": "Explain the connection"
+      },
+      "intro": {
+        "de": "Antworte in zwei bis drei Sätzen. Nutze ein Beispiel aus dem Lernpfad.",
+        "en": "Answer in two or three sentences. Use an example from the learning path."
+      },
+      "text": {
+        "de": "Vergleiche Lampe, Ball und Mond: Wer sendet selbst Licht aus, wer reflektiert es? Erkläre, wie dein Auge den Ball sehen kann.",
+        "en": "Compare a lamp, ball and Moon: which produces its own light, and which reflect it? Explain how your eye sees the ball."
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": {
+        "de": "Deine Idee für den Alltag",
+        "en": "Your everyday idea"
+      },
+      "intro": {
+        "de": "Hier zählt deine begründete Idee, nicht eine bestimmte Musterantwort.",
+        "en": "Your reasoned idea matters, not a particular model answer."
+      },
+      "text": {
+        "de": "Du gestaltest ein Schattentheater. Wie kannst du mit Abstand und Anordnung eine große oder kleine Figur zeigen? Beschreibe deine Idee.",
+        "en": "You are designing a shadow theatre. How could distance and position create a large or small figure? Describe your idea."
+      }
+    }
+  ]
+}

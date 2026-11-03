@@ -1,0 +1,197 @@
+{
+  "key": "nwt-reise-deines-pausenbrots",
+  "title": {
+    "de": "Was wird aus deinem Pausenbrot?",
+    "en": "What happens to your packed lunch?"
+  },
+  "summary": {
+    "de": "Nährstoffe und den Weg der Nahrung ohne Diätregeln oder Körperbewertungen verstehen.",
+    "en": "Understand nutrients and digestion without diet rules or judging bodies."
+  },
+  "icon": "🫀",
+  "accent": "rose",
+  "minutes": 12,
+  "screens": [
+    {
+      "key": "entdecken-1",
+      "title": {
+        "de": "Dein Körper braucht mehr als Treibstoff",
+        "en": "Your body needs more than fuel"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Warum reicht es nicht, einfach nur satt auszusehen? Dein Körper braucht Energie und Baustoffe. Nahrung liefert unter anderem Kohlenhydrate, Fette und Proteine. Proteine werden auch Eiweiße genannt.",
+            "en": "Why is looking well-fed not enough to explain nutrition? Your body needs energy and building materials. Food provides carbohydrates, fats and proteins, among other things. In German, proteins are also called Eiweiße."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Kohlenhydrate und Fette können Energie liefern. Proteine werden unter anderem zum Aufbau und Erneuern von Körperbestandteilen gebraucht. Dazu kommen Wasser, Vitamine, Mineralstoffe und Ballaststoffe. Ballaststoffe unterstützen die Verdauung. Ein einzelnes Lebensmittel liefert nicht alles. Essgewohnheiten sind verschieden; niemandes Körper oder Pausenbrot wird hier bewertet.",
+            "en": "Carbohydrates and fats can provide energy. Proteins help build and renew body structures. Water, vitamins, minerals and fibre also matter. Fibre supports digestion. No single food supplies everything. Eating habits vary; this activity does not judge anyone's body or lunch."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "💡",
+          "title": {
+            "de": "Dein Auftrag",
+            "en": "Your task"
+          },
+          "text": {
+            "de": "Stelle für eine erfundene Figur eine abwechslungsreiche Pausenmahlzeit zusammen. Erkläre zwei Zutaten, ohne Kalorien zu zählen oder Mitschüler zu vergleichen.",
+            "en": "Plan a varied snack for an imaginary character. Explain two ingredients without counting calories or comparing classmates."
+          }
+        }
+      ]
+    },
+    {
+      "key": "entdecken-2",
+      "title": {
+        "de": "Eine Reise mit mehreren Stationen",
+        "en": "A journey with several stops"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Verschwindet ein Bissen einfach im Bauch? Im Mund zerkleinern die Zähne das Essen. Speichel befeuchtet es und beginnt, Stärke abzubauen. Stärke ist ein Kohlenhydrat, das zum Beispiel in Brot vorkommt.",
+            "en": "Does a bite simply disappear into your belly? Teeth break food up in your mouth. Saliva moistens it and begins breaking down starch, a carbohydrate found in bread, for example."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Durch die Speiseröhre gelangt der Bissen in den Magen. Dort wird er weiter durchmischt. Im Dünndarm werden Nährstoffe weiter zerlegt und viele Bausteine ins Blut aufgenommen. Enzyme sind Helfer, die bestimmte Stoffe zerlegen. Der Dickdarm nimmt unter anderem Wasser zurück auf. Nicht verwertbare Reste werden ausgeschieden.",
+            "en": "Food travels down the oesophagus into the stomach, where it is mixed further. In the small intestine, nutrients are broken down and many building blocks enter the blood. Enzymes are helpers that break down particular substances. The large intestine reabsorbs water, among other things. Unusable remains leave the body."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "💡",
+          "title": {
+            "de": "Dein Auftrag",
+            "en": "Your task"
+          },
+          "text": {
+            "de": "Zeichne den Weg Mund → Speiseröhre → Magen → Dünndarm → Dickdarm. Schreibe an zwei Stationen eine Aufgabe.",
+            "en": "Draw mouth → oesophagus → stomach → small intestine → large intestine. Add a function at two stops."
+          }
+        }
+      ]
+    },
+    {
+      "key": "entdecken-3",
+      "title": {
+        "de": "Mit Essen und Umwelt achtsam umgehen",
+        "en": "Treat food and the environment thoughtfully"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Warum werfen wir manchmal Essen weg, obwohl es noch nutzbar wäre? Für Lebensmittel werden Wasser, Fläche, Arbeit und Energie gebraucht. Wer passend einkauft und Reste sinnvoll nutzt, kann Ressourcen schonen.",
+            "en": "Why do we sometimes throw away food that could still be used? Producing food requires water, land, work and energy. Planning purchases and using leftovers sensibly can conserve resources."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Regional bedeutet aus der näheren Umgebung, saisonal bedeutet zur passenden Erntezeit. Beides kann bei einer Entscheidung helfen, beantwortet aber nicht jede Umweltfrage allein. Lagere Lebensmittel nach den Hinweisen und frage Erwachsene, wenn etwas verdorben wirkt. Für diesen Pfad musst du nichts kosten und keine Essensfotos oder Gesundheitsdaten teilen.",
+            "en": "Regional means from nearby; seasonal means at its usual harvest time. Both can help decisions, but neither answers every environmental question alone. Follow storage guidance and ask an adult if something seems spoiled. This path requires no tasting or sharing meal photos or health information."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "💡",
+          "title": {
+            "de": "Dein Auftrag",
+            "en": "Your task"
+          },
+          "text": {
+            "de": "Plane eine kleine Idee gegen Lebensmittelverschwendung in der Schule. Sie soll ohne Probieren unbekannter oder verdorbener Speisen funktionieren.",
+            "en": "Plan a small idea to reduce food waste at school. It must not involve tasting unfamiliar or spoiled food."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "Hamburg: Naturwissenschaften/Technik 5–6, Gymnasium (2024)",
+                "en": "Hamburg: science and technology, years 5–6, Gymnasium (2024)"
+              },
+              "url": "https://www.hamburg.de/resource/blob/798520/700d66232c2d07bad97d72b6e107e083/naturwissenschaften-technik-data.pdf"
+            },
+            {
+              "label": {
+                "de": "Hamburg: Naturwissenschaften/Technik 5–6, Stadtteilschule (2024)",
+                "en": "Hamburg: science and technology, years 5–6, Stadtteilschule (2024)"
+              },
+              "url": "https://www.hamburg.de/resource/blob/798394/033190c61a9908ff10401a5b66cedae9/naturwissenschaften-technik-data.pdf"
+            },
+            {
+              "label": {
+                "de": "Bundeszentrum für Ernährung: Der Weg der Nahrung",
+                "en": "Federal Centre for Nutrition: the journey of food"
+              },
+              "url": "https://www.bzfe.de/schule-und-kita/material-fuer-die-schule/sekundarstufe/der-weg-der-nahrung"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": {
+        "de": "Die wichtigsten Wörter",
+        "en": "The key words"
+      },
+      "intro": {
+        "de": "Setze passende Wörter aus den drei Seiten ein. Nachschauen ist erlaubt.",
+        "en": "Fill the gaps using words from the three pages. You may look back."
+      },
+      "text": {
+        "de": "Nahrung liefert Energie und ___. Eiweiße heißen auch ___. Die Zähne zerkleinern Nahrung im ___. Danach folgt die ___. Im ___ wird der Bissen durchmischt. Viele Nährstoffbausteine gelangen im ___ ins Blut. Helfer beim Zerlegen heißen ___. Weniger wegwerfen schont ___.",
+        "en": "Food supplies energy and building ___. Eiweiße are also called ___. Teeth break food up in the ___. It then passes through the ___. The ___ mixes it. Many nutrient building blocks enter the blood in the ___. Helpers that break things down are ___. Throwing away less conserves ___."
+      }
+    },
+    {
+      "kind": "compare",
+      "title": {
+        "de": "Erkläre den Zusammenhang",
+        "en": "Explain the connection"
+      },
+      "intro": {
+        "de": "Antworte in zwei bis drei Sätzen. Nutze ein Beispiel aus dem Lernpfad.",
+        "en": "Answer in two or three sentences. Use an example from the learning path."
+      },
+      "text": {
+        "de": "Warum wird aus einem Bissen nicht schon im Mund fertige „Energie im Blut“? Erkläre zwei weitere Stationen und ihre Aufgaben.",
+        "en": "Why does a bite not become ready-to-use “energy in the blood” in the mouth alone? Explain two further stops and their roles."
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": {
+        "de": "Deine Idee für den Alltag",
+        "en": "Your everyday idea"
+      },
+      "intro": {
+        "de": "Hier zählt deine begründete Idee, nicht eine bestimmte Musterantwort.",
+        "en": "Your reasoned idea matters, not a particular model answer."
+      },
+      "text": {
+        "de": "Wie könnte eure Schule Lebensmittel und die Menschen, die sie herstellen, mehr wertschätzen? Entwickle eine kleine umsetzbare Idee ohne Körper- oder Essensvergleiche.",
+        "en": "How could your school value food and the people who produce it more? Develop a small practical idea without comparing bodies or meals."
+      }
+    }
+  ]
+}

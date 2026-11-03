@@ -1,0 +1,190 @@
+{
+  "key": "nwt-wirbeltiere-entdecken",
+  "title": {
+    "de": "Warum ist ein Wal kein Fisch?",
+    "en": "Why is a whale not a fish?"
+  },
+  "summary": {
+    "de": "Fünf Wirbeltiergruppen unterscheiden und Körpermerkmale mit Lebensräumen verbinden.",
+    "en": "Distinguish five vertebrate groups and link body features with habitats."
+  },
+  "icon": "🌱",
+  "accent": "emerald",
+  "minutes": 12,
+  "screens": [
+    {
+      "key": "entdecken-1",
+      "title": {
+        "de": "Nicht nur nach dem Wohnort sortieren",
+        "en": "Do not sort only by address"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Ein Wal und ein Fisch leben im Wasser. Gehören sie deshalb zur gleichen Tiergruppe? Wir schauen genauer auf ihren Körper. Wirbeltiere besitzen ein inneres Skelett mit Wirbelsäule. Dazu gehören auch wir Menschen.",
+            "en": "A whale and a fish live in water. Does that make them the same kind of animal? Look more closely at their bodies. Vertebrates have an internal skeleton with a backbone. Humans belong to this group too."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "In der Schule unterscheiden wir fünf Gruppen: Fische, Amphibien, Reptilien, Vögel und Säugetiere. Diese Einteilung hilft beim Vergleichen. Der Lebensraum allein reicht nicht. Wale atmen mit Lungen und säugen ihre Jungen mit Milch: Das sind wichtige Merkmale der Säugetiere. Sie müssen zum Atmen an die Wasseroberfläche.",
+            "en": "At school we distinguish fish, amphibians, reptiles, birds and mammals. This classification helps us compare them. Habitat alone is not enough. Whales breathe with lungs and feed their young with milk: important mammal characteristics. They must come to the surface to breathe."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "💡",
+          "title": {
+            "de": "Dein Auftrag",
+            "en": "Your task"
+          },
+          "text": {
+            "de": "Erkläre in einem Satz, warum „lebt im Wasser“ keine ausreichende Begründung für „ist ein Fisch“ ist.",
+            "en": "Explain in one sentence why “lives in water” is not enough to prove an animal is a fish."
+          }
+        }
+      ]
+    },
+    {
+      "key": "entdecken-2",
+      "title": {
+        "de": "Fünf Gruppen, viele Lösungen",
+        "en": "Five groups, many solutions"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Wie kommen Tiere an Sauerstoff und wie schützen sie ihren Körper? Fische besitzen Kiemen. Vögel haben Federn und Lungen. Säugetiere tragen zumindest zeitweise Haare und säugen ihre Jungen.",
+            "en": "How do animals obtain oxygen and protect their bodies? Fish have gills. Birds have feathers and lungs. Mammals have hair at some stage of life and feed their young with milk."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Amphibien wie Frösche haben eine durchlässige Haut; viele beginnen ihr Leben als Larven im Wasser. Reptilien wie Eidechsen haben trockene, schuppige Haut und atmen mit Lungen. Nicht jeder Vogel kann fliegen. Ein Pinguin bleibt trotzdem ein Vogel. Einzelne Merkmale und Ausnahmen musst du also zusammen betrachten.",
+            "en": "Amphibians such as frogs have permeable skin; many begin life as larvae in water. Reptiles such as lizards have dry, scaly skin and breathe with lungs. Not every bird can fly. A penguin is still a bird. You therefore need to consider characteristics and exceptions together."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "💡",
+          "title": {
+            "de": "Dein Auftrag",
+            "en": "Your task"
+          },
+          "text": {
+            "de": "Ordne Forelle, Frosch, Eidechse, Amsel und Hund den fünf Gruppen zu. Nenne bei zwei Tieren ein passendes Körpermerkmal.",
+            "en": "Assign trout, frog, lizard, blackbird and dog to the five groups. Name a matching body feature for two animals."
+          }
+        }
+      ]
+    },
+    {
+      "key": "entdecken-3",
+      "title": {
+        "de": "Der Körper passt zum Lebensraum",
+        "en": "Bodies fit their habitats"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Wozu braucht eine Ente Schwimmhäute? Zwischen ihren Zehen spannt sich Haut. Dadurch kann sie beim Paddeln mehr Wasser nach hinten drücken. Körperbau und Aufgabe passen zusammen.",
+            "en": "Why does a duck have webbed feet? Skin stretches between its toes, allowing it to push more water backwards when paddling. Body structure and function fit together."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Solche passenden Merkmale heißen Anpassungen. Tiere entscheiden nicht einfach, sich neue Körperteile wachsen zu lassen. Passende Merkmale haben sich über viele Generationen entwickelt. Ein heutiges Tier kann trotzdem umlernen, etwa einen neuen Futterplatz finden. Lernen und die Entwicklung einer Art sind nicht dasselbe.",
+            "en": "Suitable features like these are called adaptations. Animals do not simply decide to grow new body parts. These features evolved over many generations. An individual animal can still learn, for example to find a new feeding place. Learning and the evolution of a species are different processes."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "💡",
+          "title": {
+            "de": "Dein Auftrag",
+            "en": "Your task"
+          },
+          "text": {
+            "de": "Wähle Ente oder Maulwurf. Beschreibe ein Körpermerkmal und erkläre, wobei es dem Tier hilft.",
+            "en": "Choose a duck or a mole. Describe one body feature and explain how it helps the animal."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "Hamburg: Naturwissenschaften/Technik 5–6, Gymnasium (2024)",
+                "en": "Hamburg: science and technology, years 5–6, Gymnasium (2024)"
+              },
+              "url": "https://www.hamburg.de/resource/blob/798520/700d66232c2d07bad97d72b6e107e083/naturwissenschaften-technik-data.pdf"
+            },
+            {
+              "label": {
+                "de": "Hamburg: Naturwissenschaften/Technik 5–6, Stadtteilschule (2024)",
+                "en": "Hamburg: science and technology, years 5–6, Stadtteilschule (2024)"
+              },
+              "url": "https://www.hamburg.de/resource/blob/798394/033190c61a9908ff10401a5b66cedae9/naturwissenschaften-technik-data.pdf"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": {
+        "de": "Die wichtigsten Wörter",
+        "en": "The key words"
+      },
+      "intro": {
+        "de": "Setze passende Wörter aus den drei Seiten ein. Nachschauen ist erlaubt.",
+        "en": "Fill the gaps using words from the three pages. You may look back."
+      },
+      "text": {
+        "de": "Wirbeltiere besitzen eine ___. Ein Wal gehört zu den ___. Er atmet mit ___. Fische nehmen Sauerstoff mit ___ auf. Vögel tragen ___. Viele ___ beginnen als Larven im Wasser. Trockene Schuppen sind typisch für ___. Passende Körpermerkmale heißen ___.",
+        "en": "Vertebrates have a ___. A whale belongs to the ___. It breathes with ___. Fish obtain oxygen through ___. Birds have ___. Many ___ start as larvae in water. Dry scales are typical of ___. Suitable body features are called ___."
+      }
+    },
+    {
+      "kind": "compare",
+      "title": {
+        "de": "Erkläre den Zusammenhang",
+        "en": "Explain the connection"
+      },
+      "intro": {
+        "de": "Antworte in zwei bis drei Sätzen. Nutze ein Beispiel aus dem Lernpfad.",
+        "en": "Answer in two or three sentences. Use an example from the learning path."
+      },
+      "text": {
+        "de": "Ein Pinguin schwimmt und kann nicht fliegen. Ein Wal schwimmt ebenfalls. Warum gehören sie dennoch zu verschiedenen Gruppen? Nenne passende Merkmale.",
+        "en": "A penguin swims and cannot fly. A whale also swims. Why do they still belong to different groups? Name relevant features."
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": {
+        "de": "Deine Idee für den Alltag",
+        "en": "Your everyday idea"
+      },
+      "intro": {
+        "de": "Hier zählt deine begründete Idee, nicht eine bestimmte Musterantwort.",
+        "en": "Your reasoned idea matters, not a particular model answer."
+      },
+      "text": {
+        "de": "Erfinde ein Fantasietier für einen matschigen Lebensraum. Gib ihm zwei hilfreiche Körpermerkmale und erkläre ihre Aufgaben. Kennzeichne deine Idee als Fantasie.",
+        "en": "Invent a fantasy animal for a muddy habitat. Give it two useful body features and explain their functions. Label your idea as imaginary."
+      }
+    }
+  ]
+}

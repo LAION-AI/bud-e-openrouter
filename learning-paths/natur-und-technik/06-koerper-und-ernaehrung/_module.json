@@ -1,0 +1,15 @@
+{
+  "key": "koerper-und-ernaehrung",
+  "title": {
+    "de": "Dein Körper arbeitet für dich",
+    "en": "Your body works for you"
+  },
+  "description": {
+    "de": "Nahrung, Verdauung und Blutkreislauf – ohne Körpervergleiche und Leistungsdruck.",
+    "en": "Food, digestion and circulation, without body comparisons or performance pressure."
+  },
+  "icon": "🫀",
+  "accent": "rose",
+  "badge": "Jg. 6",
+  "level": "klasse56"
+}

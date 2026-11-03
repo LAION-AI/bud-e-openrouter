@@ -1,0 +1,15 @@
+{
+  "key": "energieversorgung",
+  "title": {
+    "de": "Energie für morgen",
+    "en": "Energy for tomorrow"
+  },
+  "description": {
+    "de": "Sek-I-Verknüpfung: nachhaltige Quellen, Umwandlung, Speicherung, Wärmepumpe und nachvollziehbare Entscheidungen im Alltag.",
+    "en": "Secondary connections: sustainable sources, conversion, storage, heat pumps and reasoned everyday choices."
+  },
+  "icon": "🏘️",
+  "accent": "emerald",
+  "badge": "Sek I",
+  "level": "sek1"
+}

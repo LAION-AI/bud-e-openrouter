@@ -9,5 +9,10 @@ import "$std/dotenv/load.ts";
 import { start } from "$fresh/server.ts";
 import manifest from "./fresh.gen.ts";
 import config from "./fresh.config.ts";
+import { pinBuildRelease } from "./utils/buildRelease.ts";
+import { fromFileUrl } from "$std/path/mod.ts";
 
-await start(manifest, config);
+const outDir = await pinBuildRelease(
+  fromFileUrl(new URL(".", import.meta.url)),
+);
+await start(manifest, { ...config, build: { ...config.build, outDir } });

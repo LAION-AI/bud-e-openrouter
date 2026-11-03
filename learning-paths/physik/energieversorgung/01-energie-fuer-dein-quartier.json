@@ -1,0 +1,316 @@
+{
+  "key": "energie-fuer-dein-quartier",
+  "title": {
+    "de": "Wie dein Viertel auch ohne Wind versorgt bleibt",
+    "en": "How your neighbourhood stays supplied when the wind drops"
+  },
+  "summary": {
+    "de": "Erzeugung, Speicher, Wärmepumpe und faire Energiebilanzen machen die Energiewende als Gestaltungsaufgabe verständlich.",
+    "en": "Generation, storage, heat pumps and fair energy accounts make energy transition an understandable design task."
+  },
+  "icon": "🏘️",
+  "accent": "emerald",
+  "minutes": 22,
+  "screens": [
+    {
+      "key": "ketten",
+      "title": {
+        "de": "Strom entsteht nicht in jeder Anlage gleich",
+        "en": "Not every plant supplies electricity in the same way"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Bei einer Windanlage treibt bewegte Luft einen Rotor und einen Generator an. Eine Photovoltaikzelle wandelt Strahlungsenergie dagegen direkt in elektrische Energie um; ein Generator mit drehender Spule ist dafür nicht nötig. Solarthermie erwärmt einen Wärmeträger und ist deshalb nicht dasselbe wie Photovoltaik. Biomasse enthält chemische Energie, die unter anderem durch Verbrennung nutzbar werden kann.",
+            "en": "In a wind turbine, moving air drives a rotor and generator. A photovoltaic cell instead converts radiation directly into electrical energy; it does not need a generator with a rotating coil. Solar thermal systems heat a working fluid and are therefore different from photovoltaics. Biomass contains chemical energy that can be used through processes including combustion."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Der Begriff „Energieerzeugung“ ist Alltagssprache für Umwandlung und Bereitstellung. Die Gesamtenergie wird dabei nicht neu geschaffen. Für einen Vergleich zeichnest du die ganze Kette: Quelle, Umwandlung, Transport, gewünschte Nutzung und unerwünschte Abgaben. „Erneuerbar“ beschreibt die Quelle, nicht automatische Folgenlosigkeit. Flächen, Materialien, Lebensdauer und lokale Auswirkungen bleiben wichtige Fragen. Auch zwei Anlagen mit gleicher Nennleistung müssen nicht im selben Zeitraum gleich viel Energie liefern. Wetter und Betriebsbedingungen unterscheiden sich. Unsere Zahlen sind deshalb ausdrücklich Modellwerte, keine aktuellen Produktversprechen und keine Planung für eine echte elektrische Anlage.",
+            "en": "“Energy generation” is everyday language for conversion and supply. It does not create total energy from nothing. Compare complete chains: source, conversion, transport, desired use and unwanted transfers. “Renewable” describes the source, not an automatic absence of impacts. Land, materials, service life and local effects remain relevant. Two plants with the same rated power need not supply the same energy over a given period because weather and operating conditions differ. Our numbers are therefore explicitly model values, not current product promises or plans for a real electrical installation."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Welche Beobachtung würde zeigen, dass gleiche Nennleistung nicht automatisch gleiche gelieferte Energie bedeutet? Eine Solarthermiefläche liefert nicht einfach dieselbe Nutzungsform wie eine gleich große Photovoltaikfläche. Entscheidend ist zunächst, ob Wärme oder elektrische Energie gebraucht wird. Erst danach ist ein fairer Anlagenvergleich möglich. Eine saubere Skizze benennt deshalb den vorgesehenen Empfänger. Das vermeidet die Denkfalle, alle erneuerbaren Quellen seien beliebig austauschbare Kästen mit demselben Ausgang.",
+            "en": "Which observation would show that equal rated power does not automatically mean equal delivered energy? A solar thermal collector does not provide the same service as an equally sized photovoltaic panel. First ask whether heat or electricity is needed, then compare plants fairly. A clear diagram names the intended recipient. This avoids treating all renewable sources as interchangeable boxes with identical outputs."
+          }
+        }
+      ]
+    },
+    {
+      "key": "zeit",
+      "title": {
+        "de": "Energie muss auch zur richtigen Zeit da sein",
+        "en": "Energy must be available at the right time"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Leistung beschreibt Energie pro Zeit. Eine gedachte Anlage liefert vier Stunden lang konstant 5 kW. Das ergibt 20 kWh Energie. Eine zweite Anlage mit 10 kW für eine Stunde liefert nur 10 kWh. Höhere Leistung allein bedeutet also nicht größere Energiemenge. Ebenso kann eine große Tagesmenge nicht garantieren, dass genau am Abend genügend Leistung bereitsteht.",
+            "en": "Power is energy per unit time. An imagined plant supplies a constant 5 kW for four hours, giving 20 kWh. Another supplies 10 kW for one hour, giving only 10 kWh. Greater power alone therefore does not mean a greater energy amount. A large daily total also cannot guarantee sufficient power precisely in the evening."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Für ein Quartier müssen Bedarf und Bereitstellung zeitlich zusammenpassen. Manche Nutzungen lassen sich verschieben, andere nicht ohne Weiteres. Eine Lampe wird gebraucht, wenn es dunkel ist; das Laden eines geeigneten Speichers kann flexibler sein. Ein vereinfachter Tagesplan kann stundenweise Leistungen gegenüberstellen. Überschüsse werden gespeichert, an andere Orte übertragen oder anderweitig genutzt; Lücken müssen gedeckt werden. Ein Netz ist deshalb mehr als ein langes Kabel zwischen irgendeiner Anlage und irgendeinem Haus. Diese Darstellung ist keine Betriebsanleitung. Sie hilft zu erkennen, welche zeitliche Information einem bloßen Jahreswert oder einem Foto voller Solarmodule fehlt.",
+            "en": "Supply and demand in a neighbourhood must match over time. Some uses can be shifted; others cannot easily be delayed. Lighting is needed when it is dark, while charging a suitable store may be more flexible. A simplified daily plan can compare power hour by hour. Surpluses can be stored, transferred elsewhere or put to another use; gaps must be covered. A grid is therefore more than one long wire connecting any plant to any home. This is not an operating manual. It shows which timing information is missing from a yearly total or a photograph of many solar panels."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Wie würdest du einen Tagesplan skizzieren, der Energiemenge und Zeitpunkt der Bereitstellung getrennt sichtbar macht? Zwei Anlagen können über einen Tag dieselbe Energie liefern, aber eine ausschließlich mittags und die andere gleichmäßiger verteilt. Für eine Abendnutzung sind sie ohne Netz oder Speicher nicht gleichwertig. Ergänze deshalb eine Zeitachse und einen gedachten Bedarf. Die gemeinsame Einheit kWh beschreibt die Menge, aber nicht von allein, wann die passende Leistung verfügbar sein wird.",
+            "en": "How would you sketch a daily plan showing energy amount and timing of supply separately? Two plants can deliver equal daily energy, one only at midday and another more evenly. They are not equivalent for evening use without a grid or store. Add a time axis and imagined demand. The shared kWh unit states amount, not when sufficient power will be available."
+          }
+        }
+      ]
+    },
+    {
+      "key": "speicher",
+      "title": {
+        "de": "Speichern heißt meistens Energieformen wechseln",
+        "en": "Storage usually means changing energy form"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Ein Akku speichert Energie überwiegend chemisch, ein hochgepumptes Wasserbecken als Lageenergie, ein gedämmter Wärmespeicher als innere Energie. Speicher unterscheiden sich deshalb nicht nur in ihrer Größe. Wichtig sind auch Lade- und Entladeleistung, Dauer, Verluste, Materialbedarf und die benötigte Energieform am Ende. Nicht jede gespeicherte Energie muss wieder als elektrischer Strom genutzt werden.",
+            "en": "A battery stores energy mainly chemically, pumped water stores gravitational potential energy and an insulated thermal store holds internal energy. Storage systems therefore differ in more than size. Charging and discharge power, duration, losses, materials and the required final energy form matter too. Not every stored energy amount has to return as electricity."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Im Rechenmodell nimmt ein Speicher 10 kWh auf und liefert später 8 kWh nutzbar zurück. Sein Gesamtwirkungsgrad für diesen Zyklus beträgt 80 %. Die übrigen 2 kWh wurden nicht vernichtet, sondern vor allem an die Umgebung übertragen. Ein größerer Speicher löst außerdem nicht automatisch eine zu kleine Ladeleistung. Umgekehrt sagt hohe Leistung wenig darüber aus, wie lange sie aufrechterhalten werden kann. Chemische Energieträger wie Wasserstoff können weitere Umwandlungsschritte ermöglichen; jeder Schritt braucht eine ehrliche Bilanz. Batterien werden hier nicht geöffnet, umgebaut oder absichtlich stark belastet. Eine Tabelle mit gedachten Daten reicht für einen begründeten Vergleich.",
+            "en": "In a calculation model, a store receives 10 kWh and later returns 8 kWh usefully. Its overall efficiency for that cycle is 80%. The other 2 kWh were not destroyed; they were mainly transferred to the surroundings. A larger store does not automatically solve inadequate charging power. Conversely, high power says little about how long it can be maintained. Chemical energy carriers such as hydrogen allow further conversion steps, but every step needs an honest account. Batteries must not be opened, modified or deliberately stressed here. A table of imagined data is enough for a justified comparison."
+          }
+        },
+        {
+          "kind": "table",
+          "head": [
+            {
+              "de": "Speicheridee",
+              "en": "Storage idea"
+            },
+            {
+              "de": "Gespeicherte Energieform",
+              "en": "Stored energy form"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "de": "Akku",
+                "en": "Battery"
+              },
+              {
+                "de": "chemisch",
+                "en": "chemical"
+              }
+            ],
+            [
+              {
+                "de": "Wasser in größerer Höhe",
+                "en": "Water at greater height"
+              },
+              {
+                "de": "Lageenergie",
+                "en": "gravitational potential"
+              }
+            ],
+            [
+              {
+                "de": "Gedämmter Wassertank",
+                "en": "Insulated water tank"
+              },
+              {
+                "de": "innere Energie",
+                "en": "internal energy"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Ein Speicher nimmt 10 kWh auf und gibt 8 kWh ab. Welche zwei weiteren Angaben brauchst du, um seine Alltagstauglichkeit zu vergleichen? Ein Speicher mit großer Kapazität kann trotzdem für eine kurze hohe Last ungeeignet sein, wenn seine Entladeleistung zu klein ist. Ein kleiner leistungsfähiger Speicher kann umgekehrt rasch leer sein. Zeichne zwei getrennte Angaben auf dein Vergleichsschild: nutzbare Energiemenge und maximale Leistung unter genannten Bedingungen. Damit wird sichtbar, warum eine einzelne beeindruckende Zahl keine vollständige Speicherbeschreibung ist.",
+            "en": "A store receives 10 kWh and returns 8 kWh. Which two further details would help compare its everyday usefulness? A large-capacity store may still fail a short high-power demand if discharge power is insufficient. A small high-power store may instead empty quickly. Put two separate figures on the comparison label: useful energy capacity and power under stated conditions. One impressive number is not a complete storage description."
+          }
+        }
+      ]
+    },
+    {
+      "key": "waermepumpe",
+      "title": {
+        "de": "Mehr Heizenergie als elektrische Zufuhr?",
+        "en": "More heating energy than electrical input?"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Eine Wärmepumpe überträgt Energie aus einer kühleren Umgebung in einen wärmeren Heizbereich und benötigt dafür Antriebsenergie. Im Modell kommen zu 1 kWh elektrischer Energie weitere 2 kWh aus der Umgebung. Die Heizung erhält 3 kWh. Das verletzt Energieerhaltung nicht: Die zweite Energiequelle wurde lediglich mitgezählt. Ein rein elektrischer Widerstandsheizer nutzt diese zusätzliche Umweltquelle nicht auf dieselbe Weise.",
+            "en": "A heat pump transfers energy from cooler surroundings into a warmer heated space, using driving energy. In our model, 1 kWh of electrical input is joined by 2 kWh from the surroundings, providing 3 kWh of heating. This does not violate conservation of energy; the second energy source has simply been included. An electrical resistance heater does not use that extra environmental source in the same way."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Die Leistungszahl vergleicht abgegebene Heizleistung mit zugeführter Antriebsleistung unter bestimmten Bedingungen. Sie ist nicht mit einem Wirkungsgrad über 100 % gleichzusetzen. Über längere Zeiträume sind reale Betriebsdaten und Systemgrenzen wichtig. Größere notwendige Temperaturunterschiede können die Effizienz verschlechtern; Dämmung und geeignete Heizflächen beeinflussen das Gesamtsystem. Die grundsätzliche Funktionsidee ist gemeinsamer Bezug der nachhaltigen Energieversorgung, die technische Detailplanung nicht. Dieser Pfad gibt weder Kaufberatung noch Anweisungen zum Verändern einer Heizungsanlage. Eine beschriftete Energiebilanz kann bereits erklären, warum „drei aus eins“ hier keine Wunderenergie bedeutet und welche Eingangsgröße in einer verkürzten Werbung verschwiegen werden könnte.",
+            "en": "The coefficient of performance compares delivered heating power with driving power under specified conditions. It is not an efficiency above 100%. Over longer periods, actual operating data and system boundaries matter. A larger required temperature difference can reduce performance; insulation and suitable heat-emitting surfaces affect the overall system. The basic idea connects with sustainable energy supply, while detailed engineering is beyond this path. This is neither purchasing advice nor instructions for modifying heating equipment. A labelled energy account already explains why “three from one” is not miraculous energy and which input a shortened advertisement might omit."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Unter welcher Systemgrenze erscheint „3 kWh aus 1 kWh“ nur scheinbar als Widerspruch zur Energieerhaltung? In der Modellbilanz kommen drei Ausgangseinheiten aus zwei Eingängen: einer elektrischen und zwei aus der Umgebung. Zeichne beide Eingänge gleich deutlich. Würdest du nur den Stecker betrachten, bliebe der zweite Beitrag unsichtbar. Dieser ausgelassene Systemteil erklärt den scheinbaren Widerspruch. Eine Leistungszahl beschreibt die Nutzung zusätzlicher Umweltenergie, nicht einen Motor, der Energie aus dem Nichts erzeugt.",
+            "en": "Which missing system boundary makes “3 kWh from 1 kWh” only appear to contradict energy conservation? The model's three output units come from two inputs: one electrical and two environmental. Draw both clearly. Looking only at the plug hides the second contribution and creates the apparent contradiction. A performance coefficient describes the use of environmental energy, not a motor creating energy from nothing."
+          }
+        }
+      ]
+    },
+    {
+      "key": "quartier",
+      "title": {
+        "de": "Ein guter Plan fragt nach mehreren Zielen",
+        "en": "A good plan asks about several goals"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Für ein erfundenes Jugendzentrum könntest du Beleuchtung, Raumwärme und Gerätebedarf getrennt betrachten. Zuerst prüfst du, welche Nutzung notwendig ist und wo sich unnötige Energieübertragung vermeiden lässt. Danach vergleichst du passende Quellen und Speicher. Effizienz heißt, dieselbe gewünschte Leistung mit weniger Zufuhr zu erreichen; weniger oder andere Nutzung ist eine andere Strategie.",
+            "en": "For an imagined youth centre, consider lighting, space heating and device demand separately. First examine which uses are necessary and where unwanted energy transfers can be avoided. Then compare suitable sources and stores. Efficiency means providing the same desired service with less input; reducing or changing use is a different strategy."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Eine Idee kann eine gut gedämmte Gebäudehülle, bedarfsgerechtes Licht, erneuerbare Bereitstellung und einen passenden Speicher kombinieren. Es gibt dennoch Zielkonflikte: Kosten, Lärm, Material, Platz und Zugänglichkeit müssen bedacht werden. Eine einzelne Zahl wie „Wirkungsgrad“ entscheidet nicht alles. Begründe stattdessen zwei konkrete Entscheidungen und benenne fehlende Daten. Du kannst einen Plan auf Papier entwickeln, ohne Dächer zu betreten, elektrische Installationen zu öffnen oder Energieverträge zu ändern. Die Physik hilft dir, Wunschbilder in überprüfbare Aussagen zu übersetzen: Welche Leistung wird wann gebraucht? Welche Energiemenge kommt woher? Welche Verluste und sozialen Folgen akzeptieren wir?",
+            "en": "A proposal can combine an insulated building envelope, lighting when needed, renewable supply and appropriate storage. Trade-offs remain: cost, noise, materials, space and accessibility all matter. One number such as efficiency cannot decide everything. Instead, justify two specific choices and identify missing data. Develop the plan on paper without going onto roofs, opening electrical installations or changing energy contracts. Physics helps translate wishes into testable statements: which power is needed when, where does each energy amount come from, and which losses and social consequences are acceptable? The outcome is a transparent model, not a promise that one technology solves every problem."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Entwirf zwei zusammenpassende Maßnahmen für ein Jugendzentrum und nenne für jede Wirkung, Datenbedarf und Zielkonflikt. Eine gut gedämmte Hülle kann den Wärmebedarf senken, bevor eine neue Quelle ausgewählt wird. Ein passender Speicher adressiert dagegen vor allem den Zeitpunkt. Beide Maßnahmen ergänzen sich, lösen aber unterschiedliche Probleme. Benenne in deinem Jugendzentrumsplan diese Aufgaben ausdrücklich. So kannst du begründen, warum eine Kombination sinnvoll ist, ohne jeder einzelnen Technik sämtliche Wirkungen zuzuschreiben.",
+            "en": "Design two compatible measures for a youth centre, naming each effect, required data and trade-off. Insulation can reduce heating demand before selecting a new source, while a store mainly addresses timing. They can complement each other while solving different problems. Name those roles explicitly in the youth-centre proposal. That explains why a combination helps without attributing every possible benefit to each individual technology."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "Hamburg: Physik Gymnasium (2024)",
+                "en": "Hamburg: Gymnasium physics (2024)"
+              },
+              "url": "https://www.hamburg.de/resource/blob/798534/4cf0047ad61effacd1ff7e6ad819fa41/physik-data.pdf"
+            },
+            {
+              "label": {
+                "de": "Hamburg: Physik Stadtteilschule (2024)",
+                "en": "Hamburg: Stadtteilschule physics (2024)"
+              },
+              "url": "https://www.hamburg.de/resource/blob/798426/ba414a0ace36d17b7813a855db625c42/physik-data.pdf"
+            },
+            {
+              "label": {
+                "de": "PhET: sichere interaktive Simulation",
+                "en": "PhET: safe interactive simulation"
+              },
+              "url": "https://phet.colorado.edu/de/simulations/energy-forms-and-changes"
+            },
+            {
+              "label": {
+                "de": "Umweltbundesamt: Grundprinzip Wärmepumpe (16.05.2024)",
+                "en": "German environment agency: heat-pump principle (16 May 2024)"
+              },
+              "url": "https://www.umweltbundesamt.de/umwelttipps-fuer-den-alltag/heizen-bauen/waermepumpe"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": {
+        "de": "1. Lückentext",
+        "en": "1. Fill in the blanks"
+      },
+      "intro": {
+        "de": "Ergänze die fehlenden Fachwörter. Alle Begriffe findest du im Pfad.",
+        "en": "Complete the missing technical words. Every term appears in this path."
+      },
+      "text": {
+        "de": "Eine Photovoltaikzelle wandelt ___ direkt in elektrische Energie um. Solarthermie liefert zunächst ___. Energie pro Zeit heißt ___. Aus Leistung mal Zeit ergibt sich eine ___. Ein Akku speichert überwiegend chemische ___. Das Verhältnis von Rückgabe zu Zufuhr beschreibt den ___. Eine Wärmepumpe nutzt zusätzlich Energie aus der ___. Für eine Versorgung zählt auch der passende ___. Materialien, Kosten und Zugänglichkeit sind mögliche ___.",
+        "en": "A photovoltaic cell converts ___ directly into electrical energy. Solar thermal systems initially supply ___. Energy per unit time is ___. Power multiplied by time gives an ___. A battery mainly stores chemical ___. The ratio of output to input describes ___. A heat pump also draws energy from the ___. Supply also depends on suitable ___. Materials, cost and accessibility can create ___."
+      }
+    },
+    {
+      "kind": "compare",
+      "title": {
+        "de": "2. Erklären und vergleichen (AB II)",
+        "en": "2. Explain and compare (level II)"
+      },
+      "intro": {
+        "de": "Antworte mit drei bis vier kurzen Sätzen. Nutze das Gelesene und begründe deinen Vergleich.",
+        "en": "Answer in three or four short sentences. Use what you have read and explain your comparison."
+      },
+      "text": {
+        "de": "Vergleiche eine Anlage mit 5 kW über vier Stunden mit einer Anlage mit 10 kW über eine Stunde. Erkläre Leistung und Energiemenge. Begründe anschließend, warum eine Wärmepumpe mit 3 kWh Heizabgabe bei 1 kWh elektrischer Zufuhr Energieerhaltung nicht verletzt.",
+        "en": "Compare a plant supplying 5 kW for four hours with one supplying 10 kW for one hour. Explain power and energy amount. Then explain why a heat pump delivering 3 kWh of heating from 1 kWh electrical input does not violate energy conservation."
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": {
+        "de": "3. Deine Idee im Alltag (AB III)",
+        "en": "3. Your idea for everyday life (level III)"
+      },
+      "intro": {
+        "de": "Entwickle eine eigene Idee in drei bis vier kurzen Sätzen. Begründe sie mit Physik; mehrere Lösungen sind möglich.",
+        "en": "Develop your own idea in three or four short sentences. Support it with physics; several answers are possible."
+      },
+      "text": {
+        "de": "Entwirf eine Energieidee für ein erfundenes Jugendzentrum. Verbinde zwei Maßnahmen, berücksichtige den Zeitpunkt des Bedarfs und nenne einen Zielkonflikt. Keine reale Installation oder Kaufentscheidung nötig.",
+        "en": "Design an energy idea for an imagined youth centre. Connect two measures, consider the timing of demand and identify a trade-off. No real installation or purchasing decision is needed."
+      }
+    }
+  ]
+}

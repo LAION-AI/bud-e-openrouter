@@ -1,0 +1,190 @@
+{
+  "key": "nwt-wasser-verwandelt-sich",
+  "title": {
+    "de": "Wohin verschwindet die Pfütze?",
+    "en": "Where does the puddle go?"
+  },
+  "summary": {
+    "de": "Wasser in drei Zuständen und seinen Weg durch einen Kreislauf verstehen.",
+    "en": "Understand water in three states and its journey through a cycle."
+  },
+  "icon": "💧",
+  "accent": "teal",
+  "minutes": 12,
+  "screens": [
+    {
+      "key": "entdecken-1",
+      "title": {
+        "de": "Dasselbe Wasser, andere Form",
+        "en": "The same water, a different form"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Eine Pfütze wird kleiner, obwohl niemand daraus trinkt. Wasser kann verdunsten: Es geht aus dem flüssigen in den gasförmigen Zustand über. Das geht auch unterhalb der Siedetemperatur.",
+            "en": "A puddle shrinks even though nobody drinks from it. Water can evaporate, changing from liquid to gas. This also happens below boiling temperature."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Wasser kommt fest als Eis, flüssig und gasförmig als Wasserdampf vor. Diese Formen heißen Aggregatzustände. Wasserdampf ist unsichtbar. Die sichtbare weiße Wolke über warmem Wasser besteht überwiegend aus winzigen flüssigen Tröpfchen. Bei den Übergängen bleibt es der Stoff Wasser.",
+            "en": "Water exists as solid ice, liquid water and gaseous water vapour. These are states of matter. Water vapour is invisible. The visible white cloud above warm water consists mainly of tiny liquid droplets. During these changes, the substance is still water."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "💡",
+          "title": {
+            "de": "Dein Auftrag",
+            "en": "Your task"
+          },
+          "text": {
+            "de": "Ordne Eiswürfel, Regen und unsichtbaren Wasserdampf den drei Zuständen zu. Was haben alle drei gemeinsam?",
+            "en": "Match ice cubes, rain and invisible water vapour with the three states. What do they have in common?"
+          }
+        }
+      ]
+    },
+    {
+      "key": "entdecken-2",
+      "title": {
+        "de": "Ein Modell mit winzigen Teilchen",
+        "en": "A model using tiny particles"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Was verändert sich beim Schmelzen? Stell dir Wasser aus sehr kleinen Teilchen vor. Ein Modell ist eine vereinfachte Vorstellung, die etwas erklärt. Die Teilchen sind keine kleinen Eiswürfel und haben keine Gesichter.",
+            "en": "What changes when ice melts? Imagine water made of very small particles. A model is a simplified picture that helps explain something. The particles are not tiny ice cubes and do not have faces."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Im festen Zustand bleiben die Teilchen ungefähr an geordneten Plätzen und bewegen sich dort. In Flüssigkeiten können sie aneinander vorbeigleiten. Im Gas sind sie weit auseinander und bewegen sich frei. Erwärmen bedeutet nicht, dass einzelne Teilchen größer werden. Ihre Bewegung und Abstände können sich verändern.",
+            "en": "In a solid, particles stay near ordered positions and move there. In a liquid, they can slide past one another. In a gas, they are far apart and move freely. Heating does not make individual particles larger. Their movement and spacing can change."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "💡",
+          "title": {
+            "de": "Dein Auftrag",
+            "en": "Your task"
+          },
+          "text": {
+            "de": "Skizziere die drei Zustände mit Punkten. Zeige durch Abstände, was dein Modell erklären soll.",
+            "en": "Sketch the three states using dots. Use spacing to show what your model explains."
+          }
+        }
+      ]
+    },
+    {
+      "key": "entdecken-3",
+      "title": {
+        "de": "Das Fenster zeigt den Rückweg",
+        "en": "A window shows the return journey"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Warum wird eine kalte Scheibe manchmal nass? Wasserdampf aus der Luft kann sich abkühlen und als Tröpfchen erscheinen. Der Übergang von gasförmig zu flüssig heißt Kondensation.",
+            "en": "Why does a cold window sometimes become wet? Water vapour in the air can cool and form droplets. The change from gas to liquid is condensation."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Draußen verdunstet Wasser aus Gewässern und Böden. Pflanzen geben ebenfalls Wasser an die Luft ab. Es können Wolkentröpfchen entstehen; Niederschlag bringt Wasser zurück. Ein Teil versickert, ein Teil fließt in Bäche und Flüsse. Dieser Wasserkreislauf hat viele Wege. Sauberes Trinkwasser ist trotzdem nicht überall leicht verfügbar.",
+            "en": "Outside, water evaporates from bodies of water and soil. Plants also release water into the air. Cloud droplets can form, and precipitation returns water. Some soaks into the ground; some flows into streams and rivers. This water cycle has many routes. Clean drinking water is still not easily available everywhere."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "💡",
+          "title": {
+            "de": "Dein Auftrag",
+            "en": "Your task"
+          },
+          "text": {
+            "de": "Erkläre die nasse Fensterscheibe mit „Wasserdampf“, „abkühlen“ und „Tröpfchen“. Du brauchst dafür kein Heißwasser-Experiment.",
+            "en": "Explain the wet window using “water vapour”, “cooling” and “droplets”. You do not need a hot-water experiment."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "Hamburg: Naturwissenschaften/Technik 5–6, Gymnasium (2024)",
+                "en": "Hamburg: science and technology, years 5–6, Gymnasium (2024)"
+              },
+              "url": "https://www.hamburg.de/resource/blob/798520/700d66232c2d07bad97d72b6e107e083/naturwissenschaften-technik-data.pdf"
+            },
+            {
+              "label": {
+                "de": "Hamburg: Naturwissenschaften/Technik 5–6, Stadtteilschule (2024)",
+                "en": "Hamburg: science and technology, years 5–6, Stadtteilschule (2024)"
+              },
+              "url": "https://www.hamburg.de/resource/blob/798394/033190c61a9908ff10401a5b66cedae9/naturwissenschaften-technik-data.pdf"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": {
+        "de": "Die wichtigsten Wörter",
+        "en": "The key words"
+      },
+      "intro": {
+        "de": "Setze passende Wörter aus den drei Seiten ein. Nachschauen ist erlaubt.",
+        "en": "Fill the gaps using words from the three pages. You may look back."
+      },
+      "text": {
+        "de": "Eis ist ___, Regen ist ___. Unsichtbarer ___ ist gasförmig. Die drei Formen heißen ___. Beim ___ wird Wasser gasförmig. Der Rückweg zu Tröpfchen heißt ___. Eine vereinfachte Erklärung mit Punkten ist ein ___. Verdunstung und Niederschlag gehören zum ___.",
+        "en": "Ice is ___ and rain is ___. Invisible ___ is gaseous. These three forms are called ___. During ___, liquid water becomes gas. The return to droplets is ___. A simplified explanation using dots is a ___. Evaporation and precipitation belong to the ___."
+      }
+    },
+    {
+      "kind": "compare",
+      "title": {
+        "de": "Erkläre den Zusammenhang",
+        "en": "Explain the connection"
+      },
+      "intro": {
+        "de": "Antworte in zwei bis drei Sätzen. Nutze ein Beispiel aus dem Lernpfad.",
+        "en": "Answer in two or three sentences. Use an example from the learning path."
+      },
+      "text": {
+        "de": "Eine Pfütze verschwindet, an einer kalten Scheibe entstehen Tropfen. Vergleiche die beiden Übergänge. Ist dabei Wasser als Stoff verschwunden?",
+        "en": "A puddle disappears and droplets form on a cold window. Compare the changes. Has the substance water ceased to exist?"
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": {
+        "de": "Deine Idee für den Alltag",
+        "en": "Your everyday idea"
+      },
+      "intro": {
+        "de": "Hier zählt deine begründete Idee, nicht eine bestimmte Musterantwort.",
+        "en": "Your reasoned idea matters, not a particular model answer."
+      },
+      "text": {
+        "de": "Wo bemerkst du in deinem Alltag einen Wechsel des Wasserzustands? Beschreibe ihn und erkläre, wie das Wissen dabei helfen kann.",
+        "en": "Where do you notice a change in water's state in daily life? Describe it and explain how this knowledge could be useful."
+      }
+    }
+  ]
+}

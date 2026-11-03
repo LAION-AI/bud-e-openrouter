@@ -14,13 +14,23 @@
  */
 
 import { FreshContext } from "$fresh/server.ts";
+import { releaseAsset } from "../utils/buildRelease.ts";
+import { fromFileUrl } from "$std/path/mod.ts";
 
 /** One year, the longest value the spec allows to be meaningful. */
 const ONE_YEAR = 60 * 60 * 24 * 365;
 
 export async function handler(req: Request, ctx: FreshContext) {
+  const asset = await releaseAsset(req, fromFileUrl(new URL("../", import.meta.url)));
+  if (asset) return asset;
   const res = await ctx.next();
   const path = new URL(req.url).pathname;
+
+  if (res.headers.get("content-type")?.includes("text/html")) {
+    const headers = new Headers(res.headers);
+    headers.set("cache-control", "no-store");
+    return new Response(res.body, { status: res.status, statusText: res.statusText, headers });
+  }
 
   if (path.startsWith("/pyodide/") && res.status === 200) {
     const headers = new Headers(res.headers);

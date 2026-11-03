@@ -1,0 +1,190 @@
+{
+  "key": "nwt-luft-ist-nicht-nichts",
+  "title": {
+    "de": "Unsichtbar – und trotzdem da",
+    "en": "Invisible, but still there"
+  },
+  "summary": {
+    "de": "Luft braucht Platz, bewegt sich als Wind und verbindet Pflanzen und Tiere.",
+    "en": "Air takes up space, moves as wind and connects plants and animals."
+  },
+  "icon": "💧",
+  "accent": "teal",
+  "minutes": 12,
+  "screens": [
+    {
+      "key": "entdecken-1",
+      "title": {
+        "de": "Ist die leere Flasche wirklich leer?",
+        "en": "Is an empty bottle really empty?"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Du siehst nichts in einer leeren Trinkflasche. Trotzdem steckt Luft darin. Luft ist ein Gemisch verschiedener Gase, vor allem Stickstoff und Sauerstoff. Ein Gas hat keine feste Form und verteilt sich im verfügbaren Raum.",
+            "en": "You see nothing inside an empty drinking bottle. Yet it contains air. Air is a mixture of gases, mainly nitrogen and oxygen. A gas has no fixed shape and spreads through the available space."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Luft braucht Platz. Das merkst du an einem aufgeblasenen Ball. Wird Luft erwärmt, dehnt sie sich unter passenden Bedingungen aus. Warme Luft steigt häufig in kühlerer Umgebung auf. Luftbewegungen und Luftdruckunterschiede wirken beim Wind zusammen. Unsichtbar bedeutet also nicht wirkungslos.",
+            "en": "Air takes up space, as an inflated ball shows. When warmed, air can expand. Warm air often rises through cooler surroundings. Air movements and differences in air pressure work together in wind. Invisible does not mean without effects."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "💡",
+          "title": {
+            "de": "Dein Auftrag",
+            "en": "Your task"
+          },
+          "text": {
+            "de": "Nenne zwei Situationen, in denen du Luft nicht sehen, ihre Wirkung aber bemerken kannst. Keine Experimente mit Druckflaschen oder Feuer.",
+            "en": "Name two situations where you cannot see air but can notice its effects. Do not experiment with pressurised containers or fire."
+          }
+        }
+      ]
+    },
+    {
+      "key": "entdecken-2",
+      "title": {
+        "de": "Deine Lunge tauscht Gase aus",
+        "en": "Your lungs exchange gases"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Warum atmest du beim Spielen schneller? Dein Körper braucht unter anderem Sauerstoff, um Energie aus Nährstoffen verfügbar zu machen. Die Luft gelangt durch Nase oder Mund, Luftröhre und Bronchien in die Lunge.",
+            "en": "Why do you breathe faster when playing? Your body needs oxygen to release energy from nutrients. Air travels through your nose or mouth, windpipe and bronchi into your lungs."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "In winzigen Lungenbläschen gelangt Sauerstoff ins Blut. Kohlenstoffdioxid geht aus dem Blut in die Luft und wird ausgeatmet. Das heißt Gasaustausch. Ausatemluft enthält weiterhin Sauerstoff, nur weniger als Einatemluft. Atmung ist deshalb nicht einfach „gute Luft hinein, schlechte Luft hinaus“.",
+            "en": "In tiny air sacs, oxygen passes into the blood. Carbon dioxide moves from the blood into the air and is breathed out. This is gas exchange. Exhaled air still contains oxygen, but less than inhaled air. Breathing is not simply “good air in, bad air out”."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "💡",
+          "title": {
+            "de": "Dein Auftrag",
+            "en": "Your task"
+          },
+          "text": {
+            "de": "Zeichne zwei Pfeile an einer vereinfachten Lunge: Sauerstoff zum Blut und Kohlenstoffdioxid aus dem Blut. Beschrifte beide.",
+            "en": "Draw two arrows on a simple lung diagram: oxygen going to the blood and carbon dioxide leaving the blood. Label both."
+          }
+        }
+      ]
+    },
+    {
+      "key": "entdecken-3",
+      "title": {
+        "de": "Pflanzen und Tiere sind verbunden",
+        "en": "Plants and animals are connected"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Wie hängt eine Zimmerpflanze mit deinem Atem zusammen? Grüne Pflanzenteile nutzen bei Licht Kohlenstoffdioxid und Wasser, um Zucker aufzubauen. Das heißt Fotosynthese. Dabei wird Sauerstoff frei.",
+            "en": "How is a houseplant connected with your breathing? In light, green plant parts use carbon dioxide and water to make sugar. This is photosynthesis, which releases oxygen."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Menschen, Tiere und auch Pflanzen nutzen bei der Zellatmung Sauerstoff und geben Kohlenstoffdioxid ab. Pflanzen betreiben also nicht nur Fotosynthese. Beide Vorgänge verbinden Lebewesen über die Luft. Eine Zimmerpflanze ersetzt trotzdem kein Lüften: In einem vollen Klassenraum sammeln sich unter anderem Kohlenstoffdioxid und Feuchtigkeit.",
+            "en": "Humans, animals and plants use oxygen and release carbon dioxide during respiration. Plants do not only photosynthesise. The two processes connect organisms through air. A houseplant does not replace ventilation: carbon dioxide and moisture, among other things, build up in a busy classroom."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "💡",
+          "title": {
+            "de": "Dein Auftrag",
+            "en": "Your task"
+          },
+          "text": {
+            "de": "Erkläre, warum „Wir stellen eine Pflanze auf und müssen nie mehr lüften“ keine gute Klassenraum-Idee ist.",
+            "en": "Explain why “We will get a plant and never need to ventilate again” is not a good classroom plan."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "Hamburg: Naturwissenschaften/Technik 5–6, Gymnasium (2024)",
+                "en": "Hamburg: science and technology, years 5–6, Gymnasium (2024)"
+              },
+              "url": "https://www.hamburg.de/resource/blob/798520/700d66232c2d07bad97d72b6e107e083/naturwissenschaften-technik-data.pdf"
+            },
+            {
+              "label": {
+                "de": "Hamburg: Naturwissenschaften/Technik 5–6, Stadtteilschule (2024)",
+                "en": "Hamburg: science and technology, years 5–6, Stadtteilschule (2024)"
+              },
+              "url": "https://www.hamburg.de/resource/blob/798394/033190c61a9908ff10401a5b66cedae9/naturwissenschaften-technik-data.pdf"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": {
+        "de": "Die wichtigsten Wörter",
+        "en": "The key words"
+      },
+      "intro": {
+        "de": "Setze passende Wörter aus den drei Seiten ein. Nachschauen ist erlaubt.",
+        "en": "Fill the gaps using words from the three pages. You may look back."
+      },
+      "text": {
+        "de": "Luft ist ein Gemisch aus ___. Den größten Anteil hat ___. Luft braucht ___. Bewegte Luft spürst du als ___. In der Lunge findet ___ statt. Dabei gelangt ___ ins Blut. Beim Ausatmen verlässt mehr ___ den Körper. Mit Licht betreiben grüne Pflanzen ___.",
+        "en": "Air is a mixture of ___. The largest share is ___. Air takes up ___. You feel moving air as ___. In the lungs, ___ takes place. ___ enters the blood. More ___ leaves the body when you exhale. In light, green plants carry out ___."
+      }
+    },
+    {
+      "kind": "compare",
+      "title": {
+        "de": "Erkläre den Zusammenhang",
+        "en": "Explain the connection"
+      },
+      "intro": {
+        "de": "Antworte in zwei bis drei Sätzen. Nutze ein Beispiel aus dem Lernpfad.",
+        "en": "Answer in two or three sentences. Use an example from the learning path."
+      },
+      "text": {
+        "de": "Pflanzen geben bei Fotosynthese Sauerstoff ab und betreiben gleichzeitig Zellatmung. Erkläre mit zwei Sätzen, warum beides zusammenpassen kann.",
+        "en": "Plants release oxygen during photosynthesis and also respire. Explain in two sentences why both can happen."
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": {
+        "de": "Deine Idee für den Alltag",
+        "en": "Your everyday idea"
+      },
+      "intro": {
+        "de": "Hier zählt deine begründete Idee, nicht eine bestimmte Musterantwort.",
+        "en": "Your reasoned idea matters, not a particular model answer."
+      },
+      "text": {
+        "de": "Entwirf ein kurzes Klassenraum-Plakat zum Lüften. Welche verständliche Erklärung aus diesem Pfad soll darauf stehen? Sprich die praktische Umsetzung mit der Lehrkraft ab.",
+        "en": "Design a short classroom poster about ventilation. Which explanation from this path should it include? Discuss practical arrangements with your teacher."
+      }
+    }
+  ]
+}

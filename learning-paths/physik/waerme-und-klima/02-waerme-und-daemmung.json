@@ -1,0 +1,264 @@
+{
+  "key": "waerme-und-daemmung",
+  "title": {
+    "de": "Warum deine Jacke keine Wärme erzeugt",
+    "en": "Why your jacket does not generate heat"
+  },
+  "summary": {
+    "de": "Leitung, Strömung und Strahlung erklären Dämmung, Kühlung und die Grenzen eines Wärmebilds.",
+    "en": "Conduction, convection and radiation explain insulation, cooling and the limits of thermal images."
+  },
+  "icon": "🧥",
+  "accent": "rose",
+  "minutes": 22,
+  "screens": [
+    {
+      "key": "leitung",
+      "title": {
+        "de": "Ein kalter Griff kann nur gut leiten",
+        "en": "A cold handle may simply conduct heat well"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Ein Metalllöffel und ein Holzlöffel liegen im selben Zimmer. Metall fühlt sich oft kälter an, weil es Energie von deiner wärmeren Haut schneller weiterleitet. Wärmeleitung bedeutet Energieübertragung durch Wechselwirkungen im Material, ohne dass der Stoff als Ganzes von einer Stelle zur anderen strömen muss. In Metallen tragen auch bewegliche Elektronen zum Energietransport bei.",
+            "en": "A metal spoon and a wooden spoon lie in the same room. Metal often feels colder because it carries energy away from your warmer skin faster. Conduction transfers energy through interactions within a material without requiring the entire material to flow from one place to another. In metals, mobile electrons also contribute to energy transport."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Die Wärmeleitfähigkeit unterscheidet sich stark zwischen Stoffen. Darum sind Topfgriffe oft anders aufgebaut als der Topfboden. Für dieselbe Temperaturdifferenz können Material, Dicke und Fläche den Energiefluss verändern. „Kalt“ ist dabei kein Stoff, der vom Griff in deine Hand fließt; netto wird Energie von wärmer nach kälter übertragen. Im Alltag sprechen wir trotzdem von „Kälte kommt herein“. Die Fachbeschreibung hilft dir, verschiedene Ursachen auseinanderzuhalten. Zur Prüfung dienen hier Materialdaten oder Simulationen. Du sollst keine Oberflächen absichtlich stark erhitzen oder herunterkühlen und keine Berührungsversuche an extremen Temperaturen machen.",
+            "en": "Thermal conductivity differs greatly between materials. That is why saucepan handles often have a different construction from the base. For the same temperature difference, material, thickness and area can change the energy-transfer rate. “Cold” is not a substance flowing from the handle into your hand; net energy transfer goes from warmer to cooler regions. Everyday language still says “cold comes in”. The technical description helps separate different causes. Use material data or simulations here. Do not deliberately heat or chill surfaces strongly or test extreme temperatures by touching them."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Warum beweist das Gefühl an Metall und Holz nicht, dass beide Gegenstände unterschiedliche Temperaturen haben? Ein Metallgriff kann trotz gleicher Raumtemperatur Energie schneller aus der Hand abführen als Holz. Eine Isolierschicht verlangsamt diesen Weg. Sie muss dafür nicht eine eigene Wärmequelle enthalten. Bei deinem Vergleich sollten Temperatur, Kontaktfläche und Ausgangslage möglichst gleich sein. Andernfalls könnte die unterschiedliche Wahrnehmung auch aus verschiedenen Kontaktbedingungen statt allein aus der Wärmeleitfähigkeit entstehen.",
+            "en": "Why does touching metal and wood not prove that the objects have different temperatures? A metal handle can draw energy from a hand faster than wood at the same room temperature. An insulating layer slows that path without containing its own heat source. Compare matched temperatures, contact areas and starting conditions; otherwise differences could come from contact conditions rather than conductivity alone."
+          }
+        }
+      ]
+    },
+    {
+      "key": "konvektion",
+      "title": {
+        "de": "Wenn das Material selbst unterwegs ist",
+        "en": "When the material itself moves"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Warme Luft kann bei ähnlichem Druck eine kleinere Dichte als kühlere Luft besitzen. In einem Schwerefeld kann deshalb Auftrieb entstehen und Luft aufsteigen. Kältere Luft strömt nach, ein Kreislauf bildet sich. Energie wird dabei mit dem bewegten Stoff transportiert. Diese Wärmeübertragung heißt Konvektion oder Wärmeströmung. Sie tritt in Gasen und Flüssigkeiten auf.",
+            "en": "Warm air can have a lower density than cooler air at similar pressure. In a gravitational field, buoyancy can then make it rise. Cooler air moves in and a circulation develops. The moving material carries energy with it. This heat-transfer process is convection, occurring in gases and liquids."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "„Wärme steigt immer nach oben“ ist trotzdem falsch. Es ist hier vor allem erwärmter Stoff, der unter passenden Bedingungen aufsteigt. Wärmeleitung und Strahlung können Energie auch nach unten übertragen. Ein Ventilator erzeugt zudem eine erzwungene Strömung, unabhängig vom natürlichen Aufsteigen. Für einen Raum sind deshalb Heizkörperlage, Luftwege und Hindernisse wichtig. Eine Zeichnung mit Pfeilen kann zeigen, wo Luft zirkuliert und wo wenig Austausch stattfindet. Sie ersetzt aber keine Messung von Luftqualität. Wärmeempfinden, Temperatur und frische Luft sind verschiedene Fragen. Für eigene Ideen bleiben Fenster, Heizungen und Lüftungsanlagen unverändert; wir planen hier nur auf Papier.",
+            "en": "“Heat always rises” is nevertheless incorrect. In this example, heated material rises under appropriate conditions. Conduction and radiation can transfer energy downwards too. A fan also produces forced circulation independently of natural rising motion. In a room, radiator location, airflow paths and obstacles therefore matter. Arrows in a diagram can show circulating air and places with little exchange. The diagram does not replace air-quality measurements. Thermal comfort, temperature and fresh air are different questions. Leave actual windows, heaters and ventilation systems unchanged; our design work here takes place only on paper."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Wie würdest du Luftbewegung und Energieübertragung getrennt kennzeichnen, damit „Wärme steigt“ nicht zur falschen Universalregel wird? Stell dir einen Raum ohne freien Luftweg über dem Heizkörper vor. Eine reine Temperaturangabe erklärt noch nicht, wie gut andere Bereiche erreicht werden. Die Strömungsskizze ergänzt diese räumliche Frage. Eine zweite Skizze für einen Ventilator zeigt, dass Bewegung auch erzwungen werden kann. Beide beschreiben Konvektion, brauchen aber unterschiedliche Ursachen für die Stoffbewegung.",
+            "en": "How would you label air movement and energy transfer separately to avoid treating “heat rises” as a universal rule? Imagine a room where airflow above a radiator is blocked. One temperature reading cannot explain how well other areas receive energy. An airflow sketch adds that spatial question. A second sketch with a fan shows forced circulation. Both involve convection, but the causes of material movement differ."
+          }
+        }
+      ]
+    },
+    {
+      "key": "strahlung",
+      "title": {
+        "de": "Energie braucht nicht immer einen Stoff dazwischen",
+        "en": "Energy does not always need material in between"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Die Sonne überträgt Energie durch den fast leeren Weltraum. Wärmeleitung und Konvektion können das nicht erklären, weil sie Materie benötigen. Elektromagnetische Strahlung kann dagegen auch ein Vakuum durchqueren. Körper senden abhängig von Temperatur und Oberfläche Strahlung aus und nehmen Strahlung aus ihrer Umgebung auf. Bei Alltagsgegenständen liegt viel davon im Infrarotbereich.",
+            "en": "The Sun transfers energy through nearly empty space. Conduction and convection cannot explain this because they require matter. Electromagnetic radiation can travel through a vacuum. Objects emit radiation depending on temperature and surface properties, and absorb radiation from their surroundings. Much radiation from everyday objects lies in the infrared region."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Eine warme und eine kalte Oberfläche können beide strahlen; entscheidend für Erwärmung oder Abkühlung ist die Bilanz aus Aufnahme und Abgabe. Dunkel im sichtbaren Licht bedeutet nicht automatisch gleiche Eigenschaften im Infraroten. Oberflächen müssen für den betrachteten Wellenlängenbereich verglichen werden. Eine gedachte Bilanz mit 80 J Aufnahme und 100 J Abgabe ergibt 20 J Energieverlust. Der Körper kann abkühlen, obwohl er weiterhin Strahlung empfängt. Das ist später für die Klimaphysik wichtig. Auch „Strahlung“ allein sagt noch nichts über Gefährlichkeit aus. Art, Intensität und Wechselwirkung müssen genannt werden; besondere Strahlungsquellen sind keine Heimversuche.",
+            "en": "Both warm and cold surfaces can radiate; warming or cooling depends on the balance between absorption and emission. Being dark in visible light does not automatically imply identical infrared properties. Surfaces must be compared for the wavelength range concerned. An imagined account with 80 J absorbed and 100 J emitted gives a 20 J energy loss. The object can cool while still receiving radiation. This matters later in climate physics. The word “radiation” alone also does not specify danger. Type, intensity and interaction must be identified; unusual radiation sources are not home experiments."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Ein Körper nimmt 80 J auf und gibt 100 J ab. Warum bedeutet vorhandene Einstrahlung nicht automatisch Erwärmung? Ein Gegenstand im kühlen Raum sendet weiterhin Strahlung aus und empfängt zugleich Strahlung der Umgebung. Für Abkühlung zählt, dass die Abgabe größer ist als die Aufnahme. Zwei gegenläufige Pfeile zeigen diese Bilanz besser als ein einziger Pfeil „Wärme geht weg“. Dasselbe Darstellungsprinzip hilft später beim Klimamodell, in dem gegenseitige Strahlung nicht mit gleicher Nettoübertragung verwechselt werden darf.",
+            "en": "An object absorbs 80 J and emits 100 J. Why does receiving radiation not automatically mean warming? An object in a cool room still emits radiation and receives radiation from its surroundings. Cooling depends on emission exceeding absorption. Two opposite arrows show this better than one labelled “heat leaves”. The same representation helps in climate models, where radiation in both directions must not be confused with equal net transfer."
+          }
+        }
+      ]
+    },
+    {
+      "key": "daemmung",
+      "title": {
+        "de": "Eine Jacke verlangsamt Austausch",
+        "en": "A jacket slows energy transfer"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Dein Körper setzt ständig Energie um. Eine Jacke hält dich warm, weil sie den Energieaustausch mit einer kühleren Umgebung verlangsamt. Eingeschlossene Luft leitet schlecht, und ihre Bewegung wird in kleinen Zwischenräumen begrenzt. Die Jacke erzeugt im gewöhnlichen Fall nicht selbst die Wärme. Wird sie nass oder vom Wind durchströmt, ändern sich die Bedingungen deutlich.",
+            "en": "Your body continuously converts energy. A jacket keeps you warm by slowing energy transfer to cooler surroundings. Trapped air conducts poorly, and its movement is restricted in small spaces. An ordinary jacket does not itself generate the heat. Wet material or wind flowing through it changes the conditions substantially."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Auch eine Isolierflasche verbindet mehrere Maßnahmen: geringe Wärmeleitung, wenig Stoffströmung zwischen innen und außen sowie geeignete Oberflächen gegen Strahlungsaustausch. Kein reales Gefäß isoliert vollkommen. Dämmung kann ebenso helfen, etwas kühl zu halten, wenn die Umgebung wärmer ist. Deshalb schmilzt ein eingepackter Eiswürfel unter passenden Bedingungen langsamer als ein ungeschützter. Die Formel „Dämmung macht warm“ ist zu kurz. Sie verlangsamt den Temperaturausgleich in beide Richtungen. Für einen fairen Vergleich müssen Anfangstemperatur, Menge, Gefäß und Umgebung zusammenpassen. Hier reichen bereitgestellte Kurven oder eine Simulation; heiße Flüssigkeiten sind keine notwendige Aufgabe.",
+            "en": "An insulated flask also combines measures: limited conduction, little material flow between inside and outside and suitable surfaces to reduce radiation exchange. No real container insulates perfectly. Insulation can keep something cool when the surroundings are warmer too. An insulated ice cube can therefore melt more slowly than an exposed one under suitable conditions. “Insulation makes things warm” is incomplete; it slows temperature equalisation in either direction. A fair comparison must match initial temperature, quantity, container and environment. Supplied graphs or a simulation are sufficient here; hot liquids are not a necessary assignment."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Unter welchen Umgebungsbedingungen kann dieselbe Dämmung einmal Erwärmung und einmal Abkühlung verlangsamen? Ein Eiswürfel unter einer geeigneten Hülle kann langsamer schmelzen, obwohl die Hülle beim Anfassen nicht kalt wirkt. Sie verlangsamt die Energiezufuhr aus der warmen Umgebung. Dieses Gegenbeispiel korrigiert die Vorstellung, Dämmung mache grundsätzlich warm. Entscheidend ist immer, welche Seite wärmer ist und auf welchen Wegen Energie fließen kann. Genau diese Bedingungen gehören zu einer fairen Becher- oder Verpackungsbewertung.",
+            "en": "Under which surrounding conditions can the same insulation slow warming in one case and cooling in another? An ice cube under suitable insulation may melt more slowly although the covering does not feel cold. It slows energy input from warm surroundings. This counters the claim that insulation always warms things. What matters is which side is warmer and which energy paths exist; those conditions belong in fair assessments of cups or packaging."
+          }
+        }
+      ]
+    },
+    {
+      "key": "waermebild",
+      "title": {
+        "de": "Ein Wärmebild ist keine Zauberröntgenkamera",
+        "en": "A thermal image is not a magic X-ray camera"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Eine Wärmebildkamera registriert Infrarotstrahlung und stellt Messsignale als Farben dar. Rot oder weiß ist dabei nicht von selbst eine bestimmte Temperatur; die Farbskala muss gelesen werden. Zwei automatisch unterschiedlich skalierte Bilder können ähnlich aussehen, obwohl ihre Temperaturbereiche verschieden sind. Für einen Vergleich brauchst du dieselbe Skala und geeignete Messbedingungen.",
+            "en": "A thermal camera detects infrared radiation and displays signals as colours. Red or white does not automatically mean one specific temperature; the colour scale must be read. Two automatically scaled images can look similar despite showing different temperature ranges. Comparison requires the same scale and suitable measurement conditions."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Außerdem empfängt die Kamera nicht nur selbst ausgesandte, sondern je nach Oberfläche auch reflektierte Strahlung. Glänzendes Metall kann deshalb täuschen. Die Kamera sieht normalerweise die infrarotwirksame Oberfläche, nicht beliebig durch Wände oder Kleidung. Für eine gedachte Gebäudebewertung könntest du verdächtige Stellen markieren und weitere Fragen notieren: Material? Reflexion? Innen- und Außentemperatur? Eine auffällige Farbe allein beweist keinen Baumangel. Eine gute Gestaltungsidee für einen Aufenthaltsraum verbindet stattdessen mehrere Hinweise: Dämmung, Luftbewegung, Sonneneinstrahlung und Nutzungszeiten. Ohne echte Anlagen umzubauen, kannst du bereits begründen, welche zusätzlichen Daten eine Fachperson vor einer Entscheidung brauchen würde.",
+            "en": "Depending on the surface, the camera also receives reflected radiation rather than only radiation emitted by the object. Shiny metal can therefore mislead. The camera normally detects the infrared-relevant surface; it does not see arbitrarily through walls or clothing. For an imagined building assessment, mark suspicious areas and list further questions: material, reflection, indoor temperature and outdoor temperature? A striking colour alone does not prove defective construction. A good proposal for a shared room instead combines clues about insulation, airflow, sunlight and use patterns. Without modifying real systems, you can already explain which additional data a professional would need before deciding."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Entwirf einen fairen Vergleich zweier Wärmebilder und nenne eine mögliche Täuschung durch Skala oder Oberfläche. Ein glänzender Bereich kann auf einem Wärmebild Strahlung eines anderen warmen Gegenstands reflektieren. Dann gehört die auffällige Farbe nicht einfach zur eigenen Oberflächentemperatur. Lies deshalb die Skala und frage nach dem Material. Eine zweite Aufnahme unter veränderter Blickrichtung kann eine sinnvolle fachliche Prüfung sein. Ein einzelnes farbiges Bild ohne diese Angaben liefert dagegen noch keine belastbare Bauwerksdiagnose.",
+            "en": "Design a fair comparison of two thermal images and identify one possible misleading effect from scale or surface. A shiny area may reflect radiation from another warm object in a thermal image. Its striking colour then does not simply represent its own surface temperature. Read the scale and ask about material. A different viewing angle can be a useful professional check. One colourful image without context is not a reliable building diagnosis."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "Hamburg: Physik Gymnasium (2024)",
+                "en": "Hamburg: Gymnasium physics (2024)"
+              },
+              "url": "https://www.hamburg.de/resource/blob/798534/4cf0047ad61effacd1ff7e6ad819fa41/physik-data.pdf"
+            },
+            {
+              "label": {
+                "de": "Hamburg: Physik Stadtteilschule (2024)",
+                "en": "Hamburg: Stadtteilschule physics (2024)"
+              },
+              "url": "https://www.hamburg.de/resource/blob/798426/ba414a0ace36d17b7813a855db625c42/physik-data.pdf"
+            },
+            {
+              "label": {
+                "de": "PhET: sichere interaktive Simulation",
+                "en": "PhET: safe interactive simulation"
+              },
+              "url": "https://phet.colorado.edu/de/simulations/energy-forms-and-changes"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": {
+        "de": "1. Lückentext",
+        "en": "1. Fill in the blanks"
+      },
+      "intro": {
+        "de": "Ergänze die fehlenden Fachwörter. Alle Begriffe findest du im Pfad.",
+        "en": "Complete the missing technical words. Every term appears in this path."
+      },
+      "text": {
+        "de": "Energieübertragung im Material ohne gemeinsame Stoffbewegung heißt ___. Mit bewegtem Gas oder bewegter Flüssigkeit erfolgt ___. Durch ein Vakuum kann elektromagnetische ___ gelangen. Die Fähigkeit eines Materials zum Leiten beschreibt die ___. Ein Körper kann Strahlung aufnehmen und selbst ___. Erwärmung entscheidet sich an der ___ aus Aufnahme und Abgabe. Eine Jacke verlangsamt den ___ mit der Umgebung. Auch Eis kann durch ___ länger kühl bleiben. Ein Wärmebild braucht eine lesbare ___.",
+        "en": "Energy transfer within material without bulk movement is ___. Moving gas or liquid transfers energy by ___. Electromagnetic ___ can cross a vacuum. A material's conducting ability is its thermal ___. An object can absorb radiation and also perform ___. Warming depends on the energy ___. A jacket slows ___ with its surroundings. ___ can also help ice remain cool longer. A thermal image needs a readable ___."
+      }
+    },
+    {
+      "kind": "compare",
+      "title": {
+        "de": "2. Erklären und vergleichen (AB II)",
+        "en": "2. Explain and compare (level II)"
+      },
+      "intro": {
+        "de": "Antworte mit drei bis vier kurzen Sätzen. Nutze das Gelesene und begründe deinen Vergleich.",
+        "en": "Answer in three or four short sentences. Use what you have read and explain your comparison."
+      },
+      "text": {
+        "de": "Vergleiche eine Jacke an einem warmen Körper in kalter Luft mit einer Hülle um Eis in warmer Luft. Erkläre die gemeinsame Wirkung. Warum passt „Dämmung erzeugt Wärme“ zu keinem der beiden Fälle?",
+        "en": "Compare a jacket around a warm body in cold air with insulation around ice in warm air. Explain their shared effect. Why does “insulation generates heat” fit neither case?"
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": {
+        "de": "3. Deine Idee im Alltag (AB III)",
+        "en": "3. Your idea for everyday life (level III)"
+      },
+      "intro": {
+        "de": "Entwickle eine eigene Idee in drei bis vier kurzen Sätzen. Begründe sie mit Physik; mehrere Lösungen sind möglich.",
+        "en": "Develop your own idea in three or four short sentences. Support it with physics; several answers are possible."
+      },
+      "text": {
+        "de": "Entwirf auf Papier eine angenehmere Ecke im Schulgebäude. Nenne zwei verschiedene Energieübertragungswege, die du berücksichtigen willst, und eine Messangabe für eine faire Prüfung.",
+        "en": "On paper, design a more comfortable corner in the school building. Identify two different energy-transfer mechanisms to consider and one measurement needed for a fair check."
+      }
+    }
+  ]
+}

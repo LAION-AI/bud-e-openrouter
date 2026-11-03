@@ -1,0 +1,190 @@
+{
+  "key": "nwt-anweisungen-und-scratch",
+  "title": {
+    "de": "Versteht ein Computer „Mach mal schön“?",
+    "en": "Does a computer understand “Make it nice”?"
+  },
+  "summary": {
+    "de": "Klare Abläufe, Wiederholungen und Bedingungen mit einer Spielfigur ausprobieren.",
+    "en": "Try clear sequences, repetitions and conditions with a game character."
+  },
+  "icon": "💻",
+  "accent": "indigo",
+  "minutes": 12,
+  "screens": [
+    {
+      "key": "entdecken-1",
+      "title": {
+        "de": "Deine Spielfigur braucht klare Schritte",
+        "en": "Your character needs clear steps"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "„Geh dorthin!“ ist für eine Spielfigur ziemlich ungenau. Ein Algorithmus ist eine klare Folge von Schritten, die eine Aufgabe löst. Ein Kochrezept oder eine Bauanleitung kann ähnlich aufgebaut sein.",
+            "en": "“Go over there!” is rather vague for a game character. An algorithm is a clear sequence of steps for solving a task. A recipe or building instructions can work in a similar way."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Die Reihenfolge zählt: Erst den Samen in Erde legen, dann gießen. „Wiederhole viermal: gehe einen Schritt“ ist genauer als „geh ein bisschen“. Ein Computerprogramm formuliert Anweisungen so, dass ein Computer sie ausführen kann. Der Computer errät dabei nicht zuverlässig, was du eigentlich gemeint hast.",
+            "en": "Order matters: put the seed in soil before watering it. “Repeat four times: move one step” is clearer than “go a bit”. A program expresses instructions so a computer can execute them. The computer cannot reliably guess what you really meant."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "💡",
+          "title": {
+            "de": "Dein Auftrag",
+            "en": "Your task"
+          },
+          "text": {
+            "de": "Beschreibe einen Weg auf einem gezeichneten Kästchenfeld mit vier bis sechs eindeutigen Schritten. Eine andere Person spielt die Figur nur mit dem Finger.",
+            "en": "Describe a route on a drawn grid using four to six clear steps. Another person follows it with a finger."
+          }
+        }
+      ]
+    },
+    {
+      "key": "entdecken-2",
+      "title": {
+        "de": "Nicht alles zehnmal aufschreiben",
+        "en": "You do not need to write everything ten times"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Wie zeichnet eine Figur ein Quadrat? Eine Seite entlanggehen und sich um eine Vierteldrehung drehen. Das Ganze viermal. Eine Wiederholung spart gleichartige Anweisungen. Beim Programmieren heißt sie Schleife.",
+            "en": "How does a character draw a square? Move along one side and turn a quarter turn, four times altogether. Repetition saves repeated instructions. In programming, this is a loop."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "In Scratch verbindest du farbige Befehlsblöcke. Ein Startblock kann auf die grüne Flagge reagieren. Darunter passen „wiederhole 4-mal“, „gehe 60 Schritte“ und „drehe dich um 90 Grad“. Die letzten beiden gehören in die Wiederholung. Ohne Stift zeichnet die Figur keine Linie, läuft aber den Quadratweg.",
+            "en": "In Scratch you connect coloured instruction blocks. A start block can respond to the green flag. Below it, use “repeat 4”, “move 60 steps” and “turn 90 degrees”. The last two go inside the loop. Without a pen the character will not draw a line, but it still follows the square route."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "💡",
+          "title": {
+            "de": "Dein Auftrag",
+            "en": "Your task"
+          },
+          "text": {
+            "de": "Öffne bei Bedarf Scratch über den Scratch-Button. Baue den Quadratweg nach oder zeichne die Blockfolge auf Papier. Erkläre, warum vier Wiederholungen passen.",
+            "en": "If available, open Scratch using the Scratch button. Build the square route or draw the blocks on paper. Explain why four repetitions fit."
+          }
+        }
+      ]
+    },
+    {
+      "key": "entdecken-3",
+      "title": {
+        "de": "Eine Entscheidung im Programm",
+        "en": "A decision in a program"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Was soll ein Spiel tun, wenn eine Figur den Rand berührt? Eine Bedingung ist eine prüfbare Frage mit Ja oder Nein als Ergebnis. „Berührt die Figur den Rand?“ ist eine solche Frage.",
+            "en": "What should a game do when a character touches the edge? A condition is a question that can be checked with a yes or no result. “Is the character touching the edge?” is one such question."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "„Falls Rand berührt, dann umdrehen“ verbindet eine Bedingung mit einer Handlung. Funktioniert etwas anders als geplant, suchst du den Fehler Schritt für Schritt. Das heißt Fehlersuche oder Debugging. Prüfe Reihenfolge, Wiederholung und Bedingung einzeln. Ein Fehler ist eine Gelegenheit, deine Anweisungen zu verbessern, kein Beweis gegen deine Fähigkeiten.",
+            "en": "“If touching the edge, turn around” links a condition with an action. When something behaves differently from your plan, investigate step by step. This is debugging. Check sequence, repetition and condition separately. A bug is a chance to improve instructions, not evidence that you are incapable."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "💡",
+          "title": {
+            "de": "Dein Auftrag",
+            "en": "Your task"
+          },
+          "text": {
+            "de": "Deine Figur dreht sich beim Quadrat nur dreimal. Beschreibe, wo du nach dem Fehler suchen würdest und was du ändern könntest.",
+            "en": "Your character turns only three times around the square. Describe where you would look for the bug and what you might change."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "Hamburg: Naturwissenschaften/Technik 5–6, Gymnasium (2024)",
+                "en": "Hamburg: science and technology, years 5–6, Gymnasium (2024)"
+              },
+              "url": "https://www.hamburg.de/resource/blob/798520/700d66232c2d07bad97d72b6e107e083/naturwissenschaften-technik-data.pdf"
+            },
+            {
+              "label": {
+                "de": "Hamburg: Naturwissenschaften/Technik 5–6, Stadtteilschule (2024)",
+                "en": "Hamburg: science and technology, years 5–6, Stadtteilschule (2024)"
+              },
+              "url": "https://www.hamburg.de/resource/blob/798394/033190c61a9908ff10401a5b66cedae9/naturwissenschaften-technik-data.pdf"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": {
+        "de": "Die wichtigsten Wörter",
+        "en": "The key words"
+      },
+      "intro": {
+        "de": "Setze passende Wörter aus den drei Seiten ein. Nachschauen ist erlaubt.",
+        "en": "Fill the gaps using words from the three pages. You may look back."
+      },
+      "text": {
+        "de": "Eine klare Schrittfolge heißt ___. Die ___ der Schritte ist wichtig. Ein ausführbarer Ablauf ist ein ___. Scratch nutzt farbige ___. Eine Wiederholung heißt ___. Beim Quadrat brauchst du ___ Vierteldrehungen. Eine Ja-Nein-Frage im Programm heißt ___. Systematische Fehlersuche heißt ___.",
+        "en": "A clear step sequence is an ___. The ___ of steps matters. An executable sequence is a ___. Scratch uses coloured ___. Repetition is a ___. A square needs ___ quarter turns. A yes-or-no question in a program is a ___. Systematic fault-finding is ___."
+      }
+    },
+    {
+      "kind": "compare",
+      "title": {
+        "de": "Erkläre den Zusammenhang",
+        "en": "Explain the connection"
+      },
+      "intro": {
+        "de": "Antworte in zwei bis drei Sätzen. Nutze ein Beispiel aus dem Lernpfad.",
+        "en": "Answer in two or three sentences. Use an example from the learning path."
+      },
+      "text": {
+        "de": "Vergleiche „gehe 60 Schritte“ viermal hintereinander mit einer Schleife, die das viermal ausführt. Was bleibt gleich und was wird übersichtlicher?",
+        "en": "Compare “move 60 steps” written four times with a loop that runs it four times. What stays the same and what becomes clearer?"
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": {
+        "de": "Deine Idee für den Alltag",
+        "en": "Your everyday idea"
+      },
+      "intro": {
+        "de": "Hier zählt deine begründete Idee, nicht eine bestimmte Musterantwort.",
+        "en": "Your reasoned idea matters, not a particular model answer."
+      },
+      "text": {
+        "de": "Erfinde ein kleines Spiel oder eine Alltagshilfe. Beschreibe einen Start, eine Wiederholung und eine Wenn-dann-Entscheidung.",
+        "en": "Invent a small game or everyday helper. Describe a start, a repetition and an if–then decision."
+      }
+    }
+  ]
+}

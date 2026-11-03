@@ -1,0 +1,271 @@
+{
+  "key": "arbeit-energie-maschinen",
+  "title": {
+    "de": "Die Rampe nimmt dir Arbeit ab – oder doch nicht?",
+    "en": "Does a ramp really save you work?"
+  },
+  "summary": {
+    "de": "Hebel, Energie und Leistung erklären, warum ein längerer Weg leichter sein kann und Energie trotzdem erhalten bleibt.",
+    "en": "Levers, energy and power explain why a longer route can be easier while energy is still conserved."
+  },
+  "icon": "🏗️",
+  "accent": "emerald",
+  "minutes": 22,
+  "screens": [
+    {
+      "key": "energie",
+      "title": {
+        "de": "Energie ist eine Bilanz, kein Zauberstoff",
+        "en": "Energy is an accounting quantity, not magic stuff"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Ein Ball oben auf einer Bahn besitzt Lageenergie. Beim Herabrollen wird daraus Bewegungsenergie; durch Reibung gelangen Anteile in die innere Energie von Ball, Bahn und Umgebung. Energie ist keine zusätzliche Substanz im Ball. Sie ist eine physikalische Größe, mit der du Veränderungen verschiedener Systeme gemeinsam bilanzieren kannst. Ihre Einheit ist Joule, abgekürzt J.",
+            "en": "A ball at the top of a track has gravitational potential energy. As it rolls down, this becomes kinetic energy; friction transfers some energy into the internal energy of the ball, track and surroundings. Energy is not an extra substance inside the ball. It is a physical quantity that lets us keep a common account of changes in different systems. Its unit is the joule, abbreviated J."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Du legst zuerst fest, welches System du betrachtest. Nur der Ball? Oder Ball, Bahn und Umgebung zusammen? Energie kann eine Systemgrenze überschreiten, beispielsweise durch mechanische Arbeit, Wärmeübertragung oder Strahlung. In einem abgeschlossenen System bleibt die Gesamtenergie erhalten. „Energieverbrauch“ bedeutet im Alltag meist, dass gut nutzbare Energie in schwerer nutzbare Formen übergeht. Sie verschwindet nicht. Ein Energieflussdiagramm kann das zeigen: Die Pfeile führen zu verschiedenen Empfängern, statt einfach zu enden. Dieses Denken hilft bei einer Kugelbahn genauso wie bei einer Diskussion über Heizungen. Du musst aber immer sagen, welche Energieform für welchen Zweck nutzbar sein soll.",
+            "en": "First decide which system you are considering: the ball alone, or the ball, track and surroundings together? Energy can cross a system boundary through mechanical work, heat transfer or radiation. In a closed system, total energy is conserved. In everyday speech, “energy consumption” usually means useful energy becomes forms that are harder to use. It does not disappear. An energy-flow diagram shows arrows going to different recipients rather than simply ending. This approach helps with a ball track and with discussions about heating. But you must always specify which form of energy is useful for which purpose."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Wo steckt nach dem Stillstand einer rollenden Kugel die zuvor vorhandene Bewegungsenergie? Wenn deine Systemgrenze nur die Kugel umfasst, kann Energie an die Bahn abgegeben werden. Bei der größeren Grenze „Kugel plus Bahn plus Umgebung“ bleibt dieser Transfer innerhalb des betrachteten Systems. Ein scheinbarer Verlust hängt also oft an der gewählten Grenze. Markiere sie ausdrücklich, bevor du Pfeile zeichnest und eine verschwundene Energieform als verletzte Erhaltung interpretierst.",
+            "en": "Where has the kinetic energy of a rolling ball gone after it comes to rest? If the system includes only the ball, energy can leave for the track. With the wider boundary “ball plus track plus surroundings”, that transfer remains inside the system. An apparent loss therefore often depends on the chosen boundary. Mark it explicitly before drawing arrows or interpreting a missing energy form as a violation of conservation."
+          }
+        }
+      ]
+    },
+    {
+      "key": "arbeit",
+      "title": {
+        "de": "Kraft mal Weg – mit einer Bedingung",
+        "en": "Force times distance—with a condition"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Hebst du einen Gegenstand an, überträgst du mechanisch Energie. Bei konstanter Kraft entlang des Weges gilt W = F · s. Eine Kraft von 20 N über 0,5 m überträgt 10 J. Der Zusammenhang gilt so einfach nur, wenn Kraft und Bewegung dieselbe Richtung haben. Bei einer seitlichen Kraft oder veränderlicher Kraft musst du genauer hinschauen.",
+            "en": "Lifting an object transfers energy mechanically. For a constant force along the displacement, W = F · s. A force of 20 N acting over 0.5 m transfers 10 J. The relationship is this simple only when force and movement point in the same direction. Sideways forces or changing forces require a more careful treatment."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Für das Anheben nahe der Erdoberfläche lässt sich die Zunahme der Lageenergie mit E_pot = m · g · h berechnen. Ein 2-kg-Gegenstand, den du um 0,5 m hebst, gewinnt bei g ≈ 10 N/kg ungefähr 10 J. Ob du ihn schnell oder langsam hebst, ändert diese Energiedifferenz nicht. Dein Körper kann sich trotzdem unterschiedlich anstrengen. Wenn du einen schweren Rucksack nur still hältst, ist der mechanische Weg des Rucksacks null. Dein Körper setzt dabei dennoch Energie um. Physikalische Arbeit am betrachteten Gegenstand und empfundene Anstrengung sind also nicht dasselbe. Genau diese Unterscheidung macht die Fachsprache nützlich.",
+            "en": "Near Earth's surface, the gain in gravitational potential energy is E_pot = m · g · h. Raising a 2 kg object through 0.5 m increases its energy by roughly 10 J using g approximately 10 N/kg. Lifting it quickly or slowly does not change that energy difference. Your body may nevertheless experience the task differently. If you simply hold a heavy backpack still, the backpack's mechanical displacement is zero. Your body still converts energy while doing so. Physical work on the chosen object is therefore not the same thing as perceived effort. This is exactly why distinguishing everyday language from technical language is useful."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Wie zeigt eine Skizze, worauf sich Weg und Kraft beim Anheben beziehen und warum Halten ein anderer Fall ist? Beim ruhigen Tragen auf gleichbleibender Höhe zeigt die Stützkraft näherungsweise nach oben, die Bewegung aber seitwärts. Die einfache Rechnung mit Kraft mal seitlichem Weg passt dann nicht. Dein Körper benötigt trotzdem Energie. Dieses Gegenbeispiel zeigt, warum beim Wort „Arbeit“ sowohl die Richtung als auch der betrachtete Körper genannt werden müssen; Anstrengung allein bestimmt keine mechanische Bilanz.",
+            "en": "How can a sketch show which force and displacement matter when lifting, and why holding still is a different case? When carrying something steadily at constant height, the support force points approximately upwards while movement is sideways. Simply multiplying that force by the sideways distance is inappropriate. Your body still needs energy. This example shows why “work” requires both a direction and a chosen object; perceived effort alone does not determine the mechanical energy account."
+          }
+        }
+      ]
+    },
+    {
+      "key": "rampe",
+      "title": {
+        "de": "Weniger Kraft bedeutet oft mehr Weg",
+        "en": "Less force often means more distance"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Eine ideale Rampe führt einen Gegenstand auf dieselbe Höhe wie senkrechtes Heben. Die nötige Energie bleibt m · g · h. Auf einer längeren, flacheren Rampe genügt eine kleinere Kraft entlang der Rampe, dafür musst du weiter schieben. Bei 100 J Energieübertragung brauchen 50 N einen Weg von 2 m, 25 N dagegen 4 m. Reibung ist dabei zunächst weggelassen.",
+            "en": "An ideal ramp raises an object to the same height as lifting it vertically. The required energy remains m · g · h. A longer, shallower ramp needs a smaller force along its surface, but the object must travel farther. Transferring 100 J requires 50 N over 2 m, or 25 N over 4 m. We initially leave friction out of this comparison."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Ähnlich arbeitet ein idealer Flaschenzug: Mehr tragende Seilabschnitte verringern die nötige Zugkraft, aber du ziehst mehr Seil heraus. Ein Hebel dreht sich um einen Drehpunkt. Im Gleichgewicht sind die Drehwirkungen gleich; bei senkrechten Kräften gilt F_1 · l_1 = F_2 · l_2. Ein doppelt so langer Kraftarm erlaubt die halbe Kraft am kurzen Lastarm. Auch hier wächst der Weg am langen Arm. Diese Maschinen erzeugen keine Energie. In der Wirklichkeit kosten Reibung und Verformung zusätzliche Energie. Die Modelle erklären den Grundgedanken, nicht die sichere Auslegung eines Krans oder einer Hebevorrichtung.",
+            "en": "An ideal pulley system works similarly: more supporting rope sections reduce the pulling force, but require pulling a greater length of rope. A lever turns around a pivot. At equilibrium, its turning effects balance; for perpendicular forces, F_1 · l_1 = F_2 · l_2. Doubling the effort arm allows half the force compared with the shorter load arm. The longer arm also travels farther. These machines do not create energy. Real friction and deformation require additional energy. The models explain the underlying principle, not the safe engineering design of a crane or lifting device."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Vergleiche für dieselben 100 J die Kombinationen 50 N über 2 m und 25 N über 4 m. Ein längerer Kraftarm am Hebel kann die Handkraft verringern, bewegt sich aber über einen größeren Bogen als der kurze Lastarm. Eine Zeichnung beider Wege ergänzt deshalb die Kraftgleichung. Dasselbe Austauschprinzip erkennst du an der Rampe. Vergleiche nicht nur, was sich leichter anfühlt, sondern auch, welcher zusätzliche Weg für die Kraftersparnis nötig ist.",
+            "en": "Compare the combinations 50 N over 2 m and 25 N over 4 m for the same 100 J transfer. A longer lever arm can reduce hand force, but travels through a larger arc than the short load arm. Drawing both paths therefore complements the force equation. The same exchange principle appears with a ramp. Compare not just what feels easier but also the extra distance needed in exchange for the reduced force."
+          }
+        }
+      ]
+    },
+    {
+      "key": "tempo-energie",
+      "title": {
+        "de": "Doppeltes Tempo ist mehr als doppelte Energie",
+        "en": "Double speed means more than double energy"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Für die Bewegungsenergie eines Körpers gilt E_kin = ½ · m · v². Bei gleicher Masse führt doppeltes Tempo zu vierfacher Bewegungsenergie. Ein Modellwagen mit 2 kg hat bei 3 m/s eine Bewegungsenergie von 9 J, bei 6 m/s sind es 36 J. Beim Abbremsen muss diese Energie anderswohin übertragen werden. Das erklärt einen Teil der starken Tempoabhängigkeit von Bremswegen.",
+            "en": "The kinetic energy of an object is E_kin = ½ · m · v². With the same mass, doubling speed quadruples kinetic energy. A 2 kg model cart has 9 J at 3 m/s, but 36 J at 6 m/s. Braking must transfer that energy elsewhere. This helps explain why stopping distance depends so strongly on speed."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Auf einer idealen reibungsfreien Bahn kann Lageenergie vollständig in Bewegungsenergie übergehen. Aus m · g · h = ½ · m · v² fällt die Masse heraus: Bei gleicher Starthöhe ergibt sich dieselbe Endgeschwindigkeit. Das einfache Modell behandelt einen gleitenden Punktkörper. Ein tatsächlich rollender Gegenstand besitzt zusätzlich Rotationsenergie; diese ist hier nicht berücksichtigt. Auch Luftwiderstand verändert das Ergebnis. Eine reale Kugel kann deshalb langsamer sein, ohne dass Energieerhaltung verletzt wäre. Gute Modellarbeit benennt solche Voraussetzungen ausdrücklich. Für das Nachdenken reichen Simulationen und Datensätze; schwere oder schnelle Gegenstände sind dafür unnötig.",
+            "en": "On an ideal frictionless track, gravitational potential energy can become kinetic energy completely. Equating m · g · h and ½ · m · v² cancels the mass: equal starting heights produce equal final speeds. This simple model treats the object as a sliding point mass. A real rolling object also has rotational energy, which is not included here. Air resistance changes the outcome too. A real ball may therefore travel more slowly without violating conservation of energy. Good modelling states these assumptions clearly. Simulations and supplied data are enough to investigate; heavy or fast-moving physical objects are unnecessary."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Unter welchen Bedingungen darfst du aus gleicher Starthöhe auf gleiche Endgeschwindigkeit schließen? Bei 3 m/s stehen im Modell 9 J, bei 6 m/s bereits 36 J in der Bewegungsbilanz. Eine Verdopplung der Masse hätte dagegen bei unverändertem Tempo nur eine Verdopplung bewirkt. Masse und Tempo wirken also unterschiedlich auf die Energie. Genau diese Unterscheidung hilft dir, eine Sicherheitsbehauptung aus einem Sport- oder Technikvideo sorgfältiger zu beurteilen.",
+            "en": "Under what conditions can you infer equal final speed from equal starting height? The model gives 9 J at 3 m/s but 36 J at 6 m/s. Doubling mass at unchanged speed would instead only double the energy. Mass and speed therefore affect the account differently. This distinction helps you evaluate safety claims in sports or technology videos more carefully, rather than assuming every doubling has the same consequence."
+          }
+        }
+      ]
+    },
+    {
+      "key": "leistung",
+      "title": {
+        "de": "Gleiche Energie, andere Zeit",
+        "en": "Same energy, different time"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Zwei Aufzüge heben dieselbe Last auf dieselbe Höhe. Einer braucht zehn Sekunden, der andere zwanzig. Ideal übertragen beide dieselbe Energie, aber der schnellere braucht die doppelte mittlere Leistung. Es gilt P = E / t; ein Watt ist ein Joule pro Sekunde. Leistung beschreibt also, wie schnell Energie übertragen oder umgewandelt wird. Sie ist nicht selbst die Energiemenge.",
+            "en": "Two lifts raise the same load through the same height. One takes ten seconds, the other twenty. Ideally they transfer the same energy, but the faster lift needs twice the average power. P = E / t, and one watt equals one joule per second. Power describes how quickly energy is transferred or converted; it is not the energy amount itself."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Ein Gerät nimmt 200 J auf und gibt davon 150 J als gewünschte mechanische Energie ab. Sein Wirkungsgrad beträgt η = E_nutz / E_zu = 0,75 = 75 %. Die übrigen 50 J sind nicht verschwunden; sie gelangen etwa als innere Energie in die Umgebung. Ob eine Energie „nützlich“ ist, hängt vom Ziel ab: Erwärmung ist bei einer Heizung erwünscht, bei einem Motor meist Nebenwirkung. Für eine barrierearme Rampe zählen neben Energie und Kraft auch Platz, Länge, Oberfläche und selbstständige Nutzung. Eine physikalisch begründete Idee berücksichtigt solche Zielkonflikte und behauptet nicht, eine einzige Kennzahl löse jedes Problem.",
+            "en": "A device receives 200 J and delivers 150 J as useful mechanical energy. Its efficiency is η = E_useful / E_input = 0.75 = 75%. The other 50 J have not disappeared: they may increase the internal energy of the surroundings. Whether energy is “useful” depends on the goal. Heating is wanted in a heater, but usually an unwanted effect in a motor. An accessible ramp must consider space, length, surface and independent use as well as energy and force. A physically justified design recognises these competing goals instead of claiming that a single number solves every problem."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Wie würdest du eine zugängliche Rampe begründen, obwohl ihr längerer Weg keine ideale Energieersparnis bringt? Ein langsamer Aufzug kann für denselben Hub dieselbe ideale Energie benötigen wie ein schneller. Für Menschen kann die längere Fahrzeit dennoch relevant sein. Eine barrierearme Gestaltung bewertet deshalb nicht nur den Energiebedarf. Platz, Wartezeit und selbstständige Bedienbarkeit können wichtige zusätzliche Ziele sein. Die Rechnung macht einen Teil des Vergleichs klar, entscheidet aber nicht allein, welche Lösung sozial sinnvoll ist.",
+            "en": "How would you justify an accessible ramp even though its longer route does not ideally save energy? A slower lift can require the same ideal energy per lift as a faster one, while its longer travel time still matters to people. Accessible design therefore considers more than energy use. Space, waiting and independent operation may be important additional goals. The calculation clarifies part of the comparison but does not decide by itself which solution is socially useful."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "Hamburg: Physik Gymnasium (2024)",
+                "en": "Hamburg: Gymnasium physics (2024)"
+              },
+              "url": "https://www.hamburg.de/resource/blob/798534/4cf0047ad61effacd1ff7e6ad819fa41/physik-data.pdf"
+            },
+            {
+              "label": {
+                "de": "Hamburg: Physik Stadtteilschule (2024)",
+                "en": "Hamburg: Stadtteilschule physics (2024)"
+              },
+              "url": "https://www.hamburg.de/resource/blob/798426/ba414a0ace36d17b7813a855db625c42/physik-data.pdf"
+            },
+            {
+              "label": {
+                "de": "PhET: sichere interaktive Simulation",
+                "en": "PhET: safe interactive simulation"
+              },
+              "url": "https://phet.colorado.edu/de/simulations/energy-skate-park"
+            },
+            {
+              "label": {
+                "de": "PhET: sichere interaktive Simulation",
+                "en": "PhET: safe interactive simulation"
+              },
+              "url": "https://phet.colorado.edu/de/simulations/balancing-act"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": {
+        "de": "1. Lückentext",
+        "en": "1. Fill in the blanks"
+      },
+      "intro": {
+        "de": "Ergänze die fehlenden Fachwörter. Alle Begriffe findest du im Pfad.",
+        "en": "Complete the missing technical words. Every term appears in this path."
+      },
+      "text": {
+        "de": "Energie wird in ___ gemessen. Durch eine Kraft entlang eines Weges wird mechanische ___ verrichtet. Beim Anheben wächst die ___. Ein Hebel besitzt einen ___. Eine ideale Maschine spart Kraft, aber keinen entsprechenden ___. Bei doppeltem Tempo vervierfacht sich die ___. Energie pro Zeit heißt ___. Deren Einheit ist das ___. Das Verhältnis von nutzbarer zu zugeführter Energie heißt ___.",
+        "en": "Energy is measured in ___. A force acting along a displacement performs mechanical ___. Lifting increases ___. A lever has a ___. An ideal machine saves force but not the corresponding ___. Doubling speed quadruples ___. Energy transferred per unit time is called ___. Its unit is the ___. The ratio of useful output energy to input energy is called ___."
+      }
+    },
+    {
+      "kind": "compare",
+      "title": {
+        "de": "2. Erklären und vergleichen (AB II)",
+        "en": "2. Explain and compare (level II)"
+      },
+      "intro": {
+        "de": "Antworte mit drei bis vier kurzen Sätzen. Nutze das Gelesene und begründe deinen Vergleich.",
+        "en": "Answer in three or four short sentences. Use what you have read and explain your comparison."
+      },
+      "text": {
+        "de": "Vergleiche senkrechtes Anheben mit einer idealen langen Rampe auf dieselbe Höhe. Erkläre die Unterschiede bei Kraft und Weg und die Gemeinsamkeit bei der Energie. Warum braucht eine reale Rampe zusätzlich Energie?",
+        "en": "Compare vertical lifting with an ideal long ramp reaching the same height. Explain the differences in force and distance and the similarity in energy. Why does a real ramp require additional energy?"
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": {
+        "de": "3. Deine Idee im Alltag (AB III)",
+        "en": "3. Your idea for everyday life (level III)"
+      },
+      "intro": {
+        "de": "Entwickle eine eigene Idee in drei bis vier kurzen Sätzen. Begründe sie mit Physik; mehrere Lösungen sind möglich.",
+        "en": "Develop your own idea in three or four short sentences. Support it with physics; several answers are possible."
+      },
+      "text": {
+        "de": "Entwirf auf Papier eine Lösung, die einer Person das Bewegen einer Last erleichtert. Begründe deine Wahl mit Kraft, Weg und Energie und nenne einen praktischen Zielkonflikt.",
+        "en": "On paper, design something that makes moving a load easier. Justify your choice using force, distance and energy, and name a practical trade-off."
+      }
+    }
+  ]
+}

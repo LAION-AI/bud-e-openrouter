@@ -1,0 +1,311 @@
+{
+  "accent": "violet",
+  "exercises": [
+    {
+      "hint": {
+        "de": "Alle Antworten stehen auf den Bildschirmen davor – lies sie noch einmal von oben.",
+        "en": "All answers sit on the screens before – read them once more from the top."
+      },
+      "intro": {
+        "de": "Setze die fehlenden Wörter ein.",
+        "en": "Fill in the missing words."
+      },
+      "kind": "cloze",
+      "text": {
+        "de": "Dein Tacho zeigt das ___, der Motor bleibt ___. Du steuerst über ___, das Innenleben bleibt ___. Das heißt ___. Niemand kann den ___ von außen kaputt machen: Der Kontostand lässt sich nur über ___ wie überweisen ändern, nie ___. Das Alter wird nie minus ___. Teams arbeiten so ___: Jeder verspricht nur seine ___, innen darf er ___. Wer direkt am Zustand drehen dürfte, bräuchte ___ – und bekäme ___. Manchmal braucht man Einblick: Lesen ___, Schreiben ___. Und Fehler sucht man mit ___ statt mit Raten: Wer zuletzt schrieb, ___ zuerst.",
+        "en": "Your speedometer shows the ___, the engine stays ___. You steer through ___, the inside stays ___. That is called ___. Nobody can break the ___ from outside: the balance changes only through ___ like transferring, never ___. Age never turns minus ___. Teams thus work ___: everybody promises only their ___, inside they may ___. Whoever were allowed twisting the state directly would need ___ – getting ___. Sometimes insight is needed: reading ___, writing ___. And mistakes get sought with ___ instead of guessing: whoever wrote last ___ first."
+      },
+      "title": {
+        "de": "1. Lückentext",
+        "en": "1. Fill in the blanks"
+      }
+    },
+    {
+      "hint": {
+        "de": "Was kann der Konto-Auszug – und was der Griff ins System? Denke an Schaufenster gegen Lager.",
+        "en": "What can the statement do – and what the grab into the system? Think shop window versus stockroom."
+      },
+      "intro": {
+        "de": "Setze zwei Beobachtungen zueinander in Beziehung.",
+        "en": "Relate two observations to each other."
+      },
+      "kind": "compare",
+      "text": {
+        "de": "Deine Bank zeigt dir den Kontostand in der App, lässt dich aber nicht direkt daran drehen. Vergleiche Schaufenster und Lager: Was darfst du jeweils – und erkläre, wovor dich diese Trennung schützt.",
+        "en": "Your bank shows the balance in the app but lets you never twist it directly. Compare shop window and stockroom: what may you in each – explaining what this split guards you against."
+      },
+      "title": {
+        "de": "2. Vergleiche",
+        "en": "2. Compare"
+      }
+    },
+    {
+      "intro": {
+        "de": "Auf diese Frage gibt es keine richtige Antwort.",
+        "en": "There is no right answer to this one."
+      },
+      "kind": "reflect",
+      "text": {
+        "de": "Wo in deinem Leben gibt es gelungene Kapselung – Schaufenster hier, Lager dort? Und wo fehlt sie, sodass jeder an allem drehen kann? Sammle je ein Beispiel.",
+        "en": "Where in your life sits successful encapsulation – shop window here, stockroom there? And where is it missing, so everybody twists everything? Collect one example each."
+      },
+      "title": {
+        "de": "3. Zum Nachdenken",
+        "en": "3. Something to think about"
+      }
+    }
+  ],
+  "icon": "🔒",
+  "key": "datenkapselung",
+  "minutes": 20,
+  "screens": [
+    {
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Dein Tacho zeigt das Tempo, der Motor bleibt zu. Du steuerst, ohne das Innenleben zu kennen – und genau das ist Datenkapselung: außen Schnittstelle, innen Geheimnis. Warum das genial ist, steht auf diesem Bildschirm.",
+            "en": "Your speedometer shows the speed, the engine stays shut. You steer without knowing the inside – and exactly that is encapsulation: interface outside, secret inside. Why that is brilliant sits on this screen."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Stell dir das Gegenteil vor: Jeder Autofahrer dürfte direkt an Einspritzung, Zündung und Bremsdruck drehen – mit Schraubenzieher während der Fahrt. Wie lange bis zum ersten Totalschaden? Minuten. Genau so wäre Software ohne Kapselung: Jede Stelle dürfte an allem drehen – Kontostand hier, Alter dort, Noten nebenbei. Der erste Tippfehler, und alles ist kaputt. Kapselung heißt darum: Anfassen verboten, Benutzen erlaubt.",
+            "en": "Picture the opposite: every driver allowed twisting injection, ignition and brake pressure directly – with screwdriver mid-drive. How long until the first write-off? Minutes. Exactly so would software be without encapsulation: every place allowed twisting everything – balance here, age there, grades beside. The first typo, and all is broken. Encapsulation hence means: touching forbidden, using allowed."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Der Tacho ist das Vorbild: Er zeigt, was du wissen musst (Tempo), und verbirgt, was du nicht anfassen darfst (Einspritzmenge). Methoden sind die Knöpfe am Armaturenbrett – Gas, Bremse, Licht –, Attribute der Motor dahinter. Wer Auto fährt, nutzt Kapselung stündlich, ohne das Wort zu kennen. Ab heute kennst du es.",
+            "en": "The speedometer is the model: it shows what you must know (speed) hiding what you must not touch (injection amount). Methods are the buttons on the dashboard – gas, brake, light –, attributes the engine behind. Whoever drives uses encapsulation hourly without knowing the word. From today you know it."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Fahrkartenautomaten leben Kapselung vor: Du siehst Preis und Ziel, du steckst Geld hinein, du bekommst Ticket und Wechselgeld. Geldzählung, Fachverwaltung, Störungsmeldungen – alles verborgen. Würde jeder Fahrgast direkt im Geldfach drehen, wäre jeder Automat leer oder kaputt. Schnittstelle benutzen, Innenleben vergessen: So überleben Automaten den Alltag mit Tausenden.",
+            "en": "Ticket machines perform encapsulation: you see price and destination, you stick money in, you get ticket and change. Money counting, compartment managing, fault reporting – all hidden. If every passenger twisted directly in the cash box, every machine stood empty or broken. Using the interface, forgetting the inside: thus machines survive everyday life with thousands."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Noch ein Automat aus deinem Leben: der Pfandautomat. Flasche hinein, Bon heraus – was drinnen zählt, misst und sortiert, siehst du nie. Würde jeder mitschrauben, käme kein Bon mehr. Automaten überleben Millionen Hände, weil sie nur Schnittstellen zeigen. Anfassen verboten, benutzen erlaubt – das Motto aller Automaten dieser Welt.",
+            "en": "One more machine from your life: the deposit machine. Bottle in, slip out – what counts inside, measures and sorts, you never see. If everybody screwed along, no slip would come. Machines survive millions of hands because they show only interfaces. Touching forbidden, using allowed – the motto of all machines of this world."
+          }
+        }
+      ],
+      "title": {
+        "de": "Das Geheimnis",
+        "en": "The secret"
+      }
+    },
+    {
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Kapselung in einem Satz: Der Zustand gehört dem Objekt – alle anderen fragen höflich über Methoden. Was das rettet? Alles, was je durch direkte Griffe kaputtging.",
+            "en": "Encapsulation in one sentence: the state belongs to the object – all others ask politely through methods. What does that save? Everything that ever broke through direct grabs."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "In Pseudocode mit Schlössern: `Klasse Konto: privat: kontostand. öffentlich: einzahlen(betrag), überweisen(ziel, betrag), stand().` Privat heißt: nur ich selbst. Öffentlich heißt: alle dürfen. `stand()` zeigt, `einzahlen` prüft (negativer Betrag? Abgelehnt!), `überweisen` prüft zweimal (genug da? Ziel gültig?). Kein Weg führt am Türsteher vorbei – und genau darum kann der Kontostand nie negativ und das Alter nie minus fünf werden.",
+            "en": "In pseudocode with locks: `class Account: private: balance. public: deposit(amount), transfer(target, amount), balance().` Private means: only myself. Public means: all may. `balance()` shows, `deposit` checks (negative amount? Rejected!), `transfer` checks twice (enough there? Target valid?). No way leads past the bouncer – and exactly hence balance never turns negative nor age minus five."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Der Clou: Fehler haben nur noch eine Adresse. Stimmt der Kontostand nicht, lag es an einzahlen oder überweisen – mehr Stellen gibt es nicht. Ohne Kapselung dürfte jede der tausend Stellen drehen – Fehlersuche als Vollzeitjob. Mit Kapselung schrumpft die Suche auf die Methoden: Wer zuletzt schrieb, wird zuerst geprüft. Weniger Türen, weniger Einbrecher.",
+            "en": "The point: mistakes hold only one address anymore. If the balance errs, deposit or transfer caused it – more places exist none. Without encapsulation any of a thousand places might twist – debugging as a full-time job. With encapsulation the search shrinks to the methods: whoever wrote last gets checked first. Fewer doors, fewer burglars."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Dein Sparschwein ist die ehrlichste Kapselung der Welt: Einwurfschlitz öffentlich – jeder darf füttern. Öffnen privat – nur mit Schlüssel und nur ganz. Niemand nimmt heimlich einen Euro heraus, niemand steckt einen falschen hinein, ohne dass es auffällt. Öffentlich einzahlen, privat leeren: Wer Sparschweine versteht, versteht private und öffentliche Methoden.",
+            "en": "Your piggy bank is the world's most honest encapsulation: slot public – everybody may feed. Opening private – only with key and only wholly. Nobody secretly takes one euro out, nobody sticks a false one in unnoticed. Depositing publicly, emptying privately: whoever grasps piggy banks grasps private and public methods."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Baue einmal absichtlich ohne Kapselung – auf Papier: Kontostand als offene Zahl, jeder darf ändern. Dann spielt ihr Betrug: Einer schreibt heimlich dazu, einer zieht ab, einer rundet. Nach drei Runden stimmt nichts mehr, und keiner weiß, wer es war. Genau dafür gibt es Schlösser: Offene Zahlen laden zum Schummeln ein.",
+            "en": "Build once deliberately without encapsulation – on paper: balance as an open number, everybody may change. Then play fraud: one secretly adds, one withdraws, one rounds. After three rounds nothing matches, nobody knows who it was. Exactly for that locks exist: open numbers invite cheating."
+          }
+        }
+      ],
+      "title": {
+        "de": "Schnittstelle statt Innenleben",
+        "en": "Interface instead of insides"
+      }
+    },
+    {
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Der größte Nutzen zeigt sich im Team: Du baust Gegner, deine Freundin baut Level – und ihr sprecht nur die Schnittstelle ab. Danach arbeitet ihr getrennt, monatelang, und am Ende passt alles.",
+            "en": "The biggest benefit shows in teams: you build enemies, your friend builds levels – agreeing only the interface. Afterwards you work apart, for months, and in the end everything fits."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "So läuft es in echt: Die Level-Bauerin verspricht `gegner.position()` und `gegner.leben()` – mehr braucht sie nicht zu wissen, mehr musst du nicht verraten. Dahinter baust du um, wie du willst: Geist heute, Drache morgen, Schleim übermorgen – solange die Versprechen halten, merkt sie nichts. Innen Umbau, außen Ruhe: Darum überleben große Projekte ihre Erbauer – jeder kann gehen, die Verträge bleiben.",
+            "en": "Thus it runs for real: the level builder promises `enemy.position()` and `enemy.lives()` – more she needs not to know, more you need not betray. Behind you rebuild as you like: ghost today, dragon tomorrow, slime after – as long as promises hold, she notices nothing. Remodelling inside, calm outside: hence big projects outlive their builders – everybody may leave, contracts stay."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Und umgekehrt schützt es dich vor anderen: Ändert die Level-Bauerin ihre Welt, bleibt dein Gegner heil – ihr Code darf an deine Attribute gar nicht heran. Kapselung ist der Burggraben zwischen Baustellen: Jede arbeitet für sich, keine flutet die andere. Hundert Leute, ein Spiel, null Absprachen nötig – nur Verträge. So entstehen Welten.",
+            "en": "And reversed it guards you against others: if the level builder changes her world, your enemy stays whole – her code may not reach your attributes at all. Encapsulation is the moat between sites: each works for itself, none floods the other. A hundred people, one game, zero chats needed – only contracts. Thus worlds emerge."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Klassenzeitungen laufen genauso: Einer layoutet, einer schreibt, einer fotografiert – Absprache nur über Umfang und Termin. Wie der andere arbeitet, ist sein Geheimnis: Der Schreiber sieht nie das Layout-Programm, der Layouter nie die Roh-Texte. Am Ende passt alles, weil die Schnittstelle hielt. Teams sind Kapselung mit Menschen: jeder sein Fach, alle ein Blatt.",
+            "en": "Class papers run exactly so: one lays out, one writes, one photographs – agreement only on length and deadline. How the other works stays their secret: the writer never sees the layout program, the layouter never the raw texts. At the end everything fits because the interface held. Teams are encapsulation with humans: each their trade, all one sheet."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Orchester funktionieren übrigens wie Teams mit Schnittstelle: Der Dirigent gibt Einsatz und Tempo – wie es die Geige spielt, bleibt ihr Geheimnis. Keiner greift ins Nachbarnstrument. Hundert Musiker, ein Klang, null Absprachen währenddessen – nur die Partitur als Vertrag. Musik als Kapselung zum Hören.",
+            "en": "Orchestras incidentally work like teams with interfaces: the conductor gives cue and tempo – how the violin plays stays its secret. Nobody grabs the neighbour instrument. A hundred musicians, one sound, zero chats meanwhile – only the score as contract. Music as encapsulation to hear."
+          }
+        }
+      ],
+      "title": {
+        "de": "Teams und Verträge",
+        "en": "Teams and contracts"
+      }
+    },
+    {
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Aber ehrlich: Ist alles-Verstecken immer gut? Nein – und die Gegenbeispiele sind lehrreich. Manchmal braucht man Einblick, manchmal nervt die Mauer.",
+            "en": "But honestly: is hiding-everything always good? No – and the counterexamples teach. Sometimes insight is needed, sometimes the wall annoys."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Lesen ja, Schreiben nein: Den Kontostand sehen dürfen alle (Schaufenster), ändern nur Methoden (Lager). Diese Abstufung heißt Lesezugriff – die goldene Mitte zwischen offen und zu. Auch beim Fehlersuchen hilft ein Guckloch: Test-Methoden dürfen tiefer schauen als normale Nutzer. Regel: So offen wie nötig, so zu wie möglich – und nie umgekehrt.",
+            "en": "Reading yes, writing no: everybody may see the balance (shop window), only methods change it (stockroom). This grading is called read access – the golden middle between open and shut. Even debugging likes a peephole: test methods may look deeper than normal users. Rule: as open as needed, as shut as possible – never reversed."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Und wenn die Kapselung nervt – etwa beim Basteln, wo du schnell etwas ausprobieren willst? Dann ist das okay: Kleine Skripte für dich allein brauchen keine Burggräben. Kapselung kostet Mühe und lohnt erst, wenn andere mitbauen oder mitnutzen. Faustregel: Solo schnell und offen, Team sauber und gekapselt. Beides hat seinen Platz – Profis wählen je Lage.",
+            "en": "And when encapsulation annoys – say while tinkering where you want quick tries? Then that is okay: small scripts for yourself alone need no moats. Encapsulation costs effort paying off once others co-build or co-use. Rule of thumb: solo fast and open, team clean and encapsulated. Both hold their place – professionals pick per situation."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "In der Fahrrad-Werkstatt gilt: eigenes Rad – schraube, was du willst, dein Risiko. Fremdes E-Bike – Finger weg vom Akku-Management, das ist Kapselung mit Hochspannung. Wer fremdes Eigentum anfasst, fragt erst: Wo ist die Schnittstelle – Klingel nachstellen ja, Steuergerät öffnen nein. Solo basteln, fremd respektieren: Die goldene Regel, für Werkstatt wie Code.",
+            "en": "In the bike workshop counts: own bike – screw what you want, your risk. Foreign e-bike – hands off the battery management, that is encapsulation with high voltage. Whoever touches foreign property first asks: where is the interface – adjusting the bell yes, opening the controller no. Tinkering solo, respecting foreign: the golden rule, for workshop like code."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Werkstätten leben übrigens vom Guckloch: Der Meister schaut zu, der Azubi schaut ab – Lernen braucht Einblick. Darum haben gute Systeme Test-Türen: weiter Einlass für Prüfer, verschlossen für Nutzer. Regel: So offen wie nötig, so zu wie möglich. Für Zuschauer anders als für Spieler – wie im Stadion.",
+            "en": "Workshops incidentally live on peepholes: the master watches along, the trainee watches off – learning needs insight. Hence good systems hold test doors: wider entry for checkers, locked for users. Rule: as open as needed, as shut as possible. For spectators other than players – like in stadiums."
+          }
+        }
+      ],
+      "title": {
+        "de": "Zuviel des Guten?",
+        "en": "Too much of a good thing?"
+      }
+    },
+    {
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Zum Schluss das Trio komplett: Vererbung teilt Gemeinsames, Polymorphie lässt es verschieden ausführen, Kapselung schützt das Innenleben. Drei Ideen, ein Handwerk – und du beherrschst jetzt alle drei.",
+            "en": "Finally the trio complete: inheritance shares common ground, polymorphism lets it execute differently, encapsulation guards the inside. Three ideas, one craft – and you now master all three."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Ein Bild zum Behalten: Vererbung ist die Familie, Polymorphie die Anrede, Kapselung das Haus mit Tür und Schloss. Familie sagt, wer zusammengehört. Anrede sagt, wie man ruft. Haus sagt, wer hinein darf. Wer alle drei im Blick hat, liest fremden Code wie einen Stadtplan: Hier wohnen die Daten, dort führen die Wege, und die Schlösser sitzen, wo sie hingehören.",
+            "en": "One picture to keep: inheritance is the family, polymorphism the address, encapsulation the house with door and lock. Family tells who belongs together. Address tells how to call. House tells who may enter. Whoever holds all three in view reads foreign code like a city map: here live the data, there lead the ways, and locks sit where they belong."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "Hamburg: Bildungsplan Studienstufe (Informatik)",
+                "en": "Hamburg: syllabus for the upper stage (computing)"
+              },
+              "url": "https://www.hamburg.de/politik-und-verwaltung/behoerden/bsfb/veroeffentlichungen/bildungsplaene/start-sek2-2022-123118"
+            },
+            {
+              "label": {
+                "de": "GI: Bildungsstandards Informatik",
+                "en": "GI: computing education standards"
+              },
+              "url": "https://gi.de/meldung/bildungsstandards-gi-stellt-neue-empfehlungen-fuer-den-informatikunterricht-vor"
+            }
+          ]
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Stadtpläne haben übrigens Legenden: Farben, Symbole, Maßstab – die Anleitung zum Lesen. Ohne Legende ist der schönste Plan nutzlos. Schnittstellen brauchen dasselbe: Dokumentation, was jede Methode verspricht. Gute Legenden liest man einmal und versteht für immer; gute Schnittstellen benutzt man blind und sicher. Wer dokumentiert, baut Legenden für fremde Leser.",
+            "en": "City maps incidentally hold legends: colours, symbols, scale – the manual for reading. Without legend the finest plan is useless. Interfaces need the same: documentation what every method promises. Good legends get read once grasped forever; good interfaces get used blindly and safely. Whoever documents builds legends for foreign readers."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Häuser lehren übrigens Kapselung täglich: Haustür mit Schloss (öffentlich klopfen, privat wohnen), Briefkasten (einwerfen ja, herausnehmen nein), Klingel (melden ja, eintreten nein). Jedes Haus balanciert offen und zu – sonst wäre es Scheune oder Bunker. Gute Häuser atmen durch Türen, nicht durch Wände. Gute Programme auch.",
+            "en": "Houses incidentally teach encapsulation daily: front door with lock (knocking publicly, living privately), mailbox (dropping in yes, taking out no), bell (announcing yes, entering no). Every house balances open and shut – else it were barn or bunker. Good houses breathe through doors, not walls. Good programs too."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "note",
+          "icon": "🏠",
+          "title": {
+            "de": "Haus-Test",
+            "en": "House test"
+          },
+          "text": {
+            "de": "Gehe gedanklich durch dein Zuhause: Wo sind Schnittstellen (Klingel, Briefkasten), wo Innenleben (Schlafzimmer, Tagebuch)? Was offen steht, lädt ein; was zu ist, schützt. Häuser sind Kapselung aus Stein.",
+            "en": "Walk mentally through your home: where are interfaces (bell, mailbox), where insides (bedroom, diary)? What stands open invites; what is shut guards. Houses are encapsulation from stone."
+          }
+        }
+      ],
+      "title": {
+        "de": "Das Haus",
+        "en": "The house"
+      }
+    }
+  ],
+  "summary": {
+    "de": "Schaufenster und Lager, Türsteher und Verträge: Warum Gutes verborgen bleibt – und Teams davon leben.",
+    "en": "Shop window and stockroom, bouncers and contracts: why good stays hidden – and teams live on it."
+  },
+  "title": {
+    "de": "Datenkapselung",
+    "en": "Encapsulation"
+  }
+}

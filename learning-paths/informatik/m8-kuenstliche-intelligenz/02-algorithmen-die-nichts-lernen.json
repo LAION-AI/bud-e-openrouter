@@ -1,0 +1,390 @@
+{
+  "accent": "emerald",
+  "exercises": [
+    {
+      "hint": {
+        "de": "Alle Antworten stehen auf den Bildschirmen davor – lies sie noch einmal von oben.",
+        "en": "All answers sit on the screens before – read them once more from the top."
+      },
+      "intro": {
+        "de": "Setze die fehlenden Wörter ein.",
+        "en": "Fill in the missing words."
+      },
+      "kind": "cloze",
+      "text": {
+        "de": "Der ___-Algorithmus findet den ___ Weg: Er nimmt immer den bisher kürzesten ___ Ort und verbessert von dort die ___. Beim Sortieren tauscht ___ Sort immer zwei ___ und lässt die größte Zahl wie eine ___ aufsteigen. ___ Sort teilt stattdessen um ein ___ herum und sortiert beide ___ einzeln weiter. Bei 1000 Zahlen braucht Bubble Sort rund ___ Vergleiche, Quick Sort nur etwa ___. Beide sind ___ richtig und blitzschnell im Geübten – und haben null ___ daneben.",
+        "en": "The ___ algorithm finds the ___ path: it always takes the so-far shortest ___ place and improves its ___ from there. When sorting, ___ sort always swaps two ___ and lets the biggest number rise like a ___. ___ sort instead splits around a ___ and keeps sorting both ___ separately. With 1000 numbers Bubble Sort needs about ___ comparisons, Quick Sort only about ___. Both are ___ correct and lightning-fast in practiced terrain – and have zero ___ beside it."
+      },
+      "title": {
+        "de": "1. Lückentext",
+        "en": "1. Fill in the blanks"
+      }
+    },
+    {
+      "hint": {
+        "de": "Wie viele Wege gibt es bei 10 Orten? Und was heißt das für Ausprobieren?",
+        "en": "How many routes exist with 10 places? And what does that mean for trying them all?"
+      },
+      "intro": {
+        "de": "Setze zwei Beobachtungen zueinander in Beziehung.",
+        "en": "Relate two observations to each other."
+      },
+      "kind": "compare",
+      "text": {
+        "de": "Statt Dijkstra könnte man einfach alle Wege ausprobieren und den kürzesten nehmen. Vergleiche beide Vorgehen bei 10 Orten – und erkläre, was dabei explodiert und warum Dijkstra trotzdem ankommt.",
+        "en": "Instead of Dijkstra one could simply try all routes and take the shortest. Compare both approaches with 10 places – and explain what explodes and why Dijkstra still arrives."
+      },
+      "title": {
+        "de": "2. Vergleiche",
+        "en": "2. Compare"
+      }
+    },
+    {
+      "intro": {
+        "de": "Auf diese Frage gibt es keine richtige Antwort.",
+        "en": "There is no right answer to this one."
+      },
+      "kind": "reflect",
+      "text": {
+        "de": "Wo in deinem Leben läuft – unbewusst – ein Dijkstra? Denke an Schulweg, Umsteigen oder Einkaufen: Wo nimmst du immer den bisher kürzesten Stand und verbesserst von dort?",
+        "en": "Where in your life does a Dijkstra run – unconsciously? Think of the way to school, changing trains or shopping: where do you always take the shortest stand so far and improve from there?"
+      },
+      "title": {
+        "de": "3. Zum Nachdenken",
+        "en": "3. Something to think about"
+      }
+    }
+  ],
+  "icon": "🧭",
+  "key": "algorithmen-die-nichts-lernen",
+  "minutes": 18,
+  "screens": [
+    {
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Dein Navi hat noch nie eine Straße gesehen – und findet trotzdem den kürzesten Weg. Dahinter steckt kein Lernen, sondern ein Algorithmus von 1956: Dijkstra.",
+            "en": "Your navigation never saw a street – yet finds the shortest way. Behind it sits no learning but an algorithm from 1956: Dijkstra."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Die Idee passt in einen Satz: Nimm immer den bisher kürzesten unerledigten Ort und verbessere von dort die Nachbarn. Was einmal als kürzest feststeht, wird nie wieder angefasst – darum kommt der Algorithmus an, ohne je alles auszuprobieren.",
+            "en": "The idea fits one sentence: always take the so-far shortest unfinished place and improve its neighbours from there. Whatever stands as shortest is never touched again – hence the algorithm arrives without ever trying everything."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Mini-Stadtplan zum Mitdenken: Von A nach B 4 Minuten, A nach C 2, C nach E 1, B nach D 3, C nach D 7, E nach D 2. Ziel D. Rate zuerst aus dem Bauch – dann rechnet der nächste Bildschirm nach.",
+            "en": "Mini city map to think along: from A to B 4 minutes, A to C 2, C to E 1, B to D 3, C to D 7, E to D 2. Goal D. Guess from your gut first – then the next screen recalculates."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Dein Offline-Navi beweist es täglich: Ohne Netz, ohne KI, nur Karte plus Dijkstra – und es findet. Kartenhersteller liefern das Netz aus Straßen und Minuten, der Algorithmus von 1956 den Rest. Kein Lernen, kein Server, keine Magie: siebzig Jahre alte Mathematik in deiner Tasche, zuverlässiger als jeder Funkmast.",
+            "en": "Your offline navigation proves it daily: without net, without AI, only map plus Dijkstra – and it finds. Map makers deliver the net of streets and minutes, the 1956 algorithm the rest. No learning, no server, no magic: seventy-year-old mathematics in your pocket, more reliable than any mast."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "fact",
+          "icon": "📴",
+          "title": {
+            "de": "Flugmodus-Test",
+            "en": "Flight-mode test"
+          },
+          "text": {
+            "de": "Stelle das Handy in den Flugmodus und route trotzdem: Geht – mit heruntergeladener Karte. Was du siehst, ist Dijkstra pur: Die Karte liegt da, der Algorithmus rechnet, niemand funkt. Enge KI zum Anfassen.",
+            "en": "Put the phone in flight mode yet route anyway: works – with downloaded map. What you see is Dijkstra pure: the map lies there, the algorithm computes, nobody radios. Narrow AI to touch."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Dijkstra selbst war übrigens Niederländer und fand den Algorithmus 1956 in zwanzig Minuten – in einem Café, ohne Computer, zum Spaß. Zwanzig Minuten Kritzeln für siebzig Jahre Navigation: Manchmal ist die beste Technik die, die man auf eine Serviette bekommt. Frage dich bei jedem Hype: Passt das auch auf eine Serviette?",
+            "en": "Dijkstra himself was incidentally Dutch and found the algorithm in 1956 in twenty minutes – in a café, without computer, for fun. Twenty minutes of scribbling for seventy years of navigation: sometimes the best technology is what fits a napkin. Ask with every hype: does that fit a napkin too?"
+          }
+        }
+      ],
+      "title": {
+        "de": "Der kürzeste Weg",
+        "en": "The shortest way"
+      }
+    },
+    {
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Schritt für Schritt, so wie der Rechner es tut. Start A mit Zeit 0, alle anderen unendlich.",
+            "en": "Step by step, the way the computer does it. Start A with time 0, all others infinite."
+          }
+        },
+        {
+          "kind": "steps",
+          "items": [
+            {
+              "text": {
+                "de": "Von A: B wird 4, C wird 2. Kürzester Unerledigter: C mit 2 – erledigt.",
+                "en": "From A: B becomes 4, C becomes 2. Shortest unfinished: C with 2 – done."
+              },
+              "title": {
+                "de": "A erledigt: 0",
+                "en": "A done: 0"
+              }
+            },
+            {
+              "text": {
+                "de": "Von C: E wird 2+1=3, D wird 2+7=9. Kürzester Unerledigter: E mit 3 – erledigt.",
+                "en": "From C: E becomes 2+1=3, D becomes 2+7=9. Shortest unfinished: E with 3 – done."
+              },
+              "title": {
+                "de": "C erledigt: 2",
+                "en": "C done: 2"
+              }
+            },
+            {
+              "text": {
+                "de": "Von E: D wird min(9, 3+2)=5. Kürzester Unerledigter: B mit 4 – erledigt. Von B: D bleibt min(5, 4+3)=5.",
+                "en": "From E: D becomes min(9, 3+2)=5. Shortest unfinished: B with 4 – done. From B: D stays min(5, 4+3)=5."
+              },
+              "title": {
+                "de": "E und B erledigt",
+                "en": "E and B done"
+              }
+            },
+            {
+              "text": {
+                "de": "A–C–E–D in 5 Minuten. Dein Bauch lag hoffentlich daneben – der Algorithmus liegt nie daneben.",
+                "en": "A–C–E–D in 5 minutes. Your gut was hopefully wrong – the algorithm never is."
+              },
+              "title": {
+                "de": "D erledigt: 5",
+                "en": "D done: 5"
+              }
+            }
+          ]
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Beweisbar richtig, bei jedem Plan, jedes Mal. Kein Training, keine Beispiele, keine zweite Meinung nötig. Genau das ist enge KI in Reinform: perfekt in ihrer Domäne – und ahnungslos daneben.",
+            "en": "Provably right, on every map, every time. No training, no examples, no second opinion needed. Exactly that is narrow AI in pure form: perfect in its domain – and clueless beside it."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Nimm Zettel und Stift und spiele A bis D selbst durch: Zeiten daneben schreiben, Erledigtes abhaken, fünf Minuten Zeit. Wer es einmal von Hand getan hat, versteht jeden Navi-Pfeil für immer – und weiß, warum Umwege manchmal kürzer sind als Abkürzungen.",
+            "en": "Take paper and pen and play A to D yourself: write times beside, tick off done, five minutes time. Whoever did it once by hand understands every navigation arrow forever – and knows why detours sometimes beat shortcuts."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "tip",
+          "icon": "✏️",
+          "title": {
+            "de": "Bauch gegen Beweis",
+            "en": "Gut versus proof"
+          },
+          "text": {
+            "de": "Rate vorher laut: Welcher Weg gewinnt? Fast jeder tippt A–B–D, weil B groß aussieht. Der Beweis sagt A–C–E–D. Bauch gegen Beweis steht hier 0 zu 1 – ein guter Grund, Beweisen zu trauen, wenn es ernst wird.",
+            "en": "Guess aloud before: which way wins? Almost everybody tips A–B–D, because B looks big. The proof says A–C–E–D. Gut versus proof stands 0 to 1 here – a good reason to trust proofs when it gets serious."
+          }
+        }
+      ],
+      "title": {
+        "de": "Schritt für Schritt",
+        "en": "Step by step"
+      }
+    },
+    {
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Sortieren geht auch ohne Lernen – auf zwei Arten, und eine ist dramatisch schneller. Du kennst die langsame schon aus Notizbuch 7.",
+            "en": "Sorting works without learning too – in two ways, and one is dramatically faster. You already know the slow one from notebook 7."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Bubble Sort vergleicht Nachbarn und tauscht, bis die größte Zahl wie eine Blase oben steht – dann von vorn. Quick Sort wählt ein Pivot, sortiert Kleineres links und Größeres rechts und macht mit beiden Hälften genauso weiter: teilen statt wiederholen. In Python wären beides rund zehn Zeilen – Schleifen dort, eine Funktion mit Rekursion hier.",
+            "en": "Bubble Sort compares neighbours and swaps until the biggest number sits on top like a bubble – then from the top. Quick Sort picks a pivot, sorts smaller left and bigger right, and continues the same with both halves: splitting instead of repeating. In Python both would be about ten lines – loops there, one function with recursion here."
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "de": "Vergleiche bei n Zahlen – Größenordnung, je nach Liste.",
+            "en": "Comparisons for n numbers – magnitude, depending on the list."
+          },
+          "head": [
+            {
+              "de": "Zahlen",
+              "en": "Numbers"
+            },
+            {
+              "de": "Bubble Sort",
+              "en": "Bubble sort"
+            },
+            {
+              "de": "Quick Sort",
+              "en": "Quick sort"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "de": "10",
+                "en": "10"
+              },
+              {
+                "de": "45",
+                "en": "45"
+              },
+              {
+                "de": "etwa 30",
+                "en": "about 30"
+              }
+            ],
+            [
+              {
+                "de": "1.000",
+                "en": "1,000"
+              },
+              {
+                "de": "etwa 500.000",
+                "en": "about 500,000"
+              },
+              {
+                "de": "etwa 10.000",
+                "en": "about 10,000"
+              }
+            ],
+            [
+              {
+                "de": "1 Million",
+                "en": "1 million"
+              },
+              {
+                "de": "etwa 500 Milliarden",
+                "en": "about 500 billion"
+              },
+              {
+                "de": "etwa 20 Millionen",
+                "en": "about 20 million"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Bei einer Million Zahlen wartet Bubble Sort Tage, Quick Sort Sekunden. Darum sortiert kein Handy der Welt mit Blasen – und trotzdem lernt man sie zuerst: Wer die Blase versteht, versteht, was „schnell“ überhaupt heißt.",
+            "en": "With a million numbers Bubble Sort waits days, Quick Sort seconds. Hence no phone in the world sorts with bubbles – yet everybody learns them first: whoever understands the bubble understands what “fast” even means."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Mach es zu Hause mit Spielkarten: Zehn Karten mischen, einmal wie Bubble Sort sortieren (immer Nachbarn tauschen, Stoppuhr läuft), einmal wie Quick Sort (Stapel teilen: klein links, groß rechts, weiter teilen). Miss beide Zeiten. Du wirst den Unterschied fühlen, bevor du ihn verstehst – in den Fingern.",
+            "en": "Do it at home with playing cards: shuffle ten cards, sort once like Bubble Sort (always swap neighbours, stopwatch runs), once like Quick Sort (split piles: small left, big right, keep splitting). Measure both times. You will feel the difference before understanding it – in your fingers."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Sortiere deine Bücher einmal nach Farbe statt nach Thema: Du teilst – Romane links, Sachbücher rechts – und sortierst beide Stapel einzeln weiter. Quick Sort im Regal, ohne es zu wissen. Danach sortiere dieselben Bücher wie Bubble Sort: immer zwei Nachbarn tauschen, von vorn. Du wirst den Unterschied nicht mehr vergessen – er steht im Regal.",
+            "en": "Sort your books once by colour instead of topic: you split – novels left, non-fiction right – and keep sorting both piles singly. Quick Sort on the shelf, unknowingly. Afterwards sort the same books like Bubble Sort: always swap neighbours, from the top. You will never forget the difference again – it stands on the shelf."
+          }
+        }
+      ],
+      "title": {
+        "de": "Sortieren: zwei Wege",
+        "en": "Sorting: two ways"
+      }
+    },
+    {
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Fleißig, beweisbar, blitzschnell im Geübten – und null Transfer. Das ist die ganze Geschichte der good old fashioned AI in einem Satz.",
+            "en": "Diligent, provable, lightning-fast in practiced terrain – and zero transfer. That is the whole story of good old fashioned AI in one sentence."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Ein Mensch sortiert zehn Karten anders: Überblick, ein Griff, fertig – langsamer als Quick Sort, aber derselbe Mensch sortiert danach auch Gefühle, Termine und Ausreden. Der Algorithmus sortiert nur Zahlen. Diese Asymmetrie – Maschine schneller im Engen, Mensch einziger im Breiten – begleitet dich durch alle folgenden Pfade.",
+            "en": "A human sorts ten cards differently: overview, one grab, done – slower than Quick Sort, but the same human afterwards also sorts feelings, dates and excuses. The algorithm sorts only numbers. This asymmetry – machine faster in the narrow, human alone in the broad – accompanies you through all following paths."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "Hamburg: Bildungsplan Studienstufe (Informatik)",
+                "en": "Hamburg: syllabus for the upper stage (computing)"
+              },
+              "url": "https://www.hamburg.de/politik-und-verwaltung/behoerden/bsfb/veroeffentlichungen/bildungsplaene/start-sek2-2022-123118"
+            },
+            {
+              "label": {
+                "de": "GI: Bildungsstandards Informatik",
+                "en": "GI: computing education standards"
+              },
+              "url": "https://gi.de/meldung/bildungsstandards-gi-stellt-neue-empfehlungen-fuer-den-informatikunterricht-vor"
+            }
+          ]
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Was sortiert kein Algorithmus? Deine Lieblingslieder – wonach? Stimmung? Erinnerung? Tempo? Ordnung braucht ein Ziel, und Ziele setzen Menschen. Der Rechner sortiert Zahlen nach Größe, weil ihm jemand sagte, dass Größe zählt. Den Rest – was wichtig ist – entscheidest du. Darum bleibt nach jedem Sortieren eine Frage übrig, die kein Algorithmus beantwortet: Wozu?",
+            "en": "What does no algorithm sort? Your favourite songs – by what? Mood? Memory? Tempo? Order needs a goal, and humans set goals. The computer sorts numbers by size because someone told it size counts. The rest – what matters – you decide. Hence after every sorting one question remains no algorithm answers: what for?"
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "fact",
+          "icon": "🛗",
+          "title": {
+            "de": "GOFAI heute",
+            "en": "GOFAI today"
+          },
+          "text": {
+            "de": "Fahrstühle, Ampeln, Druckerwarteschlangen: Überall stecken Dijkstras Enkel – kleine, fleißige, dumme Algorithmen, die ihre eine Sache perfekt tun. Die Welt läuft auf enger KI, und das ist gut so: Wer will schon einen Fahrstuhl, der nachdenkt?",
+            "en": "Elevators, traffic lights, printer queues: everywhere sit Dijkstra's grandchildren – small, diligent, dumb algorithms doing their one thing perfectly. The world runs on narrow AI, and that is good: who wants an elevator that ponders?"
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Zähle einmal durch, was dein Morgen sortiert: Wecker nach Zeit, Playlist nach Stimmung, Schulranzen nach Stundenplan. Überall stecken kleine Ordnungen, die niemand programmiert hat – Gewohnheiten. Algorithmen sortieren Zahlen, Menschen sortieren Leben. Beides nach Regeln, nur schreibt sie einmal ein Programmierer und einmal du selbst, jeden Morgen neu.",
+            "en": "Count for once what your morning sorts: alarm by time, playlist by mood, satchel by timetable. Everywhere sit small orders nobody programmed – habits. Algorithms sort numbers, humans sort lives. Both by rules, only once a programmer writes them and once yourself, every morning anew."
+          }
+        }
+      ],
+      "title": {
+        "de": "Fleißig, aber eng",
+        "en": "Diligent but narrow"
+      }
+    }
+  ],
+  "summary": {
+    "de": "Dijkstra rechnet vor, Bubble und Quick Sort rennen: schnell, richtig – und null daneben.",
+    "en": "Dijkstra calculates ahead, Bubble and Quick Sort race: fast, right – and zero beside it."
+  },
+  "title": {
+    "de": "Algorithmen, die nichts lernen",
+    "en": "Algorithms that learn nothing"
+  }
+}

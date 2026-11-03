@@ -1,0 +1,15 @@
+{
+  "key": "mechanik",
+  "title": {
+    "de": "Bewegung, Kraft und Energie",
+    "en": "Motion, force and energy"
+  },
+  "description": {
+    "de": "Gemeinsamer Sek-I-Kern: Tempo und Richtung, Beschleunigung, Kräfte, Energie und einfache Maschinen. Die schulische Reihenfolge kann abweichen.",
+    "en": "Shared secondary core: speed and direction, acceleration, forces, energy and simple machines. School sequences may differ."
+  },
+  "icon": "🚲",
+  "accent": "sky",
+  "badge": "Sek I",
+  "level": "sek1"
+}

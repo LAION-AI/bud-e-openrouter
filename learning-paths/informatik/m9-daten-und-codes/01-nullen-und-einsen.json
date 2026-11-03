@@ -1,0 +1,217 @@
+{
+  "accent": "sky",
+  "exercises": [
+    {
+      "hint": {
+        "de": "Alle Antworten stehen auf den Bildschirmen davor – lies sie noch einmal von oben.",
+        "en": "All answers sit on the screens before – read them once more from the top."
+      },
+      "intro": {
+        "de": "Setze die fehlenden Wörter ein.",
+        "en": "Fill in the missing words."
+      },
+      "kind": "cloze",
+      "text": {
+        "de": "Der Rechner kennt nur zwei Zeichen: ___ und ___. Acht davon heißen ein ___. Mit acht Stellen lassen sich ___ verschiedene Zeichen darstellen – genug für das ___, das jedem Buchstaben eine ___ gibt. Dein Anfangsbuchstabe heißt dort zum Beispiel ___. Ein Foto besteht aus ___: Je mehr pro Reihe, desto ___ das Bild. Wer versteht, wie aus ___ Bilder werden, versteht, dass der Rechner nichts kennt außer ___ – und daraus alles baut.",
+        "en": "The computer knows only two characters: ___ and ___. Eight of them are called a ___. With eight places ___ different characters can be shown – enough for ___, which gives every letter a ___. Your initial, for instance, is called ___ there. A photo consists of ___: the more per row, the ___ the picture. Whoever grasps how ___ become pictures grasps that the computer knows nothing but ___ – building everything from it."
+      },
+      "title": {
+        "de": "1. Lückentext",
+        "en": "1. Fill in the blanks"
+      }
+    },
+    {
+      "hint": {
+        "de": "Was sieht das Auge – und was zählt der Rechner? Denke an Stufen gegen Stufenlosigkeit.",
+        "en": "What does the eye see – and what does the computer count? Think steps versus steplessness."
+      },
+      "intro": {
+        "de": "Setze zwei Beobachtungen zueinander in Beziehung.",
+        "en": "Relate two observations to each other."
+      },
+      "kind": "compare",
+      "text": {
+        "de": "Ein Foto und ein gemaltes Bild zeigen dieselbe Wiese. Vergleiche, wie beide die Wiese festhalten – und erkläre, was beim Vergrößern jeweils passiert und warum.",
+        "en": "A photo and a painted picture show the same meadow. Compare how each captures the meadow – and explain what happens in each case on zooming in, and why."
+      },
+      "title": {
+        "de": "2. Vergleiche",
+        "en": "2. Compare"
+      }
+    },
+    {
+      "intro": {
+        "de": "Auf diese Frage gibt es keine richtige Antwort.",
+        "en": "There is no right answer to this one."
+      },
+      "kind": "reflect",
+      "text": {
+        "de": "Wenn alles nur Null und Eins ist – wo bleibt dann der Unterschied zwischen deinem Foto und dir? Was geht beim Umwandeln verloren, und was stört dich daran am meisten?",
+        "en": "If everything is only zero and one – where remains the difference between your photo and you? What gets lost in converting, and what bothers you most about it?"
+      },
+      "title": {
+        "de": "3. Zum Nachdenken",
+        "en": "3. Something to think about"
+      }
+    }
+  ],
+  "icon": "0️⃣",
+  "key": "nullen-und-einsen",
+  "minutes": 16,
+  "screens": [
+    {
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Dein Handy kennt weder Buchstaben noch Bilder. Es kennt nur zwei Zeichen: 0 und 1, Strom aus und Strom an. Alles andere – dieser Satz, dein Foto, dein Lieblingssong – ist daraus gebaut. Wie das geht, steht auf diesem Bildschirm.",
+            "en": "Your phone knows neither letters nor pictures. It knows only two characters: 0 and 1, power off and power on. Everything else – this sentence, your photo, your favourite song – is built from that. How that works sits on this screen."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Stell dir acht Schalter in einer Reihe vor: an oder aus, sonst nichts. Jeder Schalter ist ein Bit. Acht Schalter zusammen heißen ein Byte – und ergeben 256 verschiedene Muster, von 00000000 bis 11111111. Jedes Muster steht für etwas: Der Code dafür heißt ASCII und legt fest, dass zum Beispiel 01000001 ein großes A ist. Dein Name ist also eine Reihe von Schalterstellungen – an, aus, an, an, und so weiter.",
+            "en": "Picture eight switches in a row: on or off, nothing else. Each switch is a bit. Eight switches together are called a byte – yielding 256 different patterns, from 00000000 to 11111111. Each pattern stands for something: the code for it is called ASCII, stating for instance that 01000001 is a capital A. Your name is thus a row of switch positions – on, off, on, on, and so on."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Zähle selbst im Binärsystem: 0, 1 – und dann? Kein Zeichen für Zwei! Also 10 (eins-null), gesprochen „eins-null“, Wert zwei. Weiter: 11 ist drei, 100 ist vier. Jede Stelle zählt das Doppelte der vorigen: 1, 2, 4, 8, 16. Die Zahl 13 zum Beispiel ist 8 plus 4 plus 1 – also 1101. Wer bis 31 zählen kann (11111), hat Binär verstanden: Es ist unser Zählen, nur mit zwei Fingern statt zehn.",
+            "en": "Count yourself in binary: 0, 1 – and then? No character for two! So 10 (one-zero), spoken “one-zero”, value two. Onward: 11 is three, 100 is four. Every place counts double the previous: 1, 2, 4, 8, 16. The number 13, say, is 8 plus 4 plus 1 – hence 1101. Whoever can count to 31 (11111) understood binary: it is our counting, only with two fingers instead of ten."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "🔢",
+          "title": {
+            "de": "Dein Name in Schaltern",
+            "en": "Your name in switches"
+          },
+          "text": {
+            "de": "Schreibe deinen Anfangsbuchstaben als acht Schalter: A ist 01000001, B ist 01000010 – jedes Mal eins weiter. Kleines a übrigens ist 01100001: Groß und Klein liegen genau 32 auseinander, ein Bit Unterschied. Ein Bit entscheidet über groß oder klein – mehr braucht Sprache nicht, um anzufangen.",
+            "en": "Write your initial as eight switches: A is 01000001, B is 01000010 – one further each time. Small a incidentally is 01100001: upper and lower case sit exactly 32 apart, one bit of difference. One bit decides on big or small – language needs no more to start."
+          }
+        }
+      ],
+      "title": {
+        "de": "Nur zwei Zeichen",
+        "en": "Only two characters"
+      }
+    },
+    {
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Bilder funktionieren genauso – nur zweidimensional: Ein Foto ist ein Mosaik aus winzigen Quadraten, Pixeln genannt. Jedes Pixel hat eine Farbe, jede Farbe eine Nummer, jede Nummer wieder Nullen und Einsen.",
+            "en": "Pictures work exactly so – only two-dimensional: a photo is a mosaic of tiny squares, called pixels. Every pixel holds a colour, every colour a number, every number zeros and ones again."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Male es dir aus: ein Smiley auf kariertem Papier, Kästchen für Kästchen – gelb hier, schwarz dort. Zehn mal zehn Kästchen ergeben ein grobes Gesicht, hundert mal hundert ein feines. Genau so speichert das Handy Fotos: als Tabelle von Farbnummern. Je mehr Pixel pro Reihe, desto schärfer das Bild – und desto größer die Datei. Darum wiegt ein Plakatfoto Megabyte und ein Icon Kilobyte.",
+            "en": "Paint it yourself: a smiley on squared paper, box by box – yellow here, black there. Ten by ten boxes yield a coarse face, a hundred by a hundred a fine one. Exactly so the phone stores photos: as a table of colour numbers. The more pixels per row, the sharper the picture – and the bigger the file. Hence a poster photo weighs megabytes and an icon kilobytes."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Zoome einmal tief in ein Foto hinein, bis die Quadrate sichtbar werden: Treppen statt Linien, Klötze statt Wangen. Das ist kein Fehler, das ist die Wahrheit über digitale Bilder – sie bestehen aus Stufen. Gemalte Bilder haben dieses Problem nicht: Pinsel kennen keine Pixel. Dafür kann man ein Foto kopieren, ohne dass es schlechter wird – versuch das einmal mit Wasserfarben.",
+            "en": "Zoom once deep into a photo until the squares show: stairs instead of lines, blocks instead of cheeks. That is no flaw, that is the truth about digital pictures – they consist of steps. Painted pictures lack this problem: brushes know no pixels. But a photo can be copied without worsening – try that with watercolours."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "tip",
+          "icon": "🟨",
+          "title": {
+            "de": "Mosaik-Wette",
+            "en": "Mosaic bet"
+          },
+          "text": {
+            "de": "Male einen Smiley auf 10-mal-10 Karos und lasse jemanden raten, was es ist – dann denselben auf 30-mal-30. Ab wann erkennt man ihn? Du hast gerade Auflösung erfunden: mehr Kästchen, mehr Wahrheit. Weniger Kästchen, kleinere Datei.",
+            "en": "Draw a smiley on 10-by-10 squares letting someone guess what it is – then the same on 30-by-30. From when is it recognised? You just invented resolution: more boxes, more truth. Fewer boxes, smaller file."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Noch ein Blick auf die Tabelle: Jede Farbe hat drei Zahlen – Rot, Grün, Blau, je 0 bis 255. Reines Rot ist 255,0,0, Schwarz 0,0,0, Weiß 255,255,255. Über 16 Millionen Farben aus drei Zahlen – mehr, als dein Auge unterscheidet. Dein Bildschirm mischt Licht wie ein Maler Farben: Rot plus Grün gibt Gelb, alles zusammen Weiß. Physik aus Zahlen.",
+            "en": "One more look at the table: every colour holds three numbers – red, green, blue, each 0 to 255. Pure red is 255,0,0, black 0,0,0, white 255,255,255. Over 16 million colours from three numbers – more than your eye tells apart. Your screen mixes light like a painter colours: red plus green gives yellow, all together white. Physics from numbers."
+          }
+        }
+      ],
+      "title": {
+        "de": "Bilder aus Kästchen",
+        "en": "Pictures from boxes"
+      }
+    },
+    {
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Und Töne? Auch nur Zahlen: Das Mikrofon misst den Luftdruck mehrtausendmal pro Sekunde und schreibt die Werte auf – eine Zahlenspalte für deinen Lieblingssong. Der Lautsprecher liest sie wieder vor und wackelt danach: Luftdruck aus Zahlen.",
+            "en": "And sounds? Also only numbers: the microphone measures air pressure many thousand times per second writing the values down – a number column for your favourite song. The speaker reads them back out wobbling along: air pressure from numbers."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Sing ein langes A und stelle dir die Welle vor: auf und ab, auf und ab. Der Rechner nimmt viele Male pro Sekunde eine Probe – wie Fotos, nur für Ohren. Je mehr Proben, desto echter klingt es hinterher; alte Handys klingen blechern, weil sie sparsam proben. Musik aus Zahlen, Stimme aus Zahlen, alles aus Zahlen: Nullen und Einsen singen, wenn man sie lässt.",
+            "en": "Sing a long A picturing the wave: up and down, up and down. The computer takes many samples per second – like photos, only for ears. The more samples, the more genuine it sounds after; old phones sound tinny because they sample thriftily. Music from numbers, voice from numbers, everything from numbers: zeros and ones sing if you let them."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Behalte das Bild: Alles Digitale ist Abtasten – Bilder in Kästchen, Töne in Proben, Texte in Schalter. Die Welt ist stufenlos, der Rechner zählt Stufen. Zwischen beiden liegt alles, was Informatik ausmacht: entscheiden, wie viele Stufen genügen – genug fürs Auge, klein genug für den Speicher. Diese eine Abwägung steckt in jedem Foto, jedem Song, jedem Video deines Handys.",
+            "en": "Keep the picture: everything digital is sampling – pictures into boxes, sounds into samples, texts into switches. The world is stepless, the computer counts steps. Between both lies everything computing amounts to: deciding how many steps suffice – enough for the eye, small enough for memory. This one weighing sits in every photo, every song, every video of your phone."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "Hamburg: Bildungsplan Studienstufe (Informatik)",
+                "en": "Hamburg: syllabus for the upper stage (computing)"
+              },
+              "url": "https://www.hamburg.de/politik-und-verwaltung/behoerden/bsfb/veroeffentlichungen/bildungsplaene/start-sek2-2022-123118"
+            },
+            {
+              "label": {
+                "de": "GI: Bildungsstandards Informatik",
+                "en": "GI: computing education standards"
+              },
+              "url": "https://gi.de/meldung/bildungsstandards-gi-stellt-neue-empfehlungen-fuer-den-informatikunterricht-vor"
+            }
+          ]
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Übrigens hören auch Gehörlose Musik – über Vibration: Bass als Körperschall, Rhythmus als Klopfen. Zahlen werden Gefühl, wenn man sie anders ausgibt. Genau das tut jeder Lautsprecher: Zahlen wackeln Membran, Membran wackelt Luft, Luft wackelt Trommelfell. Drei Verwandlungen von Zahl zu Gefühl – und du nennst es Song.",
+            "en": "Incidentally the deaf hear music too – via vibration: bass as body sound, rhythm as knocking. Numbers turn feeling when output differently. Exactly that every speaker does: numbers wobble membrane, membrane wobbles air, air wobbles eardrum. Three transformations from number to feeling – and you call it a song."
+          }
+        }
+      ],
+      "title": {
+        "de": "Alles aus Zahlen",
+        "en": "Everything from numbers"
+      }
+    }
+  ],
+  "summary": {
+    "de": "Schalter, Kästchen, Proben: Wie aus Null und Eins Buchstaben, Bilder und Musik werden.",
+    "en": "Switches, boxes, samples: how zeros and ones become letters, pictures and music."
+  },
+  "title": {
+    "de": "Nullen und Einsen",
+    "en": "Zeros and ones"
+  }
+}

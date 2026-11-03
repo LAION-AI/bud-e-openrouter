@@ -1,0 +1,264 @@
+{
+  "key": "magnete-und-motoren",
+  "title": {
+    "de": "Vom Kühlschrankmagneten zum Elektromotor",
+    "en": "From a fridge magnet to an electric motor"
+  },
+  "summary": {
+    "de": "Wie unsichtbare Felder Kräfte erklären und warum eine stromdurchflossene Spule etwas bewegen kann.",
+    "en": "How invisible fields explain forces and why a coil carrying current can make things move."
+  },
+  "icon": "🧲",
+  "accent": "amber",
+  "minutes": 22,
+  "screens": [
+    {
+      "key": "pole",
+      "title": {
+        "de": "Ein Magnet zieht nicht jedes Metall an",
+        "en": "Magnets do not attract every metal"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Ein Kühlschrankmagnet hält an manchen Metallflächen, an anderen nicht. Stark magnetisch anziehbar sind beispielsweise Eisen und viele Stähle; Aluminium oder Kupfer reagieren im Alltag nicht so. „Metall“ allein ist deshalb keine ausreichende Materialbeschreibung. Ein Permanentmagnet besitzt Nord- und Südpol. Gleichnamige Pole stoßen sich ab, ungleichnamige ziehen sich an.",
+            "en": "A fridge magnet sticks to some metal surfaces but not others. Iron and many steels are strongly attracted; aluminium and copper do not respond that way in ordinary situations. “Metal” is therefore not a sufficient material description. A permanent magnet has a north pole and a south pole. Like poles repel and unlike poles attract."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Teilst du einen gewöhnlichen Stabmagneten gedanklich, entstehen nicht ein einzelner Nordpol und ein einzelner Südpol, sondern wieder kleinere Magnete mit beiden Polen. Als einfaches Materialmodell helfen ausgerichtete magnetische Bereiche. In unmagnetisiertem Eisen ist ihre gemeinsame Wirkung klein, beim Magnetisieren können sie sich stärker ausrichten. Dieses Modell ist eine Vereinfachung, keine Sammlung winziger sichtbarer Stabmagnete im Material. Prüfen lässt sich die Grundidee mit einer Simulation. Kleine starke Magnete gehören nicht in den Mund und nicht in die Nähe empfindlicher Geräte oder medizinischer Implantate. Sie können außerdem Finger einklemmen. Eine große Kraft ist nicht automatisch eine gute Versuchsidee.",
+            "en": "If you imagine dividing an ordinary bar magnet, you do not obtain an isolated north pole and an isolated south pole. You obtain smaller magnets, each with both poles. Aligned magnetic regions provide a simple material model. Their combined effect is small in unmagnetised iron; magnetising can increase their alignment. This is a simplification, not a collection of tiny visible bar magnets inside the material. A simulation can illustrate the basic idea. Small strong magnets must not go into mouths or near sensitive equipment or medical implants. They can also pinch fingers. A large force does not automatically make a good experiment."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Welche Beobachtung würde der Behauptung widersprechen, dass ein Magnet jedes Metall gleich stark anzieht? Wenn ein Magnet nicht an einer Getränkedose hält, ist das kein Beweis für einen kaputten Magneten. Das Material der Dose kann den Unterschied erklären. Für einen fairen Vergleich brauchst du Gegenstände mit bekannter Materialzusammensetzung. Eine lackierte Oberfläche verrät diese nicht automatisch. Notiere deshalb Material und Beobachtung getrennt, statt allein aus der metallischen Farbe auf magnetisches Verhalten zu schließen.",
+            "en": "Which observation would contradict the claim that a magnet attracts every metal equally strongly? If a magnet does not stick to a drinks can, the magnet need not be broken; the can's material may explain it. A fair comparison needs known materials. Paint does not automatically reveal what lies underneath. Record material and observation separately rather than inferring magnetic behaviour merely from a metallic appearance."
+          }
+        }
+      ]
+    },
+    {
+      "key": "feld",
+      "title": {
+        "de": "Feldlinien sind eine Landkarte der Wirkung",
+        "en": "Field lines map the magnetic effect"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Ein Kompass dreht sich in der Nähe eines Magneten, auch ohne Berührung. Ein Magnetfeld beschreibt, welche magnetische Wirkung an verschiedenen Orten zu erwarten ist. Die Kompassnadel zeigt dort eine Vorzugsrichtung. Feldlinien veranschaulichen diese Richtung: Außerhalb eines Stabmagneten werden sie vom Nordpol zum Südpol gezeichnet. Ihre Dichte kann die Stärke des Feldes andeuten.",
+            "en": "A compass turns near a magnet even without physical contact. A magnetic field describes the magnetic effect expected at different locations. The compass needle shows a preferred direction there. Field lines represent that direction: outside a bar magnet, they are drawn from the north pole to the south pole. Their spacing can indicate field strength."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Feldlinien sind keine unsichtbaren Drähte und liegen nicht als gezeichnete Kurven im Raum. Sie gehören zu einem Modell. Auch Eisenfeilspäne erzeugen nur ein durch das Material beeinflusstes Bild; man muss sie nicht selbst verstreuen. Eine Kompasssimulation liefert eine sichere Alternative. Die Erde besitzt ebenfalls ein Magnetfeld, das Orientierung ermöglicht. Eine lokale Störung durch Stahl oder andere Magnete kann die Anzeige aber verändern. Aus einem Feldlinienbild liest du daher nicht blind „die wahre Nordrichtung“ ab. Du klärst zuerst, welche Quelle das Feld erzeugt und welche anderen Quellen im Modell vernachlässigt wurden.",
+            "en": "Field lines are not invisible wires or drawn curves physically lying in space. They belong to a model. Even iron filings produce an image affected by the material itself; you do not need to scatter them. A compass simulation is a safe alternative. Earth has a magnetic field too, which allows orientation. Nearby steel or other magnets can disturb the compass reading, however. A field-line diagram therefore does not automatically reveal “true north”. First identify which source produces the field and which other sources have been left out of the model. That distinction keeps a useful map from becoming a misleading picture."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Wie würdest du eine Feldskizze beschriften, damit niemand die Linien für wirkliche Fäden hält? Ein Kompass an zwei verschiedenen Orten um einen Stabmagneten kann unterschiedliche Richtungen anzeigen. Das ist gerade die Information, die das Feldmodell ordnet. Zeichne daher mehrere kleine Kompassrichtungen statt nur einer einzigen langen Linie. Ein dichteres Linienbild soll stärkere Wirkung darstellen, nicht zusätzliche wirkliche Fäden. Die Legende der Zeichnung gehört zum Verständnis des Modells dazu.",
+            "en": "How would you label a field diagram so that nobody mistakes its lines for real threads? A compass at two positions around a bar magnet can point differently. That is precisely the information organised by the field model. Draw several small compass directions rather than one long line. More closely spaced field lines represent a stronger effect, not extra real threads. The diagram's legend is part of understanding the model."
+          }
+        }
+      ]
+    },
+    {
+      "key": "spule",
+      "title": {
+        "de": "Strom kann ein Magnetfeld erzeugen",
+        "en": "Current can produce a magnetic field"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Ein elektrischer Strom erzeugt ein Magnetfeld. Um einen geraden Leiter verläuft dessen Richtung kreisförmig. Wickelst du den Leiter zu einer Spule, überlagern sich die Wirkungen der einzelnen Windungen. Das Feld ähnelt außerhalb einer längeren Spule dem eines Stabmagneten. Mit einem geeigneten Eisenkern lässt sich die Wirkung verstärken.",
+            "en": "An electric current produces a magnetic field. Around a straight wire, its direction follows circles. When the wire is wound into a coil, the effects of individual turns combine. Outside a sufficiently long coil, the field resembles that of a bar magnet. A suitable iron core can strengthen it."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Im einfachen Vergleich gilt: Mehr Strom oder mehr Windungen können die magnetische Wirkung erhöhen, wenn andere Bedingungen gleich bleiben. Die genaue Wirkung hängt zusätzlich von Länge, Form und Material ab. Vertiefte Feldmodelle gehören am Gymnasium zum Übergang in Klasse 10, an der Stadtteilschule zur Vorstufe 11; hier bleibt die Betrachtung qualitativ. Ein Elektromagnet lässt sich einschalten, ausschalten und durch Umkehren der Stromrichtung umpolen. Das unterscheidet ihn vom gewöhnlichen Permanentmagneten. Für einen Schulaufbau kommen nur vorgesehene, strombegrenzte Kleinspannungsgeräte unter Anleitung infrage. Eigenmächtige Spulen können heiß werden; auch Batterien dürfen niemals kurzgeschlossen werden. Eine Simulation braucht diese Risiken nicht.",
+            "en": "In a simple comparison, more current or more turns can increase the magnetic effect when other conditions stay unchanged. The detailed effect also depends on length, shape and material. More advanced field modelling belongs to the Gymnasium year 10 transition and Stadtteilschule preparatory year 11; our treatment stays qualitative. An electromagnet can be switched on, switched off and have its polarity reversed by reversing current. That distinguishes it from an ordinary permanent magnet. School setups use only designated current-limited low-voltage equipment under supervision. Improvised coils can become hot, and batteries must never be short-circuited. A simulation avoids those risks entirely."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Welche Bedingungen müssten beim Vergleich zweier Spulen gleich bleiben, wenn du nur die Windungszahl untersuchen willst? Eine Spule mit mehr Windungen kann zugleich einen längeren Draht und damit anderen Widerstand besitzen. An derselben Quelle muss deshalb nicht automatisch dieselbe Stromstärke fließen. Das ist ein wichtiger versteckter Einfluss beim Vergleich. Eine Simulation kann Windungszahl und Strom getrennt vorgeben. Erst dann prüfst du wirklich den einen behaupteten Zusammenhang statt mehrere Änderungen auf einmal.",
+            "en": "Which conditions should remain unchanged when comparing two coils to investigate only the number of turns? More coil turns can also mean a longer wire and different resistance. The same supply therefore need not produce the same current. This is a hidden factor in comparisons. A simulation can specify turns and current independently, letting you test the intended relationship rather than several changes together without noticing."
+          }
+        }
+      ]
+    },
+    {
+      "key": "motor",
+      "title": {
+        "de": "Vom Magnetfeld zur Drehung",
+        "en": "From magnetic field to rotation"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Auf einen stromdurchflossenen Leiter kann in einem äußeren Magnetfeld eine Kraft wirken. Ordnet man Leiterstücke zu einer drehbaren Spule an, können Kräfte an verschiedenen Seiten gemeinsam eine Drehwirkung erzeugen. Das ist die Grundidee eines Elektromotors: Elektrische Energie wird über magnetische Wechselwirkungen in mechanische Energie übertragen.",
+            "en": "A wire carrying current can experience a force in an external magnetic field. Arranging wire sections as a rotating coil allows forces on different sides to produce a combined turning effect. This is the basic idea of an electric motor: magnetic interactions transfer electrical energy into mechanical energy."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Damit ein einfacher Gleichstrommotor weiterdreht, muss die Stromrichtung in der Spule jeweils passend geändert werden. Ein Kommutator übernimmt das im klassischen Modell. Andere Motorbauarten verwenden elektronische Steuerungen. Der Magnet allein liefert dabei keine unbegrenzte Energiequelle. Nimmt der Motor eine Last mit, muss die elektrische Quelle Energie nachliefern. Reibung und elektrische Erwärmung führen zu unerwünschten Anteilen. Dass der Motor warm wird, ist keine Verletzung der Energieerhaltung. Die Energie verteilt sich nur auf mehr Empfänger als die gewünschte Bewegung. Motoren werden hier als Schema oder Simulation untersucht. Öffne keine Haushaltsgeräte und baue keine Anordnung, die Haare, Finger oder Kleidung in eine rotierende Welle ziehen könnte.",
+            "en": "For a simple direct-current motor to keep rotating, current through the coil must reverse at appropriate points. In the classical model, a commutator performs that task. Other motor designs use electronic control. The magnet itself is not an unlimited energy source. If a motor drives a load, the electrical supply must keep providing energy. Friction and electrical heating produce unwanted energy transfers. A motor becoming warm does not violate energy conservation; energy is simply distributed to more recipients than the intended movement. We investigate motors through diagrams or simulations here. Do not open household appliances or create a setup that could catch fingers, hair or clothing in a rotating shaft."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Unter welcher Voraussetzung wird aus einer einmaligen Drehwirkung ein dauerhaft laufender einfacher Gleichstrommotor? Ein festgehaltener Motor kann elektrische Energie aufnehmen, obwohl sich seine Welle nicht dreht. Die gewünschte mechanische Abgabe fehlt dann, während Erwärmung auftreten kann. Das Beispiel zeigt, warum ein Magnetfeld allein keine gute Energiebilanz ist. Zu einem Motormodell gehören Quelle, Bewegung, Last und unerwünschte Übertragungen. Einen echten Motor absichtlich festzuhalten wäre dagegen kein geeigneter Versuch.",
+            "en": "What is needed to turn a single turning effect into a continuously running simple direct-current motor? A stalled motor may receive electrical energy although its shaft does not turn. The intended mechanical output is then absent while heating can occur. This shows why mentioning a magnetic field alone is not an energy account. A motor model needs source, motion, load and unwanted transfers. Deliberately stalling a real motor is not an appropriate experiment."
+          }
+        }
+      ]
+    },
+    {
+      "key": "alltag",
+      "title": {
+        "de": "Welcher Magnet passt zu welcher Aufgabe?",
+        "en": "Which magnet suits which job?"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Ein Schrottplatzkran soll Metallteile aufnehmen und an anderer Stelle wieder loslassen. Ein schaltbarer Elektromagnet ist dafür sinnvoll. Eine magnetische Türhalterung kann dagegen ohne dauernden Strom auskommen. Ein Lautsprecher nutzt eine stromdurchflossene Spule in einem Magnetfeld, um eine Membran hin und her zu bewegen. Die elektrische Ansteuerung bestimmt dabei den zeitlichen Verlauf der Bewegung.",
+            "en": "A scrapyard crane must pick up metal parts and release them somewhere else. A switchable electromagnet is useful for that task. A magnetic door holder may instead work without a continuous electrical supply. A loudspeaker uses a current-carrying coil in a magnetic field to move a cone back and forth. Its electrical signal determines the movement over time."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Die Wahl hängt also von der Aufgabe ab: Muss sich die Stärke ändern? Soll die Wirkung ohne Strom erhalten bleiben? Sind Erwärmung und Energiebedarf wichtig? Auch Materialgewinnung, Reparierbarkeit und Lebensdauer gehören zu einer vernünftigen Bewertung. Eine Zeichnung von einem gedachten elektromagnetischen Sortierer kann diese Ziele sichtbar machen. Du markierst Energiequelle, Spule, bewegtes Teil und Steuerung. Anschließend erklärst du, was beim Ausschalten geschieht. Du musst dafür kein echtes Hebegerät bauen. Ein Entwurf mit klaren Grenzen ist bereits eine technische Idee. Er zeigt, dass Physik nicht nur Gegenstände beschreibt, sondern auch hilft, begründete Entscheidungen über ihre Gestaltung zu treffen.",
+            "en": "The choice therefore depends on the task: must strength change, should the effect remain without power, and how important are heating and energy demand? Material extraction, repairability and service life also belong in a sensible assessment. A drawing of an imagined electromagnetic sorter can make these goals visible. Label its energy source, coil, moving component and control, then explain what happens when it is switched off. You do not need to build an actual lifting machine. A proposal with clear boundaries already counts as a technical idea. It shows how physics helps make justified design choices, not merely describe objects."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Entwirf einen schaltbaren magnetischen Helfer für eine ungefährliche Modellaufgabe und benenne Energiebedarf und Grenze. Ein Sortiermagnet soll im passenden Moment loslassen; eine Türhalterung soll vielleicht ohne dauernden Energiebedarf halten. „Stärker“ ist deshalb kein vollständiges Auswahlkriterium. Vergleiche die Funktionen und die Folgen eines Stromausfalls. Eine gute Papieridee kann zusätzlich eine mechanische Begrenzung vorsehen, statt sich vollständig auf magnetische Kraft zu verlassen. So bekommt der technische Zweck Vorrang vor einer beeindruckenden Einzelwirkung.",
+            "en": "Design a switchable magnetic helper for a harmless model task and identify its energy demand and one limitation. A sorting magnet should release at the right moment; a door holder may need to hold without continuous power. “Stronger” is therefore not a complete selection criterion. Compare functions and consequences of power failure. A paper design can also include a mechanical stop rather than rely entirely on magnetic force. The purpose matters more than one impressive effect."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "Hamburg: Physik Gymnasium (2024)",
+                "en": "Hamburg: Gymnasium physics (2024)"
+              },
+              "url": "https://www.hamburg.de/resource/blob/798534/4cf0047ad61effacd1ff7e6ad819fa41/physik-data.pdf"
+            },
+            {
+              "label": {
+                "de": "Hamburg: Physik Stadtteilschule (2024)",
+                "en": "Hamburg: Stadtteilschule physics (2024)"
+              },
+              "url": "https://www.hamburg.de/resource/blob/798426/ba414a0ace36d17b7813a855db625c42/physik-data.pdf"
+            },
+            {
+              "label": {
+                "de": "PhET: sichere interaktive Simulation",
+                "en": "PhET: safe interactive simulation"
+              },
+              "url": "https://phet.colorado.edu/de/simulations/magnets-and-electromagnets"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": {
+        "de": "1. Lückentext",
+        "en": "1. Fill in the blanks"
+      },
+      "intro": {
+        "de": "Ergänze die fehlenden Fachwörter. Alle Begriffe findest du im Pfad.",
+        "en": "Complete the missing technical words. Every term appears in this path."
+      },
+      "text": {
+        "de": "Ein Permanentmagnet besitzt Nord- und ___. Gleichnamige Pole bewirken eine ___. Die Wirkung im Raum beschreibt ein ___. Seine Richtung veranschaulichen ___. Ein Strom durch viele Windungen erzeugt das Feld einer ___. Ein Eisenkern kann eine magnetische ___ bewirken. Ein schaltbarer Magnet heißt ___. Ein Motor wandelt elektrische in mechanische ___ um. Im einfachen Gleichstrommotor übernimmt die passende Stromumkehr ein ___.",
+        "en": "A permanent magnet has a north and a ___. Like poles produce ___. A ___ describes the effect in space. Its direction is represented by ___. Current through many turns creates the field of a ___. An iron core can provide ___. A switchable magnet is an ___. A motor converts electrical into mechanical ___. In a simple direct-current motor, current reversal is performed by a ___."
+      }
+    },
+    {
+      "kind": "compare",
+      "title": {
+        "de": "2. Erklären und vergleichen (AB II)",
+        "en": "2. Explain and compare (level II)"
+      },
+      "intro": {
+        "de": "Antworte mit drei bis vier kurzen Sätzen. Nutze das Gelesene und begründe deinen Vergleich.",
+        "en": "Answer in three or four short sentences. Use what you have read and explain your comparison."
+      },
+      "text": {
+        "de": "Vergleiche Permanentmagnet und Elektromagnet für einen gedachten Sortierkran. Erkläre, wann Schaltbarkeit wichtig ist. Begründe außerdem, warum ein Motor Energie benötigt, obwohl bereits Magnete vorhanden sind.",
+        "en": "Compare a permanent magnet and an electromagnet for an imagined sorting crane. Explain when switchability matters. Also explain why a motor needs energy even when magnets are already present."
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": {
+        "de": "3. Deine Idee im Alltag (AB III)",
+        "en": "3. Your idea for everyday life (level III)"
+      },
+      "intro": {
+        "de": "Entwickle eine eigene Idee in drei bis vier kurzen Sätzen. Begründe sie mit Physik; mehrere Lösungen sind möglich.",
+        "en": "Develop your own idea in three or four short sentences. Support it with physics; several answers are possible."
+      },
+      "text": {
+        "de": "Gestalte auf Papier einen magnetischen Alltagshelfer für eine ungefährliche Modellaufgabe. Beschreibe seine Steuerung, den Energiebedarf und eine technische Grenze.",
+        "en": "On paper, design a magnetic everyday helper for a harmless model task. Describe its control, energy demand and one engineering limitation."
+      }
+    }
+  ]
+}

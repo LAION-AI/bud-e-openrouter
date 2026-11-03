@@ -1,0 +1,313 @@
+{
+  "key": "schwingungen-und-wellen",
+  "title": {
+    "de": "Wie ein Ton den Raum durchquert",
+    "en": "How a tone crosses a room"
+  },
+  "summary": {
+    "de": "NWT-Auffrischung zu Wellen, mit gekennzeichneter Erweiterung zu harmonischen Schwingungen (Gym10/STS11).",
+    "en": "NWT wave refresher, with a clearly marked harmonic-oscillation extension for Gymnasium10/Stadtteilschule11."
+  },
+  "icon": "〰️",
+  "accent": "violet",
+  "minutes": 22,
+  "screens": [
+    {
+      "key": "muster",
+      "title": {
+        "de": "Das Muster reist, nicht das ganze Material",
+        "en": "The pattern travels, not the whole material"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Bei einer Stadionwelle stehen Menschen nacheinander auf und setzen sich wieder. Das Muster läuft durch die Reihen, die Menschen reisen nicht um das Stadion. Eine mechanische Welle funktioniert ähnlich: Eine Störung wird über Wechselwirkungen weitergegeben, während Teilchen oder kleine Bereiche um ihre Gleichgewichtslage schwingen. Mit der Welle können Energie und Informationen übertragen werden.",
+            "en": "During a stadium wave, people stand up and sit down in sequence. The pattern travels around the stands, but the people do not. A mechanical wave works similarly: interactions pass on a disturbance while particles or small regions oscillate around an equilibrium position. The wave can transfer energy and information."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Bei Schall in Luft entstehen abwechselnd Verdichtungen und Verdünnungen. Die Teilchen schwingen dabei im Wesentlichen entlang der Ausbreitungsrichtung: Schall ist dort eine Longitudinalwelle. Bei einer idealisierten Seilwelle kann die Schwingung quer zur Ausbreitung liegen; das heißt transversal. Diese Grundvorstellung frischt NWT-Wissen auf und ergänzt den vorhandenen Schallpfad. Sie ist keine vollständige Wellentheorie. Für eine sichere Darstellung verwendest du eine Animation oder Skizze. Niemand muss an gespannten Seilen ziehen, Menschen für eine Vorführung anfassen oder laute Töne erzeugen. Die Idee ist die Weitergabe einer Störung, nicht möglichst viel Bewegung im Raum.",
+            "en": "Sound in air produces alternating compressions and rarefactions. Particles move mainly along the direction of propagation, making it a longitudinal wave. In an idealised string wave, motion can instead be perpendicular to propagation: a transverse wave. This basic picture revisits NWT knowledge and complements the existing sound path. It is not a complete theory of waves. Use an animation or sketch for a safe representation. There is no need to pull on tensioned ropes, touch people during a demonstration or produce loud tones. The important idea is the transmission of a disturbance, not creating the greatest possible movement in a room."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Welche Beobachtung an einer Stadionwelle hilft dir zu erklären, warum Welle und Materialbewegung nicht dasselbe sind? Markiere in der Animation ein einzelnes Teilchen. Wenn das Wellenmuster vorbeiläuft, bleibt seine Bewegung um einen örtlichen Bereich begrenzt. Die markierte Verdichtung wandert dagegen weiter. Zwei verschiedenfarbige Markierungen machen die beiden Bedeutungen von „Bewegung“ sichtbar. Das Stadionbild erklärt diesen Unterschied gut, bildet aber weder Luftteilchen noch ihre elastischen Wechselwirkungen vollständig ab.",
+            "en": "Which observation of a stadium wave helps explain why wave movement and material movement are different? Mark one particle in the animation. As the wave pattern passes, its motion remains near a local region, while a marked compression travels onwards. Two differently coloured markers distinguish the meanings of “motion”. The stadium analogy explains that difference well but does not fully represent air particles or their elastic interactions."
+          }
+        }
+      ]
+    },
+    {
+      "key": "groessen",
+      "title": {
+        "de": "Drei Größen beschreiben das Muster",
+        "en": "Three quantities describe the pattern"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Die Amplitude beschreibt die größte Auslenkung gegenüber der Gleichgewichtslage. Die Periodendauer T ist die Zeit für eine vollständige Schwingung. Die Frequenz f gibt die Zahl vollständiger Schwingungen pro Sekunde an; ihre Einheit ist Hertz. Es gilt f = 1 / T. Bei 50 Schwingungen pro Sekunde ist T = 0,02 s.",
+            "en": "Amplitude is the greatest displacement from equilibrium. The period T is the time for a complete oscillation. Frequency f gives the number of complete oscillations per second and is measured in hertz. The relationship is f = 1 / T. At 50 oscillations per second, T is 0.02 s."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Die Wellenlänge λ beschreibt den Abstand zwischen zwei gleichartigen benachbarten Stellen, etwa zwei Verdichtungen einer Schallwelle. In einer gleichmäßigen Ausbreitung gilt c = λ · f. Bei einer Schallgeschwindigkeit von näherungsweise 340 m/s und einer Frequenz von 170 Hz ist die Wellenlänge 2 m. Ein höherer Ton bedeutet bei gleichem Medium kleinere Wellenlänge, nicht automatisch höhere Ausbreitungsgeschwindigkeit. Lautstärke hängt unter anderem von Amplitude und Wahrnehmung ab, Tonhöhe vor allem von Frequenz. Das Modell trennt diese Größen bewusst. Ein Bild mit größeren Ausschlägen allein beweist daher keinen höheren Ton. Lies immer, was Achsen und Abstände darstellen.",
+            "en": "Wavelength λ is the distance between neighbouring equivalent points, such as two compressions in a sound wave. For uniform propagation, c = λ · f. Using an approximate sound speed of 340 m/s and frequency 170 Hz gives a wavelength of 2 m. In the same medium, a higher pitch means a shorter wavelength, not automatically a greater wave speed. Loudness depends partly on amplitude and perception; pitch depends mainly on frequency. The model deliberately separates these quantities. A picture with larger peaks alone therefore does not prove a higher pitch. Always check what its axes and spatial separations represent before drawing conclusions."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Wie müsste eine Skizze aussehen, die größere Amplitude von höherer Frequenz eindeutig unterscheidet? Eine Kurve über der Zeit zeigt die Periodendauer, eine Momentaufnahme entlang des Raums die Wellenlänge. Beide können ähnlich wellig aussehen und trotzdem verschiedene Achsen besitzen. Miss deshalb nicht irgendeinen Abstand zwischen Gipfeln, ohne die Achse zu lesen. Bei gleichem Ausbreitungstempo verbindet c = λ·f die beiden Darstellungen und erklärt, wie mehr Schwingungen pro Sekunde mit kürzerer Wellenlänge zusammenpassen.",
+            "en": "How should a sketch clearly distinguish greater amplitude from higher frequency? A graph against time shows period; a spatial snapshot shows wavelength. They can look similarly wavy while using different axes. Do not measure just any peak separation without reading the axis. At fixed propagation speed, c = λ·f connects the representations and explains how more oscillations per second correspond to a shorter wavelength."
+          }
+        }
+      ]
+    },
+    {
+      "key": "ueberlagerung",
+      "title": {
+        "de": "Zwei Wellen können sich überlagern",
+        "en": "Two waves can overlap"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Treffen zwei kleine Wellen zusammen, können sich ihre Auslenkungen im einfachen linearen Modell addieren. Gleichgerichtete Auslenkungen verstärken sich, entgegengesetzte können sich teilweise oder vollständig aufheben. Dieses Verhalten heißt Überlagerung oder Superposition. Das entstehende Muster nennt man Interferenz. Nach dem Zusammentreffen können die Wellen im Modell wieder weiterlaufen; sie sind nicht dauerhaft verschwunden.",
+            "en": "When two small waves overlap, their displacements add in a simple linear model. Displacements in the same direction reinforce; opposite displacements can partly or completely cancel. This is superposition, and the resulting pattern is called interference. After meeting, the waves can continue separately in the model; they have not permanently disappeared."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Bei Schall lässt sich so erklären, warum an verschiedenen Orten unterschiedliche Lautstärken auftreten können. Eine Verringerung an einem Punkt bedeutet nicht, dass die gesamte Energie überall vernichtet wurde. Sie wird räumlich und zeitlich anders verteilt. Für das Rechenbild reichen etwa zwei Auslenkungen von +2 und −1 Einheiten: Gemeinsam sind es +1. Das Modell gilt gut für kleine Störungen unter geeigneten Bedingungen, nicht für beliebig heftige Wellen. Geräuschunterdrückende Kopfhörer nutzen gezielt erzeugte Schallanteile, arbeiten aber nur begrenzt und frequenzabhängig. Sie ersetzen keinen geprüften Schutz in gefährlicher Lärmumgebung. Du brauchst für das Verständnis keine lauten Eigenversuche.",
+            "en": "For sound, this helps explain why loudness can differ from place to place. A reduction at one point does not mean all energy everywhere has been destroyed; it is distributed differently in space and time. For a numerical example, displacements of +2 and −1 units combine to +1. The model works well for small disturbances under suitable conditions, not for arbitrarily violent waves. Noise-cancelling headphones use deliberately generated sound components, but their performance is limited and frequency-dependent. They are not a replacement for approved protection in hazardous noise. Understanding the principle does not require loud experiments."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Zwei Auslenkungen betragen +2 und −1 Einheiten. Was zeigt ihr gemeinsamer Wert, und was sagt er nicht über den ganzen Raum? Zeichne die beiden ursprünglichen Auslenkungen und ihre Summe in unterschiedlichen Farben. Ein Nullpunkt der Summe bedeutet nicht, dass alle Punkte des Raums gerade stillstehen. Diese räumliche Unterscheidung ist wichtig für Schallinterferenz. Sie verhindert auch das falsche Versprechen, ein einziges Gegensignal könne überall jedes Geräusch vollständig auslöschen. Die genaue Lage und der zeitliche Verlauf bleiben entscheidend.",
+            "en": "Two displacements are +2 and −1 units. What does their sum show, and what does it not tell us about the entire space? Draw the original displacements and their sum in different colours. A zero in the sum does not mean every point in space is still. That spatial distinction matters for sound interference and prevents claims that one opposing signal can remove every sound everywhere. Location and timing remain essential to what cancels and what reinforces."
+          }
+        }
+      ]
+    },
+    {
+      "key": "resonanz",
+      "title": {
+        "de": "Passendes Anschubsen wirkt stärker",
+        "en": "Well-timed pushes have a stronger effect"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Eine Schaukel kann durch kleine passende Impulse immer stärker schwingen. Entscheidend ist, dass die Anregung zeitlich zur Bewegung passt. Jedes schwingungsfähige System besitzt unter bestimmten Bedingungen typische Eigenfrequenzen. Liegt eine periodische Anregung nahe daran, kann die Amplitude besonders groß werden. Dieses Verhalten heißt Resonanz.",
+            "en": "A swing can build up a large motion from small, well-timed pushes. What matters is that the forcing matches the motion in time. An oscillating system has characteristic natural frequencies under particular conditions. Periodic forcing close to one of them can produce an especially large amplitude. This is resonance."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "In realen Systemen begrenzen Dämpfung und andere Effekte das Anwachsen. Dämpfung überträgt Energie aus der geordneten Schwingung an die Umgebung, beispielsweise durch Reibung. Eine große Schwingungsamplitude ist deshalb kein Beweis für eine Energiequelle ohne Zufuhr. Die Anregung liefert Energie. Musikinstrumente nutzen Resonanz, technische Bauteile müssen unerwünschte Resonanzen berücksichtigen. Eine sinnvolle Simulation verändert nur die Anregungsfrequenz und beobachtet bei gleicher Stärke die Antwort. Es geht nicht darum, reale Brücken, Glas oder Bauteile zum gefährlichen Schwingen zu bringen. Eine Modellkurve kann zeigen, wo die Antwort groß ist und wie Dämpfung den Verlauf verändert. Die Grenzen des Modells bleiben dabei Teil der Erklärung.",
+            "en": "In real systems, damping and other effects limit growth. Damping transfers energy from organised oscillation into the surroundings, for example through friction. A large amplitude is therefore not evidence for energy appearing without input: the forcing supplies energy. Musical instruments use resonance, while engineered structures must avoid unwanted resonant responses. A useful simulation changes only the driving frequency and observes the response at constant driving strength. This is not about making real bridges, glass or components oscillate dangerously. A model curve can show where the response is large and how damping changes it. Its limitations remain part of the explanation."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Welche Bedingungen fehlen dem Satz, dass jede kleine regelmäßige Kraft zwangsläufig zu einer riesigen Schwingung führt? Ein einzelner unpassender Schubs kann die Schaukel sogar bremsen, statt sie anzutreiben. Bei Resonanz geht es deshalb um zeitlich passende Energieübertragung, nicht bloß um viele Wiederholungen. Eine Dämpfungskurve kann zusätzlich zeigen, wie die Bewegung ohne weitere Anregung abnimmt. Vergleiche die zugeführte Energie und den Verlust getrennt, bevor du aus einer großen Amplitude auf außergewöhnliche Energiegewinnung schließt.",
+            "en": "What conditions are missing from the claim that every small periodic force inevitably produces a huge oscillation? A badly timed push can even slow a swing instead of driving it. Resonance concerns well-timed energy transfer, not repetition alone. A damping curve shows how motion decreases without further forcing. Compare input and losses separately before interpreting a large amplitude as evidence of extraordinary energy production."
+          }
+        }
+      ]
+    },
+    {
+      "key": "harmonisch",
+      "title": {
+        "de": "Erweiterung: Eine Schwingung als Funktion",
+        "en": "Extension: describing an oscillation with a function"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Für Gymnasium 10 beziehungsweise Stadtteilschule 11 kommt ein genaueres Modell hinzu: die harmonische Schwingung. Ihre rücktreibende Kraft ist proportional zur Auslenkung und entgegengesetzt gerichtet. Eine ideale Feder folgt F = −D · x. D ist die Federkonstante in N/m. Das Minuszeichen zeigt die Rückrichtung, nicht eine „negative Stärke“.",
+            "en": "Gymnasium year 10 and Stadtteilschule year 11 introduce a more precise model: harmonic oscillation. Its restoring force is proportional to displacement and points in the opposite direction. An ideal spring follows F = −D · x, where D is the spring constant in N/m. The minus sign indicates the restoring direction, not a “negative strength”."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Die Auslenkung kann mit x(t) = A · cos(2π · t / T) beschrieben werden, wenn die Schwingung bei maximaler Auslenkung beginnt. Ein Start in der Gleichgewichtslage lässt sich passend mit Sinus beschreiben. A ist die Amplitude, T die Periodendauer. Für das ideale Federpendel gilt T = 2π · √(m / D): Größere Masse verlängert die Periodendauer, größere Federkonstante verkürzt sie. Während der Bewegung wechseln Spannenergie und Bewegungsenergie. Ohne Dämpfung bleibt ihre Summe erhalten. Reale Federn und große Auslenkungen können vom Modell abweichen. Diese mathematische Erweiterung ist nicht gemeinsamer Stadtteilschul-Pflichtstoff bis Klasse 10. Eine Animation reicht zum Vergleichen.",
+            "en": "For a motion beginning at maximum displacement, x(t) = A · cos(2π · t / T) describes the displacement. A suitable sine function describes a start at equilibrium. A is amplitude and T is period. An ideal spring oscillator has T = 2π · √(m / D): a larger mass lengthens the period, while a larger spring constant shortens it. Elastic potential energy and kinetic energy alternate during motion. Without damping, their sum remains constant. Real springs and large displacements can depart from this model. This mathematical extension is not shared compulsory Stadtteilschule content through year 10. An animation is sufficient for comparison."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Wie würdest du die Wirkung von größerer Masse und größerer Federkonstante auf die Periodendauer getrennt prüfen? Verdoppelt sich im idealen Federpendel die Masse, wird die Periodendauer nicht doppelt, sondern um den Faktor √2 größer. Die Wurzelbeziehung liefert also eine andere Vorhersage als eine proportionale Regel. Für die Amplitude gilt im idealen Modell wiederum keine entsprechende Änderung der Periodendauer. Diese Aussagen verlangen die genannten idealen Bedingungen und sind hier ausdrücklich mathematische Übergangsvertiefung.",
+            "en": "How would you test the effects of greater mass and a greater spring constant on the period separately? Doubling mass in the ideal spring oscillator increases period by √2, not by two. The square-root relationship therefore predicts something different from proportionality. Changing amplitude does not produce the same period change in the ideal model. These claims require the stated ideal conditions and are explicitly part of the mathematical transition extension here."
+          }
+        }
+      ]
+    },
+    {
+      "key": "gestaltung",
+      "title": {
+        "de": "Einen Raum hörbar besser machen",
+        "en": "Making a room sound better"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Ein Raum kann Sprache verschlucken oder lange nachhallen lassen. Harte Flächen reflektieren Schall stark, während geeignete weiche oder poröse Materialien einen Teil der Schallenergie aufnehmen und in innere Energie umwandeln. Absorption ist nicht dasselbe wie vollständige Schalldämmung nach außen. Auch Materialdicke, Frequenz und Anordnung spielen eine Rolle.",
+            "en": "A room can make speech unclear or let sound reverberate for a long time. Hard surfaces strongly reflect sound, while suitable soft or porous materials absorb part of its energy and convert it to internal energy. Absorption is not the same as completely insulating sound from the outside. Material thickness, frequency and arrangement matter too."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Für einen Klassenraum könntest du auf Papier Maßnahmen gegen störenden Nachhall planen: große freie Reflexionsflächen verringern, Arbeitsbereiche passend anordnen und zugelassene absorbierende Elemente nutzen. Die konkrete Umsetzung muss Brandschutz, Reinigung und Barrierefreiheit berücksichtigen. Ein Sprachsignal sollte außerdem nicht nur akustisch erreichbar sein. Sichtbare Informationen können Menschen helfen, die unterschiedlich hören oder gerade Kopfhörer tragen. Dein Entwurf darf physikalische Wirkung und soziale Ziele gemeinsam benennen. Du brauchst keine persönlichen Hörtests und keine Messung mit lauten Signalen. Eine begründete Skizze kann bereits zeigen, wo Reflexion, Dämpfung und Verständlichkeit zusammenhängen und welche Fachprüfung vor einer echten Veränderung noch nötig wäre.",
+            "en": "On paper, plan ways to reduce unwanted reverberation in a classroom: reduce large bare reflecting areas, arrange work zones thoughtfully and use approved absorbing elements. Real implementation must consider fire safety, cleaning and accessibility. Information should also not depend entirely on hearing. Visible signals can help people with different hearing abilities or those currently wearing headphones. Your design can explicitly connect physical effects with social goals. You do not need personal hearing tests or loud measurement signals. A reasoned sketch can show how reflection, damping and intelligibility connect, and which professional checks would still be necessary before making real changes."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Entwirf eine Raumidee, die Sprachverständlichkeit verbessert und wichtige Informationen zusätzlich sichtbar macht. Ein schallabsorbierendes Element soll Energie aus störenden Reflexionen aufnehmen. Eine Wand gegen Schallübertragung nach außen erfüllt eine andere Aufgabe. Beide dürfen deshalb nicht allein nach dem Wort „Schallschutz“ gleichgesetzt werden. Beschrifte in deinem Raumplan gewünschte Sprachwege und unerwünschte Reflexionswege getrennt. Dann wird sichtbar, warum gute Verständlichkeit nicht einfach durch immer größere Lautsprecherleistung entsteht.",
+            "en": "Design a room improvement that makes speech clearer and also presents important information visually. An absorber takes energy from unwanted reflections; a wall limiting transmission outside serves a different purpose. They cannot be treated as identical merely because both concern sound protection. Label desired speech paths and unwanted reflection paths separately. This shows why clearer communication does not simply come from increasing loudspeaker power."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "Hamburg: NWT 5/6 (2024), Schall und Sinne",
+                "en": "Hamburg: NWT years 5/6 (2024), sound and senses"
+              },
+              "url": "https://www.hamburg.de/resource/blob/798520/700d66232c2d07bad97d72b6e107e083/naturwissenschaften-technik-data.pdf"
+            },
+            {
+              "label": {
+                "de": "Hamburg: Physik Gymnasium (2024)",
+                "en": "Hamburg: Gymnasium physics (2024)"
+              },
+              "url": "https://www.hamburg.de/resource/blob/798534/4cf0047ad61effacd1ff7e6ad819fa41/physik-data.pdf"
+            },
+            {
+              "label": {
+                "de": "Hamburg: Physik Stadtteilschule (2024)",
+                "en": "Hamburg: Stadtteilschule physics (2024)"
+              },
+              "url": "https://www.hamburg.de/resource/blob/798426/ba414a0ace36d17b7813a855db625c42/physik-data.pdf"
+            },
+            {
+              "label": {
+                "de": "PhET: sichere interaktive Simulation",
+                "en": "PhET: safe interactive simulation"
+              },
+              "url": "https://phet.colorado.edu/de/simulations/waves-intro"
+            },
+            {
+              "label": {
+                "de": "PhET: sichere interaktive Simulation",
+                "en": "PhET: safe interactive simulation"
+              },
+              "url": "https://phet.colorado.edu/de/simulations/masses-and-springs"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": {
+        "de": "1. Lückentext",
+        "en": "1. Fill in the blanks"
+      },
+      "intro": {
+        "de": "Ergänze die fehlenden Fachwörter. Alle Begriffe findest du im Pfad.",
+        "en": "Complete the missing technical words. Every term appears in this path."
+      },
+      "text": {
+        "de": "Eine Welle überträgt Energie, ohne das ganze ___ mitzunehmen. Die größte Auslenkung heißt ___. Schwingungen pro Sekunde beschreibt die ___. Die Zeit für eine vollständige Schwingung heißt ___. Der Abstand gleicher benachbarter Wellenstellen ist die ___. Die gemeinsame Wirkung mehrerer Wellen heißt ___. Eine besonders starke Antwort bei passender Anregung heißt ___. Energieübertragung an die Umgebung führt zur ___. Im idealen Federpendel wirkt eine rücktreibende ___.",
+        "en": "A wave transfers energy without transporting the entire ___. Maximum displacement is ___. Oscillations per second are described by ___. The time for one complete oscillation is the ___. The separation of equivalent neighbouring points is the ___. The combined effect of waves is ___. A strong response to suitable forcing is ___. Energy transfer to the surroundings causes ___. An ideal spring oscillator has a restoring ___."
+      }
+    },
+    {
+      "kind": "compare",
+      "title": {
+        "de": "2. Erklären und vergleichen (AB II)",
+        "en": "2. Explain and compare (level II)"
+      },
+      "intro": {
+        "de": "Antworte mit drei bis vier kurzen Sätzen. Nutze das Gelesene und begründe deinen Vergleich.",
+        "en": "Answer in three or four short sentences. Use what you have read and explain your comparison."
+      },
+      "text": {
+        "de": "Vergleiche höhere Frequenz und größere Amplitude eines Schallsignals. Erkläre den Bezug zu Tonhöhe und Lautstärke und was bei gleichem Medium mit der Wellenlänge geschieht. Warum bedeutet größere Amplitude nicht automatisch schnellere Ausbreitung?",
+        "en": "Compare a higher frequency and a larger amplitude of a sound signal. Explain their relationship to pitch and loudness and what happens to wavelength in the same medium. Why does larger amplitude not automatically mean faster propagation?"
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": {
+        "de": "3. Deine Idee im Alltag (AB III)",
+        "en": "3. Your idea for everyday life (level III)"
+      },
+      "intro": {
+        "de": "Entwickle eine eigene Idee in drei bis vier kurzen Sätzen. Begründe sie mit Physik; mehrere Lösungen sind möglich.",
+        "en": "Develop your own idea in three or four short sentences. Support it with physics; several answers are possible."
+      },
+      "text": {
+        "de": "Entwirf eine verständlichere, zugänglichere Klangumgebung in der Schule. Begründe eine Maßnahme mit Reflexion oder Dämpfung und ergänze einen nichtakustischen Informationsweg.",
+        "en": "Design a clearer, more accessible sound environment at school. Justify one measure using reflection or damping and add a non-acoustic way of providing information."
+      }
+    }
+  ]
+}

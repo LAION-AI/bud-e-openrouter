@@ -10,7 +10,7 @@
   },
   "icon": "🔀",
   "accent": "emerald",
-  "minutes": 14,
+  "minutes": 18,
   "screens": [
     {
       "key": "die-gabelung",
@@ -265,6 +265,104 @@
               "url": "https://www.inf-schule.de/imperative-programmierung"
             }
           ]
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Bedingungen stehen übrigens auch in Pappschachteln: „Bei einer 6 darfst du noch einmal würfeln“ – ein Wenn-Dann aus Mensch ärgere dich nicht. Spielregeln sind Programme für Menschen: Falls, dann, sonst. Wer Brettspiele liest, liest Code – nur ohne Computer.",
+            "en": "Conditions incidentally also sit in cardboard boxes: “On a 6 you may roll again” – an if-then from Ludo. Game rules are programs for humans: if, then, else. Whoever reads board games reads code – only without computer."
+          }
+        }
+      ]
+    },
+    {
+      "key": "dein-erstes-quizspiel",
+      "title": {
+        "de": "Dein erstes Quizspiel",
+        "en": "Your first quiz game"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Eine Figur, eine Frage, eine Punkte-Variable: Das ist schon ein Quizspiel. Hier ist das Gerüst dafür.",
+            "en": "One sprite, one question, one score variable: that is already a quiz game. Here is the skeleton for it."
+          }
+        },
+        {
+          "kind": "steps",
+          "items": [
+            {
+              "title": {
+                "de": "Fragen",
+                "en": "Ask"
+              },
+              "text": {
+                "de": "Die Figur fragt – zum Beispiel nach einer Hauptstadt – und wartet auf die Antwort.",
+                "en": "The sprite asks – for a capital, say – and waits for the answer."
+              }
+            },
+            {
+              "title": {
+                "de": "Prüfen",
+                "en": "Check"
+              },
+              "text": {
+                "de": "Falls die Antwort stimmt: Punkte um 1 erhöhen und jubeln. Sonst: einen Tipp geben.",
+                "en": "If the answer is right: add 1 to the score and cheer. Otherwise: give a hint."
+              }
+            },
+            {
+              "title": {
+                "de": "Wiederholen",
+                "en": "Repeat"
+              },
+              "text": {
+                "de": "Fünf Fragen nacheinander, am Ende den Punktestand ansagen.",
+                "en": "Five questions in a row, then announce the final score."
+              }
+            }
+          ]
+        },
+        {
+          "kind": "callout",
+          "tone": "tip",
+          "icon": "🎯",
+          "title": {
+            "de": "Ideen zum Weitermachen",
+            "en": "Ideas to continue"
+          },
+          "text": {
+            "de": "Vokabeln statt Hauptstädten. Mathe statt Vokabeln. Eine Highscore-Variable mit dem Namen der Besten. Oder ein Zeitlimit: zehn Sekunden pro Frage, danach ist die Chance vorbei.",
+            "en": "Vocabulary instead of capitals. Maths instead of vocabulary. A high-score variable holding the champion's name. Or a time limit: ten seconds per question, then the chance is gone."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Jedes Quiz der Welt läuft nach diesem Gerüst: fragen, prüfen, zählen. Wenn deines steht, hast du verstanden, wozu Bedingungen da sind – nicht für die Theorie, sondern für Spiele.",
+            "en": "Every quiz in the world runs on this skeleton: ask, check, count. Once yours stands, you understood what conditions are for – not for theory, but for games."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Jede gute Quizshow hat Joker – baue sie ein: Der 50:50-Joker streicht zwei falsche Antworten (zwei Variablen ausblenden), der Publikumsjoker fragt die Klasse (alle zeigen A, B, C oder D mit Fingern). Jeder Joker ist eine Bedingung mehr: Falls Joker gedrückt und noch vorhanden, dann helfen. So wächst ein Spiel: eine Bedingung nach der anderen.",
+            "en": "Every good quiz show has jokers – build them in: the 50:50 joker deletes two wrong answers (hide two variables), the audience joker asks the class (all show A, B, C or D with fingers). Every joker is one more condition: if joker pressed and still available, then help. Thus a game grows: one condition after another."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "tip",
+          "icon": "🏆",
+          "title": {
+            "de": "Level 2",
+            "en": "Level 2"
+          },
+          "text": {
+            "de": "Ab 3 Punkten schaltet dein Quiz Level 2 frei: schwerere Fragen, weniger Zeit – gesteuert über eine Variable Level. Bedingungen prüfen nicht nur Antworten, sie steuern ganze Spiele. Willkommen im Game Design.",
+            "en": "From 3 points your quiz unlocks level 2: harder questions, less time – steered via a Level variable. Conditions check not only answers, they steer whole games. Welcome to game design."
+          }
         }
       ]
     }

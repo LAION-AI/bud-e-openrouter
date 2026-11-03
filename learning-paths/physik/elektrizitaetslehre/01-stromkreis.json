@@ -10,7 +10,7 @@
   },
   "icon": "🔌",
   "accent": "amber",
-  "minutes": 12,
+  "minutes": 22,
   "screens": [
     {
       "key": "der-kreis",
@@ -176,12 +176,12 @@
           "tone": "warn",
           "icon": "🪫",
           "title": {
-            "de": "Deshalb ist eine 9-Volt-Batterie harmlos",
-            "en": "That is why a 9 volt battery is harmless"
+            "de": "Kleinspannung braucht trotzdem Regeln",
+            "en": "Low voltage still needs safety rules"
           },
           "text": {
-            "de": "Leg sie auf die Zunge - es kribbelt, mehr nicht. Dieselbe Batterie kann aber eine Lampe zum Leuchten bringen. Es liegt nicht daran, dass „wenig Strom drin“ wäre: Es liegt daran, dass 9 Volt zu wenig Druck sind, um durch deine Haut nennenswert etwas zu treiben. Bei 230 Volt ist das anders - dazu später mehr.",
-            "en": "Put it on your tongue - it tingles, no more. The same battery can light a lamp. It is not because there is \"little current in it\": it is because 9 volts is too little push to drive anything worth mentioning through your skin. At 230 volts that changes - more on this later."
+            "de": "Eine geeignete Kleinspannungsquelle ist für Schulmodelle vorgesehen, nicht für Körperkontakte. Batterien niemals an Zunge oder Haut ausprobieren, öffnen oder kurzschließen: Sie können sich stark erhitzen und Brände verursachen. Welche Quelle und welche Bauteile geeignet sind, legt die Lehrkraft fest. Für eigene Erkundungen genügt eine Simulation. Netzspannung ist lebensgefährlich und bleibt vollständig außerhalb aller Versuche.",
+            "en": "A suitable low-voltage source is intended for school models, not contact with the body. Never test batteries on your tongue or skin, open them or short-circuit them: they can overheat and cause fires. The teacher decides which source and components are suitable. A simulation is sufficient for independent exploration. Mains voltage is potentially lethal and is excluded from every experiment."
           }
         },
         {
@@ -259,6 +259,83 @@
           }
         },
         {
+          "kind": "paragraph",
+          "text": {
+            "de": "Basteln ohne Gefahr: Batterie, Lämpchen, zwei Kabel – mehr braucht der erste Stromkreis nicht. Leuchtet es nicht, ist fast immer ein Kontakt lose: wackeln, drücken, staunen. Jeder Elektriker hat so angefangen – mit Wackelkontakten statt Wissen. Der Unterschied: Er gab nicht auf, bis es brannte. Also: das Lämpchen.",
+            "en": "Tinkering without danger: battery, bulb, two wires – the first circuit needs no more. If it does not glow, almost always a contact is loose: wiggle, press, marvel. Every electrician started so – with loose contacts instead of knowledge. The difference: they did not quit until it burned. Meaning: the bulb."
+          }
+        }
+      ]
+    },
+    {
+      "key": "schaltplan",
+      "title": {
+        "de": "Ein Plan zeigt Verbindungen, nicht Zimmerlage",
+        "en": "A diagram shows connections, not positions"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "In einem Schaltplan stehen Symbole für Quelle, Lampe, Schalter und Messgeräte. Die gezeichnete Lage auf dem Papier ist nicht entscheidend. Wichtig ist, welche Anschlüsse leitend verbunden sind. Ein langer Umweg im Bild bedeutet nicht automatisch einen großen elektrischen Widerstand; dafür wären Material, Länge und Querschnitt des wirklichen Leiters relevant.",
+            "en": "A circuit diagram uses symbols for the source, lamp, switch and meters. Their positions on the page are not what matters; the conducting connections between terminals are. A long detour in the drawing does not automatically represent a large electrical resistance. That would depend on the actual wire's material, length and cross-section."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Zum Prüfen verfolgst du einen geschlossenen Weg von einem Quellenpol durch das Bauteil zum anderen Pol. Ein Spannungsmessgerät vergleicht zwei Punkte und wird parallel angeschlossen. Ein Strommessgerät muss Teil des untersuchten Wegs sein und wird in Reihe eingefügt. In der Simulation kannst du diese Anschlüsse gefahrlos vergleichen. Bei echten Schulgeräten werden Messbereich und Anschlüsse nur nach Anleitung gewählt. Ein Strommessgerät direkt zwischen die Quellenpole kann einen Kurzschluss verursachen. Deshalb wird ein Aufbau vor dem Einschalten geprüft, nicht durch Versuch und Irrtum an einer Quelle. Steckdosen, Netzgeräteinneres und Körperkontakte sind niemals geeignete Messstellen für diesen Lernpfad.",
+            "en": "To check a circuit, trace a closed path from one source terminal through the component to the other terminal. A voltmeter compares two points and is connected in parallel. An ammeter must lie in the path being measured and is inserted in series. A simulation lets you compare these connections safely. For real school equipment, ranges and terminals are chosen only under instruction. Connecting an ammeter directly across a source can cause a short circuit. A setup is therefore checked before switching on, not by trial and error on a supply. Sockets, power-supply interiors and body contacts are never suitable measuring points in this path."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Welche Informationen bleiben gleich, wenn du einen Schaltplan anders anordnest, ohne eine Verbindung zu ändern? Ein Schalter kann auf dem Papier links oder rechts von einer Lampe stehen und denselben unverzweigten Weg unterbrechen. Ein scheinbar ähnlicher Strich, der zwei Pole direkt verbindet, hätte dagegen eine ganz andere Funktion. Verfolge deshalb die Anschlüsse statt nur die Bildähnlichkeit. Gerade im virtuellen Modell kannst du denselben Plan umordnen und prüfen, welche Verbindungen unverändert geblieben sind.",
+            "en": "Which information stays unchanged when a circuit diagram is rearranged without changing any connection? A switch drawn to the left or right of a lamp can interrupt the same unbranched path. A similar-looking line joining source terminals directly would do something very different. Trace connections rather than picture resemblance. In a virtual model, rearrange the same diagram and check which connections remain unchanged."
+          }
+        }
+      ]
+    },
+    {
+      "key": "ladung-und-energie",
+      "title": {
+        "de": "Die Lampe verbraucht Energie, nicht Ladung",
+        "en": "A lamp uses energy, not charge"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Vor und hinter einer einzelnen Lampe fließt im unverzweigten stationären Stromkreis dieselbe Stromstärke. Die Lampe verbraucht also nicht einen Teil der Elektronen. Sie überträgt elektrische Energie auf Licht und innere Energie. Die Quelle stellt die notwendige Energie durch einen anderen Prozess bereit, bei einer Batterie beispielsweise aus chemischer Energie.",
+            "en": "In an unbranched steady circuit, current is the same before and after a single lamp. The lamp does not consume some of the electrons. It transfers electrical energy into light and internal energy. The source provides the necessary energy through another process, such as a battery's chemical reactions."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Dieser Unterschied zeigt die Grenze des Wasserbilds. Wasser kann aus einem offenen Rohr herauslaufen; ein stationärer geschlossener Stromkreis verliert nicht ständig Ladung in der Lampe. Außerdem bewegen sich Ladungsträger langsam, während eine Änderung des elektrischen Zustands viel schneller durch die Anordnung wirkt. Zum Prüfen einer Taschenlampen-Idee könntest du daher zwei Pfeilarten zeichnen: einen geschlossenen Weg für Ladung und Energiepfeile von der Quelle zur Lampe und Umgebung. Der Schalter unterbricht den Stromweg, er „verbraucht“ nicht die Spannung. Ein guter Entwurf nennt die richtige Batterie und vorgesehene Bauteile, ohne Akkus zu öffnen oder unbekannte Spannungsquellen anzuschließen. Eine virtuelle Taschenlampe genügt.",
+            "en": "This distinction reveals a limit of the water analogy. Water can escape from an open pipe, but a closed steady circuit does not continuously lose charge inside its lamp. Charge carriers also move slowly while a change in the electrical state propagates much faster through the arrangement. For a torch design, draw two kinds of arrows: a closed route for charge and energy arrows from the source to the lamp and surroundings. The switch interrupts the current path; it does not “consume” voltage. A sound proposal specifies the intended battery and components without opening rechargeable cells or connecting unknown power sources. A virtual torch is sufficient."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Entwirf zwei verschiedene Pfeilbilder für Ladungstransport und Energieübertragung in einer gedachten Taschenlampe. Ein Ladungspfeil läuft durch die Lampe weiter, während Energiepfeile zu Licht und Umgebung abzweigen. Diese zwei Darstellungen beantworten verschiedene Fragen. Die erste verfolgt den erhaltenen Ladungsstrom, die zweite die Empfänger der übertragenen Energie. Wenn du beide mit derselben Pfeilart zeichnest, kann leicht der Eindruck entstehen, Ladung verschwinde als Licht. Eine klare Legende verhindert genau diese falsche Vorstellung.",
+            "en": "Draw two different arrow diagrams for charge transport and energy transfer in an imagined torch. A charge arrow continues through the lamp while energy arrows lead to light and surroundings. The diagrams answer different questions: one tracks conserved charge flow, the other energy recipients. Using identical arrows can suggest charge disappears as light. A clear legend prevents precisely that misconception."
+          }
+        },
+        {
           "kind": "sources",
           "items": [
             {
@@ -274,6 +351,20 @@
                 "en": "LEIFIphysik: electric circuits"
               },
               "url": "https://www.leifiphysik.de/elektrizitaetslehre/einfacher-stromkreis"
+            },
+            {
+              "label": {
+                "de": "Hamburg: Physik Gymnasium (2024)",
+                "en": "Hamburg: Gymnasium physics (2024)"
+              },
+              "url": "https://www.hamburg.de/resource/blob/798534/4cf0047ad61effacd1ff7e6ad819fa41/physik-data.pdf"
+            },
+            {
+              "label": {
+                "de": "Hamburg: Physik Stadtteilschule (2024)",
+                "en": "Hamburg: Stadtteilschule physics (2024)"
+              },
+              "url": "https://www.hamburg.de/resource/blob/798426/ba414a0ace36d17b7813a855db625c42/physik-data.pdf"
             }
           ]
         }
@@ -284,50 +375,46 @@
     {
       "kind": "cloze",
       "title": {
-        "de": "1. Lückentext: der geschlossene Kreis",
-        "en": "1. Fill in the blanks: the closed circle"
+        "de": "1. Lückentext",
+        "en": "1. Fill in the blanks"
       },
       "intro": {
-        "de": "Setze die fehlenden Wörter ein.",
-        "en": "Fill in the missing words."
+        "de": "Ergänze die fehlenden Fachwörter. Alle Begriffe findest du im Pfad.",
+        "en": "Complete the missing technical words. Every term appears in this path."
       },
       "text": {
-        "de": "Damit überhaupt etwas fließt, muss der Weg geschlossen sein; man spricht deshalb vom ___. Elektrischer Strom ist bewegte ___, in einem Metall sind das die freien ___. Wie stark es drängt, sagt die ___, gemessen in ___. Wie viel tatsächlich pro Sekunde durchkommt, sagt die ___, gemessen in ___. Die Spannung liegt an, auch wenn gar nichts ___. Gemessen wird die Spannung ___ zum Bauteil, die Stromstärke dagegen ___ zum Bauteil. Verbindet man die beiden Pole einer Quelle fast widerstandsfrei, entsteht ein ___.",
-        "en": "For anything to flow at all the way must be closed; this is why one speaks of a ___. Electric current is charge in ___, and in a metal that means the free ___. How hard it pushes is given by the ___, measured in ___. How much actually gets through per second is given by the ___, measured in ___. The voltage is present even when nothing ___ at all. Voltage is measured ___ to the component, current ___ to it. Joining the two terminals of a source with almost no resistance produces a ___."
+        "de": "Ein geschlossener leitender Weg heißt ___. Bewegte elektrische Ladung bildet einen ___. In Metallen sind die beweglichen Ladungsträger ___. Die elektrische Spannung wird in ___ gemessen. Die Stromstärke hat die Einheit ___. Ein Spannungsmessgerät vergleicht zwei elektrische ___. Ein Strommessgerät gehört in ___. Eine fast widerstandsfreie Verbindung der Pole verursacht einen ___. Die Lampe überträgt Energie, verbraucht aber keine ___.",
+        "en": "A closed conducting path is a ___. Moving electric charge forms a ___. Mobile charge carriers in metals are ___. Voltage is measured in ___. Current is measured in ___. A voltmeter compares two electrical ___. An ammeter belongs in ___. A nearly resistance-free connection across a source causes a ___. A lamp transfers energy but does not consume ___."
       }
     },
     {
       "kind": "compare",
       "title": {
-        "de": "2. Vergleiche: zwei Batterien, ein Unterschied",
-        "en": "2. Compare: two batteries, one difference"
+        "de": "2. Erklären und vergleichen (AB II)",
+        "en": "2. Explain and compare (level II)"
       },
       "intro": {
-        "de": "Setze zwei Beobachtungen zueinander in Beziehung.",
-        "en": "Relate two observations to each other."
+        "de": "Antworte mit drei bis vier kurzen Sätzen. Nutze das Gelesene und begründe deinen Vergleich.",
+        "en": "Answer in three or four short sentences. Use what you have read and explain your comparison."
       },
       "text": {
-        "de": "Eine 9-Volt-Blockbatterie auf der Zunge kribbelt nur. Dieselbe Batterie bringt aber ein Lämpchen zum Leuchten, das dabei spürbar warm wird. Eine Steckdose mit 230 Volt kann dagegen lebensgefährlich sein. Erkläre mithilfe von Spannung und Stromstärke, warum die Batterie im einen Fall genug „Kraft“ hat und im anderen nicht - und warum bei der Steckdose beides zusammenkommt.",
-        "en": "A 9 volt battery on your tongue only tingles. The same battery lights a bulb which gets noticeably warm. A 230 volt socket, by contrast, can be lethal. Using voltage and current, explain why the battery has enough \"force\" in one case and not the other - and why with the socket both come together."
-      },
-      "hint": {
-        "de": "Überlege, wodurch der Strom jeweils hindurch muss und wie leicht er das kann.",
-        "en": "Think about what the current has to pass through in each case, and how easily it can."
+        "de": "Vergleiche Stromstärke und Spannung an einer Lampe. Erkläre, warum ihre Messgeräte unterschiedlich angeschlossen werden. Begründe außerdem, warum die Lampe Energie, aber nicht Ladung verbraucht.",
+        "en": "Compare current and voltage at a lamp. Explain why their meters need different connections. Also explain why the lamp uses energy but does not consume charge."
       }
     },
     {
       "kind": "reflect",
       "title": {
-        "de": "3. Zum Nachdenken: das Bild und die Sache",
-        "en": "3. Something to think about: the picture and the thing"
+        "de": "3. Deine Idee im Alltag (AB III)",
+        "en": "3. Your idea for everyday life (level III)"
       },
       "intro": {
-        "de": "Auf diese Frage gibt es keine richtige Antwort.",
-        "en": "There is no right answer to this one."
+        "de": "Entwickle eine eigene Idee in drei bis vier kurzen Sätzen. Begründe sie mit Physik; mehrere Lösungen sind möglich.",
+        "en": "Develop your own idea in three or four short sentences. Support it with physics; several answers are possible."
       },
       "text": {
-        "de": "Der Vergleich mit dem Wasser hilft enorm - und stimmt trotzdem nicht ganz: Wasser kann auslaufen, Ladung nicht; ein Rohr kann leer sein, ein Kabel ist immer voll. In fast jedem Fach arbeitest du mit solchen Bildern, vom Atommodell bis zur Landkarte. Überlege, wo dir ein Bild schon einmal geholfen und wo es dich in die Irre geführt hat. Woran könnte man merken, dass ein Vergleich an seine Grenze kommt?",
-        "en": "The water comparison helps enormously - and still is not quite right: water can leak out, charge cannot; a pipe can be empty, a cable is always full. In almost every subject you work with such pictures, from atomic models to maps. Think of a time a picture helped you and a time it led you astray. How might you notice that a comparison has reached its limit?"
+        "de": "Entwirf auf Papier eine sichere virtuelle Taschenlampe mit Schalter. Zeige einen Ladungsweg und zwei Energieempfänger. Erkläre eine Grenze des Wasservergleichs.",
+        "en": "Design a safe virtual torch with a switch on paper. Show a charge path and two energy recipients. Explain one limit of the water analogy."
       }
     }
   ]

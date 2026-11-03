@@ -10,7 +10,7 @@
   },
   "icon": "🧾",
   "accent": "amber",
-  "minutes": 14,
+  "minutes": 22,
   "screens": [
     {
       "key": "watt",
@@ -153,6 +153,13 @@
             "de": "Sieh dir die Liste an: Die dicken Zahlen gehören alle zu Geräten, die etwas warm machen. Wasserkocher, Föhn, Herd, Toaster, Waschmaschine. Elektronik dagegen - Handy, Fernseher, Laptop - ist im Vergleich winzig. Wärme zu erzeugen kostet mehr Leistung als jedes Rechnen.",
             "en": "Look at the list: the big numbers all belong to devices that make something warm. Kettle, hairdryer, hob, toaster, washing machine. Electronics by contrast - phone, television, laptop - are tiny. Making heat costs more power than any amount of computing."
           }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Lies die Schilder: Fön 2000 Watt, LED 9 Watt – der Fön frisst über zweihundertmal so viel. Darum wird er heiß und die LED nicht: Leistung wird Wärme oder Licht. Wer Geräte vergleicht, liest Watt wie PS beim Auto: mehr Dampf, mehr Durst.",
+            "en": "Read the labels: hairdryer 2000 watts, LED 9 watts – the dryer devours over two hundred times as much. Hence it gets hot and the LED not: power turns heat or light. Whoever compares devices reads watts like horsepower at cars: more steam, more thirst."
+          }
         }
       ]
     },
@@ -166,8 +173,8 @@
         {
           "kind": "lead",
           "text": {
-            "de": "Auf der Stromrechnung steht nicht Watt, sondern Kilowattstunden. Und der Preis pro Kilowattstunde liegt in Deutschland derzeit bei ungefähr 40 Cent. Damit kannst du jedes Gerät durchrechnen.",
-            "en": "The bill does not show watts but kilowatt hours. And the price per kilowatt hour in Germany is currently around 40 cents. With that you can work out any appliance."
+            "de": "Auf der Stromrechnung steht nicht Watt, sondern Kilowattstunden. Und der Preis pro Kilowattstunde liegt in Deutschland im fiktiven Rechenbeispiel bei ungefähr 40 Cent. Damit kannst du jedes Gerät durchrechnen.",
+            "en": "The bill does not show watts but kilowatt hours. And the price per kilowatt hour in Germany is in this fictional calculation example around 40 cents. With that you can work out any appliance."
           }
         },
         {
@@ -362,6 +369,83 @@
           }
         },
         {
+          "kind": "paragraph",
+          "text": {
+            "de": "Der Stromzähler ist deine Ehrlichkeit in Zahlen: Er zählt Kilowattstunden – Leistung mal Zeit. Eine Stunde Fön: zwei Kilowattstunden. Hundert Stunden LED: keine einzige. Wer sparen will, jagt nicht Standby-Krümel, sondern Stundenfresser: heizen, duschen, trocknen. Die Großen fressen den Zähler, nicht die Kleinen.",
+            "en": "The power meter is your honesty in numbers: it counts kilowatt hours – power times time. One hour dryer: two kilowatt hours. A hundred hours LED: not a single one. Whoever wants to save hunts not standby crumbs but hour eaters: heating, showering, drying. The big ones eat the meter, not the small."
+          }
+        }
+      ]
+    },
+    {
+      "key": "lastprofil",
+      "title": {
+        "de": "Der Tagesverlauf kann wichtiger sein als die Höchstzahl",
+        "en": "A daily profile can matter more than the largest number"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Ein Gerät mit 100 W läuft drei Stunden und benötigt dabei im vereinfachten Modell 0,3 kWh. Ein Gerät mit 10 W über 24 Stunden braucht 0,24 kWh. Die Leistungen unterscheiden sich um den Faktor zehn, die Energiemengen aber nur wenig. Für reale Geräte kann die Leistung während des Betriebs schwanken. Ein Kühlschrank schaltet beispielsweise seinen Kompressor nicht ununterbrochen ein.",
+            "en": "A 100 W device running for three hours uses 0.3 kWh in a simplified model. A 10 W device running for 24 hours uses 0.24 kWh. Their powers differ by a factor of ten, but their energy amounts differ only slightly. Real device power may vary during operation. A refrigerator, for example, does not run its compressor continuously."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Ein Lastprofil zeigt Leistung über der Zeit. Die Energiemenge ergibt sich aus den einzelnen Abschnitten, nicht blind aus der höchsten Wattzahl mal dem ganzen Tag. Für eine Kostenrechnung kannst du einen ausdrücklich angenommenen Rechenpreis verwenden. Die früher oft genannten 40 Cent pro kWh sind hier nur ein fiktiver Beispielpreis, keine aktuelle Tarifauskunft. Grundpreise und andere Vertragsbestandteile bleiben im einfachen Modell weg. Für einen Vergleich reichen bereitgestellte Geräteangaben und Zeitpläne. Du brauchst keine Steckdose zu öffnen, Geräte absichtlich laufen zu lassen oder persönliche Abrechnungen anderer Menschen zu sammeln. Eine klare Modellrechnung macht Unterschiede sichtbar, ohne solche Eingriffe.",
+            "en": "A load profile shows power over time. Energy comes from adding the separate intervals, not blindly multiplying peak power by an entire day. For cost calculations, use an explicitly assumed example price. The often-used 40 cents per kWh here is only a fictional calculation price, not current tariff information. Standing charges and other contract details are left out of the simple model. Supplied device ratings and schedules are sufficient for comparison. You do not need to open sockets, deliberately leave appliances running or collect other people's private bills. A clear model calculation makes differences visible without those interventions."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Warum dürfen zwei Geräte mit sehr unterschiedlicher Wattzahl trotzdem ähnliche Tagesenergiemengen benötigen? Ein Kühlschrank mit wechselndem Betrieb lässt sich nicht zuverlässig so behandeln, als läge die höchste Leistung ständig an. Zerlege den gegebenen Tag stattdessen in Abschnitte und addiere die Energiemengen. Dieselbe Methode funktioniert für einen Computer mit Ruhe- und Arbeitsphasen. Ein transparentes Beispiel nennt die Zeitannahmen, statt aus einer Zahl auf dem Typenschild automatisch einen Jahreswert abzuleiten.",
+            "en": "Why can devices with very different wattages still use similar daily energy amounts? A cycling refrigerator cannot reliably be modelled as drawing maximum power continuously. Split the supplied day into intervals and add energy amounts. The same method applies to a computer with idle and active periods. A transparent example states timing assumptions rather than deriving an annual figure automatically from a nameplate."
+          }
+        }
+      ]
+    },
+    {
+      "key": "entscheidung",
+      "title": {
+        "de": "Sparen heißt nicht jede Nutzung verbieten",
+        "en": "Saving energy does not mean banning every useful activity"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Wenn eine Lampe weniger elektrische Energie für dieselbe gewünschte Beleuchtung benötigt, ist sie für diese Aufgabe effizienter. Wenn sie kürzer eingeschaltet wird, verändert sich die Nutzungsdauer. Beide Maßnahmen können den Bedarf senken, sind aber nicht dieselbe Strategie. Eine zu dunkle Treppe wäre keine sinnvolle Verbesserung, auch wenn der Zähler langsamer läuft.",
+            "en": "If a lamp uses less electrical energy for the same useful illumination, it is more efficient for that task. Switching it on for less time changes its duration of use. Both may reduce demand, but they are different strategies. Making stairs too dark would not be a sensible improvement merely because the meter runs more slowly."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Für eine Schulidee könntest du ein gut lesbares Energieschild entwerfen. Es zeigt eine Beispiel-Leistung, eine angenommene tägliche Dauer und die daraus berechnete Energiemenge. Statt einzelne Personen bloßzustellen, erklärt es einen Zusammenhang. Auch Lebensdauer, Reparatur und Herstellung eines neuen Geräts gehören zu einer vollständigen Umweltbewertung. Ein kleiner Betriebsunterschied rechtfertigt nicht automatisch einen Neukauf. Die Physik liefert eine transparente Rechnung; welche Nutzung wichtig und welcher Aufwand vertretbar ist, braucht zusätzliche Kriterien. Du entscheidest deshalb nicht nur nach einer Wattzahl. Ein kreativer Vorschlag beschreibt einen konkreten Nutzen, eine mögliche Einsparung und eine Grenze seiner Aussage. Das lässt Raum für Bedürfnisse unterschiedlicher Menschen statt pauschaler Verbote.",
+            "en": "For a school idea, design an easy-to-read energy label. Show an example power, an assumed daily duration and the resulting energy amount. Explain the relationship without singling out or shaming individuals. A complete environmental assessment also considers service life, repair and production of a new appliance. A small operational difference does not automatically justify replacing equipment. Physics provides a transparent calculation; deciding which uses matter and which effort is reasonable requires additional criteria. Do not decide from wattage alone. A creative proposal names a concrete benefit, possible saving and limit to its claim. That leaves room for different people's needs rather than blanket prohibitions."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Entwirf ein Energieschild, das eine sinnvolle Nutzung verbessert und zugleich verständlich zeigt, welche Annahmen die Rechnung verwendet. Eine Anzeige „weniger Watt“ wäre unvollständig, wenn die neue Lampe zugleich wesentlich dunkler ist. Für einen Effizienzvergleich muss die gewünschte Beleuchtung ausreichend ähnlich bleiben. Eine kürzere Nutzungszeit wäre dagegen eine Veränderung des Bedarfs. Dein Schild kann beides unterscheiden und zusätzlich erklären, welche Nutzung unbedingt erhalten bleiben soll. So wird die Physik zu einer Hilfe für vernünftige Entscheidungen statt zu einem pauschalen Spargebot.",
+            "en": "Design an energy label that improves a useful activity while clearly stating the assumptions behind its calculation. “Fewer watts” is incomplete if the new lamp is much dimmer. An efficiency comparison needs sufficiently similar useful illumination. Shorter operating time instead changes demand. Your label can distinguish both and explain which service must remain. Physics then supports sensible choices instead of becoming a blanket instruction to cut every use."
+          }
+        },
+        {
           "kind": "sources",
           "items": [
             {
@@ -377,6 +461,20 @@
                 "en": "Umweltbundesamt: household electricity use"
               },
               "url": "https://www.umweltbundesamt.de"
+            },
+            {
+              "label": {
+                "de": "Hamburg: Physik Gymnasium (2024)",
+                "en": "Hamburg: Gymnasium physics (2024)"
+              },
+              "url": "https://www.hamburg.de/resource/blob/798534/4cf0047ad61effacd1ff7e6ad819fa41/physik-data.pdf"
+            },
+            {
+              "label": {
+                "de": "Hamburg: Physik Stadtteilschule (2024)",
+                "en": "Hamburg: Stadtteilschule physics (2024)"
+              },
+              "url": "https://www.hamburg.de/resource/blob/798426/ba414a0ace36d17b7813a855db625c42/physik-data.pdf"
             }
           ]
         }
@@ -387,50 +485,46 @@
     {
       "kind": "cloze",
       "title": {
-        "de": "1. Lückentext: von Watt zur Rechnung",
-        "en": "1. Fill in the blanks: from watts to the bill"
+        "de": "1. Lückentext",
+        "en": "1. Fill in the blanks"
       },
       "intro": {
-        "de": "Setze die fehlenden Wörter, Zahlen und Einheiten ein.",
-        "en": "Fill in the missing words, numbers and units."
+        "de": "Ergänze die fehlenden Fachwörter. Alle Begriffe findest du im Pfad.",
+        "en": "Complete the missing technical words. Every term appears in this path."
       },
       "text": {
-        "de": "Wie schnell ein Gerät Energie umsetzt, sagt die ___, gemessen in ___. Sie ergibt sich aus P = U · ___. Bei 230 Volt zieht ein Wasserkocher mit 2 000 Watt also rund ___ Ampere. Auf der Rechnung steht dagegen nicht die Leistung, sondern die umgesetzte ___, gemessen in ___. Man erhält sie, indem man die Leistung mit der ___ multipliziert. Eine Kilowattstunde kostet derzeit etwa ___ Cent. Obwohl der Wasserkocher zwanzigmal so stark ist wie der Kühlschrank, kostet dieser im Jahr mehr - entscheidend ist eben nicht die Leistung allein, sondern auch die ___. Energie geht dabei nie verloren, sie wird nur ___; bei vielen Geräten landet ein Teil unerwünscht als ___.",
-        "en": "How fast a device converts energy is given by the ___, measured in ___. It follows from P = U · ___. At 230 volts a 2,000 watt kettle therefore draws about ___ amperes. The bill, however, does not show power but the ___ converted, measured in ___. You get it by multiplying the power by the ___. One kilowatt hour currently costs about ___ cents. Although the kettle is twenty times as powerful as the fridge, the fridge costs more per year - what decides is not the power alone but also the ___. Energy is never lost in this, only ___; in many devices a share ends up unwanted as ___."
+        "de": "Energieumwandlung pro Zeit heißt ___. Ihre Einheit ist ___. Das Produkt aus Spannung und Stromstärke ergibt eine elektrische ___. Leistung mal Zeit ergibt die umgesetzte ___. Eine gebräuchliche Energieeinheit ist die ___. Für eine Kostenrechnung braucht man einen angenommenen ___. Der Tagesverlauf einer Leistung heißt ___. Statt Vernichtung erfolgt bei Energie eine ___. Ein unerwünschter Anteil kann als ___ an die Umgebung gelangen.",
+        "en": "Energy conversion per unit time is ___. Its unit is the ___. Voltage times current gives electrical ___. Power times time gives converted ___. A common energy unit is the ___. Cost calculations require an assumed ___. A daily power curve is a ___. Energy is not destroyed but undergoes ___. An unwanted share may reach the surroundings as ___."
       }
     },
     {
       "kind": "compare",
       "title": {
-        "de": "2. Vergleiche und rechne: stark gegen ausdauernd",
-        "en": "2. Compare and calculate: powerful against persistent"
+        "de": "2. Erklären und vergleichen (AB II)",
+        "en": "2. Explain and compare (level II)"
       },
       "intro": {
-        "de": "Rechne beide Fälle aus und ziehe daraus einen Schluss.",
-        "en": "Work out both cases and draw a conclusion."
+        "de": "Antworte mit drei bis vier kurzen Sätzen. Nutze das Gelesene und begründe deinen Vergleich.",
+        "en": "Answer in three or four short sentences. Use what you have read and explain your comparison."
       },
       "text": {
-        "de": "Ein Wasserkocher mit 2 000 Watt läuft täglich zehn Minuten. Ein Router mit 10 Watt läuft rund um die Uhr. Rechne für beide den Jahresverbrauch in Kilowattstunden aus und die Kosten bei 40 Cent je Kilowattstunde. Erkläre anschließend, warum die Wattzahl allein eine schlechte Grundlage für Sparentscheidungen ist - und welche zweite Größe man immer mitdenken muss.",
-        "en": "A 2,000 watt kettle runs ten minutes a day. A 10 watt router runs around the clock. Work out the yearly consumption in kilowatt hours for both and the cost at 40 cents per kilowatt hour. Then explain why wattage alone is a poor basis for saving decisions - and which second quantity always has to be considered."
-      },
-      "hint": {
-        "de": "Ein Jahr hat 365 Tage; für den Router rechne mit 24 Stunden täglich.",
-        "en": "A year has 365 days; for the router use 24 hours a day."
+        "de": "Vergleiche 100 W für drei Stunden mit 10 W für 24 Stunden. Erkläre, warum die Energiemengen trotz verschiedener Leistung ähnlich sind. Warum reicht die höchste Wattzahl bei schwankendem Betrieb nicht als Jahresprognose?",
+        "en": "Compare 100 W for three hours with 10 W for 24 hours. Explain why the energy amounts are similar despite different powers. Why is peak wattage insufficient for predicting annual use with varying operation?"
       }
     },
     {
       "kind": "reflect",
       "title": {
-        "de": "3. Zum Nachdenken: die unsichtbare Rechnung",
-        "en": "3. Something to think about: the invisible bill"
+        "de": "3. Deine Idee im Alltag (AB III)",
+        "en": "3. Your idea for everyday life (level III)"
       },
       "intro": {
-        "de": "Auf diese Frage gibt es keine richtige Antwort.",
-        "en": "There is no right answer to this one."
+        "de": "Entwickle eine eigene Idee in drei bis vier kurzen Sätzen. Begründe sie mit Physik; mehrere Lösungen sind möglich.",
+        "en": "Develop your own idea in three or four short sentences. Support it with physics; several answers are possible."
       },
       "text": {
-        "de": "Strom ist die einzige Ware, die man kauft, ohne sie zu sehen, zu wiegen oder abzuzählen - man merkt erst am Jahresende, wie viel es war. Überlege, was sich ändern würde, wenn an jedem Gerät sichtbar mitliefe, was es gerade kostet. Und dann eine Frage, die weiter reicht: Wo in deinem Alltag verbrauchst du noch etwas, dessen Menge du gar nicht wahrnimmst - und würde es dein Verhalten ändern, wenn du es sehen könntest?",
-        "en": "Electricity is the only thing you buy without seeing, weighing or counting it - you only notice at the end of the year how much there was. Consider what would change if every device visibly displayed what it was costing right now. And then a question that reaches further: where else in your daily life do you consume something whose quantity you never perceive - and would seeing it change what you do?"
+        "de": "Gestalte ein verständliches Energieschild für eine sinnvolle Schulnutzung. Zeige Modellannahmen, eine mögliche Verbesserung und einen Zielkonflikt, ohne Menschen bloßzustellen.",
+        "en": "Create a clear energy label for a useful school activity. Show model assumptions, a possible improvement and a trade-off without shaming people."
       }
     }
   ]

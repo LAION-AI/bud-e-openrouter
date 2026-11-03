@@ -1,0 +1,15 @@
+{
+  "key": "informatik-und-medien",
+  "title": {
+    "de": "Computer und deine digitale Welt",
+    "en": "Computers and your digital world"
+  },
+  "description": {
+    "de": "Dateien finden, klare Anweisungen geben und persönliche Daten schützen.",
+    "en": "Find files, write clear instructions and protect personal information."
+  },
+  "icon": "💻",
+  "accent": "indigo",
+  "badge": "Jg. 5–6",
+  "level": "klasse56"
+}

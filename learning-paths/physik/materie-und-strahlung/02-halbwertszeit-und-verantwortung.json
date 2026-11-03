@@ -1,0 +1,368 @@
+{
+  "key": "halbwertszeit-und-verantwortung",
+  "title": {
+    "de": "Warum die Hälfte nicht nach der nächsten Hälfte verschwunden ist",
+    "en": "Why two half-lives do not make everything disappear"
+  },
+  "summary": {
+    "de": "Zufall, Halbwertszeit, Strahlenschutz und Kernenergie verbinden Messdaten mit verantwortlichen Entscheidungen.",
+    "en": "Randomness, half-life, radiation protection and nuclear energy connect data with responsible decisions."
+  },
+  "icon": "⏳",
+  "accent": "violet",
+  "minutes": 22,
+  "screens": [
+    {
+      "key": "zufall",
+      "title": {
+        "de": "Einzelne Kerne haben keinen sichtbaren Countdown",
+        "en": "Individual nuclei have no visible countdown"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Bei einem instabilen Kern lässt sich der genaue Zeitpunkt seiner spontanen Umwandlung nicht vorhersagen. Für sehr viele gleichartige Kerne kann man den Verlauf trotzdem statistisch beschreiben. Das ist kein Widerspruch: Auch bei vielen Münzwürfen sind Anteile vorhersehbarer als das nächste einzelne Ergebnis. Die Kerne besitzen dabei kein Alter, nach dem jeder zuverlässig an der Reihe wäre.",
+            "en": "The precise moment when an unstable nucleus spontaneously changes cannot be predicted. A very large collection of identical nuclei can nevertheless be described statistically. There is no contradiction: with many coin tosses, overall proportions are more predictable than the next individual outcome. Nuclei do not carry an age after which each reliably takes its turn."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Die Aktivität A gibt die Zahl der Kernumwandlungen pro Sekunde an. Ihre Einheit ist Becquerel, kurz Bq. Eine Probe mit 1000 Bq erlebt im Mittel 1000 Umwandlungen pro Sekunde. Ein Messgerät registriert davon je nach Geometrie und Empfindlichkeit nur einen Teil. Eine hohe oder niedrige Zahl ohne Stoff, Strahlungsart und Einwirkungsbedingungen sagt noch nicht, welche Dosis ein Mensch erhält. Radioaktivität bezeichnet die Eigenschaft instabiler Kerne, Strahlung ist die ausgesandte Wirkung. Für unsere Untersuchung reichen eine Zufallssimulation und fertige Daten. Es gibt keinerlei Auftrag, reale radioaktive Stoffe zu suchen oder zu handhaben.",
+            "en": "Activity A gives the number of nuclear transformations per second. Its unit is the becquerel, Bq. A sample with 1000 Bq undergoes an average of 1000 transformations per second. Depending on geometry and sensitivity, a detector records only some of them. A large or small number alone does not tell us a person's dose without information about material, radiation type and exposure conditions. Radioactivity is the property of unstable nuclei; radiation is what they emit. A random-process simulation and supplied data are sufficient here. There is no instruction to search for or handle real radioactive substances."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Warum passen Zufall beim einzelnen Kern und ein regelmäßiger Verlauf bei vielen Kernen zusammen? In einer Zufallssimulation können zwei Läufe nach derselben Zeit verschiedene Restzahlen zeigen. Das ist beim statistischen Modell erwartbar. Bei größeren Anfangsmengen wird das relative Bild meist gleichmäßiger. Verwechsle deshalb die vorgegebene Zerfallswahrscheinlichkeit nicht mit einem festen Plan für jeden einzelnen Kern. Eine Kurve beschreibt das Ensemble; sie liefert keine Uhr, wann ein bestimmter markierter Kern umgewandelt wird.",
+            "en": "Why are randomness for one nucleus and a regular pattern for many nuclei compatible? Two random simulation runs can leave different counts after equal time; that is expected statistically. Larger starting populations generally show smoother relative patterns. Do not confuse a decay probability with a fixed schedule for every nucleus. The curve describes an ensemble, not a clock predicting the transformation of one marked nucleus."
+          }
+        }
+      ]
+    },
+    {
+      "key": "halbwertszeit",
+      "title": {
+        "de": "Es halbiert sich der Rest, nicht die Anfangsmenge",
+        "en": "The remainder halves, not the original amount"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Die Halbwertszeit ist die Zeitspanne, nach der im statistischen Mittel die Hälfte der noch vorhandenen Kerne eines bestimmten radioaktiven Isotops umgewandelt ist. In einer Modellprobe mit 8000 instabilen Kernen bleiben nach einer Halbwertszeit etwa 4000, nach zwei etwa 2000 und nach drei etwa 1000. Jede Halbierung bezieht sich auf den aktuellen Rest.",
+            "en": "Half-life is the time after which, on statistical average, half the remaining nuclei of a particular radioactive isotope have transformed. In a model starting with 8000 unstable nuclei, about 4000 remain after one half-life, 2000 after two and 1000 after three. Each halving applies to the current remainder."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Nach zwei Halbwertszeiten ist also nicht alles verschwunden, sondern ungefähr ein Viertel des ursprünglichen Bestands vorhanden. Für ein einzelnes Isotop ohne Nachproduktion sinkt auch die Aktivität entsprechend. Eine kleine echte Stichprobe streut stärker als eine große, weshalb die Zahlen nicht bei jedem Lauf exakt gleich ausfallen. Die umgewandelten Kerne müssen zudem nicht zu dauerhaft stabilen Produkten werden; Zerfallsketten können weitere radioaktive Stoffe enthalten. Halbwertszeit allein ist deshalb kein vollständiger Gefahrenwert. Eine lange Halbwertszeit bedeutet langsame Umwandlung pro Kern, aber langfristige Beständigkeit. Die Bewertung braucht zusätzlich Menge, Strahlungsart, Energie und mögliche Aufnahme in den Körper.",
+            "en": "After two half-lives, therefore, about a quarter of the original inventory remains rather than none. For a single isotope without new production, activity decreases accordingly. Small samples fluctuate more than large ones, so repeated runs need not produce exactly identical numbers. Transformed nuclei also need not become permanently stable products; decay chains can include further radioactive materials. Half-life alone is therefore not a complete hazard measure. A long half-life means a slow transformation rate per nucleus but long persistence. Assessment also requires amount, radiation type, energy and possible uptake into the body. The graph's shape explains decay, but cannot by itself label a sample safe."
+          }
+        },
+        {
+          "kind": "table",
+          "head": [
+            {
+              "de": "Vergangene Halbwertszeiten",
+              "en": "Elapsed half-lives"
+            },
+            {
+              "de": "Erwarteter Restbestand im Modell",
+              "en": "Expected model remainder"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "de": "0",
+                "en": "0"
+              },
+              {
+                "de": "8000 Kerne",
+                "en": "8000 nuclei"
+              }
+            ],
+            [
+              {
+                "de": "1",
+                "en": "1"
+              },
+              {
+                "de": "4000 Kerne",
+                "en": "4000 nuclei"
+              }
+            ],
+            [
+              {
+                "de": "2",
+                "en": "2"
+              },
+              {
+                "de": "2000 Kerne",
+                "en": "2000 nuclei"
+              }
+            ],
+            [
+              {
+                "de": "3",
+                "en": "3"
+              },
+              {
+                "de": "1000 Kerne",
+                "en": "1000 nuclei"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Wie würdest du die Restmenge nach drei Halbwertszeiten darstellen, ohne die Halbierungen mit gleichen absoluten Abnahmen zu verwechseln? Die zweite Halbierung entfernt im Beispiel etwa 2000 statt nochmals 4000 ursprüngliche Kerne. Die absolute Abnahme wird kleiner, obwohl derselbe relative Anteil verschwindet. Zeichne die Halbierungen als immer kleinere Rechtecke oder als gekrümmte Restkurve. Eine gerade Linie bis null würde ein anderes Gesetz darstellen. Das Modell muss außerdem sagen, ob neue radioaktive Tochterkerne bei der betrachteten Messung mitzählen.",
+            "en": "How would you show the remainder after three half-lives without confusing halving with equal absolute decreases? The second halving removes about 2000 nuclei, not another original 4000. Absolute decreases shrink although the same fraction disappears. Draw successively smaller rectangles or a curved remainder graph. A straight line to zero represents a different law. Also specify whether newly formed radioactive daughter nuclei contribute to the measurement being modelled."
+          }
+        }
+      ]
+    },
+    {
+      "key": "schutz",
+      "title": {
+        "de": "Abstand, Zeit und Abschirmung sind verschiedene Hebel",
+        "en": "Distance, time and shielding are different controls"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Strahlenschutz begrenzt unnötige Einwirkung. Drei Grundideen sind kurze Aufenthaltszeit, großer Abstand und geeignete Abschirmung. Welche Abschirmung geeignet ist, hängt von Strahlungsart und Energie ab. Dass Alphastrahlung von außen leicht aufgehalten werden kann, bedeutet nicht, dass ein alphastrahlender Stoff im Körper harmlos wäre. Aufnahme durch Atmen oder Verschlucken ist eine andere Situation.",
+            "en": "Radiation protection limits unnecessary exposure. Three basic controls are shorter exposure time, greater distance and appropriate shielding. Suitable shielding depends on radiation type and energy. Alpha radiation being easily stopped from outside does not make an alpha-emitting substance harmless inside the body. Inhalation or swallowing creates a different situation."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Becquerel beschreibt Aktivität einer Quelle. Gray beschreibt aufgenommene Energie pro Masse. Sievert wird für gewichtete Dosisgrößen verwendet, die Strahlungs- beziehungsweise Gewebeaspekte berücksichtigen. Man kann diese Einheiten nicht ohne weitere Angaben ineinander übersetzen. Selbst eine Schulzeichnung mit Papier oder Metall vor einer Quelle ist keine Bauanleitung für zuverlässigen Strahlenschutz. Fachkundige Planung und zugelassene Einrichtungen sind nötig. Für dich gilt hier: ausschließlich Daten und Simulationen, keine Quellen, keine unbekannten Materialien und keine eigenen Abschirmversuche. Präzise Begriffe sind dennoch nützlich, weil du damit erkennst, welche Angaben einer Meldung fehlen, bevor jemand eine Gefahr oder Entwarnung behauptet.",
+            "en": "Becquerels describe a source's activity. Grays describe absorbed energy per mass. Sieverts are used for weighted dose quantities accounting for radiation and, where applicable, tissue factors. These units cannot be converted into one another without further information. Even a classroom diagram placing paper or metal before a source is not a construction guide to reliable protection. Qualified planning and approved facilities are necessary. Here your rule is simple: supplied data and simulations only, no sources, unknown materials or homemade shielding tests. Precise terminology remains useful because it reveals what information a report lacks before someone claims danger or reassurance."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Warum reichen 1000 Bq ohne weitere Angaben weder für eine persönliche Entwarnung noch für eine konkrete Dosisrechnung? Eine Quelle kann dieselbe Aktivität behalten, während Abstand oder Aufenthaltsdauer die Einwirkung auf einen Empfänger verändern. Das zeigt unmittelbar, warum Bq und Dosis nicht dasselbe sind. Bei Aufnahme radioaktiver Stoffe in den Körper reicht die einfache Abstandsskizze ebenfalls nicht mehr aus. Solche Unterschiede begründen fachliche Zuständigkeit und den Verzicht auf eigene Quellenversuche, statt eine einfache Zahl zur Schutzgarantie zu erklären.",
+            "en": "Why are 1000 Bq without further information insufficient for personal reassurance or a specific dose calculation? A source can retain its activity while distance or duration changes exposure at a recipient. This directly shows why Bq and dose differ. Uptake into the body also exceeds a simple distance diagram. These distinctions justify professional responsibility and avoiding source experiments rather than treating one number as a protection guarantee."
+          }
+        }
+      ]
+    },
+    {
+      "key": "medizin",
+      "title": {
+        "de": "Nutzen und Risiko hängen an der konkreten Anwendung",
+        "en": "Benefits and risks depend on the particular use"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Ionisierende Strahlung kann medizinisch Bilder ermöglichen oder gezielt Gewebe behandeln. Dabei unterscheiden sich Verfahren stark. Ein Röntgenbild nutzt eine externe Strahlungsquelle, während nuklearmedizinische Verfahren bestimmte radioaktive Stoffe verwenden können. Bei einer Therapie wird eine andere Wirkung angestrebt als bei einer Diagnose. „Strahlung in der Medizin“ ist deshalb keine einzige austauschbare Sache.",
+            "en": "Ionising radiation can produce medical images or deliberately treat tissue. Procedures differ considerably: an X-ray image uses an external source, while nuclear-medicine procedures may use particular radioactive substances. Treatment aims for a different effect from diagnosis. “Radiation in medicine” is therefore not one interchangeable process."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Die fachliche Entscheidung berücksichtigt erwarteten Nutzen, notwendige Dosis, Alternativen und individuelle Bedingungen. Eine Schulaufgabe kann dieses Prinzip erklären, aber keine persönliche Untersuchung empfehlen oder ablehnen. Für eine rein gedachte Anwendung ist interessant, dass ein geeignetes Radionuklid nicht nur die passende Strahlungsart, sondern auch zeitliche Eigenschaften und chemisches Verhalten braucht. Eine Halbwertszeit allein entscheidet nicht über Eignung. Ebenso wird ein gewöhnlich bestrahlter Gegenstand nicht automatisch selbst zur radioaktiven Quelle; dafür müssten bestimmte Kernreaktionen stattfinden. Das ist von radioaktiver Verunreinigung zu trennen. Diese begriffliche Klarheit hilft dir, eine verständliche Informationskarte zu gestalten, ohne medizinische Beratung zu spielen.",
+            "en": "Professional decisions consider expected benefit, necessary dose, alternatives and individual conditions. A school task can explain that principle, but cannot recommend or reject a personal examination. In a purely imagined application, a suitable radionuclide needs more than the appropriate radiation type: timing and chemical behaviour matter too. Half-life alone cannot determine suitability. Likewise, an ordinarily irradiated object does not automatically become radioactive; that would require particular nuclear reactions. This must be distinguished from contamination by radioactive material. Such conceptual clarity can help you design an understandable information card without pretending to provide medical advice. The aim is to improve questions and explanations, not to make healthcare decisions for someone else."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Welche Modellgrenze musst du nennen, wenn du eine Schul-Infokarte über medizinische Strahlung statt persönlicher Beratung erstellst? Ein Informationsblatt sollte erklären, ob die Quelle außerhalb des Körpers liegt oder ein Stoff medizinisch eingesetzt wird. Schon diese Frage verhindert, völlig verschiedene Verfahren gleichzusetzen. Eine passende zweite Frage betrifft den erwarteten Nutzen. Beide sind für ein Gespräch hilfreicher als ein pauschales „Strahlung ist immer schlecht“. Die persönliche Entscheidung bleibt bei qualifizierter Beratung mit den individuellen medizinischen Angaben.",
+            "en": "What limitation should you state when making a school information card about medical radiation rather than giving personal advice? An information sheet should say whether the source is outside the body or a substance is used medically. That already prevents conflating different procedures. A useful second question concerns expected benefit. Both help discussion more than “radiation is always bad”. Personal decisions remain with qualified advice using individual medical information."
+          }
+        }
+      ]
+    },
+    {
+      "key": "kernenergie",
+      "title": {
+        "de": "Spalten und Verschmelzen sind unterschiedliche Kernvorgänge",
+        "en": "Splitting and combining are different nuclear processes"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Bei der Kernspaltung zerfällt ein schwerer Kern in kleinere Kerne. Zusätzlich können Neutronen und Energie freiwerden. Die Neutronen können weitere Spaltungen auslösen; das nennt man Kettenreaktion. In einem Kraftwerksreaktor muss sie kontrolliert werden. Die freiwerdende Energie erwärmt einen Kreislauf, der über weitere Schritte Turbine und Generator antreiben kann. Auch nach dem Beenden der Kettenreaktion kann Zerfallswärme der Produkte bleiben.",
+            "en": "In nuclear fission, a heavy nucleus splits into smaller nuclei. Neutrons and energy may also be released. The neutrons can trigger further fissions, creating a chain reaction. A power reactor must control that reaction. Released energy heats a circuit that can ultimately drive a turbine and generator. Even after the chain reaction stops, decay heat from the products can remain."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Bei der Kernfusion verschmelzen leichte Kerne zu schwereren. Unter geeigneten Bedingungen kann ebenfalls Energie freiwerden; so wird die Sonne angetrieben. Die technischen Bedingungen für kontrollierte Fusion sind anspruchsvoll. Fusion ist nicht einfach chemisches Verbrennen und nicht automatisch ohne Strahlenschutzfragen. In beiden Fällen ändern sich Kernbindungen. Energieerhaltung gilt weiterhin; die Verbindung zwischen Masse und Energie vertieft das später, ist hier aber nicht für eine Rechnung nötig. Alle Darstellungen bleiben schematisch. Wir behandeln keine praktische Herstellung, Beschaffung oder Handhabung von Kernmaterial, sondern unterscheiden die Grundprinzipien und ihre Energiepfade.",
+            "en": "In fusion, light nuclei combine into heavier ones. Suitable reactions can also release energy; this is what powers the Sun. Conditions for controlled fusion are technically demanding. Fusion is not chemical burning and is not automatically free from radiation-protection questions. Both processes change nuclear binding. Energy conservation still applies; the mass–energy relationship provides a later extension, but no calculation with it is needed here. Every description remains schematic. We discuss no practical production, acquisition or handling of nuclear material, only the basic principles and their energy pathways."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Wie würdest du Kernspaltung und Kernfusion auf zwei getrennten Energiefluss-Skizzen erklären, ohne sie mit chemischem Verbrennen gleichzusetzen? Eine Turbine und ein Generator können bei verschiedenen Kraftwerksarten ähnlich aussehen. Daraus folgt nicht, dass die ursprüngliche Energiequelle gleich ist. Bei Kernspaltung liegen andere mikroskopische Vorgänge vor als bei chemischer Verbrennung. Beschrifte deshalb den Anfang der Energiekette besonders deutlich. Auch die notwendige Behandlung von Abfällen und verbleibender Wärme hängt an diesem Ursprung, nicht nur an der letzten elektrischen Maschine.",
+            "en": "How would you explain fission and fusion in two separate energy-flow sketches without treating them as chemical burning? Turbines and generators can look similar in different power plants without sharing the same original source. Fission differs microscopically from chemical combustion. Label the start of the energy chain clearly. Waste handling and remaining heat also depend on that origin, not just on the final electrical machine."
+          }
+        }
+      ]
+    },
+    {
+      "key": "verantwortung",
+      "title": {
+        "de": "Eine gute Bewertung trennt Fragen",
+        "en": "A sound assessment separates the questions"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Eine Energiequelle zu bewerten heißt mehr, als nur ihren Generator anzusehen. Bei Kernenergie gehören Betriebssicherheit, Abfälle, langfristige Lagerung, Ressourcen, Kosten und gesellschaftliche Verantwortung dazu. Lange Halbwertszeiten können Planungszeiträume weit über ein Menschenleben hinaus relevant machen. Eine kurzlebigere Quelle ist aber nicht automatisch in jeder Situation ungefährlicher. Menge und Einwirkung bleiben entscheidend.",
+            "en": "Assessing an energy source means looking beyond its generator. Nuclear energy involves operational safety, waste, long-term storage, resources, cost and social responsibility. Long half-lives can make planning periods far beyond one person's lifetime relevant. A shorter-lived source is not automatically less hazardous in every situation, however: amount and exposure still matter."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Du kannst eine faire Diskussionskarte entwerfen, die drei Ebenen trennt: physikalischer Vorgang, überprüfbare Folgen und gesellschaftliche Wertentscheidung. „Der Generator liefert elektrische Energie“ gehört zur ersten Ebene. Welche Risiken und Kosten auftreten, braucht belastbare Daten. Wie Risiken zwischen Generationen verteilt werden sollen, enthält zusätzlich Werte. Eine eigene Position darf deutlich sein, sollte aber keine fehlenden Daten erfinden. Ebenso ist ein politischer Standpunkt kein Ersatz für eine korrekte Halbwertszeitrechnung. Die Aufgabe ist nicht, eine bestimmte Meinung zu übernehmen, sondern zu zeigen, welche Gründe deine Entscheidung tragen und welche Unsicherheit du offenlässt.",
+            "en": "Create a fair discussion card separating three levels: the physical process, testable consequences and social value judgements. “The generator delivers electrical energy” belongs to the first level. Risks and costs require reliable evidence. Deciding how risks should be shared between generations additionally involves values. Your position can be clear without inventing missing data. A political opinion likewise cannot replace a correct half-life calculation. The task is not to adopt one particular viewpoint, but to show which reasons support your decision and which uncertainties you leave open. That makes disagreement more understandable and allows evidence to be checked separately from preferences."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Entwirf eine Diskussionskarte, die eine physikalische Aussage, eine Datenfrage und eine Wertefrage klar auseinanderhält. Eine Karte könnte drei verschiedenfarbige Kästen besitzen: „So funktioniert es“, „Diese Daten fehlen“ und „Diese Ziele sind uns wichtig“. Eine Diskussionsgruppe kann dann bei einem Werturteil uneinig sein und trotzdem dieselbe Kernphysik anerkennen. Umgekehrt wird ein fehlerhafter Zahlenvergleich nicht dadurch richtig, dass sein Ergebnis zur eigenen Meinung passt. Genau diese Trennung macht eine begründete persönliche Position stärker.",
+            "en": "Design a discussion card that clearly separates a physical statement, a question requiring data and a question about values. A card could use three boxes: “how it works”, “missing data” and “goals we value”. People can disagree about values while recognising the same nuclear physics. Conversely, a numerical error does not become correct because its result fits an opinion. Keeping these levels separate strengthens a reasoned personal position."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "Hamburg: Physik Gymnasium (2024)",
+                "en": "Hamburg: Gymnasium physics (2024)"
+              },
+              "url": "https://www.hamburg.de/resource/blob/798534/4cf0047ad61effacd1ff7e6ad819fa41/physik-data.pdf"
+            },
+            {
+              "label": {
+                "de": "Hamburg: Physik Stadtteilschule (2024)",
+                "en": "Hamburg: Stadtteilschule physics (2024)"
+              },
+              "url": "https://www.hamburg.de/resource/blob/798426/ba414a0ace36d17b7813a855db625c42/physik-data.pdf"
+            },
+            {
+              "label": {
+                "de": "LfU Bayern: Radioaktivität und Strahlung",
+                "en": "Bavarian environment agency: radioactivity and radiation"
+              },
+              "url": "https://www.lfu.bayern.de/buerger/doc/uw_56_radioaktivitaet_strahlung_grundbegriffe.pdf"
+            },
+            {
+              "label": {
+                "de": "NRC: Grundlagen der Strahlung",
+                "en": "NRC: radiation basics"
+              },
+              "url": "https://www.nrc.gov/facilities-safety/radiation-protection/radiation-and-its-health-effects/radiation-basics"
+            },
+            {
+              "label": {
+                "de": "US-Energieministerium: Spaltung und Fusion (01.04.2021)",
+                "en": "US Department of Energy: fission and fusion (1 April 2021)"
+              },
+              "url": "https://www.energy.gov/ne/articles/fission-and-fusion-what-difference"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": {
+        "de": "1. Lückentext",
+        "en": "1. Fill in the blanks"
+      },
+      "intro": {
+        "de": "Ergänze die fehlenden Fachwörter. Alle Begriffe findest du im Pfad.",
+        "en": "Complete the missing technical words. Every term appears in this path."
+      },
+      "text": {
+        "de": "Die genaue Umwandlungszeit eines einzelnen Kerns unterliegt dem ___. Umwandlungen pro Sekunde beschreibt die ___. Ihre Einheit heißt ___. Die Zeit für die Halbierung des Restbestands ist die ___. Nach zwei Halbwertszeiten bleibt im Mittel ein ___ der Anfangsmenge. Eine Grundidee des Schutzes ist größerer ___. Aufgenommene Energie pro Masse wird in ___ gemessen. Gewichtete Dosisgrößen verwenden ___. Weitere Spaltungen durch freigesetzte Neutronen bilden eine ___. Die Verschmelzung leichter Kerne heißt ___.",
+        "en": "An individual nucleus's precise transformation time involves ___. Transformations per second are described by ___. Its unit is the ___. The time for the remaining inventory to halve is the ___. After two half-lives, on average one ___ of the original remains. One basic protective control is greater ___. Absorbed energy per mass is measured in ___. Weighted dose quantities use ___. Further fissions triggered by released neutrons form a ___. Combining light nuclei is called ___."
+      }
+    },
+    {
+      "kind": "compare",
+      "title": {
+        "de": "2. Erklären und vergleichen (AB II)",
+        "en": "2. Explain and compare (level II)"
+      },
+      "intro": {
+        "de": "Antworte mit drei bis vier kurzen Sätzen. Nutze das Gelesene und begründe deinen Vergleich.",
+        "en": "Answer in three or four short sentences. Use what you have read and explain your comparison."
+      },
+      "text": {
+        "de": "Vergleiche die Restmengen nach einer und nach zwei Halbwertszeiten bei 8000 anfangs vorhandenen Kernen. Erkläre, warum nicht jeweils 4000 abgezogen werden. Warum reichen diese Zahlen allein nicht für eine Bewertung persönlicher Strahlengefahr?",
+        "en": "Compare the remainders after one and two half-lives when starting with 8000 nuclei. Explain why 4000 is not subtracted each time. Why are these numbers alone insufficient to assess personal radiation risk?"
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": {
+        "de": "3. Deine Idee im Alltag (AB III)",
+        "en": "3. Your idea for everyday life (level III)"
+      },
+      "intro": {
+        "de": "Entwickle eine eigene Idee in drei bis vier kurzen Sätzen. Begründe sie mit Physik; mehrere Lösungen sind möglich.",
+        "en": "Develop your own idea in three or four short sentences. Support it with physics; several answers are possible."
+      },
+      "text": {
+        "de": "Entwirf eine faire Informationskarte zu Kernenergie oder medizinischer Strahlung. Trenne einen physikalischen Vorgang, eine noch zu prüfende Datenfrage und eine Wertentscheidung. Keine persönliche Gesundheitsberatung.",
+        "en": "Design a fair information card about nuclear energy or medical radiation. Separate a physical process, a question still requiring evidence and a value judgement. Do not give personal medical advice."
+      }
+    }
+  ]
+}

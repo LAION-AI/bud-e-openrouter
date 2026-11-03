@@ -1,0 +1,264 @@
+{
+  "key": "dichte-druck-auftrieb",
+  "title": {
+    "de": "Wie ein Stahlschiff schwimmen kann",
+    "en": "How a steel ship can float"
+  },
+  "summary": {
+    "de": "NWT-Auffrischung und schulische Ergänzung: Masse, Volumen, Druck und Auftrieb erklären mehr als „schwer sinkt“.",
+    "en": "NWT refresher and school-specific extension: mass, volume, pressure and buoyancy explain more than “heavy things sink”."
+  },
+  "icon": "🚢",
+  "accent": "teal",
+  "minutes": 22,
+  "screens": [
+    {
+      "key": "dichte",
+      "title": {
+        "de": "Nicht nur die Masse zählt",
+        "en": "Mass is not the whole story"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Ein riesiges Schiff schwimmt, ein kleiner Metallklotz sinkt. „Schwer sinkt“ kann deshalb keine brauchbare Regel sein. Entscheidend ist, wie viel Masse in welchem Volumen steckt. Die Dichte ist ρ = m / V. Ihre Einheit kann kg/m³ oder g/cm³ sein. Wasser hat unter üblichen Alltagsbedingungen ungefähr 1 g/cm³, also 1000 kg/m³.",
+            "en": "A huge ship floats while a small metal block sinks. “Heavy things sink” cannot therefore be a useful rule. What matters is how much mass occupies a given volume. Density is ρ = m / V. It can be measured in kg/m³ or g/cm³. Under ordinary everyday conditions, water has a density of approximately 1 g/cm³, equivalent to 1000 kg/m³."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Ein Körper mit 60 g Masse und 20 cm³ Volumen besitzt eine mittlere Dichte von 3 g/cm³. Für einen Körper aus einheitlichem Stoff ist das eine Stoffeigenschaft unter bestimmten Bedingungen. Bei einem hohlen Gegenstand betrachten wir dagegen seine gesamte Masse und sein äußeres verdrängendes Volumen. Ein Schiff enthält sehr viel Luft und hat dadurch eine geringere mittlere Dichte als ein gleich großer massiver Stahlkörper. Der Pfad frischt NWT-Grundlagen auf und ergänzt sie um Druck. Diese Inhalte sind nicht als gleiches Pflichtprogramm aller Hamburger Physikkurse 7–10 zu verstehen; die Schule entscheidet über die Einbindung.",
+            "en": "An object with mass 60 g and volume 20 cm³ has an average density of 3 g/cm³. For a uniform material, density is a material property under specified conditions. For a hollow object, however, we consider its total mass and its outer displaced volume. A ship contains a great deal of air, giving it a lower average density than an equally large solid steel object. This path revisits NWT foundations and adds pressure. It is not presented as an identical compulsory programme for every Hamburg physics course in years 7–10; schools determine how it is used."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Was verändert sich an der mittleren Dichte, wenn derselbe Stahl einen hohlen Schiffsrumpf statt eines kompakten Blocks bildet? Vergleiche zwei gleich große geschlossene Kisten, eine leer und eine vollständig mit Metall gefüllt. Ihr äußeres Volumen kann gleich sein, ihre mittlere Dichte nicht. Umgekehrt können Gegenstände gleicher Masse verschiedene Volumina besitzen. Gerade beim Schiff musst du deshalb sagen, ob du die Dichte des Stahls oder die mittlere Dichte des ganzen Körpers einschließlich Hohlraum meinst.",
+            "en": "What changes about average density when the same steel forms a hollow hull rather than a compact block? Compare two equally sized closed boxes, one empty and one filled with metal. Their outer volumes can match while their average densities differ. Objects with the same mass can conversely have different volumes. With a ship, specify whether you mean the density of steel or the average density of the whole object including its hollow space."
+          }
+        }
+      ]
+    },
+    {
+      "key": "volumen",
+      "title": {
+        "de": "Verdrängtes Wasser macht Volumen sichtbar",
+        "en": "Displaced water reveals volume"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Die Form eines Würfels lässt sich ausmessen. Bei einem unregelmäßigen Stein ist das schwieriger. Taucht ein wasserfester Körper vollständig in einen Messzylinder, steigt der Wasserstand. Die Differenz entspricht seinem verdrängten Volumen. Von 50 ml auf 70 ml bedeutet 20 ml, also 20 cm³. Masse und Volumen dürfen dabei nicht verwechselt werden: Milliliter sind keine Gramm, auch wenn bei Wasser ähnliche Zahlen auftreten.",
+            "en": "A cube's dimensions are easy to measure. An irregular stone is harder. When a water-resistant object is fully submerged in a measuring cylinder, the water level rises. The increase equals the volume it displaces. A rise from 50 ml to 70 ml means 20 ml, which is 20 cm³. Do not confuse mass and volume: millilitres are not grams, even though water often gives similar numerical values for both."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Ein schwimmender Körper taucht nur teilweise ein. Sein vollständig äußeres Volumen kannst du deshalb nicht einfach aus dem normalen Schwimmzustand ablesen. Auch Luftblasen, Wasseraufnahme und ein schräger Blick auf die Skala verändern das Ergebnis. Ein geeignetes Messverfahren braucht also Bedingungen. Für eine sichere Schuluntersuchung dienen nur kleine, ungefährliche, wasserfeste Gegenstände in bruchsicheren Gefäßen unter Anleitung. Elektrische Geräte, Batterien und unbekannte Stoffe bleiben fern vom Wasser. Alternativ liefern Simulationsdaten denselben Denkweg, ganz ohne nassen Tisch oder unpassende Versuchsmaterialien.",
+            "en": "A floating object is only partly submerged. You cannot infer its complete outer volume directly from its ordinary floating state. Trapped air bubbles, water absorption and looking at the scale from an angle also affect the result. A measurement method therefore needs stated conditions. A safe school investigation uses only small, harmless, water-resistant objects in unbreakable containers under supervision. Electrical equipment, batteries and unknown substances stay away from water. Simulation data provide the same reasoning without a wet table or unsuitable experimental materials."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Welche Merkmale müsste eine Volumenskizze enthalten, damit Anfangswert und verdrängtes Volumen nicht verwechselt werden? Bei einer Wasserstandsdifferenz von 20 ml ist das Körpervolumen nur dann entsprechend bestimmt, wenn der Körper vollständig eingetaucht ist und keine zusätzlichen Luftblasen verdrängen. Die Masse musst du unabhängig ermitteln. Eine Tabelle mit getrennten Spalten für g und cm³ verhindert die Verwechslung. Erst aus beiden Angaben lässt sich die Dichte berechnen, nicht aus einer einzelnen Skalenablesung.",
+            "en": "What should a volume-measurement sketch include to distinguish the initial reading from the displaced volume? A water-level increase of 20 ml gives the corresponding object volume only if the object is completely submerged and extra air bubbles do not displace water. Mass needs a separate measurement. A table with distinct g and cm³ columns prevents confusion. Density comes from both quantities together, not from a single scale reading."
+          }
+        }
+      ]
+    },
+    {
+      "key": "druck",
+      "title": {
+        "de": "Die gleiche Kraft kann unterschiedlich drücken",
+        "en": "The same force can produce different pressure"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Ein breiter Rucksackgurt fühlt sich angenehmer an als ein schmaler, obwohl derselbe Rucksack daran hängt. Die Kraft verteilt sich über eine größere Fläche. Druck beschreibt die senkrechte Kraft pro Fläche: p = F / A. Seine SI-Einheit ist Pascal; 1 Pa entspricht 1 N/m². Für dieselbe Kraft halbiert doppelte Fläche den mittleren Druck.",
+            "en": "A wide backpack strap feels more comfortable than a narrow one although the same backpack hangs from it. The force is distributed over a larger area. Pressure is perpendicular force per unit area: p = F / A. Its SI unit is the pascal; 1 Pa equals 1 N/m². For the same force, doubling the contact area halves the average pressure."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Eine Kraft von 100 N auf 0,01 m² erzeugt 10 000 Pa. Auf 0,02 m² sind es 5000 Pa. Das sind Mittelwerte; reale Kontaktflächen verteilen Kräfte nicht immer gleichmäßig. Eine größere Fläche beseitigt auch nicht die gesamte Belastung auf Muskeln oder Gelenke. Bei Flüssigkeiten und Gasen wirkt Druck in verschiedene Richtungen. Eine eingeschlossene Flüssigkeit kann Druckänderungen übertragen; dieses Prinzip nutzen hydraulische Systeme. Solche Anlagen werden hier nur als Modell betrachtet. Druckbehälter, Pumpen, Spritzen mit Nadeln und selbst gebaute Hochdrucksysteme sind keine geeigneten Heimexperimente. Zum Verstehen reichen Rechenbeispiele und Simulationen.",
+            "en": "A force of 100 N over 0.01 m² produces 10,000 Pa. Over 0.02 m² it produces 5000 Pa. These are averages; real contact forces are not always evenly distributed. A larger area also does not remove the overall load on muscles or joints. In liquids and gases, pressure acts in different directions. An enclosed liquid can transmit pressure changes, which hydraulic systems use. We consider these devices only as models here. Pressure vessels, pumps, syringes with needles and homemade high-pressure systems are not suitable experiments at home. Calculations and simulations are sufficient for understanding the principle."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Warum halbiert ein doppelt so breiter Gurt nicht die Gewichtskraft des Rucksacks, kann aber den Druck verringern? Bei gleicher Last kann eine doppelt so große Kontaktfläche den mittleren Druck halbieren. Das Gesamtgewicht bleibt dabei unverändert. Ein breiter Gurt kann also die lokale Belastung angenehmer verteilen, ohne die Tragelast zu reduzieren. Beschrifte in deinem Entwurf Fläche und Kraft getrennt. So zeigt die Zeichnung nicht nur eine bequemere Form, sondern den physikalischen Grund dafür.",
+            "en": "Why does a strap twice as wide not halve the backpack's weight, although it can reduce pressure? With the same load, doubling contact area can halve average pressure. Total weight remains unchanged. A wide strap can distribute local loading more comfortably without reducing the load being carried. Label area and force separately in your design. The drawing then shows not just a more comfortable shape but the physical reason behind it."
+          }
+        }
+      ]
+    },
+    {
+      "key": "auftrieb",
+      "title": {
+        "de": "Wasser drückt unten stärker",
+        "en": "Water pushes more strongly from below"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "In einer ruhenden Flüssigkeit nimmt der Druck mit der Tiefe zu. Die Unterseite eines eingetauchten Körpers liegt tiefer als seine Oberseite und wird deshalb stärker nach oben gedrückt. Die gemeinsame Wirkung der Druckkräfte heißt Auftrieb. Nach dem archimedischen Prinzip entspricht die Auftriebskraft der Gewichtskraft der verdrängten Flüssigkeit.",
+            "en": "Pressure in a stationary liquid increases with depth. The bottom of an immersed object is deeper than its top, so the upward pressure force is greater. The combined effect of pressure forces is buoyancy. Archimedes' principle states that the buoyant force equals the weight of the displaced liquid."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Verdrängt ein Körper 0,002 m³ Wasser, beträgt dessen Masse ungefähr 2 kg und die Auftriebskraft mit g ≈ 10 N/kg ungefähr 20 N. Ist die Gewichtskraft des Körpers größer, sinkt er zunächst. Ist sie kleiner, steigt er. Beim Schwimmen stellt sich ein Gleichgewicht ein: Der Körper taucht so weit ein, dass Auftrieb und Gewichtskraft gleich groß sind. Zusätzliche Ladung lässt ein Schiff tiefer eintauchen. Zu viel Ladung oder Wasser im Rumpf kann die Grenze überschreiten. Dichte und Auftrieb beschreiben denselben Zusammenhang aus unterschiedlichen Blickwinkeln. Sie sind keine Sicherheitsempfehlung für Schwimmen, Tauchen oder selbst gebaute Boote.",
+            "en": "If an object displaces 0.002 m³ of water, that water has a mass of approximately 2 kg. Using g approximately 10 N/kg gives a buoyant force of 20 N. If the object's weight is greater, it initially sinks. If its weight is smaller, it rises. A floating object reaches equilibrium by becoming submerged far enough for buoyancy to equal its weight. Adding cargo makes a ship sit lower in the water. Too much cargo, or water entering the hull, can exceed the available capacity. Density and buoyancy explain the same relationship from different viewpoints. They do not provide safety advice for swimming, diving or homemade boats."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Welche Annahme fehlt der Aussage, jeder hohle Metallkörper werde unter allen Bedingungen schwimmen? Ein Schiff kann zusätzliche Ladung aufnehmen, indem mehr seines Rumpfs eintaucht und mehr Wasser verdrängt. Diese Möglichkeit endet jedoch, bevor beliebig viel Masse dazukommen kann. Ein Vergleich muss daher die verfügbare Rumpfform berücksichtigen. Die Aussage „es schwimmt jetzt“ beweist keine beliebige Reserve. Für dein Papiermodell genügt eine eingezeichnete gedachte Wasserlinie vor und nach einer kleinen Zusatzlast.",
+            "en": "What assumption is missing from the claim that every hollow metal object will float under all conditions? A ship can take extra cargo by sinking slightly deeper and displacing more water. That capacity ends before unlimited mass can be added, so comparisons must consider the available hull shape. “It floats now” does not prove unlimited reserve. A paper model can simply show imagined waterlines before and after adding a small extra load."
+          }
+        }
+      ]
+    },
+    {
+      "key": "entwurf",
+      "title": {
+        "de": "Gestalten mit Dichte und Fläche",
+        "en": "Designing with density and area"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Für ein schwimmendes Messgerät zählt nicht nur, ob es überhaupt schwimmt. Es soll genügend Reserve für zusätzliche Masse besitzen und nicht leicht kippen. Ein breiter Rumpf kann die Standfestigkeit verbessern; die genaue Stabilität hängt aber auch von Schwerpunkt und Form ab. Die mittlere Dichte allein sagt noch nicht, ob ein Gegenstand sicher aufrecht bleibt.",
+            "en": "A floating measuring device needs more than the ability to stay on the surface. It should have spare capacity for extra mass and should not tip easily. A wider hull can improve stability, but the exact stability also depends on its centre of mass and shape. Average density alone does not tell us whether an object will remain safely upright."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Ein breiter Tragegurt löst wiederum ein anderes Problem: Er vergrößert die Kontaktfläche, nicht das verdrängte Wasservolumen. Du erkennst daran, warum ein gemeinsames Wort wie „besser verteilt“ keine vollständige physikalische Erklärung ist. Zuerst klärst du die Aufgabe, dann wählst du eine passende Größe. In einem Entwurf für eine schwimmende Sensorplattform könntest du Masse, äußeres Volumen und eine gedachte Zusatzlast angeben. Für einen bequemeren Schulranzen wären Gewichtskraft, Kontaktfläche und Halt sinnvoll. Solche Papiermodelle zeigen, wie physikalische Kenntnisse Ideen verbessern. Sie ersetzen weder Produktprüfung noch sichere Konstruktion. Eine gute Idee benennt, was sie erklären kann und was noch getestet werden müsste.",
+            "en": "A wider carrying strap solves a different problem: it increases contact area, not displaced water volume. This shows why a phrase such as “better distributed” is not a complete physical explanation. First identify the task, then select an appropriate quantity. A design for a floating sensor platform could specify mass, outer volume and an imagined additional load. A more comfortable school backpack would instead involve weight, contact area and secure support. Such paper models show how physical knowledge can improve ideas. They do not replace product testing or safe engineering. A good proposal says both what it explains and what would still need testing."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Wähle Rucksack oder Sensorplattform: Welche zwei messbaren Größen helfen dir bei einem begründeten Entwurf? Eine Sensorplattform soll vielleicht schwimmen und dabei empfindliche Technik trocken halten. Mehr äußeres Volumen hilft nur, wenn die zusätzliche Bauform nicht zugleich zu viel Masse hinzufügt. Auch Wasseraufnahme würde die ursprüngliche Rechnung verändern. Nenne diese Bedingung in deinem Entwurf. Für einen Rucksack wäre dagegen Kontaktfläche wichtiger als Auftrieb: Derselbe physikalische Begriff passt nicht automatisch zu jeder Gestaltungsfrage.",
+            "en": "Choose a backpack or a sensor platform: which two measurable quantities would help you justify your design? A sensor platform may need to float while keeping electronics dry. Greater outer volume only helps if the added structure does not also add too much mass. Absorbed water would change the original calculation too. State that condition in your design. For a backpack, contact area matters more than buoyancy: one physical idea does not automatically suit every design question."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "Hamburg: NWT Gymnasium (2024), Grundlagen 5/6",
+                "en": "Hamburg: Gymnasium NWT (2024), years 5/6 foundations"
+              },
+              "url": "https://www.hamburg.de/resource/blob/798520/700d66232c2d07bad97d72b6e107e083/naturwissenschaften-technik-data.pdf"
+            },
+            {
+              "label": {
+                "de": "PhET: sichere interaktive Simulation",
+                "en": "PhET: safe interactive simulation"
+              },
+              "url": "https://phet.colorado.edu/de/simulations/density"
+            },
+            {
+              "label": {
+                "de": "PhET: sichere interaktive Simulation",
+                "en": "PhET: safe interactive simulation"
+              },
+              "url": "https://phet.colorado.edu/de/simulations/under-pressure"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": {
+        "de": "1. Lückentext",
+        "en": "1. Fill in the blanks"
+      },
+      "intro": {
+        "de": "Ergänze die fehlenden Fachwörter. Alle Begriffe findest du im Pfad.",
+        "en": "Complete the missing technical words. Every term appears in this path."
+      },
+      "text": {
+        "de": "Masse geteilt durch Volumen heißt ___. Das verdrängte Wasser zeigt bei vollständigem Eintauchen ein ___. Druck ist senkrechte Kraft pro ___. Die Druckeinheit heißt ___. In ruhendem Wasser steigt mit der Tiefe der ___. Die nach oben gerichtete Gesamtkraft heißt ___. Sie entspricht der Gewichtskraft der verdrängten ___. Beim Schwimmen herrscht ein ___. Ein hohler Schiffsrumpf senkt die mittlere ___ des Gesamtkörpers.",
+        "en": "Mass divided by volume is ___. Displaced water reveals an object's ___ when it is fully submerged. Pressure is perpendicular force per ___. Its unit is the ___. In still water, ___ increases with depth. The net upward force is called ___. It equals the weight of the displaced ___. A floating object is in ___. A hollow hull reduces the overall object's average ___."
+      }
+    },
+    {
+      "kind": "compare",
+      "title": {
+        "de": "2. Erklären und vergleichen (AB II)",
+        "en": "2. Explain and compare (level II)"
+      },
+      "intro": {
+        "de": "Antworte mit drei bis vier kurzen Sätzen. Nutze das Gelesene und begründe deinen Vergleich.",
+        "en": "Answer in three or four short sentences. Use what you have read and explain your comparison."
+      },
+      "text": {
+        "de": "Vergleiche einen massiven Stahlblock mit einem geschlossenen hohlen Stahlrumpf gleicher Masse. Erkläre mit Volumen, Dichte und verdrängtem Wasser, warum sie sich unterschiedlich verhalten können.",
+        "en": "Compare a solid steel block with a closed hollow steel hull of the same mass. Use volume, density and displaced water to explain why they may behave differently."
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": {
+        "de": "3. Deine Idee im Alltag (AB III)",
+        "en": "3. Your idea for everyday life (level III)"
+      },
+      "intro": {
+        "de": "Entwickle eine eigene Idee in drei bis vier kurzen Sätzen. Begründe sie mit Physik; mehrere Lösungen sind möglich.",
+        "en": "Develop your own idea in three or four short sentences. Support it with physics; several answers are possible."
+      },
+      "text": {
+        "de": "Wähle eine schwimmende Sensorplattform oder einen bequemeren Rucksack. Entwirf auf Papier eine Verbesserung, begründe sie mit zwei Größen aus dem Text und nenne eine noch offene Prüfung.",
+        "en": "Choose a floating sensor platform or a more comfortable backpack. Design an improvement on paper, justify it with two quantities from the text and name a check still needed."
+      }
+    }
+  ]
+}

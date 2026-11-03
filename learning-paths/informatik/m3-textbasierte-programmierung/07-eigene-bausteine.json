@@ -10,7 +10,7 @@
   },
   "icon": "🧰",
   "accent": "indigo",
-  "minutes": 15,
+  "minutes": 20,
   "screens": [
     {
       "key": "dreimal-dasselbe",
@@ -30,28 +30,40 @@
           "kind": "steps",
           "items": [
             {
-              "title": { "de": "Definieren mit def", "en": "Define it with def" },
+              "title": {
+                "de": "Definieren mit def",
+                "en": "Define it with def"
+              },
               "text": {
                 "de": "`def flaeche(laenge, breite):` und darunter eingerückt, was passieren soll - dieselbe Regel wie bei `if` und `for`. Beim Ausführen dieser Zeilen passiert noch nichts; du hast dem Rechner nur beigebracht, was das Wort bedeutet.",
                 "en": "`def area(length, width):` and, indented below, what should happen - the same rule as with `if` and `for`. Running these lines does nothing yet; you have only taught the machine what the word means."
               }
             },
             {
-              "title": { "de": "Aufrufen mit Klammern", "en": "Call it with brackets" },
+              "title": {
+                "de": "Aufrufen mit Klammern",
+                "en": "Call it with brackets"
+              },
               "text": {
                 "de": "`flaeche(3, 4)` - jetzt läuft es. Die Klammern sind der Unterschied zwischen „ich meine den Baustein“ und „führ ihn jetzt aus“.",
                 "en": "`area(3, 4)` - now it runs. The brackets are the difference between \"I mean the block\" and \"run it now\"."
               }
             },
             {
-              "title": { "de": "Etwas hineingeben", "en": "Pass something in" },
+              "title": {
+                "de": "Etwas hineingeben",
+                "en": "Pass something in"
+              },
               "text": {
                 "de": "Was in den Klammern der Definition steht, heißt Parameter. Das macht aus einem starren Baustein einen, der sich anpasst - eine Funktion für alle Rechtecke statt eine je Rechteck.",
                 "en": "What stands in the brackets of the definition is called a parameter. That turns a rigid block into one that adapts - one function for all rectangles instead of one per rectangle."
               }
             },
             {
-              "title": { "de": "Und etwas herausbekommen", "en": "And get something back" },
+              "title": {
+                "de": "Und etwas herausbekommen",
+                "en": "And get something back"
+              },
               "text": {
                 "de": "`return ergebnis` gibt einen Wert zurück, mit dem du weiterrechnen kannst. Ohne `return` tut die Funktion etwas; mit `return` liefert sie etwas. Der Unterschied ist wichtiger, als er klingt.",
                 "en": "`return result` hands back a value you can carry on calculating with. Without `return` the function does something; with `return` it delivers something. That difference matters more than it sounds."
@@ -201,18 +213,119 @@
           "kind": "sources",
           "items": [
             {
-              "label": { "de": "Python-Dokumentation: Funktionen definieren", "en": "Python documentation: defining functions" },
+              "label": {
+                "de": "Python-Dokumentation: Funktionen definieren",
+                "en": "Python documentation: defining functions"
+              },
               "url": "https://docs.python.org/3/tutorial/controlflow.html"
             },
             {
-              "label": { "de": "Python-Dokumentation: Listen und Datenstrukturen", "en": "Python documentation: lists and data structures" },
+              "label": {
+                "de": "Python-Dokumentation: Listen und Datenstrukturen",
+                "en": "Python documentation: lists and data structures"
+              },
               "url": "https://docs.python.org/3/tutorial/datastructures.html"
             },
             {
-              "label": { "de": "Bildungsplan Informatik Sek I, Hamburg", "en": "Hamburg curriculum for computer science, lower secondary" },
+              "label": {
+                "de": "Bildungsplan Informatik Sek I, Hamburg",
+                "en": "Hamburg curriculum for computer science, lower secondary"
+              },
               "url": "https://www.hamburg.de/resource/blob/798514/ad3c2fdfb3a32b9545a271dfceae5772/informatik-data.pdf"
             }
           ]
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Funktionen gab es schon vor Python: Mathe schreibt f(x), Rezepte schreiben „Teig kneten“, Bauanleitungen „Schraube B in Loch 3“. Überall steckt Eingabe, Vorschrift, Ergebnis. Wer Funktionen versteht, versteht Rezepte, Verträge und Stundenpläne – die halbe Welt läuft als Funktion, nur ohne Computer.",
+            "en": "Functions existed before Python: maths writes f(x), recipes write “knead dough”, manuals write “screw B into hole 3”. Everywhere sit input, rule, result. Whoever understands functions understands recipes, contracts and timetables – half the world runs as a function, only without computer."
+          }
+        }
+      ]
+    },
+    {
+      "key": "deine-eigene-werkzeugkiste",
+      "title": {
+        "de": "Deine eigene Werkzeugkiste",
+        "en": "Your own toolbox"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Ab heute schreibst du nichts mehr zweimal: Jede wiederkehrende Aufgabe wird eine Funktion in deiner Werkzeugkiste.",
+            "en": "From today you never write anything twice: every recurring task becomes a function in your toolbox."
+          }
+        },
+        {
+          "kind": "steps",
+          "items": [
+            {
+              "title": {
+                "de": "noten(punkte)",
+                "en": "grade(points)"
+              },
+              "text": {
+                "de": "Dein Notenrechner aus dem letzten Pfad – als Funktion mit `return`. Danach reicht eine Zeile pro Fach: `mathe = noten(87)`.",
+                "en": "Your grade calculator from the last path – as a function with `return`. Afterwards one line per subject does it: `maths = grade(87)`."
+              }
+            },
+            {
+              "title": {
+                "de": "flaeche(laenge, breite)",
+                "en": "area(length, width)"
+              },
+              "text": {
+                "de": "Zimmer ausmessen, Teppich kaufen: Länge mal Breite, zurückgeben. Zwei Parameter, ein Ergebnis – das Muster für tausend Rechner.",
+                "en": "Measure the room, buy the carpet: length times width, returned. Two parameters, one result – the pattern for a thousand calculators."
+              }
+            },
+            {
+              "title": {
+                "de": "begruessung(name)",
+                "en": "greeting(name)"
+              },
+              "text": {
+                "de": "Ein Satz mit Namen darin, wiederverwendbar für jedes Programm mit Menschen. Kleine Funktion, große Höflichkeit.",
+                "en": "One sentence with a name in it, reusable for every program with humans. Small function, great politeness."
+              }
+            }
+          ]
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Lege alle drei in eine Datei namens `werkzeuge.py` – nein, noch nicht importieren, nur sammeln. In einem halben Jahr öffnest du sie und staunst: Das habe ICH gebaut. Genau so fangen Programmierer an, stolz zu werden.",
+            "en": "Put all three in a file called `tools.py` – no importing yet, just collecting. In half a year you open it and marvel: *I* built that. Exactly how programmers start becoming proud."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Baue einen Taschenrechner als Datei: plus, minus, mal, geteilt – vier Funktionen, jede mit return. Danach rechnest du mit Funktionsaufrufen statt Tasten: `plus(7, 8)` statt Tippen. Erweitern erwünscht: Prozent, Wurzel (dafür gibt es `math`), Potenz. Dein Rechner wächst mit dir – Zeile für Zeile.",
+            "en": "Build a calculator as a file: plus, minus, times, divided – four functions, each with return. Afterwards you compute with calls instead of keys: `plus(7, 8)` instead of typing. Extending wanted: percent, root (there is `math` for that), power. Your calculator grows with you – line by line."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "tip",
+          "icon": "🎁",
+          "title": {
+            "de": "Teilen",
+            "en": "Sharing"
+          },
+          "text": {
+            "de": "Schenke eine Funktion her: Schicke `begruessung` an einen Freund – mit einem Satz Erklärung. Code teilen ist wie Pausenbrot teilen: Beide haben mehr. So fängt Open Source an – im Klassenchat.",
+            "en": "Give a function away: send `greeting` to a friend – with one sentence of explanation. Sharing code is like sharing sandwiches: both hold more. Thus open source starts – in the class chat."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Funktionen altern übrigens gut: Was du heute als noten() schreibst, nutzt du in zwei Jahren noch – in Klausur-Tabellen, Zeugnis-Rechnern, überall. Gute Funktionen werden alt wie gutes Werkzeug: Griff blank, Klinge scharf. Sammle sie gut, und deine Werkzeugkiste trägt dich durchs Studium.",
+            "en": "Functions incidentally age well: what you write today as grade() you still use in two years – in exam sheets, report calculators, everywhere. Good functions age like good tools: handle shiny, blade sharp. Collect them well, and your toolbox carries you through university."
+          }
         }
       ]
     }

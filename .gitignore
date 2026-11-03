@@ -9,6 +9,7 @@
 
 # Fresh build directory
 _fresh/
+.fresh-releases/
 # npm dependencies
 node_modules/
 
@@ -21,3 +22,26 @@ docker-compose/app/*
 
 # Python runtime for the notebook, fetched with: deno task pyodide
 static/pyodide/
+
+# Scratch runtime and assets are installed by deno task scratch.
+static/scratch/vendor/
+static/scratch/library-assets/
+static/scratch/integration-source.tar.gz
+
+# Private runtime state and local working files.
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm
+master.key
+__pycache__/
+*.pyc
+backups/
+korrektur/
+BESTANDSAUFNAHME.md
+handshake-*.md
+/x
+/scripts/check-grading-draft.py
+
+# Nested checkouts and local agent configuration.
+Admin_Bud-E/
+.claude/

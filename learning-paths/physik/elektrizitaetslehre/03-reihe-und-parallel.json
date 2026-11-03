@@ -10,7 +10,7 @@
   },
   "icon": "💡",
   "accent": "amber",
-  "minutes": 12,
+  "minutes": 22,
   "screens": [
     {
       "key": "reihe",
@@ -92,8 +92,15 @@
             "en": "Why modern strings keep glowing anyway"
           },
           "text": {
-            "de": "Auch heutige LED-Ketten sind oft in Reihe geschaltet - aber jede LED hat ein winziges Bauteil parallel dazu, das leitend wird, sobald die LED ausfällt. Der Strom bekommt eine Umleitung, und der Rest brennt weiter. Ein kleiner Trick, der ein altes Ärgernis beendet hat.",
-            "en": "Today's LED strings are often still wired in series - but each LED has a tiny component in parallel with it that starts conducting the moment the LED fails. The current gets a bypass and the rest stays lit. A small trick that ended an old annoyance."
+            "de": "Moderne Lichterketten können unterschiedliche Reihen-, Parallel- und Gruppenschaltungen besitzen. In manchen ausdrücklich beschriebenen Bauarten umgeht ein zusätzlicher Pfad ein ausgefallenes Element. Daraus folgt aber nicht, dass jede LED-Kette dieselbe Überbrückung besitzt. Ob und warum der Rest weiterleuchtet, lässt sich zuverlässig nur an einem angegebenen Schaltplan erklären, nicht aus dem äußeren Verhalten allein.",
+            "en": "Modern light strings may use different series, parallel and grouped circuits. In some specified designs, an additional path bypasses a failed element. This does not mean every LED string has the same bypass. A supplied circuit diagram, rather than external behaviour alone, is needed to explain reliably whether and why the remaining lights stay on."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Alte Lichterketten zeigen den Gedanken einer gemeinsamen Strombahn besonders anschaulich. Moderne Bauarten können mehrere Gruppen und zusätzliche Schutz- oder Überbrückungselemente enthalten. Eine äußerlich ähnliche Kette muss deshalb nicht denselben Plan haben. Untersuche hier nur die gezeichneten Modelle; gekaufte Lichterketten bleiben geschlossen und werden weder umgebaut noch als Versuchsaufbau verwendet.",
+            "en": "Older light strings clearly illustrate a shared current path. Modern designs can contain several groups and additional protection or bypass components. Similar-looking strings therefore need not share a circuit diagram. Investigate only the drawn models here; purchased light strings remain closed and must not be modified or used as experimental setups."
           }
         }
       ]
@@ -242,6 +249,96 @@
           }
         },
         {
+          "kind": "paragraph",
+          "text": {
+            "de": "Schau dich zu Hause um und sortiere: Kühlschrank, Lampe, Handy-Ladegerät – alles parallel an 230 Volt, jedes nimmt, was es braucht. Die Sicherung davor zählt alles zusammen – wird es zu viel, fliegt sie. Parallel heißt Freiheit für Geräte, Verantwortung für die Sicherung. Und die pflegt der Elektriker, nicht du.",
+            "en": "Look around at home sorting: fridge, lamp, phone charger – all parallel at 230 volts, each taking what it needs. The fuse before counts everything together – too much, it trips. Parallel means freedom for devices, responsibility for the fuse. Which the electrician tends, not you."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "warn",
+          "icon": "⚡",
+          "title": {
+            "de": "Finger weg",
+            "en": "Hands off"
+          },
+          "text": {
+            "de": "Steckdosen sind tabu für Experimente – 230 Volt verzeihen keine Neugier. Alles hier gilt für Batterie und Schwachstrom. Starkstrom gehört Profis mit Ausbildung und Werkzeug.",
+            "en": "Sockets are taboo for experiments – 230 volts forgive no curiosity. Everything here counts for battery and weak current. Mains belongs to pros with training and tools."
+          }
+        }
+      ]
+    },
+    {
+      "key": "knoten",
+      "title": {
+        "de": "Am Knoten stimmt die Ladungsbilanz",
+        "en": "Charge balances at a junction"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "In einer Parallelschaltung teilt sich der Strom an einer Verzweigung auf. Im stationären Zustand gilt: Die zufließende Stromstärke ist so groß wie die Summe der abfließenden Stromstärken. Am Knoten wird nicht dauerhaft Ladung gesammelt oder erzeugt. Nach dem Zusammenführen fließt wieder der gesamte Strom zurück zur Quelle.",
+            "en": "In a parallel circuit, current splits at a junction. In a steady state, incoming current equals the sum of outgoing currents. The junction does not continuously accumulate or create charge. After the branches rejoin, the full current returns to the source."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "In einem Modell mit 6 V liegen zwei Widerstände von 30 Ω und 60 Ω parallel. Durch den ersten Zweig fließen 0,2 A, durch den zweiten 0,1 A. Die Quelle liefert zusammen 0,3 A. Die Stromstärken sind also nicht automatisch gleich, obwohl an beiden Zweigen dieselbe Spannung liegt. Für dieselben zwei Widerstände in Reihe wäre der Gesamtwiderstand 90 Ω; überall flösse derselbe wesentlich kleinere Strom. Die Quelle und Bauteilwerte müssen beim Vergleichen ausdrücklich gleich bleiben. Diese Zahlen sind ein virtuelles Kleinspannungsbeispiel. Haushaltsanschlüsse werden nicht nachgebaut und auch nicht durch das Einsetzen eigener Messgeräte überprüft. Das sichere Ziel ist eine korrekte Bilanz, nicht ein echter Eingriff.",
+            "en": "In a model with 6 V, resistors of 30 Ω and 60 Ω are connected in parallel. Their branch currents are 0.2 A and 0.1 A, giving a total source current of 0.3 A. Branch currents are therefore not automatically equal even though both branches have the same voltage. With the same resistors in series, total resistance would be 90 Ω and the same, much smaller current would flow everywhere. Comparisons must explicitly keep source voltage and component values unchanged. These figures describe a virtual low-voltage example. Household wiring must neither be copied nor investigated by adding your own meters. The safe goal is a correct account, not an actual electrical intervention."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Warum ist bei 6 V die Summe 0,2 A + 0,1 A sinnvoll, die Behauptung gleicher Zweigströme aber falsch? Durch den 30-Ω-Zweig fließt im Beispiel doppelt so viel Strom wie durch den 60-Ω-Zweig. Die Spannung bleibt dennoch an beiden gleich. Zeichne deshalb unterschiedlich starke Strompfeile und dieselbe Spannungsbeschriftung. An der Quelle gehören beide Ströme zusammen. Diese konkrete Kombination hilft, die Knotenregel von der falschen Vorstellung zu trennen, jeder Zweig bekomme automatisch denselben Stromanteil.",
+            "en": "Why is the sum 0.2 A + 0.1 A correct at 6 V while the claim of equal branch currents is wrong? The 30 Ω branch carries twice the current of the 60 Ω branch, while both share the same voltage. Draw different current arrows and equal voltage labels. At the source, add the currents. This separates the junction rule from the false idea that every branch automatically gets an equal current share."
+          }
+        }
+      ]
+    },
+    {
+      "key": "modellprojekt",
+      "title": {
+        "de": "Ein Modellzimmer darf anders aussehen als ein Haus",
+        "en": "A model room need not look like household wiring"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Für ein virtuelles Modellzimmer sollen zwei Lampen unabhängig schaltbar sein. Jede bekommt einen eigenen Zweig mit Schalter in Reihe zur jeweiligen Lampe. Öffnest du einen Schalter, bleibt der andere Zweig geschlossen. Ein Hauptschalter vor der Verzweigung könnte dagegen beide Zweige zugleich unterbrechen. Der Schaltplan beschreibt diese Funktion, nicht die zulässige Installation in einer Wohnung.",
+            "en": "A virtual model room needs two lamps that can be switched independently. Each has its own branch, with a switch in series with that lamp. Opening one switch leaves the other branch closed. A main switch before the junction could interrupt both branches together. The diagram describes function, not an approved installation inside a home."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Bei echten Lampen musst du außerdem wissen, für welche Spannung und Stromstärke sie vorgesehen sind. Eine LED ist kein beliebig einsetzbarer ohmscher Widerstand. Moderne Lichterketten können sehr verschiedene Reihen-, Parallel- und Überbrückungskonzepte haben; das Weiterleuchten allein beweist keine bestimmte Schaltung. Darum analysierst du einen ausdrücklich angegebenen Plan statt einer Vermutung über ein gekauftes Gerät. Deine Gestaltungsidee kann Komfort, Ausfallsicherheit und Energiebedarf vergleichen. Bleibe bei einer Simulation oder einem mit der Lehrkraft vereinbarten Kleinspannungsmodell. Netzanschlüsse, Steckdosenleisten und Innenräume gekaufter Lichterketten werden niemals geöffnet oder verändert. Das Modell ist gerade deshalb nützlich, weil du Funktionen ohne diese Gefahren untersuchen kannst.",
+            "en": "Real lamps also have specified voltage and current requirements. An LED is not an arbitrary ohmic resistor. Modern strings of lights can use many combinations of series connections, parallel connections and bypasses. Remaining lit does not by itself prove a particular circuit. Analyse an explicitly supplied diagram instead of guessing the internals of a purchased product. Your design can compare convenience, failure behaviour and energy demand. Stay with a simulation or a teacher-approved low-voltage model. Never open or modify mains connections, extension strips or purchased light strings. A model is useful precisely because it lets you investigate functions without those hazards."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Entwirf einen virtuellen Raum mit zwei unabhängig schaltbaren Lampen und erkläre, wo ein gemeinsamer Hauptschalter liegen müsste. Ein Hauptschalter vor der Verzweigung unterbricht den gemeinsamen Weg. Zwei Einzelschalter hinter der Verzweigung steuern dagegen nur ihren jeweiligen Zweig. Du kannst die vier Kombinationen „beide an“, „nur links“, „nur rechts“ und „beide aus“ in der Simulation prüfen. Funktioniert eine Kombination nicht, hilft der Plan bei der Erklärung, ohne dass an einem wirklichen Hausanschluss etwas verändert werden müsste.",
+            "en": "Design a virtual room with two independently switched lamps and explain where a shared main switch would go. A main switch before the junction interrupts the shared path; switches after it control individual branches. Test four virtual states: both on, left only, right only and both off. If one fails, the diagram helps explain why without changing anything in a real household installation."
+          }
+        },
+        {
           "kind": "sources",
           "items": [
             {
@@ -257,6 +354,20 @@
                 "en": "VDE: domestic electrical installations"
               },
               "url": "https://www.vde.com"
+            },
+            {
+              "label": {
+                "de": "Hamburg: Physik Gymnasium (2024)",
+                "en": "Hamburg: Gymnasium physics (2024)"
+              },
+              "url": "https://www.hamburg.de/resource/blob/798534/4cf0047ad61effacd1ff7e6ad819fa41/physik-data.pdf"
+            },
+            {
+              "label": {
+                "de": "Hamburg: Physik Stadtteilschule (2024)",
+                "en": "Hamburg: Stadtteilschule physics (2024)"
+              },
+              "url": "https://www.hamburg.de/resource/blob/798426/ba414a0ace36d17b7813a855db625c42/physik-data.pdf"
             }
           ]
         }
@@ -267,50 +378,46 @@
     {
       "kind": "cloze",
       "title": {
-        "de": "1. Lückentext: hintereinander oder nebeneinander",
-        "en": "1. Fill in the blanks: one behind another, or side by side"
+        "de": "1. Lückentext",
+        "en": "1. Fill in the blanks"
       },
       "intro": {
-        "de": "Setze die fehlenden Wörter und Zahlen ein.",
-        "en": "Fill in the missing words and numbers."
+        "de": "Ergänze die fehlenden Fachwörter. Alle Begriffe findest du im Pfad.",
+        "en": "Complete the missing technical words. Every term appears in this path."
       },
       "text": {
-        "de": "Liegen mehrere Bauteile auf einem einzigen Weg hintereinander, spricht man von einer ___. Dort ist die ___ überall gleich, während sich die Spannung ___. Zwei gleiche Lampen an 230 Volt bekommen deshalb je ___ Volt. Die Widerstände ___ sich. Fällt ein Bauteil aus, ist der ganze Kreis ___. Bekommt dagegen jedes Bauteil seinen eigenen Weg, heißt das ___. Dort ist die ___ überall gleich, und die Ströme addieren sich. Der Gesamtwiderstand wird dabei ___. Deshalb steigt der Gesamtstrom mit jedem zusätzlichen Gerät, bis die ___ auslöst. In einer Wohnung sind die Steckdosen aus genau diesem Grund ___ geschaltet.",
-        "en": "When several components sit one behind another on a single path, this is called a ___ circuit. There the ___ is the same everywhere while the voltage ___. Two identical lamps at 230 volts therefore get ___ volts each. The resistances ___. If one component fails, the whole circle is ___. If instead every component gets its own path, it is called a ___ circuit. There the ___ is the same everywhere and the currents add up. The total resistance thereby gets ___. So the total current rises with every extra device until the ___ trips. In a flat the sockets are wired ___ for exactly this reason."
+        "de": "Ein einziger Weg durch mehrere Bauteile bildet eine ___. Dort ist überall dieselbe ___. Auf die Bauteile verteilt sich die ___. Ihre Widerstände ergeben zusammen den ___. Eigene Zweige entstehen in einer ___. Dort liegt an allen Zweigen dieselbe ___. An einer Verzweigung gilt die Ladungs___. Die Summe der Zweigströme ergibt den ___. Für unabhängig schaltbare Lampen braucht jeder Zweig einen eigenen ___.",
+        "en": "One path through several components forms a ___. The same ___ flows everywhere in it. Components share the ___. Their resistances combine into total ___. Separate branches form a ___. Every branch has the same ___. At a junction, charge ___ applies. Branch currents sum to the ___. Independently switched lamps need a separate ___ in each branch."
       }
     },
     {
       "kind": "compare",
       "title": {
-        "de": "2. Vergleiche: dieselbe Kette, zwei Zeitalter",
-        "en": "2. Compare: the same string, two eras"
+        "de": "2. Erklären und vergleichen (AB II)",
+        "en": "2. Explain and compare (level II)"
       },
       "intro": {
-        "de": "Setze zwei Beobachtungen zueinander in Beziehung.",
-        "en": "Relate two observations to each other."
+        "de": "Antworte mit drei bis vier kurzen Sätzen. Nutze das Gelesene und begründe deinen Vergleich.",
+        "en": "Answer in three or four short sentences. Use what you have read and explain your comparison."
       },
       "text": {
-        "de": "Bei einer alten Lichterkette ging alles aus, wenn eine Lampe durchbrannte. Bei einer heutigen LED-Kette leuchtet der Rest weiter, obwohl auch sie in Reihe geschaltet ist. Erkläre, wie das zusammengehen kann, und begründe außerdem, warum man in einer Wohnung niemals eine Reihenschaltung für die Steckdosen wählen würde - nenne dafür zwei verschiedene Gründe.",
-        "en": "In an old string of lights everything went out when a bulb burned through. In a modern LED string the rest keeps glowing, although it too is wired in series. Explain how that can be, and additionally justify why nobody would ever wire the sockets of a flat in series - giving two different reasons."
-      },
-      "hint": {
-        "de": "Für den zweiten Teil: Denk einmal an das Ausfallen und einmal daran, was mit der Spannung geschieht.",
-        "en": "For the second part: think once about failure and once about what happens to the voltage."
+        "de": "Vergleiche zwei Widerstände in Reihe und parallel an derselben virtuellen Quelle. Erkläre die Gemeinsamkeiten und Unterschiede von Spannung und Stromstärke. Warum müssen parallele Zweigströme nicht gleich groß sein?",
+        "en": "Compare two resistors in series and in parallel across the same virtual source. Explain similarities and differences in voltage and current. Why need parallel branch currents not be equal?"
       }
     },
     {
       "kind": "reflect",
       "title": {
-        "de": "3. Zum Nachdenken: alles oder jeder für sich",
-        "en": "3. Something to think about: all together or each alone"
+        "de": "3. Deine Idee im Alltag (AB III)",
+        "en": "3. Your idea for everyday life (level III)"
       },
       "intro": {
-        "de": "Auf diese Frage gibt es keine richtige Antwort.",
-        "en": "There is no right answer to this one."
+        "de": "Entwickle eine eigene Idee in drei bis vier kurzen Sätzen. Begründe sie mit Physik; mehrere Lösungen sind möglich.",
+        "en": "Develop your own idea in three or four short sentences. Support it with physics; several answers are possible."
       },
       "text": {
-        "de": "Reihe heißt: Fällt einer aus, fallen alle aus. Parallel heißt: Jeder kann für sich ausfallen, ohne dass es die anderen trifft. Dieselbe Wahl gibt es weit außerhalb der Physik - bei einer Gruppenarbeit, bei einer Lieferkette, bei einem Stromnetz, bei einem Team. Suche zwei Beispiele aus deinem eigenen Leben, eines von jeder Sorte. Und dann: Welche Vorteile hat es, voneinander abhängig zu sein - obwohl es doch nach dem Nachteil klingt?",
-        "en": "Series means: if one fails, all fail. Parallel means: each can fail on its own without touching the others. The same choice exists far beyond physics - in group work, in a supply chain, in a power grid, in a team. Find two examples from your own life, one of each kind. And then: what are the advantages of depending on each other - although it sounds like the disadvantage?"
+        "de": "Entwirf ein virtuelles Modellzimmer mit zwei unabhängig schaltbaren Lampen und einem Hauptschalter. Begründe die Anordnung und nenne eine Grenze gegenüber einer wirklichen Hausinstallation.",
+        "en": "Design a virtual model room with two independently switched lamps and a main switch. Justify the arrangement and identify a limit compared with real household wiring."
       }
     }
   ]

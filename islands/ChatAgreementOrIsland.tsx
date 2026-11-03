@@ -18,17 +18,27 @@ import ChatWarning from "../components/Warning.tsx";
 
 interface Props {
   lang: string;
+  initialAgreed?: boolean;
+  returnTo?: string;
 }
 
-export default function ChatAgreementOrIsland({ lang }: Props) {
-  const [agreed, setAgreed] = useState(false);
+export default function ChatAgreementOrIsland(
+  { lang, initialAgreed = false, returnTo = "/" }: Props,
+) {
+  const [agreed, setAgreed] = useState(initialAgreed);
 
   useEffect(() => {
     if (hasAgreed()) setAgreed(true);
   }, []);
 
   if (!agreed) {
-    return <ChatAgreement lang={lang} onAgree={() => setAgreed(true)} />;
+    return (
+      <ChatAgreement
+        lang={lang}
+        returnTo={returnTo}
+        onAgree={() => setAgreed(true)}
+      />
+    );
   }
   return (
     <>

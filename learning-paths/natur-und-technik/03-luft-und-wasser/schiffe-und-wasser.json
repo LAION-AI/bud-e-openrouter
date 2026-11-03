@@ -1,0 +1,190 @@
+{
+  "key": "nwt-schiffe-und-wasser",
+  "title": {
+    "de": "Warum schwimmt ein schweres Schiff?",
+    "en": "Why does a heavy ship float?"
+  },
+  "summary": {
+    "de": "Auftrieb, Dichte und die besondere Oberfläche von Wasser ohne Formeldschungel entdecken.",
+    "en": "Explore buoyancy, density and water's surface without a forest of formulas."
+  },
+  "icon": "💧",
+  "accent": "teal",
+  "minutes": 12,
+  "screens": [
+    {
+      "key": "entdecken-1",
+      "title": {
+        "de": "Schwer allein entscheidet nicht",
+        "en": "Weight alone does not decide"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Ein kleiner Metallklotz sinkt, ein riesiges Schiff schwimmt. Widerspruch? Wasser drückt auf eingetauchte Gegenstände. Daraus entsteht eine nach oben gerichtete Kraft: der Auftrieb.",
+            "en": "A small metal block sinks, but a huge ship floats. A contradiction? Water pushes on immersed objects, producing an upward force called buoyancy."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Ein schwimmendes Schiff verdrängt Wasser. Verdrängen heißt: Es nimmt den Platz ein, an dem vorher Wasser war. Sein großer, hohler Rumpf kann viel Wasser verdrängen. Beim ruhigen Schwimmen gleicht der Auftrieb die nach unten wirkende Gewichtskraft aus. Wird zu viel zugeladen, liegt das Schiff tiefer und kann gefährdet sein.",
+            "en": "A floating ship displaces water, taking up space previously occupied by water. Its large hollow hull can displace a lot. When it floats at rest, buoyancy balances its downward weight. Too much cargo makes it sit lower and can put it at risk."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "💡",
+          "title": {
+            "de": "Dein Auftrag",
+            "en": "Your task"
+          },
+          "text": {
+            "de": "Vergleiche gedanklich eine feste Metallkugel mit einer großen hohlen Metallschale. Welche Form kann mehr Wasser verdrängen, bevor sie volläuft?",
+            "en": "Compare a solid metal ball with a large hollow metal bowl. Which shape can displace more water before filling up?"
+          }
+        }
+      ]
+    },
+    {
+      "key": "entdecken-2",
+      "title": {
+        "de": "Gleicher Platz, andere Masse",
+        "en": "Same space, different mass"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Zwei gleich große Würfel können unterschiedlich viel wiegen. Dichte beschreibt, wie viel Masse in einem bestimmten Volumen steckt. Masse misst du etwa in Gramm, Volumen etwa in Millilitern.",
+            "en": "Two equally sized cubes can have different masses. Density describes how much mass fits into a given volume. Mass can be measured in grams and volume in millilitres."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Bei einem Schiff zählen Metall und eingeschlossene Luft zusammen. Seine mittlere Dichte kann dadurch kleiner als die des Wassers sein. Nicht nur das Material, sondern die gesamte Form samt Hohlraum ist wichtig. Wird der Rumpf undicht und läuft voll, verändert sich die Situation. Schwimmen ist kein Zaubertrick des Metalls.",
+            "en": "For a ship, count both the metal and the enclosed air. Its average density can therefore be lower than water's. The overall shape and hollow space matter, not just the material. A leaking hull that fills with water changes the situation. Floating is not a magical property of metal."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "💡",
+          "title": {
+            "de": "Dein Auftrag",
+            "en": "Your task"
+          },
+          "text": {
+            "de": "Erkläre den Satz „Ein Schiff besteht nicht nur aus Metall“ so, dass ein jüngeres Kind versteht, warum Luft und Form wichtig sind.",
+            "en": "Explain “A ship is not just metal” so a younger child understands why air and shape matter."
+          }
+        }
+      ]
+    },
+    {
+      "key": "entdecken-3",
+      "title": {
+        "de": "Wasser hat noch einen anderen Trick",
+        "en": "Water has another trick"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Ein Wasserläufer steht scheinbar auf dem Wasser. Dafür ist nicht nur Auftrieb verantwortlich. An der Oberfläche wirken Anziehungskräfte zwischen Wasserteilchen. Wir nennen diese Wirkung Oberflächenspannung.",
+            "en": "A pond skater seems to stand on water. Buoyancy alone does not explain this. Attractive forces between water particles act at the surface. This effect is called surface tension."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Die Oberfläche verhält sich vereinfacht wie eine gespannte Haut, ist aber keine echte Haut. Kleine Tiere verteilen ihr Gewicht mit ihren Beinen. Spülmittel verändert die Oberflächenspannung. Es gehört deshalb nicht in einen Teich. Beobachte kleine Wassertiere nur vom sicheren Rand und in Begleitung; fange sie nicht für diesen Auftrag.",
+            "en": "The surface behaves a little like a stretched skin, but it is not actual skin. Small animals spread their weight with their legs. Detergent changes surface tension, so it does not belong in a pond. Observe small water animals from a safe edge with an adult; do not catch them for this task."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "💡",
+          "title": {
+            "de": "Dein Auftrag",
+            "en": "Your task"
+          },
+          "text": {
+            "de": "Unterscheide zwei Erklärungen: Was hilft dem Schiff, und welche besondere Rolle spielt beim Wasserläufer die Wasseroberfläche?",
+            "en": "Distinguish the explanations: what supports the ship, and what special role does the water surface play for a pond skater?"
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "Hamburg: Naturwissenschaften/Technik 5–6, Gymnasium (2024)",
+                "en": "Hamburg: science and technology, years 5–6, Gymnasium (2024)"
+              },
+              "url": "https://www.hamburg.de/resource/blob/798520/700d66232c2d07bad97d72b6e107e083/naturwissenschaften-technik-data.pdf"
+            },
+            {
+              "label": {
+                "de": "Hamburg: Naturwissenschaften/Technik 5–6, Stadtteilschule (2024)",
+                "en": "Hamburg: science and technology, years 5–6, Stadtteilschule (2024)"
+              },
+              "url": "https://www.hamburg.de/resource/blob/798394/033190c61a9908ff10401a5b66cedae9/naturwissenschaften-technik-data.pdf"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": {
+        "de": "Die wichtigsten Wörter",
+        "en": "The key words"
+      },
+      "intro": {
+        "de": "Setze passende Wörter aus den drei Seiten ein. Nachschauen ist erlaubt.",
+        "en": "Fill the gaps using words from the three pages. You may look back."
+      },
+      "text": {
+        "de": "Die nach oben gerichtete Kraft im Wasser heißt ___. Ein Schiff muss Wasser ___. Sein hohler ___ bietet viel Platz. Nach unten wirkt die ___. Masse pro Volumen beschreibt die ___. Im Rumpf befindet sich auch ___. An der Wasseroberfläche wirkt die ___. Die Vorstellung einer Haut ist nur ein ___.",
+        "en": "The upward force in water is ___. A ship must ___ water. Its hollow ___ offers space. ___ acts downwards. Mass per volume describes ___. The hull also contains ___. At the water surface, ___ acts. The idea of a skin is only a ___."
+      }
+    },
+    {
+      "kind": "compare",
+      "title": {
+        "de": "Erkläre den Zusammenhang",
+        "en": "Explain the connection"
+      },
+      "intro": {
+        "de": "Antworte in zwei bis drei Sätzen. Nutze ein Beispiel aus dem Lernpfad.",
+        "en": "Answer in two or three sentences. Use an example from the learning path."
+      },
+      "text": {
+        "de": "Warum kann ein hohles Metallschiff schwimmen, obwohl ein Metallklotz sinkt? Verbinde Form, verdrängtes Wasser und Auftrieb in deiner Erklärung.",
+        "en": "Why can a hollow metal ship float while a metal block sinks? Connect shape, displaced water and buoyancy in your explanation."
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": {
+        "de": "Deine Idee für den Alltag",
+        "en": "Your everyday idea"
+      },
+      "intro": {
+        "de": "Hier zählt deine begründete Idee, nicht eine bestimmte Musterantwort.",
+        "en": "Your reasoned idea matters, not a particular model answer."
+      },
+      "text": {
+        "de": "Entwirf auf Papier ein kleines Transportboot. Wie müsste seine Form sein, und warum darf man es nicht beliebig beladen?",
+        "en": "Design a small cargo boat on paper. What shape would it need, and why must it not be loaded without limits?"
+      }
+    }
+  ]
+}

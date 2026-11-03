@@ -367,6 +367,27 @@ export const settingsContent: InternalizationContent = {
     orTtsPromptReset: "Reset",
     orNoTtsEu:
       "No text-to-speech model on OpenRouter runs in the EU or offers zero retention - not one. If that matters for your setting, leave reading aloud switched off or use your own voice server.",
+    rqTitle: "Requesty models",
+    rqHint:
+      "Your key was recognised as a Requesty key, so requests go straight to Requesty instead of through the middleware. The models below are preselected; you can pick a different one for chat with or without pictures. The list is fetched live from Requesty whenever you open this.",
+    rqRefresh: "Refresh list",
+    rqUpdated: "List updated",
+    rqStale: "Could not refresh - showing the previous list.",
+    rqLoading: "Loading models...",
+    rqError: "Could not load the model list.",
+    rqLegend:
+      "EU+ZDR = hosted in the EU, keeps nothing. ZDR = zero data retention outside the EU. Free = costs nothing per token. Prices are dollars per million tokens.",
+    rqGroupRecommended: "Recommended",
+    rqGroupEuZdr: "EU + zero retention",
+    rqGroupZdr: "Zero retention, outside the EU",
+    rqGroupFree: "Free models",
+    rqGroupOther: "No guarantee",
+    rqRoleLlm: "Chat (LLM)",
+    rqRoleVlm: "Images in chat (VLM)",
+    rqDefault: "recommended",
+    rqAlternative: "alternative",
+    rqScopeNote:
+      "With a Requesty key, chatting and pictures in chat run through Requesty. Reading aloud, speech recognition, image and song generation keep their previous route.",
     mailSkillTitle: "Let Bud-E manage your mail",
     mailSkillHint:
       "Bud-E can then search the mailbox, read single messages out to you, save drafts and hand you attachments - like a secretary. It uses the same mailbox as the sync above. Listings only ever carry sender, date and subject; a message is opened one at a time and only when needed.",
@@ -504,6 +525,27 @@ export const settingsContent: InternalizationContent = {
     orTtsPromptReset: "Zurücksetzen",
     orNoTtsEu:
       "Kein einziges Sprachausgabe-Modell auf OpenRouter läuft in der EU oder bietet Zero Retention - kein einziges. Wenn das für deinen Einsatz zählt, lass das Vorlesen aus oder nutze einen eigenen Sprachserver.",
+    rqTitle: "Requesty-Modelle",
+    rqHint:
+      "Dein Schlüssel wurde als Requesty-Schlüssel erkannt. Anfragen gehen deshalb direkt zu Requesty statt über die Middleware. Die Modelle unten sind voreingestellt; du kannst für Unterhaltung mit und ohne Bilder ein anderes wählen. Die Liste wird live von Requesty geholt, sobald du dies öffnest.",
+    rqRefresh: "Liste aktualisieren",
+    rqUpdated: "Liste aktualisiert",
+    rqStale: "Aktualisierung fehlgeschlagen - angezeigt wird die vorige Liste.",
+    rqLoading: "Modelle werden geladen...",
+    rqError: "Die Modellliste konnte nicht geladen werden.",
+    rqLegend:
+      "EU+ZDR = in der EU gehostet, speichert nichts. ZDR = Zero Retention außerhalb der EU. Free = kostenlos je Token. Preise in Dollar je Million Token.",
+    rqGroupRecommended: "Empfohlen",
+    rqGroupEuZdr: "EU + Zero Retention",
+    rqGroupZdr: "Zero Retention, außerhalb der EU",
+    rqGroupFree: "Kostenlose Modelle",
+    rqGroupOther: "Ohne Garantie",
+    rqRoleLlm: "Unterhaltung (LLM)",
+    rqRoleVlm: "Bilder im Chat (VLM)",
+    rqDefault: "empfohlen",
+    rqAlternative: "Alternative",
+    rqScopeNote:
+      "Mit einem Requesty-Schlüssel laufen Unterhaltung und Bilder im Chat über Requesty. Vorlesen, Spracherkennung, Bild- und Liederzeugung behalten ihren bisherigen Weg.",
     mailSkillTitle: "Bud-E darf deine Mails verwalten",
     mailSkillHint:
       "Bud-E kann dann das Postfach durchsuchen, dir einzelne Nachrichten vorlesen, Entwürfe speichern und dir Anhänge geben - wie ein Sekretär. Er nutzt dasselbe Postfach wie der Abgleich oben. Übersichten enthalten immer nur Absender, Datum und Betreff; eine Nachricht wird einzeln geöffnet und nur dann, wenn sie gebraucht wird.",

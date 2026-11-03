@@ -9,6 +9,11 @@ import type { ComponentChildren } from "preact";
 import { useEffect, useRef, useState } from "preact/hooks";
 import { learningContent } from "../internalization/learning-content.ts";
 import { printWorksheet } from "../utils/worksheet.ts";
+import { learningStages, subjectsForStage } from "../utils/learningStages.ts";
+import {
+  learningPathQuery,
+  type LearningPathTarget,
+} from "../utils/learningPathLinks.ts";
 import {
   type Accent,
   type Block,
@@ -99,6 +104,9 @@ export default function LearningModal({
   lang = "en",
   onClose,
   onOpenNotebook,
+  initialPath,
+  initialLinkInvalid = false,
+  onInitialPathConsumed,
 }: {
   lang?: string;
   onClose: () => void;
@@ -109,6 +117,9 @@ export default function LearningModal({
    * notebook blocks still show their text, only without a button.
    */
   onOpenNotebook?: (example: string, cell?: number) => void;
+  initialPath?: LearningPathTarget | null;
+  initialLinkInvalid?: boolean;
+  onInitialPathConsumed?: () => void;
 }) {
   const t = (key: string) =>
     (learningContent[lang]?.[key] ?? learningContent.en[key] ?? key) as string;
@@ -120,6 +131,8 @@ export default function LearningModal({
   const [pathKey, setPathKey] = useState<string | null>(null);
   const [screenIndex, setScreenIndex] = useState(0);
   const [showResume, setShowResume] = useState(false);
+  /** Which stage tab the module grid shows ("sek1" unless told otherwise). */
+  const [levelKey, setLevelKey] = useState<string>("sek1");
 
   const scrollRef = useRef<HTMLElement | null>(null);
 
@@ -132,6 +145,13 @@ export default function LearningModal({
    * simply appear a moment later.
    */
   const [catalogue, setCatalogue] = useState<Subject[]>(subjects);
+  const [catalogueReady, setCatalogueReady] = useState(false);
+  const [linkError, setLinkError] = useState(false);
+  const [copyStatus, setCopyStatus] = useState<"copied" | "manual" | null>(
+    null,
+  );
+  const [manualUrl, setManualUrl] = useState("");
+  const initialHandled = useRef(false);
 
   useEffect(() => {
     let alive = true;
@@ -146,7 +166,10 @@ export default function LearningModal({
           console.warn("[Lernpfad]", e);
         }
       })
-      .catch((err) => console.warn("[Lernpfad] Ordner nicht lesbar:", err));
+      .catch((err) => console.warn("[Lernpfad] Ordner nicht lesbar:", err))
+      .finally(() => {
+        if (alive) setCatalogueReady(true);
+      });
     return () => {
       alive = false;
     };
@@ -184,8 +207,11 @@ export default function LearningModal({
     nextPath: LearningPath,
     at = 0,
   ) => {
+    setLinkError(false);
+    setCopyStatus(null);
     setSubjectKey(nextSubject.key);
     setModuleKey(nextModule.key);
+    setLevelKey(nextModule.level ?? "sek1");
     setPathKey(nextPath.key);
     setScreenIndex(at);
     setShowResume(false);
@@ -196,6 +222,50 @@ export default function LearningModal({
       lastPath: nextPath.key,
       screens: { ...progress.screens, [nextPath.key]: at },
     });
+  };
+
+  // A shared URL always starts on page one, even when this browser has older
+  // reading progress. Wait for the server catalogue: JSON paths are not built in.
+  useEffect(() => {
+    if (
+      !catalogueReady || initialHandled.current ||
+      (!initialPath && !initialLinkInvalid)
+    ) return;
+    initialHandled.current = true;
+    const chosenSubject = catalogue.find((s) => s.key === initialPath?.subject);
+    const chosenModule = chosenSubject?.modules.find((m) =>
+      m.key === initialPath?.module
+    );
+    const chosenPath = chosenModule?.paths.find((p) =>
+      p.key === initialPath?.path
+    );
+    if (chosenSubject && chosenModule && chosenPath) {
+      openPath(chosenSubject, chosenModule, chosenPath, 0);
+    } else {
+      setLinkError(true);
+    }
+    onInitialPathConsumed?.();
+  }, [catalogueReady, catalogue, initialPath, initialLinkInvalid]);
+
+  const copyShareLink = async () => {
+    if (!subject || !module || !path) return;
+    const url = `${globalThis.location.origin}/${
+      learningPathQuery({
+        subject: subject.key,
+        module: module.key,
+        path: path.key,
+      })
+    }`;
+    setManualUrl(url);
+    try {
+      if (!globalThis.navigator.clipboard?.writeText) {
+        throw new Error("Clipboard unavailable");
+      }
+      await globalThis.navigator.clipboard.writeText(url);
+      setCopyStatus("copied");
+    } catch {
+      setCopyStatus("manual");
+    }
   };
 
   /**
@@ -323,6 +393,18 @@ export default function LearningModal({
             </button>
           )}
 
+          {path && (
+            <button
+              type="button"
+              onClick={copyShareLink}
+              title={t("copyLink")}
+              aria-label={t("copyLink")}
+              class="p-1.5 rounded hover:bg-white/15 shrink-0"
+            >
+              <LinkIcon />
+            </button>
+          )}
+
           <button
             type="button"
             onClick={onClose}
@@ -333,6 +415,42 @@ export default function LearningModal({
           </button>
         </header>
 
+        {copyStatus && (
+          <div
+            role="status"
+            class="bg-sky-50 border-b border-sky-200 px-4 py-2 text-sm text-slate-800 flex items-center gap-3"
+          >
+            <span>
+              {t(copyStatus === "copied" ? "linkCopied" : "copyLinkManually")}
+            </span>
+            {copyStatus === "manual" && (
+              <input
+                readOnly
+                value={manualUrl}
+                onFocus={(event) => event.currentTarget.select()}
+                aria-label={t("copyLink")}
+                class="min-w-0 flex-1 rounded border border-sky-300 bg-white px-2 py-1"
+              />
+            )}
+            <button
+              type="button"
+              onClick={() => setCopyStatus(null)}
+              aria-label={t("close")}
+              class="ml-auto rounded p-1 hover:bg-sky-100"
+            >
+              <CloseIcon />
+            </button>
+          </div>
+        )}
+        {linkError && (
+          <div
+            role="alert"
+            class="bg-amber-50 border-b border-amber-200 px-4 py-2 text-sm text-amber-900"
+          >
+            {t("linkNotFound")}
+          </div>
+        )}
+
         {/* ------------------------------------------------ progress strip */}
         {path && (
           <div class="h-1.5 bg-slate-200 shrink-0">
@@ -341,7 +459,7 @@ export default function LearningModal({
                 ACCENTS[path.accent].bar
               }`}
               style={{
-                width: `${((screenIndex + 1) / path.screens.length) * 100}%`,
+                width: `${((screenIndex + 1) / totalScreens) * 100}%`,
               }}
             />
           </div>
@@ -354,6 +472,8 @@ export default function LearningModal({
               t={t}
               L={L}
               catalogue={catalogue}
+              levelKey={levelKey}
+              onLevel={setLevelKey}
               resume={resumeTarget}
               showResume={showResume}
               resumeScreen={progress.lastPath
@@ -380,7 +500,12 @@ export default function LearningModal({
               L={L}
               subject={subject}
               progress={progress}
-              onOpen={(m) => setModuleKey(m.key)}
+              levelKey={levelKey}
+              onLevel={setLevelKey}
+              onOpen={(m) => {
+                setLevelKey(m.level ?? "sek1");
+                setModuleKey(m.key);
+              }}
             />
           )}
 
@@ -399,6 +524,7 @@ export default function LearningModal({
               key={screen.key}
               t={t}
               L={L}
+              lang={lang}
               screen={screen}
               onOpenNotebook={onOpenNotebook}
             />
@@ -475,6 +601,8 @@ function SubjectGrid({
   t,
   L,
   catalogue,
+  levelKey,
+  onLevel,
   resume,
   showResume,
   resumeScreen,
@@ -486,6 +614,8 @@ function SubjectGrid({
   L: (value: { de: string; en: string }) => string;
   /** Built-in paths plus whatever the server read from the folder. */
   catalogue: Subject[];
+  levelKey: string;
+  onLevel: (level: string) => void;
   resume: { subject: Subject; path: LearningPath } | null;
   showResume: boolean;
   resumeScreen: number;
@@ -493,10 +623,15 @@ function SubjectGrid({
   onDismissResume: () => void;
   onOpen: (subject: Subject) => void;
 }) {
+  const levels = learningStages(catalogue);
+  const active = levels.includes(levelKey) ? levelKey : levels[0] ?? "sek1";
+  const visible = subjectsForStage(catalogue, active);
   return (
     <div class="max-w-5xl mx-auto px-4 py-8">
       <h3 class="text-2xl font-bold text-slate-800">{t("chooseSubject")}</h3>
       <p class="text-slate-500 mt-1">{t("chooseSubjectHint")}</p>
+
+      <StageTabs levels={levels} active={active} onLevel={onLevel} t={t} />
 
       {showResume && resume && (
         <div class="mt-6 flex flex-wrap items-center gap-3 bg-white border border-slate-200 rounded-xl px-4 py-3 shadow-sm">
@@ -533,7 +668,7 @@ function SubjectGrid({
       )}
 
       <div class="mt-8 grid gap-6 sm:grid-cols-2">
-        {catalogue.map((subject) => (
+        {visible.map((subject) => (
           <button
             type="button"
             key={subject.key}
@@ -553,8 +688,7 @@ function SubjectGrid({
             </div>
             <div class="mt-5 flex items-center gap-2 text-sm font-medium text-white/90">
               <span class="px-2.5 py-1 rounded-full bg-white/20">
-                {subject.modules.length}{" "}
-                {L(
+                {subject.modules.length} {L(
                   subject.modules.length === 1
                     ? { de: "Modul", en: "module" }
                     : { de: "Module", en: "modules" },
@@ -577,6 +711,63 @@ function SubjectGrid({
 
 // ------------------------------------------------------------ module level
 
+/** Display name for a stage tab. Unknown stages show their key as is. */
+function levelLabel(level: string, t: (key: string) => string): string {
+  if (level === "klasse56") return t("levelClass56");
+  if (level === "sek1") return t("levelSek1");
+  if (level === "sek2") return t("levelSek2");
+  return level;
+}
+
+function StageTabs({ levels, active, onLevel, t }: {
+  levels: string[];
+  active: string;
+  onLevel: (level: string) => void;
+  t: (key: string) => string;
+}) {
+  if (levels.length < 2) return null;
+  return (
+    <div
+      role="tablist"
+      aria-label={t("chooseStage")}
+      class="mt-5 inline-flex flex-wrap rounded-xl bg-slate-200 p-1 gap-1"
+    >
+      {levels.map((level, index) => (
+        <button
+          type="button"
+          role="tab"
+          key={level}
+          aria-selected={level === active}
+          tabIndex={level === active ? 0 : -1}
+          onClick={() => onLevel(level)}
+          onKeyDown={(event) => {
+            let next = index;
+            if (event.key === "ArrowRight") next = (index + 1) % levels.length;
+            else if (event.key === "ArrowLeft") {
+              next = (index + levels.length - 1) %
+                levels.length;
+            } else if (event.key === "Home") next = 0;
+            else if (event.key === "End") next = levels.length - 1;
+            else return;
+            event.preventDefault();
+            onLevel(levels[next]);
+            event.currentTarget.parentElement?.querySelectorAll<
+              HTMLButtonElement
+            >("button")[next]?.focus();
+          }}
+          class={`px-4 py-1.5 rounded-lg text-sm font-semibold transition-all ${
+            level === active
+              ? "bg-white shadow text-slate-800"
+              : "text-slate-500 hover:text-slate-700"
+          }`}
+        >
+          {levelLabel(level, t)}
+        </button>
+      ))}
+    </div>
+  );
+}
+
 /**
  * The modules of one subject.
  *
@@ -584,20 +775,32 @@ function SubjectGrid({
  * a curriculum, not a pile of topics. The tile carries an optional badge -
  * "M1", "Jg. 8-10" - so a teacher can see at a glance which part of the plan
  * a module covers.
+ *
+ * When a subject holds modules from more than one stage (the modules carry an
+ * optional "level" such as "sek1" or "sek2"), one tab per stage appears above
+ * the tiles. A subject with a single stage looks exactly as before.
  */
 function ModuleGrid({
   t,
   L,
   subject,
   progress,
+  levelKey,
+  onLevel,
   onOpen,
 }: {
   t: (key: string) => string;
   L: (value: { de: string; en: string }) => string;
   subject: Subject;
   progress: Progress;
+  levelKey: string;
+  onLevel: (level: string) => void;
   onOpen: (module: Module) => void;
 }) {
+  const levels = learningStages([subject]);
+  const active = levels.includes(levelKey) ? levelKey : levels[0] ?? "sek1";
+  const visible = subject.modules.filter((m) => (m.level ?? "sek1") === active);
+
   return (
     <div class="max-w-5xl mx-auto px-4 py-8">
       <div class="flex items-center gap-3">
@@ -608,8 +811,10 @@ function ModuleGrid({
         </div>
       </div>
 
+      <StageTabs levels={levels} active={active} onLevel={onLevel} t={t} />
+
       <div class="mt-6 grid gap-4 sm:grid-cols-2">
-        {subject.modules.map((module) => {
+        {visible.map((module) => {
           // How far the reader has come across this module's paths.
           const started = module.paths.filter((p) =>
             (progress.screens[p.key] ?? 0) > 0
@@ -626,7 +831,9 @@ function ModuleGrid({
                 hover:-translate-y-0.5 hover:shadow-md ${accent.soft}`}
             >
               <div class="flex items-start gap-3">
-                <span class="text-3xl leading-none shrink-0">{module.icon}</span>
+                <span class="text-3xl leading-none shrink-0">
+                  {module.icon}
+                </span>
                 <div class="min-w-0 flex-1">
                   <div class="flex items-center gap-2 flex-wrap">
                     <h4 class={`text-lg font-bold ${accent.text}`}>
@@ -935,14 +1142,33 @@ const PrintIcon = () => (
   </svg>
 );
 
+const LinkIcon = () => (
+  <svg
+    width="17"
+    height="17"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    aria-hidden="true"
+  >
+    <path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7.1-7.1l-1.7 1.7" />
+    <path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7.1 7.1l1.7-1.7" />
+  </svg>
+);
+
 function ScreenView({
   t,
   L,
+  lang,
   screen,
   onOpenNotebook,
 }: {
   t: (key: string) => string;
   L: (value: { de: string; en: string }) => string;
+  lang: string;
   screen: Screen;
   onOpenNotebook?: (example: string, cell?: number) => void;
 }) {
@@ -958,6 +1184,7 @@ function ScreenView({
             block={block}
             t={t}
             L={L}
+            lang={lang}
             onOpenNotebook={onOpenNotebook}
           />
         ))}
@@ -966,15 +1193,103 @@ function ScreenView({
   );
 }
 
+/** Backticks in lesson text mark commands and filenames, never raw HTML. */
+function inlineCode(text: string): ComponentChildren {
+  return text.split(/(`[^`]+`)/g).map((part, i) =>
+    part.startsWith("`") && part.endsWith("`")
+      ? (
+        <code
+          key={i}
+          class="rounded bg-slate-100 px-1.5 py-0.5 font-mono text-[0.9em] text-slate-900 break-all"
+        >
+          {part.slice(1, -1)}
+        </code>
+      )
+      : part
+  );
+}
+
+function CodeBox({ text: code, caption, lang }: {
+  text: string;
+  caption?: string;
+  lang: string;
+}) {
+  const [copyState, setCopyState] = useState<"idle" | "copied" | "failed">(
+    "idle",
+  );
+  const german = lang === "de";
+
+  useEffect(() => setCopyState("idle"), [code]);
+
+  const copyCode = async () => {
+    try {
+      if (!globalThis.navigator.clipboard?.writeText) {
+        throw new Error("Clipboard unavailable");
+      }
+      await globalThis.navigator.clipboard.writeText(code);
+      setCopyState("copied");
+    } catch {
+      // Some school browsers block the modern Clipboard API. Try the older
+      // selection-based copy command before asking pupils to select manually.
+      const field = document.createElement("textarea");
+      field.value = code;
+      field.style.position = "fixed";
+      field.style.opacity = "0";
+      document.body.appendChild(field);
+      field.select();
+      let copied = false;
+      try {
+        copied = document.execCommand("copy");
+      } catch {
+        copied = false;
+      } finally {
+        field.remove();
+      }
+      setCopyState(copied ? "copied" : "failed");
+    }
+  };
+
+  return (
+    <figure class="overflow-hidden rounded-lg border border-slate-700 bg-slate-900 text-slate-50 shadow-sm">
+      <figcaption class="flex items-center justify-between gap-2 border-b border-slate-700 px-3 py-1.5 text-xs font-semibold text-slate-200">
+        <span>{caption ?? "Code"}</span>
+        <button
+          type="button"
+          onClick={copyCode}
+          aria-label={german ? "Code kopieren" : "Copy code"}
+          class="shrink-0 rounded-md border border-slate-500 px-2.5 py-1 text-xs font-semibold text-white hover:bg-slate-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+        >
+          {copyState === "copied"
+            ? (german ? "Kopiert ✓" : "Copied ✓")
+            : (german ? "Kopieren" : "Copy")}
+        </button>
+      </figcaption>
+      <pre class="overflow-x-auto px-3 py-2 text-sm leading-relaxed"><code>{code}</code></pre>
+      {copyState === "failed" && (
+        <p
+          role="status"
+          class="border-t border-slate-700 px-3 py-2 text-xs text-amber-200"
+        >
+          {german
+            ? "Kopieren wurde blockiert. Markiere den Code und drücke Strg+C."
+            : "Copying was blocked. Select the code and press Ctrl+C."}
+        </p>
+      )}
+    </figure>
+  );
+}
+
 function BlockView({
   block,
   t,
   L,
+  lang,
   onOpenNotebook,
 }: {
   block: Block;
   t: (key: string) => string;
   L: (value: { de: string; en: string }) => string;
+  lang: string;
   /** Opens an example notebook. Absent when nothing can host one. */
   onOpenNotebook?: (example: string, cell?: number) => void;
 }) {
@@ -982,7 +1297,7 @@ function BlockView({
     case "lead":
       return (
         <p class="text-lg md:text-xl text-slate-700 leading-relaxed font-medium">
-          {L(block.text)}
+          {inlineCode(L(block.text))}
         </p>
       );
 
@@ -992,7 +1307,20 @@ function BlockView({
       );
 
     case "paragraph":
-      return <p class="text-slate-700 leading-relaxed">{L(block.text)}</p>;
+      return (
+        <p class="text-slate-700 leading-relaxed">
+          {inlineCode(L(block.text))}
+        </p>
+      );
+
+    case "code":
+      return (
+        <CodeBox
+          text={L(block.text)}
+          caption={block.caption ? L(block.caption) : undefined}
+          lang={lang}
+        />
+      );
 
     case "list":
       return block.ordered
@@ -1018,11 +1346,42 @@ function BlockView({
               <span class="w-7 h-7 shrink-0 rounded-full bg-slate-800 text-white text-sm font-bold flex items-center justify-center">
                 {i + 1}
               </span>
-              <div class="min-w-0">
+              <div class="min-w-0 flex-1">
                 <p class="font-semibold text-slate-800">{L(step.title)}</p>
                 <p class="text-slate-600 text-sm leading-relaxed mt-0.5">
-                  {L(step.text)}
+                  {inlineCode(L(step.text))}
                 </p>
+                {step.code && (
+                  <div class="mt-3">
+                    <CodeBox
+                      text={L(step.code.text)}
+                      caption={step.code.caption
+                        ? L(step.code.caption)
+                        : undefined}
+                      lang={lang}
+                    />
+                  </div>
+                )}
+                {step.link && (
+                  <a
+                    href={step.link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-blue-700 underline hover:text-blue-900"
+                  >
+                    {L(step.link.label)} <span aria-hidden="true">↗</span>
+                  </a>
+                )}
+                {step.download && (
+                  <a
+                    href={step.download.url}
+                    download={step.download.filename}
+                    class="mt-3 inline-flex items-center gap-2 rounded-lg bg-indigo-600 px-4 py-2 text-sm font-semibold text-white hover:bg-indigo-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                  >
+                    <span aria-hidden="true">⬇</span>
+                    {L(step.download.label)}
+                  </a>
+                )}
               </div>
             </li>
           ))}
@@ -1048,7 +1407,7 @@ function BlockView({
             <p class="font-bold text-sm">
               {block.title ? L(block.title) : labels[block.tone]}
             </p>
-            <p class="leading-relaxed mt-0.5">{L(block.text)}</p>
+            <p class="leading-relaxed mt-0.5">{inlineCode(L(block.text))}</p>
           </div>
         </aside>
       );

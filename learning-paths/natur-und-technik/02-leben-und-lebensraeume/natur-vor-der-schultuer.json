@@ -1,0 +1,190 @@
+{
+  "key": "nwt-natur-vor-der-schultuer",
+  "title": {
+    "de": "Wie wird der Schulhof lebendiger?",
+    "en": "How can our school grounds support more life?"
+  },
+  "summary": {
+    "de": "Lebensräume, Nahrungsbeziehungen und kleine Naturschutzideen vor der eigenen Tür entdecken.",
+    "en": "Discover habitats, food relationships and small conservation ideas close to home."
+  },
+  "icon": "🌱",
+  "accent": "emerald",
+  "minutes": 12,
+  "screens": [
+    {
+      "key": "entdecken-1",
+      "title": {
+        "de": "Auch eine Hecke ist eine kleine Welt",
+        "en": "Even a hedge is a small world"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Wo finden Tiere auf deinem Schulweg Nahrung und Schutz? Ein Lebensraum ist ein Ort mit Bedingungen, unter denen bestimmte Lebewesen leben können. Dazu gehören Wasser, Licht, Temperatur und andere Lebewesen.",
+            "en": "Where do animals on your way to school find food and shelter? A habitat is a place with conditions that allow certain organisms to live there. These include water, light, temperature and other living things."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Eine Hecke bietet andere Möglichkeiten als eine versiegelte Asphaltfläche. Unter Laub können kleine Tiere Schutz finden; Blüten bieten Nahrung. Artenvielfalt bedeutet, dass viele verschiedene Arten vorkommen. Viele Tiere derselben Art sind noch nicht automatisch große Artenvielfalt.",
+            "en": "A hedge offers different opportunities from a sealed asphalt surface. Leaf litter can shelter small animals, while flowers provide food. Species diversity means having many different species. A large number of animals of just one species does not automatically mean high diversity."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "💡",
+          "title": {
+            "de": "Dein Auftrag",
+            "en": "Your task"
+          },
+          "text": {
+            "de": "Vergleiche in Gedanken eine Blühfläche mit einer gepflasterten Fläche. Nenne zwei unterschiedliche Lebensbedingungen.",
+            "en": "Compare a flowering patch with a paved surface in your mind. Name two differences in living conditions."
+          }
+        }
+      ]
+    },
+    {
+      "key": "entdecken-2",
+      "title": {
+        "de": "Wer hängt mit wem zusammen?",
+        "en": "Who depends on whom?"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Eine Blattlaus saugt an einer Pflanze, ein Marienkäfer frisst die Blattlaus. Solche Beziehungen verbinden Lebewesen. In einer Nahrungskette zeigen Pfeile vom Gefressenen zum Fressenden: Pflanze → Blattlaus → Marienkäfer.",
+            "en": "An aphid feeds on a plant; a ladybird eats the aphid. Relationships like these connect organisms. In a food chain, arrows point from the food to the eater: plant → aphid → ladybird."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "In Wirklichkeit haben viele Tiere mehrere Nahrungsquellen. Mehrere verbundene Nahrungsketten ergeben ein Nahrungsnetz. Verändert sich eine Art, können andere betroffen sein. Blütenpflanzen und Bestäuber beeinflussen sich ebenfalls: Die Tiere erhalten Nahrung, Pflanzen können Pollen übertragen lassen. Natur besteht aus Beziehungen, nicht nur aus einzelnen Arten.",
+            "en": "In reality, many animals have several food sources. Linked food chains form a food web. A change in one species can affect others. Flowering plants and pollinators also affect each other: animals receive food, while pollen can be transferred for plants. Nature consists of relationships, not just isolated species."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "💡",
+          "title": {
+            "de": "Dein Auftrag",
+            "en": "Your task"
+          },
+          "text": {
+            "de": "Erkläre, warum weniger Pflanzen auch Tiere treffen können, die selbst keine Pflanzen fressen.",
+            "en": "Explain why fewer plants can also affect animals that do not eat plants themselves."
+          }
+        }
+      ]
+    },
+    {
+      "key": "entdecken-3",
+      "title": {
+        "de": "Eine gute Idee muss zum Ort passen",
+        "en": "A good idea must suit the place"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Hilft ein Insektenhotel ohne Blüten in der Nähe? Eine Nisthilfe ersetzt nicht alle Bedürfnisse. Naturschutz bedeutet, Lebensräume und Arten zu erhalten. Gute Maßnahmen schaffen passende Nahrung, Schutz und möglichst wenig Störung.",
+            "en": "Does an insect hotel help if there are no flowers nearby? A nesting aid cannot meet every need. Conservation means protecting habitats and species. Good measures provide suitable food, shelter and as little disturbance as possible."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Eine Blühfläche, eine ungestörte Laubecke oder weniger unnötiges Nachtlicht können helfen – je nach Ort und Arten. Plant Änderungen mit der Schule; setzt keine Tiere aus und pflanzt nichts ohne Erlaubnis. Beobachtet vorher und nachher zu ähnlichen Zeiten. So erkennt ihr eher, ob eure Idee etwas bewirkt.",
+            "en": "A flowering patch, an undisturbed leaf corner or less unnecessary night lighting may help, depending on the place and species. Plan changes with the school; do not release animals or plant without permission. Observe at similar times before and afterwards to see whether your idea makes a difference."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "💡",
+          "title": {
+            "de": "Dein Auftrag",
+            "en": "Your task"
+          },
+          "text": {
+            "de": "Wähle eine erlaubte Schulhof-Idee. Nenne ein Bedürfnis, das sie erfüllt, und eine Beobachtung, mit der ihr ihre Wirkung prüfen könntet.",
+            "en": "Choose an idea allowed by your school. Name one need it meets and one observation that could help check its effect."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "Hamburg: Naturwissenschaften/Technik 5–6, Gymnasium (2024)",
+                "en": "Hamburg: science and technology, years 5–6, Gymnasium (2024)"
+              },
+              "url": "https://www.hamburg.de/resource/blob/798520/700d66232c2d07bad97d72b6e107e083/naturwissenschaften-technik-data.pdf"
+            },
+            {
+              "label": {
+                "de": "Hamburg: Naturwissenschaften/Technik 5–6, Stadtteilschule (2024)",
+                "en": "Hamburg: science and technology, years 5–6, Stadtteilschule (2024)"
+              },
+              "url": "https://www.hamburg.de/resource/blob/798394/033190c61a9908ff10401a5b66cedae9/naturwissenschaften-technik-data.pdf"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": {
+        "de": "Die wichtigsten Wörter",
+        "en": "The key words"
+      },
+      "intro": {
+        "de": "Setze passende Wörter aus den drei Seiten ein. Nachschauen ist erlaubt.",
+        "en": "Fill the gaps using words from the three pages. You may look back."
+      },
+      "text": {
+        "de": "Der Ort, an dem eine Art leben kann, heißt ___. Viele verschiedene Arten bedeuten ___. Pflanzen, Blattläuse und Marienkäfer bilden eine ___. Die Pfeile zeigen zum ___. Verbundene Ketten bilden ein ___. Eine Nisthilfe ersetzt nicht die nötige ___. Schutz von Arten und Lebensräumen heißt ___. Veränderungen am Schulhof brauchen ___.",
+        "en": "The place where a species can live is its ___. Many different species mean species ___. Plants, aphids and ladybirds form a food ___. Arrows point towards the ___. Linked chains form a food ___. A nesting aid does not replace necessary ___. Protecting species and habitats is ___. Changes to school grounds need ___."
+      }
+    },
+    {
+      "kind": "compare",
+      "title": {
+        "de": "Erkläre den Zusammenhang",
+        "en": "Explain the connection"
+      },
+      "intro": {
+        "de": "Antworte in zwei bis drei Sätzen. Nutze ein Beispiel aus dem Lernpfad.",
+        "en": "Answer in two or three sentences. Use an example from the learning path."
+      },
+      "text": {
+        "de": "Warum hilft „ein Insektenhotel aufstellen“ allein nicht unbedingt? Begründe mit zwei Bedürfnissen von Tieren aus dem Text.",
+        "en": "Why might putting up an insect hotel alone be insufficient? Explain using two animal needs from the text."
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": {
+        "de": "Deine Idee für den Alltag",
+        "en": "Your everyday idea"
+      },
+      "intro": {
+        "de": "Hier zählt deine begründete Idee, nicht eine bestimmte Musterantwort.",
+        "en": "Your reasoned idea matters, not a particular model answer."
+      },
+      "text": {
+        "de": "Euer Schulhof bekommt eine kleine Naturecke. Was würdest du vorschlagen, wem hilft es und wie könntet ihr den Erfolg beobachten?",
+        "en": "Your school is creating a small nature area. What would you suggest, who would it help, and how could you observe its success?"
+      }
+    }
+  ]
+}

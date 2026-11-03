@@ -1,0 +1,362 @@
+{
+  "key": "strahlung-und-klima",
+  "title": {
+    "de": "Warum die Erde wärmer wird, obwohl Energie hinausstrahlt",
+    "en": "Why Earth can warm while still radiating energy away"
+  },
+  "summary": {
+    "de": "Spektrum, Albedo, Strahlungsbilanz und Rückkopplungen erklären Klimaphysik ohne die Denkfalle einer dichten Wärmedecke.",
+    "en": "Spectrum, albedo, radiation balance and feedbacks explain climate physics beyond the misleading idea of an opaque blanket."
+  },
+  "icon": "🌍",
+  "accent": "emerald",
+  "minutes": 22,
+  "screens": [
+    {
+      "key": "spektrum",
+      "title": {
+        "de": "Nicht jede Strahlung ist sichtbares Licht",
+        "en": "Not all radiation is visible light"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Mobilfunk, Infrarot, sichtbares Licht, Ultraviolett und Röntgenstrahlung gehören zum elektromagnetischen Spektrum. Sie unterscheiden sich unter anderem durch Wellenlänge und Frequenz. Infrarot ist also keine zusätzliche Art warmer Materie, sondern elektromagnetische Strahlung außerhalb unseres sichtbaren Bereichs. Die Wirkung auf Materie hängt von Art, Intensität und Material ab. „Strahlung“ allein ist weder eine vollständige Gefahrbeschreibung noch ein Entwarnungswort.",
+            "en": "Radio communication, infrared, visible light, ultraviolet and X-rays belong to the electromagnetic spectrum. They differ in wavelength and frequency, among other properties. Infrared is not an extra kind of warm matter; it is electromagnetic radiation outside our visible range. Effects on matter depend on type, intensity and material. The word “radiation” alone neither fully describes a hazard nor guarantees safety."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Beim Auftreffen können Anteile reflektiert, gestreut, durchgelassen oder absorbiert werden. Körper können außerdem selbst Strahlung emittieren. Absorption überträgt Energie auf Materie, Transmission lässt sie hindurchgehen. Dieselbe Oberfläche kann sichtbares Licht anders behandeln als Infrarot. Für die Erde ist diese Unterscheidung zentral: Die heiße Sonne liefert vorwiegend kurzwelligeres Licht, die viel kühlere Erde sendet vor allem langwellige Infrarotstrahlung aus. Die Spektren sind verteilt, keine einzelne feste Wellenlänge. Deshalb muss ein brauchbares Klimamodell verschiedene Strahlungsbereiche unterscheiden.",
+            "en": "At a surface, radiation can be reflected, scattered, transmitted or absorbed. Objects can also emit radiation themselves. Absorption transfers energy to matter; transmission allows radiation through. The same surface can interact differently with visible light and infrared. This distinction is central for Earth: the hot Sun supplies predominantly shorter-wavelength radiation, while much cooler Earth emits mainly long-wave infrared. Both have broad spectra rather than a single fixed wavelength. A useful climate model must therefore distinguish different spectral regions. That is more informative than treating every kind of radiation as interchangeable."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Warum reicht die sichtbare Farbe einer Oberfläche nicht aus, um ihre gesamte Wechselwirkung mit Infrarot vorherzusagen? Eine durchsichtige Scheibe kann sichtbares Licht gut durchlassen und in anderen Wellenlängenbereichen anders wirken. Das Wort „durchsichtig“ braucht deshalb einen Bezug zum betrachteten Spektrum. Für dein Modell könntest du sichtbares Licht und Infrarot mit verschiedenfarbigen Pfeilen darstellen. Die Farben der Zeichnung sind dabei eine Legende, keine Behauptung, dass du Infrarot mit bloßem Auge sehen könntest.",
+            "en": "Why is a surface's visible colour insufficient to predict all of its interactions with infrared? A transparent pane may transmit visible light well while behaving differently at other wavelengths. “Transparent” therefore needs a specified spectral range. Use differently coloured arrows for visible light and infrared. Their colours form a legend, not a claim that infrared can be seen with the naked eye."
+          }
+        }
+      ]
+    },
+    {
+      "key": "bilanz",
+      "title": {
+        "de": "Entscheidend ist die Differenz zwischen hinein und hinaus",
+        "en": "The difference between incoming and outgoing matters"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Die Erde erhält Energie von der Sonne und gibt Energie als Strahlung in den Weltraum ab. Im langfristigen Gleichgewicht sind aufgenommene und abgegebene Leistung gleich groß. Dann muss die Erde nicht kalt sein; sie besitzt eine Gleichgewichtstemperatur. Bei einem Überschuss der aufgenommenen Leistung wächst die Energie im Klimasystem, bis sich die Bilanz verändert.",
+            "en": "Earth receives energy from the Sun and emits energy as radiation to space. In long-term equilibrium, absorbed and emitted powers are equal. That does not make Earth cold; it gives an equilibrium temperature. If absorbed power exceeds emitted power, energy in the climate system increases until the balance changes."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Albedo bezeichnet den zurückgeworfenen Anteil der einfallenden Strahlung. In einem einfachen Zahlenmodell treffen 100 Energieeinheiten ein. Werden 30 reflektiert, bleiben 70 zur Aufnahme. Bei 40 reflektierten Einheiten wären es nur 60. Diese Zahlen dienen der Modellrechnung und sind keine neue Messung. Schnee, Wasser, Wolken und Land können sehr verschiedene Eigenschaften besitzen. Ein lokaler dunkler Boden beweist deshalb nicht allein eine globale Klimaveränderung. Du brauchst eine räumlich und zeitlich passende Bilanz. Die Systemgrenze ist wichtig: Reflexion ins All und Energieaustausch innerhalb der Atmosphäre sind nicht dieselbe Buchungsposition. Eine Pfeilskizze hält diese Wege auseinander.",
+            "en": "Albedo is the fraction of incoming radiation reflected away. In a simple numerical model, 100 energy units arrive. If 30 are reflected, 70 remain for absorption. Reflecting 40 would leave only 60. These are model numbers, not a new measurement. Snow, water, clouds and land can have very different properties. One dark patch of ground therefore does not alone establish global climate change; the account needs appropriate spatial and time scales. Its boundary matters too: reflection to space and energy exchanged within the atmosphere are not the same accounting entry. An arrow diagram keeps those pathways distinct."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Wie zeigt eine Bilanzskizze, dass reflektierte und absorbierte Energie nicht zweimal als Aufnahme gezählt werden dürfen? Eine Oberfläche mit größerer Albedo reflektiert im Modell bei gleicher Einstrahlung mehr und absorbiert weniger. Wenn du zugleich die Sonneneinstrahlung änderst, ist der Einfluss nicht mehr einzeln erkennbar. Halte deshalb die eintreffenden 100 Einheiten fest und verändere nur den reflektierten Anteil. Die Rechnung klärt eine Modellbeziehung, aber misst noch nicht das Klima eines wirklichen Schulhofs.",
+            "en": "How can an energy diagram show why reflected and absorbed energy must not both be counted as absorption? At equal incoming radiation, higher albedo means more reflection and less absorption in the model. Changing sunlight too would hide the separate effect. Keep the 100 incoming units fixed and vary only reflection. The calculation establishes a model relationship, not a measurement of the climate of a real schoolyard."
+          }
+        }
+      ]
+    },
+    {
+      "key": "treibhauseffekt",
+      "title": {
+        "de": "Die Atmosphäre ist keine völlig geschlossene Decke",
+        "en": "The atmosphere is not a completely sealed blanket"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Treibhausgase wie Kohlenstoffdioxid und Wasserdampf absorbieren bestimmte Anteile der infraroten Strahlung. Die Atmosphäre emittiert selbst Infrarotstrahlung in verschiedene Richtungen, auch nach unten. Dadurch verändert sich der Energieaustausch zwischen Oberfläche, Atmosphäre und Weltraum. Die Erde strahlt weiterhin Energie ab; der Treibhauseffekt schaltet diese Abgabe nicht einfach aus.",
+            "en": "Greenhouse gases such as carbon dioxide and water vapour absorb particular parts of infrared radiation. The atmosphere also emits infrared in different directions, including downwards. This changes energy exchange between surface, atmosphere and space. Earth continues to radiate energy away; the greenhouse effect does not simply switch that emission off."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Erhöht sich die Treibhausgaskonzentration, kann bei zunächst ähnlicher Temperatur weniger Energie wirksam nach außen entweichen. Das erzeugt ein Ungleichgewicht. Oberfläche und Atmosphäre erwärmen sich, bis die Abgabe unter veränderten Bedingungen wieder zur Aufnahme passt. Der zusätzliche Einfluss auf die Bilanz heißt Strahlungsantrieb. Der natürliche Treibhauseffekt ist Teil des bestehenden Klimas; der vom Menschen verstärkte Effekt verändert es. Verbrennung fossiler Energieträger erhöht den CO₂-Anteil und verstärkt den Antrieb. Das Modell ist komplizierter als ein echtes Gewächshaus, bei dem auch unterdrückte Luftströmung wichtig ist. Ein Glasgefäß allein beweist daher nicht den atmosphärischen Mechanismus.",
+            "en": "Increasing greenhouse-gas concentration can initially reduce effective energy loss to space at a similar temperature, creating an imbalance. Surface and atmosphere warm until emission under the changed conditions again matches absorption. The additional influence on the balance is called radiative forcing. The natural greenhouse effect is part of the existing climate; human strengthening changes it. Burning fossil fuels increases CO₂ and strengthens this forcing. The model differs from an actual greenhouse, where reduced air circulation is also important. A glass container alone therefore does not demonstrate the atmospheric mechanism. Understanding the distinction prevents a familiar everyday analogy from replacing the physical explanation."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Vergleiche zwei vereinfachte Zustände mit gleicher Sonneneinstrahlung, aber unterschiedlicher Treibhausgaskonzentration. Warum kann sich die Gleichgewichtstemperatur ändern? Zeichne einen Pfeil von der Oberfläche zur Atmosphäre und weitere von der Atmosphäre nach oben und unten. Die Rückstrahlung nach unten widerspricht der gesamten Energieabgabe ins All nicht. Für die langfristige Bilanz zählt die Systemgrenze Erde-Atmosphäre gegenüber dem Weltraum. Diese saubere Trennung erklärt mehr als das Bild einer dichten Decke, unter der überhaupt keine Energie entweichen könne.",
+            "en": "Compare two simplified states with equal sunlight but different greenhouse-gas concentrations. Why can their equilibrium temperatures differ? Draw radiation from surface to atmosphere, then from atmosphere upwards and downwards. Downward emission does not contradict overall energy loss to space. The long-term account uses the Earth–atmosphere boundary with space. This separation explains more than a sealed-blanket image suggesting no energy can escape at all."
+          }
+        }
+      ]
+    },
+    {
+      "key": "t-vier",
+      "title": {
+        "de": "Eine wärmere Oberfläche strahlt stärker",
+        "en": "A warmer surface emits more radiation"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Für eine ideale schwarze Oberfläche ist die abgestrahlte Leistung pro Fläche proportional zur vierten Potenz der absoluten Temperatur: P/A = σ · T⁴. T muss in Kelvin eingesetzt werden. Die Stefan-Boltzmann-Konstante σ ist für diese Modellbeziehung fest. Reale Oberflächen benötigen zusätzlich eine Beschreibung ihrer Emissionseigenschaften. Hier liest du nur den Trend aus einer vereinfachten Wertetabelle.",
+            "en": "For an ideal black surface, emitted power per unit area is proportional to the fourth power of absolute temperature: P/A = σ · T⁴. T must be in kelvin. The Stefan–Boltzmann constant σ is fixed for this model relationship. Real surfaces also require their emission properties to be described. Here you only read the trend from a simplified table."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Die Tabelle normiert die Strahlungsleistung bei 300 K auf 1,00. Bei 330 K ist die absolute Temperatur um 10 % größer, die Strahlungsleistung aber ungefähr um 46 %. Das ist kein linearer Zusammenhang. Ein Celsius-Verhältnis wäre falsch, weil dessen Nullpunkt nicht der absolute Nullpunkt ist. Stärkere Abstrahlung bei Erwärmung wirkt im Klimasystem grundsätzlich stabilisierend, doch andere Prozesse verändern die Bilanz ebenfalls. Die einfache Oberflächenformel ist kein vollständiges Klimamodell. Atmosphäre, Wolken, räumliche Unterschiede und spektrale Wechselwirkungen müssen für belastbare Berechnungen mitberücksichtigt werden. Eine Kurve zeigt einen wichtigen Zusammenhang, aber nicht jede Ursache zugleich.",
+            "en": "The table sets radiation at 300 K to 1.00. At 330 K, absolute temperature is 10% greater, but radiation is approximately 46% greater. This is not a linear relationship. Using Celsius ratios would be incorrect because Celsius does not begin at absolute zero. Increased emission during warming provides a fundamentally stabilising response in the climate system, although other processes also change its energy balance. This surface equation is not a complete climate model. Atmosphere, clouds, spatial differences and spectral interactions must be included in reliable calculations. A curve displays one important relationship, not every cause simultaneously."
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "de": "Ideale Oberfläche, gleiche Fläche und gleiche Emissionseigenschaften; gerundete relative Werte.",
+            "en": "Ideal surface, equal area and emission properties; rounded relative values."
+          },
+          "head": [
+            {
+              "de": "Temperatur",
+              "en": "Temperature"
+            },
+            {
+              "de": "Relative Strahlungsleistung",
+              "en": "Relative emitted power"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "de": "270 K",
+                "en": "270 K"
+              },
+              {
+                "de": "0,66",
+                "en": "0.66"
+              }
+            ],
+            [
+              {
+                "de": "300 K",
+                "en": "300 K"
+              },
+              {
+                "de": "1,00",
+                "en": "1.00"
+              }
+            ],
+            [
+              {
+                "de": "330 K",
+                "en": "330 K"
+              },
+              {
+                "de": "1,46",
+                "en": "1.46"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Welche Bedingungen sind nötig, damit du aus der Tabelle den Einfluss der Temperatur allein ablesen kannst? Die Werte 0,66 und 1,46 beziehen sich auf dieselbe Oberfläche mit derselben Fläche. Würde sich zusätzlich die Emissionseigenschaft ändern, wäre der Temperaturvergleich allein nicht ausreichend. Auch die mittlere Erdtemperatur lässt sich nicht einfach als ein überall gleicher Oberflächenwert einsetzen. Die Tabelle übt deshalb gezieltes Ablesen eines idealen Zusammenhangs und nicht eine vollständige Wetter- oder Klimavorhersage.",
+            "en": "Which conditions are needed to use the table to identify the effect of temperature alone? The values 0.66 and 1.46 refer to the same surface and area. Changing emission properties would require more than temperature for comparison. Earth's average temperature is also not simply one uniform surface temperature everywhere. The table practises reading an ideal relationship, not making a complete weather or climate prediction."
+          }
+        }
+      ]
+    },
+    {
+      "key": "rueckkopplung",
+      "title": {
+        "de": "Eine Änderung kann ihre eigene Wirkung verstärken",
+        "en": "A change can amplify its own effect"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Wenn Eisflächen schrumpfen und dunklere Flächen freiwerden, kann die Albedo sinken. Mehr Sonnenenergie wird absorbiert, was weitere Erwärmung und weiteres Schmelzen begünstigen kann. Das ist eine verstärkende Rückkopplung. „Positiv“ bedeutet dabei verstärkend, nicht wünschenswert. Eine abschwächende oder negative Rückkopplung wirkt einer Änderung entgegen.",
+            "en": "If ice-covered areas shrink and reveal darker surfaces, albedo can decrease. More solar energy is absorbed, encouraging further warming and melting. This is an amplifying feedback. “Positive” means reinforcing, not desirable. A damping or negative feedback opposes a change."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Nicht jede Rückkopplung führt unbegrenzt weiter und nicht jede Veränderung ist sofort ein Kipppunkt. Ein Kippelement kann nach Überschreiten einer Schwelle in einen deutlich anderen Zustand übergehen, der sich nicht durch eine ebenso kleine Rückänderung einfach wiederherstellen lässt. Als Beispiel werden große Eissysteme untersucht. Der genaue Schwellenwert ist wissenschaftlich anspruchsvoll und kann unsicher sein. Unsicherheit bedeutet aber nicht, dass gar nichts bekannt ist. Ein kleines nichtlineares Modell kann die Grundidee zeigen, ohne das gesamte Klima nachzubilden. Für deinen Alltag ist der Unterschied wichtig: Eine Vorhersage mit Bandbreite kann belastbarer sein als eine einzelne angeblich exakte Zahl ohne nachvollziehbare Daten.",
+            "en": "Not every feedback grows without limit, and not every change is immediately a tipping point. After a threshold is crossed, a tipping element can enter a substantially different state that cannot simply be restored by an equally small reversal. Large ice systems are among the examples studied. Exact thresholds are scientifically demanding and can be uncertain. Uncertainty does not mean that nothing is known. A small nonlinear model can illustrate the basic idea without reproducing the whole climate. In everyday reasoning, this distinction matters: a prediction with a range can be more reliable than one supposedly exact number without transparent supporting data."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Wie würdest du eine Eis-Albedo-Rückkopplung zeichnen und zugleich kenntlich machen, dass sie kein vollständiges Klimamodell ist? Die Pfeilkette Erwärmung–Eisverlust–kleinere Albedo–mehr Absorption–Erwärmung beschreibt eine verstärkende Schleife. Sie nennt noch keinen genauen Zeitpunkt für eine Schwelle. Trenne deshalb die gut begründete Wirkungsrichtung von der Frage, wie stark und wann der Prozess wirkt. Eine ehrliche Erklärung kann diesen Unterschied sichtbar machen, statt aus jeder Unsicherheit entweder völlige Beliebigkeit oder eine garantierte Katastrophenuhr abzuleiten.",
+            "en": "How would you draw the ice–albedo feedback while making clear that it is not a complete climate model? The chain warming–ice loss–lower albedo–greater absorption–warming is reinforcing. It does not specify an exact threshold time. Separate the supported direction of the effect from how strong and when it acts. An honest explanation shows this distinction instead of turning uncertainty into either complete ignorance or a guaranteed countdown."
+          }
+        }
+      ]
+    },
+    {
+      "key": "bewertung",
+      "title": {
+        "de": "Vom kalten Tag zur guten Klimafrage",
+        "en": "From a cold day to a sound climate question"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Ein kalter Tag widerlegt keine langfristige Erwärmung. Wetter beschreibt kurzfristige Zustände, Klima ihre statistischen Eigenschaften über längere Zeiträume und größere Gebiete. Ebenso beweist ein heißer Nachmittag allein noch keine bestimmte Ursache. Für eine Aussage brauchst du passende Zeitreihen, eine klare Frage und mehrere unabhängige Hinweise.",
+            "en": "A cold day does not disprove long-term warming. Weather describes short-term conditions; climate describes their statistical properties over longer periods and larger regions. Likewise, one hot afternoon alone does not establish a particular cause. A claim needs suitable time series, a clear question and several independent lines of evidence."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Ein seriöser Beitrag erklärt Datenherkunft, Methode und Unsicherheiten. Fachliche Übereinstimmung entsteht nicht durch eine einzelne prominente Stimme, sondern durch überprüfte Forschung. Bei einer Idee für ein kühleres Schulgelände solltest du außerdem zwei Ziele trennen: Anpassung an Hitze und Begrenzung zusätzlicher Treibhausgasemissionen. Schatten kann lokal helfen; vermiedene fossile Energienutzung adressiert einen anderen Teil des Problems. Auch Kosten, Wasserbedarf, Zugänglichkeit und Pflege zählen. Physik gibt keine fertige politische Entscheidung vor, macht aber Folgen und Annahmen diskutierbar. Eine gute Gestaltungsskizze nennt eine physikalische Wirkung, eine soziale Anforderung und die Daten, mit denen man den Erfolg fair prüfen würde.",
+            "en": "A reliable account explains data sources, methods and uncertainties. Scientific agreement comes from scrutinised research, not one prominent voice. When proposing a cooler school site, distinguish two goals: adapting to heat and limiting additional greenhouse-gas emissions. Shade can help locally; avoiding fossil energy use addresses another part of the problem. Cost, water demand, accessibility and maintenance matter too. Physics does not deliver a ready-made political decision, but makes consequences and assumptions open to discussion. A sound design sketch identifies one physical effect, one social requirement and the data needed to evaluate success fairly."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Entwirf eine Schulgelände-Idee und trenne dabei lokale Hitzeminderung von einer Maßnahme gegen zusätzliche Emissionen. Ein Schattenplatz kann an heißen Tagen unmittelbar angenehm sein, ohne dadurch automatisch große Mengen Treibhausgase zu vermeiden. Umgekehrt kann emissionsärmere Energieversorgung langfristig wichtig sein, ohne sofort jede lokale Hitze zu beseitigen. Beide Ziele können sich ergänzen. Kennzeichne in deiner Schulidee deshalb, welche Wirkung du erwartest und anhand welcher Daten man genau diese Wirkung überprüfen könnte.",
+            "en": "Design an idea for the school grounds and distinguish local heat reduction from a measure limiting additional emissions. Shade can improve comfort on hot days without automatically avoiding large emissions. Lower-emission energy supply can matter long-term without immediately removing local heat. Both goals can complement each other. State which effect your school proposal aims for and which data would test that particular effect."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "Hamburg: Physik Gymnasium (2024)",
+                "en": "Hamburg: Gymnasium physics (2024)"
+              },
+              "url": "https://www.hamburg.de/resource/blob/798534/4cf0047ad61effacd1ff7e6ad819fa41/physik-data.pdf"
+            },
+            {
+              "label": {
+                "de": "Hamburg: Physik Stadtteilschule (2024)",
+                "en": "Hamburg: Stadtteilschule physics (2024)"
+              },
+              "url": "https://www.hamburg.de/resource/blob/798426/ba414a0ace36d17b7813a855db625c42/physik-data.pdf"
+            },
+            {
+              "label": {
+                "de": "LI Hamburg: Beispielcurriculum Klimaphysik (07/2024)",
+                "en": "Hamburg LI: example climate-physics curriculum (07/2024)"
+              },
+              "url": "https://li.hamburg.de/resource/blob/931702/77cb60b5f40435c60c6b5a4486004adb/sek-i-themenfeld-3-klimaphysik-pdf-version-data.pdf"
+            },
+            {
+              "label": {
+                "de": "NASA: Ursachen des Klimawandels",
+                "en": "NASA: causes of climate change"
+              },
+              "url": "https://science.nasa.gov/climate-change/causes/"
+            },
+            {
+              "label": {
+                "de": "PhET: sichere interaktive Simulation",
+                "en": "PhET: safe interactive simulation"
+              },
+              "url": "https://phet.colorado.edu/de/simulations/greenhouse-effect"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": {
+        "de": "1. Lückentext",
+        "en": "1. Fill in the blanks"
+      },
+      "intro": {
+        "de": "Ergänze die fehlenden Fachwörter. Alle Begriffe findest du im Pfad.",
+        "en": "Complete the missing technical words. Every term appears in this path."
+      },
+      "text": {
+        "de": "Infrarot gehört zum elektromagnetischen ___. Aufnahme von Strahlung heißt ___. Die Strahlungsabgabe eines Körpers heißt ___. Der reflektierte Anteil wird durch die ___ beschrieben. Langfristig ausgeglichene Aufnahme und Abgabe ergeben eine ausgeglichene ___. Treibhausgase verändern den infraroten Energie___. Ein zusätzlicher Einfluss auf die Bilanz heißt ___. Im Stefan-Boltzmann-Modell wird die Temperatur in ___ verwendet. Eine verstärkende Wirkung auf die eigene Ursache heißt ___.",
+        "en": "Infrared belongs to the electromagnetic ___. Taking in radiation is ___. Radiation given off by an object is ___. The reflected fraction is described by ___. Long-term equality of input and output produces an energy ___. Greenhouse gases alter infrared energy ___. An additional influence on this account is called ___. In the Stefan–Boltzmann model, temperature is measured in ___. An effect reinforcing its own cause is a ___."
+      }
+    },
+    {
+      "kind": "compare",
+      "title": {
+        "de": "2. Erklären und vergleichen (AB II)",
+        "en": "2. Explain and compare (level II)"
+      },
+      "intro": {
+        "de": "Antworte mit drei bis vier kurzen Sätzen. Nutze das Gelesene und begründe deinen Vergleich.",
+        "en": "Answer in three or four short sentences. Use what you have read and explain your comparison."
+      },
+      "text": {
+        "de": "Vergleiche ein vereinfachtes Erdmodell mit gleicher Sonneneinstrahlung, aber mehr Treibhausgasen. Erkläre, warum weiterhin Energie ins All gelangt und sich trotzdem eine höhere Gleichgewichtstemperatur einstellen kann. Beziehe die stärkere Abstrahlung wärmerer Körper ein.",
+        "en": "Compare a simplified Earth model with unchanged sunlight but more greenhouse gas. Explain why energy still reaches space while a higher equilibrium temperature can develop. Include the stronger emission of warmer bodies."
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": {
+        "de": "3. Deine Idee im Alltag (AB III)",
+        "en": "3. Your idea for everyday life (level III)"
+      },
+      "intro": {
+        "de": "Entwickle eine eigene Idee in drei bis vier kurzen Sätzen. Begründe sie mit Physik; mehrere Lösungen sind möglich.",
+        "en": "Develop your own idea in three or four short sentences. Support it with physics; several answers are possible."
+      },
+      "text": {
+        "de": "Entwirf eine begründete Idee für ein hitzeangepasstes Schulgelände. Verbinde Strahlung oder Albedo mit einer sozialen Anforderung und nenne eine faire Messung. Unterscheide Anpassung und Emissionsminderung.",
+        "en": "Design a reasoned idea for heat-adapted school grounds. Connect radiation or albedo with a social requirement and name a fair measurement. Distinguish adaptation from emissions reduction."
+      }
+    }
+  ]
+}

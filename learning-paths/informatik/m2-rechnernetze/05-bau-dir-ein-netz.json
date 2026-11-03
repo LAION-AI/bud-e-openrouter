@@ -10,7 +10,7 @@
   },
   "icon": "🧪",
   "accent": "sky",
-  "minutes": 15,
+  "minutes": 20,
   "screens": [
     {
       "key": "zwei-rechner",
@@ -154,6 +154,13 @@
             "de": "Zwei Netze, verbunden durch einen Router - mehr ist das Internet nicht, nur eben hunderttausendfach. Dein Paket nach Kalifornien nimmt genau denselben Weg wie eben in deiner Simulation, nur über etwa fünfzehn Router statt über einen.",
             "en": "Two networks joined by a router - the internet is nothing more than that, just a hundred thousand times over. Your packet to California takes exactly the route it just took in your simulation, only via about fifteen routers instead of one."
           }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Das Internet liegt übrigens auf dem Meeresgrund: dicke Kabel über Ozeane, verlegt von Schiffen, angebissen von Haien – wirklich, das kommt vor. Dein Katzenvideo aus den USA reist durchs Atlantikwasser, bevor es dein Handy erreicht. Das Netz ist nicht in der Wolke, es liegt im Meer.",
+            "en": "The internet incidentally lies on the seabed: fat cables across oceans, laid by ships, bitten by sharks – really, that happens. Your cat video from the USA travels through Atlantic water before reaching your phone. The net is not in the cloud, it lies in the sea."
+          }
         }
       ]
     },
@@ -291,6 +298,91 @@
               "url": "https://www.hamburg.de/resource/blob/798514/ad3c2fdfb3a32b9545a271dfceae5772/informatik-data.pdf"
             }
           ]
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Teste dein Netz bei Stromausfall im Kopf: Handy mit Daten – geht. WLAN – tot, Router braucht Strom. Festnetz-Telefon – oft tot, die Basis hängt am Netz. Ein Netz ist nur so wach wie sein Strom: Wer wirklich erreichbar bleiben will, braucht Akku, Powerbank – und einen Plan B.",
+            "en": "Test your net at blackout in your head: phone with data – works. Wi-Fi – dead, the router needs power. Landline phone – often dead, the base hangs on mains. A net is only as awake as its power: whoever really wants to stay reachable needs battery, power bank – and a plan B."
+          }
+        }
+      ]
+    },
+    {
+      "key": "plane-dein-heimnetz",
+      "title": {
+        "de": "Plane dein Heimnetz",
+        "en": "Plan your home network"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Jetzt wirst du zum Netzplaner: Zeichne deine Wohnung und setze Router, Geräte und Kabel so, dass es wirklich funktioniert.",
+            "en": "Now you become the network planner: draw your flat and place router, devices and cables so it really works."
+          }
+        },
+        {
+          "kind": "steps",
+          "items": [
+            {
+              "title": {
+                "de": "Mitte suchen",
+                "en": "Find the middle"
+              },
+              "text": {
+                "de": "Der Router gehört mittig und hoch – Funk geht durch Luft besser als durch Beton und Wasserleitungen. Keller und Ecken sind Funklöcher mit Ansage.",
+                "en": "The router belongs central and high – radio travels through air better than through concrete and water pipes. Cellars and corners are dead spots with announcement."
+              }
+            },
+            {
+              "title": {
+                "de": "Kabel oder Funk",
+                "en": "Cable or radio"
+              },
+              "text": {
+                "de": "Was stehen bleibt und Tempo braucht – PC, Fernseher, Konsole – bekommt Kabel. Was wandert – Handy, Tablet – bekommt Funk.",
+                "en": "What stays put and needs speed – PC, TV, console – gets cable. What wanders – phone, tablet – gets radio."
+              }
+            },
+            {
+              "title": {
+                "de": "Gäste einplanen",
+                "en": "Plan for guests"
+              },
+              "text": {
+                "de": "Ein Gastnetz mit eigenem Passwort: Besuch surft, sieht aber weder deine Dateien noch deinen Drucker.",
+                "en": "A guest net with its own password: visitors surf but see neither your files nor your printer."
+              }
+            }
+          ]
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Miss danach eine Woche lang: Wo bricht das Video ab, wo lädt die Seite langsam? Jeder rote Fleck auf deinem Plan ist eine Aufgabe – Router drehen, Kanal wechseln, Kabel legen. Netze plant man nicht einmal, man pflegt sie.",
+            "en": "Then measure for a week: where does video break off, where do pages load slowly? Every red spot on your plan is a task – turn the router, change the channel, lay a cable. Networks are not planned once, they are tended."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Verstehe deinen Speedtest: Ping ist die Reaktionszeit in Millisekunden – unter 20 flutscht Gaming, über 100 ruckelt es. Download in Megabit: 16 reichen für einen Film, 100 für die ganze Familie. Upload ist meist kleiner – reicht trotzdem, außer du streamst selbst. Drei Zahlen, und du weißt, was deine Leitung kann.",
+            "en": "Understand your speed test: ping is reaction time in milliseconds – under 20 gaming flows, over 100 it judders. Download in megabits: 16 suffice one film, 100 the whole family. Upload is mostly smaller – still enough, unless you stream yourself. Three numbers, and you know what your line can do."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "note",
+          "icon": "🔌",
+          "title": {
+            "de": "LAN-Party",
+            "en": "LAN party"
+          },
+          "text": {
+            "de": "Alte Tradition, unbesiegt: alle mit Kabel in einen Raum – null Verzögerung, maximales Geschrei. Wer einmal LAN-Party gespielt hat, weiß, warum Profis Kabel nehmen: Funk ist bequem, Kabel ist schnell.",
+            "en": "Old tradition, unbeaten: everybody with cable into one room – zero delay, maximum shouting. Whoever played LAN party once knows why pros take cable: radio is comfy, cable is fast."
+          }
         }
       ]
     }

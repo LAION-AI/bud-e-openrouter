@@ -10,7 +10,7 @@
   },
   "icon": "🔍",
   "accent": "rose",
-  "minutes": 14,
+  "minutes": 20,
   "screens": [
     {
       "key": "auswaehlen-und-filtern",
@@ -30,28 +30,40 @@
           "kind": "steps",
           "items": [
             {
-              "title": { "de": "Auswählen", "en": "Select" },
+              "title": {
+                "de": "Auswählen",
+                "en": "Select"
+              },
               "text": {
                 "de": "Welche Spalten sollen überhaupt erscheinen? Meist braucht man nicht alle - und schon das ist eine Entscheidung: Was ich nicht anzeige, sehe ich nicht.",
                 "en": "Which columns should appear at all? Usually you do not need all of them - and even that is a decision: what I do not display, I do not see."
               }
             },
             {
-              "title": { "de": "Filtern", "en": "Filter" },
+              "title": {
+                "de": "Filtern",
+                "en": "Filter"
+              },
               "text": {
                 "de": "Welche Bedingung müssen die Zeilen erfüllen? „Ort ist 22765“, „geboren nach 2008“, „mehr als 40 Videos“. Genau dieselbe Art Bedingung, die du in Scratch und Python geschrieben hast.",
                 "en": "Which condition must the rows meet? \"place is 22765\", \"born after 2008\", \"more than 40 videos\". Exactly the same kind of condition you wrote in Scratch and Python."
               }
             },
             {
-              "title": { "de": "Sortieren", "en": "Sort" },
+              "title": {
+                "de": "Sortieren",
+                "en": "Sort"
+              },
               "text": {
                 "de": "Wonach, auf- oder absteigend? Wer oben steht, wird zuerst gesehen - und bei Bewerbungen, Suchergebnissen oder Wartelisten ist das nicht nebensächlich.",
                 "en": "By what, ascending or descending? Whoever is at the top is seen first - and with applications, search results or waiting lists that is no small matter."
               }
             },
             {
-              "title": { "de": "Gruppieren und zählen", "en": "Group and count" },
+              "title": {
+                "de": "Gruppieren und zählen",
+                "en": "Group and count"
+              },
               "text": {
                 "de": "Wie viele je Ort? Wer ist am häufigsten da? Hier wird aus Einzelangaben Statistik - und aus Statistik werden Entscheidungen.",
                 "en": "How many per place? Who is there most often? Here individual details become statistics - and statistics become decisions."
@@ -70,6 +82,13 @@
           "text": {
             "de": "Die Sprache dafür heißt SQL, und sie wurde absichtlich so gebaut, dass man sie vorlesen kann: `SELECT ort, geboren FROM nutzer WHERE ort = '22765'`. Wähle Ort und Geburtsjahr aus der Tabelle Nutzer, wo der Ort 22765 ist. Wer die vier Schritte von oben verstanden hat, kann das lesen, ohne es je gelernt zu haben.",
             "en": "The language for this is called SQL, and it was deliberately built to be read aloud: `SELECT place, born FROM users WHERE place = '22765'`. Select place and year of birth from the table users where place is 22765. Whoever has understood the four steps above can read that without ever having learned it."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Auch deine Suche fragt Datenbanken: „Pizza in der Nähe“ – Standort plus Hunger plus Uhrzeit, Antwort in Sekunden. Praktisch. Aber jede Frage hinterlässt ihre eigene Zeile: wer, wann, wonach. Du fragst die Daten – und die Daten notieren die Frage. Wer fragt, wird mitprotokolliert.",
+            "en": "Your search queries databases too: “pizza nearby” – location plus hunger plus time, answer in seconds. Handy. But every question leaves its own row: who, when, after what. You query the data – and the data notes the question. Whoever asks gets logged along."
           }
         }
       ]
@@ -120,6 +139,13 @@
             "de": "Für diese Übung niemals echte Angaben über Mitschülerinnen und Mitschüler verwenden - auch nicht „nur zum Ausprobieren“. Erfundene Datensätze zeigen genau dasselbe und verletzen niemanden. Wer das Thema ernst nimmt, fängt bei sich an.",
             "en": "For this exercise never use real details about classmates - not even \"just to try it\". Invented data sets show exactly the same thing and harm nobody. Whoever takes this subject seriously starts with themselves."
           }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Stell dir vor: Zwei Bewerber, gleiche Noten. Einer spielte Schach im Verein (steht nirgends), einer postete Partybilder (steht überall). Der Entscheider googelt – und entscheidet mit. Aus Zeilen wird eine Person, aus der Person ein Urteil. Der Moment ist unsichtbar – und alltäglich.",
+            "en": "Imagine: two applicants, equal grades. One played chess in a club (stands nowhere), one posted party pictures (stands everywhere). The decider googles – and decides along. From rows becomes a person, from the person a verdict. The moment is invisible – and everyday."
+          }
         }
       ]
     },
@@ -140,30 +166,75 @@
         {
           "kind": "table",
           "head": [
-            { "de": "Abfrage", "en": "Query" },
-            { "de": "Wer könnte sie stellen wollen", "en": "Who might want to ask it" },
-            { "de": "Wäre das in Ordnung?", "en": "Would that be all right?" }
+            {
+              "de": "Abfrage",
+              "en": "Query"
+            },
+            {
+              "de": "Wer könnte sie stellen wollen",
+              "en": "Who might want to ask it"
+            },
+            {
+              "de": "Wäre das in Ordnung?",
+              "en": "Would that be all right?"
+            }
           ],
           "rows": [
             [
-              { "de": "Noten meiner Klasse", "en": "Grades of my class" },
-              { "de": "Die Klassenlehrerin", "en": "The class teacher" },
-              { "de": "Ja - dafür ist sie zuständig", "en": "Yes - that is her responsibility" }
+              {
+                "de": "Noten meiner Klasse",
+                "en": "Grades of my class"
+              },
+              {
+                "de": "Die Klassenlehrerin",
+                "en": "The class teacher"
+              },
+              {
+                "de": "Ja - dafür ist sie zuständig",
+                "en": "Yes - that is her responsibility"
+              }
             ],
             [
-              { "de": "Noten aller Klassen", "en": "Grades of all classes" },
-              { "de": "Dieselbe Lehrerin", "en": "The same teacher" },
-              { "de": "Fraglich - wozu?", "en": "Questionable - what for?" }
+              {
+                "de": "Noten aller Klassen",
+                "en": "Grades of all classes"
+              },
+              {
+                "de": "Dieselbe Lehrerin",
+                "en": "The same teacher"
+              },
+              {
+                "de": "Fraglich - wozu?",
+                "en": "Questionable - what for?"
+              }
             ],
             [
-              { "de": "Fehlzeiten plus Adressen", "en": "Absences plus addresses" },
-              { "de": "Die Schulverwaltung", "en": "School administration" },
-              { "de": "Nur mit klarem Anlass", "en": "Only with a clear reason" }
+              {
+                "de": "Fehlzeiten plus Adressen",
+                "en": "Absences plus addresses"
+              },
+              {
+                "de": "Die Schulverwaltung",
+                "en": "School administration"
+              },
+              {
+                "de": "Nur mit klarem Anlass",
+                "en": "Only with a clear reason"
+              }
             ],
             [
-              { "de": "Fehlzeiten plus Wohngegend", "en": "Absences plus neighbourhood" },
-              { "de": "Eine Auswertung „zur Förderung“", "en": "An analysis \"for support purposes\"" },
-              { "de": "Heikel - hier entstehen Vorurteile", "en": "Delicate - this is how prejudice is built" }
+              {
+                "de": "Fehlzeiten plus Wohngegend",
+                "en": "Absences plus neighbourhood"
+              },
+              {
+                "de": "Eine Auswertung „zur Förderung“",
+                "en": "An analysis \"for support purposes\""
+              },
+              {
+                "de": "Heikel - hier entstehen Vorurteile",
+                "en": "Delicate - this is how prejudice is built"
+              }
             ]
           ]
         },
@@ -191,14 +262,90 @@
           "kind": "sources",
           "items": [
             {
-              "label": { "de": "inf-schule.de: Datenbanken und Abfragen", "en": "inf-schule.de: databases and queries" },
+              "label": {
+                "de": "inf-schule.de: Datenbanken und Abfragen",
+                "en": "inf-schule.de: databases and queries"
+              },
               "url": "https://www.inf-schule.de/datenbanken"
             },
             {
-              "label": { "de": "Der Hamburgische Beauftragte für Datenschutz und Informationsfreiheit", "en": "Hamburg Commissioner for Data Protection and Freedom of Information" },
+              "label": {
+                "de": "Der Hamburgische Beauftragte für Datenschutz und Informationsfreiheit",
+                "en": "Hamburg Commissioner for Data Protection and Freedom of Information"
+              },
               "url": "https://datenschutz-hamburg.de"
             }
           ]
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Gute Fragen brauchen Regeln: Richter brauchen Beschluss, Ärzte Schweigepflicht, Lehrer Konferenzen. Überall dort, wo Fragen über Menschen entschieden wird, stehen Wächter davor – mal Gesetze, mal Sitten, mal Mutige, die Nein sagen. Ohne Wächter frisst jede Frage alles. Mit Wächtern bleibt sie, was sie sein soll: ein Werkzeug.",
+            "en": "Good questions need rules: judges need warrants, doctors confidentiality, teachers conferences. Everywhere questions about humans get decided, guards stand before – sometimes laws, sometimes customs, sometimes brave ones saying no. Without guards every question devours everything. With guards it stays what it should be: a tool."
+          }
+        }
+      ]
+    },
+    {
+      "key": "eine-frage-ein-preis",
+      "title": {
+        "de": "Eine Frage, ein Preis",
+        "en": "One question, one price"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Jede Abfrage an Daten hat einen Fragesteller – und der hat ein Interesse. Zwei Fragen, zwei Preise:",
+            "en": "Every query against data has a questioner – with an interest. Two questions, two prices:"
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Die Versicherung fragt: 18 Jahre alt, eigenes Auto, Stadtverkehr? Die Antwort heißt 2.000 Euro im Jahr. Dieselben Zeilen, eine andere Frage – „Fährt vorsichtig?“ – könnte 800 Euro heißen. Die Daten sind gleich, der Preis hängt an der Frage.",
+            "en": "The insurer asks: 18 years old, own car, city traffic? The answer reads 2,000 euros a year. The same rows, a different question – “drives carefully?” – could read 800 euros. The data is equal, the price hangs on the question."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Der Shop fragt: Schuhe angesehen, Größe 42, zweimal zurückgekehrt? Die Antwort heißt Schuhwerbung überall – eine Woche lang. Praktisch, wenn du Schuhe suchst. Unheimlich, wenn du nur geguckt hast. Auch hier: Die Frage gehört dem Shop, nicht dir.",
+            "en": "The shop asks: looked at shoes, size 42, returned twice? The answer reads shoe ads everywhere – for a week. Handy when you hunt shoes. Creepy when you only looked. Here too: the question belongs to the shop, not to you."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "note",
+          "icon": "❓",
+          "title": {
+            "de": "Die Gegenfrage",
+            "en": "The counter-question"
+          },
+          "text": {
+            "de": "Wenn dich ein Ergebnis ärgert – Preis, Werbung, Absage –, frag zurück: Wer hat hier was gefragt, und was verdient er an der Antwort? Meistens steht die Antwort in den Geschäftsbedingungen. Wirklich.",
+            "en": "When a result annoys you – price, ad, rejection –, ask back: who asked what here, and what do they earn from the answer? Mostly the answer sits in the terms and conditions. Really."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Drehe den Spieß um: Frage zurück, wenn dich etwas fragt. Newsletter will deine Mail? Wofür, wie lange, widerrufbar? App will deinen Standort? Immer oder nur jetzt? Wer fragt, hat ein Interesse – deins oder seins? Drei Gegenfragen, und du weißt, mit wem du sprichst.",
+            "en": "Turn the tables: ask back when something asks you. Newsletter wants your mail? What for, how long, revocable? App wants your location? Always or only now? Whoever asks holds an interest – yours or theirs? Three counter-questions, and you know whom you talk to."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "tip",
+          "icon": "🪞",
+          "title": {
+            "de": "Spiegel-Fragen",
+            "en": "Mirror questions"
+          },
+          "text": {
+            "de": "Sammle eine Woche lang jede Frage, die dir Apps und Formulare stellen – Screenshot genügt. Am Ende zählst du: Wie viele waren nötig, wie viele neugierig? Die Liste öffnet Augen.",
+            "en": "Collect for a week every question apps and forms ask you – screenshot suffices. At the end count: how many were necessary, how many nosy? The list opens eyes."
+          }
         }
       ]
     }

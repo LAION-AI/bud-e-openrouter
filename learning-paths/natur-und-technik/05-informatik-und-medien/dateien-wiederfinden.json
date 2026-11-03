@@ -1,0 +1,190 @@
+{
+  "key": "nwt-dateien-wiederfinden",
+  "title": {
+    "de": "Wo ist mein Referat geblieben?",
+    "en": "Where has my presentation gone?"
+  },
+  "summary": {
+    "de": "Dateien sinnvoll benennen, in Ordnern speichern und ein übersichtliches Referat gestalten.",
+    "en": "Name files clearly, save them in folders and create a clear presentation."
+  },
+  "icon": "💻",
+  "accent": "indigo",
+  "minutes": 12,
+  "screens": [
+    {
+      "key": "entdecken-1",
+      "title": {
+        "de": "Ein Name, der morgen noch hilft",
+        "en": "A name that still helps tomorrow"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Du hast dein Tier-Referat geschrieben, aber findest nur „Unbenannt7“. Eine Datei ist ein gespeichertes Paket von Daten, etwa ein Text, Bild oder Video. Ein verständlicher Name hilft beim Wiederfinden.",
+            "en": "You wrote your animal report but can only find “Untitled7”. A file is a saved package of data, such as text, an image or video. A clear name helps you find it again."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "„Tier-Referat-Fuchs-v1“ ist hilfreicher als „neu-neu-final“. Ordner sammeln zusammengehörige Dateien, ähnlich wie Fächer im Rucksack. Die Dateiendung zeigt oft das Format: .jpg für ein Bild, .docx für ein Textdokument, .pdf für ein festes Seitenlayout. Nur die Endung umzubenennen verwandelt eine Datei nicht.",
+            "en": "“Animal-report-fox-v1” is more useful than “new-new-final”. Folders collect related files, like compartments in a backpack. A filename ending often indicates its format: .jpg for an image, .docx for a text document and .pdf for a fixed page layout. Renaming the ending does not convert the file."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "💡",
+          "title": {
+            "de": "Dein Auftrag",
+            "en": "Your task"
+          },
+          "text": {
+            "de": "Schlage einen Ordnernamen und zwei Dateinamen für ein Pflanzenprojekt vor. Sie sollen ohne Öffnen verständlich sein.",
+            "en": "Suggest a folder name and two filenames for a plant project. They should make sense without opening them."
+          }
+        }
+      ]
+    },
+    {
+      "key": "entdecken-2",
+      "title": {
+        "de": "Speichern heißt einen Ort wählen",
+        "en": "Saving means choosing a place"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Wo suchst du später nach deiner Arbeit? Beim Speichern wählst du nicht nur einen Namen, sondern auch einen Ordner. Downloads landen häufig im Ordner „Downloads“; das muss aber nicht dein Arbeitsordner sein.",
+            "en": "Where will you look for your work later? Saving means choosing a folder as well as a name. Downloads often land in a Downloads folder, which may not be your project folder."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Unter Windows öffnet Windows-Taste + E den Datei-Explorer, also die Ordneransicht. Nutze das von deiner Schule vorgesehene Laufwerk. Lege dort mit Rechtsklick → Neu → Ordner einen Projektordner an. Auf macOS heißt die Ordneransicht Finder; unter Ubuntu meist Dateien. Prüfe nach dem Speichern, ob die Datei am gewählten Ort liegt.",
+            "en": "On Windows, Windows key + E opens File Explorer, the folder view. Use the drive specified by your school. Create a project folder there with right-click → New → Folder. On macOS the folder view is Finder; on Ubuntu it is usually Files. After saving, check that the file is in the place you chose."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "💡",
+          "title": {
+            "de": "Dein Auftrag",
+            "en": "Your task"
+          },
+          "text": {
+            "de": "Speichere eine erlaubte Übungsdatei im vorgesehenen Projektordner. Schließe sie und öffne sie von dort erneut. Lösche keine fremden Dateien.",
+            "en": "Save an approved practice file in the designated project folder. Close it and reopen it from there. Do not delete anyone else's files."
+          }
+        }
+      ]
+    },
+    {
+      "key": "entdecken-3",
+      "title": {
+        "de": "Ordnung hilft auch den Lesenden",
+        "en": "Organisation helps readers too"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Was macht ein Referat verständlich? Eine Überschrift zeigt das Thema. Absätze trennen Gedanken. Eine Folie zeigt lieber eine Hauptidee als eine ganze Textwand. Gestaltung soll beim Verstehen helfen.",
+            "en": "What makes a report clear? A heading shows the topic. Paragraphs separate ideas. A slide works better with one main idea than a wall of text. Design should help understanding."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Ein Bild braucht eine passende Beschriftung und eine Quelle. Übernimm nicht einfach fremde Bilder ohne Erlaubnis. Messwerte passen in eine Tabelle mit Spaltenüberschriften und Einheiten. Kopieren legt etwas in die Zwischenablage; Einfügen holt es wieder heraus. Prüfe nach dem Einfügen, ob Inhalt und Format noch stimmen.",
+            "en": "An image needs a useful caption and a source. Do not simply use someone else's pictures without permission. Measurements suit a table with column headings and units. Copy puts something on the clipboard; paste retrieves it. Check that content and formatting still make sense afterwards."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "💡",
+          "title": {
+            "de": "Dein Auftrag",
+            "en": "Your task"
+          },
+          "text": {
+            "de": "Plane eine Folie zum Fuchs: eine Überschrift, drei kurze Stichpunkte und ein Bild mit Quelle. Was lässt du weg, damit sie übersichtlich bleibt?",
+            "en": "Plan a slide about a fox: one heading, three brief points and an image with a source. What will you leave out to keep it clear?"
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "Hamburg: Naturwissenschaften/Technik 5–6, Gymnasium (2024)",
+                "en": "Hamburg: science and technology, years 5–6, Gymnasium (2024)"
+              },
+              "url": "https://www.hamburg.de/resource/blob/798520/700d66232c2d07bad97d72b6e107e083/naturwissenschaften-technik-data.pdf"
+            },
+            {
+              "label": {
+                "de": "Hamburg: Naturwissenschaften/Technik 5–6, Stadtteilschule (2024)",
+                "en": "Hamburg: science and technology, years 5–6, Stadtteilschule (2024)"
+              },
+              "url": "https://www.hamburg.de/resource/blob/798394/033190c61a9908ff10401a5b66cedae9/naturwissenschaften-technik-data.pdf"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": {
+        "de": "Die wichtigsten Wörter",
+        "en": "The key words"
+      },
+      "intro": {
+        "de": "Setze passende Wörter aus den drei Seiten ein. Nachschauen ist erlaubt.",
+        "en": "Fill the gaps using words from the three pages. You may look back."
+      },
+      "text": {
+        "de": "Ein gespeichertes Datenpaket ist eine ___. Zusammengehöriges sammelst du in einem ___. Die Endung verrät oft das ___. Heruntergeladenes liegt häufig unter ___. Die Ordneransicht unter Windows heißt ___. Ein Textthema wird durch eine ___ erkennbar. Messwerte passen in eine ___. Kopiertes liegt in der ___.",
+        "en": "A saved data package is a ___. Collect related items in a ___. The ending often indicates the ___. Downloaded items often go into ___. Windows' folder view is ___. A ___ shows a text's topic. Measurements suit a ___. Copied content is held on the ___."
+      }
+    },
+    {
+      "kind": "compare",
+      "title": {
+        "de": "Erkläre den Zusammenhang",
+        "en": "Explain the connection"
+      },
+      "intro": {
+        "de": "Antworte in zwei bis drei Sätzen. Nutze ein Beispiel aus dem Lernpfad.",
+        "en": "Answer in two or three sentences. Use an example from the learning path."
+      },
+      "text": {
+        "de": "Kim benennt ein Bild von .jpg in .docx um. Ist daraus ein Textdokument geworden? Erkläre den Unterschied zwischen Name, Format und Ordner.",
+        "en": "Kim changes a picture's ending from .jpg to .docx. Has it become a text document? Explain the difference between name, format and folder."
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": {
+        "de": "Deine Idee für den Alltag",
+        "en": "Your everyday idea"
+      },
+      "intro": {
+        "de": "Hier zählt deine begründete Idee, nicht eine bestimmte Musterantwort.",
+        "en": "Your reasoned idea matters, not a particular model answer."
+      },
+      "text": {
+        "de": "Erfinde eine einfache Ordnerordnung für deine Schulsachen. Erkläre, wie du ein Referat nach drei Wochen ohne langes Suchen findest.",
+        "en": "Design a simple folder system for your schoolwork. Explain how you would find a report after three weeks without a long search."
+      }
+    }
+  ]
+}

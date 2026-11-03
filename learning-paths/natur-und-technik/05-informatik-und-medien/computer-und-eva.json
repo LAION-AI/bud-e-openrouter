@@ -1,0 +1,190 @@
+{
+  "key": "nwt-computer-und-eva",
+  "title": {
+    "de": "Was passiert zwischen Klick und Bildschirm?",
+    "en": "What happens between a click and the screen?"
+  },
+  "summary": {
+    "de": "Hardware, Software und Eingabe–Verarbeitung–Ausgabe an vertrauten Geräten erkennen.",
+    "en": "Recognise hardware, software and input–processing–output in familiar devices."
+  },
+  "icon": "💻",
+  "accent": "indigo",
+  "minutes": 12,
+  "screens": [
+    {
+      "key": "entdecken-1",
+      "title": {
+        "de": "Außen anfassen, innen verstehen",
+        "en": "Touch the outside, understand the inside"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Du tippst ein Wort und siehst es auf dem Bildschirm. Welche Teile arbeiten zusammen? Hardware sind die anfassbaren Teile eines Computers. Software sind Programme und ihre Anweisungen.",
+            "en": "You type a word and see it on the screen. Which parts work together? Hardware means the physical parts of a computer. Software means programs and their instructions."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Tastatur und Maus nehmen Eingaben entgegen. Der Bildschirm zeigt Ausgaben. Im Gehäuse verarbeitet der Prozessor Anweisungen. Die Hauptplatine verbindet viele Bauteile. Auch Smartphone und Spielkonsole sind Computer. Öffne für diesen Pfad kein Gerät und kein Netzteil: Wir arbeiten nur mit Bildern und Beschreibungen.",
+            "en": "A keyboard and mouse receive input. The screen shows output. Inside, the processor carries out instructions. The mainboard connects many components. Smartphones and games consoles are computers too. Do not open any device or power supply for this path: use only pictures and descriptions."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "💡",
+          "title": {
+            "de": "Dein Auftrag",
+            "en": "Your task"
+          },
+          "text": {
+            "de": "Nenne an deinem Gerät zwei Hardwareteile und ein Programm. Begründe, was davon anfassbar ist und was eine Anweisungssammlung ist.",
+            "en": "Name two hardware parts and one program on your device. Explain which are physical and which are collections of instructions."
+          }
+        }
+      ]
+    },
+    {
+      "key": "entdecken-2",
+      "title": {
+        "de": "EVA hat nichts mit einem Vornamen zu tun",
+        "en": "Input, processing, output"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Ein Taschenrechner bekommt „7 + 5“, berechnet das Ergebnis und zeigt „12“. Dieses Muster heißt EVA: Eingabe, Verarbeitung, Ausgabe. Es hilft, Vorgänge in Computern zu beschreiben.",
+            "en": "A calculator receives “7 + 5”, calculates the result and displays “12”. This pattern is input, processing and output. In German it is called EVA. It helps describe what computers do."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Bei einem Spiel ist der Tastendruck die Eingabe. Das Programm verarbeitet ihn nach Regeln. Die Figur bewegt sich als sichtbare Ausgabe. Ein Mikrofon kann Ton eingeben, ein Lautsprecher Ton ausgeben. Ein Touchscreen übernimmt sogar beides: Er zeigt etwas an und erkennt Berührungen.",
+            "en": "In a game, a key press is input. The program processes it according to rules. The character's visible movement is output. A microphone can input sound, and a speaker can output sound. A touchscreen does both: it displays information and detects touch."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "💡",
+          "title": {
+            "de": "Dein Auftrag",
+            "en": "Your task"
+          },
+          "text": {
+            "de": "Beschreibe das Fotografieren mit einem Smartphone als Eingabe, Verarbeitung und Ausgabe. Nutze eine eigene Formulierung.",
+            "en": "Describe taking a smartphone photo as input, processing and output. Use your own words."
+          }
+        }
+      ]
+    },
+    {
+      "key": "entdecken-3",
+      "title": {
+        "de": "Kurz merken oder dauerhaft behalten?",
+        "en": "Remember briefly or keep for later?"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Warum musst du einen Text speichern? Der Arbeitsspeicher hält Daten bereit, mit denen der Computer gerade arbeitet. Ohne Strom bleiben diese Daten dort normalerweise nicht erhalten.",
+            "en": "Why must you save a text? Working memory, or RAM, holds data the computer is currently using. It normally does not retain that data without power."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Eine SSD oder ein anderer dauerhafter Speicher bewahrt gespeicherte Dateien auch nach dem Ausschalten. Das Betriebssystem verwaltet unter anderem Dateien, Geräte und laufende Programme. Ein Grafikchip hilft beim Berechnen von Bildern. Alle Teile haben Aufgaben; kein einzelnes Bauteil ist der ganze Computer. „Fenster schließen“ und „Datei speichern“ sind nicht automatisch dasselbe.",
+            "en": "An SSD or other persistent storage retains saved files after shutdown. The operating system manages files, devices and running programs, among other things. A graphics chip helps produce images. Each part has a role; no single component is the whole computer. Closing a window does not automatically mean saving a file."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "💡",
+          "title": {
+            "de": "Dein Auftrag",
+            "en": "Your task"
+          },
+          "text": {
+            "de": "Erkläre, warum du einen wichtigen Text vor dem Ausschalten bewusst speicherst. Verwende „Arbeitsspeicher“ und „dauerhafter Speicher“.",
+            "en": "Explain why you deliberately save an important text before shutting down. Use “working memory” and “persistent storage”."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "Hamburg: Naturwissenschaften/Technik 5–6, Gymnasium (2024)",
+                "en": "Hamburg: science and technology, years 5–6, Gymnasium (2024)"
+              },
+              "url": "https://www.hamburg.de/resource/blob/798520/700d66232c2d07bad97d72b6e107e083/naturwissenschaften-technik-data.pdf"
+            },
+            {
+              "label": {
+                "de": "Hamburg: Naturwissenschaften/Technik 5–6, Stadtteilschule (2024)",
+                "en": "Hamburg: science and technology, years 5–6, Stadtteilschule (2024)"
+              },
+              "url": "https://www.hamburg.de/resource/blob/798394/033190c61a9908ff10401a5b66cedae9/naturwissenschaften-technik-data.pdf"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": {
+        "de": "Die wichtigsten Wörter",
+        "en": "The key words"
+      },
+      "intro": {
+        "de": "Setze passende Wörter aus den drei Seiten ein. Nachschauen ist erlaubt.",
+        "en": "Fill the gaps using words from the three pages. You may look back."
+      },
+      "text": {
+        "de": "Anfassbare Teile heißen ___. Programme sind ___. Der ___ verarbeitet Anweisungen. EVA steht für Eingabe, ___ und Ausgabe. Ein Bildschirm zeigt meist die ___. Daten der aktuellen Arbeit liegen im ___. Eine SSD ist ein ___ Speicher. Dateien und Programme verwaltet das ___.",
+        "en": "Physical parts are ___. Programs are ___. The ___ carries out instructions. The pattern is input, ___ and output. A screen usually shows the ___. Current working data is held in ___. An SSD is ___ storage. Files and programs are managed by the ___."
+      }
+    },
+    {
+      "kind": "compare",
+      "title": {
+        "de": "Erkläre den Zusammenhang",
+        "en": "Explain the connection"
+      },
+      "intro": {
+        "de": "Antworte in zwei bis drei Sätzen. Nutze ein Beispiel aus dem Lernpfad.",
+        "en": "Answer in two or three sentences. Use an example from the learning path."
+      },
+      "text": {
+        "de": "Ein Touchscreen ist Eingabe- und Ausgabegerät. Erkläre beide Aufgaben an einem Beispiel. Warum ist das Spielprogramm selbst trotzdem keine Hardware?",
+        "en": "A touchscreen is both an input and an output device. Explain both roles using an example. Why is the game program itself still not hardware?"
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": {
+        "de": "Deine Idee für den Alltag",
+        "en": "Your everyday idea"
+      },
+      "intro": {
+        "de": "Hier zählt deine begründete Idee, nicht eine bestimmte Musterantwort.",
+        "en": "Your reasoned idea matters, not a particular model answer."
+      },
+      "text": {
+        "de": "Erfinde einen hilfreichen Computer für deine Schule. Was nimmt er als Eingabe auf, was verarbeitet er und was gibt er aus?",
+        "en": "Invent a useful computer for your school. What does it receive as input, what does it process and what does it output?"
+      }
+    }
+  ]
+}

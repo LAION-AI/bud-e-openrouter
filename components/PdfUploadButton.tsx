@@ -52,6 +52,8 @@ export function PdfUploadButton({
   onError,
   variant = "floating",
   title,
+  maxBytes,
+  maxPdfBytes,
 }: {
   onPdfsUploaded: (pdfs: PdfFile[]) => void;
   /** Documents that were read into text. Absent means only PDFs are taken. */
@@ -60,6 +62,10 @@ export function PdfUploadButton({
   onError?: (messages: string[]) => void;
   variant?: Variant;
   title?: string;
+  /** Optional limit for contexts where uploads are billed to a shared key. */
+  maxBytes?: number;
+  /** PDF-specific limit; other document limits remain unchanged. */
+  maxPdfBytes?: number;
 }) {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [busy, setBusy] = useState(false);
@@ -81,7 +87,8 @@ export function PdfUploadButton({
         if (commaIdx === -1) return reject(new Error("Invalid DataURL"));
         resolve(dataUrl.slice(commaIdx + 1));
       };
-      reader.onerror = () => reject(reader.error || new Error("FileReader error"));
+      reader.onerror = () =>
+        reject(reader.error || new Error("FileReader error"));
       reader.onabort = () => reject(new Error("File read aborted"));
       reader.readAsDataURL(file);
     });
@@ -114,6 +121,14 @@ export function PdfUploadButton({
         const isPdf = f.type === "application/pdf" ||
           f.name.toLowerCase().endsWith(".pdf");
         try {
+          const limit = isPdf ? maxPdfBytes ?? maxBytes : maxBytes;
+          if (limit && f.size > limit) {
+            throw new Error(
+              `"${f.name}" ist zu groß. Maximal ${
+                Math.round(limit / 1_000_000)
+              } MB.`,
+            );
+          }
           if (isPdf) {
             pdfs.push({
               type: "pdf",
@@ -124,7 +139,9 @@ export function PdfUploadButton({
             continue;
           }
           if (!onTextsUploaded) {
-            problems.push(`"${f.name}" wurde nicht übernommen - hier gehen nur PDFs.`);
+            problems.push(
+              `"${f.name}" wurde nicht übernommen - hier gehen nur PDFs.`,
+            );
             continue;
           }
           const bytes = new Uint8Array(await f.arrayBuffer());
@@ -152,7 +169,9 @@ export function PdfUploadButton({
       }
     } catch (e) {
       console.error("upload failed:", e);
-      onError?.([`Die Datei ließ sich nicht lesen: ${String(e).slice(0, 120)}`]);
+      onError?.([
+        `Die Datei ließ sich nicht lesen: ${String(e).slice(0, 120)}`,
+      ]);
     } finally {
       clearInput();
       setBusy(false);
@@ -174,6 +193,7 @@ export function PdfUploadButton({
         class="hidden"
       />
       <button
+        type="button"
         onClick={onButtonClick}
         disabled={!IS_BROWSER || busy}
         class={`${pos} disabled:opacity-50 disabled:cursor-not-allowed rounded-md p-2 bg-gray-100 text-blue-600/50`}

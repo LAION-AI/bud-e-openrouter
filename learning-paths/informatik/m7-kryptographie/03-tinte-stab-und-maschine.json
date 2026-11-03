@@ -1,0 +1,407 @@
+{
+  "accent": "rose",
+  "exercises": [
+    {
+      "hint": {
+        "de": "Alle Antworten stehen auf den Bildschirmen davor – lies sie noch einmal von oben.",
+        "en": "All answers sit on the screens before – read them once more from the top."
+      },
+      "intro": {
+        "de": "Setze die fehlenden Wörter ein.",
+        "en": "Fill in the missing words."
+      },
+      "kind": "cloze",
+      "text": {
+        "de": "Unsichtbare ___ wird erst durch Wärme sichtbar – Zitronensaft reicht. Das versteckt nicht den ___, sondern dass es überhaupt eine ___ gibt. Das heißt ___. Die ___ war ein Holzstab der Spartaner: Das Lederband ergab nur auf einem gleich ___ Stab lesbare ___. Wer Verfahren und ___ kannte, las mit. Die ___-Maschine mischte jeden Buchstaben durch ___ und Kabel neu – täglich neu ___. Die Polen um ___ lasen trotzdem mit, später ___ in Bletchley Park im großen Stil. Entscheidend war ein Fehler der Maschine: Kein Buchstabe wird je zu ___.",
+        "en": "Invisible ___ appears only through heat – lemon juice does it. That hides not the ___, but that a ___ exists at all. That is called ___. The ___ was a wooden staff of the Spartans: the leather strap only gave readable ___ on an equally ___ staff. Whoever knew method and ___ read along. The ___ machine remixed every letter through ___ and cables – reset ___. The Poles around ___ still read along, later ___ in Bletchley Park at scale. Decisive was one flaw: no letter ever becomes ___."
+      },
+      "title": {
+        "de": "1. Lückentext",
+        "en": "1. Fill in the blanks"
+      }
+    },
+    {
+      "hint": {
+        "de": "Was schützt wovor – und was passiert jeweils beim Fund des Zettels?",
+        "en": "What protects against what – and what happens in each case when the note is found?"
+      },
+      "intro": {
+        "de": "Setze zwei Beobachtungen zueinander in Beziehung.",
+        "en": "Relate two observations to each other."
+      },
+      "kind": "compare",
+      "text": {
+        "de": "Für Zettel in der Klasse gibt es zwei Schulen: unsichtbare Tinte oder Caesar-Verschlüsselung. Vergleiche beide – was schützt wovor, und was passiert jeweils, wenn der Zettel gefunden wird?",
+        "en": "For notes in class there are two schools: invisible ink or Caesar cipher. Compare both – what protects against what, and what happens in each case when the note is found?"
+      },
+      "title": {
+        "de": "2. Vergleiche",
+        "en": "2. Compare"
+      }
+    },
+    {
+      "intro": {
+        "de": "Auf diese Frage gibt es keine richtige Antwort.",
+        "en": "There is no right answer to this one."
+      },
+      "kind": "reflect",
+      "text": {
+        "de": "Wo versteckst du Nachrichten im Alltag – Spitzname, Insider-Witz, Emoji-Code? Ist das schon Steganographie? Und wo wird aus Spaß Ernst?",
+        "en": "Where do you hide messages in everyday life – nickname, insider joke, emoji code? Is that steganography already? And where does fun turn serious?"
+      },
+      "title": {
+        "de": "3. Zum Nachdenken",
+        "en": "3. Something to think about"
+      }
+    }
+  ],
+  "icon": "🫧",
+  "key": "tinte-stab-und-maschine",
+  "minutes": 19,
+  "screens": [
+    {
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Nicht jede geheime Botschaft ist verschlüsselt. Manche ist unsichtbar: Zitronensaft auf Papier, kurz über die Kerze gehalten – und die Schrift erscheint. Das Verstecken der Nachricht selbst heißt Steganographie.",
+            "en": "Not every secret message is encrypted. Some are invisible: lemon juice on paper, briefly held over a candle – and the writing appears. Hiding the message itself is called steganography."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Bauanleitung für heute Abend: Wattestäbchen, Zitronensaft, weißes Papier. Schreiben, trocknen lassen, weitergeben. Lesen: vorsichtig über eine Lampe halten – nicht zu nah, sonst gibt es Rührei statt Botschaft. So gingen Nachrichten durch, an denen Wachen nur weißes Papier sahen.",
+            "en": "Building instructions for tonight: cotton bud, lemon juice, white paper. Write, let dry, pass on. Reading: hold carefully over a lamp – not too close, or you get scrambled eggs instead of a message. That is how messages passed guards who only saw white paper."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "fact",
+          "icon": "👁️",
+          "title": {
+            "de": "Der Unterschied",
+            "en": "The difference"
+          },
+          "text": {
+            "de": "Kryptographie macht die Nachricht unverständlich – jeder sieht: Hier ist ein Geheimnis. Steganographie versteckt, dass es überhaupt eine Nachricht gibt. Beides zusammen ist am stärksten: erst verschlüsseln, dann verstecken.",
+            "en": "Cryptography makes the message unintelligible – everybody sees: here is a secret. Steganography hides that a message exists at all. Both together are strongest: first encrypt, then hide."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Unsichtbare Tinte ist heute Alltag – nur andersherum: Geldscheine tragen UV-Merkmale, Clubs stempeln Hände, die erst unter Schwarzlicht leuchten. Dasselbe Prinzip wie Zitronensaft – nur sieht der Türsteher die Lampe gleich mit. Und Vorsicht umgekehrt: Was du versteckst, verstecken andere auch. Schmuggler lieben Hohlräume, Prüfer lieben Röntgen.",
+            "en": "Invisible ink is everyday life today – only reversed: banknotes carry UV marks, clubs stamp hands that only glow under black light. The same principle as lemon juice – only the bouncer holds the lamp too. And careful reversed: what you hide, others hide too. Smugglers love cavities, inspectors love X-rays."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "note",
+          "icon": "💡",
+          "title": {
+            "de": "Schwarzlicht",
+            "en": "Black light"
+          },
+          "text": {
+            "de": "Halte eine UV-Taschenlampe an einen Geldschein: Sterne, Zahlen, Fasern leuchten auf – Steganographie vom Staat, gegen Fälscher. Wer das einmal gesehen hat, glaubt keiner „einfachen Kopie“ mehr.",
+            "en": "Hold a UV torch to a banknote: stars, numbers, fibres light up – steganography by the state, against forgers. Whoever saw that once believes no “simple copy” anymore."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Achtung beim Nachmachen: Kerzen rußen, Papier brennt, Eltern schimpfen. Nimm eine Schreibtischlampe mit Abstand – und übe erst an einem Schnipsel. Geheimagenten verbrennen übrigens Beweise, nicht Finger: Arbeite sauber, lüfte danach, und erzähle niemandem, wo der Zettel lag. Tarnung endet nicht beim Schreiben.",
+            "en": "Careful when imitating: candles soot, paper burns, parents scold. Take a desk lamp with distance – and practice on a scrap first. Secret agents incidentally burn evidence, not fingers: work cleanly, air afterwards, and tell nobody where the note lay. Camouflage does not end with writing."
+          }
+        }
+      ],
+      "title": {
+        "de": "Unsichtbare Tinte",
+        "en": "Invisible ink"
+      }
+    },
+    {
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Vor 2500 Jahren wickelten Spartaner einen Lederstreifen um einen Stab, schrieben der Länge nach darauf – und wickelten ab. Buchstaben-Salat. Wer einen gleich dicken Stab besaß, wickelte auf und las mit.",
+            "en": "2500 years ago Spartans wound a leather strap around a staff, wrote along it – and unwound. Letter salad. Whoever owned an equally thick staff wound it on and read along."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Das Gerät heißt Skytale. Verfahren und Schlüssel waren eins: der Stab. Fiel er dem Feind in die Hände, war alles verloren – und einen dickeren oder dünneren Stab zu probieren, dauert keine Stunde. Genau hier steckt die Lehre aller alten Verfahren: Solange Sicherheit am Gerät hängt statt am Schlüssel, hält sie nur, bis jemand hinsieht.",
+            "en": "The device is called scytale. Method and key were one: the staff. If it fell to the enemy, all was lost – and trying a thicker or thinner staff takes no hour. Exactly here sits the lesson of all old methods: as long as security hangs on the device instead of the key, it holds only until someone looks."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Baue die Skytale nach: Besenstiel plus Kassenbon, eng wickeln, der Länge nach schreiben, abwickeln – Salat. Gib den Bon weiter: Wer keinen gleich dicken Stab hat, sieht nur Streifen. Zähle, wie viele Stabdicken du probieren müsstest, bis es passt: drei? fünf? Genau das ist ein Angriff durch Ausprobieren im Kleinen – Brute Force mit Besenstielen.",
+            "en": "Rebuild the scytale: broomstick plus receipt, wind tightly, write along, unwind – salad. Pass the receipt on: whoever lacks an equally thick staff sees only stripes. Count how many staff thicknesses you would have to try until it fits: three? five? Exactly that is an attack by trying on a small scale – brute force with broomsticks."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "fact",
+          "icon": "💪",
+          "title": {
+            "de": "Rohe Gewalt",
+            "en": "Brute force"
+          },
+          "text": {
+            "de": "Jedes Verfahren fällt, wenn man alles ausprobiert – die Frage ist nur, wie lange es dauert. Fünf Stabdicken: Sekunden. Alle Schlüssel der Enigma: Jahre. Alle Schlüssel von heute: länger als das Universum. Sicherheit ist fast immer: Ausprobieren unbezahlbar machen.",
+            "en": "Every method falls if you try everything – the only question is how long it takes. Five staff thicknesses: seconds. All Enigma keys: years. All keys of today: longer than the universe. Security is almost always: making trying unaffordable."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Der Stab lehrt noch etwas Zweites: Sicherheit durch Seltenheit ist keine. Solange nur Sparta Stäbe hatte, war alles gut – sobald einer nachbaute, war alles offen. Dasselbe gilt für WLAN-Passwörter an der Kühlschranktür, für Tresorc opens mit Werkseinstellung, für jedes Geheimnis, das nur geheim ist, weil keiner hinsieht. Selten ist nicht sicher.",
+            "en": "The staff teaches a second thing too: security through rarity is none. As long as only Sparta held staffs, all was well – once someone rebuilt one, all was open. The same counts for Wi-Fi passwords on the fridge door, for safes with factory settings, for every secret only secret because nobody looks. Rare is not safe."
+          }
+        }
+      ],
+      "title": {
+        "de": "Der Stab der Spartaner",
+        "en": "The Spartans' staff"
+      }
+    },
+    {
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Vor über 500 Jahren baute man die erste Maschine dafür: zwei Scheiben, außen das Alphabet, innen verdreht – drehen, ablesen, fertig. Baue sie aus Pappe nach.",
+            "en": "Over 500 years ago the first machine for it was built: two discs, outside the alphabet, inside twisted – turn, read off, done. Rebuild it from cardboard."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Außenring A bis Z normal, Innenring um drei versetzt aufkleben, mit einer Musterklammer in der Mitte drehbar verbinden. Stellung merken – zum Beispiel Innen-A unter Außen-D – und los: Jeder Buchstabe wird am Außenring gesucht, der Innenring verrät den Geheim-Buchstaben. Verdrehen, und du hast ein neues Alphabet. Das ist Caesar zum Anfassen – und der Urahn aller Chiffriermaschinen.",
+            "en": "Outer ring A to Z normal, inner ring glued shifted by three, joined turnable with a paper fastener in the middle. Note the position – say inner A beneath outer D – and go: every letter is sought on the outer ring, the inner reveals the secret letter. Twist, and you hold a new alphabet. That is Caesar to touch – and the ancestor of all cipher machines."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Der Erfinder hieß Leon Battista Alberti – Architekt, Dichter, Geheimschreiber, alles in einem, Italien um 1467. Universalgelehrte wie er bauten die Welt zweimal: einmal aus Stein, einmal aus Ideen. Die Scheibe war sein Spielzeug für Fürsten – und der Beweis, dass Kryptographie nie nur Mathe war, sondern immer auch Handwerk, Neugier und ein bisschen Theater.",
+            "en": "The inventor was called Leon Battista Alberti – architect, poet, cipher clerk, all in one, Italy around 1467. Universal scholars like him built the world twice: once from stone, once from ideas. The disc was his toy for princes – and the proof that cryptography was never only maths but always craft, curiosity and a little theatre too."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "✂️",
+          "title": {
+            "de": "Mitbringen",
+            "en": "Bring along"
+          },
+          "text": {
+            "de": "Baue die Scheibe aus Pappe und bring sie in Mathe mit: Geschichte plus Mathematik in einem Gegenstand. Wette, dass dein Lehrer sie herumgibt – und dass die Klasse in fünf Minuten verschlüsselt.",
+            "en": "Build the disc from cardboard and bring it to maths: history plus mathematics in one object. Bet your teacher passes it around – and the class encrypts within five minutes."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Drehst du weiter, entdeckst du Vigenère zum Anfassen: Wechsle die Stellung nach jedem Buchstaben – erst D, dann E, dann F. Plötzlich kommt dasselbe E dreimal verschieden heraus. Du hast gerade polyalphabetisch verschlüsselt, mit Pappe. Was Vigenère mit Wörtern tat, tust du mit Fingern.",
+            "en": "If you keep turning, you discover Vigenère to touch: change the position after every letter – first D, then E, then F. Suddenly the same E comes out three times differently. You just encrypted polyalphabetically, with cardboard. What Vigenère did with words, you do with fingers."
+          }
+        }
+      ],
+      "title": {
+        "de": "Die Scheibe",
+        "en": "The disc"
+      }
+    },
+    {
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "1940 funkt die Wehrmacht täglich tausende Befehle – alle mit der Enigma verschlüsselt. Walzen wirbeln jeden Buchstaben neu, Stecker tauschen Paare, jeden Morgen eine neue Stellung. Für unknackbar gehalten. War sie nicht.",
+            "en": "In 1940 the Wehrmacht radios thousands of orders daily – all encrypted with Enigma. Rotors whirl every letter anew, plugs swap pairs, every morning a new position. Believed unbreakable. It was not."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Polnische Mathematiker um Marian Rejewski lasen zuerst mit – dann übernahmen die Briten in Bletchley Park: Alan Turing baute die Bombe, eine Maschine, die Schlüsselstellungen durchprobierte, bis der Text Sinn ergab. Entscheidend half ein Baufehler der Enigma: Kein Buchstabe wird je zu sich selbst verschlüsselt. Wer das weiß, streicht bei jedem Buchstaben eine Möglichkeit – und Millionen werden weniger.",
+            "en": "Polish mathematicians around Marian Rejewski read along first – then the British took over in Bletchley Park: Alan Turing built the Bombe, a machine that tried key positions until the text made sense. Decisively helped a design flaw of Enigma: no letter is ever encrypted to itself. Whoever knows that crosses one option off per letter – and millions shrink."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Eine Lehre für immer: Gebt acht auf Sätze wie „unknackbar“. Jede Generation hält ihr Verfahren dafür – und die nächste findet den einen Satz, an dem es hängt. Bei der Enigma war es ein Satz über einen Buchstaben, der nie er selbst ist.",
+            "en": "A lesson forever: beware sentences like “unbreakable”. Every generation holds its method for one – and the next finds the one sentence it hangs on. With Enigma it was a sentence about a letter that is never itself."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Bletchley Park war eine Fabrik des Schweigens: 8000 Menschen, Schichten rund um die Uhr, niemand durfte reden – jahrzehntelang, bis in die 1970er. Eingestellt wurde, wer Rätsel liebte: Wer ein Kreuzworträtsel unter zwölf Minuten löste, bekam eine Einladung. Stell dir vor: Dein Hobby entscheidet, ob du den Krieg verkürzt. Turing selbst lief Marathon nebenbei – Genie mit Startnummer.",
+            "en": "Bletchley Park was a factory of silence: 8000 people, shifts around the clock, nobody allowed to talk – for decades, into the 1970s. Hired was whoever loved riddles: whoever solved a crossword under twelve minutes got an invitation. Imagine: your hobby decides whether you shorten the war. Turing himself ran marathons on the side – genius with a start number."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Turing war übrigens nicht nur Denker, sondern Läufer: Marathon in unter zweieinhalb Stunden, fast Olympia-reif. Bletchley stellte Schachspieler, Kreuzworträtsler, Mathematiker ein – alles Muster-Erkenner. Die Lehre für deine Berufswahl: Wer Muster liebt – in Zahlen, Worten oder Bildern –, ist überall willkommen, wo Geheimnisse warten.",
+            "en": "Turing was incidentally not only a thinker but a runner: marathon under two and a half hours, almost Olympic-ready. Bletchley hired chess players, crossword solvers, mathematicians – all pattern spotters. The lesson for your career choice: whoever loves patterns – in numbers, words or pictures –, is welcome everywhere secrets wait."
+          }
+        }
+      ],
+      "title": {
+        "de": "Die Maschine, die nie lügt – fast",
+        "en": "The machine that never lies – almost"
+      }
+    },
+    {
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Verstecken oder Verschlüsseln – was ist besser? Die ehrliche Antwort: Es kommt darauf an, wovor.",
+            "en": "Hiding or encrypting – which is better? The honest answer: it depends against what."
+          }
+        },
+        {
+          "kind": "table",
+          "caption": {
+            "de": "Zwei Schulen des Geheimnisses.",
+            "en": "Two schools of secrecy."
+          },
+          "head": [
+            {
+              "de": "Frage",
+              "en": "Question"
+            },
+            {
+              "de": "Steganographie",
+              "en": "Steganography"
+            },
+            {
+              "de": "Kryptographie",
+              "en": "Cryptography"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "de": "Was sieht der Feind?",
+                "en": "What does the enemy see?"
+              },
+              {
+                "de": "Nichts – weißes Papier",
+                "en": "Nothing – white paper"
+              },
+              {
+                "de": "Kauderwelsch – ein Geheimnis",
+                "en": "Gibberish – a secret"
+              }
+            ],
+            [
+              {
+                "de": "Was schützt bei Fund?",
+                "en": "What protects when found?"
+              },
+              {
+                "de": "Nichts mehr",
+                "en": "Nothing more"
+              },
+              {
+                "de": "Der Schlüssel – ohne ihn bleibt es Brei",
+                "en": "The key – without it stays mush"
+              }
+            ],
+            [
+              {
+                "de": "Beispiel",
+                "en": "Example"
+              },
+              {
+                "de": "Zitronensaft, Spitzname",
+                "en": "Lemon juice, nickname"
+              },
+              {
+                "de": "Caesar, Vigenère",
+                "en": "Caesar, Vigenère"
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Profis kombinieren: erst die Botschaft mit Vigenère verschlüsseln, dann unsichtbar weitergeben. Der Feind sieht nichts – und fände er etwas, verstünde er nichts. Zwei Schlösser, zwei verschiedene Schlüssel zum Aufbrechen.",
+            "en": "Professionals combine: first encrypt the message with Vigenère, then pass it invisibly. The enemy sees nothing – and found they something, they would understand nothing. Two locks, two different keys to break."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "Hamburg: Bildungsplan Studienstufe (Informatik)",
+                "en": "Hamburg: syllabus for the upper stage (computing)"
+              },
+              "url": "https://www.hamburg.de/politik-und-verwaltung/behoerden/bsfb/veroeffentlichungen/bildungsplaene/start-sek2-2022-123118"
+            },
+            {
+              "label": {
+                "de": "GI: Bildungsstandards Informatik",
+                "en": "GI: computing education standards"
+              },
+              "url": "https://gi.de/meldung/bildungsstandards-gi-stellt-neue-empfehlungen-fuer-den-informatikunterricht-vor"
+            }
+          ]
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Digitale Steganographie versteckt heute in Bildern: Ein Foto trägt tausend unsichtbare Bits – im Rauschen der Pixel. Praktisch für Wasserzeichen, heikel andersherum: Jedes Handyfoto enthält GPS-Koordinaten in seinen Metadaten – wo, wann, womit. Wer Bilder hochlädt, verrät oft mehr als das Bild zeigt. Prüfe es: Lade ein eigenes Foto in einen Metadaten-Betrachter – und staune, was du je preisgegeben hast.",
+            "en": "Digital steganography hides in pictures today: one photo carries a thousand invisible bits – in the noise of the pixels. Handy for watermarks, delicate reversed: every phone photo holds GPS coordinates in its metadata – where, when, with what. Whoever uploads pictures often betrays more than the picture shows. Check it: load one of your photos into a metadata viewer – and marvel what you ever gave away."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "warn",
+          "icon": "📍",
+          "title": {
+            "de": "Erst schauen, dann teilen",
+            "en": "First look, then share"
+          },
+          "text": {
+            "de": "Vor jedem Upload: Standort in den Kamera-Einstellungen aus – oder Metadaten entfernen. Ein Bild vom Garten verrät sonst die Adresse. Steganographie, die du nicht bestellt hast.",
+            "en": "Before every upload: location off in the camera settings – or strip metadata. A garden picture otherwise betrays the address. Steganography you never ordered."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Noch ein Versteck aus deinem Alltag: Nicknames in Spielen. „xX_DarkSlayer_Xx“ verrät Alter, Humor und Lieblingsserie – ein Steckbrief als Tarnung. Umgekehrt tarnen Aktivisten sich mit Allerweltsnamen: unsichtbar in der Masse. Jeder Nickname ist Steganographie im Kleinen – mal unfreiwillig, mal mit Absicht.",
+            "en": "One more hideout from your everyday life: nicknames in games. “xX_DarkSlayer_Xx” betrays age, humour and favourite series – a profile as camouflage. Reversed, activists camouflage themselves with everyman names: invisible in the crowd. Every nickname is steganography in small – sometimes involuntary, sometimes on purpose."
+          }
+        }
+      ],
+      "title": {
+        "de": "Verstecken oder Verschlüsseln",
+        "en": "Hiding or encrypting"
+      }
+    }
+  ],
+  "summary": {
+    "de": "Zitronensaft, Lederstreifen, Pappscheiben, Walzen: 2500 Jahre Geheimnisse – und was jedes Verfahren zu Fall brachte.",
+    "en": "Lemon juice, leather straps, cardboard discs, rotors: 2500 years of secrets – and what felled each method."
+  },
+  "title": {
+    "de": "Tinte, Stab und Maschine",
+    "en": "Ink, staff and machine"
+  }
+}

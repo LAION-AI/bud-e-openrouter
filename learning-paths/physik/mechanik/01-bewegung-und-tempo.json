@@ -1,0 +1,306 @@
+{
+  "key": "bewegung-und-tempo",
+  "title": {
+    "de": "Wie dein Schulweg zu einer Kurve wird",
+    "en": "Turning your journey to school into a graph"
+  },
+  "summary": {
+    "de": "Geschwindigkeit hat Tempo und Richtung. Mit Wegen, Zeiten und Diagrammen erkennst du mehr als eine Tachoanzeige.",
+    "en": "Velocity includes speed and direction. Distances, times and graphs reveal more than a speedometer."
+  },
+  "icon": "🚲",
+  "accent": "sky",
+  "minutes": 22,
+  "screens": [
+    {
+      "key": "bezug",
+      "title": {
+        "de": "Bewegt relativ zu wem?",
+        "en": "Moving relative to what?"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Du sitzt in einer fahrenden U-Bahn. Dein Rucksack liegt neben dir und bewegt sich relativ zu deinem Sitz nicht. Relativ zum Bahnsteig fährt er aber mit. Für eine Bewegungsbeschreibung brauchst du deshalb einen Bezugspunkt und eine Zeitangabe. Ohne dieses Bezugssystem ist „Der Rucksack ruht“ unvollständig.",
+            "en": "You are sitting in a moving underground train. Your backpack lies beside you and does not move relative to your seat. Relative to the platform, however, it travels with the train. Describing motion therefore requires a reference point and a time. Without a reference frame, “the backpack is at rest” is incomplete."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Geschwindigkeit enthält in der Physik nicht nur das Tempo, sondern auch die Bewegungsrichtung. Zwei Fahrräder mit gleichem Tempo können aufeinander zufahren oder nebeneinander fahren. Ein Geschwindigkeitspfeil zeigt beides: Seine Richtung ist die Bewegungsrichtung, seine Länge steht für das Tempo. Bei einer gleichförmigen geradlinigen Bewegung bleiben beide gleich. Eine Kurvenfahrt mit gleichbleibender Tachoanzeige ist trotzdem eine Geschwindigkeitsänderung, weil sich die Richtung verändert. Hier benutzen wir zunächst ebene Karten und vernachlässigen Steigungen. Das ist ein Modell, kein Anspruch, jede Einzelheit deines Schulwegs darzustellen. Für solche Fragen sind Zeichnungen und vorhandene Daten ausreichend; du sollst niemals während des Radfahrens ein Handy bedienen.",
+            "en": "In physics, velocity includes not only speed but also direction. Two bicycles travelling at the same speed may be approaching each other or riding side by side. A velocity arrow shows both features: its direction is the direction of travel, while its length represents speed. In uniform straight-line motion, both remain unchanged. Travelling around a bend with an unchanged speedometer reading still changes velocity, because the direction changes. We start with a flat map and ignore hills. That is a model, not a claim to represent every detail of your journey. Drawings and existing data are sufficient; never operate a phone while cycling."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Kann dein Rucksack gleichzeitig ruhen und sich bewegen, ohne dass sich die Aussagen widersprechen? Wenn die Bahn an einem anderen fahrenden Zug vorbeifährt, kann dein Rucksack relativ zu dessen Fahrgästen sogar eine andere Richtung besitzen als relativ zum Bahnsteig. Beide Beschreibungen können stimmen. In einer Zeichnung lohnt sich deshalb eine eigene Beschriftung „Bezug: Bahnsteig“. Sie verhindert, dass du Geschwindigkeitspfeile aus verschiedenen Sichtweisen unbeabsichtigt in derselben Rechnung vermischst.",
+            "en": "Can your backpack be both at rest and moving without the two statements contradicting each other? When your train passes another moving train, your backpack may even have a different direction relative to its passengers than relative to the platform. Both descriptions can be correct. Label a drawing “reference: platform” to make the choice explicit. This prevents velocity arrows from different viewpoints being combined accidentally in one calculation, as if they referred to the same observation."
+          }
+        }
+      ]
+    },
+    {
+      "key": "tempo",
+      "title": {
+        "de": "Was bedeutet fünf Meter pro Sekunde?",
+        "en": "What does five metres per second mean?"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Wenn du 100 m in 20 s zurücklegst, beträgt dein Durchschnittstempo v = s / t = 5 m/s. Die Einheit verrät den Sinn: pro Sekunde im Mittel fünf Meter. Sie sagt nicht, ob du zwischendurch gewartet oder beschleunigt hast. Die Momentangeschwindigkeit beschreibt dagegen einen bestimmten Zeitpunkt, etwa die Anzeige eines Tachos.",
+            "en": "If you cover 100 m in 20 s, your average speed is v = s / t = 5 m/s. The unit explains its meaning: an average of five metres each second. It does not tell us whether you waited or accelerated along the way. Instantaneous velocity describes a particular moment, such as a speedometer reading."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Zum Umrechnen gilt 1 m/s = 3,6 km/h. Aus 5 m/s werden 18 km/h. Der Faktor entsteht, weil eine Stunde 3600 Sekunden und ein Kilometer 1000 Meter hat. Ein häufiger Fehler ist, Meter durch Minuten zu teilen und das Ergebnis als Meter pro Sekunde zu beschriften. Schreibe Einheiten deshalb mit. Für einen Weg mit zwei gleich langen Teilstrecken kannst du nicht einfach zwei verschiedene Tempi mitteln: Entscheidend ist die gesamte Strecke geteilt durch die gesamte Zeit. Eine langsame Hälfte dauert länger und zählt deshalb stärker. Diese Unterscheidung erklärt, warum eine kurze schnelle Fahrt eine lange Wartezeit kaum ausgleicht.",
+            "en": "For conversion, 1 m/s equals 3.6 km/h. Thus 5 m/s becomes 18 km/h. The factor comes from the 3600 seconds in an hour and 1000 metres in a kilometre. A common mistake is to divide metres by minutes but label the result metres per second. Keep the units in your calculation. For two equal-distance stages travelled at different speeds, you cannot simply average the two speeds: what matters is total distance divided by total time. The slower half takes longer and therefore has greater weight. This distinction explains why a short fast section hardly makes up for a long wait."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Warum reichen die Angaben 100 m und 20 s nicht aus, um dein Tempo an jeder Stelle zu kennen? Bei einem Kilometer Hinweg mit 10 km/h und einem Kilometer Rückweg mit 20 km/h dauern die Abschnitte sechs und drei Minuten. Zusammen sind das zwei Kilometer in neun Minuten, also ungefähr 13,3 km/h. Der einfache Mittelwert 15 km/h wäre falsch. Das Beispiel zeigt unmittelbar, warum langsamere Teilstrecken in der Zeitbilanz stärker ins Gewicht fallen als gleich lange schnelle.",
+            "en": "Why are 100 m and 20 s insufficient to determine your speed at every point along the journey? A kilometre travelled at 10 km/h takes six minutes; another kilometre at 20 km/h takes three. Together that is two kilometres in nine minutes, or about 13.3 km/h. The simple average of 15 km/h would be wrong. This example makes clear why slower stages have more influence on the time account than equally long faster stages."
+          }
+        }
+      ]
+    },
+    {
+      "key": "diagramme",
+      "title": {
+        "de": "Eine Linie erzählt von Bewegung",
+        "en": "A line tells a motion story"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "In einem Zeit-Ort-Diagramm steht die Zeit auf der waagerechten Achse und der Ort auf der senkrechten. Eine ansteigende Gerade beschreibt gleichförmige Bewegung in positiver Richtung. Eine waagerechte Linie bedeutet Stillstand: Die Zeit vergeht, der Ort bleibt gleich. Eine fallende Linie beschreibt Bewegung zurück, nicht automatisch langsameres Fahren. Je steiler eine Gerade, desto größer ist der Betrag der Geschwindigkeit.",
+            "en": "In a position–time graph, time goes on the horizontal axis and position on the vertical axis. A rising straight line describes uniform motion in the positive direction. A horizontal line means rest: time passes, but position remains unchanged. A falling line describes movement back, not automatically a reduction in speed. The steeper the line, the greater the magnitude of velocity."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Beispieldaten lauten: nach 0 s bei 0 m, nach 10 s bei 20 m, nach 20 s weiterhin bei 20 m. Im ersten Abschnitt beträgt das Tempo 2 m/s, im zweiten 0 m/s. Ein Zeit-Geschwindigkeits-Diagramm sieht für dieselbe Geschichte anders aus: Dort steht beim ersten Abschnitt eine waagerechte Linie bei 2 m/s. Verwechsle also nie die Achsen! Die Fläche unter einem positiven Geschwindigkeitsgraphen entspricht dem zurückgelegten Weg. Bei konstanten 2 m/s über 10 s ist sie ein Rechteck: 2 m/s mal 10 s ergeben 20 m.",
+            "en": "Consider these data: 0 m at 0 s, 20 m at 10 s and still 20 m at 20 s. Speed is 2 m/s in the first section and 0 m/s in the second. A velocity–time graph of the same story looks different: its first section is a horizontal line at 2 m/s. Never forget to read the axes. The area beneath a positive velocity graph corresponds to distance travelled. For a constant 2 m/s over 10 s, this area is a rectangle: 2 m/s multiplied by 10 s gives 20 m."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Wie unterscheiden sich Stillstand und gleichförmige Bewegung in einem Zeit-Ort- und einem Zeit-Geschwindigkeits-Diagramm? Zeichne die Beispielgeschichte nicht als Straßenkarte: Die waagerechte Achse stellt Zeit dar, keine Himmelsrichtung. Ein Zickzack im Ort-Zeit-Diagramm bedeutet daher nicht, dass jemand Zickzack auf der Straße fährt. Es kann zeigen, dass die Person zwischen zwei Orten hin- und zurückgeht. Prüfe diese Unterscheidung, bevor du aus der Form einer Kurve eine wirkliche räumliche Bahn ableitest.",
+            "en": "How do rest and uniform motion differ in position–time graphs compared with velocity–time graphs? Do not treat the example graph as a road map: its horizontal axis represents time, not a compass direction. A zigzag in a position–time graph therefore does not mean someone zigzags across a road. It may show movement back and forth between two locations. Check that distinction before interpreting a graph's shape as an actual path through space."
+          }
+        }
+      ]
+    },
+    {
+      "key": "beschleunigung",
+      "title": {
+        "de": "Beschleunigen heißt Geschwindigkeit verändern",
+        "en": "Acceleration means changing velocity"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Ein Modellfahrzeug erhöht sein Tempo in 4 s von 0 auf 8 m/s. Seine mittlere Beschleunigung ist a = Δv / Δt = 2 m/s². Das bedeutet hier: In jeder Sekunde kommen bei gleichmäßiger Beschleunigung 2 m/s hinzu. Die Einheit ist nicht eine besonders komplizierte Geschwindigkeit, sondern eine Geschwindigkeitsänderung pro Zeit.",
+            "en": "A model vehicle increases its speed from 0 to 8 m/s in 4 s. Its average acceleration is a = Δv / Δt = 2 m/s². For constant acceleration, this means that another 2 m/s is added to the velocity each second. The unit does not describe a complicated kind of speed; it describes a change in velocity per unit time."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Für einen Start aus der Ruhe mit konstanter Beschleunigung gelten v = a · t und s = ½ · a · t². Nach 4 s sind das 8 m/s und 16 m. Der Weg ist nicht 8 m/s mal 4 s, weil das Fahrzeug erst am Ende so schnell ist. Das mittlere Tempo beträgt hier 4 m/s. Beim Bremsen wirkt die Beschleunigung der Bewegungsrichtung entgegen. Auch eine Richtungsänderung zählt als Beschleunigung. Die Formeln gelten nur unter den genannten Bedingungen; bei wechselnder Beschleunigung brauchst du abschnittsweise Daten. Diese Zahlen beschreiben ein Rechenmodell, keinen Vorschlag, Fahrzeuge auf der Straße zu testen.",
+            "en": "Starting from rest with constant acceleration gives v = a · t and s = ½ · a · t². After 4 s, these are 8 m/s and 16 m. The distance is not 8 m/s multiplied by 4 s, because the vehicle only reaches that speed at the end. Its average speed here is 4 m/s. During braking, acceleration acts opposite to the direction of motion. Changing direction also counts as acceleration. These equations apply only under the stated conditions; changing acceleration requires analysis in separate stages. The numbers describe a calculation model, not an invitation to test vehicles on a road."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Warum führt doppelte Beschleunigungszeit aus der Ruhe bei konstantem a zum vierfachen statt zum doppelten Weg? Betrachte im Modell die ersten beiden Sekunden einzeln: Nach einer Sekunde beträgt das Tempo 2 m/s, nach zwei Sekunden 4 m/s. Die zweite Sekunde umfasst deshalb mehr Weg als die erste. Genau dieser wachsende Beitrag erklärt die gekrümmte Wegkurve. Gleiche Zeitabschnitte mit immer größerem Weg sind etwas anderes als eine gleichförmige Fahrt mit gleich großen Wegabschnitten.",
+            "en": "Why does doubling the acceleration time from rest at constant a produce four times, rather than twice, the distance? Look at the first two seconds separately: speed reaches 2 m/s after one second and 4 m/s after two. The second second therefore covers more distance than the first. These growing contributions explain the curved position graph. Equal time intervals with increasing distances differ from uniform motion, where equal time intervals correspond to equal distances travelled."
+          }
+        }
+      ]
+    },
+    {
+      "key": "fallen",
+      "title": {
+        "de": "Warum fällt ein Blatt anders als eine Münze?",
+        "en": "Why does paper fall differently from a coin?"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Im Vakuum fallen Körper nahe der Erdoberfläche unabhängig von ihrer Masse mit ungefähr derselben Beschleunigung g = 9,81 m/s². Für Überschläge verwenden wir 10 m/s². Nach einer Sekunde aus der Ruhe ergibt das etwa 10 m/s und 5 m Fallweg. Nach zwei Sekunden sind es etwa 20 m/s und 20 m. Die vierfache Strecke entsteht durch die quadratische Zeitabhängigkeit.",
+            "en": "In a vacuum near Earth's surface, objects fall with approximately the same acceleration regardless of their mass: g = 9.81 m/s². For estimates, we use 10 m/s². Starting from rest gives roughly 10 m/s and a distance of 5 m after one second. After two seconds, the values are about 20 m/s and 20 m. The fourfold distance comes from the square dependence on time."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "In Luft wirken zusätzlich Luftwiderstand und Auftrieb. Ein flaches Blatt bietet der Luft eine große Fläche und wird stark gebremst. Knüllst du es zusammen, verändert sich vor allem die Form, nicht wesentlich die Masse. Bei längerem Fall kann der Luftwiderstand die Gewichtskraft ausgleichen; dann wächst das Tempo nicht weiter. Das widerspricht dem Vakuummodell nicht, sondern zeigt seine Grenze. Für eigene Überlegungen genügen eine Simulation oder fertige Fallkurven. Lass keine Gegenstände aus Fenstern, von Treppen oder auf Menschen fallen. Die Unterscheidung zwischen idealem Modell und realer Umgebung ist die eigentliche Entdeckung.",
+            "en": "Air adds drag and buoyancy. A flat sheet of paper presents a large area to the air and is strongly slowed. Crumpling it mainly changes its shape rather than its mass. During a sufficiently long fall, drag can balance weight; speed then stops increasing. This does not contradict the vacuum model, but shows its boundary. A simulation or supplied falling-motion graphs are enough for your investigation. Never drop objects from windows or stairways or towards people. Distinguishing an ideal model from the real environment is the important discovery here."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Welche Bedingung muss gelten, damit „alle Körper fallen gleich schnell“ eine sinnvolle Aussage ist? Ein zusammengeknülltes und ein flaches Blatt können annähernd dieselbe Masse besitzen. Ändert sich ihr Fall deutlich, ist „mehr Masse“ also keine passende Erklärung. Die unterschiedliche Wechselwirkung mit Luft ist ein besserer Ansatz. Eine Simulation mit ausgeschaltetem Luftwiderstand macht sichtbar, welche Unterschiede dann verschwinden. So kannst du die Grenze des Vakuummodells gedanklich prüfen, ohne von einer Höhe Gegenstände fallen zu lassen.",
+            "en": "What condition is needed before “all objects fall in the same way” becomes a meaningful statement? A flat and a crumpled sheet can have approximately the same mass. If they fall very differently, “more mass” cannot explain the change. Their different interaction with air is a better explanation. A simulation with drag switched off shows which differences disappear. This checks the boundary of the vacuum model without dropping objects from a height."
+          }
+        }
+      ]
+    },
+    {
+      "key": "verkehr",
+      "title": {
+        "de": "Warten, reagieren, bremsen",
+        "en": "Waiting, reacting, braking"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Beim Anhalten passiert zuerst während der Reaktionszeit noch keine Bremsung. Bei 10 m/s und einer angenommenen Reaktionszeit von 1 s beträgt der Reaktionsweg 10 m. Danach folgt der Bremsweg. Unter der Modellannahme einer konstanten Verzögerung von 5 m/s² dauert das Bremsen 2 s; der Bremsweg beträgt 10 m. Zusammen ergeben sich 20 m Anhalteweg.",
+            "en": "When stopping, the reaction interval comes first, before braking begins. At 10 m/s with an assumed reaction time of 1 s, the reaction distance is 10 m. Braking distance follows. Assuming a constant deceleration of 5 m/s², braking lasts 2 s and covers another 10 m. The total stopping distance is therefore 20 m."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Verdoppelst du das Anfangstempo bei gleicher Reaktionszeit und gleicher Verzögerung, verdoppelt sich der Reaktionsweg, der Bremsweg vervierfacht sich jedoch. Wirkliche Straßenbedingungen sind komplizierter: Nässe, Reifen, Gefälle, Aufmerksamkeit und Bremsen verändern das Ergebnis. Die Modellrechnung ist deshalb keine persönliche Sicherheitsfreigabe und ersetzt keine Verkehrsregeln. Sie zeigt aber, warum ein kleines Plus am Tacho mehr verändert als man gefühlsmäßig erwartet. Für Schulwege zählen außerdem Kreuzungen, sichere Übergänge und Wartezeiten. Eine Strecke mit niedrigerem Fahrtempo kann insgesamt angenehmer und verlässlicher sein. Physik hilft dir, solche Unterschiede zu erklären, ohne dich auf eine riskante Zeitjagd einzulassen.",
+            "en": "If initial speed doubles while reaction time and deceleration stay unchanged, reaction distance doubles but braking distance quadruples. Real roads are more complicated: rain, tyres, slopes, attention and brakes affect the outcome. This model calculation is not a personal safety guarantee and does not replace traffic rules. It does show why a small increase on a speedometer changes more than intuition might suggest. Junctions, safe crossings and waiting times also matter on a journey to school. A route with a lower riding speed may be more comfortable and reliable overall. Physics helps explain these differences without turning your journey into a risky race against time."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Entwirf eine Schulweg-Empfehlung, die nicht nur die kürzeste Fahrzeit, sondern auch nachvollziehbare Sicherheit berücksichtigt. Eine Warteampel kann auf einer sicheren Route mehr Zeit kosten, als höheres Fahrtempo auf einer kurzen Strecke einspart. Für eine sinnvolle Schulweg-Empfehlung vergleichst du deshalb Gesamtzeiten statt nur die Bewegung zwischen zwei Messpunkten. Die Bremsrechnung liefert ein weiteres Argument gegen Zeitjagd: Ihre Annahmen sind vereinfacht, während eine unerwartete Situation gerade nicht vollständig vorhersehbar ist.",
+            "en": "Develop advice for a journey to school that considers explainable safety as well as the shortest travel time. Waiting at a safe crossing may cost more time than higher speed saves over a short section. Useful advice therefore compares total journey times rather than only movement between two measuring points. The stopping calculation adds another reason against racing: its assumptions are simplified, while an unexpected situation is precisely something that cannot be predicted completely in advance."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "Hamburg: Physik Gymnasium (2024)",
+                "en": "Hamburg: Gymnasium physics (2024)"
+              },
+              "url": "https://www.hamburg.de/resource/blob/798534/4cf0047ad61effacd1ff7e6ad819fa41/physik-data.pdf"
+            },
+            {
+              "label": {
+                "de": "Hamburg: Physik Stadtteilschule (2024)",
+                "en": "Hamburg: Stadtteilschule physics (2024)"
+              },
+              "url": "https://www.hamburg.de/resource/blob/798426/ba414a0ace36d17b7813a855db625c42/physik-data.pdf"
+            },
+            {
+              "label": {
+                "de": "PhET: sichere interaktive Simulation",
+                "en": "PhET: safe interactive simulation"
+              },
+              "url": "https://phet.colorado.edu/de/simulations/the-moving-man"
+            },
+            {
+              "label": {
+                "de": "PhET: sichere interaktive Simulation",
+                "en": "PhET: safe interactive simulation"
+              },
+              "url": "https://phet.colorado.edu/de/simulations/projectile-motion"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": {
+        "de": "1. Lückentext",
+        "en": "1. Fill in the blanks"
+      },
+      "intro": {
+        "de": "Ergänze die fehlenden Fachwörter. Alle Begriffe findest du im Pfad.",
+        "en": "Complete the missing technical words. Every term appears in this path."
+      },
+      "text": {
+        "de": "Eine Bewegung beschreibst du relativ zu einem ___. Zur Geschwindigkeit gehören Tempo und ___. Das mittlere Tempo ist Strecke geteilt durch ___. Die Einheit m/s lässt sich in ___ umrechnen. Im Zeit-Ort-Diagramm bedeutet eine waagerechte Linie ___. Eine Geschwindigkeitsänderung pro Zeit heißt ___. Beim idealen freien Fall wird der ___ vernachlässigt. Vor dem Bremsen entsteht ein ___. Reaktionsweg und Bremsweg ergeben zusammen den ___.",
+        "en": "Motion is described relative to a ___. Velocity includes speed and ___. Average speed is distance divided by ___. The unit m/s can be converted to ___. In a position–time graph a horizontal line means ___. Change in velocity per unit time is called ___. Ideal free fall neglects ___. Before braking there is a ___. Reaction distance plus braking distance gives the ___."
+      }
+    },
+    {
+      "kind": "compare",
+      "title": {
+        "de": "2. Erklären und vergleichen (AB II)",
+        "en": "2. Explain and compare (level II)"
+      },
+      "intro": {
+        "de": "Antworte mit drei bis vier kurzen Sätzen. Nutze das Gelesene und begründe deinen Vergleich.",
+        "en": "Answer in three or four short sentences. Use what you have read and explain your comparison."
+      },
+      "text": {
+        "de": "Vergleiche zwei Fahrten mit 10 und 20 m/s bei gleicher Reaktionszeit und gleicher konstanter Verzögerung. Erkläre, warum sich Reaktionsweg und Bremsweg unterschiedlich verändern. Beziehe dich auf die Modellbedingungen aus dem Text.",
+        "en": "Compare journeys at 10 and 20 m/s with the same reaction time and constant deceleration. Explain why reaction distance and braking distance change differently. Refer to the model conditions in the text."
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": {
+        "de": "3. Deine Idee im Alltag (AB III)",
+        "en": "3. Your idea for everyday life (level III)"
+      },
+      "intro": {
+        "de": "Entwickle eine eigene Idee in drei bis vier kurzen Sätzen. Begründe sie mit Physik; mehrere Lösungen sind möglich.",
+        "en": "Develop your own idea in three or four short sentences. Support it with physics; several answers are possible."
+      },
+      "text": {
+        "de": "Plane auf Papier einen angenehmen Schulweg für eine jüngere Person. Wähle zwei Kriterien neben Tempo und erkläre mit Bewegungsbegriffen, warum dein Vorschlag sinnvoll ist.",
+        "en": "On paper, plan a pleasant journey to school for someone younger. Choose two criteria besides speed and use ideas about motion to explain your proposal."
+      }
+    }
+  ]
+}

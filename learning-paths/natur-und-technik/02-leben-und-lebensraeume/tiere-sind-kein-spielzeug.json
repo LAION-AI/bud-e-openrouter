@@ -1,0 +1,190 @@
+{
+  "key": "nwt-tiere-sind-kein-spielzeug",
+  "title": {
+    "de": "Was braucht ein Tier wirklich?",
+    "en": "What does an animal really need?"
+  },
+  "summary": {
+    "de": "Tierwohl, Verantwortung und die Folgen menschlicher Züchtung an Beispielen beurteilen.",
+    "en": "Explore animal welfare, responsibility and the effects of selective breeding."
+  },
+  "icon": "🌱",
+  "accent": "emerald",
+  "minutes": 12,
+  "screens": [
+    {
+      "key": "entdecken-1",
+      "title": {
+        "de": "Niedlich reicht als Kaufgrund nicht",
+        "en": "Cute is not enough"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Ein Kaninchen sieht kuschelig aus. Aber möchte es ständig hochgehoben werden? Tiere haben eigene Bedürfnisse. Tierwohl bedeutet: Das Tier soll gesund sein und sein arttypisches Verhalten ausleben können.",
+            "en": "A rabbit looks cuddly. But does it want to be picked up all the time? Animals have needs of their own. Animal welfare means being healthy and able to carry out behaviours natural to their species."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Zu guter Haltung gehören passendes Futter, Wasser, Bewegung, Schutz und je nach Tierart Sozialkontakt zu Artgenossen. Artgenossen sind Tiere derselben Art. Ein sauberes Gehege kann trotzdem zu klein oder langweilig sein. Beurteile die Haltung deshalb aus Sicht des Tieres, nicht nur danach, wie hübsch sie aussieht.",
+            "en": "Good care includes suitable food, water, movement, shelter and, depending on the species, contact with others of its kind. An enclosure can be clean but still too small or dull. Judge care from the animal's perspective, not just by how attractive it looks."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "💡",
+          "title": {
+            "de": "Dein Auftrag",
+            "en": "Your task"
+          },
+          "text": {
+            "de": "Ein Tier kann sich verstecken und wird deshalb selten gesehen. Ist das Versteck unnütz? Begründe aus Sicht des Tieres.",
+            "en": "An animal hides and is therefore rarely seen. Is its hiding place useless? Explain from the animal's perspective."
+          }
+        }
+      ]
+    },
+    {
+      "key": "entdecken-2",
+      "title": {
+        "de": "Wer übernimmt morgen die Arbeit?",
+        "en": "Who will do the work tomorrow?"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Ein Haustier braucht auch dann Versorgung, wenn du Hausaufgaben hast, krank bist oder verreist. Vor der Anschaffung müssen Erwachsene Verantwortung übernehmen. Futter, Platz, Zeit und tierärztliche Hilfe kosten Geld.",
+            "en": "A pet needs care when you have homework, are ill or go on holiday. Adults must accept responsibility before an animal is brought home. Food, space, time and veterinary care cost money."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Manche Tiere sind nachts aktiv, andere brauchen Gruppen oder viel Bewegung. Fachkundige Beratung hilft, die Bedürfnisse vorher zu verstehen. Ein Video mit einem Tier zeigt nur einen kurzen Ausschnitt. Wildtiere gehören nicht einfach in ein Kinderzimmer. Beobachte sie draußen mit Abstand und störe ihre Verstecke nicht.",
+            "en": "Some animals are active at night; others need groups or lots of movement. Expert advice helps you understand their needs in advance. A video shows only a brief moment of an animal's life. Wild animals do not belong in a bedroom. Observe them outside from a distance and leave their hiding places alone."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "💡",
+          "title": {
+            "de": "Dein Auftrag",
+            "en": "Your task"
+          },
+          "text": {
+            "de": "Formuliere drei Fragen, die eine Familie vor der Anschaffung eines Tieres klären sollte. Mindestens eine soll sich auf die Ferien beziehen.",
+            "en": "Write three questions a family should answer before getting a pet. Include one about holidays."
+          }
+        }
+      ]
+    },
+    {
+      "key": "entdecken-3",
+      "title": {
+        "de": "Menschen verändern Tiere durch Auswahl",
+        "en": "People change animals through selection"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Warum sehen Hunderassen so verschieden aus? Menschen haben über viele Generationen Tiere mit gewünschten Merkmalen zur Fortpflanzung ausgewählt. Das heißt Züchtung. Merkmale können an Nachkommen vererbt werden.",
+            "en": "Why do dog breeds look so different? Over many generations, people selected animals with desired features for breeding. This is selective breeding. Features can be inherited by offspring."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Was Menschen schön finden, ist nicht automatisch gut für das Tier. Sehr kurze Schnauzen können beispielsweise das Atmen erschweren. Beim Beurteilen zählen Gesundheit, Bewegungsfreiheit und Verhalten mehr als ein lustiges Aussehen. Über das Tierwohl lässt sich mit Gründen sprechen, ohne Menschen wegen ihres Haustiers auszulachen.",
+            "en": "What people find attractive is not automatically good for an animal. Very short snouts, for example, can make breathing difficult. Health, freedom of movement and natural behaviour matter more than an amusing appearance. Discuss welfare using reasons without mocking people for the pets they have."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "💡",
+          "title": {
+            "de": "Dein Auftrag",
+            "en": "Your task"
+          },
+          "text": {
+            "de": "Jemand sagt: „Je süßer ein Tier aussieht, desto besser geht es ihm.“ Antworte mit einem sachlichen Gegenargument.",
+            "en": "Someone says, “The cuter an animal looks, the better its life is.” Give a reasoned counterargument."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "Hamburg: Naturwissenschaften/Technik 5–6, Gymnasium (2024)",
+                "en": "Hamburg: science and technology, years 5–6, Gymnasium (2024)"
+              },
+              "url": "https://www.hamburg.de/resource/blob/798520/700d66232c2d07bad97d72b6e107e083/naturwissenschaften-technik-data.pdf"
+            },
+            {
+              "label": {
+                "de": "Hamburg: Naturwissenschaften/Technik 5–6, Stadtteilschule (2024)",
+                "en": "Hamburg: science and technology, years 5–6, Stadtteilschule (2024)"
+              },
+              "url": "https://www.hamburg.de/resource/blob/798394/033190c61a9908ff10401a5b66cedae9/naturwissenschaften-technik-data.pdf"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": {
+        "de": "Die wichtigsten Wörter",
+        "en": "The key words"
+      },
+      "intro": {
+        "de": "Setze passende Wörter aus den drei Seiten ein. Nachschauen ist erlaubt.",
+        "en": "Fill the gaps using words from the three pages. You may look back."
+      },
+      "text": {
+        "de": "Das Wohlergehen von Tieren heißt ___. Tiere derselben Art heißen ___. Gute Haltung braucht passendes ___ und genügend Platz. Vor einem Haustier müssen ___ Verantwortung übernehmen. Wildtiere beobachtest du mit ___. Die gezielte Auswahl zur Fortpflanzung heißt ___. Merkmale können ___ werden. Wichtiger als Aussehen ist die ___ des Tieres.",
+        "en": "An animal's wellbeing is called ___. Animals of the same species are its ___. Good care requires suitable ___ and enough space. Before getting a pet, ___ must accept responsibility. Observe wild animals from a ___. Choosing animals for reproduction is selective ___. Features can be ___. An animal's ___ matters more than its appearance."
+      }
+    },
+    {
+      "kind": "compare",
+      "title": {
+        "de": "Erkläre den Zusammenhang",
+        "en": "Explain the connection"
+      },
+      "intro": {
+        "de": "Antworte in zwei bis drei Sätzen. Nutze ein Beispiel aus dem Lernpfad.",
+        "en": "Answer in two or three sentences. Use an example from the learning path."
+      },
+      "text": {
+        "de": "Vergleiche zwei Gehege: A ist sauber, aber ohne Versteck; B ist sauber und bietet Rückzug, Bewegung und passenden Sozialkontakt. Begründe, welche Kriterien wichtiger sind als die Farbe des Geheges.",
+        "en": "Compare two enclosures: A is clean but has nowhere to hide; B is clean with shelter, movement and suitable social contact. Explain which criteria matter more than the enclosure's colour."
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": {
+        "de": "Deine Idee für den Alltag",
+        "en": "Your everyday idea"
+      },
+      "intro": {
+        "de": "Hier zählt deine begründete Idee, nicht eine bestimmte Musterantwort.",
+        "en": "Your reasoned idea matters, not a particular model answer."
+      },
+      "text": {
+        "de": "Entwirf eine kurze „Vor dem Haustier“-Checkliste für eine Familie. Welche vier Fragen würden dem Tier und den Menschen wirklich helfen?",
+        "en": "Design a short “Before getting a pet” checklist for a family. Which four questions would genuinely help both the animal and the people?"
+      }
+    }
+  ]
+}

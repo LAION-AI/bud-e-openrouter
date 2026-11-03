@@ -95,6 +95,10 @@ export interface CatalogModel {
   speaks?: boolean;
   promptPrice: number;
   completionPrice: number;
+  /** Maximum completion length reported by the current top provider. */
+  maxOutputTokens?: number;
+  /** True only when both token prices are explicitly listed as zero. */
+  free?: boolean;
   context: number;
   /** True for models absent from /api/v1/models (previews are not listed). */
   unlisted?: boolean;
@@ -124,7 +128,11 @@ interface RawArch {
  * is a music model in the read-aloud list, which is exactly the bug this
  * fixes: asked to read a sentence, it would compose a tune.
  */
-function isMusicModel(id: string, name?: string, description?: string): boolean {
+function isMusicModel(
+  id: string,
+  name?: string,
+  description?: string,
+): boolean {
   const hay = `${id} ${name ?? ""} ${description ?? ""}`.toLowerCase();
   if (/\blyria\b/.test(hay)) return true;
   return /\bmusic (generation|model)\b|\bgenerate music\b|\btext-to-music\b/
@@ -243,6 +251,16 @@ async function buildCatalog(): Promise<Catalog> {
       speaks: speaksOf(m.architecture ?? {}),
       promptPrice: priceOf(m.pricing, "prompt"),
       completionPrice: priceOf(m.pricing, "completion"),
+      maxOutputTokens: Number(m.top_provider?.max_completion_tokens) > 0
+        ? Number(m.top_provider.max_completion_tokens)
+        : undefined,
+      free: m.pricing?.prompt != null && m.pricing?.completion != null &&
+        String(m.pricing.prompt).trim() !== "" &&
+        String(m.pricing.completion).trim() !== "" &&
+        Number.isFinite(Number(m.pricing.prompt)) &&
+        Number.isFinite(Number(m.pricing.completion)) &&
+        priceOf(m.pricing, "prompt") === 0 &&
+        priceOf(m.pricing, "completion") === 0,
       context: Number(m.context_length) || 0,
     });
   }
@@ -267,10 +285,28 @@ async function buildCatalog(): Promise<Catalog> {
           zdr: zdrIds.has(id),
           eu: Boolean(euEp),
           euTag: euEp?.tag,
-          roles: rolesOf(d.architecture ?? {}, d.id ?? id, d.name, d.description),
+          roles: rolesOf(
+            d.architecture ?? {},
+            d.id ?? id,
+            d.name,
+            d.description,
+          ),
           speaks: speaksOf(d.architecture ?? {}),
           promptPrice: priceOf(eps[0]?.pricing, "prompt"),
           completionPrice: priceOf(eps[0]?.pricing, "completion"),
+          maxOutputTokens: Number(d.top_provider?.max_completion_tokens) > 0
+            ? Number(d.top_provider.max_completion_tokens)
+            : Number(eps[0]?.max_completion_tokens) > 0
+            ? Number(eps[0].max_completion_tokens)
+            : undefined,
+          free: eps[0]?.pricing?.prompt != null &&
+            eps[0]?.pricing?.completion != null &&
+            String(eps[0].pricing.prompt).trim() !== "" &&
+            String(eps[0].pricing.completion).trim() !== "" &&
+            Number.isFinite(Number(eps[0].pricing.prompt)) &&
+            Number.isFinite(Number(eps[0].pricing.completion)) &&
+            priceOf(eps[0]?.pricing, "prompt") === 0 &&
+            priceOf(eps[0]?.pricing, "completion") === 0,
           context: Number(d.context_length) || 0,
           unlisted: true,
         });
@@ -574,7 +610,9 @@ export function noteRegionalRouting(key: string, allowed: boolean): void {
   if (regionalRouting.get(fp) === allowed) return;
   regionalRouting.set(fp, allowed);
   console.log(
-    `[OR] regional routing ${allowed ? "available" : "unavailable"} for key ...${fp}`,
+    `[OR] regional routing ${
+      allowed ? "available" : "unavailable"
+    } for key ...${fp}`,
   );
 }
 
@@ -686,7 +724,9 @@ export async function withAttempts<T>(
       const policy = await policyFor(model, level);
       const value = await run(model, policy, level);
       if (tried.length) {
-        console.log(`[OR] ${role} succeeded with ${label} after ${tried.join(", ")}`);
+        console.log(
+          `[OR] ${role} succeeded with ${label} after ${tried.join(", ")}`,
+        );
       }
       return { value, model: model.id, level, tried };
     } catch (err) {
@@ -738,11 +778,36 @@ export function defaultVoiceFor(modelId: string): string {
  * fallback. So a Gemini voice is only ever sent to a Gemini model.
  */
 const GEMINI_VOICES = new Set([
-  "Charon", "Algieba", "Umbriel", "Iapetus", "Achird", "Rasalgethi",
-  "Enceladus", "Sadaltager", "Alnilam", "Orus", "Puck", "Fenrir",
-  "Zubenelgenubi", "Kore", "Aoede", "Leda", "Callirrhoe", "Autonoe",
-  "Despina", "Erinome", "Laomedeia", "Achernar", "Gacrux", "Pulcherrima",
-  "Vindemiatrix", "Sulafat", "Schedar", "Sadachbia", "Zephyr", "Algenib",
+  "Charon",
+  "Algieba",
+  "Umbriel",
+  "Iapetus",
+  "Achird",
+  "Rasalgethi",
+  "Enceladus",
+  "Sadaltager",
+  "Alnilam",
+  "Orus",
+  "Puck",
+  "Fenrir",
+  "Zubenelgenubi",
+  "Kore",
+  "Aoede",
+  "Leda",
+  "Callirrhoe",
+  "Autonoe",
+  "Despina",
+  "Erinome",
+  "Laomedeia",
+  "Achernar",
+  "Gacrux",
+  "Pulcherrima",
+  "Vindemiatrix",
+  "Sulafat",
+  "Schedar",
+  "Sadachbia",
+  "Zephyr",
+  "Algenib",
 ]);
 
 /**
@@ -755,10 +820,23 @@ const GEMINI_VOICES = new Set([
  */
 const OTHER_VOICES = new Set([
   // xAI
-  "Eve", "Rex", "Leo", "Gork", "Ara",
+  "Eve",
+  "Rex",
+  "Leo",
+  "Gork",
+  "Ara",
   // OpenAI
-  "alloy", "ash", "ballad", "coral", "echo", "fable", "nova", "onyx",
-  "sage", "shimmer", "verse",
+  "alloy",
+  "ash",
+  "ballad",
+  "coral",
+  "echo",
+  "fable",
+  "nova",
+  "onyx",
+  "sage",
+  "shimmer",
+  "verse",
 ]);
 
 /**

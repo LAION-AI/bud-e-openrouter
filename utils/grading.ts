@@ -65,6 +65,8 @@ export interface StudentPaper {
   /** Page numbers in reading order. */
   pages: number[];
   note?: string;
+  /** Explicitly accounted-for template/duplicate pages, never silently omitted. */
+  ignored?: boolean;
 }
 
 export interface GradingCriteria {
@@ -197,15 +199,37 @@ Answer only with JSON:
 /** Hamburg's default percentage tables, used when the teacher gives none. */
 export const HAMBURG_SCALE = {
   sek1: [
-    [95, "1"], [90, "1-"], [85, "2+"], [80, "2"], [75, "2-"], [70, "3+"],
-    [65, "3"], [60, "3-"], [55, "4+"], [50, "4"], [45, "4-"], [33, "5"],
+    [95, "1"],
+    [90, "1-"],
+    [85, "2+"],
+    [80, "2"],
+    [75, "2-"],
+    [70, "3+"],
+    [65, "3"],
+    [60, "3-"],
+    [55, "4+"],
+    [50, "4"],
+    [45, "4-"],
+    [33, "5"],
     [0, "6"],
   ] as [number, string][],
   sek2: [
-    [95, "15 (1+)"], [90, "14 (1)"], [85, "13 (1-)"], [80, "12 (2+)"],
-    [75, "11 (2)"], [70, "10 (2-)"], [65, "9 (3+)"], [60, "8 (3)"],
-    [55, "7 (3-)"], [50, "6 (4+)"], [45, "5 (4)"], [39, "4 (4-)"],
-    [33, "3 (5+)"], [27, "2 (5)"], [20, "1 (5-)"], [0, "0 (6)"],
+    [95, "15 (1+)"],
+    [90, "14 (1)"],
+    [85, "13 (1-)"],
+    [80, "12 (2+)"],
+    [75, "11 (2)"],
+    [70, "10 (2-)"],
+    [65, "9 (3+)"],
+    [60, "8 (3)"],
+    [55, "7 (3-)"],
+    [50, "6 (4+)"],
+    [45, "5 (4)"],
+    [39, "4 (4-)"],
+    [33, "3 (5+)"],
+    [27, "2 (5)"],
+    [20, "1 (5-)"],
+    [0, "0 (6)"],
   ] as [number, string][],
 };
 
@@ -299,7 +323,12 @@ export function transcriptMarkdown(
   const out: string[] = [`# ${de ? "Abschrift der Arbeiten" : "Transcript"}`];
 
   for (const paper of papers) {
-    out.push("", `## ${paper.student}`);
+    out.push(
+      "",
+      `## ${paper.student}${
+        paper.ignored ? (de ? " · nicht bewertet" : " · not assessed") : ""
+      }`,
+    );
     if (paper.note) out.push("", `> ${paper.note}`);
     for (const n of paper.pages) {
       const p = byPage.get(n);

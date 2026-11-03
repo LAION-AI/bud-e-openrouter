@@ -1,0 +1,190 @@
+{
+  "key": "nwt-was-ist-leben",
+  "title": {
+    "de": "Lebt das – oder sieht es nur so aus?",
+    "en": "Is it alive, or does it just look alive?"
+  },
+  "summary": {
+    "de": "Vergleiche Katze, Pflanze und Roboter und entdecke Kennzeichen des Lebendigen.",
+    "en": "Compare a cat, a plant and a robot to discover characteristics of living things."
+  },
+  "icon": "🌱",
+  "accent": "emerald",
+  "minutes": 12,
+  "screens": [
+    {
+      "key": "entdecken-1",
+      "title": {
+        "de": "Kann ein Roboter lebendig sein?",
+        "en": "Can a robot be alive?"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Eine Katze bewegt sich. Ein Roboter auch. Trotzdem ist Bewegung allein kein sicherer Beweis für Leben. Eine Pflanze läuft nicht weg und lebt trotzdem. Wir brauchen mehrere Kennzeichen zusammen.",
+            "en": "A cat moves. So does a robot. Yet movement alone does not prove something is alive. A plant stays in one place and is still alive. We need several characteristics together."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Lebewesen bestehen aus Zellen. Zellen sind winzige Bausteine des Lebens. Lebewesen nehmen Stoffe auf, verändern sie und geben Stoffe ab: Das heißt Stoffwechsel. Sie wachsen, entwickeln sich und reagieren auf Reize, zum Beispiel Licht oder Berührung. Ein einzelnes Kennzeichen reicht zum Einordnen nicht aus.",
+            "en": "Living things consist of cells, the tiny building units of life. They take in substances, change them and release substances: this is metabolism. They grow, develop and respond to stimuli such as light or touch. One characteristic alone is not enough to classify something."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "💡",
+          "title": {
+            "de": "Dein Auftrag",
+            "en": "Your task"
+          },
+          "text": {
+            "de": "Vergleiche eine Zimmerpflanze mit einem Spielzeugauto. Welche zwei Kennzeichen findest du bei der Pflanze?",
+            "en": "Compare a houseplant with a toy car. Which two characteristics can you identify in the plant?"
+          }
+        }
+      ]
+    },
+    {
+      "key": "entdecken-2",
+      "title": {
+        "de": "Leben zeigt sich nicht immer sofort",
+        "en": "Life is not always obvious"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Ist ein trockener Bohnensamen tot? Er kann ruhen und später keimen. Manche Lebensvorgänge laufen so langsam ab, dass du sie nicht sofort bemerkst. Eine kurze Beobachtung kann deshalb täuschen.",
+            "en": "Is a dry bean seed dead? It can remain dormant and sprout later. Some life processes are too slow to notice immediately, so a brief observation can mislead you."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Lebewesen können sich grundsätzlich fortpflanzen: Neue Lebewesen entstehen. Nicht jedes einzelne Tier bekommt aber Nachwuchs. Auch eine alte Katze oder ein Mensch ohne Kinder lebt natürlich. Entscheidend sind die gemeinsamen Merkmale und der Lebenszusammenhang, nicht eine Checkliste, die jedes Wesen in jeder Minute vollständig erfüllen muss.",
+            "en": "Living things can reproduce: new living things arise. But not every individual animal has offspring. An old cat or a person without children is still alive. What matters is the shared characteristics and life processes, not a checklist that every organism must visibly complete every minute."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "💡",
+          "title": {
+            "de": "Dein Auftrag",
+            "en": "Your task"
+          },
+          "text": {
+            "de": "Erkläre einem jüngeren Kind, warum „Bewegt sich gerade nicht“ nicht dasselbe bedeutet wie „lebt nicht“. Nutze den Samen als Beispiel.",
+            "en": "Explain to a younger child why “is not moving now” does not mean “is not alive”. Use the seed as an example."
+          }
+        }
+      ]
+    },
+    {
+      "key": "entdecken-3",
+      "title": {
+        "de": "Mit Lebendigem achtsam umgehen",
+        "en": "Treat living things with care"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Warum beobachten wir einen Regenwurm lieber an seinem Fundort? Er ist kein Versuchsgegenstand ohne Bedürfnisse. Sein Körper braucht Feuchtigkeit; trockener Boden und langes Anfassen können ihm schaden.",
+            "en": "Why observe an earthworm where you found it? It has needs of its own. Its body needs moisture; dry ground and prolonged handling can harm it."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Beobachte Tiere mit Abstand und lasse Verstecke und Nester unberührt. Unbekannte Pflanzen und Pilze werden nicht gegessen. Fotos oder Skizzen halten Entdeckungen fest, ohne Lebewesen mitzunehmen. Du musst nicht alles anfassen, um etwas herauszufinden. Gute Forschung verbindet Neugier mit Rücksicht.",
+            "en": "Watch animals from a distance and leave nests and hiding places undisturbed. Never eat unfamiliar plants or fungi. Photos and sketches record discoveries without taking organisms away. You do not need to touch everything to learn about it. Good research combines curiosity with care."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "icon": "💡",
+          "title": {
+            "de": "Dein Auftrag",
+            "en": "Your task"
+          },
+          "text": {
+            "de": "Plane eine fünfminütige Beobachtung auf dem Schulhof. Was möchtest du entdecken, und wie lässt du die Lebewesen ungestört?",
+            "en": "Plan a five-minute observation in the school grounds. What would you like to discover, and how will you avoid disturbing living things?"
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "Hamburg: Naturwissenschaften/Technik 5–6, Gymnasium (2024)",
+                "en": "Hamburg: science and technology, years 5–6, Gymnasium (2024)"
+              },
+              "url": "https://www.hamburg.de/resource/blob/798520/700d66232c2d07bad97d72b6e107e083/naturwissenschaften-technik-data.pdf"
+            },
+            {
+              "label": {
+                "de": "Hamburg: Naturwissenschaften/Technik 5–6, Stadtteilschule (2024)",
+                "en": "Hamburg: science and technology, years 5–6, Stadtteilschule (2024)"
+              },
+              "url": "https://www.hamburg.de/resource/blob/798394/033190c61a9908ff10401a5b66cedae9/naturwissenschaften-technik-data.pdf"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": {
+        "de": "Die wichtigsten Wörter",
+        "en": "The key words"
+      },
+      "intro": {
+        "de": "Setze passende Wörter aus den drei Seiten ein. Nachschauen ist erlaubt.",
+        "en": "Fill the gaps using words from the three pages. You may look back."
+      },
+      "text": {
+        "de": "Lebewesen bestehen aus ___. Stoffe aufzunehmen und umzuwandeln heißt ___. Eine Reaktion kann durch einen ___ ausgelöst werden. Lebewesen wachsen und ___ sich. Neue Lebewesen entstehen durch ___. Ein Samen kann zunächst ___. Ein Roboter zeigt zwar ___, ist dadurch aber noch nicht lebendig. Beim Beobachten nehmen wir ___.",
+        "en": "Living things consist of ___. Taking in and transforming substances is called ___. A response can be triggered by a ___. Living things grow and ___. New organisms arise through ___. A seed can remain ___. A robot can show ___ without being alive. When observing, we show ___."
+      }
+    },
+    {
+      "kind": "compare",
+      "title": {
+        "de": "Erkläre den Zusammenhang",
+        "en": "Explain the connection"
+      },
+      "intro": {
+        "de": "Antworte in zwei bis drei Sätzen. Nutze ein Beispiel aus dem Lernpfad.",
+        "en": "Answer in two or three sentences. Use an example from the learning path."
+      },
+      "text": {
+        "de": "Eine Pflanze bewegt sich kaum sichtbar, ein Roboter fährt herum. Erkläre anhand von drei Kennzeichen, warum du sie trotzdem unterschiedlich einordnest.",
+        "en": "A plant barely seems to move; a robot drives around. Use three characteristics to explain why you classify them differently."
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": {
+        "de": "Deine Idee für den Alltag",
+        "en": "Your everyday idea"
+      },
+      "intro": {
+        "de": "Hier zählt deine begründete Idee, nicht eine bestimmte Musterantwort.",
+        "en": "Your reasoned idea matters, not a particular model answer."
+      },
+      "text": {
+        "de": "Welche Entdeckung über ein Lebewesen in deiner Umgebung möchtest du machen? Erfinde eine Beobachtung, die dem Lebewesen nicht schadet.",
+        "en": "What would you like to discover about a living thing nearby? Design an observation that does not harm it."
+      }
+    }
+  ]
+}

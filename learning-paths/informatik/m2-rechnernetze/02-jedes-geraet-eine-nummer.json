@@ -10,7 +10,7 @@
   },
   "icon": "🔢",
   "accent": "sky",
-  "minutes": 14,
+  "minutes": 20,
   "screens": [
     {
       "key": "die-hausnummer",
@@ -105,6 +105,13 @@
           "text": {
             "de": "Zu Hause beginnt deine Adresse fast sicher mit `192.168.` oder `10.`. Bei deiner Nachbarin auch. Das stört niemanden, weil diese Bereiche für private Netze reserviert sind und hinter dem Router aufhören. Nach draußen tritt ihr beide mit der Adresse eures Anschlusses auf - eine für den ganzen Haushalt.",
             "en": "At home your address almost certainly starts with `192.168.` or `10.`. So does your neighbour's. Nobody minds, because those ranges are reserved for private networks and stop at the router. To the outside world you both appear with the address of your connection - one for the whole household."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Hotels denken genauso: Zimmernummer plus Schlüsselkarte – die Nummer allein öffnet nichts. Auch im Netz reicht die Nummer manchmal nicht: Passwörter, Codes und Schlüsselkarten kommen dazu. Adresse sagt, wo du bist. Ausweis sagt, wer du bist. Beides zusammen öffnet Türen – im Hotel wie im Netz.",
+            "en": "Hotels think the same way: room number plus key card – the number alone opens nothing. In the net too the number sometimes does not suffice: passwords, codes and key cards join in. Address says where you are. ID says who you are. Both together open doors – in hotels like in the net."
           }
         }
       ]
@@ -266,6 +273,70 @@
               "url": "https://www.rfc-editor.org/rfc/rfc1918"
             }
           ]
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Schau selbst nach: Am Windows-Rechner „ipconfig“ ins schwarze Fenster tippen (cmd), am Handy unter WLAN-Details – dort steht deine Nummer, schwarz auf weiß. Sie ändert sich ständig, und das ist normal: Nummern sind geliehen, nicht gekauft. Wer seine kennt, versteht das Netz ein Stück besser.",
+            "en": "Look yourself: on Windows type “ipconfig” into the black window (cmd), on the phone under Wi-Fi details – there stands your number, black on white. It changes constantly, and that is normal: numbers are borrowed, not bought. Whoever knows theirs understands the net a piece better."
+          }
+        }
+      ]
+    },
+    {
+      "key": "dein-zuhause-im-netz",
+      "title": {
+        "de": "Dein Zuhause im Netz",
+        "en": "Your home on the net"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Dein Handy hat zu Hause eine andere Nummer als unterwegs – und das Schul-WLAN erkennt dich wieder, obwohl du nichts eintippst.",
+            "en": "Your phone has a different number at home than on the road – and the school Wi-Fi recognises you again although you type nothing."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Hinter deinem Router wohnen private Nummern wie 192.168.1.23 – sie gelten nur in deiner Wohnung, wie Zimmernummern in einem Hotel. Nach draußen tritt der Router mit einer einzigen öffentlichen Nummer für alle Geräte auf. Darum sieht eine Webseite deine Familie als einen Besucher, nicht als fünf.",
+            "en": "Behind your router live private numbers like 192.168.1.23 – valid only inside your flat, like room numbers in a hotel. Towards the outside the router appears with a single public number for all devices. That is why a website sees your family as one visitor, not five."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Unterwegs im Handynetz bekommst du ständig neue Nummern – mal diese, mal jene, je nach Funkmast. Und das Schul-WLAN? Es merkt sich die Gerätenummer deines Handys und lässt dich durch, weil du dich einmal angemeldet hast. Bequem – und der Grund, warum „kostenloses WLAN“ weiß, dass du wieder da bist.",
+            "en": "On the road in the mobile network you constantly get new numbers – this one, then that one, depending on the mast. And the school Wi-Fi? It remembers your phone's device number and lets you through because you signed in once. Convenient – and the reason “free Wi-Fi” knows you are back."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Klassiker des Ärgers: Der WLAN-Drucker ist „weg“. Meist hat er nach einem Neustart einfach eine neue Nummer bekommen – der Rechner ruft noch die alte. Lösung: Drucker feste Nummer geben oder über den Namen ansprechen. Wer das einmal repariert hat, ist für immer der Netzwerk-Profi der Familie.",
+            "en": "Classic annoyance: the Wi-Fi printer is “gone”. Mostly it simply got a new number after a restart – the computer still calls the old one. Fix: give the printer a fixed number or address it by name. Whoever repaired that once is the family's network professional forever."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "tip",
+          "icon": "📱",
+          "title": {
+            "de": "Gäste-WLAN teilen",
+            "en": "Sharing guest Wi-Fi"
+          },
+          "text": {
+            "de": "Viele Router zeigen einen QR-Code fürs Gäste-WLAN: abfotografieren statt Passwort diktieren. Teilen ohne zu verraten – Nummern und Codes arbeiten für dich, während du Kaffee kochst.",
+            "en": "Many routers show a QR code for guest Wi-Fi: photograph instead of dictating passwords. Sharing without betraying – numbers and codes work for you while you brew coffee."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "IPv6 übrigens löst das Nummern-Problem für immer: so viele Adressen, dass jedes Sandkorn am Strand mehrere bekäme. Umstellung läuft – langsam, weil alles Alte noch IPv4 spricht. Du erlebst gerade live, wie das Netz umzieht: zwei Nummernsysteme parallel, jahrzehntelang. Geschichte zum Anfassen.",
+            "en": "IPv6 incidentally solves the number problem forever: so many addresses that every grain of sand on the beach would get several. Migration runs – slowly, because everything old still speaks IPv4. You experience live how the net moves house: two number systems in parallel, for decades. History to touch."
+          }
         }
       ]
     }

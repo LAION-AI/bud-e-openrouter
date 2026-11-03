@@ -1,0 +1,271 @@
+{
+  "key": "linsen-farben-und-kamera",
+  "title": {
+    "de": "Warum der Strohhalm einen Knick bekommt",
+    "en": "Why a straw appears to bend"
+  },
+  "summary": {
+    "de": "NWT-Auffrischung: Brechung, Linsen, Auge und Farben machen aus Lichtwegen ein Werkzeug für Bilder.",
+    "en": "NWT refresher: refraction, lenses, eyes and colours turn light paths into a tool for images."
+  },
+  "icon": "📷",
+  "accent": "sky",
+  "minutes": 22,
+  "screens": [
+    {
+      "key": "brechung",
+      "title": {
+        "de": "Der Knick steckt im Lichtweg",
+        "en": "The bend is in the light path"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Ein Strohhalm wirkt an der Wasseroberfläche geknickt, obwohl er gerade bleibt. Licht vom eingetauchten Teil ändert beim Übergang zwischen Wasser und Luft seine Richtung. Dein Auge verlängert die ankommenden Strahlen gedanklich geradlinig zurück und ordnet den Gegenstand deshalb an einem anderen scheinbaren Ort ein. Das Phänomen heißt Brechung.",
+            "en": "A straw appears bent at the water surface although it remains straight. Light from the submerged part changes direction when passing between water and air. Your eye mentally extends the arriving rays backwards in straight lines, placing the object at a different apparent location. This phenomenon is refraction."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "In verschiedenen durchsichtigen Stoffen breitet sich Licht unterschiedlich schnell aus. Beim schrägen Übergang in ein optisch dichteres Medium wird ein Strahl gewöhnlich zum Lot hin gebrochen, beim umgekehrten Übergang vom Lot weg. Optisch dichter meint hier größere Brechzahl, nicht unbedingt größere Massendichte. Beim senkrechten Einfall bleibt die Richtung unverändert. Reflexion kann zugleich auftreten: Ein Teil des Lichts wird zurückgeworfen. Wir verwenden das Strahlenmodell als NWT-Auffrischung für spätere Anwendungen. Die tatsächliche Materialgrenze und der scheinbare Knick sind nicht dasselbe. Eine Simulation erlaubt, Winkel und Materialien zu vergleichen, ohne mit stark gebündelten Lichtquellen zu experimentieren.",
+            "en": "Light travels at different speeds in different transparent materials. At an oblique boundary into an optically denser medium, a ray usually bends towards the normal; in the reverse direction it bends away. Here “optically denser” means a greater refractive index, not necessarily greater mass density. For perpendicular incidence, direction remains unchanged. Reflection can occur at the same boundary too, sending some light back. We use the ray model as an NWT refresher for later applications. The real material boundary and the apparent bend are not the same thing. A simulation lets you compare angles and materials without experimenting with strongly concentrated light sources."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Was würde eine Beobachtung aus verschiedenen Blickrichtungen darüber zeigen, ob der Strohhalm wirklich verbogen ist? Zeichne einen Lichtweg vom untergetauchten Teil zur Oberfläche und anschließend zum Auge. Verlängere nur das letzte Teilstück gedanklich zurück. Diese Verlängerung zeigt den scheinbaren Ort, nicht den wirklichen Weg im Wasser. Wenn du beide Linien unterschiedlich markierst, wird verständlich, warum die Wahrnehmung einen Knick nahelegt, ohne dass der Gegenstand selbst seine Form geändert hat.",
+            "en": "What would observations from different viewing directions reveal about whether the straw is actually bent? Draw a path from the submerged part to the surface and then to the eye. Extend only the last section backwards mentally. That extension shows apparent position, not the real path through water. Marking the lines differently explains why perception suggests a bend although the object itself has not changed shape."
+          }
+        }
+      ]
+    },
+    {
+      "key": "linse",
+      "title": {
+        "de": "Eine Linse verändert viele Strahlen zugleich",
+        "en": "A lens redirects many rays at once"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Eine Sammellinse ist im einfachen Modell in der Mitte dicker als am Rand. Parallel zur optischen Achse einfallende Strahlen werden hinter ihr ungefähr in einem Brennpunkt gebündelt. Der Abstand zwischen Linse und Brennpunkt heißt Brennweite. Eine Zerstreuungslinse lässt parallel einfallende Strahlen auseinanderlaufen; ihre rückwärtigen Verlängerungen treffen sich an einem virtuellen Brennpunkt.",
+            "en": "In a simple model, a converging lens is thicker in the middle than at its edge. Rays parallel to the optical axis are brought approximately together at a focal point behind it. The distance from lens to focus is the focal length. A diverging lens spreads parallel incoming rays; their backwards extensions meet at a virtual focus."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Für eine Bildkonstruktion reichen ausgewählte Strahlen, obwohl tatsächlich viele Strahlen von jedem Gegenstandspunkt ausgehen. Ein achsenparalleler Strahl läuft bei der Sammellinse durch den Brennpunkt, ein Strahl durch die dünne Linsenmitte näherungsweise geradlinig. Ihr Treffpunkt bestimmt den Bildpunkt. Das Modell vernachlässigt Linsendicke und manche Abbildungsfehler. Es ist trotzdem nützlich, solange du seine Bedingungen kennst. Bündelung kann Licht und Wärme gefährlich konzentrieren. Deshalb niemals mit einer Lupe in die Sonne sehen oder Sonnenlicht auf Menschen und brennbare Materialien bündeln. Hier genügen virtuelle Linsen und sichere Zeichnungen vollkommen.",
+            "en": "An image construction uses a few selected rays even though many rays leave every point on the object. A ray parallel to the axis passes through the focus after a converging lens. A ray through the centre of a thin lens travels approximately straight on. Their intersection locates the image point. The model neglects lens thickness and some image defects. It remains useful when its assumptions are clear. Concentration can make light and heating dangerous. Never look at the Sun through a magnifying glass or focus sunlight onto people or flammable material. Virtual lenses and safe diagrams are entirely sufficient here."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Welche Teile muss eine Linsenskizze zeigen, damit Gegenstand, Brennpunkt und Bildpunkt nicht verwechselt werden? Eine kleinere Brennweite bedeutet stärkere Bündelung achsenparallel einfallender Strahlen im dünnen Linsenmodell. Das sagt noch nicht, wo jeder beliebige Gegenstand scharf abgebildet wird. Dafür brauchst du seine Lage zusätzlich. Beschrifte Brennpunkt und Bildpunkt deshalb getrennt. Sie können zusammenhängen, sind aber nicht grundsätzlich derselbe Ort. Diese Trennung ist besonders für die spätere Kameraerklärung hilfreich.",
+            "en": "What must a lens diagram show so that the object, focal point and image point are not confused? A shorter focal length means stronger convergence of initially parallel rays in the thin-lens model. It does not locate the sharp image of every possible object; object position is also needed. Label focal point and image point separately. They are related but are not generally the same location, which matters for understanding cameras."
+          }
+        }
+      ]
+    },
+    {
+      "key": "kamera",
+      "title": {
+        "de": "Wann ein Bild auf einen Schirm passt",
+        "en": "When an image can be caught on a screen"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Liegt ein Gegenstand weit genug außerhalb der Brennweite einer Sammellinse, können die gebrochenen Strahlen hinter ihr tatsächlich zusammentreffen. Ein Schirm an der passenden Stelle zeigt ein reelles Bild. Bei der einfachen Abbildung ist es umgekehrt. Eine Kamera platziert ihren Sensor dort, wo das Bild scharf entsteht. Liegt der Sensor davor oder dahinter, treffen Strahlen eines Punktes auf eine größere Fläche: Das Bild wird unscharf.",
+            "en": "If an object lies sufficiently far beyond the focal length of a converging lens, refracted rays can actually meet behind the lens. A screen at the appropriate location shows a real image. In the simple arrangement, that image is inverted. A camera places its sensor where a sharp image forms. If the sensor is in front of or behind that position, rays from one point spread across a larger area, making the image blurred."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Beim Fokussieren wird die Lage der Linse oder der Bildaufnahme passend verändert. Der Abstand zum Gegenstand spielt dabei eine Rolle. Eine Lupe nahe am Gegenstand kann dagegen ein vergrößertes virtuelles Bild erzeugen; dieses lässt sich nicht einfach auf einen dahinterstehenden Schirm auffangen. „Vergrößert“ und „reell“ sind also verschiedene Eigenschaften. Du musst für einen Vergleich Gegenstandsabstand und Brennweite kennen. Eine Simulation kann zeigen, dass dieselbe Linse je nach Anordnung sehr verschiedene Bilder liefert. Nicht die Linse allein, sondern das ganze optische System bestimmt die Abbildung.",
+            "en": "Focusing adjusts the lens or image-recording position to match the object distance. A magnifying glass close to an object can instead create an enlarged virtual image, which cannot simply be caught on a screen behind it. “Magnified” and “real” are therefore different image properties. A comparison must specify object distance and focal length. A simulation shows that the same lens can produce very different images in different arrangements. The entire optical system, not just the lens itself, determines the image."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Vergleiche ein scharfes und ein unscharfes Kamerabild: Was geschieht mit Strahlen vom selben Gegenstandspunkt am Sensor? Ein unscharfer Gegenstandspunkt erscheint als kleiner Fleck statt als einzelner Punkt am Sensor. Viele solche Flecken überlagern sich zum verschwommenen Bild. Mit dieser Vorstellung kannst du Schärfe erklären, ohne nur „Linse falsch“ zu sagen. Eine passend verschobene Abbildung verkleinert die Flecken wieder. Das Modell beschreibt geometrische Unschärfe; Bildrauschen und Bewegungsunschärfe wären andere zusätzliche Ursachen.",
+            "en": "Compare a sharp and a blurred camera image: what happens to rays from the same object point at the sensor? An out-of-focus object point appears as a small patch rather than one point on the sensor. Many patches overlap into a blurred image. This explains focus more clearly than saying “the lens is wrong”. Adjusting the image position reduces those patches. The model describes geometrical defocus; noise and motion blur are additional, different causes."
+          }
+        }
+      ]
+    },
+    {
+      "key": "auge",
+      "title": {
+        "de": "Das Auge stellt anders scharf als viele Kameras",
+        "en": "The eye focuses differently from many cameras"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Auch im Auge muss Licht ein Bild an einer bestimmten Stelle erzeugen: auf der Netzhaut. Hornhaut und Augenlinse wirken gemeinsam brechend. Die Linse kann ihre Form ändern und damit die Brechwirkung anpassen. Dieses Scharfstellen heißt Akkommodation. Ein physikalisches Augenmodell erklärt den Lichtweg, aber nicht allein, wie dein Gehirn Wahrnehmung entstehen lässt.",
+            "en": "In the eye, light must also form an image at a particular place: the retina. The cornea and lens jointly refract light. The lens can change shape and adjust its focusing effect, a process called accommodation. A physical eye model explains the light path, but cannot by itself explain how the brain produces perception."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Bei Kurzsichtigkeit liegt der Brennpunkt für weit entfernte Gegenstände ohne Korrektur vor der Netzhaut. Eine passende Zerstreuungslinse kann helfen, die Abbildung auf die Netzhaut zu verlagern. Bei Weitsichtigkeit kann eine Sammellinse die fehlende Brechwirkung ergänzen. Das sind vereinfachte Modelle, keine Anleitung zur Selbstdiagnose oder Auswahl einer Brillenstärke. Dafür sind fachliche Untersuchungen nötig. Die interessante Verbindung zur Kamera bleibt: In beiden Fällen müssen Lichtbündel zum Aufnahmeort passen, doch der Mechanismus des Fokussierens unterscheidet sich. Du kannst ihn in einer Skizze vergleichen, ohne Menschen nach ihren persönlichen Gesundheitsdaten zu fragen oder Augen mit hellem Licht zu untersuchen.",
+            "en": "In short-sightedness, light from distant objects comes to focus in front of the retina without correction. A suitable diverging lens can move the image onto the retina. In long-sightedness, a converging lens can add the missing focusing effect. These are simplified models, not instructions for self-diagnosis or choosing a prescription; professional examinations are needed for that. The camera connection remains useful: both systems need light bundles to match a recording location, but their focusing mechanisms differ. Compare them in a drawing without asking anyone for private health information or shining bright light into eyes."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Welche Modellbedingung entscheidet darüber, ob ein Gegenstand auf der Netzhaut scharf abgebildet wird? Im Augenmodell ist die Netzhaut der vorgesehene Aufnahmeort. Eine zusätzliche Brillenlinse soll die Lichtwege passend ändern, nicht ein Bild hinter dem Kopf erzeugen. Vergleiche die Lage der Strahlen vor und nach der Korrektur schematisch. Die Zeichnung kann das Prinzip erklären, aber ohne individuelle Untersuchung keine benötigte Brillenstärke bestimmen. Diese Grenze gehört ausdrücklich zur verständlichen Darstellung.",
+            "en": "Which condition in the model determines whether an object forms a sharp image on the retina? The retina is the intended recording location in the eye model. A corrective lens changes light paths appropriately; it does not create an image behind the head. Compare the rays schematically before and after correction. The drawing explains the principle but cannot determine a prescription without individual assessment. That limit belongs in the explanation."
+          }
+        }
+      ]
+    },
+    {
+      "key": "farben",
+      "title": {
+        "de": "Farben hängen auch von der Beleuchtung ab",
+        "en": "Colour also depends on illumination"
+      },
+      "blocks": [
+        {
+          "kind": "lead",
+          "text": {
+            "de": "Weißes Licht kann viele Wellenlängen enthalten. Ein Prisma lenkt unterschiedliche Wellenlängen verschieden stark ab und macht so ein Spektrum sichtbar. Lichtfarben können sich addieren: Rotes, grünes und blaues Licht ergeben bei geeigneter Mischung einen weißen Eindruck. Ein Bildschirm nutzt diese additive Mischung mit kleinen leuchtenden Teilflächen.",
+            "en": "White light can contain many wavelengths. A prism bends different wavelengths by different amounts, revealing a spectrum. Light colours can add together: red, green and blue light in suitable proportions can create a white impression. A screen uses this additive mixing through tiny illuminated areas."
+          }
+        },
+        {
+          "kind": "paragraph",
+          "text": {
+            "de": "Pigmente funktionieren anders. Sie absorbieren bestimmte Anteile des einfallenden Lichts und reflektieren andere. Darum erzeugt das Mischen von Malfarben nicht dieselben Ergebnisse wie das Mischen von Licht. Ein roter Gegenstand kann unter einer Beleuchtung ohne geeignete rote Anteile dunkel erscheinen. Farbe ist also keine Eigenschaft des Gegenstands allein, unabhängig von Quelle und Beobachtung. Für einen Schulraum, eine Ausstellung oder ein Bühnenbild musst du deshalb Beleuchtung und Material gemeinsam planen. Es geht dabei nicht um perfekte Farbmessung mit dem Auge. Eine beschriftete Skizze kann bereits zeigen, welche Lichtanteile eine Quelle liefert und welche am Material fehlen. So verbindest du Gestaltung mit einem überprüfbaren Modell.",
+            "en": "Pigments work differently: they absorb certain parts of incoming light and reflect others. Mixing paint therefore does not give the same results as mixing light. A red object may appear dark under illumination lacking suitable red components. Colour is not a property of the object alone, independent of source and observer. Planning a classroom, exhibition or stage scene therefore requires considering lighting and materials together. You do not need perfect colour measurement by eye. A labelled sketch can already show which components a source provides and which are absent after interacting with a material. This connects visual design with a testable physical model."
+          }
+        },
+        {
+          "kind": "callout",
+          "tone": "try",
+          "title": {
+            "de": "Dein Denkstopp",
+            "en": "Pause and think"
+          },
+          "text": {
+            "de": "Wie würdest du Beleuchtung für ein farbiges Plakat planen, damit seine Information nicht nur bei einer einzigen Lichtquelle verständlich bleibt? Wenn ein farbiges Plakat unter ungewöhnlichem Bühnenlicht schlecht unterscheidbare Flächen zeigt, muss nicht die Druckfarbe verändert worden sein. Die Quelle kann bestimmte benötigte Anteile kaum liefern. Ergänzende Formen, Texte und Helligkeitsunterschiede machen Information unabhängiger von Farbwahrnehmung. Deine Gestaltung verbindet dadurch ein optisches Modell mit Zugänglichkeit, statt darauf zu vertrauen, dass jede Person dieselben Farben unter denselben Bedingungen erkennt.",
+            "en": "How would you light a coloured poster so its information remains understandable under more than one light source? If a poster becomes hard to distinguish under unusual stage lighting, its printed pigments need not have changed. The source may lack necessary components. Adding shapes, text and brightness contrasts makes information less dependent on colour perception. This connects the optical model with accessibility instead of assuming everyone perceives the same colours under every condition."
+          }
+        },
+        {
+          "kind": "sources",
+          "items": [
+            {
+              "label": {
+                "de": "Hamburg: NWT 5/6 (2024), optische Grundlagen",
+                "en": "Hamburg: NWT years 5/6 (2024), optics foundations"
+              },
+              "url": "https://www.hamburg.de/resource/blob/798520/700d66232c2d07bad97d72b6e107e083/naturwissenschaften-technik-data.pdf"
+            },
+            {
+              "label": {
+                "de": "PhET: sichere interaktive Simulation",
+                "en": "PhET: safe interactive simulation"
+              },
+              "url": "https://phet.colorado.edu/de/simulations/bending-light"
+            },
+            {
+              "label": {
+                "de": "PhET: sichere interaktive Simulation",
+                "en": "PhET: safe interactive simulation"
+              },
+              "url": "https://phet.colorado.edu/de/simulations/geometric-optics"
+            },
+            {
+              "label": {
+                "de": "PhET: sichere interaktive Simulation",
+                "en": "PhET: safe interactive simulation"
+              },
+              "url": "https://phet.colorado.edu/de/simulations/color-vision"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "kind": "cloze",
+      "title": {
+        "de": "1. Lückentext",
+        "en": "1. Fill in the blanks"
+      },
+      "intro": {
+        "de": "Ergänze die fehlenden Fachwörter. Alle Begriffe findest du im Pfad.",
+        "en": "Complete the missing technical words. Every term appears in this path."
+      },
+      "text": {
+        "de": "Eine Richtungsänderung an einer Stoffgrenze heißt ___. Winkel werden zum ___ angegeben. Eine Sammellinse bündelt achsenparallele Strahlen im ___. Dessen Abstand zur Linse ist die ___. Tatsächlich zusammentreffende Strahlen erzeugen ein reelles ___. Der Sensor einer Kamera muss zum Bildort passen, damit das Bild ___ zeigt. Das Auge verändert zum Scharfstellen die Form seiner ___. Weißes Licht kann ein ___ ergeben. Ein Bildschirm nutzt additive ___.",
+        "en": "A direction change at a material boundary is ___. Angles are measured from the ___. A converging lens brings parallel rays together at the ___. Its distance from the lens is the ___. Rays actually meeting produce a real ___. A camera sensor must match the image position to give ___. To focus, the eye changes the shape of its ___. White light can produce a ___. A screen uses additive ___."
+      }
+    },
+    {
+      "kind": "compare",
+      "title": {
+        "de": "2. Erklären und vergleichen (AB II)",
+        "en": "2. Explain and compare (level II)"
+      },
+      "intro": {
+        "de": "Antworte mit drei bis vier kurzen Sätzen. Nutze das Gelesene und begründe deinen Vergleich.",
+        "en": "Answer in three or four short sentences. Use what you have read and explain your comparison."
+      },
+      "text": {
+        "de": "Vergleiche eine Kamera mit dem Augenmodell: Wo muss ein scharfes Bild entstehen und wie wird es passend eingestellt? Erkläre außerdem, warum dieselbe Sammellinse ein reelles Bild oder ein virtuelles Lupenbild liefern kann.",
+        "en": "Compare a camera with the eye model: where must a sharp image form, and how is focusing adjusted? Also explain why the same converging lens can produce either a real image or a virtual magnified image."
+      }
+    },
+    {
+      "kind": "reflect",
+      "title": {
+        "de": "3. Deine Idee im Alltag (AB III)",
+        "en": "3. Your idea for everyday life (level III)"
+      },
+      "intro": {
+        "de": "Entwickle eine eigene Idee in drei bis vier kurzen Sätzen. Begründe sie mit Physik; mehrere Lösungen sind möglich.",
+        "en": "Develop your own idea in three or four short sentences. Support it with physics; several answers are possible."
+      },
+      "text": {
+        "de": "Entwirf eine Kamera-, Ausstellungs- oder Bühnenidee. Begründe eine Entscheidung mit Brennweite oder Bildlage und eine zweite mit Lichtfarbe oder Material. Halte Sicherheitsgrenzen ein.",
+        "en": "Design a camera, exhibition or stage idea. Justify one decision using focal length or image position, and another using light colour or material. Respect safety boundaries."
+      }
+    }
+  ]
+}
