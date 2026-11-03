@@ -855,8 +855,11 @@ function ModuleGrid({
 
               <div class="mt-4 flex items-center gap-2 text-xs text-slate-500 flex-wrap">
                 <span class={`px-2 py-0.5 rounded-full ${accent.chip}`}>
-                  {module.paths.length}{" "}
-                  {L({ de: "Lernpfade", en: "learning paths" })}
+                  {module.paths.length} {L(
+                    module.paths.length === 1
+                      ? { de: "Lernpfad", en: "learning path" }
+                      : { de: "Lernpfade", en: "learning paths" },
+                  )}
                 </span>
                 <span class="px-2 py-0.5 rounded-full bg-slate-100">
                   ~{minutes} min
