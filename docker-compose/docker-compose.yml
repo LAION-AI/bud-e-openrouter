@@ -2,16 +2,14 @@ services:
   bud-e-frontend:
     image: denoland/deno:latest
     container_name: bud-e-frontend
-    build:
-      context: .
-      dockerfile: Dockerfile
     ports:
       - "8000:8000"
     env_file:
       - .env
     volumes:
       - ./app:/bud-e-frontend
-    command: sh -c "apt-get update && apt-get install -y git && git config --global --add safe.directory /bud-e-frontend && cd /bud-e-frontend && (git rev-parse --git-dir || git init) && if [ -d '.git' ]; then git remote add origin https://github.com/LAION-AI/bud-e-frontend.git || true && git fetch origin && git checkout -B main origin/main; else git clone -b main https://github.com/LAION-AI/bud-e-frontend.git .; fi && deno task build && deno task preview"
+      - classroom-data:/var/lib/bude-classrooms
+    command: sh -c "apt-get update && apt-get install -y git tar gzip poppler-utils && git config --global --add safe.directory /bud-e-frontend && cd /bud-e-frontend && (git rev-parse --git-dir || git init) && if [ -d '.git' ]; then git remote add origin https://github.com/LAION-AI/bud-e-openrouter.git || true && git remote set-url origin https://github.com/LAION-AI/bud-e-openrouter.git && git fetch origin && git checkout -B main origin/main; else git clone -b main https://github.com/LAION-AI/bud-e-openrouter.git .; fi && deno task pyodide && deno task scratch && deno task build && deno task preview"
     networks:
       - app-network
     restart: unless-stopped
@@ -32,3 +30,6 @@ services:
 networks:
   app-network:
     driver: bridge
+
+volumes:
+  classroom-data:

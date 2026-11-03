@@ -1,7 +1,7 @@
 lamejs 1.2.0 - MP3 encoder in JavaScript (https://github.com/zhuker/lamejs)
 Loaded as a separate script (static/lame.min.js), not bundled, so it can be replaced.
 
-Can I use LAME in my commercial program?  
+Can I use LAME in my commercial program?
 
 Yes, you can, under the restrictions of the LGPL.  The easiest
 way to do this is to:

@@ -39,6 +39,14 @@ const DEFAULT_OPENAI_MODEL = "dall-e-3";
  * - Supported aspect ratios: 1:1, 3:2, 2:3, 3:4, 4:3, 4:5, 5:4, 9:16, 16:9, 21:9
  */
 const MODEL_ALIASES: Record<string, string> = {
+  // Preserve FLUX aliases from the existing main branch.
+  "flux-2": "flux-2-pro",
+  "flux-2-klein": "flux-2-klein-9b",
+  "flux-klein": "flux-2-klein-9b",
+  "flux-pro": "flux-2-pro",
+  "flux-max": "flux-2-max",
+  "flux": "flux-2-pro",
+
   // Gemini 3.1 image models
   "gemini-3.1-flash-lite": "gemini-3.1-flash-lite-image",
   "flash-lite-image": "gemini-3.1-flash-lite-image",

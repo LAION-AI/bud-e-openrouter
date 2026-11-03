@@ -1247,4 +1247,3 @@ export const slidesContent: InternalizationContent = {
     autoAdvance: "Vortrag abspielen und weiterblättern",
   },
 };
-
