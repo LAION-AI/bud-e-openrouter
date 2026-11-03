@@ -18,6 +18,22 @@ import { classroomGradingCall } from "../utils/gradingBatch.ts";
 import { recoverGrading } from "../utils/gradingRecovery.ts";
 import { assertRejects } from "$std/assert/mod.ts";
 
+Deno.test("reasoning/no-text failures explain output allowance rather than asking to top up credit", () => {
+  for (
+    const message of [
+      "Das Antwortlimit wurde bereits durch internes Denken aufgebraucht.",
+      "Das Modell hat keine Textantwort geliefert.",
+    ]
+  ) {
+    const help = gradingErrorHelp(message, "other");
+    assertEquals(help.kind, "output_exhausted");
+    assert(
+      help.explanation.includes("nicht, dass dein Guthaben aufgebraucht ist"),
+    );
+    assert(help.next.includes("Raumbudget wird nicht erhöht"));
+  }
+});
+
 Deno.test("budget loader explains missing vs wrong-room login and uses the protected existing login without returning passwords", async () => {
   const original = globalThis.fetch;
   try {

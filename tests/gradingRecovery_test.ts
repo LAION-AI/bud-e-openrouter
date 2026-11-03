@@ -12,6 +12,7 @@ import {
 import { GradingFailure, GradingTruncated } from "../utils/gradingProtocol.ts";
 import {
   type GradingAsk,
+  gradingSelectionKey,
   type GradingSession,
   markRoomWork,
   transcribeRoomWork,
@@ -24,6 +25,34 @@ import {
 
 const signal = () => new AbortController().signal;
 const end = "\n<!-- BUDE_BEWERTUNG_FERTIG -->";
+Deno.test("backside selection fingerprints survive checkpoint roundtrip, but change with edited evidence", async () => {
+  const work: GradingSession = {
+    sources: files(2),
+    prepared: true,
+    pages: [1, 2].map((page) => ({
+      transcript: "Antwort",
+      student: "Test",
+      page,
+    })),
+    papers: [{ student: "Test", pages: [1, 2] }],
+  };
+  const key = await gradingSelectionKey(work, "Rückseiten prüfen", [1, 2]);
+  work.selectionChecks = [key];
+  const restored =
+    parseGradingCheckpoint(serializeGradingCheckpoint(snap(work))).work;
+  assertEquals(
+    await gradingSelectionKey(restored, "Rückseiten prüfen", [1, 2]),
+    key,
+  );
+  assert(restored.selectionChecks?.includes(key));
+  restored.pages[0].transcript += " korrigiert";
+  assert(
+    await gradingSelectionKey(restored, "Rückseiten prüfen", [1, 2]) !== key,
+  );
+  assert(
+    await gradingSelectionKey(work, "Andere Rückseitenregel", [1, 2]) !== key,
+  );
+});
 Deno.test("five variant solution keys expose ten progressing steps and checkpoint guidance without premature pupil completion", async () => {
   const work: GradingSession = {
     sources: files(20),
@@ -339,6 +368,58 @@ const files = (n: number) =>
       content: "Aufgabe 1: 7 + 5 = 13",
     }),
   );
+Deno.test("reasoning exhaustion gets bounded larger output; restored failed review keeps all finished work", async () => {
+  const work: GradingSession = {
+    sources: files(1),
+    prepared: true,
+    pages: [{ page: 1, student: "Test", transcript: "Aufgabe 1: 13" }],
+    papers: [{ student: "Test", pages: [1] }],
+  };
+  const limits: number[] = [];
+  const ask: GradingAsk = (_prompt, _sources, _signal, options) => {
+    limits.push(options!.maxOutput!);
+    if (limits.length <= 2) {
+      throw new GradingFailure(
+        "Das Antwortlimit wurde bereits durch internes Denken aufgebraucht.",
+      );
+    }
+    return Promise.resolve(
+      "Du hast einen Rechenfehler. Insgesamt: 0 von 1 Punkten." + end,
+    );
+  };
+  await markRoomWork(
+    work,
+    "Je richtige Antwort 1 Punkt. Ohne Note.",
+    ask,
+    () => {},
+    signal(),
+  );
+  assertEquals(limits, [4096, 8192, 16384, 16384]);
+  const restored =
+    parseGradingCheckpoint(serializeGradingCheckpoint(snap(work))).work;
+  restored.cache!.checked = [];
+  restored.issues = {
+    "Bewertung Test": "Das Modell hat keine Textantwort geliefert.",
+  };
+  const again: number[] = [];
+  await markRoomWork(
+    restored,
+    "Je richtige Antwort 1 Punkt. Ohne Note.",
+    (prompt, _sources, _signal, options) => {
+      assert(
+        prompt.startsWith("QUALITAETSPRUEFUNG"),
+        "Do not buy the draft again",
+      );
+      again.push(options!.maxOutput!);
+      return Promise.resolve(
+        "Du kannst die Rechnung verbessern. Insgesamt: 0 von 1 Punkten." + end,
+      );
+    },
+    () => {},
+    signal(),
+  );
+  assertEquals(again, [8192]);
+});
 const pageNo = (prompt: string) =>
   Number(/^--- Seite (\d+) \(/m.exec(prompt)?.[1]);
 function answer(n: number) {

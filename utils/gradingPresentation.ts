@@ -216,7 +216,7 @@ export function prepareGradingSheets(input: RichBlock[]): GradingSheet[] {
         continue;
       }
       if (
-        /^(?:Korrekturvorschläge für alle|KI[- –]|Zugeordnete Seiten(?: in Lesereihenfolge)?|Quelle:)/i
+        /^(?:Korrekturvorschläge für alle|KI[- –]|Zugeordnete Seiten(?: in Lesereihenfolge)?|Quelle:|Prüfhinweise?\s+für\s+die\s+Lehrkraft\b)/i
           .test(text)
       ) {
         sheet.teacherNotes.push(text);

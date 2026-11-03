@@ -140,7 +140,10 @@ async def main():
                     error = '\n'.join(await alerts.all_inner_texts())
                     print('UI-Fehler:', error[:1500], flush=True)
                     await checkpoint('fehler-' + str(retries))
-                    if re.search(r'Guthaben|Ausgabenrahmen|geschlossen|Freigabe|API.Key|Erwartungshorizont|Rückfrage|Teilpunkt', error, re.I) or retries >= 2:
+                    # Inspect the problem heading, not generic help links such
+                    # as "Genaue Fehlermeldung für Rückfragen" (false terminal).
+                    problem = error.split('\n\n', 1)[0]
+                    if re.search(r'Guthaben|Raumbudget|Ausgabenrahmen|geschlossen|Freigabe|API.Key|Schlüssel|Erwartungshorizont|Rückfrage|Teilpunkt', problem, re.I) or retries >= 2:
                         raise RuntimeError('Paused safely; inspect saved checkpoint and UI error')
                     retry = dialog.get_by_role('button', name='Noch einmal versuchen', exact=True)
                     if await retry.count() and await retry.is_enabled():

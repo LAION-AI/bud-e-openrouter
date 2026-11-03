@@ -1,5 +1,10 @@
 export const GRADING_PARALLEL = 6;
 export const GRADING_OUTPUT_TOKENS = 8192;
+export function gradingNeedsMoreOutput(cause: unknown): boolean {
+  const text = cause instanceof Error ? cause.message : String(cause ?? "");
+  return /(?:Antwortlimit|Ausgabelimit).*(?:Denken|reasoning)|keine Textantwort|no text (?:response|output)|reasoning.*(?:exhaust|limit)/i
+    .test(text);
+}
 export type GradingFormat = "transcript" | "groups";
 export type GradingCallOptions = {
   format?: GradingFormat;

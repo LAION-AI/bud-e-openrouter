@@ -25,6 +25,7 @@ import {
   GRADING_PARALLEL,
   type GradingCallOptions,
   GradingFailure,
+  gradingNeedsMoreOutput,
   GradingTruncated,
 } from "./gradingProtocol.ts";
 import {
@@ -106,6 +107,19 @@ export function gradingPaperKey(
   });
 }
 export type GradingProgress = (step: string, status?: GradingStatus) => void;
+/** Stable across checkpoint normalization (optional fields and key order).
+ * v2 hashed raw page objects and accidentally bought selection checks again. */
+export function gradingSelectionKey(
+  session: GradingSession,
+  criteria: string,
+  ids: number[],
+) {
+  return gradingPaperKey(session, criteria, {
+    student: "Seitenauswahl",
+    pages: ids,
+    note: "duplicate-original-check-v3",
+  });
+}
 export const MAX_GRADING_SOURCES = MAX_GRADING_PAGES;
 export async function classroomGradingCall(
   slug: string,
@@ -745,11 +759,7 @@ async function verifyDuplicateBacksides(
     if (!neighbor) continue;
     const ids = [...neighbor.pages, ...paper.pages];
     if (ids.some((n) => occupied.has(n))) continue;
-    const key = await gradingHash({
-      policy: "duplicate-original-check-v2",
-      criteria,
-      pages: ids.map((n) => work.pages.find((p) => p.page === n)),
-    });
+    const key = await gradingSelectionKey(work, criteria, ids);
     if (work.selectionChecks?.includes(key)) continue;
     ids.forEach((n) => occupied.add(n));
     jobs.push({ papers: [neighbor, paper], ids, key });
@@ -1108,6 +1118,20 @@ export async function markRoomWork(
       const id = await gradingPaperKey(session, criteria, paper);
       let result = cache[id];
       const label = `Bewertung ${paper.student}`;
+      // Reasoning models sometimes spend their whole allowance before emitting
+      // text. Retry with bounded headroom, not the same known-insufficient cap.
+      // Classroom credit/budget checks still apply to every individual call.
+      let outputLimit = gradingNeedsMoreOutput(session.issues![label])
+        ? 8192
+        : 4096;
+      const allowMoreOutput = (cause: unknown) => {
+        if (gradingNeedsMoreOutput(cause) && outputLimit < 16384) {
+          outputLimit *= 2;
+          progress(
+            `${label}: Das Modell braucht mehr Platz für eine fertige Antwort. Der nächste Versuch erhält mehr Spielraum; dein Ausgabenlimit bleibt unverändert. Weitere Kosten sind möglich.`,
+          );
+        }
+      };
       try {
         if (
           result && gradingReportIssues(result).length && checked.includes(id)
@@ -1171,7 +1195,7 @@ export async function markRoomWork(
                     sources,
                     requestSignal,
                     {
-                      maxOutput: 4096,
+                      maxOutput: outputLimit,
                       onWait: () =>
                         progress(
                           `${label}: wartet auf ausreichendes Raum-Budget für eine vollständige Teilantwort.`,
@@ -1182,6 +1206,7 @@ export async function markRoomWork(
                   if (
                     error instanceof GradingTruncated && error.partial.trim()
                   ) return error.partial.replaceAll(end, "");
+                  allowMoreOutput(error);
                   throw error;
                 }
               },
@@ -1253,7 +1278,7 @@ export async function markRoomWork(
               async (_attempt, _plain, requestSignal) => {
                 try {
                   return await ask(prompt, sources, requestSignal, {
-                    maxOutput: 4096,
+                    maxOutput: outputLimit,
                     onWait: () =>
                       progress(
                         `${label}: Zweitprüfung wartet auf ausreichendes Raum-Budget.`,
@@ -1263,6 +1288,7 @@ export async function markRoomWork(
                   if (
                     error instanceof GradingTruncated && error.partial.trim()
                   ) return error.partial.replaceAll(end, "");
+                  allowMoreOutput(error);
                   throw error;
                 }
               },

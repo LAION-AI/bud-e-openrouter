@@ -44,11 +44,18 @@ Deno.test("supports labelled anchor columns, case formatting and avoids ambiguou
 Deno.test("chat retains teacher warnings without creating a fake extra pupil in student exports", () => {
   const sheets = gradingExportSheets(
     gradingExportBlocks(
-      "## Lea\n\n*Zugeordnete Seiten in Lesereihenfolge: 1*\n\n> **Prüfhinweis für die Lehrkraft:** Abschrift und Rückmeldung weichen ab. Bitte das Original prüfen.\n\nName: Lea · Klasse: 9b\n\n### Aufgabe 1\nDu hast 1/1 Punkte.\n\nInsgesamt: 1/1 Punkte",
+      "## Lea\n\n*Zugeordnete Seiten in Lesereihenfolge: 1*\n\n> **Prüfhinweis für die Lehrkraft:** Abschrift und Rückmeldung weichen ab. Vor der Weitergabe am Original prüfen; die KI-Zweitprüfung ist keine Garantie. Original-ID 1, Lücke 2: Lesungen widersprechen sich.\n\nName: Lea · Klasse: 9b\n\n### Aufgabe 1\nDu hast 1/1 Punkte.\n\nInsgesamt: 1/1 Punkte",
     ),
   );
   assertEquals(sheets.length, 1);
   assertEquals(sheets[0].name, "Lea");
+  assertEquals(sheets[0].className, "9b");
+  assertEquals(
+    JSON.stringify(sheets[0].blocks).includes("Vor der Weitergabe"),
+    false,
+  );
+  assertEquals(JSON.stringify(sheets[0].blocks).includes("Original-ID"), false);
+  assertStringIncludes(sheets[0].teacherNotes.join("\n"), "Original-ID 1");
   assertStringIncludes(JSON.stringify(sheets[0].blocks), "1/1 Punkte");
 });
 Deno.test("headerless three-column inventory compares the literal answer, not its location anchor", () => {

@@ -1,4 +1,5 @@
 import type { OpenRouterBalance } from "./openrouterBalance.ts";
+import { gradingNeedsMoreOutput } from "./gradingProtocol.ts";
 
 export type GradingBudgetSnapshot = {
   scope: "classroom" | "personal";
@@ -41,6 +42,7 @@ export function gradingFailureCode(message: string): string {
       .test(message)
   ) return "provider_rate";
   if (/Zeitlimit|timeout|timed out/i.test(message)) return "timeout";
+  if (gradingNeedsMoreOutput(message)) return "output_exhausted";
   if (
     /JSON|Schema|strukturierte|unvollständig|Format|Teilantwort/i.test(message)
   ) return "format";
@@ -53,13 +55,18 @@ export function gradingFailureCode(message: string): string {
 }
 
 export function gradingErrorHelp(message: string, code = "", personal = false) {
-  const kind = !code || ["model", "request"].includes(code)
+  const kind = !code || ["model", "request", "other"].includes(code)
     ? gradingFailureCode(message)
     : code;
   const settings = personal
     ? "Öffne die Einstellungen deines privaten Raums"
     : "Öffne /my in einem zweiten Tab und melde dich als Lehrkraft für diesen Raum an";
   const help: Record<string, [string, string, string]> = {
+    output_exhausted: [
+      "Das Modell hat noch keine fertige Antwort ausgegeben.",
+      "Es hat den verfügbaren Antwortumfang für internes Nachdenken verbraucht oder keinen Text zurückgegeben. Das bedeutet nicht, dass dein Guthaben aufgebraucht ist. Deine fertigen Rückmeldungen bleiben erhalten.",
+      "Sichere den Zwischenstand und klicke auf „Noch einmal versuchen“. Bud-E gibt dem fehlenden Schritt begrenzt mehr Platz für die Antwort. Das kann zusätzliche Kosten verursachen; das Raumbudget wird nicht erhöht. Bleibt der Fehler, wähle in den Einstellungen ein anderes geeignetes Modell.",
+    ],
     room_budget: [
       "Das Raumbudget reicht für den nächsten Schritt nicht aus.",
       "Das ist die Kostengrenze dieses Raums – nicht das Guthaben beim KI-Anbieter. Bereits verbrauchtes Geld wird beim Fortsetzen nicht zurückgesetzt.",
