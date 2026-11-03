@@ -1,5 +1,6 @@
 import { Handlers } from "$fresh/server.ts";
 import { readOpenRouterBalance } from "../../utils/openrouterBalance.ts";
+import { gradingFailureCode } from "../../utils/gradingFeedback.ts";
 import { PDFDocument } from "npm:pdf-lib@1.17.1";
 import { pagesToParts, pdfToPages } from "../../utils/pdfFallback.ts";
 import {
@@ -616,6 +617,19 @@ export const handler: Handlers = {
     if (!slug) return json({ error: "Bitte erneut anmelden." }, 401);
     const row = await findClassroom(slug);
     if (!row) return json({ error: "Nicht gefunden." }, 404);
+    if (action === "grading-status") {
+      // Financial information belongs to the authenticated teacher, never to
+      // anonymous pupils or another room that happens to be open in this tab.
+      if (url.searchParams.get("slug") !== slug) return json({ error: "Bitte für diesen Raum anmelden." }, 403);
+      return json({
+        scope: "classroom", provider: row.provider, checkedAt: Date.now(),
+        room: { budgetUsd: row.budget_usd, spentUsd: row.spent_usd,
+          reservedUsd: row.reserved_usd, activeCalls: row.active_calls,
+          active: publicState(row).active, expiresAt: row.active_until, disabled: !!row.disabled },
+        ...(url.searchParams.get("provider") === "1" && row.provider === "openrouter"
+          ? { balance: await readOpenRouterBalance(await serverSecret(row)) } : {}),
+      });
+    }
     if (action === "me") return json(adminState(row));
     if (action === "models") {
       try {
@@ -882,6 +896,7 @@ export const handler: Handlers = {
           }, 409);
         }
         return json({
+          ...(body.grading === true ? { code: "room_budget" } : {}),
           error: body.grading === true
             ? "Der verbleibende Ausgabenrahmen reicht nicht für einen vollständigen Korrekturschritt. Fertige Ergebnisse bleiben erhalten. Bitte den Zwischenstand sichern und die Lehrkraft um mehr Raum-Budget bitten. Das Antwortlimit wird nicht auf eine unbrauchbare Länge gekürzt."
             : "Der Ausgabenrahmen reicht nicht einmal für eine kurze Antwort mit diesem Modell. Bitte die Lehrkraft fragen.",
@@ -915,6 +930,7 @@ export const handler: Handlers = {
           }
         }
         return json({
+          ...(body.grading === true ? { code: !row.disabled && row.active_until > Date.now() ? "room_budget" : "room_closed" } : {}),
           error:
             "Diese Chatseite ist geschlossen oder der Ausgabenrahmen reicht für die mögliche Länge der Antwort nicht. Bitte die Lehrkraft fragen oder ein günstigeres Modell wählen.",
         }, 403);
@@ -1050,7 +1066,7 @@ export const handler: Handlers = {
         }
         return json({
           research,
-          ...(error instanceof GradingFailure ? { code: error.code } : {}),
+          ...(error instanceof GradingFailure ? { code: error.code } : body.grading === true ? { code: gradingFailureCode(error instanceof Error ? error.message : "") } : {}),
           error: error instanceof Error
             ? error.message
             : "Die Anfrage ist fehlgeschlagen.",

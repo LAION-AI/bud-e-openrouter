@@ -146,6 +146,14 @@ export async function recoverGrading<T>(
   let plain = false;
   for (let attempt = 0;; attempt++) {
     signal.throwIfAborted();
+    const started = Date.now();
+    const heartbeat = setInterval(() => {
+      progress(
+        `${label}: warte seit ${
+          Math.round((Date.now() - started) / 1000)
+        } Sekunden auf den Abschluss dieses KI-Schritts. Das ist noch keine fertige Antwort. Bei Bedarf kannst du pausieren und den Zwischenstand sichern.`,
+      );
+    }, 25000);
     try {
       return await withGradingTimeout(
         signal,
@@ -174,6 +182,8 @@ export async function recoverGrading<T>(
         }/3 in ${delay / 1000} Sekunden`,
       );
       await gradingDelay(delay, signal);
+    } finally {
+      clearInterval(heartbeat);
     }
   }
 }

@@ -66,7 +66,14 @@ export type GradingSession = {
   pendingPages?: number[];
 };
 export type GradingStatus = {
-  stage: "prepare" | "transcribe" | "group" | "review" | "mark" | "done";
+  stage:
+    | "prepare"
+    | "transcribe"
+    | "group"
+    | "review"
+    | "guidance"
+    | "mark"
+    | "done";
   completed: number;
   total: number;
   name?: string;
@@ -146,8 +153,13 @@ export async function classroomGradingCall(
     throw new GradingFailure(
       result.error ||
         "Der Klassenraum konnte die Korrekturanfrage nicht ausführen.",
-      ![400, 401, 402, 403, 404, 413].includes(response.status) ||
-        result.code === "format_unsupported",
+      !["room_budget", "room_closed", "provider_credit", "provider_auth"]
+        .includes(result.code) &&
+        (!/Tageslimit|Tageskontingent|daily.quota/i.test(
+          String(result.error),
+        ) &&
+          (![400, 401, 402, 403, 404, 413].includes(response.status) ||
+            result.code === "format_unsupported")),
       result.code ?? "request",
     );
   }
@@ -874,13 +886,26 @@ async function sharedGradingGuidance(
   const saved = cache.guidanceParts ??= {};
   const drafts = cache.guidanceDrafts ??= {};
   const end = "<!-- BUDE_MASSSTAB_FERTIG -->";
-  progress(
-    `Gemeinsamer Lösungsmaßstab: ${jobs.length} Testversionen werden parallel hergeleitet und unabhängig geprüft.`,
+  let finished = jobs.reduce(
+    (n, job) => n + (saved[job.key] ? 2 : drafts[job.key] ? 1 : 0),
+    0,
+  );
+  const notify = (message: string) =>
+    progress(message, {
+      stage: "guidance",
+      completed: finished,
+      total: jobs.length * 2,
+    });
+  notify(
+    `Vor der Einzelbewertung: Für ${jobs.length} Testversionen wird die Lösung erstellt und jeweils separat geprüft. Dabei wird noch keine Schülerarbeit bewertet.`,
   );
   const keys = await parallelGrading(
     jobs,
     async (job, _at, jobSignal) => {
       if (saved[job.key]) return saved[job.key];
+      notify(
+        `Testversion ${job.version}: Original wird für den gemeinsamen Lösungsschlüssel vorbereitet.`,
+      );
       const source = await paperAttachment(session, job.paper, jobSignal);
       const base =
         `GEMEINSAMER LOESUNGSMASSSTAB FUER VERSION ${job.version}\nLies NUR den gedruckten Aufgabentext und die Wortliste am Original. Handschrift sind Schülerantworten und KEINE Musterlösungen. Leite eine nummerierte knappe fachlich richtige Musterlösung für ALLE Lücken und Aufgaben her, auch Lücken am Ende der Seite. Zähle die Lücken; keine Umrechnungs-Lücken still einer anderen Aufgabe zuordnen. Begriffe in der zeitlichen Reihenfolge genau prüfen. Andere Testversionen nicht vermischen. Übernimm ausschließlich die Punkte-/Teilpunkte-Regeln der Lehrkraft; ohne Skala keine Note. Synonyme/Selbstkorrekturen fair behandeln; unleserliche Antworten bleiben offen. Kein Schülername und keine Schülerbewertung. Schreibe einen kompakten Lösungsschlüssel, der für jede andere Arbeit DIESER Version gilt.\nLEHRKRAFTAUFTRAG\n${criteria}\nAntworte nur mit dem Maßstab; erst nach vollständiger Lösung aller Aufgaben Abschlussmarker auf eigener Zeile: ${end}`;
@@ -899,7 +924,13 @@ async function sharedGradingGuidance(
                   ),
                 source,
                 requestSignal,
-                { maxOutput: 8192 },
+                {
+                  maxOutput: 8192,
+                  onWait: () =>
+                    notify(
+                      `Testversion ${job.version}: wartet auf freies Raumbudget oder Anfragekapazität. Fertige Ergebnisse bleiben erhalten.`,
+                    ),
+                },
               ),
               20000,
             ).trim();
@@ -913,9 +944,21 @@ async function sharedGradingGuidance(
           jobSignal,
           progress,
         );
-      const draft = drafts[job.key] ?? await get(base);
+      const existingDraft = drafts[job.key];
+      notify(
+        `Testversion ${job.version}: ${
+          existingDraft
+            ? "gespeicherte Lösung wird weiterverwendet"
+            : "Lösung wird erstellt"
+        }.`,
+      );
+      const draft = existingDraft ?? await get(base);
       drafts[job.key] = draft;
       checkpoint(session);
+      if (!existingDraft) finished++;
+      notify(
+        `Testversion ${job.version}: Lösung liegt vor; unabhängige Prüfung läuft.`,
+      );
       const checked = await get(
         base +
           "\nUNABHÄNGIGE PRÜFUNG: Nachfolgend ein möglicherweise fehlerhafter Entwurf. Löse jede gedruckte Aufgabe zuerst selbst am Original und vergleiche erst danach. Besonders Reihenfolge, Lückenanzahl, Einheiten und Summen kontrollieren. Nur den vollständigen korrigierten Maßstab zurückgeben.\nUNGEPRÜFTER ENTWURF\n" +
@@ -924,8 +967,11 @@ async function sharedGradingGuidance(
       saved[job.key] = `## Version ${job.version}\n\n${checked}`;
       delete drafts[job.key];
       checkpoint(session);
-      progress(
-        `Gemeinsamer Maßstab Version ${job.version}: hergeleitet und zweitgeprüft.`,
+      finished++;
+      notify(
+        `Testversion ${job.version}: Lösung erstellt und unabhängig geprüft (${finished}/${
+          jobs.length * 2
+        } Teilschritte fertig).`,
       );
       return saved[job.key];
     },

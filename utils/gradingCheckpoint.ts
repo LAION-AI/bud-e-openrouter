@@ -211,9 +211,11 @@ export function parseGradingCheckpoint(text: string): GradingCheckpoint {
   if (root.status) {
     const item = record(root.status);
     if (
-      !["prepare", "transcribe", "group", "review", "mark", "done"].includes(
-        String(item.stage),
-      ) || !Number.isInteger(item.completed) || !Number.isInteger(item.total) ||
+      !["prepare", "transcribe", "group", "review", "guidance", "mark", "done"]
+        .includes(
+          String(item.stage),
+        ) ||
+      !Number.isInteger(item.completed) || !Number.isInteger(item.total) ||
       Number(item.completed) < 0 ||
       Number(item.total) < Number(item.completed) || Number(item.total) > 600
     ) throw new Error("Ungültige Fortschrittsangabe.");

@@ -24,6 +24,52 @@ import {
 
 const signal = () => new AbortController().signal;
 const end = "\n<!-- BUDE_BEWERTUNG_FERTIG -->";
+Deno.test("five variant solution keys expose ten progressing steps and checkpoint guidance without premature pupil completion", async () => {
+  const work: GradingSession = {
+    sources: files(20),
+    prepared: true,
+    pages: Array.from(
+      { length: 20 },
+      (_, i) => ({
+        page: i + 1,
+        student: String(i),
+        transcript: `Version ${"ABCDE"[i % 5]}\nAntwort`,
+      }),
+    ),
+    papers: Array.from(
+      { length: 20 },
+      (_, i) => ({ student: String(i), pages: [i + 1] }),
+    ),
+  };
+  const steps: number[] = [];
+  await markRoomWork(
+    work,
+    "Rubric; ohne Punkte",
+    (prompt) =>
+      Promise.resolve(
+        prompt.startsWith("GEMEINSAMER")
+          ? "Lösung\n<!-- BUDE_MASSSTAB_FERTIG -->"
+          : "Geprüft" + end,
+      ),
+    (_message, status) => {
+      if (status?.stage === "guidance") {
+        assertEquals(status.total, 10);
+        steps.push(status.completed);
+      }
+    },
+    signal(),
+  );
+  assertEquals([...new Set(steps)], [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+  const checkpoint = {
+    ...snap(work),
+    status: { stage: "guidance" as const, completed: 8, total: 10 },
+  };
+  assertEquals(
+    parseGradingCheckpoint(serializeGradingCheckpoint(checkpoint)).status
+      ?.stage,
+    "guidance",
+  );
+});
 Deno.test("shared rubric draft survives a credit pause and resumes its independent check without buying the draft again", async () => {
   let work: GradingSession = {
     sources: files(4),
@@ -57,7 +103,10 @@ Deno.test("shared rubric draft survives a credit pause and resumes its independe
   );
   assertEquals(draftCalls, 1);
   work = parseGradingCheckpoint(
-    serializeGradingCheckpoint({ ...snap(work), criteria: "Rubric; ohne Punkte" }),
+    serializeGradingCheckpoint({
+      ...snap(work),
+      criteria: "Rubric; ohne Punkte",
+    }),
   ).work;
   assertEquals(Object.keys(work.cache!.guidanceDrafts!).length, 1);
   fail = false;

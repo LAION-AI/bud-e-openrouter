@@ -8,6 +8,7 @@ import RoomGrading, {
 import { isRoomGradingRequest } from "../utils/roomGrading.ts";
 import type { SourceDoc } from "../utils/grading.ts";
 import { GRADING_MODEL_SYSTEM } from "../utils/gradingProtocol.ts";
+import { readOpenRouterBalance } from "../utils/openrouterBalance.ts";
 import {
   personalBranch,
   personalChatIndex,
@@ -1698,6 +1699,7 @@ export default function PersonalRoom(
       {gradingSources && (
         <RoomGrading
           privateRoom
+          loadBudget={async (provider) => ({ scope: "personal", provider: index.settings.provider, checkedAt: Date.now(), ...(provider && index.settings.provider === "openrouter" ? { balance: await readOpenRouterBalance(index.settings.key) } : {}) })}
           initialSources={gradingSources}
           onClose={() => setGradingSources(null)}
           onBusyChange={setBusy}

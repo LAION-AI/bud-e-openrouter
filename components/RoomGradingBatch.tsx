@@ -1,5 +1,10 @@
 import { useEffect, useRef, useState } from "preact/hooks";
 import ClassroomCodeContent from "./ClassroomCodeContent.tsx";
+import GradingBudgetPanel from "./GradingBudgetPanel.tsx";
+import {
+  type GradingBudgetLoader,
+  gradingErrorHelp,
+} from "../utils/gradingFeedback.ts";
 import type { SourceDoc } from "../utils/grading.ts";
 import {
   filesForGrading,
@@ -145,6 +150,7 @@ export default function RoomGradingBatch(
     initialSources,
     ask,
     privateRoom = false,
+    loadBudget,
     onComplete,
     onClose,
     onBusyChange,
@@ -152,6 +158,7 @@ export default function RoomGradingBatch(
     initialSources: SourceDoc[];
     ask: GradingAsk;
     privateRoom?: boolean;
+    loadBudget?: GradingBudgetLoader;
     onComplete: (
       text: string,
       sources: SourceDoc[],
@@ -183,6 +190,36 @@ export default function RoomGradingBatch(
   const [checkpointBusy, setCheckpointBusy] = useState(false);
   const [checkpointMessage, setCheckpointMessage] = useState("");
   const [criteriaClarification, setCriteriaClarification] = useState("");
+  const [errorCode, setErrorCode] = useState("");
+  const [clock, setClock] = useState(Date.now());
+  const [startedAt, setStartedAt] = useState(0);
+  const [lastMessageAt, setLastMessageAt] = useState(Date.now());
+  const [pendingCalls, setPendingCalls] = useState(0);
+  const jobStarts = useRef(new Map<number, number>()), jobId = useRef(0);
+  const [downloadedAt, setDownloadedAt] = useState("");
+  const [showResumeHelp, setShowResumeHelp] = useState(false);
+  const issueRef = useRef<HTMLDivElement | null>(null);
+  useEffect(() => {
+    if (error) {
+      issueRef.current?.scrollIntoView({ block: "start", behavior: "smooth" });
+    }
+  }, [error]);
+  useEffect(() => {
+    if (!busy) return;
+    const timer = setInterval(() => setClock(Date.now()), 1000);
+    return () => clearInterval(timer);
+  }, [busy]);
+  const trackedAsk: GradingAsk = async (...args) => {
+    const id = ++jobId.current;
+    jobStarts.current.set(id, Date.now());
+    if (!disposed.current) setPendingCalls((n) => n + 1);
+    try {
+      return await ask(...args);
+    } finally {
+      jobStarts.current.delete(id);
+      if (!disposed.current) setPendingCalls((n) => Math.max(0, n - 1));
+    }
+  };
   const criteriaInput = useRef<HTMLTextAreaElement | null>(null);
   const ready = !!session?.papers.length &&
     session.pages.length === session.sources.length &&
@@ -230,6 +267,7 @@ export default function RoomGradingBatch(
       link.href = url;
       link.download = `Bud-E-Korrektur-Zwischenstand-${Date.now()}.json`;
       link.click();
+      setDownloadedAt(new Date().toLocaleTimeString("de-DE"));
       setTimeout(() => URL.revokeObjectURL(url), 1000);
       setCheckpointMessage(
         "Zwischenstand heruntergeladen. Die Datei enthält Arbeiten und Rückmeldungen im Klartext – bitte geschützt aufbewahren.",
@@ -245,6 +283,7 @@ export default function RoomGradingBatch(
   async function importCheckpoint(file?: File) {
     if (!file || busy) return;
     setCheckpointBusy(true);
+    setErrorCode("");
     try {
       if (file.size > MAX_CHECKPOINT_BYTES) {
         throw new Error("Zwischenstand ist größer als 180 MB.");
@@ -282,6 +321,8 @@ export default function RoomGradingBatch(
         !independentlyChecked && saved.work.cache ? "mark" : saved.lastAction,
       );
       setError("");
+      setShowResumeHelp(false);
+      setDownloadedAt("");
       setCheckpointMessage(
         `Zwischenstand geladen: ${saved.work.pages.length} Abschriften und ${
           Object.keys(saved.work.cache?.reports ?? {}).length
@@ -306,6 +347,7 @@ export default function RoomGradingBatch(
   }, []);
   const progress = (step: string, next?: GradingStatus) => {
     if (!disposed.current) {
+      setLastMessageAt(Date.now());
       setSteps((old) => [...old, step].slice(-500));
       if (next) setStatus(next);
     }
@@ -328,6 +370,7 @@ export default function RoomGradingBatch(
   }
   async function run(mark: boolean, reviewOnly = false) {
     if (busy) return;
+    setErrorCode("");
     if ((mark || automatic) && criteriaQuestions.length) {
       setError(
         "Vor der Bewertung bitte klären: " + criteriaQuestions.join(" "),
@@ -339,6 +382,9 @@ export default function RoomGradingBatch(
     setBusy(true);
     onBusyChange(true);
     setError("");
+    setErrorCode("");
+    setStartedAt(Date.now());
+    setLastMessageAt(Date.now());
     setCriteriaClarification("");
     setLastAction(mark ? "mark" : "transcribe");
     try {
@@ -356,7 +402,7 @@ export default function RoomGradingBatch(
         if (next && !next.prepared) next.sources = prepared;
         next = await transcribeRoomWork(
           prepared,
-          ask,
+          trackedAsk,
           progress,
           abort.signal,
           next ?? undefined,
@@ -394,7 +440,7 @@ export default function RoomGradingBatch(
         const result = await markRoomWork(
           next,
           used,
-          ask,
+          trackedAsk,
           progress,
           abort.signal,
           updateWork,
@@ -423,6 +469,13 @@ export default function RoomGradingBatch(
             ? cause.message
             : "Die Korrektur ist fehlgeschlagen.",
         );
+        setErrorCode(
+          abort.signal.aborted
+            ? "cancelled"
+            : cause instanceof GradingFailure
+            ? cause.code
+            : "",
+        );
       }
     } finally {
       if (!disposed.current) {
@@ -444,6 +497,7 @@ export default function RoomGradingBatch(
   }
   async function upload(files: FileList | null) {
     if (!files || busy) return;
+    setErrorCode("");
     const abort = new AbortController();
     controller.current = abort;
     setBusy(true);
@@ -489,16 +543,88 @@ export default function RoomGradingBatch(
     ? 55
     : status.stage === "review"
     ? 60
+    : status.stage === "guidance"
+    ? Math.round(60 + ratio * 8)
     : status.stage === "mark"
-    ? Math.min(99, Math.round(60 + ratio * 39))
+    ? Math.min(99, Math.round(68 + ratio * 31))
     : saved || !!report
     ? 100
     : 99;
-  const activeStep = status?.stage === "mark" || status?.stage === "done"
+  const activeStep = status?.stage === "mark" || status?.stage === "guidance" ||
+      status?.stage === "done"
     ? 3
     : status?.stage === "group" || status?.stage === "review"
     ? 2
     : 1;
+  const help = gradingErrorHelp(error, errorCode, privateRoom);
+  const duration = Math.max(0, Math.floor((clock - startedAt) / 1000));
+  const silence = Math.max(0, Math.floor((clock - lastMessageAt) / 1000));
+  const oldestJob = jobStarts.current.size
+    ? Math.max(
+      0,
+      Math.floor((clock - Math.min(...jobStarts.current.values())) / 1000),
+    )
+    : 0;
+  const checkedCount = session?.cache?.checked?.length ?? 0;
+  const issuePanel = error && (
+    <div
+      ref={issueRef}
+      role="alert"
+      class="mt-4 rounded-2xl border border-amber-300 bg-amber-50 p-4 text-amber-950"
+    >
+      <h3 class="font-semibold">{help.title}</h3>
+      <p class="mt-2 text-sm">{help.explanation}</p>
+      <p class="mt-3 text-sm">
+        <strong>So geht es weiter:</strong> {help.next}
+      </p>
+      <p class="mt-3 text-xs">
+        Vor dem Schließen oder Neuladen unbedingt den Zwischenstand sichern.
+        Fertige Schritte bleiben nur im offenen Fenster oder in deiner
+        heruntergeladenen Sicherungsdatei erhalten.
+      </p>
+      <div class="mt-3 flex flex-wrap gap-2">
+        <button
+          type="button"
+          class={control}
+          disabled={checkpointBusy}
+          onClick={exportCheckpoint}
+        >
+          Sicherung jetzt herunterladen
+        </button>
+        <button
+          type="button"
+          class={primary}
+          disabled={busy || checkpointBusy ||
+            (lastAction === "mark" && !automatic && !reviewed)}
+          onClick={() => void run(lastAction === "mark")}
+        >
+          Noch einmal versuchen
+        </button>
+        {!privateRoom && (
+          <a
+            class={control}
+            href="/my"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Raumeinstellungen öffnen ↗
+          </a>
+        )}
+      </div>
+      {lastAction === "mark" && !automatic && !reviewed && (
+        <p class="mt-2 text-xs">
+          Vor dem Fortsetzen bitte unten „Ich habe Abschrift und Seitenzuordnung
+          geprüft“ bestätigen.
+        </p>
+      )}
+      <details class="mt-3 text-xs">
+        <summary class="cursor-pointer underline">
+          Genaue Fehlermeldung für Rückfragen anzeigen
+        </summary>
+        <p class="mt-2 whitespace-pre-wrap break-words">{error}</p>
+      </details>
+    </div>
+  );
   return (
     <div
       role="dialog"
@@ -529,10 +655,115 @@ export default function RoomGradingBatch(
             ✕
           </button>
         </div>
+        {issuePanel}
         <p class="mt-3 text-sm text-slate-600">
-          Arbeiten hochladen → Kriterien festlegen → drei KI-Phasen → Ergebnisse
-          prüfen und herunterladen.
+          Lade die Arbeiten deiner Klasse hoch und lege fest, worauf Bud-E
+          achten soll. Du erhältst für jede Person einen Korrekturvorschlag als
+          Word und PDF.
         </p>
+        <div
+          class="sticky top-0 z-10 mt-4 flex flex-wrap items-center gap-2 rounded-2xl border border-indigo-100 bg-white p-3 shadow-sm"
+          aria-label="Sichern und Fortsetzen"
+        >
+          <span class="mr-auto text-sm font-semibold text-slate-800">
+            {report
+              ? "Ergebnisse fertig"
+              : busy
+              ? "Korrektur läuft – dieses Fenster offen lassen"
+              : session?.pages.length
+              ? "Dein Zwischenstand ist noch in diesem Fenster"
+              : "Schritt für Schritt durch deine Korrektur"}
+          </span>
+          <button
+            type="button"
+            class={control}
+            disabled={checkpointBusy || (!sources.length && !session)}
+            onClick={exportCheckpoint}
+          >
+            Zwischenstand herunterladen
+          </button>
+          {busy && (
+            <button
+              type="button"
+              class={control}
+              onClick={() => controller.current?.abort()}
+            >
+              Pausieren
+            </button>
+          )}
+          <button
+            type="button"
+            class="px-2 py-2 text-sm font-semibold text-indigo-700 underline"
+            onClick={() => setShowResumeHelp(!showResumeHelp)}
+          >
+            Wie sichere ich und mache später weiter?
+          </button>
+        </div>
+        {showResumeHelp && (
+          <div class="mt-3 rounded-xl border border-indigo-200 bg-indigo-50 p-4 text-sm leading-6">
+            <h3 class="font-semibold">
+              Sichern und später fortsetzen – ohne alles neu zu machen
+            </h3>
+            <ol class="mt-2 list-decimal space-y-2 pl-5">
+              <li>
+                Klicke auf „Zwischenstand herunterladen“. Dein Browser speichert
+                eine Datei mit dem Namen „Bud-E-Korrektur-Zwischenstand…json“,
+                meist im Ordner „Downloads“. Die Endung .json ist richtig; du
+                musst die Datei nicht öffnen.
+              </li>
+              <li>
+                Zum Aufhören erst „Pausieren“ anklicken. Schließe oder lade die
+                Webseite erst neu, wenn du die Sicherungsdatei heruntergeladen
+                hast. Diese Sicherung wird nicht automatisch auf dem Server
+                gespeichert.
+              </li>
+              <li>
+                Öffne später denselben Raum und „Korrekturvorschläge“. Wähle bei
+                „Zwischenstand laden“ deine gesicherte Datei. Die
+                Originalarbeiten musst du nicht erneut hochladen.
+              </li>
+              <li>
+                Prüfe Zuordnung und Kriterien. Bestätige das Häkchen und klicke
+                „Korrekturvorschläge erstellen“ bzw. bei fehlenden Abschriften
+                „Abschrift und Zuordnung fortsetzen“. Bereits fertige Schritte
+                werden wiederverwendet.
+              </li>
+            </ol>
+            <p class="mt-3 font-semibold">
+              Die Datei enthält Schülerarbeiten im Klartext. Geschützt
+              aufbewahren, nicht an Schüler weitergeben. Weitere KI-Aufrufe
+              können erneut Geld kosten.
+            </p>
+          </div>
+        )}
+        {session && (
+          <div
+            class="mt-4 grid grid-cols-3 gap-2 text-center text-xs text-slate-600"
+            aria-label="Bisheriger Arbeitsfortschritt im Fenster"
+          >
+            <div class="rounded-xl bg-slate-50 p-3">
+              <strong class="block text-lg text-slate-900">
+                {session.pages.length}/{session.sources.length}
+              </strong>Seiten abgeschrieben
+            </div>
+            <div class="rounded-xl bg-slate-50 p-3">
+              <strong class="block text-lg text-slate-900">
+                {session.papers.filter((p) => !p.ignored).length}
+              </strong>Arbeiten zugeordnet
+            </div>
+            <div class="rounded-xl bg-slate-50 p-3">
+              <strong class="block text-lg text-slate-900">
+                {checkedCount}
+              </strong>Rückmeldungen fertig geprüft
+            </div>
+          </div>
+        )}
+        <GradingBudgetPanel
+          load={loadBudget}
+          busy={busy}
+          privateRoom={privateRoom}
+          problem={error}
+        />
         <ol class="my-4 grid gap-3 text-sm sm:grid-cols-3">
           {[
             "Abschreiben",
@@ -594,8 +825,7 @@ export default function RoomGradingBatch(
         </p>
         <div class="my-4 rounded-xl border border-slate-200 p-3 text-sm">
           <p class="font-semibold">
-            Zwischenstand sichern oder laden · auf einem anderen Gerät
-            fortsetzen
+            Deine Sicherungsdatei · auch auf einem anderen Gerät fortsetzen
           </p>
           <div class="mt-3 flex flex-wrap items-center gap-3">
             <button
@@ -604,7 +834,7 @@ export default function RoomGradingBatch(
               disabled={checkpointBusy || (!sources.length && !session)}
               onClick={() => void exportCheckpoint()}
             >
-              Zwischenstand herunterladen
+              Sicherungsdatei herunterladen
             </button>
             <label class="text-sm font-semibold">
               Zwischenstand laden
@@ -626,6 +856,14 @@ export default function RoomGradingBatch(
             werden beim Fortsetzen übersprungen; neue Modellaufrufe können
             Kosten verursachen. Vor dem Schließen oder Neuladen bitte sichern.
           </p>
+          {downloadedAt && (
+            <p class="mt-2 text-xs font-semibold text-emerald-800">
+              Download um {downloadedAt}{" "}
+              gestartet. Prüfe den Downloads-Ordner deines Browsers. Später
+              fertig gewordene Schritte sind erst in einer neuen Sicherung
+              enthalten.
+            </p>
+          )}
           {checkpointMessage && (
             <p role="status" class="mt-2 text-xs text-indigo-800">
               {checkpointMessage}
@@ -810,6 +1048,8 @@ export default function RoomGradingBatch(
               <span>
                 {status.stage === "review"
                   ? "Prüfpause – deine Rückmeldung ist gefragt"
+                  : status.stage === "guidance"
+                  ? `Lösungsschlüssel vorbereiten: ${status.completed} / ${status.total} Teilschritte`
                   : status.stage === "mark"
                   ? `Bewertet: ${status.completed} / ${status.total} Schülerarbeiten`
                   : status.stage === "transcribe"
@@ -822,6 +1062,14 @@ export default function RoomGradingBatch(
               </span>
               <span>{percent}%</span>
             </div>
+            {status.stage === "guidance" && (
+              <p class="mb-3 text-sm text-slate-600">
+                Bevor Bud-E einzelne Schüler bewertet, erstellt und prüft es für
+                jede Testversion eine gemeinsame Lösung. Das verhindert
+                unterschiedliche Maßstäbe. „0 bewertet“ wäre in dieser Phase
+                normal – die Einzelbewertung beginnt danach.
+              </p>
+            )}
             {steps.length > 0 && (
               <p class="mb-2 text-xs text-slate-600" aria-live="polite">
                 {steps.at(-1)}
@@ -840,6 +1088,38 @@ export default function RoomGradingBatch(
                 style={{ width: `${percent}%` }}
               />
             </div>
+            {busy && (
+              <p class="mt-3 text-xs text-slate-600" role="timer">
+                Dieser Durchgang läuft seit {Math.floor(duration / 60)} Min.
+                {" "}
+                {duration % 60} Sek. · {pendingCalls}{" "}
+                KI-Schritte in Bearbeitung · letzte Statusmeldung vor {silence}
+                {" "}
+                Sek. {pendingCalls > 0 &&
+                  ` · längster offener KI-Schritt: ${oldestJob} Sek.`}{" "}
+                Große Stapel und gründliche Zweitprüfungen können mehrere
+                Minuten dauern. Diese Anzeige ist keine Zusage, dass der
+                Anbieter noch antwortet.
+              </p>
+            )}
+            {busy && (silence >= 75 || oldestJob >= 90) && (
+              <div class="mt-3 rounded-xl bg-amber-50 p-3 text-sm text-amber-900">
+                <strong>Es gibt länger keine neue Rückmeldung.</strong>{" "}
+                Lass den Tab geöffnet und prüfe die Internetverbindung. Du
+                kannst jederzeit den Zwischenstand herunterladen und pausieren.
+                Starte nicht mehrfach gleichzeitig neu; laufende
+                Anbieteranfragen können noch Kosten verursachen.
+              </div>
+            )}
+            {!busy && !report && session && (
+              <p class="mt-3 text-sm font-semibold text-indigo-800">
+                {error
+                  ? "Angehalten – deine fertigen Schritte sind noch da. Beachte die Hilfe unten und sichere den Zwischenstand."
+                  : ready
+                  ? "Du bist dran: Prüfe Zuordnung und Kriterien, setze das Bestätigungshäkchen und erstelle dann die Korrekturvorschläge."
+                  : "Bereit zum Fortsetzen: Nur die noch fehlenden Schritte werden bearbeitet."}
+              </p>
+            )}
           </div>
         )}
         {steps.length > 0 && (
@@ -1167,37 +1447,9 @@ export default function RoomGradingBatch(
         )}
         {busy && (
           <p role="status" class="mt-3 text-sm text-indigo-700">
-            Bud-E arbeitet …{" "}
-            <button
-              type="button"
-              class="underline"
-              onClick={() => controller.current?.abort()}
-            >
-              Abbrechen
-            </button>
+            Bud-E arbeitet. Mit „Pausieren“ oben kannst du anhalten. Fertige
+            Schritte bleiben im offenen Fenster erhalten.
           </p>
-        )}
-        {error && (
-          <div
-            role="alert"
-            class="mt-3 rounded-xl bg-red-50 p-3 text-sm text-red-800"
-          >
-            {error}
-            <p class="mt-2 text-xs">
-              Fertige Ergebnisse bleiben erhalten. Bei Guthaben-/Freigabefehlern
-              bitte zuerst die Einstellungen prüfen. Weitere Anfragen können
-              Kosten verursachen.
-            </p>
-            <button
-              type="button"
-              class={primary + " mt-3"}
-              disabled={busy || checkpointBusy ||
-                (lastAction === "mark" && !automatic && !reviewed)}
-              onClick={() => void run(lastAction === "mark")}
-            >
-              Noch einmal versuchen
-            </button>
-          </div>
         )}
       </section>
     </div>

@@ -22,6 +22,7 @@ import DocsModal from "../components/DocsModal.tsx";
 import SlidesModal from "../components/SlidesModal.tsx";
 import ResearchDetails from "../components/ResearchDetails.tsx";
 import RoomGrading, { GradingReportDownload } from "../components/RoomGrading.tsx";
+import { classroomGradingBudget } from "../utils/gradingFeedback.ts";
 import { classroomGradingCall, isRoomGradingRequest } from "../utils/roomGrading.ts";
 import type { SourceDoc } from "../utils/grading.ts";
 import { MAX_PDF_BYTES } from "../utils/uploadLimits.ts";
@@ -1121,6 +1122,7 @@ export default function ClassroomChat(
         />
       )}
       {gradingSources && <RoomGrading initialSources={gradingSources}
+        loadBudget={(provider, signal) => classroomGradingBudget(slug, provider, signal)}
         ask={(prompt, sources, signal, options) => classroomGradingCall(slug, prompt, sources, signal, options)}
         onBusyChange={setGradingBusy} onClose={() => setGradingSources(null)}
         onComplete={(text, _sources, criteria) => {
