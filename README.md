@@ -18,6 +18,13 @@ The web application includes:
   change the current editor contents.
 - Wikipedia and paper searches with expandable source results, Markdown rendering
   and copyable code blocks.
+- Personal password-protected rooms at `/my`, with browser-encrypted chat,
+  settings, provider keys and images across devices. See [personal rooms](PERSONAL_ROOMS.md)
+  for the threat model, provider processing and unencrypted local exports.
+- Recoverable batch correction proposals with transcript review, pupil-oriented
+  PDF/Word feedback and encrypted final-report storage in personal rooms.
+- A separate Years 5–6 tab with 18 short nature-and-technology paths, alongside
+  24 physics paths and the existing computing curriculum.
 
 ## Run the web application
 
