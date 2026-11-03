@@ -33,6 +33,8 @@ with sync_playwright() as p:
                     reply=json.dumps({'papers':[{'student':f'Person {n}','pages':[n]} for n in range(1,5)]})
                 elif prompt.startswith('GEMEINSAMER'):
                     state['guidance']+=1
+                    if state['fault']=='criteria':
+                        route.fulfill(json={'reply':json.dumps({'type':'grading_clarification','questions':['Wie viele Teilpunkte gibt es für einen richtigen Ansatz?']}),'vision':True});return
                     if state['fault']=='hold':held.append(route);return
                     if state['fault']:
                         code=state['fault']
@@ -60,7 +62,7 @@ with sync_playwright() as p:
     dialog.get_by_label('Arbeiten hochladen',exact=True).set_input_files(fixtures)
     criteria=dialog.get_by_label('Erwartungshorizont / Korrekturkriterien',exact=True)
     criteria.fill('Aufgabe 1: 4 ist richtig. Je richtige Antwort 1 Punkt, sonst 0 Punkte. Ohne Note.')
-    dialog.get_by_role('checkbox',name='Alle drei Stufen automatisch durchführen',exact=False).check()
+    expect(dialog.get_by_role('checkbox',name='Prüfpause einlegen',exact=False)).not_to_be_checked()
     dialog.get_by_role('button',name='Alle drei Stufen starten').click()
     alert=dialog.get_by_role('alert')
     expect(alert).to_contain_text('Das Raumbudget reicht',timeout=30000)
@@ -81,8 +83,15 @@ with sync_playwright() as p:
     dialog.get_by_label('Zwischenstand laden',exact=True).set_input_files({'name':'stand.json','mimeType':'application/json','buffer':checkpoint})
     expect(dialog.get_by_text('Zwischenstand geladen:',exact=False)).to_be_visible()
     assert state['calls']==before,'Import started an unwanted paid call'
-    state['fault']='hold'
+    state['fault']='criteria'
     dialog.get_by_role('checkbox',name='Ich habe Abschrift und Seitenzuordnung geprüft.').check()
+    dialog.get_by_role('button',name='Korrekturvorschläge erstellen',exact=True).click()
+    expect(dialog.get_by_text('Rückfrage – bitte ergänze den Bewertungsmaßstab',exact=True)).to_be_visible(timeout=30000)
+    dialog.get_by_role('button',name='Rückfragen beantworten',exact=True).click()
+    criteria=dialog.get_by_label('Erwartungshorizont / Korrekturkriterien',exact=True)
+    expect(criteria).to_be_focused()
+    criteria.fill('Aufgabe 1: 4 ist richtig. Richtige Antwort 1 Punkt, sonst 0 Punkte. Keine Teilpunkte. Ohne Note.')
+    state['fault']='hold'
     dialog.get_by_role('button',name='Korrekturvorschläge erstellen',exact=True).click()
     expect(dialog.get_by_text('Lösungsschlüssel vorbereiten:',exact=False)).to_be_visible(timeout=30000)
     page.wait_for_function("document.querySelector('[role=timer]')?.textContent.includes('1 KI-Schritte')")

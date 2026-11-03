@@ -110,13 +110,16 @@ with sync_playwright() as p:
         fixture={'name':'20mb-arbeit.pdf','mimeType':'application/pdf','buffer':b'%PDF-1.4\n'+b' '*(20_000_000-15)+b'\n%%EOF'}
         assert len(fixture['buffer'])==20_000_000
     def run_workflow(page):
+        page.on('dialog',lambda dialog:dialog.accept())
         page.get_by_role('button',name='Korrekturvorschläge',exact=False).click()
         dialog=page.get_by_role('dialog',name='Agentische Korrekturvorschläge')
         dialog.get_by_label('Arbeiten hochladen').set_input_files(fixture)
-        expect(dialog.get_by_role('button',name='Abschrift und Zuordnung starten')).to_be_enabled()
+        pause=dialog.get_by_role('checkbox',name='Prüfpause einlegen',exact=False)
+        expect(pause).not_to_be_checked()
+        expect(dialog.get_by_role('button',name='Alle drei Stufen starten')).to_be_disabled()
         criteria=dialog.get_by_label('Erwartungshorizont / Korrekturkriterien')
         criteria.fill('Richtig ist 7 + 5 = 12; die Erde ist annähernd kugelförmig. Gib höchstens 100 Wörter konkrete freundliche Rückmeldung je Schüler zu beiden Aufgaben. Keine Punkte und keine Note. Kennzeichne unsichere Lesestellen.')
-        if AUTO:dialog.get_by_role('checkbox',name='Alle drei Stufen automatisch durchführen',exact=False).check()
+        if not AUTO:pause.check()
         dialog.get_by_role('button',name='Alle drei Stufen starten' if AUTO else 'Abschrift und Zuordnung starten').click()
         if RECOVERY:
             room='class' if page.url.startswith(CLASS_ORIGIN) else 'private'
@@ -127,7 +130,6 @@ with sync_playwright() as p:
             assert len(saved['work']['pages'])==expected_pages-1
             assert KEY not in checkpoint.decode() and PASSWORD not in checkpoint.decode()
             before=len(class_calls if room=='class' else private_calls)
-            page.once('dialog',lambda dialog:dialog.accept())
             page.reload(wait_until='domcontentloaded')
             if room=='private':
                 page.get_by_label('Passwort',exact=True).fill(PASSWORD);page.get_by_role('button',name='Mit Passwort entsperren').click()
@@ -139,7 +141,7 @@ with sync_playwright() as p:
             criteria=dialog.get_by_label('Erwartungshorizont / Korrekturkriterien')
             expect(criteria).to_have_value(re.compile('7 \\+ 5 = 12'))
             recovered.add(room)
-            if AUTO:dialog.get_by_role('checkbox',name='Alle drei Stufen automatisch durchführen',exact=False).check()
+            expect(dialog.get_by_role('checkbox',name='Prüfpause einlegen',exact=False)).to_be_checked(checked=not AUTO)
             dialog.get_by_role('button',name='Abschrift und Zuordnung fortsetzen',exact=True).click()
         if not AUTO:
             criteria.wait_for(timeout=180000)
@@ -155,7 +157,7 @@ with sync_playwright() as p:
             dialog.get_by_label('Feedback zur Abschrift').fill('Die Zahl 13 ist wörtlich so geschrieben, kein Lesefehler.')
             review.check();dialog.get_by_role('button',name='Korrekturvorschläge erstellen').click()
         dialog.get_by_role('heading',name=re.compile('Korrekturvorschläge fertig')).wait_for(timeout=240000)
-        dialog.get_by_text('Im Chat verfügbar. Bitte vor Verwendung prüfen.',exact=True).wait_for(timeout=30000)
+        dialog.get_by_text('Rückmeldungen im Chat verfügbar.',exact=False).wait_for(timeout=30000)
         with page.expect_download() as download:
             dialog.get_by_role('button',name='Korrekturvorschlag als Word herunterladen',exact=True).click()
         data=download.value.path().read_bytes()
@@ -165,6 +167,29 @@ with sync_playwright() as p:
         with page.expect_download() as pdf_download:dialog.get_by_role('button',name='Korrekturvorschlag als PDF herunterladen',exact=True).click()
         pdf_text=subprocess.run(['pdftotext',str(pdf_download.value.path()),'-'],capture_output=True,text=True,check=True).stdout
         for name in expected_names:assert name in pdf_text,'PDF missing pupil '+name
+        # Proof dossiers must render PDF pages locally and include each source,
+        # its own transcription, then the report for the full pupil group.
+        if BATCH:
+            failed_asset='**/pdfjs/5.4.624/build/pdf.min.mjs*'
+            page.context.route(failed_asset,lambda route:route.abort('internetdisconnected'))
+            dialog.get_by_role('button',name='Prüfmappe als PDF herunterladen',exact=True).click()
+            expect(dialog.get_by_role('alert')).to_contain_text('Deine Ergebnisse bleiben erhalten',timeout=30000)
+            page.context.unroute(failed_asset)
+        with page.expect_download(timeout=120000) as proof:
+            dialog.get_by_role('button',name='Prüfmappe als PDF herunterladen',exact=True).click()
+        proof_text=subprocess.run(['pdftotext',str(proof.value.path()),'-'],capture_output=True,text=True,check=True).stdout
+        proof.value.save_as('/tmp/grading-dossier-fixture.pdf')
+        for n in range(1,expected_pages+1):
+            assert f'Original {n}' in proof_text and f'Abschrift {n}' in proof_text, f'Missing original/transcript pair {n}'
+        if BATCH:
+            assert proof_text.index('Arbeit 01 · Original 3') < proof_text.index('Arbeit 01 · Abschrift 3') < proof_text.index('Arbeit 01 · Original 1') < proof_text.index('Arbeit 01 · Deine Rückmeldung')
+        with page.expect_download(timeout=120000) as proof_word:
+            dialog.get_by_role('button',name='Prüfmappe als Word herunterladen',exact=True).click()
+        with zipfile.ZipFile(proof_word.value.path()) as document:
+            proof_xml=document.read('word/document.xml').decode()
+            assert len([n for n in document.namelist() if n.startswith('word/media/')])==expected_pages-(2 if ZIP else 0)
+        proof_word.value.save_as('/tmp/grading-dossier-fixture.docx')
+        for n in range(1,expected_pages+1):assert f'Abschrift {n}' in proof_xml
         expect(dialog.get_by_role('progressbar')).to_have_attribute('aria-valuenow','100')
         dialog.get_by_role('button',name='Korrektur schließen').click()
         page.get_by_role('button',name='Korrekturvorschlag als Word herunterladen',exact=True).wait_for()

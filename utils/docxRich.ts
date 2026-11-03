@@ -490,7 +490,7 @@ function alignXml(a?: Align): string {
 }
 
 /** One picture, as a floating-free inline drawing. */
-function drawingXml(b: ImageBlock, relId: string, docPrId: number): string {
+export function drawingXml(b: ImageBlock, relId: string, docPrId: number): string {
   const cx = Math.max(1, Math.round(b.widthPx * EMU_PER_PX));
   const cy = Math.max(1, Math.round((b.heightPx || Math.round(b.widthPx * 0.66)) * EMU_PER_PX));
   const name = esc(b.alt || `Bild ${docPrId}`);

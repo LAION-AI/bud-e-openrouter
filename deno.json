@@ -23,7 +23,8 @@
   "exclude": [
     "**/_fresh/*",
     "static/scratch/vendor/**",
-    "static/scratch/library-assets/**"
+    "static/scratch/library-assets/**",
+    "static/pdfjs/**"
   ],
   "imports": {
     "$fresh/": "https://deno.land/x/fresh@1.7.2/",

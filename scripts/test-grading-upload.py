@@ -84,7 +84,10 @@ async def main():
             await criteria.fill(read_text(args.auftrag))
         if args.feedback:
             await dialog.get_by_label('Feedback zur Abschrift', exact=True).fill(read_text(args.feedback))
-        if args.automatic:
+        pause=dialog.get_by_role('checkbox',name='Prüfpause einlegen',exact=False)
+        if await pause.count():
+            await pause.set_checked(not args.automatic)
+        elif args.automatic and await dialog.get_by_role('checkbox',name='Alle drei Stufen automatisch durchführen',exact=False).count():  # old UI compatibility
             await dialog.get_by_role('checkbox',name='Alle drei Stufen automatisch durchführen',exact=False).check()
         if args.recheck_selection:
             await dialog.get_by_role('button',name='Zuordnung mit aktuellem Auftrag erneut prüfen',exact=True).click()
@@ -126,10 +129,10 @@ async def main():
                     error = '\n'.join(await alerts.all_inner_texts())
                     print('UI-Fehler:', error[:1500], flush=True)
                     await checkpoint('fehler-' + str(retries))
-                    if re.search(r'Guthaben|Ausgabenrahmen|geschlossen|Freigabe|API.Key|Erwartungshorizont', error, re.I) or retries >= 2:
+                    if re.search(r'Guthaben|Ausgabenrahmen|geschlossen|Freigabe|API.Key|Erwartungshorizont|Rückfrage|Teilpunkt', error, re.I) or retries >= 2:
                         raise RuntimeError('Paused safely; inspect saved checkpoint and UI error')
                     retry = dialog.get_by_role('button', name='Noch einmal versuchen', exact=True)
-                    if await retry.is_enabled():
+                    if await retry.count() and await retry.is_enabled():
                         retries += 1
                         await retry.click()
                         continue
@@ -141,6 +144,13 @@ async def main():
                         async with page.expect_download(timeout=60000) as download:
                             await dialog.get_by_role('button', name=f'Korrekturvorschlag als {kind} herunterladen', exact=True).click()
                         await (await download.value).save_as(args.output / filename)
+                    for kind, ext in [('PDF','pdf'),('Word','docx')]:
+                        target=dialog.get_by_role('button',name=f'Prüfmappe als {kind} herunterladen',exact=True)
+                        if await target.count():
+                            async with page.expect_download(timeout=240000) as download:
+                                await target.click()
+                            await (await download.value).save_as(args.output / f'Pruefmappe-Originale-Abschriften-Feedback.{ext}')
+                    await page.screenshot(path=args.output / 'ui-fertig.png', full_page=True)
                     print('DONE', path, flush=True)
                     break
                 if not args.automatic and await review.count() and await review.is_enabled() and not started_mark:

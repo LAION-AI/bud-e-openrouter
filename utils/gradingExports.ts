@@ -111,7 +111,7 @@ export function buildGradingWordFromBlocks(
   return buildStudentGradingWord(gradingExportSheets(blocks, options));
 }
 let fonts: Promise<[Uint8Array, Uint8Array]> | undefined;
-function loadFonts(): Promise<[Uint8Array, Uint8Array]> {
+export function loadGradingFonts(): Promise<[Uint8Array, Uint8Array]> {
   return fonts ??= Promise.all(
     ["DejaVuSans.ttf", "DejaVuSans-Bold.ttf"].map(async (name) => {
       const response = await fetch("/fonts/" + name);
@@ -134,7 +134,7 @@ export async function buildGradingPdf(
 ): Promise<Uint8Array> {
   return buildStudentGradingPdf(
     gradingExportSheets(gradingExportBlocks(text), options),
-    fontBytes ?? await loadFonts(),
+    fontBytes ?? await loadGradingFonts(),
   );
 }
 export async function buildGradingPdfFromBlocks(
@@ -144,6 +144,6 @@ export async function buildGradingPdfFromBlocks(
 ): Promise<Uint8Array> {
   return buildStudentGradingPdf(
     gradingExportSheets(blocks, options),
-    fontBytes ?? await loadFonts(),
+    fontBytes ?? await loadGradingFonts(),
   );
 }

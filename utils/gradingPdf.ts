@@ -156,7 +156,11 @@ export async function buildStudentGradingPdf(
         const image = match[1] === "png"
           ? await pdf.embedPng(bytes)
           : await pdf.embedJpg(bytes);
-        const factor = Math.min(WIDTH / image.width, 250 / image.height);
+        const factor = Math.min(
+          WIDTH / image.width,
+          (sheet.fullPageImage ? Math.max(100, y - BOTTOM - 14) : 250) /
+            image.height,
+        );
         const height = image.height * factor;
         ensure(height + 12);
         page.drawImage(image, {
@@ -296,7 +300,7 @@ export async function buildStudentGradingPdf(
         color: lineColor,
       });
       p.drawText(
-        "Rückmeldung zu deiner Arbeit" +
+        (sheet.footer || "Rückmeldung zu deiner Arbeit") +
           (pages.length > 1 ? ` · ${at + 1}/${pages.length}` : ""),
         { x: LEFT, y: 26, size: 7.5, font: regular, color: muted },
       );

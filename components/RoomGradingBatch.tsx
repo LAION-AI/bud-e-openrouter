@@ -1,6 +1,9 @@
 import { useEffect, useRef, useState } from "preact/hooks";
 import ClassroomCodeContent from "./ClassroomCodeContent.tsx";
 import GradingBudgetPanel from "./GradingBudgetPanel.tsx";
+import GradingDossierDownload, {
+  GradingOriginalPreview,
+} from "./GradingDossierDownload.tsx";
 import {
   type GradingBudgetLoader,
   gradingErrorHelp,
@@ -172,7 +175,7 @@ export default function RoomGradingBatch(
     [session, setSession] = useState<GradingSession | null>(null);
   const [criteria, setCriteria] = useState(""),
     [feedback, setFeedback] = useState(""),
-    [automatic, setAutomatic] = useState(false),
+    [automatic, setAutomatic] = useState(true),
     [reviewed, setReviewed] = useState(false);
   const [groups, setGroups] = useState<GroupEdit[]>([]),
     [steps, setSteps] = useState<string[]>([]),
@@ -205,6 +208,15 @@ export default function RoomGradingBatch(
     }
   }, [error]);
   useEffect(() => {
+    if (criteriaClarification) {
+      criteriaInput.current?.scrollIntoView({
+        block: "center",
+        behavior: "smooth",
+      });
+      criteriaInput.current?.focus({ preventScroll: true });
+    }
+  }, [criteriaClarification]);
+  useEffect(() => {
     if (!busy) return;
     const timer = setInterval(() => setClock(Date.now()), 1000);
     return () => clearInterval(timer);
@@ -226,14 +238,15 @@ export default function RoomGradingBatch(
     !session.pendingPages?.length;
   const criteriaQuestions = gradingCriteriaQuestions(criteria);
   useEffect(() => {
-    if (!session?.pages.length || saved) return;
+    // Feedback saved in chat does not include the original scans/transcripts.
+    if (!session?.pages.length) return;
     const warn = (event: BeforeUnloadEvent) => {
       event.preventDefault();
       event.returnValue = "";
     };
     globalThis.addEventListener("beforeunload", warn);
     return () => globalThis.removeEventListener("beforeunload", warn);
-  }, [session?.pages.length, saved]);
+  }, [session?.pages.length]);
   const updateWork = (work: GradingSession) => {
     workRef.current = work;
     if (!disposed.current) setSession({ ...work });
@@ -300,7 +313,8 @@ export default function RoomGradingBatch(
       setCriteria(saved.criteria);
       setCriteriaClarification("");
       setFeedback(saved.feedback);
-      setAutomatic(false);
+      // Loading alone never starts a paid call. Restore the teacher's workflow.
+      setAutomatic(saved.automatic);
       setReviewed(false);
       setGroups(
         saved.groups.length ? saved.groups : saved.work.papers.map((p) => ({
@@ -643,9 +657,11 @@ export default function RoomGradingBatch(
             aria-label="Korrektur schließen"
             onClick={() => {
               if (
-                (busy || ((session?.pages.length || report) && !saved)) &&
+                (busy || session?.pages.length || report) &&
                 !confirm(
-                  "Zwischenstände verwerfen und schließen? Lade sie vorher über „Zwischenstand herunterladen“ herunter. Laufende Modellanfragen können noch Kosten verursachen.",
+                  saved
+                    ? "Die Rückmeldungen sind im Chat verfügbar. Originalseiten und Abschriften bleiben aber nur in diesem Fenster. Lade zuerst die Prüfmappe oder den Zwischenstand herunter. Jetzt wirklich schließen?"
+                    : "Zwischenstände verwerfen und schließen? Lade sie vorher über „Zwischenstand herunterladen“ herunter. Laufende Modellanfragen können noch Kosten verursachen.",
                 )
               ) return;
               controller.current?.abort();
@@ -995,8 +1011,7 @@ export default function RoomGradingBatch(
                 </ul>
                 <p class="mt-2 text-xs">
                   Ergänze deine Antworten im Feld oben. Abschrift und Zuordnung
-                  sind auch vorher möglich, wenn die Automatik ausgeschaltet
-                  ist.
+                  sind auch vorher möglich: Aktiviere dafür unten die Prüfpause.
                 </p>
               </div>
             )}
@@ -1005,23 +1020,24 @@ export default function RoomGradingBatch(
                 <label class="mt-3 flex items-start gap-2 text-sm">
                   <input
                     type="checkbox"
-                    checked={automatic}
+                    checked={!automatic}
                     disabled={busy}
                     onChange={(event) =>
-                      setAutomatic(event.currentTarget.checked)}
+                      setAutomatic(!event.currentTarget.checked)}
                     class="mt-1"
                   />
                   <span>
-                    Alle drei Stufen automatisch durchführen – ohne
-                    Zwischenstopp zur Prüfung der Abschrift
+                    Prüfpause einlegen: Abschrift und Seitenzuordnung vor der
+                    Bewertung selbst prüfen
                   </span>
                 </label>
                 <p class="mt-2 text-xs text-slate-600">
-                  Ohne Häkchen hält Bud-E nach Abschrift und Gruppierung an. Mit
-                  Häkchen muss der Erwartungshorizont schon vor dem Start
-                  eingetragen sein; die anschließende Bewertung startet
-                  automatisch. Unsichere Lesestellen können trotzdem enthalten
-                  sein.
+                  Standard: Nach deinem Start laufen Abschrift, Zuordnung und
+                  Bewertung automatisch nacheinander durch. Trage vorher die
+                  Korrekturkriterien ein. Nur mit diesem Häkchen hält Bud-E
+                  zwischendurch an. Unsichere Lesestellen und fehlende Kriterien
+                  können trotzdem eine Rückfrage nötig machen. Prüfe das
+                  Ergebnis vor der Weitergabe.
                 </p>
               </>
             }
@@ -1046,7 +1062,9 @@ export default function RoomGradingBatch(
           <div class="my-4 rounded-xl bg-slate-50 p-4">
             <div class="mb-2 flex justify-between text-sm font-semibold">
               <span>
-                {status.stage === "review"
+                {criteriaClarification
+                  ? "Rückfrage – bitte ergänze den Bewertungsmaßstab"
+                  : status.stage === "review"
                   ? "Prüfpause – deine Rückmeldung ist gefragt"
                   : status.stage === "guidance"
                   ? `Lösungsschlüssel vorbereiten: ${status.completed} / ${status.total} Teilschritte`
@@ -1113,12 +1131,39 @@ export default function RoomGradingBatch(
             )}
             {!busy && !report && session && (
               <p class="mt-3 text-sm font-semibold text-indigo-800">
-                {error
+                {criteriaClarification
+                  ? "Die KI wartet auf deine Antwort. Deine Abschriften und fertigen Schritte bleiben erhalten."
+                  : error
                   ? "Angehalten – deine fertigen Schritte sind noch da. Beachte die Hilfe unten und sichere den Zwischenstand."
                   : ready
-                  ? "Du bist dran: Prüfe Zuordnung und Kriterien, setze das Bestätigungshäkchen und erstelle dann die Korrekturvorschläge."
+                  ? automatic
+                    ? "Bereit zum Fortsetzen: Prüfe bei Bedarf die Kriterien und klicke auf Korrekturvorschläge erstellen."
+                    : "Du bist dran: Prüfe Zuordnung und Kriterien, setze das Bestätigungshäkchen und erstelle dann die Korrekturvorschläge."
                   : "Bereit zum Fortsetzen: Nur die noch fehlenden Schritte werden bearbeitet."}
               </p>
+            )}
+            {criteriaClarification && (
+              <div class="mt-3 rounded-xl border border-amber-300 bg-amber-50 p-3 text-sm text-amber-950">
+                <p class="whitespace-pre-line">{criteriaClarification}</p>
+                <button
+                  type="button"
+                  class={control + " mt-2"}
+                  onClick={() => {
+                    criteriaInput.current?.scrollIntoView({
+                      block: "center",
+                      behavior: "smooth",
+                    });
+                    criteriaInput.current?.focus({ preventScroll: true });
+                  }}
+                >
+                  Rückfragen beantworten
+                </button>
+                <p class="mt-2 text-xs">
+                  Ergänze deine Antworten im Kriterienfeld. Danach
+                  „Korrekturvorschläge erstellen“ anklicken. Du musst die
+                  Dateien nicht erneut hochladen.
+                </p>
+              </div>
             )}
           </div>
         )}
@@ -1156,6 +1201,18 @@ export default function RoomGradingBatch(
                     key={page.page}
                     class="block text-xs font-semibold text-slate-600"
                   >
+                    <p class="mb-1 font-semibold text-indigo-900">
+                      {session.papers.find((p) => p.pages.includes(page.page))
+                        ?.student || "Zuordnung noch offen"} · Original-ID{" "}
+                      {page.page}
+                    </p>
+                    {session.sources.find((s) => s.index === page.page) && (
+                      <GradingOriginalPreview
+                        source={session.sources.find((s) =>
+                          s.index === page.page
+                        )!}
+                      />
+                    )}
                     <label>
                       Seite {page.page} · {page.file}
                       <textarea
@@ -1378,10 +1435,19 @@ export default function RoomGradingBatch(
                 !p.ignored
               ).length} Schülerarbeiten
             </h3>
+            {session && (
+              <GradingDossierDownload
+                session={session}
+                criteria={joinedCriteria()}
+              />
+            )}
+            <h4 class="mt-4 font-semibold">
+              Nur die Rückmeldungen für deine Schüler
+            </h4>
             <p class="mt-2 text-xs text-slate-600">
-              Beide Downloads enthalten sämtliche Schülergruppen, mit getrennten
-              Abschnitten je Schüler. Word-Datei: .docx (kein veraltetes binäres
-              .doc).
+              Diese beiden Downloads enthalten nur die Schüler-Feedbacks,
+              getrennt nach Arbeiten. Word-Datei: .docx. Bitte vor der
+              Weitergabe prüfen.
             </p>
             <div class="my-3 max-h-96 overflow-y-auto text-sm">
               <ClassroomCodeContent content={report} />
@@ -1410,7 +1476,9 @@ export default function RoomGradingBatch(
             {saved
               ? (
                 <p class="mt-3 text-xs text-slate-500">
-                  Im Chat verfügbar. Bitte vor Verwendung prüfen.
+                  Rückmeldungen im Chat verfügbar. Originalseiten und
+                  Abschriften bitte als Prüfmappe oder Zwischenstand sichern.
+                  Bitte vor Verwendung prüfen.
                 </p>
               )
               : (

@@ -4,6 +4,9 @@ import type { RichBlock, Run } from "./docxRich.ts";
 
 export type GradingSheet = {
   title?: string;
+  /** Proof dossiers keep an exact work/page reference on every page. */
+  footer?: string;
+  fullPageImage?: boolean;
   showMetadata?: boolean;
   name: string;
   className: string;

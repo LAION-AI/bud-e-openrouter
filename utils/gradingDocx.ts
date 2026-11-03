@@ -1,6 +1,6 @@
 /** A dedicated, editable student-handout style. Does not change the Docs editor. */
 import { writeZip } from "./docx.ts";
-import { blocksToDocx, type RichBlock, type Run } from "./docxRich.ts";
+import { drawingXml, type RichBlock, type Run } from "./docxRich.ts";
 import {
   blockText,
   cellText,
@@ -33,7 +33,11 @@ function runsXml(runs: Run[], size?: number, strong = false): string {
   }).join("");
 }
 function p(runs: Run[], style = "Normal"): string {
-  style = style === "Title" ? "Heading1" : style === "TaskHeading" ? "Heading2" : style;
+  style = style === "Title"
+    ? "Heading1"
+    : style === "TaskHeading"
+    ? "Heading2"
+    : style;
   return `<w:p><w:pPr><w:pStyle w:val="${style}"/></w:pPr>${
     runsXml(runs)
   }</w:p>`;
@@ -85,19 +89,8 @@ function header(sheet: GradingSheet): RichBlock[] {
 export function buildStudentGradingWord(
   sheets: GradingSheet[],
 ): Promise<Uint8Array> {
-  if (sheets.some((sheet) => sheet.blocks.some((b) => b.kind === "image"))) {
-    return blocksToDocx(
-      sheets.flatMap((
-        sheet,
-        at,
-      ) => [
-        ...(at ? [{ kind: "pagebreak" as const }] : []),
-        ...header(sheet),
-        ...sheet.blocks,
-      ]),
-      { compact: true },
-    );
-  }
+  const media: { name: string; data: Uint8Array }[] = [];
+  const imageRels: string[] = [];
   const body = sheets.map((sheet, at) => {
     const start = at ? '<w:p><w:r><w:br w:type="page"/></w:r></w:p>' : "";
     return start + p(
@@ -110,6 +103,28 @@ export function buildStudentGradingWord(
         ? ""
         : p((header(sheet)[1] as { runs: Run[] }).runs, "Metadata")) +
       sheet.blocks.map((block) => {
+        if (block.kind === "image") {
+          const match = /^data:image\/(png|jpeg);base64,([A-Za-z0-9+/=]+)$/
+            .exec(block.src);
+          if (!match) {
+            throw new Error(
+              "Ein Originalbild konnte nicht in Word übernommen werden. Bitte den PDF-Export versuchen.",
+            );
+          }
+          const id = media.length + 1,
+            name = `media/original-${id}.${match[1] === "png" ? "png" : "jpg"}`;
+          media.push({
+            name: `word/${name}`,
+            data: Uint8Array.from(atob(match[2]), (c) => c.charCodeAt(0)),
+          });
+          imageRels.push(
+            `<Relationship Id="rIdPic${id}" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/image" Target="${name}"/>`,
+          );
+          return drawingXml(block, `rIdPic${id}`, id);
+        }
+        if (block.kind === "pagebreak") {
+          return '<w:p><w:r><w:br w:type="page"/></w:r></w:p>';
+        }
         if (block.kind === "table") {
           return table(block);
         }
@@ -144,7 +159,7 @@ export function buildStudentGradingWord(
   return writeZip([
     xml(
       "[Content_Types].xml",
-      '<?xml version="1.0" encoding="UTF-8"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/><Override PartName="/word/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.styles+xml"/></Types>',
+      '<?xml version="1.0" encoding="UTF-8"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Default Extension="jpg" ContentType="image/jpeg"/><Default Extension="png" ContentType="image/png"/><Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/><Override PartName="/word/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.styles+xml"/></Types>',
     ),
     xml(
       "_rels/.rels",
@@ -152,12 +167,21 @@ export function buildStudentGradingWord(
     ),
     xml(
       "word/document.xml",
-      `<?xml version="1.0" encoding="UTF-8"?><w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:body>${body}<w:sectPr><w:pgSz w:w="11906" w:h="16838"/><w:pgMar w:top="900" w:right="900" w:bottom="1050" w:left="900"/></w:sectPr></w:body></w:document>`,
+      `<?xml version="1.0" encoding="UTF-8"?><w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"><w:body>${body}<w:sectPr><w:pgSz w:w="11906" w:h="16838"/><w:pgMar w:top="900" w:right="900" w:bottom="1050" w:left="900"/></w:sectPr></w:body></w:document>`,
     ),
-    xml("word/styles.xml", styles.replaceAll('w:styleId="Title"','w:styleId="Heading1"').replaceAll('w:styleId="TaskHeading"','w:styleId="Heading2"')),
+    xml(
+      "word/styles.xml",
+      styles.replaceAll('w:styleId="Title"', 'w:styleId="Heading1"').replaceAll(
+        'w:styleId="TaskHeading"',
+        'w:styleId="Heading2"',
+      ),
+    ),
     xml(
       "word/_rels/document.xml.rels",
-      '<?xml version="1.0" encoding="UTF-8"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rIdStyles" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/></Relationships>',
+      `<?xml version="1.0" encoding="UTF-8"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rIdStyles" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/>${
+        imageRels.join("")
+      }</Relationships>`,
     ),
+    ...media,
   ]);
 }
