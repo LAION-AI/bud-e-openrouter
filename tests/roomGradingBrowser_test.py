@@ -113,7 +113,7 @@ with sync_playwright() as p:
         page.on('dialog',lambda dialog:dialog.accept())
         page.get_by_role('button',name='Korrekturvorschläge',exact=False).click()
         dialog=page.get_by_role('dialog',name='Agentische Korrekturvorschläge')
-        dialog.get_by_label('Arbeiten hochladen').set_input_files(fixture)
+        dialog.get_by_label('Arbeiten hochladen',exact=True).set_input_files(fixture)
         pause=dialog.get_by_role('checkbox',name='Prüfpause einlegen',exact=False)
         expect(pause).not_to_be_checked()
         expect(dialog.get_by_role('button',name='Alle drei Stufen starten')).to_be_disabled()
@@ -183,6 +183,11 @@ with sync_playwright() as p:
             assert f'Original {n}' in proof_text and f'Abschrift {n}' in proof_text, f'Missing original/transcript pair {n}'
         if BATCH:
             assert proof_text.index('Arbeit 01 · Original 3') < proof_text.index('Arbeit 01 · Abschrift 3') < proof_text.index('Arbeit 01 · Original 1') < proof_text.index('Arbeit 01 · Deine Rückmeldung')
+        mapping=dialog.get_by_label('Übersicht der Seitenzuordnung',exact=True)
+        mapping.locator('summary').click()
+        expect(mapping).to_contain_text('keine bestätigte Klassenliste')
+        for n in expected_names:expect(mapping).to_contain_text(n)
+        mapping.locator('summary').click()
         with page.expect_download(timeout=120000) as proof_word:
             dialog.get_by_role('button',name='Prüfmappe als Word herunterladen',exact=True).click()
         with zipfile.ZipFile(proof_word.value.path()) as document:
@@ -213,6 +218,14 @@ with sync_playwright() as p:
     settings=private.get_by_role('dialog',name='Persönliche Einstellungen');settings.wait_for(timeout=30000)
     settings.get_by_label('Chat & Bilder verstehen Modell-ID',exact=True).fill(MODEL)
     settings.get_by_role('button',name='Verschlüsselt speichern').click();settings.wait_for(state='hidden')
+    private.get_by_role('button',name='Korrekturvorschläge',exact=False).click()
+    private_help=private.get_by_role('dialog',name='Agentische Korrekturvorschläge')
+    private_help.get_by_role('button',name='Kurzanleitung – in 5 Schritten',exact=True).click()
+    for _ in range(4):private_help.get_by_role('button',name='Weiter',exact=True).click()
+    expect(private_help.get_by_text('Im privaten Raum wird der fertige Gesamtbericht',exact=False)).to_be_visible()
+    expect(private_help.get_by_text('Originale und Zwischenstände werden dort nicht automatisch mitgesichert.',exact=False)).to_be_visible()
+    private_help.get_by_role('button',name='Zur Korrektur',exact=True).click()
+    private_help.get_by_role('button',name='Korrektur schließen',exact=True).click()
     run_workflow(private)
     private.get_by_label('Deine Nachricht',exact=True).fill('#korrektur')
     private.locator('[data-personal-send]').click()

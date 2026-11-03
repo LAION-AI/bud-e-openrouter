@@ -45,12 +45,19 @@ Deno.test("five variant solution keys expose ten progressing steps and checkpoin
   await markRoomWork(
     work,
     "Rubric; ohne Punkte",
-    (prompt) =>
-      Promise.resolve(
+    (prompt) => {
+      assert(
+        prompt.includes("PUNKTESCHREIBWEISE"),
+        "Every rubric, marking and independent review request must explain score notation",
+      );
+      assert(prompt.includes("1 von 2 Punkten"));
+      assert(prompt.includes("Echte halbe Punkte"));
+      return Promise.resolve(
         prompt.startsWith("GEMEINSAMER")
           ? "Lösung\n<!-- BUDE_MASSSTAB_FERTIG -->"
           : "Geprüft" + end,
-      ),
+      );
+    },
     (_message, status) => {
       if (status?.stage === "guidance") {
         assertEquals(status.total, 10);

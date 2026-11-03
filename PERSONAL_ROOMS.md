@@ -82,15 +82,23 @@ ZIP, Pfad-Traversal, verschlüsselte Archive und übergroße Entpackmengen abgew
 PDF wird nach tatsächlichen Seiten geteilt, Word nach expliziten Seitenumbrüchen,
 Textabschnitten und eingebetteten Bildern; für exakte Word-Seiten vorher PDF nutzen.
 
-Drei Stufen: bis zu drei Seiten parallel wörtlich abschreiben; ein gemeinsamer
-Modellaufruf ordnet alle Seiten zu Schülern und Reihenfolge; nach Prüfung bewertet
-je ein Modellaufruf die komplette Arbeit eines Schülers samt Originalen und
-gemeinsamen Kriterien, bis zu drei Schüler parallel. Jede Seite muss genau einer
-Gruppe zugeordnet sein. Namen, Reihenfolge und Abschriften sind vor der Bewertung
-editierbar. Ein Erwartungshorizont kann vorab eingegeben werden; die ausdrückliche
-Option „Alle drei Stufen automatisch durchführen“ überspringt die Prüf-Pause.
+Drei Stufen: bis zu sechs Seiten parallel wörtlich abschreiben; ein gemeinsamer
+Modellaufruf ordnet alle Seiten zu Schülern und Reihenfolge; anschließend bewertet
+je ein Schülerjob die komplette Arbeit samt Originalen und gemeinsamen Kriterien,
+bis zu sechs Schüler parallel. Jede Seite muss genau einer Gruppe zugeordnet sein.
+Namen, Reihenfolge und Abschriften sind vor der Bewertung editierbar. Der
+Erwartungshorizont wird vorab eingegeben. Standardmäßig laufen alle drei Stufen
+nacheinander; „Prüfpause einlegen“ aktiviert die manuelle Prüfung dazwischen.
 Fortschritt und Aufrufstufen sind einsehbar. Kein fehlender Punkte-/Notenschlüssel
 wird erfunden; Ergebnisse sind überprüfbare Vorschläge, keine verbindlichen Noten.
+
+Der Einstieg zeigt zuerst „Arbeiten hochladen“ und dann die Korrekturkriterien.
+„Schon angefangen? Zwischenstand laden“ steht weiter unten und ist zunächst
+eingeklappt. Die fünfteilige Kurzanleitung ersetzt vorübergehend den Inhalt im
+selben Dialog; Eingaben und laufende Arbeit bleiben erhalten. Info-Knöpfe helfen
+per Maus, Tastatur und Touch unter anderem bei API-Key, Raumbudget, Anbieterguthaben,
+Prüfpause und unverschlüsselten lokalen Sicherungen. Das Öffnen der Hilfe, die
+Dateiauswahl und der Import einer Sicherung starten keine Modellanfrage.
 
 Alle privaten Modellanfragen laufen weiterhin direkt zum Anbieter, auch PDFs
 (OpenRouter/Requesty-Dateifelder bzw. Google-inlineData). Nur der fertige gemeinsame
@@ -114,7 +122,10 @@ und Fotos geprüft: parallele Aufrufe, vollständige DOCX/PDF-Exporte, Prüf-Pau
 Auto-Modus und private verschlüsselte Wiederherstellung. Browser-Anbieter hierfür
 simuliert. Inzwischen zusätzlicher echter Stapeltest mit zwei Testarbeiten:
 Abschrift, Zuordnung, Einzelbewertungen, DOCX/PDF und private Wiederherstellung
-bestanden; nicht die realen 8d-Arbeiten, deren Dateien/Prompt hier fehlen.
+bestanden. Echte große Klassenstapel werden zusätzlich über den Browser geprüft;
+ihre Dateien, Abschriften und Ergebnisse bleiben ausschließlich lokal außerhalb
+von Git. Auch bei erfolgreichem technischem Durchlauf können Handschriftlesung,
+Namenszuordnung und Bewertung fachlich falsch sein; Originalvergleich bleibt nötig.
 
 ### Recovery und Zwischenstandsdateien
 
@@ -143,7 +154,8 @@ Klartext-Upload an einen Buddy-Konvertierungsdienst.
 Original-Seiten, Abschriften, Zuordnung/Entwürfen, Kriterien/Feedback sowie
 fertigen und angefangenen Bewertungen. Auch während der Verarbeitung möglich.
 „Zwischenstand laden“ prüft die Datei (max. 180 MB) und lädt sie ohne automatische
-Modellanfrage; vor der Bewertung Zuordnung und Kriterien erneut bestätigen.
+Modellanfrage; Zuordnung und Kriterien können vor dem Fortsetzen geprüft werden.
+Im Modus mit Prüfpause ist eine ausdrückliche Bestätigung nötig.
 Keine API-Keys/Passwörter/Raumeinstellungen im Export. ACHTUNG: Arbeiten und
 Rückmeldungen stehen in dieser Datei unverschlüsselt; geschützt aufbewahren,
 nicht an Schüler weitergeben. Kein neues automatisches Speichern von Schülerdaten

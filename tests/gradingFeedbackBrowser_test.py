@@ -56,8 +56,6 @@ with sync_playwright() as p:
     expect(dialog.get_by_text('Raumbudget',exact=False).first).to_be_visible()
     expect(dialog.get_by_text('nicht abrufbar',exact=True)).to_be_visible()
     expect(dialog.get_by_text('Wenig Guthaben oder Key-Spielraum übrig.',exact=False)).to_be_visible()
-    dialog.get_by_role('button',name='Wie sichere ich und mache später weiter?').click()
-    expect(dialog.get_by_text('Die Endung .json ist richtig',exact=False)).to_be_visible()
     fixtures=[{'name':f'arbeit{n}.txt','mimeType':'text/plain','buffer':f'Person {n}\nVersion A\nAufgabe 1: 2 + 2 = 4'.encode()} for n in range(1,5)]
     dialog.get_by_label('Arbeiten hochladen',exact=True).set_input_files(fixtures)
     criteria=dialog.get_by_label('Erwartungshorizont / Korrekturkriterien',exact=True)
@@ -67,6 +65,8 @@ with sync_playwright() as p:
     alert=dialog.get_by_role('alert')
     expect(alert).to_contain_text('Das Raumbudget reicht',timeout=30000)
     expect(alert).to_contain_text('nicht das Guthaben')
+    dialog.get_by_role('button',name='Wie sichere ich und mache später weiter?').click()
+    expect(dialog.get_by_text('Die Endung .json ist richtig',exact=False)).to_be_visible()
     assert state['transcripts']==4
     with page.expect_download() as download:alert.get_by_role('button',name='Sicherung jetzt herunterladen').click()
     checkpoint=download.value.path().read_bytes();parsed=json.loads(checkpoint)
@@ -97,6 +97,11 @@ with sync_playwright() as p:
     page.wait_for_function("document.querySelector('[role=timer]')?.textContent.includes('1 KI-Schritte')")
     page.clock.fast_forward(91000)
     expect(dialog.get_by_text('Es gibt länger keine neue Rückmeldung.',exact=False)).to_be_visible()
+    calls_before_help=state['calls']
+    dialog.get_by_role('button',name='Kurzanleitung – in 5 Schritten',exact=True).click()
+    expect(dialog.get_by_text('Die Korrektur läuft währenddessen weiter.',exact=False)).to_be_visible()
+    dialog.get_by_role('button',name='Zur Korrektur',exact=True).click()
+    assert state['calls']==calls_before_help,'Opening help restarted inference'
     dialog.get_by_role('button',name='Pausieren',exact=True).click()
     expect(dialog.get_by_role('alert')).to_contain_text('Die Korrektur ist pausiert.')
     for route in held:

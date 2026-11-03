@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "preact/hooks";
+import { GradingInfo } from "./GradingHelp.tsx";
 import {
   type GradingBudgetLoader,
   type GradingBudgetSnapshot,
@@ -158,6 +159,10 @@ export default function GradingBudgetPanel(
         Zweitprüfungen. Ein ausreichender Betrag garantiert nicht, dass der
         ganze Stapel durchläuft. Es wird nie automatisch ein Budget erhöht oder
         Guthaben gekauft.
+        <GradingInfo
+          label="API-Key und Kosten"
+          text="Ein API-Key ist ein geheimer Zugangscode zum KI-Anbieter. Darüber werden die Anfragen abgerechnet. Du nutzt hier den bereits hinterlegten Zugang. Schreibe den Key nie in den Auftrag. Der Anbieter ist der Dienst, der die KI-Rechenarbeit ausführt, zum Beispiel OpenRouter."
+        />
       </p>
       {value?.permission && (
         <div class="mt-3 rounded-xl border border-indigo-200 bg-white p-4 text-sm text-slate-700">
@@ -237,6 +242,12 @@ export default function GradingBudgetPanel(
           <div class="min-w-0 rounded-xl border border-slate-200 bg-white p-3 text-sm">
             <h3 class="font-semibold">
               {privateRoom ? "Privater Raum" : "1. Raumbudget"}
+              <GradingInfo
+                label={privateRoom ? "Privater Raum" : "Raumbudget"}
+                text={privateRoom
+                  ? "Dein fertiger Gesamtbericht wird im privaten Chat verschlüsselt gespeichert. Originale und Zwischenstände werden nicht automatisch mitgesichert. Die KI verarbeitet die dafür ausgewählten Inhalte bei deinem Anbieter. Lokale Downloads sind nicht verschlüsselt."
+                  : "Das Raumbudget ist die zusätzliche Ausgabengrenze für alle Personen in diesem Klassenraum. Du stellst sie unter /my ein. Es ist kein Geld auf dem Anbieterkonto. Beide Grenzen müssen für eine Anfrage ausreichen."}
+              />
             </h3>
             {privateRoom
               ? (
@@ -294,6 +305,10 @@ export default function GradingBudgetPanel(
               {privateRoom
                 ? "Anbieterguthaben und Key-Limit"
                 : "2. Anbieterguthaben und Key-Limit"}
+              <GradingInfo
+                label="Guthaben und Key-Limit"
+                text="Guthaben ist Geld im Konto beim KI-Anbieter. Ein Key-Limit beschränkt, wie viel ein bestimmter Zugangscode ausgeben darf. Es ist kein zusätzliches Guthaben. Nicht abrufbar heißt unbekannt – weder 0 noch kostenlos noch unbegrenzt."
+              />
             </h3>
             {balance
               ? (

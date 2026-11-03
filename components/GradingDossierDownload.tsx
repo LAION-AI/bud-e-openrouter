@@ -7,6 +7,7 @@ import {
 import { gradingEvidenceWarnings } from "../utils/gradingEvidence.ts";
 import type { SourceDoc } from "../utils/grading.ts";
 import { gradingOriginalImage } from "../utils/gradingOriginals.ts";
+import { GradingInfo } from "./GradingHelp.tsx";
 
 const button =
   "rounded-xl border border-indigo-300 bg-white px-4 py-2 text-sm font-semibold text-indigo-800 disabled:opacity-40";
@@ -17,6 +18,11 @@ export default function GradingDossierDownload(
     [status, setStatus] = useState(""),
     [error, setError] = useState("");
   const [warnings, setWarnings] = useState<string[]>([]);
+  const uncertainGroups = session.papers.filter((paper) =>
+    !paper.ignored &&
+    /unsicher|unbekannt|unleser|im Zweifel|nicht sicher|möglicherweise|ungeklärt|\[\?/i
+      .test(`${paper.student} ${paper.note ?? ""}`)
+  );
   useEffect(() => {
     let stopped = false;
     void gradingDossierWorks(session, criteria).then((works) => {
@@ -82,7 +88,49 @@ export default function GradingDossierDownload(
     >
       <h4 class="font-semibold text-indigo-950">
         Alles nachvollziehen: deine Prüfmappe
+        <GradingInfo
+          label="Prüfmappe und Schüler-Feedback"
+          text="Die Prüfmappe ist für dich: Sie verbindet Originale, Abschriften und Rückmeldungen der ganzen Klasse. Word (.docx) kannst du bearbeiten, PDF ansehen und drucken. Die getrennten Schüler-Feedbacks sind zum Weitergeben nach deiner Prüfung gedacht. Alle Downloads sind unverschlüsselt."
+        />
       </h4>
+      <details
+        class="mt-3 rounded-xl border border-slate-200 bg-white p-3 text-sm"
+        aria-label="Übersicht der Seitenzuordnung"
+      >
+        <summary class="cursor-pointer font-semibold">
+          Welche Seiten gehören zu wem? ·{" "}
+          {session.papers.filter((p) => !p.ignored).length} Arbeitsgruppen
+        </summary>
+        <p class="mt-2 text-slate-600">
+          Das ist eine Zuordnung der KI, keine bestätigte Klassenliste. Prüfe
+          besonders Namen, Rückseiten und mögliche doppelte Arbeiten. Die
+          Original-ID findest du auch in der Abschrift und Prüfmappe.
+        </p>
+        <ul class="mt-3 max-h-80 space-y-3 overflow-y-auto">
+          {session.papers.map((paper, at) => (
+            <li key={at} class="border-t border-slate-100 pt-2">
+              <strong>
+                Arbeit {String(at + 1).padStart(2, "0")}: {paper.student}
+              </strong>
+              <p>
+                Original-IDs in Lesereihenfolge: {paper.pages.join(", ")}
+                {paper.ignored ? " · nicht bewertet" : ""}
+              </p>
+              {paper.note && (
+                <p class="mt-1 text-xs text-slate-600">{paper.note}</p>
+              )}
+            </li>
+          ))}
+        </ul>
+      </details>
+      {uncertainGroups.length > 0 && (
+        <p class="mt-2 rounded-xl bg-amber-50 p-3 text-sm text-amber-950">
+          Bei {uncertainGroups.length}{" "}
+          Arbeitsgruppen sind Name oder Zuordnung als unsicher beschrieben.
+          Prüfe die Übersicht und die Originale, bevor du Rückmeldungen
+          verteilst.
+        </p>
+      )}
       {warnings.length > 0 && (
         <div
           class="my-3 rounded-xl border border-amber-400 bg-amber-50 p-3 text-sm text-amber-950"

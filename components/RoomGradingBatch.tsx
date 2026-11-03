@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "preact/hooks";
 import ClassroomCodeContent from "./ClassroomCodeContent.tsx";
 import GradingBudgetPanel from "./GradingBudgetPanel.tsx";
+import { GradingInfo, GradingWalkthrough } from "./GradingHelp.tsx";
 import GradingDossierDownload, {
   GradingOriginalPreview,
 } from "./GradingDossierDownload.tsx";
@@ -201,7 +202,29 @@ export default function RoomGradingBatch(
   const jobStarts = useRef(new Map<number, number>()), jobId = useRef(0);
   const [downloadedAt, setDownloadedAt] = useState("");
   const [showResumeHelp, setShowResumeHelp] = useState(false);
+  const [tutorialOpen, setTutorialOpen] = useState(false);
+  const tutorialButton = useRef<HTMLButtonElement>(null);
+  const resumeSection = useRef<HTMLDetailsElement>(null);
+  const returnFromTutorial = () => {
+    setTutorialOpen(false);
+    requestAnimationFrame(() => tutorialButton.current?.focus());
+  };
   const issueRef = useRef<HTMLDivElement | null>(null);
+  const progressRef = useRef<HTMLDivElement | null>(null);
+  const progressShown = useRef(false);
+  useEffect(() => {
+    if (!busy) {
+      progressShown.current = false;
+      return;
+    }
+    if (status && !tutorialOpen && !progressShown.current) {
+      progressShown.current = true;
+      progressRef.current?.scrollIntoView({
+        block: "start",
+        behavior: "smooth",
+      });
+    }
+  }, [busy, !!status, tutorialOpen]);
   useEffect(() => {
     if (error) {
       issueRef.current?.scrollIntoView({ block: "start", behavior: "smooth" });
@@ -295,6 +318,7 @@ export default function RoomGradingBatch(
   }
   async function importCheckpoint(file?: File) {
     if (!file || busy) return;
+    if (resumeSection.current) resumeSection.current.open = true;
     setCheckpointBusy(true);
     setErrorCode("");
     try {
@@ -649,13 +673,21 @@ export default function RoomGradingBatch(
       <section class="mx-auto my-3 w-full max-w-4xl rounded-3xl bg-white p-5 shadow-2xl sm:p-7">
         <div class="flex items-start justify-between gap-3">
           <h2 class="text-xl font-bold text-slate-900">
-            Korrekturvorschläge für deine Klasse
+            {tutorialOpen
+              ? "So nutzt du die Korrektur"
+              : "Korrekturvorschläge für deine Klasse"}
           </h2>
           <button
             type="button"
             class={control}
-            aria-label="Korrektur schließen"
+            aria-label={tutorialOpen
+              ? "Anleitung schließen"
+              : "Korrektur schließen"}
             onClick={() => {
+              if (tutorialOpen) {
+                returnFromTutorial();
+                return;
+              }
               if (
                 (busy || session?.pages.length || report) &&
                 !confirm(
@@ -671,854 +703,935 @@ export default function RoomGradingBatch(
             ✕
           </button>
         </div>
-        {issuePanel}
-        <p class="mt-3 text-sm text-slate-600">
-          Lade die Arbeiten deiner Klasse hoch und lege fest, worauf Bud-E
-          achten soll. Du erhältst für jede Person einen Korrekturvorschlag als
-          Word und PDF.
-        </p>
-        <div
-          class="sticky top-0 z-10 mt-4 flex flex-wrap items-center gap-2 rounded-2xl border border-indigo-100 bg-white p-3 shadow-sm"
-          aria-label="Sichern und Fortsetzen"
-        >
-          <span class="mr-auto text-sm font-semibold text-slate-800">
-            {report
-              ? "Ergebnisse fertig"
-              : busy
-              ? "Korrektur läuft – dieses Fenster offen lassen"
-              : session?.pages.length
-              ? "Dein Zwischenstand ist noch in diesem Fenster"
-              : "Schritt für Schritt durch deine Korrektur"}
+        {tutorialOpen && (
+          <GradingWalkthrough
+            privateRoom={privateRoom}
+            busy={busy}
+            onReturn={returnFromTutorial}
+          />
+        )}
+        <div hidden={tutorialOpen}>
+          {issuePanel}
+          <p class="mt-3 text-sm text-slate-600">
+            Lade die Arbeiten deiner Klasse hoch und lege fest, worauf Bud-E
+            achten soll. Du erhältst für jede Person einen Korrekturvorschlag
+            als Word und PDF.
+          </p>
+          <button
+            ref={tutorialButton}
+            type="button"
+            class="mt-3 rounded-xl border border-indigo-200 bg-indigo-50 px-4 py-2 text-sm font-semibold text-indigo-700"
+            onClick={() => setTutorialOpen(true)}
+          >
+            Kurzanleitung – in 5 Schritten
+          </button>
+          <span class="ml-2 text-xs text-slate-500">
+            Die i-Knöpfe erklären einzelne Optionen.
           </span>
-          <button
-            type="button"
-            class={control}
-            disabled={checkpointBusy || (!sources.length && !session)}
-            onClick={exportCheckpoint}
-          >
-            Zwischenstand herunterladen
-          </button>
-          {busy && (
-            <button
-              type="button"
-              class={control}
-              onClick={() => controller.current?.abort()}
-            >
-              Pausieren
-            </button>
-          )}
-          <button
-            type="button"
-            class="px-2 py-2 text-sm font-semibold text-indigo-700 underline"
-            onClick={() => setShowResumeHelp(!showResumeHelp)}
-          >
-            Wie sichere ich und mache später weiter?
-          </button>
-        </div>
-        {showResumeHelp && (
-          <div class="mt-3 rounded-xl border border-indigo-200 bg-indigo-50 p-4 text-sm leading-6">
-            <h3 class="font-semibold">
-              Sichern und später fortsetzen – ohne alles neu zu machen
-            </h3>
-            <ol class="mt-2 list-decimal space-y-2 pl-5">
-              <li>
-                Klicke auf „Zwischenstand herunterladen“. Dein Browser speichert
-                eine Datei mit dem Namen „Bud-E-Korrektur-Zwischenstand…json“,
-                meist im Ordner „Downloads“. Die Endung .json ist richtig; du
-                musst die Datei nicht öffnen.
-              </li>
-              <li>
-                Zum Aufhören erst „Pausieren“ anklicken. Schließe oder lade die
-                Webseite erst neu, wenn du die Sicherungsdatei heruntergeladen
-                hast. Diese Sicherung wird nicht automatisch auf dem Server
-                gespeichert.
-              </li>
-              <li>
-                Öffne später denselben Raum und „Korrekturvorschläge“. Wähle bei
-                „Zwischenstand laden“ deine gesicherte Datei. Die
-                Originalarbeiten musst du nicht erneut hochladen.
-              </li>
-              <li>
-                Prüfe Zuordnung und Kriterien. Bestätige das Häkchen und klicke
-                „Korrekturvorschläge erstellen“ bzw. bei fehlenden Abschriften
-                „Abschrift und Zuordnung fortsetzen“. Bereits fertige Schritte
-                werden wiederverwendet.
-              </li>
-            </ol>
-            <p class="mt-3 font-semibold">
-              Die Datei enthält Schülerarbeiten im Klartext. Geschützt
-              aufbewahren, nicht an Schüler weitergeben. Weitere KI-Aufrufe
-              können erneut Geld kosten.
-            </p>
-          </div>
-        )}
-        {session && (
-          <div
-            class="mt-4 grid grid-cols-3 gap-2 text-center text-xs text-slate-600"
-            aria-label="Bisheriger Arbeitsfortschritt im Fenster"
-          >
-            <div class="rounded-xl bg-slate-50 p-3">
-              <strong class="block text-lg text-slate-900">
-                {session.pages.length}/{session.sources.length}
-              </strong>Seiten abgeschrieben
-            </div>
-            <div class="rounded-xl bg-slate-50 p-3">
-              <strong class="block text-lg text-slate-900">
-                {session.papers.filter((p) => !p.ignored).length}
-              </strong>Arbeiten zugeordnet
-            </div>
-            <div class="rounded-xl bg-slate-50 p-3">
-              <strong class="block text-lg text-slate-900">
-                {checkedCount}
-              </strong>Rückmeldungen fertig geprüft
-            </div>
-          </div>
-        )}
-        <GradingBudgetPanel
-          load={loadBudget}
-          busy={busy}
-          privateRoom={privateRoom}
-          problem={error}
-        />
-        <ol class="my-4 grid gap-3 text-sm sm:grid-cols-3">
-          {[
-            "Abschreiben",
-            "Seiten zuordnen",
-            "Bewerten & am Original prüfen",
-          ].map((label, at) => (
-            <li
-              key={label}
-              class={`rounded-xl border p-3 ${
-                status && activeStep === at + 1
-                  ? "border-indigo-400 bg-indigo-50"
-                  : "border-slate-200 bg-slate-50"
-              }`}
-            >
-              <span class="font-bold">{at + 1}.</span>
-              {label}
-            </li>
-          ))}
-        </ol>
-        <details class="my-3 text-sm text-slate-600">
-          <summary class="cursor-pointer font-semibold">
-            So funktioniert die Korrektur · Kosten und Datenschutz
-          </summary>
-          <p class="mt-2 text-sm leading-6 text-slate-600">
-            Eine PDF kann die Arbeiten der ganzen Klasse enthalten. Sie wird
-            zuerst in echte Einzelseiten zerlegt. Ein gemeinsamer KI-Aufruf
-            sortiert danach alle Seiten – auch durcheinandergeratene Fotos –
-            nach Schüler und Lesereihenfolge. Anschließend erhält jede
-            Schülerarbeit einen eigenen Bewertungsentwurf mit demselben
-            Erwartungshorizont und danach eine separate Zweitprüfung am
-            Original. Dadurch entstehen zusätzliche Modellaufrufe; auch eine
-            Zweitprüfung ist keine Garantie für Fehlerfreiheit. Bis zu{" "}
-            {GRADING_PARALLEL} Aufrufe laufen gleichzeitig.
-          </p>
-          <p class="my-3 rounded-xl bg-amber-50 p-3 text-xs leading-5 text-amber-900">
-            KI kann Namen, Handschrift und Seitenzuordnung verwechseln. Verwende
-            möglichst Pseudonyme und prüfe die Ergebnisse vor der Weitergabe.
-            Mehrere Modellaufrufe verursachen Kosten. {privateRoom
-              ? "Anfragen gehen direkt an deinen Anbieter; nur der fertige Gesamtbericht wird im privaten Chat verschlüsselt gespeichert."
-              : "Die Freigabe und das Budget deines Klassenraums gelten bei jedem Aufruf."}
-            {" "}
-            Originaldateien und Zwischenstände bleiben nur in diesem Fenster,
-            bis du sie selbst herunterlädst. Ein Zwischenstand enthält die
-            Arbeiten, Abschriften, Zuordnung, Kriterien und fertige/angefangene
-            Bewertungen – keine API-Keys oder Passwörter. Die JSON-Datei ist
-            unverschlüsselt: geschützt aufbewahren und nicht an Schüler
-            weitergeben. Nach erneutem Hochladen kannst du auf einem anderen
-            Gerät fortsetzen. Automatisch höchstens drei Versuche je
-            fehlerhaftem Schritt; weitere Versuche nur auf deinen Klick.
-            Word-DOCX ist editierbar; PDF ist direkt herunterladbar – kein
-            Editor-Häkchen erforderlich.
-          </p>
-        </details>
-        <p class="my-3 rounded-xl bg-amber-50 p-3 text-sm text-amber-900">
-          KI erstellt Vorschläge, keine freigegebene Bewertung. Prüfe Namen,
-          Zuordnung und Punkte vor der Weitergabe. Vor dem Schließen:
-          Zwischenstand sichern. Mehrere Modellaufrufe können Kosten
-          verursachen.
-        </p>
-        <div class="my-4 rounded-xl border border-slate-200 p-3 text-sm">
-          <p class="font-semibold">
-            Deine Sicherungsdatei · auch auf einem anderen Gerät fortsetzen
-          </p>
-          <div class="mt-3 flex flex-wrap items-center gap-3">
-            <button
-              type="button"
-              class={control}
-              disabled={checkpointBusy || (!sources.length && !session)}
-              onClick={() => void exportCheckpoint()}
-            >
-              Sicherungsdatei herunterladen
-            </button>
-            <label class="text-sm font-semibold">
-              Zwischenstand laden
-              <input
-                aria-label="Zwischenstand laden"
-                type="file"
-                accept=".json,application/json"
-                class="mt-1 block text-xs"
-                disabled={busy || checkpointBusy}
-                onChange={(event) => {
-                  void importCheckpoint(event.currentTarget.files?.[0]);
-                  event.currentTarget.value = "";
-                }}
-              />
-            </label>
-          </div>
-          <p class="mt-2 text-xs text-slate-600">
-            Auch während der Verarbeitung herunterladbar. Fertige Schritte
-            werden beim Fortsetzen übersprungen; neue Modellaufrufe können
-            Kosten verursachen. Vor dem Schließen oder Neuladen bitte sichern.
-          </p>
-          {downloadedAt && (
-            <p class="mt-2 text-xs font-semibold text-emerald-800">
-              Download um {downloadedAt}{" "}
-              gestartet. Prüfe den Downloads-Ordner deines Browsers. Später
-              fertig gewordene Schritte sind erst in einer neuen Sicherung
-              enthalten.
-            </p>
-          )}
-          {checkpointMessage && (
-            <p role="status" class="mt-2 text-xs text-indigo-800">
-              {checkpointMessage}
-            </p>
-          )}
-        </div>
-        {!session && (
-          <div class="my-4 rounded-xl border border-slate-200 p-4">
-            <label class="block text-sm font-semibold">
-              1. Arbeiten hochladen<input
-                aria-label="Arbeiten hochladen"
-                type="file"
-                multiple
-                disabled={busy}
-                accept=".zip,.pdf,.docx,.doc,.odt,.txt,.md,image/png,image/jpeg,image/webp"
-                class="mt-2 block w-full text-sm"
-                onChange={(event) => {
-                  void upload(event.currentTarget.files);
-                  event.currentTarget.value = "";
-                }}
-              />
-            </label>
-            <p class="mt-2 text-xs text-slate-500">
-              PDF/Word/Fotos bis 20 MB je Datei, ZIP bis 40 MB. ZIP-Unterordner
-              werden nach geeigneten Dateien durchsucht. Höchstens{" "}
-              {MAX_GRADING_PAGES}
-              vorbereitete Seiten/Abschnitte. Word wird anhand von Umbrüchen,
-              Textabschnitten und eingebetteten Fotos zerlegt; für eine exakte
-              Original-Seitenaufteilung Word vorher als PDF exportieren.
-            </p>
-            <details class="mt-3">
-              <summary class="cursor-pointer text-sm font-semibold">
-                {sources.length}{" "}
-                Seiten/Abschnitte ausgewählt · Dateien anzeigen oder entfernen
-              </summary>
-              <ul class="my-3 max-h-48 space-y-2 overflow-y-auto text-sm">
-                {sources.map((source, at) => (
-                  <li key={at} class="flex items-center justify-between gap-2">
-                    <span class="min-w-0 break-words">
-                      {at + 1}. {source.name}
-                    </span>
-                    <button
-                      type="button"
-                      class={control}
-                      disabled={busy}
-                      aria-label={`Datei ${at + 1} entfernen`}
-                      onClick={() =>
-                        setSources(sources.filter((_, n) =>
-                          n !== at
-                        ))}
-                    >
-                      Entfernen
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            </details>
-          </div>
-        )}
-        {!report && (
-          <div class="my-4 rounded-xl border border-indigo-100 bg-indigo-50/40 p-4">
-            <label class="block text-sm font-semibold">
-              2. Erwartungshorizont / Korrekturkriterien<textarea
-                ref={criteriaInput}
-                aria-label="Erwartungshorizont / Korrekturkriterien"
-                class={input + " min-h-32"}
-                maxLength={20000}
-                value={criteria}
-                disabled={busy}
-                onInput={(event) => setCriteria(event.currentTarget.value)}
-                placeholder="Welche Antworten erwartest du? Wie viele Punkte gibt es je Teilaufgabe, wann Teilpunkte? Beispiel: Aufgabe 1 je richtige Lücke 1 Punkt; Aufgabe 2 je 2 Punkte, richtiger Ansatz 1 Teilpunkt. Notenschlüssel nur falls gewünscht."
-              />
-            </label>
-            {criteriaClarification && (
-              <div
-                role="alert"
-                class="mt-3 rounded-xl border border-amber-300 bg-amber-50 p-3 text-sm text-amber-900"
-              >
-                <p class="font-semibold">Rückfrage an dich als Lehrkraft</p>
-                <p class="mt-2 whitespace-pre-wrap">{criteriaClarification}</p>
-                <p class="mt-2 text-xs">
-                  Die Bewertung pausiert. Ergänze die Kriterien oben und starte
-                  die Korrekturvorschläge anschließend erneut. Fertige
-                  Abschriften bleiben erhalten; es wird keine Punktregel
-                  erfunden.
-                </p>
-              </div>
-            )}
-            <p class="mt-2 text-xs text-slate-600">
-              Der Maßstab gilt für alle Arbeiten. Fehlende Punkte werden nicht
-              erfunden; ohne Notenschlüssel gibt es keine Note. Rückmeldungen
-              richten sich freundlich direkt an die Schüler.
-            </p>
-            <div class="mt-3 flex flex-wrap gap-2">
-              <button
-                type="button"
-                class={control}
-                disabled={busy || criteria.includes(DERIVE_SOLUTIONS_POLICY)}
-                onClick={() =>
-                  setCriteria(
-                    criteria.trim() + "\n\n" + DERIVE_SOLUTIONS_POLICY,
-                  )}
-              >
-                Lösungen aus den Aufgaben ableiten erlauben
-              </button>
-              <button
-                type="button"
-                class={control}
-                disabled={busy || /Ohne Punkte bewerten\./.test(criteria)}
-                onClick={() =>
-                  setCriteria(
-                    criteria.trim() +
-                      "\n\nOhne Punkte bewerten. Nur fachliche Rückmeldung, keine Note.",
-                  )}
-              >
-                Ausdrücklich ohne Punkte bewerten
-              </button>
-            </div>
-            {criteriaQuestions.length > 0 && (
-              <div
-                class="mt-3 rounded-xl bg-amber-50 p-3 text-sm text-amber-900"
-                aria-live="polite"
-              >
-                <p class="font-semibold">Vor der Bewertung noch klären:</p>
-                <ul class="mt-2 list-disc space-y-1 pl-5">
-                  {criteriaQuestions.map((question) => (
-                    <li key={question}>{question}</li>
-                  ))}
-                </ul>
-                <p class="mt-2 text-xs">
-                  Ergänze deine Antworten im Feld oben. Abschrift und Zuordnung
-                  sind auch vorher möglich: Aktiviere dafür unten die Prüfpause.
-                </p>
-              </div>
-            )}
-            {
-              <>
-                <label class="mt-3 flex items-start gap-2 text-sm">
-                  <input
-                    type="checkbox"
-                    checked={!automatic}
-                    disabled={busy}
-                    onChange={(event) =>
-                      setAutomatic(!event.currentTarget.checked)}
-                    class="mt-1"
-                  />
-                  <span>
-                    Prüfpause einlegen: Abschrift und Seitenzuordnung vor der
-                    Bewertung selbst prüfen
-                  </span>
-                </label>
-                <p class="mt-2 text-xs text-slate-600">
-                  Standard: Nach deinem Start laufen Abschrift, Zuordnung und
-                  Bewertung automatisch nacheinander durch. Trage vorher die
-                  Korrekturkriterien ein. Nur mit diesem Häkchen hält Bud-E
-                  zwischendurch an. Unsichere Lesestellen und fehlende Kriterien
-                  können trotzdem eine Rückfrage nötig machen. Prüfe das
-                  Ergebnis vor der Weitergabe.
-                </p>
-              </>
-            }
-          </div>
-        )}
-        {!ready && (
-          <button
-            type="button"
-            class={primary}
-            disabled={busy || checkpointBusy || !sources.length ||
-              (automatic && criteriaQuestions.length > 0)}
-            onClick={() => void run(false)}
-          >
-            {session
-              ? "Abschrift und Zuordnung fortsetzen"
-              : automatic
-              ? "Alle drei Stufen starten"
-              : "Abschrift und Zuordnung starten"}
-          </button>
-        )}
-        {status && (
-          <div class="my-4 rounded-xl bg-slate-50 p-4">
-            <div class="mb-2 flex justify-between text-sm font-semibold">
-              <span>
-                {criteriaClarification
-                  ? "Rückfrage – bitte ergänze den Bewertungsmaßstab"
-                  : status.stage === "review"
-                  ? "Prüfpause – deine Rückmeldung ist gefragt"
-                  : status.stage === "guidance"
-                  ? `Lösungsschlüssel vorbereiten: ${status.completed} / ${status.total} Teilschritte`
-                  : status.stage === "mark"
-                  ? `Bewertet: ${status.completed} / ${status.total} Schülerarbeiten`
-                  : status.stage === "transcribe"
-                  ? `Abgeschrieben: ${status.completed} / ${status.total} Seiten`
-                  : status.stage === "done"
-                  ? `Alle ${status.total} Schülerarbeiten bewertet`
-                  : status.stage === "group"
-                  ? "Stufe 2: alle Seiten werden gruppiert"
-                  : "Seiten werden vorbereitet"}
-              </span>
-              <span>{percent}%</span>
-            </div>
-            {status.stage === "guidance" && (
-              <p class="mb-3 text-sm text-slate-600">
-                Bevor Bud-E einzelne Schüler bewertet, erstellt und prüft es für
-                jede Testversion eine gemeinsame Lösung. Das verhindert
-                unterschiedliche Maßstäbe. „0 bewertet“ wäre in dieser Phase
-                normal – die Einzelbewertung beginnt danach.
-              </p>
-            )}
-            {steps.length > 0 && (
-              <p class="mb-2 text-xs text-slate-600" aria-live="polite">
-                {steps.at(-1)}
-              </p>
-            )}
-            <div
-              role="progressbar"
-              aria-label="Korrekturfortschritt"
-              aria-valuemin={0}
-              aria-valuemax={100}
-              aria-valuenow={percent}
-              class="h-3 overflow-hidden rounded-full bg-slate-200"
-            >
-              <div
-                class="h-full rounded-full bg-indigo-600 transition-all"
-                style={{ width: `${percent}%` }}
-              />
-            </div>
-            {busy && (
-              <p class="mt-3 text-xs text-slate-600" role="timer">
-                Dieser Durchgang läuft seit {Math.floor(duration / 60)} Min.
-                {" "}
-                {duration % 60} Sek. · {pendingCalls}{" "}
-                KI-Schritte in Bearbeitung · letzte Statusmeldung vor {silence}
-                {" "}
-                Sek. {pendingCalls > 0 &&
-                  ` · längster offener KI-Schritt: ${oldestJob} Sek.`}{" "}
-                Große Stapel und gründliche Zweitprüfungen können mehrere
-                Minuten dauern. Diese Anzeige ist keine Zusage, dass der
-                Anbieter noch antwortet.
-              </p>
-            )}
-            {busy && (silence >= 75 || oldestJob >= 90) && (
-              <div class="mt-3 rounded-xl bg-amber-50 p-3 text-sm text-amber-900">
-                <strong>Es gibt länger keine neue Rückmeldung.</strong>{" "}
-                Lass den Tab geöffnet und prüfe die Internetverbindung. Du
-                kannst jederzeit den Zwischenstand herunterladen und pausieren.
-                Starte nicht mehrfach gleichzeitig neu; laufende
-                Anbieteranfragen können noch Kosten verursachen.
-              </div>
-            )}
-            {!busy && !report && session && (
-              <p class="mt-3 text-sm font-semibold text-indigo-800">
-                {criteriaClarification
-                  ? "Die KI wartet auf deine Antwort. Deine Abschriften und fertigen Schritte bleiben erhalten."
-                  : error
-                  ? "Angehalten – deine fertigen Schritte sind noch da. Beachte die Hilfe unten und sichere den Zwischenstand."
-                  : ready
-                  ? automatic
-                    ? "Bereit zum Fortsetzen: Prüfe bei Bedarf die Kriterien und klicke auf Korrekturvorschläge erstellen."
-                    : "Du bist dran: Prüfe Zuordnung und Kriterien, setze das Bestätigungshäkchen und erstelle dann die Korrekturvorschläge."
-                  : "Bereit zum Fortsetzen: Nur die noch fehlenden Schritte werden bearbeitet."}
-              </p>
-            )}
-            {criteriaClarification && (
-              <div class="mt-3 rounded-xl border border-amber-300 bg-amber-50 p-3 text-sm text-amber-950">
-                <p class="whitespace-pre-line">{criteriaClarification}</p>
-                <button
-                  type="button"
-                  class={control + " mt-2"}
-                  onClick={() => {
-                    criteriaInput.current?.scrollIntoView({
-                      block: "center",
-                      behavior: "smooth",
-                    });
-                    criteriaInput.current?.focus({ preventScroll: true });
-                  }}
-                >
-                  Rückfragen beantworten
-                </button>
-                <p class="mt-2 text-xs">
-                  Ergänze deine Antworten im Kriterienfeld. Danach
-                  „Korrekturvorschläge erstellen“ anklicken. Du musst die
-                  Dateien nicht erneut hochladen.
-                </p>
-              </div>
-            )}
-          </div>
-        )}
-        {steps.length > 0 && (
-          <details class="my-4 rounded-xl border border-slate-200 p-3">
-            <summary class="cursor-pointer text-sm font-semibold">
-              Arbeitsschritte ({steps.length})
-            </summary>
-            <ol class="mt-2 max-h-56 list-decimal space-y-1 overflow-y-auto pl-5 text-xs text-slate-600">
-              {steps.map((step, at) => <li key={at}>{step}</li>)}
-            </ol>
-          </details>
-        )}
-        {session && (
-          <div class="my-4">
-            <details class="rounded-xl border border-slate-200 p-3">
-              <summary class="cursor-pointer font-semibold">
-                Abschrift prüfen · {session.pages.length} Seiten ·{" "}
-                {session.papers.filter((p) => !p.ignored).length}{" "}
-                Schülerarbeiten ·{" "}
-                {session.papers.filter((p) => p.ignored).reduce(
-                  (n, p) => n + p.pages.length,
-                  0,
-                )} Seiten nicht bewertet
-              </summary>
-              <div class="my-3">
-                <GradingReportDownload
-                  transcript
-                  text={transcriptMarkdown(session.pages, session.papers, "de")}
+          {!session && (
+            <div class="my-4 rounded-xl border border-slate-200 p-4">
+              <div class="float-right">
+                <GradingInfo
+                  label="Arbeiten hochladen"
+                  text="Wähle eine oder mehrere Dateien vom Computer. Du kannst weitere Dateien ergänzen. PDF eignet sich besonders gut für genaue Originalseiten. ZIP ist ein gepackter Ordner; passende Dateien darin werden automatisch gefunden. Die Auswahl allein startet keine KI-Anfrage."
                 />
               </div>
-              <div class="max-h-96 space-y-3 overflow-y-auto">
-                {session.pages.map((page) => (
-                  <div
-                    key={page.page}
-                    class="block text-xs font-semibold text-slate-600"
-                  >
-                    <p class="mb-1 font-semibold text-indigo-900">
-                      {session.papers.find((p) => p.pages.includes(page.page))
-                        ?.student || "Zuordnung noch offen"} · Original-ID{" "}
-                      {page.page}
-                    </p>
-                    {session.sources.find((s) => s.index === page.page) && (
-                      <GradingOriginalPreview
-                        source={session.sources.find((s) =>
-                          s.index === page.page
-                        )!}
-                      />
-                    )}
-                    <label>
-                      Seite {page.page} · {page.file}
-                      <textarea
-                        aria-label={`Abschrift Seite ${page.page}`}
-                        disabled={busy || !!report || !ready}
-                        class={input + " min-h-28 font-normal"}
-                        value={page.transcript}
-                        onInput={(event) => {
-                          const transcript = event.currentTarget.value;
-                          updateWork({
-                            ...session,
-                            pages: session.pages.map((item) =>
-                              item.page === page.page
-                                ? { ...item, transcript }
-                                : item
-                            ),
-                          });
-                          setReviewed(false);
-                        }}
-                      />
-                    </label>
-                    <button
-                      type="button"
-                      class={control + " mt-1 text-xs"}
-                      disabled={busy || checkpointBusy ||
-                        session.pendingPages?.includes(page.page)}
-                      aria-label={`Seite ${page.page} erneut abschreiben`}
-                      onClick={() => {
-                        const current = workRef.current ?? session;
-                        updateWork({
-                          ...current,
-                          pendingPages: [
-                            ...new Set([
-                              ...(current.pendingPages ?? []),
-                              page.page,
-                            ]),
-                          ],
-                        });
-                        setReport("");
-                        setSaved(false);
-                        setReviewed(false);
-                        setLastAction("transcribe");
-                        setCheckpointMessage(
-                          `Seite ${page.page} zur erneuten Abschrift vorgemerkt. Klicke „Abschrift und Zuordnung fortsetzen“. Alle anderen fertigen Seiten bleiben erhalten.`,
-                        );
-                      }}
+              <label class="block text-sm font-semibold">
+                1. Arbeiten hochladen<input
+                  aria-label="Arbeiten hochladen"
+                  type="file"
+                  multiple
+                  disabled={busy}
+                  accept=".zip,.pdf,.docx,.doc,.odt,.txt,.md,image/png,image/jpeg,image/webp"
+                  class="mt-2 block w-full text-sm"
+                  onChange={(event) => {
+                    void upload(event.currentTarget.files);
+                    event.currentTarget.value = "";
+                  }}
+                />
+              </label>
+              <p class="mt-2 text-xs text-slate-500">
+                PDF/Word/Fotos bis 20 MB je Datei, ZIP bis 40 MB.
+                ZIP-Unterordner werden nach geeigneten Dateien durchsucht.
+                Höchstens {MAX_GRADING_PAGES}{" "}
+                vorbereitete Seiten/Abschnitte. Word wird anhand von Umbrüchen,
+                Textabschnitten und eingebetteten Fotos zerlegt; für eine exakte
+                Original-Seitenaufteilung Word vorher als PDF exportieren.
+              </p>
+              <details class="mt-3">
+                <summary class="cursor-pointer text-sm font-semibold">
+                  {sources.length}{" "}
+                  Seiten/Abschnitte ausgewählt · Dateien anzeigen oder entfernen
+                </summary>
+                <ul class="my-3 max-h-48 space-y-2 overflow-y-auto text-sm">
+                  {sources.map((source, at) => (
+                    <li
+                      key={at}
+                      class="flex items-center justify-between gap-2"
                     >
-                      {session.pendingPages?.includes(page.page)
-                        ? "Erneute Abschrift vorgemerkt"
-                        : "Diese Seite erneut lesen"}
-                    </button>
-                  </div>
-                ))}
+                      <span class="min-w-0 break-words">
+                        {at + 1}. {source.name}
+                      </span>
+                      <button
+                        type="button"
+                        class={control}
+                        disabled={busy}
+                        aria-label={`Datei ${at + 1} entfernen`}
+                        onClick={() =>
+                          setSources(sources.filter((_, n) => n !== at))}
+                      >
+                        Entfernen
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              </details>
+            </div>
+          )}
+          {!report && (
+            <div class="my-4 rounded-xl border border-indigo-100 bg-indigo-50/40 p-4">
+              <div class="float-right">
+                <GradingInfo
+                  label="Erwartungshorizont"
+                  text="Das ist dein Bewertungsmaßstab: erwartete Antworten, Punkte je Teilaufgabe und Regeln für teilweise richtige Antworten. Du kannst ihn hier hineinkopieren oder selbst schreiben. Ein Notenschlüssel ist nur nötig, wenn du eine Note möchtest."
+                />
               </div>
-            </details>
-            {!report && ready && (
-              <div class="mt-4 rounded-xl border border-slate-200 p-4">
-                <details open={!automatic && !busy}>
-                  <summary class="cursor-pointer font-semibold">
-                    Zuordnung und Reihenfolge prüfen · {groups.filter((g) =>
-                      !g.ignored
-                    ).length} Arbeiten
-                  </summary>
+              <label class="block text-sm font-semibold">
+                2. Erwartungshorizont / Korrekturkriterien<textarea
+                  ref={criteriaInput}
+                  aria-label="Erwartungshorizont / Korrekturkriterien"
+                  class={input + " min-h-32"}
+                  maxLength={20000}
+                  value={criteria}
+                  disabled={busy}
+                  onInput={(event) => setCriteria(event.currentTarget.value)}
+                  placeholder="Welche Antworten erwartest du? Wie viele Punkte gibt es je Teilaufgabe, wann Teilpunkte? Beispiel: Aufgabe 1 je richtige Lücke 1 Punkt; Aufgabe 2 je 2 Punkte, richtiger Ansatz 1 Teilpunkt. Notenschlüssel nur falls gewünscht."
+                />
+              </label>
+              {criteriaClarification && (
+                <div
+                  role="alert"
+                  class="mt-3 rounded-xl border border-amber-300 bg-amber-50 p-3 text-sm text-amber-900"
+                >
+                  <p class="font-semibold">Rückfrage an dich als Lehrkraft</p>
+                  <p class="mt-2 whitespace-pre-wrap">
+                    {criteriaClarification}
+                  </p>
+                  <p class="mt-2 text-xs">
+                    Die Bewertung pausiert. Ergänze die Kriterien oben und
+                    starte die Korrekturvorschläge anschließend erneut. Fertige
+                    Abschriften bleiben erhalten; es wird keine Punktregel
+                    erfunden.
+                  </p>
+                </div>
+              )}
+              <p class="mt-2 text-xs text-slate-600">
+                Der Maßstab gilt für alle Arbeiten. Fehlende Punkte werden nicht
+                erfunden; ohne Notenschlüssel gibt es keine Note. Rückmeldungen
+                richten sich freundlich direkt an die Schüler.
+              </p>
+              <div class="mt-3 flex flex-wrap gap-2">
+                <button
+                  type="button"
+                  class={control}
+                  disabled={busy || criteria.includes(DERIVE_SOLUTIONS_POLICY)}
+                  onClick={() =>
+                    setCriteria(
+                      criteria.trim() + "\n\n" + DERIVE_SOLUTIONS_POLICY,
+                    )}
+                >
+                  Lösungen aus den Aufgaben ableiten erlauben
+                </button>
+                <button
+                  type="button"
+                  class={control}
+                  disabled={busy || /Ohne Punkte bewerten\./.test(criteria)}
+                  onClick={() =>
+                    setCriteria(
+                      criteria.trim() +
+                        "\n\nOhne Punkte bewerten. Nur fachliche Rückmeldung, keine Note.",
+                    )}
+                >
+                  Ausdrücklich ohne Punkte bewerten
+                </button>
+              </div>
+              <p class="mt-2 text-xs text-slate-600">
+                Die Zusatzknöpfe ergänzen deinen Auftrag; sie starten noch
+                nichts.<GradingInfo
+                  label="Lösungen herleiten oder ohne Punkte"
+                  text="Lösungen herleiten erlaubt Bud-E, einen gemeinsamen Lösungsschlüssel aus den Aufgaben zu erstellen. Das ersetzt nicht deine spätere Prüfung. Ohne Punkte bedeutet fachliche Rückmeldung ohne Punktzahl und ohne Note. Deine bisherigen Kriterien bleiben im Feld stehen; entferne widersprüchliche Regeln."
+                />
+              </p>
+              {criteriaQuestions.length > 0 &&
+                (criteria.length > 0 || sources.length > 0) && (
+                <div
+                  class="mt-3 rounded-xl bg-amber-50 p-3 text-sm text-amber-900"
+                  aria-live="polite"
+                >
+                  <p class="font-semibold">Vor der Bewertung noch klären:</p>
+                  <ul class="mt-2 list-disc space-y-1 pl-5">
+                    {criteriaQuestions.map((question) => (
+                      <li key={question}>{question}</li>
+                    ))}
+                  </ul>
+                  <p class="mt-2 text-xs">
+                    Ergänze deine Antworten im Feld oben. Abschrift und
+                    Zuordnung sind auch vorher möglich: Aktiviere dafür unten
+                    die Prüfpause.
+                  </p>
+                </div>
+              )}
+              {
+                <>
+                  <label class="mt-3 flex items-start gap-2 text-sm">
+                    <input
+                      type="checkbox"
+                      checked={!automatic}
+                      disabled={busy}
+                      onChange={(event) =>
+                        setAutomatic(!event.currentTarget.checked)}
+                      class="mt-1"
+                    />
+                    <span>
+                      Prüfpause einlegen: Abschrift und Seitenzuordnung vor der
+                      Bewertung selbst prüfen
+                    </span>
+                  </label>
+                  <GradingInfo
+                    label="Prüfpause"
+                    text="Ohne Häkchen laufen die drei Stufen nacheinander. Mit Häkchen hält Bud-E nach Abschrift und Zuordnung an. Du kannst sie dann verbessern, bestätigen und die Bewertung starten. Fehlende Kriterien oder technische Fehler können auch den automatischen Ablauf anhalten."
+                  />
+                  <p class="mt-2 text-xs text-slate-600">
+                    Standard: Nach deinem Start laufen Abschrift, Zuordnung und
+                    Bewertung automatisch nacheinander durch. Trage vorher die
+                    Korrekturkriterien ein. Nur mit diesem Häkchen hält Bud-E
+                    zwischendurch an. Unsichere Lesestellen und fehlende
+                    Kriterien können trotzdem eine Rückfrage nötig machen. Prüfe
+                    das Ergebnis vor der Weitergabe.
+                  </p>
+                </>
+              }
+            </div>
+          )}
+          <GradingBudgetPanel
+            load={loadBudget}
+            busy={busy}
+            privateRoom={privateRoom}
+            problem={error}
+          />
+          <p class="my-3 rounded-xl bg-amber-50 p-3 text-sm text-amber-900">
+            KI erstellt Vorschläge, keine freigegebene Bewertung. Prüfe Namen,
+            Zuordnung und Punkte vor der Weitergabe. Vor dem Schließen:
+            Zwischenstand sichern. Mehrere Modellaufrufe können Kosten
+            verursachen.
+          </p>
+          {!ready && (
+            <div class="flex flex-wrap items-center gap-2">
+              <button
+                type="button"
+                class={primary}
+                disabled={busy || checkpointBusy || !sources.length ||
+                  (automatic && criteriaQuestions.length > 0)}
+                onClick={() => void run(false)}
+              >
+                {session
+                  ? "Abschrift und Zuordnung fortsetzen"
+                  : automatic
+                  ? "Alle drei Stufen starten"
+                  : "Abschrift und Zuordnung starten"}
+              </button>
+              <GradingInfo
+                label="Korrektur starten"
+                text="Ab hier werden Inhalte an den eingestellten KI-Anbieter geschickt. Das kann Geld kosten. Der Ablauf startet erst, wenn Dateien und die nötigen Kriterien vorhanden sind. Lass den Tab offen und lade vor dem Schließen einen Zwischenstand herunter."
+              />
+            </div>
+          )}
+          <details
+            ref={resumeSection}
+            class="my-4 rounded-xl border border-slate-200 p-3 text-sm"
+          >
+            <summary class="cursor-pointer font-semibold">
+              Schon angefangen? Zwischenstand laden
+            </summary>
+            <p class="mt-2 text-slate-600">
+              Nur wenn du eine frühere Korrektur fortsetzen möchtest: Wähle
+              deine Bud-E-Sicherungsdatei (.json). Für einen neuen Stapel nutze
+              oben „Arbeiten hochladen“.
+            </p>
+            <GradingInfo
+              label="Zwischenstand laden und sichern"
+              text="Eine Sicherungsdatei bewahrt Originale und fertige Schritte für später auf. Das Laden startet noch keine KI-Anfrage. Die Datei ist unverschlüsselt und enthält Schülerdaten, aber keine Passwörter oder API-Keys. Bewahre sie geschützt auf."
+            />
+            <div class="mt-3 flex flex-wrap items-center gap-3">
+              <button
+                type="button"
+                class={control}
+                disabled={checkpointBusy || (!sources.length && !session)}
+                onClick={() => void exportCheckpoint()}
+              >
+                Sicherungsdatei herunterladen
+              </button>
+              <label class="text-sm font-semibold">
+                Zwischenstand laden
+                <input
+                  aria-label="Zwischenstand laden"
+                  type="file"
+                  accept=".json,application/json"
+                  class="mt-1 block text-xs"
+                  disabled={busy || checkpointBusy}
+                  onChange={(event) => {
+                    void importCheckpoint(event.currentTarget.files?.[0]);
+                    event.currentTarget.value = "";
+                  }}
+                />
+              </label>
+            </div>
+            <p class="mt-2 text-xs text-slate-600">
+              Auch während der Verarbeitung herunterladbar. Fertige Schritte
+              werden beim Fortsetzen übersprungen; neue Modellaufrufe können
+              Kosten verursachen. Vor dem Schließen oder Neuladen bitte sichern.
+            </p>
+            {downloadedAt && (
+              <p class="mt-2 text-xs font-semibold text-emerald-800">
+                Download um {downloadedAt}{" "}
+                gestartet. Prüfe den Downloads-Ordner deines Browsers. Später
+                fertig gewordene Schritte sind erst in einer neuen Sicherung
+                enthalten.
+              </p>
+            )}
+            {checkpointMessage && (
+              <p role="status" class="mt-2 text-xs text-indigo-800">
+                {checkpointMessage}
+              </p>
+            )}
+          </details>
+          {(session || busy) && (
+            <>
+              <div
+                class="sticky top-0 z-10 mt-4 flex flex-wrap items-center gap-2 rounded-2xl border border-indigo-100 bg-white p-3 shadow-sm"
+                aria-label="Sichern und Fortsetzen"
+              >
+                <span class="mr-auto text-sm font-semibold text-slate-800">
+                  {report
+                    ? "Ergebnisse fertig"
+                    : busy
+                    ? "Korrektur läuft – dieses Fenster offen lassen"
+                    : session?.pages.length
+                    ? "Dein Zwischenstand ist noch in diesem Fenster"
+                    : "Schritt für Schritt durch deine Korrektur"}
+                </span>
+                <button
+                  type="button"
+                  class={control}
+                  disabled={checkpointBusy || (!sources.length && !session)}
+                  onClick={exportCheckpoint}
+                >
+                  Zwischenstand herunterladen
+                </button>
+                {busy && (
+                  <button
+                    type="button"
+                    class={control}
+                    onClick={() => controller.current?.abort()}
+                  >
+                    Pausieren
+                  </button>
+                )}
+                <button
+                  type="button"
+                  class="px-2 py-2 text-sm font-semibold text-indigo-700 underline"
+                  onClick={() => setShowResumeHelp(!showResumeHelp)}
+                >
+                  Wie sichere ich und mache später weiter?
+                </button>
+              </div>
+            </>
+          )}
+          {showResumeHelp && (
+            <div class="mt-3 rounded-xl border border-indigo-200 bg-indigo-50 p-4 text-sm leading-6">
+              <h3 class="font-semibold">
+                Sichern und später fortsetzen – ohne alles neu zu machen
+              </h3>
+              <ol class="mt-2 list-decimal space-y-2 pl-5">
+                <li>
+                  Klicke auf „Zwischenstand herunterladen“. Dein Browser
+                  speichert eine Datei mit dem Namen
+                  „Bud-E-Korrektur-Zwischenstand…json“, meist im Ordner
+                  „Downloads“. Die Endung .json ist richtig; du musst die Datei
+                  nicht öffnen.
+                </li>
+                <li>
+                  Zum Aufhören erst „Pausieren“ anklicken. Schließe oder lade
+                  die Webseite erst neu, wenn du die Sicherungsdatei
+                  heruntergeladen hast. Diese Sicherung wird nicht automatisch
+                  auf dem Server gespeichert.
+                </li>
+                <li>
+                  Öffne später denselben Raum und „Korrekturvorschläge“. Wähle
+                  bei „Zwischenstand laden“ deine gesicherte Datei. Die
+                  Originalarbeiten musst du nicht erneut hochladen.
+                </li>
+                <li>
+                  Prüfe Zuordnung und Kriterien. Im Modus mit Prüfpause setzt du
+                  das Bestätigungshäkchen. Klicke anschließend
+                  „Korrekturvorschläge erstellen“ bzw. bei fehlenden Abschriften
+                  „Abschrift und Zuordnung fortsetzen“. Bereits fertige Schritte
+                  werden wiederverwendet.
+                </li>
+              </ol>
+              <p class="mt-3 font-semibold">
+                Die Datei enthält Schülerarbeiten im Klartext. Geschützt
+                aufbewahren, nicht an Schüler weitergeben. Weitere KI-Aufrufe
+                können erneut Geld kosten.
+              </p>
+            </div>
+          )}
+          {session && (
+            <div
+              class="mt-4 grid grid-cols-3 gap-2 text-center text-xs text-slate-600"
+              aria-label="Bisheriger Arbeitsfortschritt im Fenster"
+            >
+              <div class="rounded-xl bg-slate-50 p-3">
+                <strong class="block text-lg text-slate-900">
+                  {session.pages.length}/{session.sources.length}
+                </strong>Seiten abgeschrieben
+              </div>
+              <div class="rounded-xl bg-slate-50 p-3">
+                <strong class="block text-lg text-slate-900">
+                  {session.papers.filter((p) => !p.ignored).length}
+                </strong>Arbeiten zugeordnet
+              </div>
+              <div class="rounded-xl bg-slate-50 p-3">
+                <strong class="block text-lg text-slate-900">
+                  {checkedCount}
+                </strong>Rückmeldungen fertig geprüft
+              </div>
+            </div>
+          )}
+          <ol class="my-4 grid gap-3 text-sm sm:grid-cols-3">
+            {[
+              "Abschreiben",
+              "Seiten zuordnen",
+              "Bewerten & am Original prüfen",
+            ].map((label, at) => (
+              <li
+                key={label}
+                class={`rounded-xl border p-3 ${
+                  status && activeStep === at + 1
+                    ? "border-indigo-400 bg-indigo-50"
+                    : "border-slate-200 bg-slate-50"
+                }`}
+              >
+                <span class="font-bold">{at + 1}.</span>
+                {label}
+              </li>
+            ))}
+          </ol>
+          <details class="my-3 text-sm text-slate-600">
+            <summary class="cursor-pointer font-semibold">
+              So funktioniert die Korrektur · Kosten und Datenschutz
+            </summary>
+            <p class="mt-2 text-sm leading-6 text-slate-600">
+              Eine PDF kann die Arbeiten der ganzen Klasse enthalten. Sie wird
+              zuerst in echte Einzelseiten zerlegt. Ein gemeinsamer KI-Aufruf
+              sortiert danach alle Seiten – auch durcheinandergeratene Fotos –
+              nach Schüler und Lesereihenfolge. Anschließend erhält jede
+              Schülerarbeit einen eigenen Bewertungsentwurf mit demselben
+              Erwartungshorizont und danach eine separate Zweitprüfung am
+              Original. Dadurch entstehen zusätzliche Modellaufrufe; auch eine
+              Zweitprüfung ist keine Garantie für Fehlerfreiheit. Bis zu{" "}
+              {GRADING_PARALLEL} Aufrufe laufen gleichzeitig.
+            </p>
+            <p class="my-3 rounded-xl bg-amber-50 p-3 text-xs leading-5 text-amber-900">
+              KI kann Namen, Handschrift und Seitenzuordnung verwechseln.
+              Verwende möglichst Pseudonyme und prüfe die Ergebnisse vor der
+              Weitergabe. Mehrere Modellaufrufe verursachen Kosten. {privateRoom
+                ? "Anfragen gehen direkt an deinen Anbieter; nur der fertige Gesamtbericht wird im privaten Chat verschlüsselt gespeichert."
+                : "Die Freigabe und das Budget deines Klassenraums gelten bei jedem Aufruf."}
+              {" "}
+              Originaldateien und Zwischenstände bleiben nur in diesem Fenster,
+              bis du sie selbst herunterlädst. Ein Zwischenstand enthält die
+              Arbeiten, Abschriften, Zuordnung, Kriterien und
+              fertige/angefangene Bewertungen – keine API-Keys oder Passwörter.
+              Die JSON-Datei ist unverschlüsselt: geschützt aufbewahren und
+              nicht an Schüler weitergeben. Nach erneutem Hochladen kannst du
+              auf einem anderen Gerät fortsetzen. Automatisch höchstens drei
+              Versuche je fehlerhaftem Schritt; weitere Versuche nur auf deinen
+              Klick. Word-DOCX ist editierbar; PDF ist direkt herunterladbar –
+              kein Editor-Häkchen erforderlich.
+            </p>
+          </details>
+          {status && (
+            <div
+              ref={progressRef}
+              class="my-4 scroll-mt-36 rounded-xl bg-slate-50 p-4"
+            >
+              <div class="mb-2 flex justify-between text-sm font-semibold">
+                <span>
+                  {criteriaClarification
+                    ? "Rückfrage – bitte ergänze den Bewertungsmaßstab"
+                    : status.stage === "review"
+                    ? "Prüfpause – deine Rückmeldung ist gefragt"
+                    : status.stage === "guidance"
+                    ? `Lösungsschlüssel vorbereiten: ${status.completed} / ${status.total} Teilschritte`
+                    : status.stage === "mark"
+                    ? `Bewertet: ${status.completed} / ${status.total} Schülerarbeiten`
+                    : status.stage === "transcribe"
+                    ? `Abgeschrieben: ${status.completed} / ${status.total} Seiten`
+                    : status.stage === "done"
+                    ? `Alle ${status.total} Schülerarbeiten bewertet`
+                    : status.stage === "group"
+                    ? "Stufe 2: alle Seiten werden gruppiert"
+                    : "Seiten werden vorbereitet"}
+                </span>
+                <span>{percent}%</span>
+              </div>
+              {status.stage === "guidance" && (
+                <p class="mb-3 text-sm text-slate-600">
+                  Bevor Bud-E einzelne Schüler bewertet, erstellt und prüft es
+                  für jede Testversion eine gemeinsame Lösung. Das verhindert
+                  unterschiedliche Maßstäbe. „0 bewertet“ wäre in dieser Phase
+                  normal – die Einzelbewertung beginnt danach.
+                </p>
+              )}
+              {steps.length > 0 && (
+                <p class="mb-2 text-xs text-slate-600" aria-live="polite">
+                  {steps.at(-1)}
+                </p>
+              )}
+              <div
+                role="progressbar"
+                aria-label="Korrekturfortschritt"
+                aria-valuemin={0}
+                aria-valuemax={100}
+                aria-valuenow={percent}
+                class="h-3 overflow-hidden rounded-full bg-slate-200"
+              >
+                <div
+                  class="h-full rounded-full bg-indigo-600 transition-all"
+                  style={{ width: `${percent}%` }}
+                />
+              </div>
+              {busy && (
+                <p class="mt-3 text-xs text-slate-600" role="timer">
+                  Dieser Durchgang läuft seit {Math.floor(duration / 60)} Min.
+                  {" "}
+                  {duration % 60} Sek. · {pendingCalls}{" "}
+                  KI-Schritte in Bearbeitung · letzte Statusmeldung vor{" "}
+                  {silence} Sek. {pendingCalls > 0 &&
+                    ` · längster offener KI-Schritt: ${oldestJob} Sek.`}{" "}
+                  Große Stapel und gründliche Zweitprüfungen können mehrere
+                  Minuten dauern. Diese Anzeige ist keine Zusage, dass der
+                  Anbieter noch antwortet.
+                </p>
+              )}
+              {busy && (silence >= 75 || oldestJob >= 90) && (
+                <div class="mt-3 rounded-xl bg-amber-50 p-3 text-sm text-amber-900">
+                  <strong>Es gibt länger keine neue Rückmeldung.</strong>{" "}
+                  Lass den Tab geöffnet und prüfe die Internetverbindung. Du
+                  kannst jederzeit den Zwischenstand herunterladen und
+                  pausieren. Starte nicht mehrfach gleichzeitig neu; laufende
+                  Anbieteranfragen können noch Kosten verursachen.
+                </div>
+              )}
+              {!busy && !report && session && (
+                <p class="mt-3 text-sm font-semibold text-indigo-800">
+                  {criteriaClarification
+                    ? "Die KI wartet auf deine Antwort. Deine Abschriften und fertigen Schritte bleiben erhalten."
+                    : error
+                    ? "Angehalten – deine fertigen Schritte sind noch da. Beachte die Hilfe unten und sichere den Zwischenstand."
+                    : ready
+                    ? automatic
+                      ? "Bereit zum Fortsetzen: Prüfe bei Bedarf die Kriterien und klicke auf Korrekturvorschläge erstellen."
+                      : "Du bist dran: Prüfe Zuordnung und Kriterien, setze das Bestätigungshäkchen und erstelle dann die Korrekturvorschläge."
+                    : "Bereit zum Fortsetzen: Nur die noch fehlenden Schritte werden bearbeitet."}
+                </p>
+              )}
+              {criteriaClarification && (
+                <div class="mt-3 rounded-xl border border-amber-300 bg-amber-50 p-3 text-sm text-amber-950">
+                  <p class="whitespace-pre-line">{criteriaClarification}</p>
                   <button
                     type="button"
                     class={control + " mt-2"}
-                    disabled={busy || checkpointBusy}
                     onClick={() => {
-                      if (!workRef.current) {
-                        return;
-                      }
-                      updateWork({ ...workRef.current, papers: [] });
-                      setGroups([]);
-                      setReviewed(false);
-                      void run(false, true);
+                      criteriaInput.current?.scrollIntoView({
+                        block: "center",
+                        behavior: "smooth",
+                      });
+                      criteriaInput.current?.focus({ preventScroll: true });
                     }}
                   >
-                    Zuordnung mit aktuellem Auftrag erneut prüfen
+                    Rückfragen beantworten
                   </button>
-                  <p class="mt-1 text-xs text-slate-500">
-                    Jede Seite muss genau einmal vorkommen. Seiten in
-                    Lesereihenfolge eintragen, z. B. 3, 1, 4. Bei Bedarf Gruppen
-                    ergänzen, Namen ändern oder Gruppen entfernen.
+                  <p class="mt-2 text-xs">
+                    Ergänze deine Antworten im Kriterienfeld. Danach
+                    „Korrekturvorschläge erstellen“ anklicken. Du musst die
+                    Dateien nicht erneut hochladen.
                   </p>
-                  {groups.map((group, at) => (
-                    <div key={at} class="mt-3 rounded-xl bg-slate-50 p-3">
-                      <div class="grid gap-2 sm:grid-cols-2">
-                        <label class="text-xs">
-                          Schüler / Pseudonym<input
-                            aria-label={`Schülergruppe ${at + 1}`}
-                            class={input}
-                            value={group.student}
-                            disabled={busy}
-                            onInput={(event) => {
-                              const student = event.currentTarget.value;
-                              setGroups(
-                                groups.map((g, n) =>
-                                  n === at ? { ...g, student } : g
-                                ),
-                              );
-                              setReviewed(false);
-                            }}
-                          />
-                        </label>
-                        <label class="text-xs">
-                          Seiten in Lesereihenfolge<input
-                            aria-label={`Seiten Gruppe ${at + 1}`}
-                            class={input}
-                            value={group.pages}
-                            disabled={busy}
-                            onInput={(event) => {
-                              const pages = event.currentTarget.value;
-                              setGroups(
-                                groups.map((g, n) =>
-                                  n === at ? { ...g, pages } : g
-                                ),
-                              );
-                              setReviewed(false);
-                            }}
-                          />
-                        </label>
-                      </div>
-                      {group.note && (
-                        <p class="mt-2 text-xs text-slate-500">{group.note}</p>
+                </div>
+              )}
+            </div>
+          )}
+          {steps.length > 0 && (
+            <details class="my-4 rounded-xl border border-slate-200 p-3">
+              <summary class="cursor-pointer text-sm font-semibold">
+                Arbeitsschritte ({steps.length})
+              </summary>
+              <ol class="mt-2 max-h-56 list-decimal space-y-1 overflow-y-auto pl-5 text-xs text-slate-600">
+                {steps.map((step, at) => <li key={at}>{step}</li>)}
+              </ol>
+            </details>
+          )}
+          {session && (
+            <div class="my-4">
+              <details class="rounded-xl border border-slate-200 p-3">
+                <summary class="cursor-pointer font-semibold">
+                  Abschrift prüfen · {session.pages.length} Seiten ·{" "}
+                  {session.papers.filter((p) => !p.ignored).length}{" "}
+                  Schülerarbeiten ·{" "}
+                  {session.papers.filter((p) => p.ignored).reduce(
+                    (n, p) => n + p.pages.length,
+                    0,
+                  )} Seiten nicht bewertet
+                </summary>
+                <div class="my-3">
+                  <GradingReportDownload
+                    transcript
+                    text={transcriptMarkdown(
+                      session.pages,
+                      session.papers,
+                      "de",
+                    )}
+                  />
+                </div>
+                <div class="max-h-96 space-y-3 overflow-y-auto">
+                  {session.pages.map((page) => (
+                    <div
+                      key={page.page}
+                      class="block text-xs font-semibold text-slate-600"
+                    >
+                      <p class="mb-1 font-semibold text-indigo-900">
+                        {session.papers.find((p) => p.pages.includes(page.page))
+                          ?.student || "Zuordnung noch offen"} · Original-ID
+                        {" "}
+                        {page.page}
+                      </p>
+                      {session.sources.find((s) => s.index === page.page) && (
+                        <GradingOriginalPreview
+                          source={session.sources.find((s) =>
+                            s.index === page.page
+                          )!}
+                        />
                       )}
-                      <label class="mt-2 flex items-start gap-2 text-xs">
-                        <input
-                          type="checkbox"
-                          checked={group.ignored === true}
-                          disabled={busy}
-                          aria-label={`Gruppe ${at + 1} nicht bewerten`}
-                          onChange={(event) => {
-                            const ignored = event.currentTarget.checked;
-                            setGroups(groups.map((g, n) =>
-                              n === at
-                                ? {
-                                  ...g,
-                                  ignored,
-                                  note: g.note ||
-                                    "Von der Lehrkraft ausdrücklich als nicht zu bewertende Vorlage/Rückseite ausgewählt.",
-                                }
-                                : g
-                            ));
+                      <label>
+                        Seite {page.page} · {page.file}
+                        <textarea
+                          aria-label={`Abschrift Seite ${page.page}`}
+                          disabled={busy || !!report || !ready}
+                          class={input + " min-h-28 font-normal"}
+                          value={page.transcript}
+                          onInput={(event) => {
+                            const transcript = event.currentTarget.value;
+                            updateWork({
+                              ...session,
+                              pages: session.pages.map((item) =>
+                                item.page === page.page
+                                  ? { ...item, transcript }
+                                  : item
+                              ),
+                            });
                             setReviewed(false);
                           }}
-                        />Nicht bewerten: Vorlage oder ausdrücklich
-                        ausgeschlossene Rückseite. Eine leere Hauptarbeit mit
-                        Namen bitte behalten.
+                        />
                       </label>
                       <button
                         type="button"
-                        class="mt-2 text-xs text-red-700 underline"
-                        disabled={busy}
+                        class={control + " mt-1 text-xs"}
+                        disabled={busy || checkpointBusy ||
+                          session.pendingPages?.includes(page.page)}
+                        aria-label={`Seite ${page.page} erneut abschreiben`}
                         onClick={() => {
-                          setGroups(groups.filter((_, n) =>
-                            n !== at
-                          ));
+                          const current = workRef.current ?? session;
+                          updateWork({
+                            ...current,
+                            pendingPages: [
+                              ...new Set([
+                                ...(current.pendingPages ?? []),
+                                page.page,
+                              ]),
+                            ],
+                          });
+                          setReport("");
+                          setSaved(false);
                           setReviewed(false);
+                          setLastAction("transcribe");
+                          setCheckpointMessage(
+                            `Seite ${page.page} zur erneuten Abschrift vorgemerkt. Klicke „Abschrift und Zuordnung fortsetzen“. Alle anderen fertigen Seiten bleiben erhalten.`,
+                          );
                         }}
                       >
-                        Gruppe entfernen
+                        {session.pendingPages?.includes(page.page)
+                          ? "Erneute Abschrift vorgemerkt"
+                          : "Diese Seite erneut lesen"}
                       </button>
                     </div>
                   ))}
+                </div>
+              </details>
+              {!report && ready && (
+                <div class="mt-4 rounded-xl border border-slate-200 p-4">
+                  <details open={!automatic && !busy}>
+                    <summary class="cursor-pointer font-semibold">
+                      Zuordnung und Reihenfolge prüfen · {groups.filter((g) =>
+                        !g.ignored
+                      ).length} Arbeiten
+                    </summary>
+                    <button
+                      type="button"
+                      class={control + " mt-2"}
+                      disabled={busy || checkpointBusy}
+                      onClick={() => {
+                        if (!workRef.current) {
+                          return;
+                        }
+                        updateWork({ ...workRef.current, papers: [] });
+                        setGroups([]);
+                        setReviewed(false);
+                        void run(false, true);
+                      }}
+                    >
+                      Zuordnung mit aktuellem Auftrag erneut prüfen
+                    </button>
+                    <p class="mt-1 text-xs text-slate-500">
+                      Jede Seite muss genau einmal vorkommen. Seiten in
+                      Lesereihenfolge eintragen, z. B. 3, 1, 4. Bei Bedarf
+                      Gruppen ergänzen, Namen ändern oder Gruppen entfernen.
+                    </p>
+                    {groups.map((group, at) => (
+                      <div key={at} class="mt-3 rounded-xl bg-slate-50 p-3">
+                        <div class="grid gap-2 sm:grid-cols-2">
+                          <label class="text-xs">
+                            Schüler / Pseudonym<input
+                              aria-label={`Schülergruppe ${at + 1}`}
+                              class={input}
+                              value={group.student}
+                              disabled={busy}
+                              onInput={(event) => {
+                                const student = event.currentTarget.value;
+                                setGroups(
+                                  groups.map((g, n) =>
+                                    n === at ? { ...g, student } : g
+                                  ),
+                                );
+                                setReviewed(false);
+                              }}
+                            />
+                          </label>
+                          <label class="text-xs">
+                            Seiten in Lesereihenfolge<input
+                              aria-label={`Seiten Gruppe ${at + 1}`}
+                              class={input}
+                              value={group.pages}
+                              disabled={busy}
+                              onInput={(event) => {
+                                const pages = event.currentTarget.value;
+                                setGroups(
+                                  groups.map((g, n) =>
+                                    n === at ? { ...g, pages } : g
+                                  ),
+                                );
+                                setReviewed(false);
+                              }}
+                            />
+                          </label>
+                        </div>
+                        {group.note && (
+                          <p class="mt-2 text-xs text-slate-500">
+                            {group.note}
+                          </p>
+                        )}
+                        <label class="mt-2 flex items-start gap-2 text-xs">
+                          <input
+                            type="checkbox"
+                            checked={group.ignored === true}
+                            disabled={busy}
+                            aria-label={`Gruppe ${at + 1} nicht bewerten`}
+                            onChange={(event) => {
+                              const ignored = event.currentTarget.checked;
+                              setGroups(groups.map((g, n) =>
+                                n === at
+                                  ? {
+                                    ...g,
+                                    ignored,
+                                    note: g.note ||
+                                      "Von der Lehrkraft ausdrücklich als nicht zu bewertende Vorlage/Rückseite ausgewählt.",
+                                  }
+                                  : g
+                              ));
+                              setReviewed(false);
+                            }}
+                          />Nicht bewerten: Vorlage oder ausdrücklich
+                          ausgeschlossene Rückseite. Eine leere Hauptarbeit mit
+                          Namen bitte behalten.
+                        </label>
+                        <button
+                          type="button"
+                          class="mt-2 text-xs text-red-700 underline"
+                          disabled={busy}
+                          onClick={() => {
+                            setGroups(groups.filter((_, n) =>
+                              n !== at
+                            ));
+                            setReviewed(false);
+                          }}
+                        >
+                          Gruppe entfernen
+                        </button>
+                      </div>
+                    ))}
+                    <button
+                      type="button"
+                      class={control + " mt-3"}
+                      disabled={busy}
+                      onClick={() => {
+                        setGroups([...groups, {
+                          student: "",
+                          pages: "",
+                          note: "Manuell ergänzt",
+                        }]);
+                        setReviewed(false);
+                      }}
+                    >
+                      Gruppe ergänzen
+                    </button>
+                    <label class="mt-4 block text-sm font-semibold">
+                      Feedback / Korrekturen zur Abschrift<textarea
+                        aria-label="Feedback zur Abschrift"
+                        class={input}
+                        maxLength={8000}
+                        disabled={busy}
+                        value={feedback}
+                        onInput={(event) =>
+                          setFeedback(event.currentTarget.value)}
+                        placeholder="Z. B. Seite 4 gehört zu Spencer; in Aufgabe 3 steht Salto. Du kannst die Abschriften und Seitenlisten oben auch direkt bearbeiten."
+                      />
+                    </label>
+                  </details>
+                  <label class="mt-3 flex gap-2 text-sm">
+                    <input
+                      type="checkbox"
+                      checked={reviewed}
+                      disabled={busy}
+                      onChange={(event) =>
+                        setReviewed(event.currentTarget.checked)}
+                    />Ich habe Abschrift und Seitenzuordnung geprüft.
+                  </label>
                   <button
                     type="button"
-                    class={control + " mt-3"}
+                    class={primary + " mt-3"}
+                    disabled={busy || criteriaQuestions.length > 0 ||
+                      (!reviewed && !automatic) ||
+                      groups.every((g) => g.ignored)}
+                    onClick={() => void run(true)}
+                  >
+                    Korrekturvorschläge erstellen
+                  </button>
+                </div>
+              )}
+            </div>
+          )}
+          {report && (
+            <div class="mt-4 rounded-xl border border-emerald-200 bg-emerald-50/40 p-4">
+              <h3 class="font-bold">
+                Korrekturvorschläge fertig · alle {session?.papers.filter((p) =>
+                  !p.ignored
+                ).length} Schülerarbeiten
+              </h3>
+              {session && (
+                <GradingDossierDownload
+                  session={session}
+                  criteria={joinedCriteria()}
+                />
+              )}
+              <h4 class="mt-4 font-semibold">
+                Nur die Rückmeldungen für deine Schüler
+              </h4>
+              <p class="mt-2 text-xs text-slate-600">
+                Diese beiden Downloads enthalten nur die Schüler-Feedbacks,
+                getrennt nach Arbeiten. Word-Datei: .docx. Bitte vor der
+                Weitergabe prüfen.
+              </p>
+              <div class="my-3 max-h-96 overflow-y-auto text-sm">
+                <ClassroomCodeContent content={report} />
+              </div>
+              <GradingReportDownload text={report} />
+              <button
+                type="button"
+                class={control + " mt-2"}
+                disabled={busy || checkpointBusy}
+                onClick={() => {
+                  const current = workRef.current;
+                  if (!current?.cache) return;
+                  current.cache.checked = [];
+                  updateWork(current);
+                  setReport("");
+                  setSaved(false);
+                  setReviewed(false);
+                  setLastAction("mark");
+                  setCheckpointMessage(
+                    "Rückmeldungen zur erneuten Originalprüfung vorgemerkt. Abschriften und Entwürfe bleiben erhalten. Bestätige die Zuordnung und starte die Korrekturvorschläge erneut; zusätzliche API-Kosten sind möglich.",
+                  );
+                }}
+              >
+                Rückmeldungen erneut prüfen
+              </button>
+              {saved
+                ? (
+                  <p class="mt-3 text-xs text-slate-500">
+                    Rückmeldungen im Chat verfügbar. Originalseiten und
+                    Abschriften bitte als Prüfmappe oder Zwischenstand sichern.
+                    Bitte vor Verwendung prüfen.
+                  </p>
+                )
+                : (
+                  <button
+                    type="button"
+                    class={control + " mt-2"}
                     disabled={busy}
-                    onClick={() => {
-                      setGroups([...groups, {
-                        student: "",
-                        pages: "",
-                        note: "Manuell ergänzt",
-                      }]);
-                      setReviewed(false);
+                    onClick={async () => {
+                      setBusy(true);
+                      onBusyChange(true);
+                      try {
+                        await save(report, session!, joinedCriteria());
+                        setError("");
+                      } catch (cause) {
+                        if (!disposed.current) {
+                          setError(
+                            cause instanceof Error
+                              ? cause.message
+                              : "Speichern fehlgeschlagen.",
+                          );
+                        }
+                      } finally {
+                        if (!disposed.current) {
+                          setBusy(false);
+                          onBusyChange(false);
+                        }
+                      }
                     }}
                   >
-                    Gruppe ergänzen
+                    Im Chat speichern
                   </button>
-                  <label class="mt-4 block text-sm font-semibold">
-                    Feedback / Korrekturen zur Abschrift<textarea
-                      aria-label="Feedback zur Abschrift"
-                      class={input}
-                      maxLength={8000}
-                      disabled={busy}
-                      value={feedback}
-                      onInput={(event) =>
-                        setFeedback(event.currentTarget.value)}
-                      placeholder="Z. B. Seite 4 gehört zu Spencer; in Aufgabe 3 steht Salto. Du kannst die Abschriften und Seitenlisten oben auch direkt bearbeiten."
-                    />
-                  </label>
-                </details>
-                <label class="mt-3 flex gap-2 text-sm">
-                  <input
-                    type="checkbox"
-                    checked={reviewed}
-                    disabled={busy}
-                    onChange={(event) =>
-                      setReviewed(event.currentTarget.checked)}
-                  />Ich habe Abschrift und Seitenzuordnung geprüft.
-                </label>
-                <button
-                  type="button"
-                  class={primary + " mt-3"}
-                  disabled={busy || criteriaQuestions.length > 0 ||
-                    (!reviewed && !automatic) ||
-                    groups.every((g) => g.ignored)}
-                  onClick={() => void run(true)}
-                >
-                  Korrekturvorschläge erstellen
-                </button>
-              </div>
-            )}
-          </div>
-        )}
-        {report && (
-          <div class="mt-4 rounded-xl border border-emerald-200 bg-emerald-50/40 p-4">
-            <h3 class="font-bold">
-              Korrekturvorschläge fertig · alle {session?.papers.filter((p) =>
-                !p.ignored
-              ).length} Schülerarbeiten
-            </h3>
-            {session && (
-              <GradingDossierDownload
-                session={session}
-                criteria={joinedCriteria()}
-              />
-            )}
-            <h4 class="mt-4 font-semibold">
-              Nur die Rückmeldungen für deine Schüler
-            </h4>
-            <p class="mt-2 text-xs text-slate-600">
-              Diese beiden Downloads enthalten nur die Schüler-Feedbacks,
-              getrennt nach Arbeiten. Word-Datei: .docx. Bitte vor der
-              Weitergabe prüfen.
-            </p>
-            <div class="my-3 max-h-96 overflow-y-auto text-sm">
-              <ClassroomCodeContent content={report} />
+                )}
             </div>
-            <GradingReportDownload text={report} />
-            <button
-              type="button"
-              class={control + " mt-2"}
-              disabled={busy || checkpointBusy}
-              onClick={() => {
-                const current = workRef.current;
-                if (!current?.cache) return;
-                current.cache.checked = [];
-                updateWork(current);
-                setReport("");
-                setSaved(false);
-                setReviewed(false);
-                setLastAction("mark");
-                setCheckpointMessage(
-                  "Rückmeldungen zur erneuten Originalprüfung vorgemerkt. Abschriften und Entwürfe bleiben erhalten. Bestätige die Zuordnung und starte die Korrekturvorschläge erneut; zusätzliche API-Kosten sind möglich.",
-                );
-              }}
-            >
-              Rückmeldungen erneut prüfen
-            </button>
-            {saved
-              ? (
-                <p class="mt-3 text-xs text-slate-500">
-                  Rückmeldungen im Chat verfügbar. Originalseiten und
-                  Abschriften bitte als Prüfmappe oder Zwischenstand sichern.
-                  Bitte vor Verwendung prüfen.
-                </p>
-              )
-              : (
-                <button
-                  type="button"
-                  class={control + " mt-2"}
-                  disabled={busy}
-                  onClick={async () => {
-                    setBusy(true);
-                    onBusyChange(true);
-                    try {
-                      await save(report, session!, joinedCriteria());
-                      setError("");
-                    } catch (cause) {
-                      if (!disposed.current) {
-                        setError(
-                          cause instanceof Error
-                            ? cause.message
-                            : "Speichern fehlgeschlagen.",
-                        );
-                      }
-                    } finally {
-                      if (!disposed.current) {
-                        setBusy(false);
-                        onBusyChange(false);
-                      }
-                    }
-                  }}
-                >
-                  Im Chat speichern
-                </button>
-              )}
-          </div>
-        )}
-        {busy && (
-          <p role="status" class="mt-3 text-sm text-indigo-700">
-            Bud-E arbeitet. Mit „Pausieren“ oben kannst du anhalten. Fertige
-            Schritte bleiben im offenen Fenster erhalten.
-          </p>
-        )}
+          )}
+          {busy && (
+            <p role="status" class="mt-3 text-sm text-indigo-700">
+              Bud-E arbeitet. Mit „Pausieren“ oben kannst du anhalten. Fertige
+              Schritte bleiben im offenen Fenster erhalten.
+            </p>
+          )}
+        </div>
       </section>
     </div>
   );

@@ -19,6 +19,7 @@ parser.add_argument('--checkpoint', type=Path)
 parser.add_argument('--feedback', type=Path)
 parser.add_argument('--finish', action='store_true')
 parser.add_argument('--automatic', action='store_true')
+parser.add_argument('--walkthrough', action='store_true', help='Exercise the help without losing selected files or criteria before starting')
 parser.add_argument('--recheck-selection', action='store_true')
 parser.add_argument('--reread-page', type=int, action='append', default=[])
 parser.add_argument('--recheck-feedback', action='store_true')
@@ -91,6 +92,16 @@ async def main():
             await dialog.get_by_role('checkbox',name='Alle drei Stufen automatisch durchführen',exact=False).check()
         if args.recheck_selection:
             await dialog.get_by_role('button',name='Zuordnung mit aktuellem Auftrag erneut prüfen',exact=True).click()
+        if args.walkthrough:
+            before = await criteria.input_value()
+            await dialog.get_by_role('button',name='Kurzanleitung – in 5 Schritten',exact=True).click()
+            for _ in range(4):
+                await dialog.get_by_role('button',name='Weiter',exact=True).click()
+            await page.screenshot(path=args.output / 'ui-anleitung.png')
+            await dialog.get_by_role('button',name='Zur Korrektur',exact=True).click()
+            assert await criteria.input_value() == before, 'Help lost the criteria'
+            assert calls == 0, 'Help unexpectedly started model calls'
+            await page.screenshot(path=args.output / 'ui-vor-start.png')
 
         async def checkpoint(label):
             path = args.output / ('zwischenstand-' + label + '.json')

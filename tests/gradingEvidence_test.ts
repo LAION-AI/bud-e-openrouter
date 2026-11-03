@@ -51,3 +51,24 @@ Deno.test("chat retains teacher warnings without creating a fake extra pupil in 
   assertEquals(sheets[0].name, "Lea");
   assertStringIncludes(JSON.stringify(sheets[0].blocks), "1/1 Punkte");
 });
+Deno.test("headerless three-column inventory compares the literal answer, not its location anchor", () => {
+  const page = {
+    page: 1,
+    student: "Test",
+    transcript:
+      "Antwortinventar:\n1 | Ein einzelner solcher Zustand heißt | Bit\n2 | Acht davon ergeben zusammen ein | Byte\n3 | 1.024 Byte nennt man ein | Megabyte",
+  };
+  const report =
+    "|Lücke|Deine Antwort|Punkte|\n|---|---|---|\n|1|Bit|1/1|\n|2|Byte|1/1|\n|3|Kilobyte|1/1|";
+  const warnings = gradingEvidenceWarnings([page], report);
+  assertEquals(warnings.length, 1);
+  assertStringIncludes(warnings[0], "Lücke 3");
+  assertStringIncludes(warnings[0], "Abschrift „Megabyte“");
+  assertEquals(
+    gradingEvidenceWarnings([{
+      ...page,
+      transcript: "Antwortinventar:\n1 | unexplained | ambiguous | columns",
+    }], report).length,
+    0,
+  );
+});

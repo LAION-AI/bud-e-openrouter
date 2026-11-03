@@ -13,12 +13,12 @@ export function gradingEvidenceWarnings(
 ): string[] {
   const readings = new Map<number, { text: string; page: number }[]>();
   for (const page of pages) {
-    let inventory = false, started = false, answerColumn = 1;
+    let inventory = false, started = false, answerColumn = -1;
     for (const line of page.transcript.split("\n")) {
       if (/Antwortinventar/i.test(line)) {
         inventory = true;
         started = false;
-        answerColumn = 1;
+        answerColumn = -1;
         continue;
       }
       if (!inventory) continue;
@@ -31,10 +31,20 @@ export function gradingEvidenceWarnings(
         if (at >= 0) answerColumn = at;
         continue;
       }
-      if (row.length >= 2 && /^\d+[.)]?$/.test(row[0]) && row[answerColumn]) {
+      // Models also omit the header: number | location anchor | literal answer.
+      // In that documented three-column form the anchor is NOT an answer.
+      // Preserve old number | answer inventories; skip wider ambiguous rows.
+      const column = answerColumn >= 0
+        ? answerColumn
+        : row.length === 3
+        ? 2
+        : row.length === 2
+        ? 1
+        : -1;
+      if (row.length >= 2 && /^\d+[.)]?$/.test(row[0]) && row[column]) {
         const n = parseInt(row[0]);
         if (n >= 1 && n <= 300) {
-          const entry = { text: row[answerColumn], page: page.page };
+          const entry = { text: row[column], page: page.page };
           readings.set(n, [...(readings.get(n) ?? []), entry]);
           started = true;
         }
